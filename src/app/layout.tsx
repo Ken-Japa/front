@@ -6,6 +6,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import theme from "@/theme/mui";
 import { Layout } from "@/components/Layout";
 import { GoogleProvider } from "@/components/Providers/GoogleProvider";
+import { AnimatePresence } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,7 +36,11 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <GoogleProvider>
-              <Layout>{children}</Layout>
+              <Layout>
+                <AnimatePresence mode="wait">
+                    {children}
+                  </AnimatePresence>
+              </Layout>
             </GoogleProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
