@@ -1,46 +1,122 @@
-import { Link } from "@mui/material";
+"use client";
+
+import { Link, Container, Typography, Box, IconButton } from "@mui/material";
 import { Logo } from "../Logo";
 import LinkNext from "next/link";
 import XIcon from '@mui/icons-material/X';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+import { motion, HTMLMotionProps } from "framer-motion";
+
+const socialLinks = [
+    { icon: <XIcon />, href: "https://twitter.com/augeinvest", label: "Twitter" },
+    { icon: <InstagramIcon />, href: "https://instagram.com/augeinvest", label: "Instagram" },
+    { icon: <YouTubeIcon />, href: "https://youtube.com/augeinvest", label: "YouTube" },
+    { icon: <LinkedInIcon />, href: "https://linkedin.com/company/augeinvest", label: "LinkedIn" }
+];
+
+const navigationLinks = [
+    { href: "/", label: "Início" },
+    { href: "/quem-somos", label: "Quem somos" },
+    { href: "/recursos", label: "Recursos" },
+    { href: "/precos", label: "Preços" },
+    { href: "/faq", label: "FAQ" },
+    { href: "/contato", label: "Fale Conosco" },
+    { href: "/faca-parte", label: "Junte-se a equipe" },
+    { href: "/politica-privacidade", label: "Política de Privacidade" },
+    { href: "/termos-servicos", label: "Termos de Serviço" }
+];
+
+const MotionBox = motion(Box);
+const MotionFooter = motion.footer;
 
 export const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer className="container mx-auto my-14 flex flex-col gap-20">
-            <div className="flex justify-between">
-                <Logo height={80} width={80} />
-                <div className="text-center text-white">
-                    <p>Inovações tecnológicas com o objetivo de fornecer ao investidor a melhor visão do mercado.</p>
-                    <Link color="inherit">capitalauge@gmail.com</Link>
-                </div>
-            </div>
-            <div className="flex justify-center gap-12">
-                <div className="flex flex-col gap-8">
-                    <h5 className="font-bold text-white">Links</h5>
-                    <div className="flex flex-col gap-2 text-white">
-                        <LinkNext href="/" className="hover:opacity-80">Início</LinkNext>
-                        <LinkNext href="/quem-somos" className="hover:opacity-80">Quem somos</LinkNext>
-                        <LinkNext href="/recursos" className="hover:opacity-80">Recursos</LinkNext>
-                        <LinkNext href="/precos" className="hover:opacity-80">Preços</LinkNext>
-                        <LinkNext href="/faq" className="hover:opacity-80">FAQ</LinkNext>
-                        <LinkNext href="/contato" className="hover:opacity-80">Fale Conosco</LinkNext>
-                        <LinkNext href="/faca-parte" className="hover:opacity-80">Junte-se a equipe</LinkNext>
-                        <LinkNext href="/politica-privacidade" className="hover:opacity-80">Politica de Privacidade</LinkNext>
-                        <LinkNext href="/termos-servicos" className="hover:opacity-80">Termos de Serviço</LinkNext>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-8">
-                    <h5 className="font-bold text-white">Redes Sociais</h5>
-                    <div className="flex gap-2 text-white">
-                        <LinkNext href="" className="hover:opacity-80"><XIcon /></LinkNext>
-                        <LinkNext href="" className="hover:opacity-80"><InstagramIcon /></LinkNext>
-                        <LinkNext href="" className="hover:opacity-80"><YouTubeIcon /></LinkNext>
-                        <LinkNext href="" className="hover:opacity-80"><LinkedInIcon /></LinkNext>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <MotionFooter
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-[#111111] py-14"
+        >
+            <Container maxWidth="lg">
+                <Box className="flex flex-col gap-20">
+                    {/* Top Section */}
+                    <Box className="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                        >
+                            <Logo height={80} width={80} />
+                        </motion.div>
+                        <Box className="text-center md:text-right max-w-md">
+                            <Typography variant="body1" className="text-white/80 mb-2">
+                                Inovações tecnológicas com o objetivo de fornecer ao investidor a melhor visão do mercado.
+                            </Typography>
+                            <Link 
+                                href="mailto:capitalauge@gmail.com"
+                                className="text-white/60 hover:text-white flex items-center justify-center md:justify-end gap-2"
+                                underline="hover"
+                            >
+                                <EmailIcon fontSize="small" />
+                                capitalauge@gmail.com
+                            </Link>
+                        </Box>
+                    </Box>
+
+                    {/* Middle Section */}
+                    <Box className="flex flex-col md:flex-row justify-center gap-12">
+                        <Box className="flex flex-col gap-8">
+                            <Typography variant="h6" className="font-bold text-white">
+                                Links
+                            </Typography>
+                            <Box className="grid grid-cols-2 md:grid-cols-1 gap-2 text-white/80">
+                                {navigationLinks.map((link) => (
+                                    <LinkNext 
+                                        key={link.href}
+                                        href={link.href} 
+                                        className="hover:text-white transition-colors duration-200"
+                                    >
+                                        {link.label}
+                                    </LinkNext>
+                                ))}
+                            </Box>
+                        </Box>
+
+                        <Box className="flex flex-col gap-8">
+                            <Typography variant="h6" className="font-bold text-white">
+                                Redes Sociais
+                            </Typography>
+                            <Box className="flex gap-4 text-white/80">
+                                {socialLinks.map((social) => (
+                                    <IconButton
+                                        key={social.label}
+                                        component={LinkNext}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/80 hover:text-white"
+                                        size="large"
+                                    >
+                                        {social.icon}
+                                    </IconButton>
+                                ))}
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    {/* Bottom Section */}
+                    <Typography 
+                        variant="body2" 
+                        className="text-center text-white/60 pt-8 border-t border-white/10"
+                    >
+                        © {currentYear} Auge Invest. Todos os direitos reservados.
+                    </Typography>
+                </Box>
+            </Container>
+        </MotionFooter>
     );
 }
