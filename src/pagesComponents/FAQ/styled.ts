@@ -6,7 +6,21 @@ export const SectionFAQ = styled('section')({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'url("/assets/images/background/BACKGROUND-DEFAULT.jpg") no-repeat center center fixed',
-    backgroundSize: 'cover',
+    position: 'relative',
     padding: '2rem 0',
+
+    '& .background-image': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0,
+    },
+
+    '& .content': {
+        position: 'relative',
+        zIndex: 1,
+        width: '100%',
+    }
 });

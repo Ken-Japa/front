@@ -7,10 +7,6 @@ export const StyledDialog = styled(Dialog)({
     height: "100vh",
   },
   "& .MuiDialog-paper": {
-    backgroundImage: 'url("/assets/images/background/REGISTER.jpg")',
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
     height: "100vh",
     maxHeight: "100vh",
     width: "100vw",
@@ -18,6 +14,24 @@ export const StyledDialog = styled(Dialog)({
     margin: 0,
     borderRadius: 0,
     position: "relative",
+    overflow: "hidden",
+
+    "& .background-image": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: 0,
+    },
+
+    "& .content": {
+      position: "relative",
+      zIndex: 2,
+      height: "100%",
+      width: "100%",
+    },
+
     "&::before": {
       content: '""',
       position: "absolute",
@@ -27,6 +41,7 @@ export const StyledDialog = styled(Dialog)({
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       backdropFilter: "blur(1px)",
+      zIndex: 1,
     },
   },
 });

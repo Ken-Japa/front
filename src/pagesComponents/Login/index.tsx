@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const Login = () => {
     const router = useRouter();
@@ -82,128 +83,138 @@ export const Login = () => {
             maxWidth="md"
             fullWidth
         >
-            <IconButton
-                onClick={() => router.push('/')}
-                sx={{
-                    position: 'absolute',
-                    right: 8,
-                    top: 8,
-                    color: 'white'
-                }}
-            >
-                <CloseIcon />
-            </IconButton>
-
-            <LoginForm onSubmit={handleSubmit}>
-                <div className="form-header text-center w-full">
-                    <MatrixRainText
-                        text="Bem vindo de volta"
-                        className="text-white text-2xl font-bold mb-6 inline-block"
-                    />
-                </div>
-
-                <TextField
-                    name="email"
-                    label="E-mail"
-                    type="email"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={formData.email}
-                    onChange={handleChange}
-                    error={!!errors.email}
-                    helperText={errors.email}
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/REGISTER.jpg"
+                    alt="Login Background"
+                    fill
+                    className="object-cover"
                 />
-                
-                <TextField
-                    name="password"
-                    label="Senha"
-                    type="password"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={formData.password}
-                    onChange={handleChange}
-                    error={!!errors.password}
-                    helperText={errors.password}
-                />
-
-                <MuiLink
-                    href="/forgot-password"
+            </div>
+            <div className="content">
+                <IconButton
+                    onClick={() => router.push('/')}
                     sx={{
-                        color: 'primary.main',
-                        textDecoration: 'none',
-                        alignSelf: 'flex-end',
-                        marginTop: 1,
-                        display: 'block',
-                        textAlign: 'right',
-                        '&:hover': {
-                            textDecoration: 'underline'
-                        }
+                        position: 'absolute',
+                        right: 8,
+                        top: 8,
+                        color: 'white'
                     }}
                 >
-                    Esqueceu sua senha?
-                </MuiLink>
+                    <CloseIcon />
+                </IconButton>
 
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={rememberMe}
-                            onChange={(e) => setRememberMe(e.target.checked)}
-                            sx={{ color: 'white', '&.Mui-checked': { color: 'primary.main' } }}
+                <LoginForm onSubmit={handleSubmit}>
+                    <div className="form-header text-center w-full">
+                        <MatrixRainText
+                            text="Bem vindo de volta"
+                            className="text-white text-2xl font-bold mb-6 inline-block"
                         />
-                    }
-                    label={<Typography color="white">Lembrar-me</Typography>}
-                    sx={{ marginTop: 1 }}
-                />
+                    </div>
 
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    size="large"
-                    disabled={isLoading}
-                    sx={{ marginTop: '24px' }}
-                >
-                    {isLoading ? <CircularProgress size={24} color="inherit" /> : "Entrar"}
-                </Button>
+                    <TextField
+                        name="email"
+                        label="E-mail"
+                        type="email"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={formData.email}
+                        onChange={handleChange}
+                        error={!!errors.email}
+                        helperText={errors.email}
+                    />
 
-                <div className="divider-container">
-                    <div className="divider" />
-                    <span className="divider-text">ou</span>
-                    <div className="divider" />
-                </div>
+                    <TextField
+                        name="password"
+                        label="Senha"
+                        type="password"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={formData.password}
+                        onChange={handleChange}
+                        error={!!errors.password}
+                        helperText={errors.password}
+                    />
 
-                <Button
-                    variant="outlined"
-                    fullWidth
-                    size="large"
-                    startIcon={<GoogleIcon />}
-                    onClick={handleGoogleSignIn}
-                    sx={{
-                        color: 'white',
-                        borderColor: 'rgba(255, 255, 255, 0.3)',
-                        '&:hover': {
-                            borderColor: 'white',
-                            backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    <MuiLink
+                        href="/forgot-password"
+                        sx={{
+                            color: 'primary.main',
+                            textDecoration: 'none',
+                            alignSelf: 'flex-end',
+                            marginTop: 1,
+                            display: 'block',
+                            textAlign: 'right',
+                            '&:hover': {
+                                textDecoration: 'underline'
+                            }
+                        }}
+                    >
+                        Esqueceu sua senha?
+                    </MuiLink>
+
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                                sx={{ color: 'white', '&.Mui-checked': { color: 'primary.main' } }}
+                            />
                         }
-                    }}
-                >
-                    Continuar com Google
-                </Button>
+                        label={<Typography color="white">Lembrar-me</Typography>}
+                        sx={{ marginTop: 1 }}
+                    />
 
-                <Typography
-                    variant="body2"
-                    className="login-text text-center text-white"
-                    sx={{ mt: 2 }}
-                >
-                    Ainda não tem uma conta?{' '}
-                    <Link href="/register" className="text-[#0D95F9] underline hover:opacity-80">
-                        Registre-se
-                    </Link>
-                </Typography>
-            </LoginForm>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        size="large"
+                        disabled={isLoading}
+                        sx={{ marginTop: '24px' }}
+                    >
+                        {isLoading ? <CircularProgress size={24} color="inherit" /> : "Entrar"}
+                    </Button>
+
+                    <div className="divider-container">
+                        <div className="divider" />
+                        <span className="divider-text">ou</span>
+                        <div className="divider" />
+                    </div>
+
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        size="large"
+                        startIcon={<GoogleIcon />}
+                        onClick={handleGoogleSignIn}
+                        sx={{
+                            color: 'white',
+                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                            '&:hover': {
+                                borderColor: 'white',
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }}
+                    >
+                        Continuar com Google
+                    </Button>
+
+                    <Typography
+                        variant="body2"
+                        className="login-text text-center text-white"
+                        sx={{ mt: 2 }}
+                    >
+                        Ainda não tem uma conta?{' '}
+                        <Link href="/register" className="text-[#0D95F9] underline hover:opacity-80">
+                            Registre-se
+                        </Link>
+                    </Typography>
+                </LoginForm>
+            </div>
         </StyledDialog>
     );
 };

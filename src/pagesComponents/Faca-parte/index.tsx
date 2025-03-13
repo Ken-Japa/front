@@ -8,6 +8,7 @@ import SendIcon from '@mui/icons-material/Send';
 import WorkIcon from '@mui/icons-material/Work';
 import GroupsIcon from '@mui/icons-material/Groups';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 interface FormData {
     name: string;
@@ -167,6 +168,15 @@ export const JoinTeam = () => {
 
     return (
         <SectionJoinTeam>
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/Faca-Parte.jpg"
+                    alt="Join Team Background"
+                    fill
+                    className="object-cover"
+                />
+            </div>
+
             <div className="container mx-auto px-4 py-16">
                 <Grid container spacing={6}>
                     {/* Left Column - Info */}

@@ -1,11 +1,20 @@
 import { Stack } from "@mui/material";
 import { SectionPlans } from "./styled";
 import { Card } from "./Card";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const Plans = () => {
     return (
         <SectionPlans>
             <div className="plans">
+                <div className="background-image">
+                    <OptimizedImage
+                        src="/assets/images/background/PLANS.jpg"
+                        alt="Background Plans"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
                 <Stack direction="column" alignItems="center" width="100%" gap="30px">
                     <Stack width="100%" direction="row" justifyContent="space-around" alignItems="center">
                         <Card

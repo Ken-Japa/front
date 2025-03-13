@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { motion } from "framer-motion";
 import { Stack, Grid, Typography, Container } from "@mui/material";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const Welcome = () => {
     const [showAnimation, setShowAnimation] = useState(false);
@@ -43,7 +44,16 @@ export const Welcome = () => {
 
     return (
         <SectionWelcome>
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/HOME.jpg"
+                    alt="Welcome Background"
+                    fill
+                    className="object-cover"
+                />
+            </div>
             <div className="home">
+                {/* Rest of your content */}
                 <div className="welcome mb-20">
                     <div className="title-left">
                         <MatrixRainText

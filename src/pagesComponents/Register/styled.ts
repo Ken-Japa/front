@@ -4,14 +4,28 @@ import { Dialog, styled } from "@mui/material";
 
 export const StyledDialog = styled(Dialog)({
   "& .MuiDialog-paper": {
-    backgroundImage: 'url("/assets/images/background/REGISTER.jpg")',
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
     minHeight: "80vh",
     position: "relative",
     margin: "32px",
     width: "100%",
+    overflow: "hidden",
+
+    "& .background-image": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: 0,
+    },
+
+    "& .content": {
+      position: "relative",
+      zIndex: 2,
+      height: "100%",
+      width: "100%",
+    },
+
     "&::before": {
       content: '""',
       position: "absolute",
@@ -21,6 +35,7 @@ export const StyledDialog = styled(Dialog)({
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       backdropFilter: "blur(1px)",
+      zIndex: 1,
     },
   },
   "& .MuiDialog-container": {

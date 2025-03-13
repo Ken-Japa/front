@@ -19,6 +19,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useRouter } from "next/navigation";
 import { useGoogleLogin } from '@react-oauth/google';
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 
 interface FormErrors {
@@ -128,164 +129,174 @@ export const Register = () => {
 
     return (
         <StyledDialog open={true} maxWidth="md" fullWidth>
-            <IconButton
-                onClick={() => router.push('/')}
-                sx={{ position: 'absolute', right: 8, top: 8, color: 'white' }}
-            >
-                <CloseIcon />
-            </IconButton>
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/REGISTER.jpg"
+                    alt="Register Background"
+                    fill
+                    className="object-cover"
+                />
+            </div>
+            <div className="content">
+                <IconButton
+                    onClick={() => router.push('/')}
+                    sx={{ position: 'absolute', right: 8, top: 8, color: 'white' }}
+                >
+                    <CloseIcon />
+                </IconButton>
 
-            <RegisterForm onSubmit={handleSubmit}>
-                <div className="form-header text-center w-full">
-                    <MatrixRainText
-                        text="Crie sua conta"
-                        className="text-white text-2xl font-bold mb-6 inline-block"
+                <RegisterForm onSubmit={handleSubmit}>
+                    <div className="form-header text-center w-full">
+                        <MatrixRainText
+                            text="Crie sua conta"
+                            className="text-white text-2xl font-bold mb-6 inline-block"
+                        />
+                    </div>
+
+                    <TextField
+                        name="name"
+                        label="Nome completo"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={formData.name}
+                        onChange={handleChange}
+                        error={!!errors.name}
+                        helperText={errors.name}
+                        required
                     />
-                </div>
+                    <TextField
+                        name="email"
+                        label="E-mail"
+                        type="email"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={formData.email}
+                        onChange={handleChange}
+                        error={!!errors.email}
+                        helperText={errors.email}
+                    />
+                    <TextField
+                        name="password"
+                        label="Senha"
+                        type="password"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={formData.password}
+                        onChange={handleChange}
+                        error={!!errors.password}
+                        helperText={errors.password}
+                    />
 
-                <TextField
-                    name="name"
-                    label="Nome completo"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={formData.name}
-                    onChange={handleChange}
-                    error={!!errors.name}
-                    helperText={errors.name}
-                    required
-                />
-                <TextField
-                    name="email"
-                    label="E-mail"
-                    type="email"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={formData.email}
-                    onChange={handleChange}
-                    error={!!errors.email}
-                    helperText={errors.email}
-                />
-                <TextField
-                    name="password"
-                    label="Senha"
-                    type="password"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={formData.password}
-                    onChange={handleChange}
-                    error={!!errors.password}
-                    helperText={errors.password}
-                />
+                    {formData.password && (
+                        <Box sx={{ width: '100%', mt: 1 }}>
+                            <LinearProgress
+                                variant="determinate"
+                                value={getPasswordStrength(formData.password)}
+                                sx={{
+                                    backgroundColor: 'rgba(255,255,255,0.1)',
+                                    '& .MuiLinearProgress-bar': {
+                                        backgroundColor: getPasswordStrength(formData.password) < 50 ? 'error.main' :
+                                            getPasswordStrength(formData.password) < 100 ? 'warning.main' :
+                                                'success.main'
+                                    }
+                                }}
+                            />
+                            <Typography variant="caption" sx={{ color: 'white', mt: 0.5 }}>
+                                Força da senha: {getPasswordStrength(formData.password)}%
+                            </Typography>
+                        </Box>
+                    )}
 
-                {formData.password && (
-                    <Box sx={{ width: '100%', mt: 1 }}>
-                        <LinearProgress
-                            variant="determinate"
-                            value={getPasswordStrength(formData.password)}
-                            sx={{
-                                backgroundColor: 'rgba(255,255,255,0.1)',
-                                '& .MuiLinearProgress-bar': {
-                                    backgroundColor: getPasswordStrength(formData.password) < 50 ? 'error.main' :
-                                        getPasswordStrength(formData.password) < 100 ? 'warning.main' :
-                                            'success.main'
-                                }
-                            }}
-                        />
-                        <Typography variant="caption" sx={{ color: 'white', mt: 0.5 }}>
-                            Força da senha: {getPasswordStrength(formData.password)}%
-                        </Typography>
-                    </Box>
-                )}
+                    <TextField
+                        name="confirmPassword"
+                        label="Confirme sua senha"
+                        type="password"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        error={!!errors.confirmPassword}
+                        helperText={errors.confirmPassword}
+                    />
 
-                <TextField
-                    name="confirmPassword"
-                    label="Confirme sua senha"
-                    type="password"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    error={!!errors.confirmPassword}
-                    helperText={errors.confirmPassword}
-                />
-
-                {/* Remove the duplicate state declaration and keep the FormControlLabel */}
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={acceptedTerms}
-                            onChange={(e) => setAcceptedTerms(e.target.checked)}
-                            sx={{ color: 'white', '&.Mui-checked': { color: 'primary.main' } }}
-                        />
-                    }
-                    label={
-                        <Typography variant="body2" sx={{ color: 'white' }}>
-                            Li e aceito os{' '}
-                            <Link href="/termos-servicos" sx={{ color: 'primary.main' }}>
-                                termos e condições
-                            </Link>
-                        </Typography>
-                    }
-                />
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    size="large"
-                    disabled={isLoading}
-                    sx={{ marginTop: '24px' }}
-                >
-                    {isLoading ? <CircularProgress size={24} color="inherit" /> : "Registrar"}
-                </Button>
-
-                <div className="divider-container">
-                    <div className="divider" />
-                    <span className="divider-text">ou</span>
-                    <div className="divider" />
-                </div>
-
-                <Button
-                    variant="outlined"
-                    fullWidth
-                    size="large"
-                    startIcon={<GoogleIcon />}
-                    onClick={handleGoogleClick}
-                    sx={{
-                        color: 'white',
-                        borderColor: 'rgba(255, 255, 255, 0.3)',
-                        '&:hover': {
-                            borderColor: 'white',
-                            backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    {/* Remove the duplicate state declaration and keep the FormControlLabel */}
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={acceptedTerms}
+                                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                                sx={{ color: 'white', '&.Mui-checked': { color: 'primary.main' } }}
+                            />
                         }
-                    }}
-                >
-                    Continuar com Google
-                </Button>
+                        label={
+                            <Typography variant="body2" sx={{ color: 'white' }}>
+                                Li e aceito os{' '}
+                                <Link href="/termos-servicos" sx={{ color: 'primary.main' }}>
+                                    termos e condições
+                                </Link>
+                            </Typography>
+                        }
+                    />
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        size="large"
+                        disabled={isLoading}
+                        sx={{ marginTop: '24px' }}
+                    >
+                        {isLoading ? <CircularProgress size={24} color="inherit" /> : "Registrar"}
+                    </Button>
 
-                <Typography
-                    variant="body2"
-                    className="login-text text-center text-white"
-                >
-                    Já tem uma conta?{' '}
-                    <Link
-                        href="/login"
+                    <div className="divider-container">
+                        <div className="divider" />
+                        <span className="divider-text">ou</span>
+                        <div className="divider" />
+                    </div>
+
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        size="large"
+                        startIcon={<GoogleIcon />}
+                        onClick={handleGoogleClick}
                         sx={{
-                            color: 'primary.main',
-                            textDecoration: 'underline',
+                            color: 'white',
+                            borderColor: 'rgba(255, 255, 255, 0.3)',
                             '&:hover': {
-                                opacity: 0.8
+                                borderColor: 'white',
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
                             }
                         }}
                     >
-                        Faça login
-                    </Link>
-                </Typography>
-            </RegisterForm>
+                        Continuar com Google
+                    </Button>
+
+                    <Typography
+                        variant="body2"
+                        className="login-text text-center text-white"
+                    >
+                        Já tem uma conta?{' '}
+                        <Link
+                            href="/login"
+                            sx={{
+                                color: 'primary.main',
+                                textDecoration: 'underline',
+                                '&:hover': {
+                                    opacity: 0.8
+                                }
+                            }}
+                        >
+                            Faça login
+                        </Link>
+                    </Typography>
+                </RegisterForm>
+            </div>
         </StyledDialog>
     );
 };

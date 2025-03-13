@@ -9,6 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import Link from 'next/link';
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 type QuestionType = {
     title: string;
@@ -125,6 +126,14 @@ export const FAQ = () => {
 
     return (
         <SectionFAQ>
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/BACKGROUND-DEFAULT.jpg"
+                    alt="FAQ Background"
+                    fill
+                    className="object-cover"
+                />
+            </div>
             <Stack
                 direction="column"
                 alignItems="center"

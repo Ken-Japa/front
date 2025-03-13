@@ -8,6 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import SendIcon from '@mui/icons-material/Send';
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 interface FormData {
     name: string;
@@ -114,135 +115,119 @@ export const Contact = () => {
 
     return (
         <SectionContact>
-            <div className="container mx-auto px-4 py-16">
-                <div className="grid md:grid-cols-2 gap-12">
-                    {/* Contact Information */}
-                    <div className="text-white">
-                        <div className="mb-12">
-                            <MatrixRainText
-                                text="Entre em Contato"
-                                className="text-4xl font-bold text-[#0D95F9] mb-6"
-                            />
-                            <Typography variant="body1" className="text-white/70 mb-8">
-                                Estamos aqui para ajudar. Entre em contato conosco através de qualquer um dos canais abaixo.
-                            </Typography>
-                        </div>
-
-                        <Stack spacing={4}>
-                            <div className="flex items-center gap-4">
-                                <EmailIcon sx={{ color: '#0D95F9', fontSize: 32 }} />
-                                <div>
-                                    <Typography variant="h6" className="text-[#0D95F9]">Email</Typography>
-                                    <Typography className="text-white/70">contato@augecapital.com.br</Typography>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-4">
-                                <LocationOnIcon sx={{ color: '#0D95F9', fontSize: 32 }} />
-                                <div>
-                                    <Typography variant="h6" className="text-[#0D95F9]">Localização</Typography>
-                                    <Typography className="text-white/70">São Paulo, SP - Brasil</Typography>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-4">
-                                <PhoneIcon sx={{ color: '#0D95F9', fontSize: 32 }} />
-                                <div>
-                                    <Typography variant="h6" className="text-[#0D95F9]">Telefone</Typography>
-                                    <Typography className="text-white/70">(11) 99999-9999</Typography>
-                                </div>
-                            </div>
-                        </Stack>
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/Contato.jpg"
+                    alt="Contact Background"
+                    fill
+                    className="object-cover"
+                />
+            </div>
+            <div className="opacity">
+                <Stack spacing={4} maxWidth="1200px" width="100%" px={2}>
+                    <div className="text-center">
+                        <MatrixRainText
+                            text="Entre em Contato"
+                            className="text-4xl font-bold text-white mb-4"
+                        />
+                        <Typography variant="h6" className="text-white/70">
+                            Estamos aqui para ajudar. Entre em contato conosco!
+                        </Typography>
                     </div>
 
-                    {/* Contact Form */}
-                    <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
+                    <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="flex-start">
+                        <Stack spacing={3} flex={1}>
+                            <div>
+                                <Stack direction="row" spacing={2} alignItems="center" mb={1}>
+                                    <EmailIcon sx={{ color: '#0D95F9' }} />
+                                    <Typography variant="h6" className="text-white">Email</Typography>
+                                </Stack>
+                                <Typography className="text-white/70">contato@augeinvest.com.br</Typography>
+                            </div>
+                            <div>
+                                <Stack direction="row" spacing={2} alignItems="center" mb={1}>
+                                    <LocationOnIcon sx={{ color: '#0D95F9' }} />
+                                    <Typography variant="h6" className="text-white">Localização</Typography>
+                                </Stack>
+                                <Typography className="text-white/70">São Paulo, SP - Brasil</Typography>
+                            </div>
+                            <div>
+                                <Stack direction="row" spacing={2} alignItems="center" mb={1}>
+                                    <PhoneIcon sx={{ color: '#0D95F9' }} />
+                                    <Typography variant="h6" className="text-white">Telefone</Typography>
+                                </Stack>
+                                <Typography className="text-white/70">+55 (11) 99999-9999</Typography>
+                            </div>
+                        </Stack>
+
                         <ContactForm onSubmit={handleSubmit}>
                             <TextField
-                                name="name"
-                                label="Nome"
-                                variant="outlined"
                                 fullWidth
-                                margin="normal"
+                                label="Nome"
+                                name="name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 error={!!errors.name}
                                 helperText={errors.name}
-                                className="bg-[#ffffff05]"
                             />
                             <TextField
-                                name="email"
-                                label="E-mail"
-                                type="email"
-                                variant="outlined"
                                 fullWidth
-                                margin="normal"
+                                label="Email"
+                                name="email"
+                                type="email"
                                 value={formData.email}
                                 onChange={handleChange}
                                 error={!!errors.email}
                                 helperText={errors.email}
-                                className="bg-[#ffffff05]"
                             />
                             <TextField
-                                name="subject"
-                                label="Assunto"
-                                variant="outlined"
                                 fullWidth
-                                margin="normal"
+                                label="Assunto"
+                                name="subject"
                                 value={formData.subject}
                                 onChange={handleChange}
                                 error={!!errors.subject}
                                 helperText={errors.subject}
-                                className="bg-[#ffffff05]"
                             />
                             <TextField
-                                name="message"
+                                fullWidth
                                 label="Mensagem"
+                                name="message"
                                 multiline
                                 rows={4}
-                                variant="outlined"
-                                fullWidth
-                                margin="normal"
                                 value={formData.message}
                                 onChange={handleChange}
                                 error={!!errors.message}
                                 helperText={errors.message}
-                                className="bg-[#ffffff05]"
                             />
-
                             <Button
                                 type="submit"
                                 variant="contained"
+                                color="primary"
                                 fullWidth
                                 size="large"
-                                sx={{
-                                    marginTop: '24px',
-                                    backgroundColor: '#0D95F9',
-                                    '&:hover': {
-                                        backgroundColor: '#0D95F9/80'
-                                    }
-                                }}
                                 endIcon={<SendIcon />}
                             >
                                 Enviar Mensagem
                             </Button>
                         </ContactForm>
-                    </div>
-                </div>
-            </div>
+                    </Stack>
+                </Stack>
 
-            <Snackbar
-                open={snackbar.open}
-                autoHideDuration={6000}
-                onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
-            >
-                <Alert
-                    severity={snackbar.severity}
+                <Snackbar
+                    open={snackbar.open}
+                    autoHideDuration={6000}
                     onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
                 >
-                    {snackbar.message}
-                </Alert>
-            </Snackbar>
+                    <Alert
+                        onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+                        severity={snackbar.severity}
+                        sx={{ width: '100%' }}
+                    >
+                        {snackbar.message}
+                    </Alert>
+                </Snackbar>
+            </div>
         </SectionContact>
     );
 };
