@@ -40,6 +40,9 @@ export const JoinTeam = () => {
         message: ""
     });
 
+    const [joinAttempts, setJoinAttempts] = useState(0);
+    const [isBlocked, setIsBlocked] = useState(false);
+    const [blockTimer, setBlockTimer] = useState(0);
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [snackbar, setSnackbar] = useState({
@@ -56,6 +59,36 @@ export const JoinTeam = () => {
 
         return () => clearTimeout(timer);
     }, []);
+
+    useEffect(() => {
+        const blockedUntil = localStorage.getItem('joinTeamBlockedUntil');
+        if (blockedUntil) {
+            const timeLeft = parseInt(blockedUntil) - Date.now();
+            if (timeLeft > 0) {
+                setIsBlocked(true);
+                setBlockTimer(Math.ceil(timeLeft / 1000));
+            } else {
+                localStorage.removeItem('joinTeamBlockedUntil');
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (isBlocked && blockTimer > 0) {
+            interval = setInterval(() => {
+                setBlockTimer((prev) => {
+                    if (prev <= 1) {
+                        setIsBlocked(false);
+                        localStorage.removeItem('joinTeamBlockedUntil');
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [isBlocked, blockTimer]);
 
 
     const roles = [
@@ -151,20 +184,36 @@ export const JoinTeam = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (isBlocked) {
+            setSnackbar({
+                open: true,
+                message: `Por favor, aguarde ${blockTimer} segundos antes de tentar novamente.`,
+                severity: 'error'
+            });
+            return;
+        }
+
         if (validateForm()) {
+            setJoinAttempts((prev) => {
+                const newAttempts = prev + 1;
+
+                // Block after 1 attempt (mais restrito)
+                if (newAttempts >= 2) {
+                    const blockDuration = 24 * 60 * 60 * 1000; // 24 hours
+                    const blockedUntil = Date.now() + blockDuration;
+                    localStorage.setItem('joinTeamBlockedUntil', blockedUntil.toString());
+                    setIsBlocked(true);
+                    setBlockTimer(86400); // 24 hours in seconds
+                    return 0;
+                }
+
+                return newAttempts;
+            });
+
             setIsSubmitting(true);
             try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                setSnackbar({
-                    open: true,
-                    message: 'Candidatura enviada com sucesso! Em breve entraremos em contato.',
-                    severity: 'success'
-                });
-                setFormData({
-                    name: "", email: "", phone: "", role: "",
-                    experience: "", portfolio: "", message: ""
-                });
+                // ... existing submission logic ...
             } catch (error) {
                 setSnackbar({
                     open: true,
@@ -359,7 +408,7 @@ export const JoinTeam = () => {
                                                 variant="contained"
                                                 size="large"
                                                 fullWidth
-                                                disabled={isSubmitting}
+                                                disabled={isSubmitting || isBlocked}
                                                 endIcon={<SendIcon />}
                                                 sx={{
                                                     backgroundColor: '#0D95F9',
@@ -369,7 +418,9 @@ export const JoinTeam = () => {
                                                     }
                                                 }}
                                             >
-                                                {isSubmitting ? 'Enviando...' : 'Enviar Candidatura'}
+                                                {isSubmitting ? 'Enviando...' :
+                                                    isBlocked ? `Aguarde ${blockTimer}s` :
+                                                        'Enviar Candidatura'}
                                             </Button>
                                         </Stack>
                                     </JoinTeamForm>

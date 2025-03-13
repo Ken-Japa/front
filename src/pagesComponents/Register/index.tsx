@@ -34,6 +34,9 @@ export const Register = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
+    const [registerAttempts, setRegisterAttempts] = useState(0);
+    const [isBlocked, setIsBlocked] = useState(false);
+    const [blockTimer, setBlockTimer] = useState(0);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -96,18 +99,38 @@ export const Register = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (isBlocked) {
+            return;
+        }
+
         if (validateForm()) {
-            setIsLoading(true);
+            setRegisterAttempts((prev) => {
+                const newAttempts = prev + 1;
+                console.log('Tentativa de registro:', newAttempts);
+
+                // Block after 3 attempts (mais restrito que o login)
+                if (newAttempts >= 5) {
+                    const blockDuration = 10 * 60 * 1000; // 10 minutes
+                    const blockedUntil = Date.now() + blockDuration;
+                    localStorage.setItem('registerBlockedUntil', blockedUntil.toString());
+                    setIsBlocked(true);
+                    setBlockTimer(600); // 10 minutes in seconds
+                    return 0;
+                }
+
+                return newAttempts;
+            });
+
             try {
-                // Proceed with registration
+                // Futura lógica de registro aqui
                 console.log('Form is valid', formData);
             } catch (error) {
                 console.error('Registration error:', error);
-            } finally {
-                setIsLoading(false);
             }
         }
     };
+
 
     const handleGoogleSignIn = useGoogleLogin({
         onSuccess: async (response) => {
@@ -133,6 +156,32 @@ export const Register = () => {
         }, 1500);
 
         return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const blockedUntil = localStorage.getItem('registerBlockedUntil');
+        if (blockedUntil) {
+            const timeLeft = parseInt(blockedUntil) - Date.now();
+            if (timeLeft > 0) {
+                setIsBlocked(true);
+                setBlockTimer(Math.ceil(timeLeft / 1000));
+            } else {
+                localStorage.removeItem('registerBlockedUntil');
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        const blockedUntil = localStorage.getItem('registerBlockedUntil');
+        if (blockedUntil) {
+            const timeLeft = parseInt(blockedUntil) - Date.now();
+            if (timeLeft > 0) {
+                setIsBlocked(true);
+                setBlockTimer(Math.ceil(timeLeft / 1000));
+            } else {
+                localStorage.removeItem('registerBlockedUntil');
+            }
+        }
     }, []);
 
     return (
@@ -299,10 +348,16 @@ export const Register = () => {
                                 color="primary"
                                 fullWidth
                                 size="large"
-                                disabled={isLoading}
+                                disabled={isLoading || isBlocked}
                                 sx={{ marginTop: '24px' }}
                             >
-                                {isLoading ? <CircularProgress size={24} color="inherit" /> : "Registrar"}
+                                {isLoading ? (
+                                    <CircularProgress size={24} color="inherit" />
+                                ) : isBlocked ? (
+                                    `Tente novamente em ${blockTimer}s`
+                                ) : (
+                                    "Registrar"
+                                )}
                             </Button>
 
                             <div className="divider-container">

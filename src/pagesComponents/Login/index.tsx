@@ -25,6 +25,9 @@ export const Login = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [rememberMe, setRememberMe] = useState(false);
+    const [loginAttempts, setLoginAttempts] = useState(0);
+    const [isBlocked, setIsBlocked] = useState(false);
+    const [blockTimer, setBlockTimer] = useState(0);
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -64,13 +67,34 @@ export const Login = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (isBlocked) {
+            return;
+        }
+
         if (validateForm()) {
             try {
-                // Handle login logic
-                // Add loading state if needed
+                // Simulate login attempt
+                setLoginAttempts((prev) => {
+                    const newAttempts = prev + 1;
+
+                    // Block after 5 attempts
+                    if (newAttempts >= 5) {
+                        const blockDuration = 5 * 60 * 1000; // 5 minutes
+                        const blockedUntil = Date.now() + blockDuration;
+                        localStorage.setItem('loginBlockedUntil', blockedUntil.toString());
+                        setIsBlocked(true);
+                        setBlockTimer(300); // 5 minutes in seconds
+                        return 0; // Reset attempts
+                    }
+
+                    return newAttempts;
+                });
+
+                // Your existing login logic here
+
             } catch (error) {
                 console.error('Login error:', error);
-                // Handle error state
             }
         }
     };
@@ -86,6 +110,37 @@ export const Login = () => {
 
         return () => clearTimeout(timer);
     }, []);
+
+    useEffect(() => {
+        // Check if user is blocked from localStorage
+        const blockedUntil = localStorage.getItem('loginBlockedUntil');
+        if (blockedUntil) {
+            const timeLeft = parseInt(blockedUntil) - Date.now();
+            if (timeLeft > 0) {
+                setIsBlocked(true);
+                setBlockTimer(Math.ceil(timeLeft / 1000));
+            } else {
+                localStorage.removeItem('loginBlockedUntil');
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (isBlocked && blockTimer > 0) {
+            interval = setInterval(() => {
+                setBlockTimer((prev) => {
+                    if (prev <= 1) {
+                        setIsBlocked(false);
+                        localStorage.removeItem('loginBlockedUntil');
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [isBlocked, blockTimer]);
 
     return (
         <PageTransition>
@@ -221,10 +276,16 @@ export const Login = () => {
                                 color="primary"
                                 fullWidth
                                 size="large"
-                                disabled={isLoading}
+                                disabled={isLoading || isBlocked}
                                 sx={{ marginTop: '24px' }}
                             >
-                                {isLoading ? <CircularProgress size={24} color="inherit" /> : "Entrar"}
+                                {isLoading ? (
+                                    <CircularProgress size={24} color="inherit" />
+                                ) : isBlocked ? (
+                                    `Tente novamente em ${blockTimer}s`
+                                ) : (
+                                    "Entrar"
+                                )}
                             </Button>
 
                             <div className="divider-container">

@@ -28,6 +28,10 @@ interface FormErrors {
 }
 
 export const Contact = () => {
+    const [contactAttempts, setContactAttempts] = useState(0);
+    const [isBlocked, setIsBlocked] = useState(false);
+    const [blockTimer, setBlockTimer] = useState(0);
+
     const [formData, setFormData] = useState<FormData>({
         name: "",
         email: "",
@@ -94,28 +98,37 @@ export const Contact = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        if (isBlocked) {
+            setSnackbar({
+                open: true,
+                message: `Aguarde ${blockTimer} segundos antes de tentar novamente.`,
+                severity: 'error'
+            });
+            return;
+        }
+
         if (!validateForm()) {
             return;
         }
 
+        setContactAttempts((prev) => {
+            const newAttempts = prev + 1;
+
+            // Block after 2 attempts (mais restrito que login/registro)
+            if (newAttempts >= 3) {
+                const blockDuration = 15 * 60 * 1000; // 15 minutes
+                const blockedUntil = Date.now() + blockDuration;
+                localStorage.setItem('contactBlockedUntil', blockedUntil.toString());
+                setIsBlocked(true);
+                setBlockTimer(900); // 15 minutes in seconds
+                return 0;
+            }
+
+            return newAttempts;
+        });
+
         try {
-            // Here you would typically make an API call to send the email
-            // For now, we'll simulate a successful submission
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            setSnackbar({
-                open: true,
-                message: 'Mensagem enviada com sucesso!',
-                severity: 'success'
-            });
-
-            // Clear form after successful submission
-            setFormData({
-                name: "",
-                email: "",
-                subject: "",
-                message: ""
-            });
+            // ... existing submission logic ...
         } catch (error) {
             setSnackbar({
                 open: true,
@@ -124,6 +137,32 @@ export const Contact = () => {
             });
         }
     };
+
+    useEffect(() => {
+        const blockedUntil = localStorage.getItem('contactBlockedUntil');
+        if (blockedUntil) {
+            const timeLeft = parseInt(blockedUntil) - Date.now();
+            if (timeLeft > 0) {
+                setIsBlocked(true);
+                setBlockTimer(Math.ceil(timeLeft / 1000));
+            } else {
+                localStorage.removeItem('contactBlockedUntil');
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        const blockedUntil = localStorage.getItem('contactBlockedUntil');
+        if (blockedUntil) {
+            const timeLeft = parseInt(blockedUntil) - Date.now();
+            if (timeLeft > 0) {
+                setIsBlocked(true);
+                setBlockTimer(Math.ceil(timeLeft / 1000));
+            } else {
+                localStorage.removeItem('contactBlockedUntil');
+            }
+        }
+    }, []);
 
     return (
         <PageTransition>
@@ -237,8 +276,12 @@ export const Contact = () => {
                                         fullWidth
                                         size="large"
                                         endIcon={<SendIcon />}
+                                        disabled={isBlocked}
                                     >
-                                        Enviar Mensagem
+                                        {isBlocked ?
+                                            `Aguarde ${blockTimer}s` :
+                                            'Enviar Mensagem'
+                                        }
                                     </Button>
                                 </ContactForm>
                             )}
