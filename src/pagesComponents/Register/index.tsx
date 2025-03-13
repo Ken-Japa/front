@@ -110,7 +110,7 @@ export const Register = () => {
                 const newAttempts = prev + 1;
                 console.log('Tentativa de registro:', newAttempts);
 
-                // Block after 3 attempts (mais restrito que o login)
+                // Block after 5 attempts (mais restrito que o login)
                 if (newAttempts >= 5) {
                     const blockDuration = 10 * 60 * 1000; // 10 minutes
                     const blockedUntil = Date.now() + blockDuration;

@@ -37,7 +37,6 @@ export const PrivacyPolicy = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // Update the scroll function
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) {

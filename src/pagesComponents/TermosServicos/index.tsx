@@ -153,7 +153,6 @@ export const TermsServices = () => {
                                             <p>A Auge Capital não presta serviços de consultoria de investimentos nem recomendações específicas sobre rentabilidade, liquidez ou risco. As informações fornecidas têm caráter informativo e não se traduzem em recomendações financeiras, legais ou fiscais.</p>
                                         </div>
 
-                                        {/* Continue with other sections following the same pattern... */}
                                         <div id="periodo" className="mb-5 bg-[#ffffff05] p-6 rounded-lg">
                                             <h2 className="text-2xl text-infoMain mb-5">3. PERÍODO DE UTILIZAÇÃO GRATUITA</h2>
                                             <p>Sua assinatura poderá começar com um período de utilização gratuita de vinte e um dias, destinado a novos e potenciais clientes. A liberação da utilização gratuita é determinada pela Auge Capital a seu exclusivo critério e pode ser revogada a qualquer momento.</p>

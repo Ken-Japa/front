@@ -21,7 +21,6 @@ type QuestionType = {
 
 type CategoryType = 'todas' | keyof QuestionsType;
 
-// Categorize FAQ questions
 const faqCategories = {
     todas: "Todas",
     geral: "Geral",

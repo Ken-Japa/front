@@ -1,4 +1,4 @@
-import { Button, Box, CircularProgress, SvgIconTypeMap } from '@mui/material';
+import { Button } from '@mui/material';
 import { OverridableStringUnion } from '@mui/types';
 import { ButtonPropsColorOverrides } from '@mui/material';
 
@@ -16,18 +16,18 @@ interface CustomButtonProps {
     fullWidth?: boolean;
 }
 
-export const CustomButton = ({ 
-    value, 
-    Icon, 
-    color = "primary", 
-    onClick, 
+export const CustomButton = ({
+    value,
+    Icon,
+    color = "primary",
+    onClick,
     fullWidth,
     margin,
     align,
-    className 
+    className
 }: CustomButtonProps) => {
     return (
-        <Button 
+        <Button
             onClick={onClick}
             fullWidth={fullWidth}
             variant="contained"

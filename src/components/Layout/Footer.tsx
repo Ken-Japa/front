@@ -3,12 +3,13 @@
 import { Link, Container, Typography, Box, IconButton } from "@mui/material";
 import { Logo } from "../Logo";
 import LinkNext from "next/link";
+import { usePathname } from 'next/navigation'; // Add this import
 import XIcon from '@mui/icons-material/X';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 
 const socialLinks = [
     { icon: <XIcon />, href: "https://twitter.com/augeinvest", label: "Twitter" },
@@ -34,6 +35,7 @@ const MotionFooter = motion.footer;
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const pathname = usePathname();
 
     return (
         <MotionFooter
@@ -56,7 +58,7 @@ export const Footer = () => {
                             <Typography variant="body1" className="text-white/80 mb-2">
                                 Inovações tecnológicas com o objetivo de fornecer ao investidor a melhor visão do mercado.
                             </Typography>
-                            <Link 
+                            <Link
                                 href="mailto:capitalauge@gmail.com"
                                 className="text-white/60 hover:text-white flex items-center justify-center md:justify-end gap-2"
                                 underline="hover"
@@ -67,7 +69,7 @@ export const Footer = () => {
                         </Box>
                     </Box>
 
-                    {/* Middle Section */}
+                    {/* Middle Section with updated navigation links */}
                     <Box className="flex flex-col md:flex-row justify-center gap-12">
                         <Box className="flex flex-col gap-8">
                             <Typography variant="h6" className="font-bold text-white">
@@ -75,10 +77,16 @@ export const Footer = () => {
                             </Typography>
                             <Box className="grid grid-cols-2 md:grid-cols-1 gap-2 text-white/80">
                                 {navigationLinks.map((link) => (
-                                    <LinkNext 
+                                    <LinkNext
                                         key={link.href}
-                                        href={link.href} 
-                                        className="hover:text-white transition-colors duration-200"
+                                        href={link.href}
+                                        className={`
+                                            relative transition-colors duration-200
+                                            ${pathname === link.href
+                                                ? 'text-[#0D95F9] font-medium'
+                                                : 'text-white/80 hover:text-white'
+                                            }
+                                        `}
                                     >
                                         {link.label}
                                     </LinkNext>
@@ -109,8 +117,8 @@ export const Footer = () => {
                     </Box>
 
                     {/* Bottom Section */}
-                    <Typography 
-                        variant="body2" 
+                    <Typography
+                        variant="body2"
                         className="text-center text-white/60 pt-8 border-t border-white/10"
                     >
                         © {currentYear} Auge Invest. Todos os direitos reservados.

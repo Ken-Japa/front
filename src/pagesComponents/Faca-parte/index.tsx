@@ -199,7 +199,7 @@ export const JoinTeam = () => {
             setJoinAttempts((prev) => {
                 const newAttempts = prev + 1;
 
-                // Block after 1 attempt (mais restrito)
+                // Block after 2 attempt (mais restrito)
                 if (newAttempts >= 2) {
                     const blockDuration = 24 * 60 * 60 * 1000; // 24 hours
                     const blockedUntil = Date.now() + blockDuration;

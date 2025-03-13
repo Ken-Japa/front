@@ -57,7 +57,7 @@ export const MatrixRainText = ({ text, className = '', onComplete, triggerOnce =
         });
 
         if (onComplete) {
-            setTimeout(onComplete, totalDelay + 200); // Reduced from 300 to 200
+            setTimeout(onComplete, totalDelay + 150);
         }
 
         hasPlayedRef.current = true;
