@@ -13,11 +13,9 @@ import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 
-interface Props {
-    showAnimation: boolean;
-}
 
-export const Home = ({ showAnimation }: Props) => {
+
+export const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [welcomeRef, welcomeInView] = useInView({
         triggerOnce: true,

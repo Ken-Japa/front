@@ -1,18 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { Metadata } from "next";
 import { Home } from "@/pagesComponents/Home";
 
+export const metadata: Metadata = {
+    title: "Auge Invest - Plataforma de Análise de Investimentos",
+    description: "Transforme sua experiência de investimento com a Auge Invest. Análises precisas, ferramentas avançadas e suporte especializado para suas decisões financeiras.",
+    openGraph: {
+        title: 'Auge Invest - Plataforma de Análise de Investimentos',
+        description: 'Transforme sua experiência de investimento com a Auge Invest',
+    }
+};
+
 export default function HomePage() {
-    const [showAnimation, setShowAnimation] = useState(false);
 
-    useEffect(() => {
-        const hasAnimationPlayed = localStorage.getItem('matrixAnimationPlayed');
-        if (!hasAnimationPlayed) {
-            setShowAnimation(true);
-            localStorage.setItem('matrixAnimationPlayed', 'true');
-        }
-    }, []);
 
-    return <Home showAnimation={showAnimation} />;
+    return <Home />;
 }

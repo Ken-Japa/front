@@ -13,16 +13,49 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Auge Invest",
-  description: "Plataforma de análise de investimentos",
-  icons: {
-    icon: [
+  description: "Plataforma líder em análise de investimentos. Oferecemos ferramentas avançadas e insights precisos para otimizar sua carteira de investimentos.",
+  keywords: "investimentos, análise financeira, mercado financeiro, bolsa de valores, auge invest",
+  authors: [{ name: "Auge Invest" }],
+  openGraph: {
+    title: 'Auge Invest',
+    description: 'Plataforma líder em análise de investimentos',
+    url: 'https://augeinvest.com.br',
+    siteName: 'Auge Invest',
+    images: [
       {
-        url: '/assets/images/logo/Icon.png',
-        type: 'image/png',
-      }
+        url: '/assets/images/logo/Logo1.png',
+        width: 722,
+        height: 545,
+      },
     ],
-    shortcut: '/assets/images/logo/Icon.png',
-    apple: '/assets/images/logo/Icon.png',
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Auge Invest',
+    description: 'Plataforma líder em análise de investimentos',
+    card: 'summary_large_image',
+    images: [
+      {
+        url: '/assets/images/logo/Logo1.png',
+        width: 722,
+        height: 545,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
   },
 };
 
