@@ -14,6 +14,7 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import { useState, useEffect } from 'react';
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const Solutions = () => {
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -80,94 +81,96 @@ export const Solutions = () => {
 
     return (
         <PageTransition>
-            <SectionSolutions>
-                <Container maxWidth="xl" className="py-16">
-                    {isLoading ? (
-                        <Stack spacing={8} alignItems="center">
-                            {/* Title and Subtitle Skeleton */}
-                            <Stack spacing={3} alignItems="center">
+            <ErrorBoundary>
+                <SectionSolutions>
+                    <Container maxWidth="xl" className="py-16">
+                        {isLoading ? (
+                            <Stack spacing={8} alignItems="center">
+                                {/* Title and Subtitle Skeleton */}
+                                <Stack spacing={3} alignItems="center">
+                                    <ContentSkeleton />
+                                    <ContentSkeleton type="text" />
+                                </Stack>
+
+                                {/* Features Grid Skeleton */}
+                                <Grid container spacing={4} justifyContent="center">
+                                    {Array(8).fill(0).map((_, index) => (
+                                        <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
+                                            <ContentSkeleton type="card" />
+                                        </Grid>
+                                    ))}
+                                </Grid>
+
+                                {/* Button Skeleton */}
                                 <ContentSkeleton />
-                                <ContentSkeleton type="text" />
                             </Stack>
+                        ) : (
+                            <Stack spacing={8} alignItems="center">
+                                <Stack spacing={3} alignItems="center">
+                                    <MatrixRainText
+                                        text="Recursos Avançados"
+                                        className="text-white text-4xl font-bold"
+                                    />
+                                    <Typography
+                                        variant="h6"
+                                        className="text-white/80 text-center max-w-3xl"
+                                    >
+                                        Descubra como nossa plataforma pode transformar sua experiência de investimento com ferramentas poderosas e insights valiosos
+                                    </Typography>
+                                </Stack>
 
-                            {/* Features Grid Skeleton */}
-                            <Grid container spacing={4} justifyContent="center">
-                                {Array(8).fill(0).map((_, index) => (
-                                    <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
-                                        <ContentSkeleton type="card" />
-                                    </Grid>
-                                ))}
-                            </Grid>
+                                <Grid container spacing={4} justifyContent="center">
+                                    {features.map((feature, index) => (
+                                        <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
+                                            <FeatureCard
+                                                onMouseEnter={() => setHoveredCard(index)}
+                                                onMouseLeave={() => setHoveredCard(null)}
+                                                className="transition-all duration-300 hover:scale-105"
+                                            >
+                                                <div className="icon-container text-[#0D95F9]">
+                                                    {feature.icon}
+                                                </div>
+                                                <Typography
+                                                    variant="h6"
+                                                    className="feature-title mb-3"
+                                                >
+                                                    {feature.title}
+                                                </Typography>
+                                                <Typography
+                                                    variant="body1"
+                                                    className="feature-description mb-4"
+                                                >
+                                                    {feature.description}
+                                                </Typography>
+                                                {hoveredCard === index && (
+                                                    <ul className="text-sm space-y-2 text-white/70">
+                                                        {feature.details.map((detail, idx) => (
+                                                            <li key={idx} className="flex items-center">
+                                                                <span className="w-2 h-2 bg-[#0D95F9] rounded-full mr-2"></span>
+                                                                {detail}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+                                            </FeatureCard>
+                                        </Grid>
+                                    ))}
+                                </Grid>
 
-                            {/* Button Skeleton */}
-                            <ContentSkeleton />
-                        </Stack>
-                    ) : (
-                        <Stack spacing={8} alignItems="center">
-                            <Stack spacing={3} alignItems="center">
-                                <MatrixRainText
-                                    text="Recursos Avançados"
-                                    className="text-white text-4xl font-bold"
-                                />
-                                <Typography
-                                    variant="h6"
-                                    className="text-white/80 text-center max-w-3xl"
+                                <Button
+                                    variant="contained"
+                                    color="info"
+                                    size="large"
+                                    href="/register"
+                                    className="mt-8 px-8 py-3 text-lg"
                                 >
-                                    Descubra como nossa plataforma pode transformar sua experiência de investimento com ferramentas poderosas e insights valiosos
-                                </Typography>
+                                    Comece Agora
+                                </Button>
                             </Stack>
-
-                            <Grid container spacing={4} justifyContent="center">
-                                {features.map((feature, index) => (
-                                    <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
-                                        <FeatureCard
-                                            onMouseEnter={() => setHoveredCard(index)}
-                                            onMouseLeave={() => setHoveredCard(null)}
-                                            className="transition-all duration-300 hover:scale-105"
-                                        >
-                                            <div className="icon-container text-[#0D95F9]">
-                                                {feature.icon}
-                                            </div>
-                                            <Typography
-                                                variant="h6"
-                                                className="feature-title mb-3"
-                                            >
-                                                {feature.title}
-                                            </Typography>
-                                            <Typography
-                                                variant="body1"
-                                                className="feature-description mb-4"
-                                            >
-                                                {feature.description}
-                                            </Typography>
-                                            {hoveredCard === index && (
-                                                <ul className="text-sm space-y-2 text-white/70">
-                                                    {feature.details.map((detail, idx) => (
-                                                        <li key={idx} className="flex items-center">
-                                                            <span className="w-2 h-2 bg-[#0D95F9] rounded-full mr-2"></span>
-                                                            {detail}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            )}
-                                        </FeatureCard>
-                                    </Grid>
-                                ))}
-                            </Grid>
-
-                            <Button
-                                variant="contained"
-                                color="info"
-                                size="large"
-                                href="/register"
-                                className="mt-8 px-8 py-3 text-lg"
-                            >
-                                Comece Agora
-                            </Button>
-                        </Stack>
-                    )}
-                </Container>
-            </SectionSolutions>
+                        )}
+                    </Container>
+                </SectionSolutions>
+            </ErrorBoundary>
         </PageTransition>
     );
 };

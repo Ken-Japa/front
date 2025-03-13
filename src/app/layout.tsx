@@ -7,6 +7,7 @@ import theme from "@/theme/mui";
 import { Layout } from "@/components/Layout";
 import { GoogleProvider } from "@/components/Providers/GoogleProvider";
 import { AnimatePresence } from "framer-motion";
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,19 +32,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <GoogleProvider>
-              <Layout>
-                <AnimatePresence mode="wait">
+        <ErrorBoundary>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <GoogleProvider>
+                <Layout>
+                  <AnimatePresence mode="wait">
                     {children}
                   </AnimatePresence>
-              </Layout>
-            </GoogleProvider>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+                </Layout>
+              </GoogleProvider>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

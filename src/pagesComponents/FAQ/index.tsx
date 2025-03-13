@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 type QuestionType = {
     title: string;
@@ -137,126 +138,128 @@ export const FAQ = () => {
 
     return (
         <PageTransition>
-            <SectionFAQ>
-                <div className="background-image">
-                    <OptimizedImage
-                        src="/assets/images/background/BACKGROUND-DEFAULT.jpg"
-                        alt="FAQ Background"
-                        fill
-                        className="object-cover"
-                    />
-                </div>
-                <Stack
-                    direction="column"
-                    alignItems="center"
-                    className="py-10 px-4"
-                    sx={{
-                        width: '100%',
-                        maxWidth: '900px',
-                        margin: '0 auto'
-                    }}
-                >
-                    {isLoading ? (
-                        <Stack spacing={3} width="100%">
-                            <ContentSkeleton />
-                            <ContentSkeleton type="text" />
-                            <Stack spacing={2}>
-                                {Array(5).fill(0).map((_, index) => (
-                                    <ContentSkeleton key={index} type="card" />
-                                ))}
-                            </Stack>
-                        </Stack>
-                    ) : (
-
-                        <>
-                            <div className="text-center mb-12">
-                                <div className="flex items-center justify-center gap-3 mb-4">
-                                    <HelpIcon sx={{ fontSize: 40, color: '#0D95F9' }} />
-                                    <MatrixRainText
-                                        text="Dúvidas Frequentes"
-                                        className="text-4xl font-bold text-[#0D95F9]"
-                                    />
-                                </div>
-                                <p className="text-white/70 mt-4">
-                                    Encontre respostas para as perguntas mais comuns sobre o Auge Invest
-                                </p>
-                            </div>
-
-                            {/* Search Bar */}
-                            <div className="w-full max-w-md mb-8 relative">
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        placeholder="Buscar pergunta..."
-                                        value={searchTerm}
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                                        className="w-full px-4 py-2 pl-10 pr-10 bg-[#ffffff0a] text-white rounded-lg 
-                         border border-[#ffffff20] focus:border-[#0D95F9] outline-none
-                         transition-all duration-300"
-                                    />
-                                    <SearchIcon
-                                        className="absolute left-3 top-2.5 text-white/50"
-                                        sx={{ fontSize: 20 }}
-                                    />
-                                    {searchTerm && (
-                                        <button
-                                            onClick={() => setSearchTerm('')}
-                                            className="absolute right-3 top-2.5 text-white/50 hover:text-white/80 transition-colors"
-                                            aria-label="Limpar pesquisa"
-                                        >
-                                            <CloseIcon sx={{ fontSize: 20 }} />
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Category Tabs */}
-                            {!searchTerm && !isLoading && (
-                                <div className="flex flex-wrap gap-2 mb-8 justify-center">
-                                    {Object.entries(faqCategories).map(([key, label]) => (
-                                        <button
-                                            key={key}
-                                            onClick={() => setActiveCategory(key as CategoryType)}
-                                            className={`px-4 py-2 rounded-full transition-all duration-300
-            ${activeCategory === key
-                                                    ? 'bg-[#0D95F9] text-white'
-                                                    : 'bg-[#ffffff0a] text-white/70 hover:bg-[#ffffff15]'
-                                                }`}
-                                        >
-                                            {label}
-                                        </button>
+            <ErrorBoundary>
+                <SectionFAQ>
+                    <div className="background-image">
+                        <OptimizedImage
+                            src="/assets/images/background/BACKGROUND-DEFAULT.jpg"
+                            alt="FAQ Background"
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                    <Stack
+                        direction="column"
+                        alignItems="center"
+                        className="py-10 px-4"
+                        sx={{
+                            width: '100%',
+                            maxWidth: '900px',
+                            margin: '0 auto'
+                        }}
+                    >
+                        {isLoading ? (
+                            <Stack spacing={3} width="100%">
+                                <ContentSkeleton />
+                                <ContentSkeleton type="text" />
+                                <Stack spacing={2}>
+                                    {Array(5).fill(0).map((_, index) => (
+                                        <ContentSkeleton key={index} type="card" />
                                     ))}
-                                </div>
-                            )}
+                                </Stack>
+                            </Stack>
+                        ) : (
 
-                            {/* FAQ Items */}
-                            <Stack width="100%" spacing={2}>
-                                {filteredQuestions.map((item, index) => (
-                                    <div key={index} className="transform hover:scale-[1.01] transition-all duration-300">
-                                        <DarkAccordion
-                                            title={item.title}
-                                            body={item.body}
+                            <>
+                                <div className="text-center mb-12">
+                                    <div className="flex items-center justify-center gap-3 mb-4">
+                                        <HelpIcon sx={{ fontSize: 40, color: '#0D95F9' }} />
+                                        <MatrixRainText
+                                            text="Dúvidas Frequentes"
+                                            className="text-4xl font-bold text-[#0D95F9]"
                                         />
                                     </div>
-                                ))}
-                            </Stack>
+                                    <p className="text-white/70 mt-4">
+                                        Encontre respostas para as perguntas mais comuns sobre o Auge Invest
+                                    </p>
+                                </div>
 
-                            {/* Contact Support */}
-                            <div className="mt-12 text-center bg-[#ffffff0a] p-8 rounded-lg w-full">
-                                <h3 className="text-xl text-[#0D95F9] mb-4">Não encontrou o que procurava?</h3>
-                                <p className="text-white/70 mb-4">
-                                    Nossa equipe de suporte está pronta para ajudar você
-                                </p>
-                                <Link href="/contato">
-                                    <button className="px-6 py-2 bg-[#0D95F9] text-white rounded-lg hover:bg-[#0D95F9]/80 transition-all duration-300">
-                                        Contatar Suporte
-                                    </button>
-                                </Link>
-                            </div>
-                        </>
-                    )}
-                </Stack>
-            </SectionFAQ>
+                                {/* Search Bar */}
+                                <div className="w-full max-w-md mb-8 relative">
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            placeholder="Buscar pergunta..."
+                                            value={searchTerm}
+                                            onChange={(e) => setSearchTerm(e.target.value)}
+                                            className="w-full px-4 py-2 pl-10 pr-10 bg-[#ffffff0a] text-white rounded-lg 
+                         border border-[#ffffff20] focus:border-[#0D95F9] outline-none
+                         transition-all duration-300"
+                                        />
+                                        <SearchIcon
+                                            className="absolute left-3 top-2.5 text-white/50"
+                                            sx={{ fontSize: 20 }}
+                                        />
+                                        {searchTerm && (
+                                            <button
+                                                onClick={() => setSearchTerm('')}
+                                                className="absolute right-3 top-2.5 text-white/50 hover:text-white/80 transition-colors"
+                                                aria-label="Limpar pesquisa"
+                                            >
+                                                <CloseIcon sx={{ fontSize: 20 }} />
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Category Tabs */}
+                                {!searchTerm && !isLoading && (
+                                    <div className="flex flex-wrap gap-2 mb-8 justify-center">
+                                        {Object.entries(faqCategories).map(([key, label]) => (
+                                            <button
+                                                key={key}
+                                                onClick={() => setActiveCategory(key as CategoryType)}
+                                                className={`px-4 py-2 rounded-full transition-all duration-300
+            ${activeCategory === key
+                                                        ? 'bg-[#0D95F9] text-white'
+                                                        : 'bg-[#ffffff0a] text-white/70 hover:bg-[#ffffff15]'
+                                                    }`}
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {/* FAQ Items */}
+                                <Stack width="100%" spacing={2}>
+                                    {filteredQuestions.map((item, index) => (
+                                        <div key={index} className="transform hover:scale-[1.01] transition-all duration-300">
+                                            <DarkAccordion
+                                                title={item.title}
+                                                body={item.body}
+                                            />
+                                        </div>
+                                    ))}
+                                </Stack>
+
+                                {/* Contact Support */}
+                                <div className="mt-12 text-center bg-[#ffffff0a] p-8 rounded-lg w-full">
+                                    <h3 className="text-xl text-[#0D95F9] mb-4">Não encontrou o que procurava?</h3>
+                                    <p className="text-white/70 mb-4">
+                                        Nossa equipe de suporte está pronta para ajudar você
+                                    </p>
+                                    <Link href="/contato">
+                                        <button className="px-6 py-2 bg-[#0D95F9] text-white rounded-lg hover:bg-[#0D95F9]/80 transition-all duration-300">
+                                            Contatar Suporte
+                                        </button>
+                                    </Link>
+                                </div>
+                            </>
+                        )}
+                    </Stack>
+                </SectionFAQ>
+            </ErrorBoundary>
         </PageTransition>
     );
 }
