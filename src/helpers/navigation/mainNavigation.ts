@@ -1,5 +1,6 @@
 export const mainNavigation = [
-  { name: "Soluções", path: "/solutions" },
+  { name: "Quem Somos", path: "/quem-somos" },
+  { name: "Soluções", path: "/recursos" },
   { name: "FAQ", path: "/faq" },
   { name: "Preços", path: "/precos" },
   { name: "Contato", path: "/contato" },

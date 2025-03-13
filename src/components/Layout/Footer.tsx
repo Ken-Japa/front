@@ -21,13 +21,14 @@ export const Footer = () => {
                     <h5 className="font-bold text-white">Links</h5>
                     <div className="flex flex-col gap-2 text-white">
                         <LinkNext href="/" className="hover:opacity-80">Início</LinkNext>
-                        <LinkNext href="/solutions" className="hover:opacity-80">Recursos</LinkNext>
+                        <LinkNext href="/quem-somos" className="hover:opacity-80">Quem somos</LinkNext>
+                        <LinkNext href="/recursos" className="hover:opacity-80">Recursos</LinkNext>
                         <LinkNext href="/precos" className="hover:opacity-80">Preços</LinkNext>
                         <LinkNext href="/faq" className="hover:opacity-80">FAQ</LinkNext>
                         <LinkNext href="/contato" className="hover:opacity-80">Fale Conosco</LinkNext>
-                        <LinkNext href="/join-team" className="hover:opacity-80">Junte-se a equipe</LinkNext>
-                        <LinkNext href="/privacy-policy" className="hover:opacity-80">Politica de Privacidade</LinkNext>
-                        <LinkNext href="/terms-services" className="hover:opacity-80">Termos de Serviço</LinkNext>
+                        <LinkNext href="/faca-parte" className="hover:opacity-80">Junte-se a equipe</LinkNext>
+                        <LinkNext href="/politica-privacidade" className="hover:opacity-80">Politica de Privacidade</LinkNext>
+                        <LinkNext href="/termos-servicos" className="hover:opacity-80">Termos de Serviço</LinkNext>
                     </div>
                 </div>
                 <div className="flex flex-col gap-8">

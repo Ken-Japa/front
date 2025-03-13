@@ -1,6 +1,4 @@
-import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Button, Box, CircularProgress, SvgIconTypeMap } from '@mui/material';
-import { MouseEventHandler } from 'react';
 import { OverridableStringUnion } from '@mui/types';
 import { ButtonPropsColorOverrides } from '@mui/material';
 
@@ -14,7 +12,7 @@ type Props = {
     margin?: string;
     align?: string;
     onClick?: () => void;
-    className?: string; // Add this line
+    className?: string;
 }
 
 export const CustomButton = ({ value, Icon, color = "primary", margin = "20px", align = "start", onClick, className }: Props) => {
