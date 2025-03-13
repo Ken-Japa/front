@@ -8,13 +8,15 @@ import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Features } from "./Features";
-
+import { useState, useEffect } from 'react';
+import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 
 interface Props {
     showAnimation: boolean;
 }
 
 export const Home = ({ showAnimation }: Props) => {
+    const [isLoading, setIsLoading] = useState(true);
     const [welcomeRef, welcomeInView] = useInView({
         triggerOnce: true,
         threshold: 0.1
@@ -34,6 +36,68 @@ export const Home = ({ showAnimation }: Props) => {
         triggerOnce: true,
         threshold: 0.1
     });
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (isLoading) {
+        return (
+            <main className="bg-gradient-to-b from-black to-[#001529]">
+                <Container maxWidth="xl">
+                    {/* Welcome Section Skeleton */}
+                    <section className="min-h-screen flex items-center">
+                        <Stack spacing={4} width="100%">
+                            <ContentSkeleton />
+                            <ContentSkeleton />
+                            <Stack direction="row" spacing={2}>
+                                <ContentSkeleton />
+                                <ContentSkeleton />
+                            </Stack>
+                        </Stack>
+                    </section>
+
+                    {/* Features Section Skeleton */}
+                    <section className="py-20">
+                        <Stack spacing={4} alignItems="center">
+                            <ContentSkeleton />
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                                {Array(6).fill(0).map((_, index) => (
+                                    <ContentSkeleton key={`feature-${index}`} type="card" />
+                                ))}
+                            </div>
+                        </Stack>
+                    </section>
+
+                    {/* Plans Section Skeleton */}
+                    <section className="py-20">
+                        <Stack spacing={4} alignItems="center">
+                            <ContentSkeleton />
+                            <ContentSkeleton />
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                                {Array(3).fill(0).map((_, index) => (
+                                    <ContentSkeleton key={`plan-${index}`} type="card" />
+                                ))}
+                            </div>
+                        </Stack>
+                    </section>
+
+                    {/* FAQ Section Skeleton */}
+                    <section className="py-20">
+                        <Stack spacing={4}>
+                            <ContentSkeleton />
+                            {Array(4).fill(0).map((_, index) => (
+                                <ContentSkeleton key={`faq-${index}`} type="card" />
+                            ))}
+                        </Stack>
+                    </section>
+                </Container>
+            </main>
+        );
+    }
 
     return (
         <main className="bg-gradient-to-b from-black to-[#001529]">

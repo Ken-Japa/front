@@ -13,7 +13,7 @@ export const SectionTeam = styled("section")(({ theme }) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    zIndex: 0,
+    zIndex: -1,
   },
 
   "& .opacity": {
@@ -23,11 +23,11 @@ export const SectionTeam = styled("section")(({ theme }) => ({
     right: 0,
     bottom: 0,
     backgroundColor: "rgba(0, 0, 0, 0.6)",
-    zIndex: 1,
+    zIndex: 0,
   },
 
   "& .content": {
     position: "relative",
-    zIndex: 2,
+    zIndex: 1,
   },
 }));
