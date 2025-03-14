@@ -207,20 +207,20 @@ export const ApplicationForm = ({ isLoading }: HeaderProps) => {
 
     return (
         <>
-            <div className="bg-[#ffffff12] p-8 rounded-lg backdrop-blur-sm">
-                <JoinTeamForm onSubmit={handleSubmit}>
-                    <Stack spacing={3}>
-                        <TextField
-                            name="name"
-                            label="Nome Completo"
-                            variant="outlined"
-                            fullWidth
-                            required
-                            value={formData.name}
-                            onChange={handleChange}
-                            error={!!errors.name}
-                            helperText={errors.name}
-                        />
+            <JoinTeamForm onSubmit={handleSubmit}>
+                <Stack spacing={3}>
+                    <TextField
+                        className="form-field"
+                        name="name"
+                        label="Nome Completo"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        error={!!errors.name}
+                        helperText={errors.name}
+                    />
 
                         <TextField
                             name="email"
@@ -332,27 +332,20 @@ export const ApplicationForm = ({ isLoading }: HeaderProps) => {
                         />
 
                         <Button
+                            className="submit-button"
                             type="submit"
                             variant="contained"
                             size="large"
                             fullWidth
                             disabled={isSubmitting || isBlocked}
                             endIcon={<SendIcon />}
-                            sx={{
-                                backgroundColor: '#0D95F9',
-                                height: '56px',
-                                '&:hover': {
-                                    backgroundColor: '#0D95F9/80'
-                                }
-                            }}
                         >
                             {isSubmitting ? 'Enviando...' :
                                 isBlocked ? `Aguarde ${blockTimer}s` :
                                     'Enviar Candidatura'}
                         </Button>
-                    </Stack>
-                </JoinTeamForm>
-            </div>
+                </Stack>
+            </JoinTeamForm>
             <Snackbar
                 open={snackbar.open}
                 autoHideDuration={6000}

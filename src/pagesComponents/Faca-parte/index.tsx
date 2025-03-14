@@ -12,7 +12,6 @@ import { Benefits } from "./Benefits";
 import { ApplicationForm } from "./ApplicationForm";
 
 export const JoinTeam = () => {
-
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -35,31 +34,31 @@ export const JoinTeam = () => {
                             className="object-cover"
                         />
                     </div>
-
-                    <div className="container mx-auto px-4 py-16">
-                        <Grid container spacing={6}>
-                            <Grid item xs={12} md={5}>
-                                {isLoading ? (
-                                    <Stack spacing={6}>
-                                        <ContentSkeleton />
-                                        <ContentSkeleton type="card" />
-                                    </Stack>
-                                ) : (
-                                    <Stack spacing={6}>
-                                        <Header isLoading={isLoading} />
-                                        <Benefits isLoading={isLoading} />
-                                    </Stack>
-                                )}
+                    <div className="container">
+                        <div className="content-wrapper">
+                            <Grid container spacing={6}>
+                                <Grid item xs={12} md={5}>
+                                    {isLoading ? (
+                                        <Stack spacing={6}>
+                                            <ContentSkeleton />
+                                            <ContentSkeleton type="card" />
+                                        </Stack>
+                                    ) : (
+                                        <Stack spacing={6}>
+                                            <Header isLoading={isLoading} />
+                                            <Benefits isLoading={isLoading} />
+                                        </Stack>
+                                    )}
+                                </Grid>
+                                <Grid item xs={12} md={7}>
+                                    {isLoading ? (
+                                        <ContentSkeleton type="form" />
+                                    ) : (
+                                        <ApplicationForm isLoading={isLoading} />
+                                    )}
+                                </Grid>
                             </Grid>
-
-                            <Grid item xs={12} md={7}>
-                                {isLoading ? (
-                                    <ContentSkeleton type="form" />
-                                ) : (
-                                    <ApplicationForm isLoading={isLoading} />
-                                )}
-                            </Grid>
-                        </Grid>
+                        </div>
                     </div>
                 </SectionJoinTeam>
             </ErrorBoundary>

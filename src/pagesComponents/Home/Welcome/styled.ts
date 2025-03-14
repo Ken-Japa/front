@@ -1,7 +1,4 @@
-"use client";
-
 import { styled } from "@mui/material";
-import theme from "@/theme/mui";
 
 export const SectionWelcome = styled("section")({
   position: "relative",

@@ -1,19 +1,20 @@
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import HelpIcon from '@mui/icons-material/Help';
+import { HeaderContainer } from "./styled";
 
 export const Header = () => {
     return (
-        <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
+        <HeaderContainer>
+            <div className="header-icon-wrapper">
                 <HelpIcon sx={{ fontSize: 40, color: '#0D95F9' }} />
                 <MatrixRainText
                     text="Dúvidas Frequentes"
-                    className="text-4xl font-bold text-[#0D95F9]"
+                    className="title"
                 />
             </div>
-            <p className="text-white/90 mt-4">
+            <p className="subtitle">
                 Encontre respostas para as perguntas mais comuns sobre o Auge Invest
             </p>
-        </div>
+        </HeaderContainer>
     );
 };

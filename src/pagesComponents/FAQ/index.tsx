@@ -51,16 +51,7 @@ export const FAQ = () => {
                             className="object-cover"
                         />
                     </div>
-                    <Stack
-                        direction="column"
-                        alignItems="center"
-                        className="py-10 px-4"
-                        sx={{
-                            width: '100%',
-                            maxWidth: '900px',
-                            margin: '0 auto'
-                        }}
-                    >
+                    <div className="content-container">
                         {isLoading ? (
                             <Stack spacing={3} width="100%">
                                 <ContentSkeleton />
@@ -80,7 +71,7 @@ export const FAQ = () => {
                                 <ContactSupport />
                             </>
                         )}
-                    </Stack>
+                    </div>
                 </SectionFAQ>
             </ErrorBoundary>
         </PageTransition>

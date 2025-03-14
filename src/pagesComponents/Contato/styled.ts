@@ -1,5 +1,3 @@
-"use client";
-
 import { styled } from "@mui/material";
 
 export const SectionContact = styled("section")(({ theme }) => ({
@@ -35,11 +33,11 @@ export const SectionContact = styled("section")(({ theme }) => ({
   "& .form-container": {
     gap: theme.spacing(6),
     alignItems: "flex-start",
-    
-    [theme.breakpoints.down('md')]: {
+
+    [theme.breakpoints.down("md")]: {
       gap: theme.spacing(4),
-    }
-  }
+    },
+  },
 }));
 
 export const ContactForm = styled("form")({

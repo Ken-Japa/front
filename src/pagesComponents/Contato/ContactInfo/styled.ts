@@ -1,5 +1,3 @@
-"use client";
-
 import { Stack, styled } from "@mui/material";
 
 export const InfoContainer = styled(Stack)(({ theme }) => ({
@@ -8,10 +6,10 @@ export const InfoContainer = styled(Stack)(({ theme }) => ({
   "& .info-item": {
     marginBottom: "24px",
     color: "#0D95F9",
-    
+
     "&:last-child": {
       marginBottom: 0,
-    }
+    },
   },
 
   "& .info-header": {
@@ -36,5 +34,5 @@ export const InfoContainer = styled(Stack)(({ theme }) => ({
     color: "white",
     opacity: 0.9,
     fontSize: "1rem",
-  }
+  },
 }));

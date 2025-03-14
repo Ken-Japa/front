@@ -1,17 +1,18 @@
 import Link from 'next/link';
+import { SupportContainer } from "./styled";
 
 export const ContactSupport = () => {
     return (
-        <div className="mt-12 text-center bg-[#ffffff10] p-8 rounded-lg w-full">
-            <h3 className="text-xl text-[#0D95F9] mb-4">Não encontrou o que procurava?</h3>
-            <p className="text-white/90 mb-4">
+        <SupportContainer>
+            <h3 className="support-title">Não encontrou o que procurava?</h3>
+            <p className="support-text">
                 Nossa equipe de suporte está pronta para ajudar você
             </p>
             <Link href="/contato">
-                <button className="px-6 py-2 bg-[#0D95F9] text-white rounded-lg hover:bg-[#0D95F9]/90 transition-all duration-300">
+                <button className="support-button">
                     Contatar Suporte
                 </button>
             </Link>
-        </div>
+        </SupportContainer>
     );
 };
