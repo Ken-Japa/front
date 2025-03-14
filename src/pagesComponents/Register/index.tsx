@@ -26,11 +26,12 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 interface FormErrors {
     name?: string;
+    cpf?: string;
+    phone?: string;
     email?: string;
     password?: string;
     confirmPassword?: string;
 }
-
 export const Register = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +41,8 @@ export const Register = () => {
     const [blockTimer, setBlockTimer] = useState(0);
     const [formData, setFormData] = useState({
         name: "",
+        cpf: "",
+        phone: "",
         email: "",
         password: "",
         confirmPassword: ""
@@ -61,6 +64,35 @@ export const Register = () => {
         }
     };
 
+    const validateCPF = (cpf: string) => {
+        cpf = cpf.replace(/[^\d]/g, '');
+        if (cpf.length !== 11) return false;
+
+        let sum = 0;
+        let remainder;
+
+        if (cpf === '00000000000') return false;
+
+        for (let i = 1; i <= 9; i++) {
+            sum = sum + parseInt(cpf.substring(i - 1, i)) * (11 - i);
+        }
+
+        remainder = (sum * 10) % 11;
+        if (remainder === 10 || remainder === 11) remainder = 0;
+        if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+
+        sum = 0;
+        for (let i = 1; i <= 10; i++) {
+            sum = sum + parseInt(cpf.substring(i - 1, i)) * (12 - i);
+        }
+
+        remainder = (sum * 10) % 11;
+        if (remainder === 10 || remainder === 11) remainder = 0;
+        if (remainder !== parseInt(cpf.substring(10, 11))) return false;
+
+        return true;
+    };
+
     const validateForm = () => {
         const newErrors: FormErrors = {};
 
@@ -69,6 +101,21 @@ export const Register = () => {
             newErrors.name = "Nome é obrigatório";
         } else if (formData.name.trim().length < 3) {
             newErrors.name = "Nome deve ter pelo menos 3 caracteres";
+        }
+        // CPF validation
+        const cpfClean = formData.cpf.replace(/[^\d]/g, '');
+        if (!cpfClean) {
+            newErrors.cpf = "CPF é obrigatório";
+        } else if (!validateCPF(cpfClean)) {
+            newErrors.cpf = "CPF inválido";
+        }
+
+        // Phone validation
+        const phoneClean = formData.phone.replace(/[^\d]/g, '');
+        if (!phoneClean) {
+            newErrors.phone = "Telefone é obrigatório";
+        } else if (phoneClean.length < 10 || phoneClean.length > 11) {
+            newErrors.phone = "Telefone inválido";
         }
 
         // Email validation
@@ -269,6 +316,48 @@ export const Register = () => {
                                     required
                                 />
                                 <TextField
+                                    name="cpf"
+                                    label="CPF"
+                                    variant="outlined"
+                                    fullWidth
+                                    margin="normal"
+                                    value={formData.cpf}
+                                    onChange={(e) => {
+                                        const value = e.target.value.replace(/\D/g, '');
+                                        const masked = value
+                                            .replace(/(\d{3})(\d)/, '$1.$2')
+                                            .replace(/(\d{3})(\d)/, '$1.$2')
+                                            .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+                                            .slice(0, 14);
+                                        setFormData(prev => ({ ...prev, cpf: masked }));
+                                    }}
+                                    error={!!errors.cpf}
+                                    helperText={errors.cpf}
+                                    required
+                                    inputProps={{ maxLength: 14 }}
+                                />
+
+                                <TextField
+                                    name="phone"
+                                    label="Telefone"
+                                    variant="outlined"
+                                    fullWidth
+                                    margin="normal"
+                                    value={formData.phone}
+                                    onChange={(e) => {
+                                        const value = e.target.value.replace(/\D/g, '');
+                                        const masked = value
+                                            .replace(/(\d{2})(\d)/, '($1) $2')
+                                            .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
+                                            .slice(0, 15);
+                                        setFormData(prev => ({ ...prev, phone: masked }));
+                                    }}
+                                    error={!!errors.phone}
+                                    helperText={errors.phone}
+                                    required
+                                    inputProps={{ maxLength: 15 }}
+                                />
+                                <TextField
                                     name="email"
                                     label="E-mail"
                                     type="email"
@@ -279,6 +368,7 @@ export const Register = () => {
                                     onChange={handleChange}
                                     error={!!errors.email}
                                     helperText={errors.email}
+                                    required
                                 />
                                 <TextField
                                     name="password"
@@ -291,6 +381,7 @@ export const Register = () => {
                                     onChange={handleChange}
                                     error={!!errors.password}
                                     helperText={errors.password}
+                                    required
                                 />
 
                                 {formData.password && (
@@ -313,14 +404,28 @@ export const Register = () => {
                                     </Box>
                                 )}
 
+                                <TextField
+                                    name="confirmPassword"
+                                    label="Confirmar Senha"
+                                    type="password"
+                                    variant="outlined"
+                                    fullWidth
+                                    margin="normal"
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    error={!!errors.confirmPassword}
+                                    helperText={errors.confirmPassword}
+                                    required
+                                />
+
                                 <FormControlLabel
                                     control={
                                         <Checkbox
                                             checked={acceptedTerms}
                                             onChange={(e) => setAcceptedTerms(e.target.checked)}
-                                            sx={{ 
-                                                color: 'rgba(255,255,255,0.9)', 
-                                                '&.Mui-checked': { color: '#0D95F9' } 
+                                            sx={{
+                                                color: 'rgba(255,255,255,0.9)',
+                                                '&.Mui-checked': { color: '#0D95F9' }
                                             }}
                                         />
                                     }
