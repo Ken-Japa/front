@@ -1,9 +1,11 @@
 "use client";
 import { CustomButton } from "@/components/Custom/Button";
 import { SectionWelcome } from "./styled";
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import MonitorIcon from '@mui/icons-material/Monitor';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { useEffect, useState } from "react";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { motion } from "framer-motion";
@@ -23,22 +25,22 @@ export const Welcome = () => {
 
     const highlights = [
         {
-            icon: <ShowChartIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
+            icon: <MonitorIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
             title: "ativos monitorados",
-            value: "+1000",
-            description: "dados atualizados"
+            value: "+1500",
+            description: "Ações, FIIs, ETFs, moedas e até derivativos obscuros – tudo num só lugar"
         },
         {
-            icon: <TrendingUpIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Precisão na operação",
-            value: "%",
-            description: "acurácia em análises"
+            icon: <PsychologyIcon sx={{ fontSize: 50, color: "#0D95F9" }} />,
+            title: "Previsões com Redes Neurais",
+            value: "",
+            description: "Análise automática de padrões para identificar oportunidades antes do mercado"
         },
         {
-            icon: <CardGiftcardIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Comunidade",
-            value: "∞",
-            description: "investidores e analistas ativos"
+            icon: <NotificationsActiveIcon sx={{ fontSize: 50, color: "#0D95F9" }} />,
+            title: "Alertas de Preço Cirúrgicos",
+            value: "",
+            description: "Configure níveis críticos e receba notificações exatas no seu celular"
         }
     ];
 
@@ -75,24 +77,24 @@ export const Welcome = () => {
                             <Stack spacing={4}>
 
 
-                                <Typography variant="h5" className="text-white/80">
-                                    Transforme seus investimentos com inteligência e análise avançada
+                                <Typography variant="h5" className="text-white">
+                                    Domine o Mercado com Dados, Não com Palpites
                                 </Typography>
 
-                                <Typography variant="body1" className="text-white/60">
-                                    Junte-se aos melhores investidores que estão utilizando a mais avançada
-                                    plataforma de análise do mercado financeiro brasileiro.
+                                <Typography variant="body1" className="text-white/90">
+                                    A única plataforma do Brasil com <span className="text-[#FF6B00] font-bold">histórico de derivativos</span>, simulação de estratégias em cenários reais e fictícios e recomendações através de análises – para você investir como um profissional.
                                 </Typography>
 
                                 <Stack direction="row" spacing={2} justifyContent="flex-end">
                                     <CustomButton
-                                        value="Teste grátis por 21 dias"
-                                        Icon={CardGiftcardIcon}
-                                        color="primary"
+                                        value="Experimente Grátis por 21 Dias"
+                                        Icon={RocketLaunchIcon}
+                                        color="secondary"
                                     />
                                     <CustomButton
-                                        value="Ver demonstração"
-                                        color="info"
+                                        value="Ver Demonstração em Vídeo"
+                                        Icon={PlayCircleIcon}
+                                        color="primary"
                                     />
                                 </Stack>
                             </Stack>

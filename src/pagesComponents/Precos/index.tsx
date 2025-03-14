@@ -147,19 +147,29 @@ export const Pricing = () => {
                                     </p>
                                     <div className="text-white p-8 bg-black/50 rounded-lg border border-[#0D95F9] w-full max-w-md">
                                         <h3 className="text-2xl mb-4 text-center">Plano Embaixador</h3>
-                                        <p className="text-4xl font-bold mb-6 text-center">R$100</p>
-                                        <ul className="space-y-4 mb-8">
+                                        <p className="text-4xl font-bold mb-2 text-center">R$100</p>
+                                        <p className="opacity-75 mb-6 text-center">/mês</p>
+                                        <ul className="space-y-4 mb-8 mt-2">
                                             <li className="flex items-center">
                                                 <span className="text-[#0D95F9] mr-2">›</span>
                                                 Acesso vitalício (após 5k usuários)
                                             </li>
                                             <li className="flex items-center">
                                                 <span className="text-[#0D95F9] mr-2">›</span>
-                                                Página de agradecimentos
+                                                Seu nome no Hall da Fama
+                                            </li>
+
+                                            <li className="flex items-center">
+                                                <span className="text-[#0D95F9] mr-2">›</span>
+                                                Pedidos para inovações
                                             </li>
                                             <li className="flex items-center">
                                                 <span className="text-[#0D95F9] mr-2">›</span>
                                                 Benefícios exclusivos
+                                            </li>
+                                            <li className="flex items-center">
+                                                <span className="text-[#0D95F9] mr-2">›</span>
+                                                Limitado
                                             </li>
                                         </ul>
                                         <Button

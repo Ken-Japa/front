@@ -142,6 +142,7 @@ export const TermsServices = () => {
                                         <div id="info" className="mb-5 bg-[#ffffff05] p-6 rounded-lg">
                                             <h2 className="text-2xl text-infoMain mb-5">1. INFORMAÇÕES GERAIS</h2>
                                             <p className="mb-5">A Auge Capital é uma plataforma financeira destinada a auxiliar investidores no mercado financeiro brasileiro, oferecendo análises detalhadas, dados históricos, gráficos e outras ferramentas financeiras. A plataforma é de uso pessoal e não comercial, com o objetivo de fornecer informações para tomadas de decisão no mercado de investimentos</p>
+                                            <p className="mb-5">Somos uma plataforma de análise - não somos corretora, consultoria ou gestora. Seu capital nunca é movimentado por nós.</p>
                                             <p className="mb-5">Ao utilizar o Auge Capital, você deve estar ciente e concordar com nossos Termos de Serviço. Ao se cadastrar e optar por assinar nossos serviços, consideraremos que você compreendeu e aceitou os presentes Termos de Serviço.</p>
                                             <p>Conforme a legislação vigente, você só poderá aceitar estes Termos de Serviço e utilizar o Auge Capital se for maior de 18 anos e legalmente capaz, conforme os artigos 1º, 3º e 4º do Código Civil Brasileiro de 2002.</p>
                                         </div>
@@ -182,7 +183,7 @@ export const TermsServices = () => {
 
                                         <div id="cancelamento" className="mb-5 bg-[#ffffff05] p-6 rounded-lg">
                                             <h2 className="text-2xl text-infoMain mb-5">7. CANCELAMENTO</h2>
-                                            <p className="mb-5">Você pode cancelar sua assinatura a qualquer momento. Para assinaturas mensais, o acesso ao serviço continuará até o fim do período de faturamento. Para assinaturas anuais, o reembolso será proporcional ao período utilizado com a aplicação de uma multa de 15% sobre o total contratado.</p>
+                                            <p className="mb-5">Você pode cancelar sua assinatura a qualquer momento. Para assinaturas mensais, o acesso ao serviço continuará até o fim do período de faturamento. Para assinaturas trimestrais e anuais, o reembolso será proporcional ao período utilizado com a aplicação de uma multa de 15% sobre o total contratado.</p>
                                         </div>
 
                                         <div id="segurancao" className="mb-5 bg-[#ffffff05] p-6 rounded-lg">

@@ -101,7 +101,8 @@ export const PrivacyPolicy = () => {
                                             </Typography>
                                             <div className="flex justify-center mt-4">
                                                 <Typography variant="body1" className="text-white/60 max-w-2xl text-center">
-                                                    Comprometidos com a transparência e segurança dos seus dados
+                                                    Comprometidos com a transparência e segurança dos seus dados <br />
+                                                    Sua Segurança é Nosso Ativo Mais Valioso
                                                 </Typography>
                                             </div>
                                         </Box>
@@ -140,12 +141,22 @@ export const PrivacyPolicy = () => {
                                                     I - DADOS PESSOAIS
                                                 </h2>
                                                 <p>
-                                                    A fim de viabilizar a prestação dos nossos serviços e aprimorar a sua experiência em nossa plataforma, a Auge Invest coleta os seguintes dados pessoais
+                                                    A fim de viabilizar a prestação dos nossos serviços e aprimorar a sua experiência em nossa plataforma, a Auge Invest coleta os seguintes dados pessoais:
+                                                    <br />✓ Identificação: Nome, CPF, e-mail verificado
+                                                    <br />✓ Financeiros: Métodos de pagamento (tokenizados)
+                                                    <br />✓ Comportamento: Padrões de uso para personalizar alertas e otimizar servidores
                                                 </p>
                                             </div>
                                             <div id="finalidade" className="mb-5">
                                                 <h2 className="text-2xl text-infoMain mb-5">II – FINALIDADE</h2>
-                                                <p>Os seus dados pessoais são tratados pela Auge Invest, apenas e exclusivamente, para atender a finalidades específicas, em conformidade com as previsões da Lei 13.709/18 (LGPD), conforme quadro explicativo abaixo</p>
+                                                <p>Os seus dados pessoais são tratados pela Auge Invest, apenas e exclusivamente, para atender a finalidades específicas, em conformidade com as previsões da Lei 13.709/18 (LGPD), conforme explicado abaixo:
+                                                    <br />
+                                                    <br />- Processadores de pagamento (Stripe)
+                                                    <br />- Armazenamento em nuvem AWS
+                                                    <br />- Ferramentas de análise (sem dados pessoais)
+                                                    <br />- Autoridades regulatórias (CVM, BACEN)
+                                                    <br />- Requisições judiciais válidas
+                                                </p>
                                             </div>
                                             <div id="compartilhamento" className="mb-5">
                                                 <h2 className="text-2xl text-infoMain mb-5">III – COMPARTILHAMENTO</h2>
@@ -159,8 +170,8 @@ export const PrivacyPolicy = () => {
                                             </div>
                                             <div id="consentimento" className="mb-5">
                                                 <h2 className="text-2xl text-infoMain mb-5">V – CONSENTIMENTO E REVOGAÇÃO DO CONSENTIMENTO</h2>
-                                                <p className="mb-5">A Auge Invest realizaCaso, para legitimar o tratamento de determinados dados pessoais, seja necessário o seu consentimento, este será solicitado, oportunamente, na própria área logada da plataforma, de forma livre, inequívoca e informada.</p>
-                                                <p>Você pode revogar o consentimento a qualquer tempo, mediante solicitação enviada para o Encarregado de Dados da Auge Invest através do e-mail: privacidade@augeinvest.com.br o tratamento dos dados pessoais dos seus clientes e potenciais clientes apenas em território nacional.</p>
+                                                <p className="mb-5">A Auge Invest realiza para legitimar o tratamento de determinados dados pessoais, caso seja necessário o seu consentimento, este será solicitado, oportunamente, na própria área logada da plataforma, de forma livre, inequívoca e informada.</p>
+                                                <p>Você pode revogar o consentimento a qualquer tempo, mediante solicitação enviada para o Encarregado de Dados da Auge Invest através do e-mail: privacidade@capitalauge.com.br .</p>
                                             </div>
                                             <div id="armazenamento" className="mb-5">
                                                 <h2 className="text-2xl text-infoMain mb-5">VI – ARMAZENAMENTO</h2>
@@ -169,7 +180,7 @@ export const PrivacyPolicy = () => {
                                             </div>
                                             <div id="retencao" className="mb-5">
                                                 <h2 className="text-2xl text-infoMain mb-5">VII – RETENÇÃO</h2>
-                                                <p>Os seus dados pessoais serão arquivados pela Auge Invest enquanto você mantiver ativa a sua conta e por até 05 (cinco) anos após a inatividade da sua conta, em razão da finalidade de cumprimento de obrigação legal ou regulatória aludida nesta Política de Privacidade.</p>
+                                                <p>Os seus dados pessoais serão arquivados pela Auge Invest enquanto você mantiver a sua conta ativa por até 02 (dois) anos após a inatividade, em razão da finalidade de cumprimento de obrigação legal ou regulatória aludida nesta Política de Privacidade.</p>
                                             </div>
                                             <div id="direitos" className="mb-5">
                                                 <h2 className="text-2xl text-infoMain mb-5">VIII – DIREITOS DOS TITULARES DE DADOS</h2>

@@ -27,24 +27,24 @@ export const Features = () => {
     const features = [
         {
             icon: <ShowChartIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Análise Técnica",
-            description: "Ferramentas avançadas para análise de mercado",
+            title: "Análise Técnica Profissional",
+            description: "Gráficos em 3D de opções + ferramentas que fundos pagam milhões para usar",
             image: "/assets/images/imagens/Analise-Tecnica.jpg",
-            highlights: ["Gráficos interativos", "Indicadores personalizáveis", "Análise em tempo real"]
+            highlights: ["Simule estratégias complexas em cenários históricos", "Visualize volatilidade em tempo real com heatmaps interativos", "Histograma: descubra as oportunidades do mercado para comprar e vender"]
         },
         {
             icon: <TimelineIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Análise Fundamentalista",
-            description: "Dados fundamentalistas completos",
+            title: "Fundamentalista Além do Óbvio",
+            description: "Dados que você não encontra em nenhuma outra plataforma",
             image: "/assets/images/imagens/Analise-Fundamentalista.jpg",
-            highlights: ["Balanços detalhados", "Indicadores financeiros", "Comparação entre ativos"]
+            highlights: ["Histórico completo de dividendos ajustados por proventos", "Valuation comparativo entre BDRs e ativos internacionais", "Alertas de balanços com insights"]
         },
         {
             icon: <NotificationsActiveIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Alertas Inteligentes",
-            description: "Notificações personalizadas para suas estratégias",
+            title: "Alertas Que Geram Lucro",
+            description: "Não apenas notificações – gatilhos para ação",
             image: "/assets/images/imagens/Alertas-Inteligentes.jpg",
-            highlights: ["Alertas de preço", "Notificações push", "Configuração flexível"]
+            highlights: ["👉 PETR4 atingiu faixa de preço barato (5% abaixo da média histórica)", "👉 Vale3: estratégia de trava de alta tem ROI potencial de 11% neste ciclo", "👉 Dólar futuro em zona de risco alto - hora de hedge?"]
         }
     ];
 
@@ -60,7 +60,7 @@ export const Features = () => {
                             className="text-4xl font-bold text-white mb-4"
                         />
                         <Typography variant="h6" className="text-white/70">
-                            Descubra as ferramentas que irão transformar sua experiência de investimento
+                            Tecnologia de Hedge Fund, Preço de Startup
                         </Typography>
                     </>
                 )}

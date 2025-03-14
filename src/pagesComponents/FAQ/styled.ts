@@ -18,8 +18,9 @@ export const SectionFAQ = styled("section")({
     zIndex: -1,
   },
 
-  "& > *": {
+  "& .content": {
     position: "relative",
     zIndex: 1,
+    width: "100%",
   },
 });

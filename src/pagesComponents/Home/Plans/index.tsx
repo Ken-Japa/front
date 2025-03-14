@@ -51,8 +51,10 @@ export const Plans = () => {
                             title="Embaixador"
                             price="R$100"
                             list={[
-                                'Página de agradecimentos',
+                                'Acesso antecipado a betas',
+                                'Seu nome no Hall da Fama',
                                 'Limitado',
+                                'Canal de comunicação direto com os desenvolvedores',
                                 'Assinatura vitalícia (atingindo 5 mil usuários)'
                             ]}
                             valueBtn="Patrocinar"

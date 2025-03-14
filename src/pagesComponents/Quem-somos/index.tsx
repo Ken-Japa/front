@@ -78,41 +78,50 @@ export default function AboutPage() {
 
                     </div>
 
-                    <section className="max-w-3xl text-center transform hover:scale-105 transition-all duration-300">
+                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
                       <div className="flex items-center justify-center gap-3 mb-4">
                         <HistoryIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <h2 className="text-2xl text-[#FF4081]">Nossa História</h2>
+                        <h2 className="text-2xl text-[#FF4081]">Nossa História: : A Revolução dos Dados</h2>
+
                       </div>
+                      <p className="mb-8 text-white/80">
+                        Forjando o Futuro do Investimento Inteligente
+                      </p>
                       <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
                         <p className="mb-8 text-white">
-                          Fundada em 2023, a Auge Capital nasceu da necessidade de democratizar o acesso a ferramentas
-                          avançadas de análise de investimentos. Nossa equipe de especialistas em tecnologia e mercado
-                          financeiro se uniu com um objetivo comum: transformar dados complexos em insights acionáveis
-                          para investidores.
+                          Começamos em 2023 não como mais uma fintech, mas como um movimento. <br /><br />
+                          A Auge Capital nasceu da necessidade de democratizar o acesso a ferramentas avançadas de análise de investimentos normalmente disponíveis em grandes fundos.<br /><br />
+                          Nossa equipe de especialistas em tecnologia e mercado financeiro se uniu com um objetivo comum: transformar dados complexos em insights amigáveis para investidores pessoas físicas a um preço justo.
                         </p>
                       </div>
                     </section>
 
-                    <section className="max-w-3xl text-center transform hover:scale-105 transition-all duration-300">
+                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
                       <div className="flex items-center justify-center gap-3 mb-4">
                         <RocketIcon sx={{ color: '#FF4081', fontSize: 32 }} />
                         <MatrixRainText
-                          text="Nossa Missão"
+                          text="Nossa Missão: Equilibrar o Jogo Financeiro"
                           className="text-2xl text-[#FF4081]" />
                       </div>
+                      <p className="mb-8 text-white/80">
+                        Não Somos Fornecedores. Somos Armas Secretas.
+                      </p>
                       <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
                         <p className="mt-4 mb-8 text-white">
                           Capacitar investidores com ferramentas tecnológicas inovadoras para tomada de decisões mais
                           informadas no mercado financeiro, promovendo educação financeira e democratizando o acesso a
-                          análises avançadas de investimentos.
+                          análises avançadas de investimentos.<br /><br />
+                          Dar conhecimento de padrões de mercado aos nossos usuários <br /><br />
+                          Dar acesso a estratégias antes restritas a grandes fundos  <br /><br />
+                          Criar uma geração de investidores tecnicamente empoderados
                         </p>
                       </div>
                     </section>
 
-                    <section className="max-w-3xl w-full">
+                    <section className="max-w-5xl w-full">
                       <div className="flex items-center justify-center gap-3 mb-8">
                         <StarIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <h2 className="text-2xl text-center text-[#FF4081]">Nossos Valores</h2>
+                        <h2 className="text-2xl text-center text-[#FF4081]">Nossos Valores: Ética e Inteligência</h2>
                       </div>
                       <div className="grid md:grid-cols-3 gap-8">
                         <div className="text-center bg-[#ffffff0a] p-6 rounded-lg hover:bg-[#ffffff15] transform hover:scale-105 transition-all duration-300">
@@ -133,28 +142,34 @@ export default function AboutPage() {
                       </div>
                     </section>
 
-                    <section className="max-w-3xl text-center transform hover:scale-105 transition-all duration-300">
+                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
                       <div className="flex items-center justify-center gap-3 mb-4">
                         <GroupsIcon sx={{ color: '#FF4081', fontSize: 32 }} />
                         <h2 className="text-2xl text-[#FF4081]">Nossa Equipe</h2>
                       </div>
+                      <p className="mb-8 text-white/80">
+                        O Cérebro por Trás da Revolução
+                      </p>
                       <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
                         <p className="mb-8 text-white">
-                          Somos um time diversificado de profissionais apaixonados por tecnologia e mercado financeiro.
+                          Somos um time diversificado de profissionais apaixonados por tecnologia e mercado financeiro.<br /><br />
                           Nossa equipe combina experiência em desenvolvimento de software, análise de dados, mercado
                           financeiro e atendimento ao cliente para oferecer a melhor experiência possível.
                         </p>
                       </div>
                     </section>
 
-                    <section className="max-w-3xl text-center transform hover:scale-105 transition-all duration-300">
+                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
                       <div className="flex items-center justify-center gap-3 mb-4">
                         <HandshakeIcon sx={{ color: '#FF4081', fontSize: 32 }} />
                         <h2 className="text-2xl text-[#FF4081]">Nosso Compromisso</h2>
                       </div>
+                      <p className="mb-8 text-white/80">
+                        Não Vendemos Ferramentas. Entregamos Resultados.
+                      </p>
                       <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
                         <p className="mb-8 text-white">
-                          Estamos comprometidos com o crescimento contínuo e a evolução de nossa plataforma.
+                          Estamos comprometidos com o crescimento contínuo e a evolução de nossa plataforma. <br /><br />
                           Trabalhamos diariamente para trazer novas funcionalidades e melhorias, sempre ouvindo
                           o feedback de nossa comunidade.
                         </p>

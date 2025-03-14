@@ -19,6 +19,7 @@ interface FormData {
     role: string;
     experience: string;
     portfolio: string;
+    github: string;
     message: string;
 }
 
@@ -38,6 +39,7 @@ export const JoinTeam = () => {
         role: "",
         experience: "",
         portfolio: "",
+        github: "",
         message: ""
     });
 
@@ -357,6 +359,23 @@ export const JoinTeam = () => {
                                                     required
                                                     value={formData.role}
                                                     onChange={handleChange}
+                                                    SelectProps={{
+                                                        MenuProps: {
+                                                            PaperProps: {
+                                                                sx: {
+                                                                    backgroundColor: 'rgba(0, 21, 41, 0.98)',
+                                                                    backdropFilter: 'blur(10px)',
+                                                                    border: '1px solid rgba(13, 149, 249, 0.1)',
+                                                                    '& .MuiMenuItem-root': {
+                                                                        color: 'white',
+                                                                        '&:hover': {
+                                                                            backgroundColor: 'rgba(13, 149, 249, 0.3)'
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }}
                                                 >
                                                     {roles.map((role) => (
                                                         <MenuItem key={role} value={role}>
@@ -388,6 +407,16 @@ export const JoinTeam = () => {
                                                     value={formData.portfolio}
                                                     onChange={handleChange}
                                                     placeholder="Links para seu portfolio ou LinkedIn"
+                                                />
+
+                                                <TextField
+                                                    name="github"
+                                                    label="GitHub"
+                                                    variant="outlined"
+                                                    fullWidth
+                                                    value={formData.github}
+                                                    onChange={handleChange}
+                                                    placeholder="Link para seu perfil no GitHub (opcional)"
                                                 />
 
                                                 <TextField

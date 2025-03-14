@@ -9,6 +9,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import SendIcon from '@mui/icons-material/Send';
 import { Box } from "@mui/material";
+import { Autocomplete } from '@mui/material';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
@@ -27,6 +28,16 @@ interface FormErrors {
     subject?: string;
     message?: string;
 }
+
+const subjectOptions = [
+    "Assinaturas",
+    "Problemas de Acesso",
+    "Estratégias",
+    "Relatórios",
+    "Problemas Técnicos",
+    "Parcerias Comerciais",
+    "Outros"
+];
 
 export const Contact = () => {
     const [contactAttempts, setContactAttempts] = useState(0);
@@ -189,6 +200,9 @@ export const Contact = () => {
                                             className="text-4xl font-bold text-white mb-4"
                                         />
                                         <Typography variant="h6" className="text-white/70">
+                                            Fale Com Quem Entende do Seu Dinheiro
+                                        </Typography>
+                                        <Typography variant="h6" className="text-white/70">
                                             Estamos aqui para ajudar. Entre em contato conosco!
                                         </Typography>
                                     </>
@@ -204,23 +218,27 @@ export const Contact = () => {
                                             <div>
                                                 <Stack direction="row" spacing={2} alignItems="center" mb={1}>
                                                     <EmailIcon sx={{ color: '#0D95F9' }} />
-                                                    <Typography variant="h6" className="text-white">Email</Typography>
+                                                    <Typography variant="h6" className="text-white">Email</Typography> <br />
+
                                                 </Stack>
-                                                <Typography className="text-white/70">contato@augeinvest.com.br</Typography>
+                                                <Stack direction="column" spacing={2} mb={1}>
+
+                                                    <Typography className="text-white/70">contato@capitalauge.com.br</Typography>
+                                                </Stack>
                                             </div>
                                             <div>
                                                 <Stack direction="row" spacing={2} alignItems="center" mb={1}>
                                                     <LocationOnIcon sx={{ color: '#0D95F9' }} />
                                                     <Typography variant="h6" className="text-white">Localização</Typography>
                                                 </Stack>
-                                                <Typography className="text-white/70">São Paulo, SP - Brasil</Typography>
+                                                <Typography className="text-white/70">Minas Gerais, MG - Brasil</Typography>
                                             </div>
                                             <div>
                                                 <Stack direction="row" spacing={2} alignItems="center" mb={1}>
                                                     <PhoneIcon sx={{ color: '#0D95F9' }} />
                                                     <Typography variant="h6" className="text-white">Telefone</Typography>
                                                 </Stack>
-                                                <Typography className="text-white/70">+55 (11) 99999-9999</Typography>
+                                                <Typography className="text-white/70">+55 (21) 99430-3047</Typography>
                                             </div>
                                         </>
                                     )}
@@ -251,14 +269,50 @@ export const Contact = () => {
                                             error={!!errors.email}
                                             helperText={errors.email}
                                         />
-                                        <TextField
-                                            fullWidth
-                                            label="Assunto"
-                                            name="subject"
+                                        <Autocomplete
+                                            freeSolo
+                                            options={subjectOptions}
                                             value={formData.subject}
-                                            onChange={handleChange}
-                                            error={!!errors.subject}
-                                            helperText={errors.subject}
+                                            onChange={(_, newValue) => {
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    subject: newValue || ''
+                                                }));
+                                            }}
+                                            onInputChange={(_, newInputValue) => {
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    subject: newInputValue
+                                                }));
+                                            }}
+                                            componentsProps={{
+                                                paper: {
+                                                    sx: {
+                                                        backgroundColor: 'rgba(0, 21, 41, 0.98)',
+                                                        backdropFilter: 'blur(10px)',
+                                                        border: '1px solid rgba(13, 149, 249, 0.1)',
+                                                        '& .MuiAutocomplete-option': {
+                                                            color: 'white',
+                                                            '&:hover': {
+                                                                backgroundColor: 'rgba(13, 149, 249, 0.3)'
+                                                            },
+                                                            '&.Mui-focused': {
+                                                                backgroundColor: 'rgba(13, 149, 249, 0.2)'
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }}
+                                            renderInput={(params) => (
+                                                <TextField
+                                                    {...params}
+                                                    label="Assunto"
+                                                    name="subject"
+                                                    error={!!errors.subject}
+                                                    helperText={errors.subject}
+                                                    fullWidth
+                                                />
+                                            )}
                                         />
                                         <TextField
                                             fullWidth
