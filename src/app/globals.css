@@ -7,15 +7,56 @@
   --matrix-dark: #003b00;
 }
 
+/* Global scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
 body {
   background-color: #000;
   color: var(--matrix-green);
   font-family: Consolas, "Courier New", monospace;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
 }
 
 .matrix-bg {
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .matrix-bg::before {
@@ -32,6 +73,24 @@ body {
 .matrix-content {
   position: relative;
   z-index: 2;
+  padding: 1rem;
+}
+
+.matrix-card {
+  background: rgba(0, 10, 0, 0.8);
+  border: 1px solid var(--matrix-green);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive card adjustments */
+@media (max-width: 768px) {
+  .matrix-card {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
 }
 
 .glow-text {

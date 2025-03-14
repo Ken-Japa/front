@@ -184,13 +184,15 @@ export const Contact = () => {
                             className="object-cover"
                         />
                     </div>
-                    <div className="opacity">
-                        <Stack spacing={4} maxWidth="1200px" width="100%" px={2}>
+                    <div className="content-wrapper">
+                        <Stack spacing={4} className="content-container">
                             <Header isLoading={isLoading} />
-
-                            <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="flex-start">
+                            <Stack 
+                                direction={{ xs: 'column', md: 'row' }} 
+                                spacing={4} 
+                                className="form-container"
+                            >
                                 <ContactInfo isLoading={isLoading} />
-
                                 {isLoading ? (
                                     <Box flex={1}>
                                         <ContentSkeleton type="form" />
@@ -207,7 +209,6 @@ export const Contact = () => {
                                 )}
                             </Stack>
                         </Stack>
-
                         <Snackbar
                             open={snackbar.open}
                             autoHideDuration={6000}

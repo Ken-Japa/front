@@ -6,17 +6,23 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 export const Plans = () => {
     return (
         <SectionPlans>
+            <div className="background-image">
+                <OptimizedImage
+                    src="/assets/images/background/Precos.jpg"
+                    alt="Background Plans"
+                    fill
+                    className="object-cover"
+                />
+            </div>
             <div className="plans">
-                <div className="background-image">
-                    <OptimizedImage
-                        src="/assets/images/background/Precos.jpg"
-                        alt="Background Plans"
-                        fill
-                        className="object-cover"
-                    />
-                </div>
                 <Stack direction="column" alignItems="center" width="100%" gap="30px">
-                    <Stack width="100%" direction="row" justifyContent="space-around" alignItems="center">
+                    <Stack 
+                        width="100%" 
+                        direction={{ xs: 'column', md: 'row' }} 
+                        justifyContent="space-around" 
+                        alignItems="center"
+                        spacing={{ xs: 3, md: 2 }}
+                    >
                         <Card
                             title="Trimestral"
                             price="R$80"
@@ -46,7 +52,7 @@ export const Plans = () => {
                             colorBtn="info"
                         />
                     </Stack>
-                    <Stack>
+                    <Stack sx={{ width: { xs: '100%', md: 'auto' } }}>
                         <Card
                             title="Embaixador"
                             price="R$100"
@@ -65,4 +71,4 @@ export const Plans = () => {
             </div>
         </SectionPlans>
     );
-}
+};

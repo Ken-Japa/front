@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { HeaderContainer } from "./styled";
 
 interface HeaderProps {
     isLoading: boolean;
@@ -8,23 +9,23 @@ interface HeaderProps {
 
 export const Header = ({ isLoading }: HeaderProps) => {
     return (
-        <div className="text-center">
+        <HeaderContainer>
             {isLoading ? (
                 <ContentSkeleton />
             ) : (
                 <Stack spacing={2}>
                     <MatrixRainText
                         text="Entre em Contato"
-                        className="text-4xl font-bold text-white"
+                        className="title"
                     />
-                    <Typography variant="h6" className="text-white/90">
+                    <Typography variant="h6" className="subtitle">
                         Fale Com Quem Entende do Seu Dinheiro
                     </Typography>
-                    <Typography variant="h6" className="text-white/90">
+                    <Typography variant="h6" className="subtitle">
                         Estamos aqui para ajudar. Entre em contato conosco!
                     </Typography>
                 </Stack>
             )}
-        </div>
+        </HeaderContainer>
     );
 };

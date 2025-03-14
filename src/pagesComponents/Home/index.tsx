@@ -6,15 +6,13 @@ import { Welcome } from "./Welcome";
 import { Newsletter } from "./Newsletter";
 import { Stack, Container, Divider, Typography } from "@mui/material";
 import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Features } from "./Features";
 import { useState, useEffect } from 'react';
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-
-
+import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
 
 export const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -107,68 +105,43 @@ export const Home = () => {
     return (
         <PageTransition>
             <ErrorBoundary>
-                <main className="bg-gradient-to-b from-black to-[#001529]">
-                    <motion.section
-                        ref={welcomeRef}
-                        initial={{ opacity: 0 }}
-                        animate={welcomeInView ? { opacity: 1 } : {}}
-                        transition={{ duration: 0.6 }}
-                        className="min-h-screen flex items-center"
-                    >
+                <MainContainer>
+                    <Section>
                         <Container maxWidth="xl">
                             <Welcome />
                         </Container>
-                    </motion.section>
+                    </Section>
 
-                    <motion.section
-                        ref={solutionsRef}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={solutionsInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.8 }}
-                        className="py-20"
-                    >
+                    <Section withPadding>
                         <Features />
-                    </motion.section>
+                    </Section>
 
-                    <motion.section
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="py-16 bg-[#0D95F9]/10"
-                    >
-                        <Newsletter />
-                    </motion.section>
+                    <Newsletter />
 
-                    <motion.section
-                        ref={plansRef}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={plansInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.8 }}
-                        className="py-20"
-                    >
-                        <Container maxWidth="xl" sx={{ mb: 4 }}>
-                            <Stack spacing={4} alignItems="center">
-                                <h2 className="text-4xl font-bold text-white text-center">
-                                    Escolha o Plano Ideal
-                                </h2>
-                                <p className="text-white/90 text-center max-w-2xl">
-                                    Invista no seu futuro – Não pague por ferramentas ultrapassadas. <br /> <br />
-                                    Escolha a opção que melhor atende às suas necessidades.
-                                </p>
-                            </Stack>
-                        </Container>
-                        <Plans />
-                    </motion.section>
 
                     <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
 
-                    <motion.section
-                        ref={questionsRef}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={questionsInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.8 }}
-                        className="py-20"
-                    >
+                    <Section withPadding>
+                        <Container maxWidth="xl">
+                            <Stack spacing={6} alignItems="center">
+                                <Stack spacing={4} alignItems="center">
+                                    <SectionTitle>
+                                        Escolha o Plano Ideal
+                                    </SectionTitle>
+                                    <SectionSubtitle>
+                                        Invista no seu futuro – Não pague por ferramentas ultrapassadas.
+                                        <br /> <br />
+                                        Escolha a opção que melhor atende às suas necessidades.
+                                    </SectionSubtitle>
+                                </Stack>
+                                <Plans />
+                            </Stack>
+                        </Container>
+                    </Section>
+
+                    <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
+
+                    <Section withPadding>
                         <Container maxWidth="xl">
                             <Questions />
                             <Stack alignItems="center" sx={{ mt: 4 }}>
@@ -187,9 +160,9 @@ export const Home = () => {
                                 </Typography>
                             </Stack>
                         </Container>
-                    </motion.section>
-                </main>
+                    </Section>
+                </MainContainer>
             </ErrorBoundary>
-        </PageTransition >
+        </PageTransition>
     );
 };

@@ -2,7 +2,7 @@
 
 import { styled } from "@mui/material";
 
-export const SectionContact = styled("section")({
+export const SectionContact = styled("section")(({ theme }) => ({
   minHeight: "100vh",
   width: "100%",
   position: "relative",
@@ -16,16 +16,31 @@ export const SectionContact = styled("section")({
     zIndex: 0,
   },
 
-  "& .opacity": {
+  "& .content-wrapper": {
     position: "relative",
     zIndex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     minHeight: "100vh",
     display: "flex",
-    paddingTop: "64px",
     justifyContent: "center",
+    padding: "64px 24px",
   },
-});
+
+  "& .content-container": {
+    maxWidth: "1200px",
+    width: "100%",
+    margin: "0 auto",
+  },
+
+  "& .form-container": {
+    gap: theme.spacing(6),
+    alignItems: "flex-start",
+    
+    [theme.breakpoints.down('md')]: {
+      gap: theme.spacing(4),
+    }
+  }
+}));
 
 export const ContactForm = styled("form")({
   width: "100%",

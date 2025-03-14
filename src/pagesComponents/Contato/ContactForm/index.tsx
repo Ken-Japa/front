@@ -42,7 +42,7 @@ export const ContactFormComponent = ({
     return (
         <ContactFormStyled onSubmit={handleSubmit}>
             <TextField
-                fullWidth
+                className="form-field"
                 label="Nome"
                 name="name"
                 value={formData.name}
@@ -51,7 +51,7 @@ export const ContactFormComponent = ({
                 helperText={errors.name}
             />
             <TextField
-                fullWidth
+                className="form-field"
                 label="Email"
                 name="email"
                 type="email"
@@ -61,6 +61,7 @@ export const ContactFormComponent = ({
                 helperText={errors.email}
             />
             <Autocomplete
+                className="form-field"
                 freeSolo
                 options={subjectOptions}
                 value={formData.subject}
@@ -99,7 +100,7 @@ export const ContactFormComponent = ({
                 )}
             />
             <TextField
-                fullWidth
+                className="form-field"
                 label="Mensagem"
                 name="message"
                 multiline
@@ -110,6 +111,7 @@ export const ContactFormComponent = ({
                 helperText={errors.message}
             />
             <Button
+                className="submit-button"
                 type="submit"
                 variant="contained"
                 color="primary"

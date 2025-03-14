@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: "Auge Invest",
   description: "Plataforma líder em análise de investimentos. Oferecemos ferramentas avançadas e insights precisos para otimizar sua carteira de investimentos.",
   keywords: "investimentos, análise financeira, mercado financeiro, bolsa de valores, auge invest",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   authors: [{ name: "Auge Invest" }],
   openGraph: {
     title: 'Auge Invest',
@@ -66,6 +72,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      </head>
       <body className={inter.className}>
         <ErrorBoundary>
           <AppRouterCacheProvider>
