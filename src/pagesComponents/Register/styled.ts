@@ -24,6 +24,26 @@ export const StyledDialog = styled(Dialog)({
       zIndex: 2,
       height: "100%",
       width: "100%",
+      overflow: "auto",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      padding: "16px",
+      /* Estilização da barra de rolagem */
+      "&::-webkit-scrollbar": {
+        width: "8px",
+      },
+      "&::-webkit-scrollbar-track": {
+        background: "rgba(255, 255, 255, 0.1)",
+        borderRadius: "4px",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        background: "rgba(255, 255, 255, 0.3)",
+        borderRadius: "4px",
+        "&:hover": {
+          background: "rgba(255, 255, 255, 0.4)",
+        },
+      },
     },
 
     "&::before": {
@@ -47,12 +67,17 @@ export const RegisterForm = styled("form")({
   position: "relative",
   width: "100%",
   maxWidth: "400px",
-  padding: "40px",
+  padding: "32px",
   margin: "0 auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: "12px",
+  alignItems: "center",
   "& .divider-container": {
     display: "flex",
     alignItems: "center",
-    margin: "32px 0",
+    margin: "24px 0",
+    width: "100%",
     "& .divider": {
       flex: 1,
       borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
@@ -60,15 +85,19 @@ export const RegisterForm = styled("form")({
     "& .divider-text": {
       margin: "0 16px",
       color: "rgba(255, 255, 255, 0.7)",
+      fontSize: "14px",
     },
   },
   "& .login-text": {
-    marginTop: "32px",
+    marginTop: "24px",
     fontFamily: '"Roboto Mono", monospace',
     letterSpacing: "0.5px",
+    textAlign: "center",
+    width: "100%",
   },
   "& .MuiTextField-root": {
-    marginBottom: "16px",
+    marginBottom: "0",
+    width: "100%",
   },
   "& .MuiOutlinedInput-root": {
     color: "white",
@@ -81,9 +110,9 @@ export const RegisterForm = styled("form")({
   },
   "& .MuiInputLabel-root": {
     color: "rgba(255, 255, 255, 0.7)",
-    "& .MuiFormHelperText-root": {
-      color: "#f44336",
-      marginLeft: 0
-    },
+  },
+  "& .MuiFormHelperText-root": {
+    color: "#f44336",
+    marginLeft: 0,
   },
 });

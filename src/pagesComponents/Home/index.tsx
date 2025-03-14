@@ -3,6 +3,7 @@
 import { Plans } from "./Plans";
 import { Questions } from "./Questions";
 import { Welcome } from "./Welcome";
+import { Newsletter } from "./Newsletter";
 import { Stack, Container, Divider, Typography } from "@mui/material";
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
@@ -127,6 +128,15 @@ export const Home = () => {
                         className="py-20"
                     >
                         <Features />
+                    </motion.section>
+
+                    <motion.section
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="py-16 bg-[#0D95F9]/10"
+                    >
+                        <Newsletter />
                     </motion.section>
 
                     <motion.section

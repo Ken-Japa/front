@@ -2,187 +2,63 @@
 
 import { Stack } from "@mui/material";
 import { useState, useEffect } from 'react';
-import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-import HistoryIcon from '@mui/icons-material/Timeline';
-import RocketIcon from '@mui/icons-material/Rocket';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import SecurityIcon from '@mui/icons-material/Security';
-import StarIcon from '@mui/icons-material/Star';
-import GroupsIcon from '@mui/icons-material/Groups';
-import HandshakeIcon from '@mui/icons-material/Handshake';
 import { SectionTeam } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { Header } from "./components/Header";
+import { HistoriaSection } from "./components/HistoriaSection";
+import { MissaoSection } from "./components/MissaoSection";
+import { ValoresSection } from "./components/ValoresSection";
+import { EquipeSection } from "./components/EquipeSection";
+import { CompromissoSection } from "./components/CompromissoSection";
+import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export default function AboutPage() {
-  const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
 
-    return () => clearTimeout(timer);
-  }, []);
-  return (
-    <PageTransition>
-      <ErrorBoundary>
-        <SectionTeam>
-          <div className="background-image">
-            <OptimizedImage
-              src="/assets/images/background/Quem-Somos.jpg"
-              alt="About Us Background"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="opacity" />
-          {isLoading ? (
-            <div className="container mx-auto px-4 py-16 relative z-10">
-              <Stack spacing={8} alignItems="center">
-                {/* Title Skeleton */}
-                <ContentSkeleton />
+        return () => clearTimeout(timer);
+    }, []);
 
-                {/* História Skeleton */}
-                <ContentSkeleton type="card" />
-
-                {/* Missão Skeleton */}
-                <ContentSkeleton type="card" />
-
-                {/* Valores Skeleton */}
-                <Stack direction="row" spacing={2} width="100%" justifyContent="center">
-                  {Array(3).fill(0).map((_, index) => (
-                    <ContentSkeleton key={`valor-${index}`} type="card" />
-                  ))}
-                </Stack>
-
-                {/* Equipe Skeleton */}
-                <ContentSkeleton type="card" />
-
-                {/* Compromisso Skeleton */}
-                <ContentSkeleton type="card" />
-              </Stack>
-            </div>
-          ) : (
-            <div className="content">
-              <div className="opacity" />
-              <div className="content">
-                <div className="container mx-auto px-4 py-16 relative z-10">
-                  <Stack spacing={8} alignItems="center">
-                    <div className="text-center relative">
-                      <MatrixRainText
-                        text="Quem Somos"
-                        className="text-5xl font-bold text-[#0D95F9] mb-8" />
-
+    return (
+        <PageTransition>
+            <ErrorBoundary>
+                <SectionTeam>
+                    <div className="background-image">
+                        <OptimizedImage
+                            src="/assets/images/background/Quem-Somos.jpg"
+                            alt="About Us Background"
+                            fill
+                            className="object-cover"
+                        />
                     </div>
-
-                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="flex items-center justify-center gap-3 mb-4">
-                        <HistoryIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <h2 className="text-2xl text-[#FF4081]">Nossa História: : A Revolução dos Dados</h2>
-
-                      </div>
-                      <p className="mb-8 text-white/80">
-                        Forjando o Futuro do Investimento Inteligente
-                      </p>
-                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff12] transition-duration-300">
-                        <p className="mb-8 text-white">
-                          Começamos em 2023 não como mais uma fintech, mas como um movimento. <br /><br />
-                          A Auge Capital nasceu da necessidade de democratizar o acesso a ferramentas avançadas de análise de investimentos normalmente disponíveis em grandes fundos.<br /><br />
-                          Nossa equipe de especialistas em tecnologia e mercado financeiro se uniu com um objetivo comum: transformar dados complexos em insights amigáveis para investidores pessoas físicas a um preço justo.
-                        </p>
-                      </div>
-                    </section>
-
-                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="flex items-center justify-center gap-3 mb-4">
-                        <RocketIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <MatrixRainText
-                          text="Nossa Missão: Equilibrar o Jogo Financeiro"
-                          className="text-2xl text-[#FF4081]" />
-                      </div>
-                      <p className="mb-8 text-white/80">
-                        Não Somos Fornecedores. Somos Armas Secretas.
-                      </p>
-                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff12] transition-duration-300">
-                        <p className="mt-4 mb-8 text-white">
-                          Capacitar investidores com ferramentas tecnológicas inovadoras para tomada de decisões mais
-                          informadas no mercado financeiro, promovendo educação financeira e democratizando o acesso a
-                          análises avançadas de investimentos.<br /><br />
-                          Dar conhecimento de padrões de mercado aos nossos usuários <br /><br />
-                          Dar acesso a estratégias antes restritas a grandes fundos  <br /><br />
-                          Criar uma geração de investidores tecnicamente empoderados
-                        </p>
-                      </div>
-                    </section>
-
-                    <section className="max-w-5xl w-full">
-                      <div className="flex items-center justify-center gap-3 mb-8">
-                        <StarIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <h2 className="text-2xl text-center text-[#FF4081]">Nossos Valores: Ética e Inteligência</h2>
-                      </div>
-                      <div className="grid md:grid-cols-3 gap-8">
-                        <div className="text-center bg-[#ffffff10] p-6 rounded-lg hover:bg-[#ffffff18] transform hover:scale-105 transition-all duration-300">
-                          <LightbulbIcon sx={{ color: '#64FFDA', fontSize: 40, marginBottom: '16px' }} />
-                          <h3 className="text-xl mb-2 text-[#64FFDA]">Inovação</h3>
-                          <p className="text-white">Buscamos constantemente novas soluções tecnológicas para melhorar a experiência dos nossos usuários.</p>
+                    <div className="opacity" />
+                    {isLoading ? (
+                        <LoadingSkeleton />
+                    ) : (
+                        <div className="content">
+                            <div className="opacity" />
+                            <div className="content">
+                                <div className="container mx-auto px-4 py-16 relative z-10">
+                                    <Stack spacing={8} alignItems="center">
+                                        <Header />
+                                        <HistoriaSection />
+                                        <MissaoSection />
+                                        <ValoresSection />
+                                        <EquipeSection />
+                                        <CompromissoSection />
+                                    </Stack>
+                                </div>
+                            </div>
                         </div>
-                        <div className="text-center bg-[#ffffff10] p-6 rounded-lg hover:bg-[#ffffff18] transform hover:scale-105 transition-all duration-300">
-                          <SecurityIcon sx={{ color: '#64FFDA', fontSize: 40, marginBottom: '16px' }} />
-                          <h3 className="text-xl mb-2 text-[#64FFDA]">Transparência</h3>
-                          <p className="text-white">Mantemos uma comunicação clara e honesta com nossa comunidade de investidores.</p>
-                        </div>
-                        <div className="text-center bg-[#ffffff10] p-6 rounded-lg hover:bg-[#ffffff18] transform hover:scale-105 transition-all duration-300">
-                          <StarIcon sx={{ color: '#64FFDA', fontSize: 40, marginBottom: '16px' }} />
-                          <h3 className="text-xl mb-2 text-[#64FFDA]">Excelência</h3>
-                          <p className="text-white">Comprometidos com a qualidade e precisão em todas as nossas ferramentas e análises.</p>
-                        </div>
-                      </div>
-                    </section>
-
-                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="flex items-center justify-center gap-3 mb-4">
-                        <GroupsIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <h2 className="text-2xl text-[#FF4081]">Nossa Equipe</h2>
-                      </div>
-                      <p className="mb-8 text-white/90">
-                        O Cérebro por Trás da Revolução
-                      </p>
-                      <div className="bg-[#ffffff10] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff18]">
-                        <p className="mb-8 text-white">
-                          Somos um time diversificado de profissionais apaixonados por tecnologia e mercado financeiro.<br /><br />
-                          Nossa equipe combina experiência em desenvolvimento de software, análise de dados, mercado
-                          financeiro e atendimento ao cliente para oferecer a melhor experiência possível.
-                        </p>
-                      </div>
-                    </section>
-
-                    <section className="max-w-5xl text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="flex items-center justify-center gap-3 mb-4">
-                        <HandshakeIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                        <h2 className="text-2xl text-[#FF4081]">Nosso Compromisso</h2>
-                      </div>
-                      <p className="mb-8 text-white/80">
-                        Não Vendemos Ferramentas. Entregamos Resultados.
-                      </p>
-                      <div className="bg-[#ffffff10] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff18]">
-                        <p className="mb-8 text-white">
-                          Estamos comprometidos com o crescimento contínuo e a evolução de nossa plataforma. <br /><br />
-                          Trabalhamos diariamente para trazer novas funcionalidades e melhorias, sempre ouvindo
-                          o feedback de nossa comunidade.
-                        </p>
-                      </div>
-                    </section>
-                  </Stack>
-                </div>
-              </div>
-            </div>
-          )}
-
-        </SectionTeam>
-      </ErrorBoundary>
-    </PageTransition>
-  );
+                    )}
+                </SectionTeam>
+            </ErrorBoundary>
+        </PageTransition>
+    );
 }
