@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { StyledDialog } from "./styled";
-import { IconButton } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from "next/navigation";
+import CloseIcon from '@mui/icons-material/Close';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { LoginFormComponent } from "./components/LoginForm";
 import { useLoginForm } from "./hooks/useLoginForm";
+import { StyledDialog } from "./styled";
+import { StyledCloseButton } from "./components/CloseButton/styled";
 
 export const Login = () => {
     const router = useRouter();
@@ -37,7 +37,12 @@ export const Login = () => {
     return (
         <PageTransition>
             <ErrorBoundary>
-                <StyledDialog open={true} maxWidth="md" fullWidth>
+                <StyledDialog 
+                    open={true} 
+                    maxWidth="md" 
+                    fullWidth
+                    disableEscapeKeyDown
+                >
                     <div className="background-image">
                         <OptimizedImage
                             src="/assets/images/background/REGISTER.jpg"
@@ -47,17 +52,9 @@ export const Login = () => {
                         />
                     </div>
                     <div className="content">
-                        <IconButton
-                            onClick={() => router.push('/')}
-                            sx={{
-                                position: 'absolute',
-                                right: 8,
-                                top: 8,
-                                color: 'white'
-                            }}
-                        >
+                        <StyledCloseButton onClick={() => router.push('/')}>
                             <CloseIcon />
-                        </IconButton>
+                        </StyledCloseButton>
 
                         <LoginFormComponent
                             formData={formData}

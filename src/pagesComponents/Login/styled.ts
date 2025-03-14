@@ -1,11 +1,10 @@
-"use client";
-
 import { Dialog, styled } from "@mui/material";
 
-export const StyledDialog = styled(Dialog)({
+export const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-container": {
     height: "100vh",
   },
+
   "& .MuiDialog-paper": {
     height: "100vh",
     maxHeight: "100vh",
@@ -15,6 +14,11 @@ export const StyledDialog = styled(Dialog)({
     borderRadius: 0,
     position: "relative",
     overflow: "hidden",
+    backgroundColor: "transparent",
+
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(2),
+    },
 
     "& .background-image": {
       position: "absolute",
@@ -25,13 +29,6 @@ export const StyledDialog = styled(Dialog)({
       zIndex: 0,
     },
 
-    "& .content": {
-      position: "relative",
-      zIndex: 2,
-      height: "100%",
-      width: "100%",
-    },
-
     "&::before": {
       content: '""',
       position: "absolute",
@@ -40,11 +37,22 @@ export const StyledDialog = styled(Dialog)({
       right: 0,
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      backdropFilter: "blur(1px)",
+      backdropFilter: "blur(2px)",
       zIndex: 1,
     },
+
+    "& .content": {
+      position: "relative",
+      zIndex: 2,
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      padding: theme.spacing(8, 2),
+    },
   },
-});
+}));
 
 export const LoginForm = styled("form")({
   position: "relative",
