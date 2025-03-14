@@ -9,7 +9,7 @@ export const Plans = () => {
             <div className="plans">
                 <div className="background-image">
                     <OptimizedImage
-                        src="/assets/images/background/PLANS.jpg"
+                        src="/assets/images/background/Precos.jpg"
                         alt="Background Plans"
                         fill
                         className="object-cover"
