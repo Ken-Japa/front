@@ -31,3 +31,27 @@ export const SectionTeam = styled("section")(({ theme }) => ({
     zIndex: 1,
   },
 }));
+
+export const BaseSection = styled("section")(({ theme }) => ({
+  maxWidth: "64rem", // 5xl in tailwind
+  width: "100%",
+  textAlign: "center",
+  transform: "scale(1)",
+  transition: "all 0.3s ease",
+
+  "&:hover": {
+    transform: "scale(1.05)",
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    padding: "0 16px",
+  },
+}));
+
+export const SectionTitle = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "12px",
+  marginBottom: "16px",
+});

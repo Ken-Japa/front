@@ -1,9 +1,17 @@
 import { styled } from "@mui/material";
 
-export const NewsletterSection = styled("section")({
-  backgroundColor: "rgba(13, 149, 249, 0.1)",
-  padding: "64px 0",
-});
+export const NewsletterContainer = styled("div")(({ theme }) => ({
+    width: "100%",
+    padding: "48px 24px",
+    backgroundColor: "rgba(13, 149, 249, 0.1)",
+    borderRadius: "8px",
+    backdropFilter: "blur(4px)",
+    textAlign: "center",
+
+    [theme.breakpoints.down("sm")]: {
+        padding: "32px 16px",
+    }
+}));
 
 export const NewsletterForm = styled("form")(({ theme }) => ({
   width: "100%",

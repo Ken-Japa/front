@@ -1,10 +1,11 @@
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+import { HeaderContainer } from "./styled";
 
 export const Header = () => (
-    <div className="text-center relative">
+    <HeaderContainer>
         <MatrixRainText
             text="Quem Somos"
-            className="text-5xl font-bold text-[#0D95F9] mb-8"
+            className="title"
         />
-    </div>
+    </HeaderContainer>
 );

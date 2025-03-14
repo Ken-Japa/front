@@ -1,17 +1,15 @@
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+import { HeaderContainer } from "./styled";
 
 export const Header = () => (
-    <Stack spacing={3} alignItems="center">
+    <HeaderContainer>
         <MatrixRainText
             text="Recursos Avançados"
-            className="text-white text-4xl font-bold"
+            className="header-title"
         />
-        <Typography
-            variant="h6"
-            className="text-white/90 text-center max-w-3xl"
-        >
+        <Typography className="header-subtitle">
             Descubra como nossa plataforma pode transformar sua experiência de investimento com ferramentas poderosas e insights valiosos
         </Typography>
-    </Stack>
+    </HeaderContainer>
 );

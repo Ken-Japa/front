@@ -1,6 +1,7 @@
 import { Stack, Typography, Grid, Divider } from "@mui/material";
 import { motion } from 'framer-motion';
-import { TESTIMONIALS } from "../constants/testimonials";
+import { TESTIMONIALS } from "../../constants/testimonials";
+import { TestimonialCard } from "./styled";
 
 export const TestimonialsSection = () => (
     <div className="w-full">
@@ -24,18 +25,18 @@ export const TestimonialsSection = () => (
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
                         >
-                            <div className="bg-[#ffffff0a] p-6 rounded-lg backdrop-blur-sm hover:bg-[#ffffff15] transition-all duration-300">
-                                <Typography className="text-white/90 mb-4 italic">
+                            <TestimonialCard>
+                                <Typography className="testimonial-text">
                                     &quot;{testimonial.comment}&quot;
                                 </Typography>
                                 <Divider sx={{ bgcolor: 'rgba(13, 149, 249, 0.2)', my: 2 }} />
-                                <Typography variant="subtitle1" className="text-[#0D95F9] font-bold">
+                                <Typography className="testimonial-author">
                                     {testimonial.name}
                                 </Typography>
-                                <Typography variant="body2" className="text-white/70">
+                                <Typography className="testimonial-role">
                                     {testimonial.role}
                                 </Typography>
-                            </div>
+                            </TestimonialCard>
                         </motion.div>
                     </Grid>
                 ))}

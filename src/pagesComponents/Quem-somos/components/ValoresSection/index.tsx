@@ -1,0 +1,22 @@
+import StarIcon from '@mui/icons-material/Star';
+import { VALORES } from '../../constants/valores';
+import { BaseSection, SectionTitle } from "../../styled";
+import { ValoresGrid, ValorCard } from "./styled";
+
+export const ValoresSection = () => (
+    <BaseSection>
+        <SectionTitle>
+            <StarIcon sx={{ color: '#FF4081', fontSize: 32 }} />
+            <h2 className="text-2xl text-[#FF4081]">Nossos Valores: Ética e Inteligência</h2>
+        </SectionTitle>
+        <ValoresGrid>
+            {VALORES.map((valor) => (
+                <ValorCard key={valor.title}>
+                    {valor.icon}
+                    <h3>{valor.title}</h3>
+                    <p>{valor.description}</p>
+                </ValorCard>
+            ))}
+        </ValoresGrid>
+    </BaseSection>
+);

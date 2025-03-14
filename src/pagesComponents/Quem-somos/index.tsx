@@ -11,7 +11,7 @@ import { HistoriaSection } from "./components/HistoriaSection";
 import { MissaoSection } from "./components/MissaoSection";
 import { ValoresSection } from "./components/ValoresSection";
 import { EquipeSection } from "./components/EquipeSection";
-import { CompromissoSection } from "./components/CompromissoSection";
+import { CompromissoSection } from "./components/CompromissoSection/";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export default function AboutPage() {
