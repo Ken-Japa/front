@@ -178,7 +178,7 @@ export const FAQ = () => {
                                             className="text-4xl font-bold text-[#0D95F9]"
                                         />
                                     </div>
-                                    <p className="text-white/70 mt-4">
+                                    <p className="text-white/90 mt-4">
                                         Encontre respostas para as perguntas mais comuns sobre o Auge Invest
                                     </p>
                                 </div>
@@ -191,18 +191,18 @@ export const FAQ = () => {
                                             placeholder="Buscar pergunta..."
                                             value={searchTerm}
                                             onChange={(e) => setSearchTerm(e.target.value)}
-                                            className="w-full px-4 py-2 pl-10 pr-10 bg-[#ffffff0a] text-white rounded-lg 
-                         border border-[#ffffff20] focus:border-[#0D95F9] outline-none
-                         transition-all duration-300"
+                                            className="w-full px-4 py-2 pl-10 pr-10 bg-[#ffffff10] text-white rounded-lg 
+                                                     border border-[#ffffff30] focus:border-[#0D95F9] outline-none
+                                                     transition-all duration-300"
                                         />
                                         <SearchIcon
-                                            className="absolute left-3 top-2.5 text-white/50"
+                                            className="absolute left-3 top-2.5 text-white/70"
                                             sx={{ fontSize: 20 }}
                                         />
                                         {searchTerm && (
                                             <button
                                                 onClick={() => setSearchTerm('')}
-                                                className="absolute right-3 top-2.5 text-white/50 hover:text-white/80 transition-colors"
+                                                className="absolute right-3 top-2.5 text-white/70 hover:text-white transition-colors"
                                                 aria-label="Limpar pesquisa"
                                             >
                                                 <CloseIcon sx={{ fontSize: 20 }} />
@@ -219,9 +219,9 @@ export const FAQ = () => {
                                                 key={key}
                                                 onClick={() => setActiveCategory(key as CategoryType)}
                                                 className={`px-4 py-2 rounded-full transition-all duration-300
-            ${activeCategory === key
+                                                    ${activeCategory === key
                                                         ? 'bg-[#0D95F9] text-white'
-                                                        : 'bg-[#ffffff0a] text-white/70 hover:bg-[#ffffff15]'
+                                                        : 'bg-[#ffffff15] text-white/85 hover:bg-[#ffffff20]'
                                                     }`}
                                             >
                                                 {label}
@@ -243,13 +243,13 @@ export const FAQ = () => {
                                 </Stack>
 
                                 {/* Contact Support */}
-                                <div className="mt-12 text-center bg-[#ffffff0a] p-8 rounded-lg w-full">
+                                <div className="mt-12 text-center bg-[#ffffff10] p-8 rounded-lg w-full">
                                     <h3 className="text-xl text-[#0D95F9] mb-4">Não encontrou o que procurava?</h3>
-                                    <p className="text-white/70 mb-4">
+                                    <p className="text-white/90 mb-4">
                                         Nossa equipe de suporte está pronta para ajudar você
                                     </p>
                                     <Link href="/contato">
-                                        <button className="px-6 py-2 bg-[#0D95F9] text-white rounded-lg hover:bg-[#0D95F9]/80 transition-all duration-300">
+                                        <button className="px-6 py-2 bg-[#0D95F9] text-white rounded-lg hover:bg-[#0D95F9]/90 transition-all duration-300">
                                             Contatar Suporte
                                         </button>
                                     </Link>

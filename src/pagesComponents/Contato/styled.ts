@@ -22,7 +22,7 @@ export const SectionContact = styled("section")({
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     minHeight: "100vh",
     display: "flex",
-    alignItems: "center",
+    paddingTop: "64px",
     justifyContent: "center",
   },
 });

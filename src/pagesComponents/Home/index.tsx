@@ -141,7 +141,7 @@ export const Home = () => {
                                 <h2 className="text-4xl font-bold text-white text-center">
                                     Escolha o Plano Ideal
                                 </h2>
-                                <p className="text-white/70 text-center max-w-2xl">
+                                <p className="text-white/90 text-center max-w-2xl">
                                     Invista no seu futuro – Não pague por ferramentas ultrapassadas. <br />
                                     Escolha a opção que melhor atende às suas necessidades.
                                 </p>
@@ -150,7 +150,7 @@ export const Home = () => {
                         <Plans />
                     </motion.section>
 
-                    <Divider sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />
+                    <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
 
                     <motion.section
                         ref={questionsRef}
@@ -164,12 +164,12 @@ export const Home = () => {
                             <Stack alignItems="center" sx={{ mt: 4 }}>
                                 <Typography
                                     variant="body1"
-                                    className="text-white/70 hover:text-white/90 transition-colors"
+                                    className="text-white/90 hover:text-white transition-colors"
                                 >
                                     Encontre mais respostas acessando o{' '}
                                     <Link
                                         href="/faq"
-                                        className="text-[#0D95F9] hover:text-[#0D95F9]/80 underline"
+                                        className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
                                     >
                                         FAQ
                                     </Link>

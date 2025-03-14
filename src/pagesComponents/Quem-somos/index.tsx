@@ -87,7 +87,7 @@ export default function AboutPage() {
                       <p className="mb-8 text-white/80">
                         Forjando o Futuro do Investimento Inteligente
                       </p>
-                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
+                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff12] transition-duration-300">
                         <p className="mb-8 text-white">
                           Começamos em 2023 não como mais uma fintech, mas como um movimento. <br /><br />
                           A Auge Capital nasceu da necessidade de democratizar o acesso a ferramentas avançadas de análise de investimentos normalmente disponíveis em grandes fundos.<br /><br />
@@ -106,7 +106,7 @@ export default function AboutPage() {
                       <p className="mb-8 text-white/80">
                         Não Somos Fornecedores. Somos Armas Secretas.
                       </p>
-                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
+                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff12] transition-duration-300">
                         <p className="mt-4 mb-8 text-white">
                           Capacitar investidores com ferramentas tecnológicas inovadoras para tomada de decisões mais
                           informadas no mercado financeiro, promovendo educação financeira e democratizando o acesso a
@@ -124,17 +124,17 @@ export default function AboutPage() {
                         <h2 className="text-2xl text-center text-[#FF4081]">Nossos Valores: Ética e Inteligência</h2>
                       </div>
                       <div className="grid md:grid-cols-3 gap-8">
-                        <div className="text-center bg-[#ffffff0a] p-6 rounded-lg hover:bg-[#ffffff15] transform hover:scale-105 transition-all duration-300">
+                        <div className="text-center bg-[#ffffff10] p-6 rounded-lg hover:bg-[#ffffff18] transform hover:scale-105 transition-all duration-300">
                           <LightbulbIcon sx={{ color: '#64FFDA', fontSize: 40, marginBottom: '16px' }} />
                           <h3 className="text-xl mb-2 text-[#64FFDA]">Inovação</h3>
                           <p className="text-white">Buscamos constantemente novas soluções tecnológicas para melhorar a experiência dos nossos usuários.</p>
                         </div>
-                        <div className="text-center bg-[#ffffff0a] p-6 rounded-lg hover:bg-[#ffffff15] transform hover:scale-105 transition-all duration-300">
+                        <div className="text-center bg-[#ffffff10] p-6 rounded-lg hover:bg-[#ffffff18] transform hover:scale-105 transition-all duration-300">
                           <SecurityIcon sx={{ color: '#64FFDA', fontSize: 40, marginBottom: '16px' }} />
                           <h3 className="text-xl mb-2 text-[#64FFDA]">Transparência</h3>
                           <p className="text-white">Mantemos uma comunicação clara e honesta com nossa comunidade de investidores.</p>
                         </div>
-                        <div className="text-center bg-[#ffffff0a] p-6 rounded-lg hover:bg-[#ffffff15] transform hover:scale-105 transition-all duration-300">
+                        <div className="text-center bg-[#ffffff10] p-6 rounded-lg hover:bg-[#ffffff18] transform hover:scale-105 transition-all duration-300">
                           <StarIcon sx={{ color: '#64FFDA', fontSize: 40, marginBottom: '16px' }} />
                           <h3 className="text-xl mb-2 text-[#64FFDA]">Excelência</h3>
                           <p className="text-white">Comprometidos com a qualidade e precisão em todas as nossas ferramentas e análises.</p>
@@ -147,10 +147,10 @@ export default function AboutPage() {
                         <GroupsIcon sx={{ color: '#FF4081', fontSize: 32 }} />
                         <h2 className="text-2xl text-[#FF4081]">Nossa Equipe</h2>
                       </div>
-                      <p className="mb-8 text-white/80">
+                      <p className="mb-8 text-white/90">
                         O Cérebro por Trás da Revolução
                       </p>
-                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
+                      <div className="bg-[#ffffff10] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff18]">
                         <p className="mb-8 text-white">
                           Somos um time diversificado de profissionais apaixonados por tecnologia e mercado financeiro.<br /><br />
                           Nossa equipe combina experiência em desenvolvimento de software, análise de dados, mercado
@@ -167,7 +167,7 @@ export default function AboutPage() {
                       <p className="mb-8 text-white/80">
                         Não Vendemos Ferramentas. Entregamos Resultados.
                       </p>
-                      <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
+                      <div className="bg-[#ffffff10] p-8 rounded-lg backdrop-blur-sm hover:bg-[#ffffff18]">
                         <p className="mb-8 text-white">
                           Estamos comprometidos com o crescimento contínuo e a evolução de nossa plataforma. <br /><br />
                           Trabalhamos diariamente para trazer novas funcionalidades e melhorias, sempre ouvindo

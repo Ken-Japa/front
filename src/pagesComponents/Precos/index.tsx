@@ -28,18 +28,18 @@ export const Pricing = () => {
                                 <Stack alignItems="center" spacing={6} maxWidth="1200px" margin="0 auto">
                                     <MatrixRainText
                                         text="Por que escolher a Auge Invest?"
-                                        className="text-white text-4xl font-bold mb-8"
+                                        className="text-[#FF4081] text-4xl font-bold mb-8"
                                     />
                                     <div className="grid md:grid-cols-3 gap-8 w-full">
-                                        <div className="text-white text-center p-6 bg-black/50 rounded-lg">
+                                        <div className="text-white text-center p-6 bg-black/60 rounded-lg">
                                             <h3 className="text-xl mb-4 text-[#0D95F9]">Análise Avançada</h3>
-                                            <p>Ferramentas profissionais para análise de mercado e tomada de decisão</p>
+                                            <p className="text-white/95">Ferramentas profissionais para análise de mercado e tomada de decisão</p>
                                         </div>
-                                        <div className="text-white text-center p-6 bg-black/50 rounded-lg">
+                                        <div className="text-white text-center p-6 bg-black/60 rounded-lg">
                                             <h3 className="text-xl mb-4 text-[#0D95F9]">Dados em Tempo Real</h3>
                                             <p>Acompanhe suas posições e o mercado com atualizações constantes</p>
                                         </div>
-                                        <div className="text-white text-center p-6 bg-black/50 rounded-lg">
+                                        <div className="text-white text-center p-6 bg-black/60 rounded-lg">
                                             <h3 className="text-xl mb-4 text-[#0D95F9]">Suporte Dedicado</h3>
                                             <p>Equipe especializada para ajudar em suas dúvidas</p>
                                         </div>
@@ -48,38 +48,42 @@ export const Pricing = () => {
                             </section>
 
                             {/* Recursos Section */}
-                            <section className="py-16 px-4 bg-black/30">
+                            <section className="py-16 px-4 bg-black/40">
                                 <Stack alignItems="center" spacing={4} maxWidth="1200px" margin="0 auto">
                                     <MatrixRainText
                                         text="Recursos Principais"
-                                        className="text-3xl text-white mb-8" />
+                                        className="text-3xl text-[#FF4081] mb-8" />
                                     <div className="grid md:grid-cols-2 gap-8 w-full mb-8">
-                                        <ul className="text-white space-y-4">
+                                        <ul className="text-white/95 space-y-4">
                                             <li className="flex items-center">
-                                                <span className="text-[#0D95F9] mr-2">›</span>
-                                                Análise técnica avançada
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Análise Técnica Avançada
                                             </li>
                                             <li className="flex items-center">
-                                                <span className="text-[#0D95F9] mr-2">›</span>
-                                                Rastreamento de carteira
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Visão Geral da Economia
                                             </li>
                                             <li className="flex items-center">
-                                                <span className="text-[#0D95F9] mr-2">›</span>
-                                                Alertas personalizados
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Alertas Personalizados
                                             </li>
                                         </ul>
                                         <ul className="text-white space-y-4">
                                             <li className="flex items-center">
-                                                <span className="text-[#0D95F9] mr-2">›</span>
-                                                Relatórios detalhados
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Relatórios Detalhados
                                             </li>
                                             <li className="flex items-center">
-                                                <span className="text-[#0D95F9] mr-2">›</span>
-                                                Integração com corretoras
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Histórico (inclusive de derivativos)
                                             </li>
                                             <li className="flex items-center">
-                                                <span className="text-[#0D95F9] mr-2">›</span>
-                                                Análise fundamentalista
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Análise Fundamentalista
+                                            </li>
+                                            <li className="flex items-center">
+                                                <span className="text-[#0D95F9] mr-2 text-lg">›</span>
+                                                Rastreamento de Carteira e Posições Fictícias
                                             </li>
                                         </ul>
                                     </div>
@@ -92,9 +96,9 @@ export const Pricing = () => {
                             {/* Planos Section */}
                             <section className="py-16 px-4">
                                 <Stack alignItems="center" spacing={6} maxWidth="1200px" margin="0 auto">
-                                    <h2 className="text-3xl text-white mb-8">Escolha seu Plano</h2>
+                                    <h2 className="text-3xl text-[#FF4081] mb-8">Escolha seu Plano</h2>
                                     <div className="grid md:grid-cols-3 gap-8 w-full">
-                                        <div className="text-white p-8 bg-black/50 rounded-lg border border-[#0D95F9]">
+                                        <div className="text-white p-8 bg-black/60 rounded-lg border border-[#0D95F9]">
                                             <h3 className="text-2xl mb-4">Mensal</h3>
                                             <p className="text-4xl font-bold mb-2">R$30</p>
                                             <p className="opacity-75 mb-6">/mês</p>
@@ -139,9 +143,9 @@ export const Pricing = () => {
                             {/* Embaixador Section */}
                             <section className="py-16 px-4 bg-black/30">
                                 <Stack alignItems="center" spacing={6} maxWidth="900px" margin="0 auto">
-                                    <h2 className="text-3xl text-white mb-4">Seja um Embaixador</h2>
-                                    <p className="text-white text-center mb-8 max-w-2xl">
-                                        Torne-se um embaixador da Auge Invest e faça parte do nosso crescimento.
+                                    <h2 className="text-3xl text-[#FF4081] mb-4">Seja um Embaixador</h2>
+                                    <p className="text-white text-center mb-8 max-w-5xl">
+                                        Torne-se um embaixador da Auge Invest e faça parte do nosso crescimento.<br /><br />
                                         Como embaixador, você terá acesso vitalício à plataforma após atingirmos 5.000 usuários,
                                         além de benefícios exclusivos.
                                     </p>
@@ -187,20 +191,20 @@ export const Pricing = () => {
                                 <Stack alignItems="center" spacing={4} maxWidth="1200px" margin="0 auto">
                                     <h2 className="text-3xl text-white mb-8">O que dizem nossos usuários</h2>
                                     <div className="grid md:grid-cols-3 gap-8">
-                                        <div className="bg-black/50 p-6 rounded-lg border border-[#0D95F9]/30">
-                                            <p className="text-white mb-4">&quot;A melhor plataforma para análise de investimentos que já utilizei. Interface intuitiva e recursos poderosos.&quot;</p>
+                                        <div className="bg-black/60 p-6 rounded-lg border border-[#0D95F9]/40">
+                                            <p className="text-white/95 mb-4">&quot;A melhor plataforma para análise de investimentos que já utilizei. Interface intuitiva e recursos poderosos.&quot;</p>
                                             <p className="text-[#0D95F9]">João Silva</p>
-                                            <p className="text-white/70 text-sm">Investidor Independente</p>
+                                            <p className="text-white/85 text-sm">Investidor Independente</p>
                                         </div>
-                                        <div className="bg-black/50 p-6 rounded-lg border border-[#0D95F9]/30">
-                                            <p className="text-white mb-4">&quot;Os alertas personalizados me ajudam a não perder oportunidades importantes no mercado.&quot;</p>
+                                        <div className="bg-black/50 p-6 rounded-lg border border-[#0D95F9]/40">
+                                            <p className="text-white/95 mb-4">&quot;Os alertas personalizados me ajudam a não perder oportunidades importantes no mercado.&quot;</p>
                                             <p className="text-[#0D95F9]">Maria Santos</p>
-                                            <p className="text-white/70 text-sm">Day Trader</p>
+                                            <p className="text-white/85 text-sm">Day Trader</p>
                                         </div>
-                                        <div className="bg-black/50 p-6 rounded-lg border border-[#0D95F9]/30">
-                                            <p className="text-white mb-4">&quot;O suporte é excepcional e as análises são precisas. Vale cada centavo investido.&quot;</p>
+                                        <div className="bg-black/50 p-6 rounded-lg border border-[#0D95F9]/40">
+                                            <p className="text-white/95 mb-4">&quot;O suporte é excepcional e as análises são precisas. Vale cada centavo investido.&quot;</p>
                                             <p className="text-[#0D95F9]">Pedro Costa</p>
-                                            <p className="text-white/70 text-sm">Analista Financeiro</p>
+                                            <p className="text-white/85 text-sm">Analista Financeiro</p>
                                         </div>
                                     </div>
                                 </Stack>

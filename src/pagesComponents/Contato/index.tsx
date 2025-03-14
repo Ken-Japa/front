@@ -194,18 +194,18 @@ export const Contact = () => {
                                 {isLoading ? (
                                     <ContentSkeleton />
                                 ) : (
-                                    <>
+                                    <Stack spacing={2}>
                                         <MatrixRainText
                                             text="Entre em Contato"
-                                            className="text-4xl font-bold text-white mb-4"
+                                            className="text-4xl font-bold text-white"
                                         />
-                                        <Typography variant="h6" className="text-white/70">
+                                        <Typography variant="h6" className="text-white/90">
                                             Fale Com Quem Entende do Seu Dinheiro
                                         </Typography>
-                                        <Typography variant="h6" className="text-white/70">
+                                        <Typography variant="h6" className="text-white/90">
                                             Estamos aqui para ajudar. Entre em contato conosco!
                                         </Typography>
-                                    </>
+                                    </Stack>
                                 )}
                             </div>
 
@@ -223,7 +223,7 @@ export const Contact = () => {
                                                 </Stack>
                                                 <Stack direction="column" spacing={2} mb={1}>
 
-                                                    <Typography className="text-white/70">contato@capitalauge.com.br</Typography>
+                                                    <Typography className="text-white/95">contato@capitalauge.com.br</Typography>
                                                 </Stack>
                                             </div>
                                             <div>
@@ -231,14 +231,14 @@ export const Contact = () => {
                                                     <LocationOnIcon sx={{ color: '#0D95F9' }} />
                                                     <Typography variant="h6" className="text-white">Localização</Typography>
                                                 </Stack>
-                                                <Typography className="text-white/70">Minas Gerais, MG - Brasil</Typography>
+                                                <Typography className="text-white/95">Minas Gerais, MG - Brasil</Typography>
                                             </div>
                                             <div>
                                                 <Stack direction="row" spacing={2} alignItems="center" mb={1}>
                                                     <PhoneIcon sx={{ color: '#0D95F9' }} />
                                                     <Typography variant="h6" className="text-white">Telefone</Typography>
                                                 </Stack>
-                                                <Typography className="text-white/70">+55 (21) 99430-3047</Typography>
+                                                <Typography className="text-white/95">+55 (21) 99430-3047</Typography>
                                             </div>
                                         </>
                                     )}
@@ -290,14 +290,14 @@ export const Contact = () => {
                                                     sx: {
                                                         backgroundColor: 'rgba(0, 21, 41, 0.98)',
                                                         backdropFilter: 'blur(10px)',
-                                                        border: '1px solid rgba(13, 149, 249, 0.1)',
+                                                        border: '1px solid rgba(13, 149, 249, 0.2)',
                                                         '& .MuiAutocomplete-option': {
                                                             color: 'white',
                                                             '&:hover': {
-                                                                backgroundColor: 'rgba(13, 149, 249, 0.3)'
+                                                                backgroundColor: 'rgba(13, 149, 249, 0.4)'
                                                             },
                                                             '&.Mui-focused': {
-                                                                backgroundColor: 'rgba(13, 149, 249, 0.2)'
+                                                                backgroundColor: 'rgba(13, 149, 249, 0.3)'
                                                             }
                                                         }
                                                     }

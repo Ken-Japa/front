@@ -299,72 +299,44 @@ export const Register = () => {
                                             variant="determinate"
                                             value={getPasswordStrength(formData.password)}
                                             sx={{
-                                                backgroundColor: 'rgba(255,255,255,0.1)',
+                                                backgroundColor: 'rgba(255,255,255,0.2)',
                                                 '& .MuiLinearProgress-bar': {
-                                                    backgroundColor: getPasswordStrength(formData.password) < 50 ? 'error.main' :
-                                                        getPasswordStrength(formData.password) < 100 ? 'warning.main' :
-                                                            'success.main'
+                                                    backgroundColor: getPasswordStrength(formData.password) < 50 ? '#ff4444' :
+                                                        getPasswordStrength(formData.password) < 100 ? '#ffbb33' :
+                                                            '#00C851'
                                                 }
                                             }}
                                         />
-                                        <Typography variant="caption" sx={{ color: 'white', mt: 0.5 }}>
+                                        <Typography variant="caption" sx={{ color: 'white', opacity: 0.9, mt: 0.5 }}>
                                             Força da senha: {getPasswordStrength(formData.password)}%
                                         </Typography>
                                     </Box>
                                 )}
 
-                                <TextField
-                                    name="confirmPassword"
-                                    label="Confirme sua senha"
-                                    type="password"
-                                    variant="outlined"
-                                    fullWidth
-                                    margin="normal"
-                                    value={formData.confirmPassword}
-                                    onChange={handleChange}
-                                    error={!!errors.confirmPassword}
-                                    helperText={errors.confirmPassword}
-                                />
-
-                                {/* Remove the duplicate state declaration and keep the FormControlLabel */}
                                 <FormControlLabel
                                     control={
                                         <Checkbox
                                             checked={acceptedTerms}
                                             onChange={(e) => setAcceptedTerms(e.target.checked)}
-                                            sx={{ color: 'white', '&.Mui-checked': { color: 'primary.main' } }}
+                                            sx={{ 
+                                                color: 'rgba(255,255,255,0.9)', 
+                                                '&.Mui-checked': { color: '#0D95F9' } 
+                                            }}
                                         />
                                     }
                                     label={
-                                        <Typography variant="body2" sx={{ color: 'white' }}>
+                                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.9)' }}>
                                             Li e aceito os{' '}
-                                            <Link href="/termos-servicos" sx={{ color: 'primary.main' }}>
+                                            <Link href="/termos-servicos" sx={{ color: '#0D95F9' }}>
                                                 termos e condições
                                             </Link>
                                         </Typography>
                                     }
                                 />
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    color="primary"
-                                    fullWidth
-                                    size="large"
-                                    disabled={isLoading || isBlocked}
-                                    sx={{ marginTop: '24px' }}
-                                >
-                                    {isLoading ? (
-                                        <CircularProgress size={24} color="inherit" />
-                                    ) : isBlocked ? (
-                                        `Tente novamente em ${blockTimer}s`
-                                    ) : (
-                                        "Registrar"
-                                    )}
-                                </Button>
 
                                 <div className="divider-container">
                                     <div className="divider" />
-                                    <span className="divider-text">ou</span>
+                                    <span className="divider-text text-white/90">ou</span>
                                     <div className="divider" />
                                 </div>
 
@@ -376,10 +348,10 @@ export const Register = () => {
                                     onClick={handleGoogleClick}
                                     sx={{
                                         color: 'white',
-                                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                                        borderColor: 'rgba(255, 255, 255, 0.5)',
                                         '&:hover': {
                                             borderColor: 'white',
-                                            backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                                            backgroundColor: 'rgba(255, 255, 255, 0.15)'
                                         }
                                     }}
                                 >
@@ -388,16 +360,17 @@ export const Register = () => {
 
                                 <Typography
                                     variant="body2"
-                                    className="login-text text-center text-white"
+                                    className="login-text text-center"
+                                    sx={{ color: 'rgba(255,255,255,0.9)' }}
                                 >
                                     Já tem uma conta?{' '}
                                     <Link
                                         href="/login"
                                         sx={{
-                                            color: 'primary.main',
+                                            color: '#0D95F9',
                                             textDecoration: 'underline',
                                             '&:hover': {
-                                                opacity: 0.8
+                                                opacity: 0.9
                                             }
                                         }}
                                     >

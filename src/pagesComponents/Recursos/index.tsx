@@ -138,7 +138,7 @@ export const Solutions = () => {
                                     />
                                     <Typography
                                         variant="h6"
-                                        className="text-white/80 text-center max-w-3xl"
+                                        className="text-white/90 text-center max-w-3xl"
                                     >
                                         Descubra como nossa plataforma pode transformar sua experiência de investimento com ferramentas poderosas e insights valiosos
                                     </Typography>
@@ -168,7 +168,7 @@ export const Solutions = () => {
                                                     {feature.description}
                                                 </Typography>
                                                 {hoveredCard === index && (
-                                                    <ul className="text-sm space-y-2 text-white/70">
+                                                    <ul className="text-sm space-y-2 text-white/85">
                                                         {feature.details.map((detail, idx) => (
                                                             <li key={idx} className="flex items-center">
                                                                 <span className="w-2 h-2 bg-[#0D95F9] rounded-full mr-2"></span>

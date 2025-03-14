@@ -111,7 +111,7 @@ export const TermsServices = () => {
                                             Auge Invest
                                         </Typography>
                                         <div className="flex justify-center mt-4">
-                                            <Typography variant="body1" className="text-white/60 max-w-2xl text-center">
+                                            <Typography variant="body1" className="text-white/80 max-w-2xl text-center">
                                                 Por favor, leia atentamente nossos termos de serviço
                                             </Typography>
                                         </div>
@@ -127,7 +127,7 @@ export const TermsServices = () => {
                                                 <a
                                                     key={section.id}
                                                     onClick={() => scrollToSection(section.id)}
-                                                    className="text-white/70 hover:text-[#0D95F9] transition-colors cursor-pointer"
+                                                    className="text-white/85 hover:text-[#0D95F9] transition-colors cursor-pointer"
                                                 >
                                                     {section.title}
                                                 </a>
@@ -136,7 +136,7 @@ export const TermsServices = () => {
                                     </Box>
 
                                     {/* Main Content */}
-                                    <Stack direction="column" maxWidth="1024px" width="100%" marginX="auto" className="text-white">
+                                    <Stack direction="column" maxWidth="1024px" width="100%" marginX="auto" className="text-white/90">
                                         <p className="mb-5">Auge Invest Tecnologia Ltda., uma empresa brasileira inscrita no Cadastro Nacional de Pessoas Jurídicas sob o número <span className="text-warningMain">[seu CNPJ]</span>, com sede à <span className="text-warningMain">[seu endereço]</span>, fornece a você o serviço &quot;Auge Invest&quot;.</p>
 
                                         <div id="info" className="mb-5 bg-[#ffffff05] p-6 rounded-lg">

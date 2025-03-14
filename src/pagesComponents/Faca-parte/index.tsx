@@ -261,13 +261,13 @@ export const JoinTeam = () => {
                                                     className="text-4xl font-bold text-[#0D95F9]"
                                                 />
                                             </div>
-                                            <Typography variant="h6" className="text-white/80 mb-8">
+                                            <Typography variant="h6" className="text-white/95 mb-8">
                                                 Estamos sempre em busca de talentos apaixonados por inovação e mercado financeiro
                                             </Typography>
                                         </div>
 
                                         {/* Benefits Section */}
-                                        <div className="bg-[#ffffff0a] p-6 rounded-lg backdrop-blur-sm">
+                                        <div className="bg-[#ffffff12] p-6 rounded-lg backdrop-blur-sm">
                                             <Typography variant="h6" className="text-[#0D95F9] mb-4 flex items-center gap-2">
                                                 <RocketLaunchIcon /> Benefícios
                                             </Typography>
@@ -277,10 +277,10 @@ export const JoinTeam = () => {
                                                         key={benefit}
                                                         label={benefit}
                                                         sx={{
-                                                            backgroundColor: 'rgba(13, 149, 249, 0.1)',
-                                                            color: '#fff',
+                                                            backgroundColor: 'rgba(13, 149, 249, 0.15)',
+                                                            color: 'white',
                                                             '&:hover': {
-                                                                backgroundColor: 'rgba(13, 149, 249, 0.2)',
+                                                                backgroundColor: 'rgba(13, 149, 249, 0.25)',
                                                             }
                                                         }}
                                                     />
@@ -307,7 +307,7 @@ export const JoinTeam = () => {
 
                             {/* Right Column - Form */}
                             <Grid item xs={12} md={7}>
-                                <div className="bg-[#ffffff0a] p-8 rounded-lg backdrop-blur-sm">
+                                <div className="bg-[#ffffff12] p-8 rounded-lg backdrop-blur-sm">
                                     {isLoading ? (
                                         <ContentSkeleton type="form" />
                                     ) : (
@@ -365,11 +365,11 @@ export const JoinTeam = () => {
                                                                 sx: {
                                                                     backgroundColor: 'rgba(0, 21, 41, 0.98)',
                                                                     backdropFilter: 'blur(10px)',
-                                                                    border: '1px solid rgba(13, 149, 249, 0.1)',
+                                                                    border: '1px solid rgba(13, 149, 249, 0.2)',
                                                                     '& .MuiMenuItem-root': {
                                                                         color: 'white',
                                                                         '&:hover': {
-                                                                            backgroundColor: 'rgba(13, 149, 249, 0.3)'
+                                                                            backgroundColor: 'rgba(13, 149, 249, 0.35)'
                                                                         }
                                                                     }
                                                                 }
