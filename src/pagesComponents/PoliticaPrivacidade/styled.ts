@@ -1,13 +1,9 @@
-"use client";
-
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 export const SectionPolicy = styled("section")(({ theme }) => ({
-  minHeight: "100vh",
   width: "100%",
+  minHeight: "100vh",
   position: "relative",
-  display: "flex",
-  flexDirection: "column",
 
   "& .background-image": {
     position: "absolute",
@@ -18,11 +14,19 @@ export const SectionPolicy = styled("section")(({ theme }) => ({
     zIndex: -1,
   },
 
-  ".opacity": {
+  "& .opacity": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     width: "100%",
-    height: "100%",
+    minHeight: "100vh",
+  },
+
+  "& .section-privacy": {
+    padding: "64px 24px",
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "32px 16px",
+    },
   },
 }));

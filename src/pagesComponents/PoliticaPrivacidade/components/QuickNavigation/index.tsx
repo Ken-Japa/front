@@ -1,5 +1,6 @@
-import { Box, Typography, Skeleton } from "@mui/material";
-import { PRIVACY_SECTIONS } from "../constants/sections";
+import { Skeleton } from "@mui/material";
+import { PRIVACY_SECTIONS } from "../../constants/sections";
+import { NavigationContainer, NavigationTitle } from "./styled";
 
 interface QuickNavigationProps {
     onSectionClick: (sectionId: string) => void;
@@ -9,9 +10,9 @@ interface QuickNavigationProps {
 export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationProps) => {
     if (isLoading) {
         return (
-            <Box className="bg-[#ffffff10] p-6 rounded-lg mb-12 backdrop-blur-sm">
+            <NavigationContainer>
                 <Skeleton variant="text" width={200} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                <div className="navigation-grid">
                     {Array(8).fill(0).map((_, index) => (
                         <Skeleton 
                             key={index} 
@@ -21,16 +22,17 @@ export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationPr
                         />
                     ))}
                 </div>
-            </Box>
+            </NavigationContainer>
         );
     }
+
     return (
         <>
-            <Typography variant="h6" className="text-[#0D95F9] mb-4 text-center">
+            <NavigationTitle variant="h6">
                 Navegação Rápida
-            </Typography>
-            <Box className="bg-[#ffffff10] p-6 rounded-lg mb-12 backdrop-blur-sm">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            </NavigationTitle>
+            <NavigationContainer>
+                <div className="navigation-grid">
                     {PRIVACY_SECTIONS.map((section) => (
                         <a
                             key={section.id}
@@ -39,13 +41,13 @@ export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationPr
                                 e.preventDefault();
                                 onSectionClick(section.id);
                             }}
-                            className="text-white/85 hover:text-[#0D95F9] transition-colors cursor-pointer"
+                            className="nav-link"
                         >
                             {section.title}
                         </a>
                     ))}
                 </div>
-            </Box>
+            </NavigationContainer>
         </>
     );
 };

@@ -7,9 +7,9 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { VantagensSection } from "./components/VantagensSection";
 import { RecursosSection } from "./components/RecursosSection";
 import { PlanosSection } from "./components/PlanosSection";
-import { EmbaixadorSection } from "./components/EmbaixadorSection";
+import { EmbaixadorSection } from "./components/EmbaixadorSection/";
 import { TestimonialsSection } from "./components/TestimonialsSection";
-import { FAQSection } from "./components/FAQSection";
+import { FAQSection } from "./components/FAQSection/";
 
 export const Pricing = () => {
     return (
@@ -25,14 +25,12 @@ export const Pricing = () => {
                         />
                     </div>
                     <div className="opacity">
-                        <div className="opacity min-h-screen">
-                            <VantagensSection />
-                            <RecursosSection />
-                            <PlanosSection />
-                            <EmbaixadorSection />
-                            <TestimonialsSection />
-                            <FAQSection />
-                        </div>
+                        <VantagensSection />
+                        <RecursosSection />
+                        <PlanosSection />
+                        <EmbaixadorSection />
+                        <TestimonialsSection />
+                        <FAQSection />
                     </div>
                 </SectionPricing>
             </ErrorBoundary>

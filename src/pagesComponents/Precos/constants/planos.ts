@@ -1,4 +1,12 @@
-export const PLANOS = [
+interface PlanoType {
+    tipo: string;
+    preco: string;
+    periodo: string;
+    buttonText: string;
+    desconto?: string;
+}
+
+export const PLANOS: PlanoType[] = [
     {
         tipo: "Mensal",
         preco: "R$30",

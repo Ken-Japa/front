@@ -7,10 +7,10 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Header } from "./components/Header";
-import { QuickNavigation } from "./components/QuickNavigation";
+import { Header } from "./components/Header/";
+import { QuickNavigation } from "./components/QuickNavigation/";
 import { PrivacyContent } from "./components/PrivacyContent";
-import { ScrollToTop } from "./components/ScrollToTop";
+import { ScrollToTop } from "./components/ScrollToTop/";
 import { useScroll } from "./hooks/useScroll";
 import { CONFIG } from './constants/config';
 
@@ -40,7 +40,7 @@ export const PrivacyPolicy = () => {
                     </div>
                     <div className="opacity">
                         <div className="section-privacy">
-                            <Container maxWidth="lg" className="py-16">
+                            <Container maxWidth="lg">
                                 {isLoading ? (
                                     <Stack spacing={3} width="100%">
                                         <ContentSkeleton />

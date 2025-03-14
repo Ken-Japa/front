@@ -6,7 +6,7 @@ export const ConsentimentoSection = () => (
 
             <br /> <br />
             Você pode revogar o consentimento a qualquer tempo, mediante solicitação enviada para o Encarregado de Dados da Auge Invest através do e-mail:
-            <Link href="mailto:privacidade@capitalauge.com.br" color="info">privacidade@capitalauge.com.br.</Link>
+            <Link href="mailto:privacidade@capitalauge.com.br" color="info"> privacidade@capitalauge.com.br.</Link>
         </p>
 
     </>

@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import { PrivacySection } from "./PrivacySection";
+import { PrivacySection } from "../components/PrivacySection";
 import { PRIVACY_SECTIONS } from "../constants/sections";
 import {
     DadosSection,
@@ -27,9 +27,9 @@ export const PrivacyContent = () => {
     return (
         <Stack direction="column" spacing={6} className="text-white/95">
             {PRIVACY_SECTIONS.map(section => (
-                <PrivacySection 
-                    key={section.id} 
-                    id={section.id} 
+                <PrivacySection
+                    key={section.id}
+                    id={section.id}
                     title={section.title}
                 >
                     {sections[section.id as keyof typeof sections]}
