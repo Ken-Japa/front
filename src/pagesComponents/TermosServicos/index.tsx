@@ -61,8 +61,8 @@ export const TermsServices = () => {
                             className="object-cover"
                         />
                     </div>
-                    <div className="opacity">
-                        <Container maxWidth="lg" className="py-16">
+                    <div className="opacity-layer">
+                        <Container maxWidth="lg" className="content-wrapper">
                             {isLoading ? (
                                 <LoadingSkeleton />
                             ) : (
