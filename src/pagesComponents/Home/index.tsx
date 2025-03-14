@@ -142,7 +142,7 @@ export const Home = () => {
                                     Escolha o Plano Ideal
                                 </h2>
                                 <p className="text-white/90 text-center max-w-2xl">
-                                    Invista no seu futuro – Não pague por ferramentas ultrapassadas. <br />
+                                    Invista no seu futuro – Não pague por ferramentas ultrapassadas. <br /> <br />
                                     Escolha a opção que melhor atende às suas necessidades.
                                 </p>
                             </Stack>

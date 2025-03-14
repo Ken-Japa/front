@@ -34,13 +34,13 @@ export const Welcome = () => {
             icon: <PsychologyIcon sx={{ fontSize: 50, color: "#0D95F9" }} />,
             title: "Previsões com Redes Neurais",
             value: "",
-            description: "Análise automática de padrões para identificar oportunidades antes do mercado"
+            description: "Análise automática de padrões para identificar oportunidades antes que todos"
         },
         {
             icon: <NotificationsActiveIcon sx={{ fontSize: 50, color: "#0D95F9" }} />,
             title: "Alertas de Preço Cirúrgicos",
             value: "",
-            description: "Configure níveis críticos e receba notificações exatas no seu celular"
+            description: "Configure níveis críticos e receba notificações exatas no seu celular ou no email"
         }
     ];
 

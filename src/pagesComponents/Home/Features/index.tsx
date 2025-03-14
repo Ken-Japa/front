@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import TimelineIcon from '@mui/icons-material/Timeline';
@@ -28,7 +28,7 @@ export const Features = () => {
         {
             icon: <ShowChartIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
             title: "Análise Técnica Profissional",
-            description: "Gráficos em 3D de opções + ferramentas que fundos pagam milhões para usar",
+            description: "Gráficos, dados e ferramentas que fundos pagam muito para usar",
             image: "/assets/images/imagens/Analise-Tecnica.jpg",
             highlights: ["Simule estratégias complexas em cenários históricos", "Visualize volatilidade em tempo real com heatmaps interativos", "Histograma: descubra as oportunidades do mercado para comprar e vender"]
         },
@@ -54,7 +54,7 @@ export const Features = () => {
                 {isLoading ? (
                     <ContentSkeleton />
                 ) : (
-                    <>
+                    <Stack className="gap-2">
                         <MatrixRainText
                             text="Por que escolher a Auge Invest?"
                             className="text-4xl font-bold text-white mb-4"
@@ -62,7 +62,7 @@ export const Features = () => {
                         <Typography variant="h6" className="text-white/70">
                             Tecnologia de Hedge Fund, Preço de Startup
                         </Typography>
-                    </>
+                    </Stack>
                 )}
             </Box>
 
@@ -77,7 +77,7 @@ export const Features = () => {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
-                                className="relative h-[400px] rounded-xl overflow-hidden"
+                                className="relative h-[500px] rounded-xl overflow-hidden"
                             >
                                 <OptimizedImage
                                     src={features[activeFeature].image}
@@ -86,11 +86,11 @@ export const Features = () => {
                                     className="object-cover w-full h-full"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                                <div className="absolute bottom-0 left-0 p-6">
-                                    <Typography variant="h4" className="text-white mb-2">
+                                <div className="absolute bottom-0 left-0 p-8">
+                                    <Typography variant="h4" className="text-white mb-3">
                                         {features[activeFeature].title}
                                     </Typography>
-                                    <Typography className="text-white/70">
+                                    <Typography className="text-white/70 mb-4">
                                         {features[activeFeature].description}
                                     </Typography>
                                 </div>
