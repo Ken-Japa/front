@@ -137,7 +137,7 @@ export const Features = () => {
                                                         {feature.highlights.map((highlight, idx) => (
                                                             <span
                                                                 key={idx}
-                                                                className="px-3 py-1 rounded-full bg-[#0D95F9]/20 text-[#0D95F9] text-sm"
+                                                                className="px-3 py-1 rounded-full bg-[#0969A6]/20 text-[#52BCFF] text-sm"
                                                             >
                                                                 {highlight}
                                                             </span>

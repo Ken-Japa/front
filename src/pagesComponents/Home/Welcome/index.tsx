@@ -90,12 +90,13 @@ export const Welcome = () => {
                                         <CustomButton
                                             value="Experimente Grátis por 21 Dias"
                                             Icon={RocketLaunchIcon}
-                                            color="secondary"
+                                            customColor="#F5F5F5"
+                                            textColor="#000000"
                                         />
                                         <CustomButton
                                             value="Ver Demonstração em Vídeo"
                                             Icon={PlayCircleIcon}
-                                            color="primary"
+                                            customColor="#0056b3"
                                         />
                                     </Stack>
                                 </Stack>

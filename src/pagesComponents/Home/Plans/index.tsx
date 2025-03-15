@@ -16,10 +16,10 @@ export const Plans = () => {
             </div>
             <div className="plans">
                 <Stack direction="column" alignItems="center" width="100%" gap="30px">
-                    <Stack 
-                        width="100%" 
-                        direction={{ xs: 'column', md: 'row' }} 
-                        justifyContent="space-around" 
+                    <Stack
+                        width="100%"
+                        direction={{ xs: 'column', md: 'row' }}
+                        justifyContent="space-around"
                         alignItems="center"
                         spacing={{ xs: 3, md: 2 }}
                     >
@@ -28,7 +28,7 @@ export const Plans = () => {
                             price="R$80"
                             discount="12%"
                             valueBtn="Eu quero"
-                            colorBtn="info"
+                            customColorBtn="#0056b3"
                         />
                         <Card
                             title="Mensal"
@@ -49,7 +49,7 @@ export const Plans = () => {
                             price="R$280"
                             discount="23%"
                             valueBtn="Aproveitar desconto"
-                            colorBtn="info"
+                            customColorBtn="#0056b3"
                         />
                     </Stack>
                     <Stack sx={{ width: { xs: '100%', md: 'auto' } }}>
@@ -64,7 +64,8 @@ export const Plans = () => {
                                 'Assinatura vitalícia (atingindo 5 mil usuários)'
                             ]}
                             valueBtn="Patrocinar"
-                            colorBtn="primary"
+                            customColorBtn="#FFD700"
+                            textColorBtn="#000000"
                         />
                     </Stack>
                 </Stack>

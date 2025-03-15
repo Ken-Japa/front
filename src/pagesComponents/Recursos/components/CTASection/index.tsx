@@ -1,6 +1,7 @@
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Link from 'next/link';
 import { CTAContainer } from "./styled";
+import { CustomButton } from "@/components/Custom/Button";
 
 export const CTASection = () => (
     <CTAContainer>
@@ -11,15 +12,14 @@ export const CTASection = () => (
             <Typography className="cta-description">
                 Comece agora a usar ferramentas avançadas para tomar decisões mais precisas em seus investimentos.
             </Typography>
-            <Button
-                variant="contained"
-                color="info"
+            <CustomButton
+                value="Começar Gratuitamente"
+                customColor="#0056b3"
+                textColor="#FFFFFF"
                 size="large"
-                href="/register"
-                className="mt-4 px-8 py-3"
-            >
-                Começar Gratuitamente
-            </Button>
+                className="mt-4"
+                padding="24px 32px"
+            />
             <Link href="/precos" className="cta-link">
                 <Typography>
                     Veja qual plano é o melhor para você

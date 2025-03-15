@@ -1,46 +1,79 @@
-import { Button } from '@mui/material';
+import { Button, ButtonProps, Theme } from '@mui/material';
 import { OverridableStringUnion } from '@mui/types';
-import { ButtonPropsColorOverrides } from '@mui/material';
+import { ButtonPropsColorOverrides, ButtonPropsSizeOverrides } from '@mui/material';
+import { SxProps } from '@mui/system';
 
-interface CustomButtonProps {
+interface CustomButtonProps extends Omit<ButtonProps, 'startIcon' | 'variant' | 'color' | 'size'> {
     value: string;
     Icon?: React.ComponentType;
     color?: OverridableStringUnion<
         'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
         ButtonPropsColorOverrides
     >;
+    customColor?: string;
+    textColor?: string;
+    variant?: 'contained' | 'outlined' | 'text';
+    size?: OverridableStringUnion<'small' | 'medium' | 'large', ButtonPropsSizeOverrides>;
     margin?: string;
     align?: string;
-    onClick?: () => void;
-    className?: string;
-    fullWidth?: boolean;
+    padding?: string;
+    borderRadius?: string;
+    disabled?: boolean;
 }
 
 export const CustomButton = ({
     value,
     Icon,
     color = "primary",
+    customColor,
+    textColor,
+    variant = "contained",
+    size = "medium",
     onClick,
     fullWidth,
     margin,
     align,
-    className
+    padding = '10px 30px',
+    borderRadius = '100px',
+    disabled = false,
+    className,
+    sx,
+    ...props
 }: CustomButtonProps) => {
+    const customStyles: SxProps<Theme> = {
+        margin,
+        alignSelf: align,
+        padding,
+        borderRadius,
+        textTransform: 'none',
+        '&.Mui-disabled': {
+            opacity: 0.7,
+        },
+        ...(customColor && {
+            bgcolor: customColor,
+            '&:hover': {
+                bgcolor: customColor,
+                filter: 'brightness(0.9)',
+            },
+        }),
+        ...(textColor && {
+            color: textColor,
+        }),
+        ...sx
+    };
+
     return (
         <Button
             onClick={onClick}
             fullWidth={fullWidth}
-            variant="contained"
-            color={color}
+            variant={variant}
+            color={customColor ? undefined : color}
+            size={size}
+            disabled={disabled}
             className={className}
-            sx={{
-                margin: margin,
-                alignSelf: align,
-                textTransform: 'none',
-                borderRadius: '100px',
-                padding: '10px 30px'
-            }}
+            sx={customStyles}
             startIcon={Icon && <Icon />}
+            {...props}
         >
             {value}
         </Button>

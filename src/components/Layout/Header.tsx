@@ -69,7 +69,8 @@ export const Header = () => {
                                     <CustomButton
                                         value="Login"
                                         Icon={PermIdentity}
-                                        color="secondary"
+                                        customColor="#F5F5F5"
+                                        textColor="#000000"
                                         onClick={() => {
                                             router.push('/login');
                                             handleDrawerToggle();
@@ -79,7 +80,8 @@ export const Header = () => {
                                     <CustomButton
                                         value="Registrar"
                                         Icon={PermIdentity}
-                                        color="success"
+                                        customColor="#0056b3"
+                                        textColor="#FFFFFF"
                                         onClick={() => {
                                             router.push('/register');
                                             handleDrawerToggle();
@@ -102,13 +104,15 @@ export const Header = () => {
                             <CustomButton
                                 value="Login"
                                 Icon={PermIdentity}
-                                color="secondary"
+                                customColor="#F5F5F5"
+                                textColor="#000000"
                                 onClick={() => router.push('/login')}
                             />
                             <CustomButton
                                 value="Registrar"
                                 Icon={PermIdentity}
-                                color="success"
+                                customColor="#0056b3"
+                                textColor="#FFFFFF"
                                 onClick={() => router.push('/register')}
                             />
                         </motion.div>

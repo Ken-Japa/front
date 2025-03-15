@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
 import { EMBAIXADOR_BENEFICIOS } from "../../constants/embaixador";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { EmbaixadorCard, Description } from "./styled";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+import { CustomButton } from "@/components/Custom/Button";
 
 export const EmbaixadorSection = () => (
     <BaseSection>
@@ -28,13 +28,12 @@ export const EmbaixadorSection = () => (
                         </li>
                     ))}
                 </ul>
-                <Button
-                    variant="contained"
-                    color="secondary"
+                <CustomButton
+                    value="Tornar-se Embaixador"
+                    customColor="#3A1078"
+                    textColor="#FFFFFF"
                     fullWidth
-                >
-                    Tornar-se Embaixador
-                </Button>
+                />
             </EmbaixadorCard>
         </ContentWrapper>
     </BaseSection>

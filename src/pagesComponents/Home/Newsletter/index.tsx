@@ -1,4 +1,5 @@
-import { Stack, Typography, TextField, Button } from "@mui/material";
+import { Stack, Typography, TextField } from "@mui/material";
+import { CustomButton } from "@/components/Custom/Button";
 import { NewsletterContainer } from "./styled";
 
 export const Newsletter = () => (
@@ -21,13 +22,12 @@ export const Newsletter = () => (
                         }
                     }}
                 />
-                <Button
-                    variant="contained"
-                    color="info"
+                <CustomButton
+                    value="Cadastrar"
+                    customColor="#0056b3"
+                    textColor="#FFFFFF"
                     sx={{ minWidth: { xs: '100%', sm: '120px' } }}
-                >
-                    Cadastrar
-                </Button>
+                />
             </Stack>
         </Stack>
     </NewsletterContainer>

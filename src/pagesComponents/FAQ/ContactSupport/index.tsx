@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SupportContainer } from "./styled";
+import { CustomButton } from "@/components/Custom/Button";
 
 export const ContactSupport = () => {
     return (
@@ -9,9 +10,11 @@ export const ContactSupport = () => {
                 Nossa equipe de suporte está pronta para ajudar você
             </p>
             <Link href="/contato">
-                <button className="support-button">
-                    Contatar Suporte
-                </button>
+                <CustomButton
+                    value="Contatar Suporte"
+                    customColor="#0056b3"
+                    textColor="#FFFFFF"
+                />
             </Link>
         </SupportContainer>
     );

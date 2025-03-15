@@ -1,7 +1,7 @@
-import { Button } from "@mui/material";
 import { PLANOS } from "../../constants/planos";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { PlanosGrid, PlanoCard } from "./styled";
+import { CustomButton } from "@/components/Custom/Button";
 
 export const PlanosSection = () => (
     <BaseSection>
@@ -16,13 +16,12 @@ export const PlanosSection = () => (
                         {plano.desconto && (
                             <p className="plano-desconto">{plano.desconto}</p>
                         )}
-                        <Button
-                            variant="contained"
-                            color="primary"
+                        <CustomButton
+                            value={plano.buttonText}
+                            customColor="#0056b3"
+                            textColor="#FFFFFF"
                             fullWidth
-                        >
-                            {plano.buttonText}
-                        </Button>
+                        />
                     </PlanoCard>
                 ))}
             </PlanosGrid>
