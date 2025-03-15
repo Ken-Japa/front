@@ -1,32 +1,54 @@
 "use client";
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Stack } from '@mui/material';
+import { CustomButton } from '@/components/Custom/Button';
 
 interface Props {
     children: ReactNode;
+    fallbackComponent?: ReactNode;
 }
 
 interface State {
     hasError: boolean;
     error: Error | null;
+    errorInfo: ErrorInfo | null;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
     public state: State = {
         hasError: false,
-        error: null
+        error: null,
+        errorInfo: null
     };
 
     public static getDerivedStateFromError(error: Error): State {
-        return { hasError: true, error };
+        return { hasError: true, error, errorInfo: null };
     }
 
     public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-        console.error('Error caught by boundary:', error, errorInfo);
+        this.setState({ errorInfo });
+        // Aqui você pode adicionar sua lógica de logging de erros
+        console.error('Error details:', {
+            error: error.toString(),
+            stack: error.stack,
+            componentStack: errorInfo.componentStack
+        });
     }
+
+    private handleReset = () => {
+        this.setState({ hasError: false, error: null, errorInfo: null });
+    };
+
+    private handleReload = () => {
+        window.location.reload();
+    };
 
     public render() {
         if (this.state.hasError) {
+            if (this.props.fallbackComponent) {
+                return this.props.fallbackComponent;
+            }
+
             return (
                 <Box
                     sx={{
@@ -35,8 +57,8 @@ export class ErrorBoundary extends Component<Props, State> {
                         alignItems: 'center',
                         justifyContent: 'center',
                         minHeight: '100vh',
-                        bgcolor: 'background.default',
-                        color: 'text.primary',
+                        bgcolor: '#1A1A1A',
+                        color: 'white',
                         p: 3,
                         textAlign: 'center'
                     }}
@@ -44,16 +66,30 @@ export class ErrorBoundary extends Component<Props, State> {
                     <Typography variant="h4" component="h1" gutterBottom>
                         Oops! Algo deu errado.
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                    <Typography variant="body1" sx={{ mb: 4, color: 'rgba(255, 255, 255, 0.7)' }}>
                         Não se preocupe, estamos cientes do problema.
                     </Typography>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => window.location.reload()}
-                    >
-                        Recarregar Página
-                    </Button>
+                    <Stack direction="row" spacing={2}>
+                        <CustomButton
+                            value="Tentar Novamente"
+                            customColor="#0056b3"
+                            textColor="#FFFFFF"
+                            onClick={this.handleReset}
+                        />
+                        <CustomButton
+                            value="Recarregar Página"
+                            customColor="#2196F3"
+                            textColor="#FFFFFF"
+                            onClick={this.handleReload}
+                        />
+                    </Stack>
+                    {process.env.NODE_ENV === 'development' && this.state.error && (
+                        <Box sx={{ mt: 4, p: 2, bgcolor: 'rgba(255, 255, 255, 0.05)', borderRadius: 1 }}>
+                            <Typography variant="body2" color="error" sx={{ fontFamily: 'monospace' }}>
+                                {this.state.error.toString()}
+                            </Typography>
+                        </Box>
+                    )}
                 </Box>
             );
         }

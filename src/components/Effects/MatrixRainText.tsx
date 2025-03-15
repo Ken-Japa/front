@@ -1,17 +1,43 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 interface Props {
     text: string;
     className?: string;
     onComplete?: () => void;
     triggerOnce?: boolean;
+    charDelay?: number;    // New prop for customization
+    animationDuration?: number;  // New prop for customization
 }
 
-export const MatrixRainText = ({ text, className = '', onComplete, triggerOnce = false }: Props) => {
+export const MatrixRainText = ({ 
+    text, 
+    className = '', 
+    onComplete, 
+    triggerOnce = false,
+    charDelay = 25,
+    animationDuration = 0.2 
+}: Props) => {
     const containerRef = useRef<HTMLSpanElement>(null);
     const hasPlayedRef = useRef(false);
+
+    const createCharSpan = useCallback((char: string) => {
+        const charSpan = document.createElement('span');
+        charSpan.style.opacity = '0';
+        charSpan.style.position = 'relative';
+        charSpan.style.display = 'inline-block';
+        charSpan.textContent = char;
+        return charSpan;
+    }, []);
+
+    const animateChar = useCallback((charSpan: HTMLSpanElement, delay: number) => {
+        setTimeout(() => {
+            charSpan.style.transition = `all ${animationDuration}s ease`;
+            charSpan.style.opacity = '1';
+            charSpan.style.animation = `matrixDrop ${animationDuration}s forwards`;
+        }, delay);
+    }, [animationDuration]);
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -25,25 +51,15 @@ export const MatrixRainText = ({ text, className = '', onComplete, triggerOnce =
         container.innerHTML = '';
 
         let totalDelay = 0;
-        const charDelay = 25; // Reduced from 50 to 25ms
 
         words.forEach((word, wordIndex) => {
             const wordSpan = document.createElement('span');
             const chars = word.split('');
 
             chars.forEach((char, charIndex) => {
-                const charSpan = document.createElement('span');
-                charSpan.style.opacity = '0';
-                charSpan.style.position = 'relative';
-                charSpan.style.display = 'inline-block';
-                charSpan.textContent = char;
+                const charSpan = createCharSpan(char);
                 wordSpan.appendChild(charSpan);
-
-                setTimeout(() => {
-                    charSpan.style.transition = 'all 0.1s ease'; // Reduced from 0.2s to 0.1s
-                    charSpan.style.opacity = '1';
-                    charSpan.style.animation = 'matrixDrop 0.2s forwards'; // Reduced from 0.3s to 0.2s
-                }, totalDelay + charIndex * charDelay);
+                animateChar(charSpan, totalDelay + charIndex * charDelay);
             });
 
             container.appendChild(wordSpan);
@@ -57,11 +73,18 @@ export const MatrixRainText = ({ text, className = '', onComplete, triggerOnce =
         });
 
         if (onComplete) {
-            setTimeout(onComplete, totalDelay + 150);
+            setTimeout(onComplete, totalDelay + (charDelay * 2));
         }
 
         hasPlayedRef.current = true;
-    }, [text, onComplete, triggerOnce]);
+
+        // Cleanup function
+        return () => {
+            if (container) {
+                container.innerHTML = '';
+            }
+        };
+    }, [text, onComplete, triggerOnce, charDelay, createCharSpan, animateChar]);
 
     return (
         <>
