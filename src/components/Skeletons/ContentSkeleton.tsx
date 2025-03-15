@@ -4,14 +4,24 @@ import { Box, Skeleton, Stack } from "@mui/material";
 
 interface ContentSkeletonProps {
   type?: "text" | "card" | "form";
+  className?: string;
+  cardHeight?: number;
+  formFields?: number;
+  textLines?: number;
 }
 
-export const ContentSkeleton = ({ type = "text" }: ContentSkeletonProps) => {
+export const ContentSkeleton = ({ 
+  type = "text",
+  className = "",
+  cardHeight = 200,
+  formFields = 4,
+  textLines = 3
+}: ContentSkeletonProps) => {
   if (type === "card") {
     return (
-      <Box className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm">
+      <Box className={`p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm ${className}`}>
         <Stack spacing={2}>
-          <Skeleton variant="rectangular" height={200} className="bg-white/10" />
+          <Skeleton variant="rectangular" height={cardHeight} className="bg-white/10" />
           <Skeleton variant="text" className="bg-white/10" />
           <Skeleton variant="text" width="60%" className="bg-white/10" />
           <Stack direction="row" spacing={1}>
@@ -25,21 +35,30 @@ export const ContentSkeleton = ({ type = "text" }: ContentSkeletonProps) => {
 
   if (type === "form") {
     return (
-      <Stack spacing={3} className="p-4">
+      <Stack spacing={3} className={`p-4 ${className}`}>
         <Skeleton variant="text" width="40%" height={32} className="bg-white/10" />
-        <Skeleton variant="rounded" height={56} className="bg-white/10" />
-        <Skeleton variant="rounded" height={56} className="bg-white/10" />
-        <Skeleton variant="rounded" height={56} className="bg-white/10" />
-        <Skeleton variant="rounded" height={48} className="bg-white/10" />
+        {Array(formFields).fill(0).map((_, index) => (
+          <Skeleton 
+            key={index}
+            variant="rounded" 
+            height={56} 
+            className="bg-white/10" 
+          />
+        ))}
       </Stack>
     );
   }
 
   return (
-    <Stack spacing={1}>
-      <Skeleton variant="text" className="bg-white/10" />
-      <Skeleton variant="text" width="80%" className="bg-white/10" />
-      <Skeleton variant="text" width="60%" className="bg-white/10" />
+    <Stack spacing={1} className={className}>
+      {Array(textLines).fill(0).map((_, index) => (
+        <Skeleton 
+          key={index}
+          variant="text" 
+          width={index === textLines - 1 ? "60%" : "100%"}
+          className="bg-white/10" 
+        />
+      ))}
     </Stack>
   );
 };

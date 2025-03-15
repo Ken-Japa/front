@@ -3,6 +3,7 @@
 import Image, { ImageProps } from "next/image";
 import { useState, useCallback } from "react";
 import { ReactEventHandler } from "react";
+import { ErrorContainer } from "./styled";
 
 interface OptimizedImageProps extends Omit<ImageProps, 'src' | 'alt'> {
     src: string;
@@ -40,12 +41,12 @@ export const OptimizedImage = ({
 
     if (hasError) {
         return (
-            <div 
-                className={`bg-gray-200 flex items-center justify-center ${className}`}
-                style={{ aspectRatio: props.width && props.height ? `${props.width}/${props.height}` : undefined }}
+            <ErrorContainer
+                className={className}
+                aspectRatio={props.width && props.height ? `${props.width}/${props.height}` : undefined}
             >
                 <span className="text-gray-400">Failed to load image</span>
-            </div>
+            </ErrorContainer>
         );
     }
 
