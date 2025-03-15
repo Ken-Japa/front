@@ -1,9 +1,10 @@
 export const post = {
-    id: "1",
-    title: "Análise Técnica: Como Identificar Tendências no Mercado",
-    description: "Um guia completo sobre como identificar e aproveitar tendências no mercado financeiro usando análise técnica.",
-    content: `
-# Análise Técnica: Como Identificar Tendências no Mercado
+  id: "1",
+  title: "Análise Técnica: Como Identificar Tendências no Mercado",
+  description:
+    "Um guia completo sobre como identificar e aproveitar tendências no mercado financeiro usando análise técnica.",
+  content: `
+# Análise do Mercado
 
 A análise técnica é uma ferramenta fundamental para investidores que buscam entender os movimentos do mercado. Neste artigo, vamos explorar as principais técnicas e indicadores para identificar tendências.
 
@@ -25,7 +26,7 @@ O MACD é um indicador versátil que pode ajudar a identificar:
 - Momentum do mercado
 - Possíveis pontos de reversão
 
-## Como Aplicar na Prática
+# Como Aplicar na Prática
 
 1. **Observe o Contexto Maior**
    - Analise diferentes timeframes
@@ -35,16 +36,22 @@ O MACD é um indicador versátil que pode ajudar a identificar:
    - Use múltiplos indicadores
    - Procure convergências
 
-## Conclusão
+# Conclusão
+## C2
+### C3
+#### C4
+##### C5
+###### C6
+
 
 A identificação de tendências é uma habilidade essencial para qualquer trader ou investidor. Com prática e as ferramentas certas, você pode melhorar significativamente suas análises.
     `,
-    image: "/assets/images/blog/technical-analysis.jpg",
-    category: "analise-tecnica",
-    author: "João Silva",
-    date: "2024-01-15",
-    slug: "analise-tecnica-tendencias",
-    tags: ["análise técnica", "tendências", "trading", "indicadores"],
-    readTime: "8 min",
-    relatedPosts: ["fundamentos-mercado", "price-action-basico"]
+  image: "",
+  category: "analise-tecnica",
+  author: "João Silva",
+  date: "2024-01-15",
+  slug: "analise-tecnica-tendencias",
+  tags: ["análise técnica", "tendências", "trading", "indicadores"],
+  readTime: "8 min",
+  relatedPosts: ["derivativos", "price-action-basico"],
 };

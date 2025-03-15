@@ -14,15 +14,25 @@ export const BlogHeader = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <Typography 
-                            variant="h1" 
-                            className="text-4xl md:text-5xl font-bold text-white mb-4"
+                        <Typography
+                            variant="h1"
+                            sx={{
+                                fontSize: { xs: '2rem', md: '3rem' },
+                                fontWeight: 700,
+                                color: '#0D95F9',
+                                marginBottom: '3rem'
+                            }}
                         >
                             Blog Auge Invest
                         </Typography>
-                        <Typography 
-                            variant="h2" 
-                            className="text-xl md:text-2xl text-white/80 max-w-2xl"
+                        <Typography
+                            variant="h2"
+                            sx={{
+                                fontSize: { xs: '1.3rem', md: '1.25rem' },
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                maxWidth: '32rem',
+                                margin: '0 auto'
+                            }}
                         >
                             Análises, insights e estratégias para você tomar as melhores decisões no mercado financeiro.
                         </Typography>
