@@ -26,7 +26,12 @@ export default function AboutPage() {
     }, []);
 
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <SectionTeam>
                     <div className="background-image">

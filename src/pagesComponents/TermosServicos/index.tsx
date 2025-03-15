@@ -50,7 +50,12 @@ export const TermsServices = () => {
     };
 
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <SectionTermsServices>
                     <div className="background-image">

@@ -27,7 +27,12 @@ export const PrivacyPolicy = () => {
     }, []);
 
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <SectionPolicy>
                     <div className="background-image">

@@ -45,7 +45,12 @@ export const Home = () => {
 
     if (isLoading) {
         return (
-            <PageTransition>
+            <PageTransition
+                direction="up"
+                duration={0.4}
+                distance={30}
+                className="w-full"
+            >
                 <ErrorBoundary>
                     <main className="bg-gradient-to-b from-black to-[#001529]">
                         <Container maxWidth="xl">
@@ -103,7 +108,12 @@ export const Home = () => {
     }
 
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <MainContainer>
                     <Section>

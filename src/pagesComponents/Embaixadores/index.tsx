@@ -11,7 +11,12 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 
 export default function Ambassadors() {
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <main className="min-h-screen relative">
                     <div className="absolute inset-0 w-full h-full">

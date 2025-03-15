@@ -13,7 +13,12 @@ import { FAQSection } from "./components/FAQSection/";
 
 export const Pricing = () => {
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <SectionPricing>
                     <div className="background-image">

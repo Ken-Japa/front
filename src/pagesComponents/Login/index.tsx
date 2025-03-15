@@ -35,11 +35,16 @@ export const Login = () => {
     }, []);
 
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
-                <StyledDialog 
-                    open={true} 
-                    maxWidth="md" 
+                <StyledDialog
+                    open={true}
+                    maxWidth="md"
                     fullWidth
                     disableEscapeKeyDown
                 >

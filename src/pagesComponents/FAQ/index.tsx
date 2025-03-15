@@ -40,7 +40,12 @@ export const FAQ = () => {
             : categorizedQuestions[activeCategory];
 
     return (
-        <PageTransition>
+        <PageTransition
+            direction="up"
+            duration={0.4}
+            distance={30}
+            className="w-full"
+        >
             <ErrorBoundary>
                 <SectionFAQ>
                     <div className="background-image">
