@@ -1,11 +1,30 @@
 import { styled } from "@mui/material";
 
 export const SectionSolutions = styled("section")(({ theme }) => ({
-  background: "linear-gradient(180deg, #000000 0%, #001529 100%)",
   minHeight: "100vh",
   width: "100%",
   position: "relative",
   overflow: "hidden",
+
+  "& .video-background": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: 0,
+  },
+
+  "& .overlay": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,21,41,0.9) 100%)",
+    zIndex: 1,
+  },
 
   "&::before": {
     content: "''",
@@ -16,10 +35,13 @@ export const SectionSolutions = styled("section")(({ theme }) => ({
     bottom: 0,
     background: "radial-gradient(circle at center, rgba(13, 149, 249, 0.1) 0%, transparent 70%)",
     pointerEvents: "none",
+    zIndex: 2,
   }
 }));
 
 export const ContentWrapper = styled("div")(({ theme }) => ({
+  position: "relative",
+  zIndex: 3,
   display: "flex",
   flexDirection: "column",
   gap: "64px",
