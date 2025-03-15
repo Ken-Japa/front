@@ -10,19 +10,11 @@ import { PlanosSection } from "./components/PlanosSection";
 import { EmbaixadorSection } from "./components/EmbaixadorSection/";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { FAQSection } from "./components/FAQSection/";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export const Pricing = () => {
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
         <PageTransition
@@ -43,10 +35,11 @@ export const Pricing = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="opacity">
-                        {isLoading ? (
+                        {!imageLoaded ? (
                             <LoadingSkeleton />
                         ) : (
                             <>

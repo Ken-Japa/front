@@ -15,11 +15,7 @@ export const Features = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
+        setIsLoading(false);
     }, []);
 
 
@@ -51,7 +47,7 @@ export const Features = () => {
         <Container maxWidth="xl">
             <Box className="text-center mb-12">
                 {isLoading ? (
-                    <ContentSkeleton 
+                    <ContentSkeleton
                         type="text"
                         textLines={2}
                         className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
@@ -72,7 +68,7 @@ export const Features = () => {
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6}>
                     {isLoading ? (
-                        <ContentSkeleton 
+                        <ContentSkeleton
                             type="card"
                             cardHeight={500}
                             className="bg-[#ffffff0a] backdrop-blur-sm"
@@ -115,7 +111,7 @@ export const Features = () => {
                         {isLoading ? (
                             Array(3).fill(0).map((_, index) => (
                                 <Grid item xs={12} key={index}>
-                                    <ContentSkeleton 
+                                    <ContentSkeleton
                                         type="card"
                                         cardHeight={180}
                                         className="bg-[#ffffff0a] backdrop-blur-sm"

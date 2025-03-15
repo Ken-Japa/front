@@ -17,7 +17,7 @@ import { StyledCloseButton } from "./components/CloseButton/styled";
 
 export const Register = () => {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(true);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [registerAttempts, setRegisterAttempts] = useState(0);
     const [isBlocked, setIsBlocked] = useState(false);
@@ -89,11 +89,6 @@ export const Register = () => {
     });
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 1500);
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
         const checkBlockStatus = () => {
             const blockedUntil = localStorage.getItem('registerBlockedUntil');
             if (blockedUntil) {
@@ -134,6 +129,7 @@ export const Register = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="content">
@@ -141,7 +137,7 @@ export const Register = () => {
                             <CloseIcon />
                         </StyledCloseButton>
 
-                        {isLoading ? (
+                        {!imageLoaded ? (
                             <RegisterLoadingSkeleton />
                         ) : (
                             <RegisterFormContent

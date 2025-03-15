@@ -39,6 +39,7 @@ export const Contact = () => {
     const [contactAttempts, setContactAttempts] = useState(0);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blockTimer, setBlockTimer] = useState(0);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const [formData, setFormData] = useState<FormData>({
         name: "",
@@ -46,15 +47,6 @@ export const Contact = () => {
         subject: "",
         message: ""
     });
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     const [errors, setErrors] = useState<FormErrors>({});
     const [snackbar, setSnackbar] = useState({
@@ -190,20 +182,21 @@ export const Contact = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             sizes="100vw"
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="content-wrapper">
                         <Stack spacing={4} className="content-container">
-                            <Header isLoading={isLoading} />
+                            <Header isLoading={!imageLoaded} />
                             <Stack
                                 direction={{ xs: 'column', md: 'row' }}
                                 spacing={4}
                                 className="form-container"
                             >
-                                <ContactInfo isLoading={isLoading} />
-                                {isLoading ? (
+                                <ContactInfo isLoading={!imageLoaded} />
+                                {!imageLoaded ? (
                                     <Box flex={1}>
-                                        <ContentSkeleton 
+                                        <ContentSkeleton
                                             type="form"
                                             formFields={5}
                                             className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"

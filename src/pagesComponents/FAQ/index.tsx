@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Stack } from "@mui/material";
 import { SectionFAQ } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
@@ -18,15 +18,7 @@ import type { CategoryType } from "./data/faqData";
 export const FAQ = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeCategory, setActiveCategory] = useState<CategoryType>('todas');
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const filteredQuestions = searchTerm
         ? Object.values(categorizedQuestions)
@@ -58,10 +50,11 @@ export const FAQ = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="content-container">
-                        {isLoading ? (
+                        {!imageLoaded ? (
                             <Stack spacing={3} width="100%">
                                 <ContentSkeleton 
                                     type="text"

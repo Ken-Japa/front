@@ -1,7 +1,7 @@
 "use client";
 
 import { Stack } from "@mui/material";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SectionTeam } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
@@ -15,15 +15,7 @@ import { CompromissoSection } from "./components/CompromissoSection/";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export default function AboutPage() {
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
         <PageTransition
@@ -44,10 +36,11 @@ export default function AboutPage() {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="opacity" />
-                    {isLoading ? (
+                    {!imageLoaded ? (
                         <LoadingSkeleton />
                     ) : (
                         <div className="content">

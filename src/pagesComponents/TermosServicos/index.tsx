@@ -14,15 +14,7 @@ import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export const TermsServices = () => {
     const [showScrollTop, setShowScrollTop] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -68,11 +60,12 @@ export const TermsServices = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="opacity-layer">
                         <Container maxWidth="lg" className="content-wrapper">
-                            {isLoading ? (
+                            {!imageLoaded ? (
                                 <LoadingSkeleton />
                             ) : (
                                 <>

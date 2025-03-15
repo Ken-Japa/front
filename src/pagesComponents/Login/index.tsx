@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import { OptimizedImage } from "@/components/OptimizedImage";
@@ -13,7 +13,7 @@ import { StyledCloseButton } from "./components/CloseButton/styled";
 
 export const Login = () => {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(true);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const {
         formData,
         errors,
@@ -25,14 +25,6 @@ export const Login = () => {
         setRememberMe,
         handleGoogleSignIn
     } = useLoginForm();
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <PageTransition
@@ -58,6 +50,7 @@ export const Login = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="content">
@@ -68,7 +61,7 @@ export const Login = () => {
                         <LoginFormComponent
                             formData={formData}
                             errors={errors}
-                            isLoading={isLoading}
+                            isLoading={!imageLoaded}
                             isBlocked={isBlocked}
                             blockTimer={blockTimer}
                             rememberMe={rememberMe}

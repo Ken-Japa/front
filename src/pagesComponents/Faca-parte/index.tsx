@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SectionJoinTeam } from "./styled";
 import { Grid, Stack } from "@mui/material";
 import { OptimizedImage } from "@/components/OptimizedImage";
@@ -12,15 +12,7 @@ import { Benefits } from "./Benefits";
 import { ApplicationForm } from "./ApplicationForm";
 
 export const JoinTeam = () => {
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
-    }, []);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
         <PageTransition
@@ -41,13 +33,14 @@ export const JoinTeam = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="container">
                         <div className="content-wrapper">
                             <Grid container spacing={6}>
                                 <Grid item xs={12} md={5}>
-                                    {isLoading ? (
+                                    {!imageLoaded ? (
                                         <Stack spacing={6}>
                                             <ContentSkeleton 
                                                 type="text"
@@ -62,20 +55,20 @@ export const JoinTeam = () => {
                                         </Stack>
                                     ) : (
                                         <Stack spacing={6}>
-                                            <Header isLoading={isLoading} />
-                                            <Benefits isLoading={isLoading} />
+                                            <Header isLoading={!imageLoaded} />
+                                            <Benefits isLoading={!imageLoaded} />
                                         </Stack>
                                     )}
                                 </Grid>
                                 <Grid item xs={12} md={7}>
-                                    {isLoading ? (
+                                    {!imageLoaded ? (
                                         <ContentSkeleton 
                                             type="form"
                                             formFields={6}
                                             className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                                         />
                                     ) : (
-                                        <ApplicationForm isLoading={isLoading} />
+                                        <ApplicationForm isLoading={!imageLoaded} />
                                     )}
                                 </Grid>
                             </Grid>

@@ -16,20 +16,15 @@ import { useRef } from 'react';
 export const Solutions = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [videoLoaded, setVideoLoaded] = useState(false);
 
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.playbackRate = 0.3;
+            videoRef.current.addEventListener('loadeddata', () => {
+                setVideoLoaded(true);
+            });
         }
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
-
-        return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -55,7 +50,7 @@ export const Solutions = () => {
 
                     <Container maxWidth="xl">
                         <ContentWrapper>
-                            {isLoading ? (
+                            {!videoLoaded ? (
                                 <LoadingSkeleton />
                             ) : (
                                 <>

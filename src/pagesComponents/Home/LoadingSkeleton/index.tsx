@@ -20,9 +20,9 @@ export const LoadingSkeleton = () => (
                     <ContentSkeleton type="text" textLines={2} className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm" />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                         {Array(6).fill(0).map((_, index) => (
-                            <ContentSkeleton 
-                                key={`feature-${index}`} 
-                                type="card" 
+                            <ContentSkeleton
+                                key={`feature-${index}`}
+                                type="card"
                                 cardHeight={200}
                                 className="bg-[#ffffff0a] backdrop-blur-sm"
                             />
@@ -36,8 +36,8 @@ export const LoadingSkeleton = () => (
                     <ContentSkeleton type="text" textLines={3} className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm" />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                         {Array(3).fill(0).map((_, index) => (
-                            <ContentSkeleton 
-                                key={`plan-${index}`} 
+                            <ContentSkeleton
+                                key={`plan-${index}`}
                                 type="card"
                                 cardHeight={400}
                                 className="bg-[#ffffff0a] backdrop-blur-sm"
@@ -51,8 +51,8 @@ export const LoadingSkeleton = () => (
                 <Stack spacing={4}>
                     <ContentSkeleton type="text" textLines={2} className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm" />
                     {Array(4).fill(0).map((_, index) => (
-                        <ContentSkeleton 
-                            key={`faq-${index}`} 
+                        <ContentSkeleton
+                            key={`faq-${index}`}
                             type="card"
                             cardHeight={100}
                             className="bg-[#ffffff0a] backdrop-blur-sm"
