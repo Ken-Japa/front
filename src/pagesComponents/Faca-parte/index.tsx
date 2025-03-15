@@ -49,8 +49,16 @@ export const JoinTeam = () => {
                                 <Grid item xs={12} md={5}>
                                     {isLoading ? (
                                         <Stack spacing={6}>
-                                            <ContentSkeleton />
-                                            <ContentSkeleton type="card" />
+                                            <ContentSkeleton 
+                                                type="text"
+                                                textLines={3}
+                                                className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                                            />
+                                            <ContentSkeleton 
+                                                type="card"
+                                                cardHeight={300}
+                                                className="bg-[#ffffff0a] backdrop-blur-sm"
+                                            />
                                         </Stack>
                                     ) : (
                                         <Stack spacing={6}>
@@ -61,7 +69,11 @@ export const JoinTeam = () => {
                                 </Grid>
                                 <Grid item xs={12} md={7}>
                                     {isLoading ? (
-                                        <ContentSkeleton type="form" />
+                                        <ContentSkeleton 
+                                            type="form"
+                                            formFields={6}
+                                            className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                                        />
                                     ) : (
                                         <ApplicationForm isLoading={isLoading} />
                                     )}

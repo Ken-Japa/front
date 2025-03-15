@@ -11,7 +11,11 @@ export const Header = ({ isLoading }: HeaderProps) => {
     return (
         <HeaderContainer>
             {isLoading ? (
-                <ContentSkeleton />
+                <ContentSkeleton 
+                    type="text"
+                    textLines={3}
+                    className="p-4"
+                />
             ) : (
                 <Stack spacing={2}>
                     <MatrixRainText

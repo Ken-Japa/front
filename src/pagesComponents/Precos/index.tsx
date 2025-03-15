@@ -10,8 +10,20 @@ import { PlanosSection } from "./components/PlanosSection";
 import { EmbaixadorSection } from "./components/EmbaixadorSection/";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { FAQSection } from "./components/FAQSection/";
+import { useState, useEffect } from "react";
+import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export const Pricing = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <PageTransition
             direction="up"
@@ -34,12 +46,18 @@ export const Pricing = () => {
                         />
                     </div>
                     <div className="opacity">
-                        <VantagensSection />
-                        <RecursosSection />
-                        <PlanosSection />
-                        <EmbaixadorSection />
-                        <TestimonialsSection />
-                        <FAQSection />
+                        {isLoading ? (
+                            <LoadingSkeleton />
+                        ) : (
+                            <>
+                                <VantagensSection />
+                                <RecursosSection />
+                                <PlanosSection />
+                                <EmbaixadorSection />
+                                <TestimonialsSection />
+                                <FAQSection />
+                            </>
+                        )}
                     </div>
                 </SectionPricing>
             </ErrorBoundary>

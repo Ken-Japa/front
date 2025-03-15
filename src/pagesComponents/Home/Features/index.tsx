@@ -51,7 +51,11 @@ export const Features = () => {
         <Container maxWidth="xl">
             <Box className="text-center mb-12">
                 {isLoading ? (
-                    <ContentSkeleton />
+                    <ContentSkeleton 
+                        type="text"
+                        textLines={2}
+                        className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                    />
                 ) : (
                     <Stack className="gap-2">
                         <MatrixRainText
@@ -68,7 +72,11 @@ export const Features = () => {
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6}>
                     {isLoading ? (
-                        <ContentSkeleton type="card" />
+                        <ContentSkeleton 
+                            type="card"
+                            cardHeight={500}
+                            className="bg-[#ffffff0a] backdrop-blur-sm"
+                        />
                     ) : (
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -107,7 +115,11 @@ export const Features = () => {
                         {isLoading ? (
                             Array(3).fill(0).map((_, index) => (
                                 <Grid item xs={12} key={index}>
-                                    <ContentSkeleton type="card" />
+                                    <ContentSkeleton 
+                                        type="card"
+                                        cardHeight={180}
+                                        className="bg-[#ffffff0a] backdrop-blur-sm"
+                                    />
                                 </Grid>
                             ))
                         ) : (

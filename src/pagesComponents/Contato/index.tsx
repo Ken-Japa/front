@@ -203,7 +203,11 @@ export const Contact = () => {
                                 <ContactInfo isLoading={isLoading} />
                                 {isLoading ? (
                                     <Box flex={1}>
-                                        <ContentSkeleton type="form" />
+                                        <ContentSkeleton 
+                                            type="form"
+                                            formFields={5}
+                                            className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                                        />
                                     </Box>
                                 ) : (
                                     <ContactFormComponent

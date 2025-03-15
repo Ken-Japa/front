@@ -63,11 +63,24 @@ export const FAQ = () => {
                     <div className="content-container">
                         {isLoading ? (
                             <Stack spacing={3} width="100%">
-                                <ContentSkeleton />
-                                <ContentSkeleton type="text" />
+                                <ContentSkeleton 
+                                    type="text"
+                                    textLines={2}
+                                    className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                                />
+                                <ContentSkeleton 
+                                    type="text"
+                                    textLines={1}
+                                    className="p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                                />
                                 <Stack spacing={2}>
-                                    {Array(5).fill(0).map((_, index) => (
-                                        <ContentSkeleton key={index} type="card" />
+                                    {Array(8).fill(0).map((_, index) => (
+                                        <ContentSkeleton 
+                                            key={index} 
+                                            type="card"
+                                            cardHeight={120}
+                                            className="bg-[#ffffff0a] backdrop-blur-sm"
+                                        />
                                     ))}
                                 </Stack>
                             </Stack>

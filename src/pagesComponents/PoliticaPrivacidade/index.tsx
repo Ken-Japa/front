@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Container, Stack } from "@mui/material";
 import { SectionPolicy } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Header } from "./components/Header/";
@@ -51,15 +51,7 @@ export const PrivacyPolicy = () => {
                         <div className="section-privacy">
                             <Container maxWidth="lg">
                                 {isLoading ? (
-                                    <Stack spacing={3} width="100%">
-                                        <ContentSkeleton />
-                                        <ContentSkeleton type="text" />
-                                        <Stack spacing={2}>
-                                            {Array(8).fill(0).map((_, index) => (
-                                                <ContentSkeleton key={index} type="card" />
-                                            ))}
-                                        </Stack>
-                                    </Stack>
+                                    <LoadingSkeleton />
                                 ) : (
                                     <>
                                         <Header />

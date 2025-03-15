@@ -13,7 +13,11 @@ export const ContactInfo = ({ isLoading }: ContactInfoProps) => {
     return (
         <InfoContainer spacing={3} flex={1}>
             {isLoading ? (
-                <ContentSkeleton type="text" />
+                <ContentSkeleton 
+                    type="text"
+                    textLines={3}
+                    className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
+                />
             ) : (
                 <>
                     <div className="info-item">
