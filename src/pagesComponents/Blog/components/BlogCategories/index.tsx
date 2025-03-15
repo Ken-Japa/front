@@ -14,7 +14,7 @@ const categories = [
     { id: "analise-tecnica", label: "Análise Técnica" },
     { id: "fundamentalista", label: "Análise Fundamentalista" },
     { id: "economia", label: "Economia" },
-    { id: "notícias", label: "Notícias" },
+    { id: "noticias", label: "Notícias" },
     { id: "educacional", label: "Educacional" },
     { id: "alertas", label: "Alertas" }
 ];
@@ -22,10 +22,10 @@ const categories = [
 export const BlogCategories = ({ selectedCategory, onCategoryChange }: BlogCategoriesProps) => {
     return (
         <CategoriesContainer>
-            <Typography variant="h6" className="font-bold text-white mb-4">
+            <Typography variant="h6" className="font-bold text-white mb-8 text-center">
                 Categorias
             </Typography>
-            <Box className="flex flex-col gap-2">
+            <Box className="flex flex-col gap-2 mt-4">
                 {categories.map((category) => (
                     <motion.div
                         key={category.id}

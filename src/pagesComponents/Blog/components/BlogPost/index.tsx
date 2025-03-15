@@ -1,6 +1,7 @@
 "use client";
 
 import { Container, Typography, Box, Chip } from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
 import type { BlogPost as BlogPostType } from "../../constants/blogPosts";
 import { motion } from "framer-motion";
 import ReactMarkdown from 'react-markdown';
@@ -39,7 +40,12 @@ export default function BlogPost({ post }: BlogPostProps) {
                             alignItems: 'center',
                             marginBottom: '2rem'
                         }}>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" color="text.secondary" sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center',
+                                gap: 1
+                            }}>
+                                <PersonIcon fontSize="small" />
                                 {post.author} em {new Date(post.date).toLocaleDateString('pt-BR')}
                             </Typography>
                             {post.readTime && (
