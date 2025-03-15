@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { LogoContainer } from "./styled";
 
 interface LogoProps {
@@ -9,14 +9,20 @@ interface LogoProps {
     onClick?: () => void;
 }
 
-export const Logo = ({ width, height, onClick }: LogoProps) => {
+export const Logo = ({ 
+    width = 60, 
+    height = 60, 
+    onClick 
+}: LogoProps) => {
     return (
         <LogoContainer onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default' }}>
-            <Image
+            <OptimizedImage
                 src="/assets/images/logo/Logo6.png"
                 alt="Auge Invest"
                 width={width}
                 height={height}
+                priority
+                quality={100}
             />
         </LogoContainer>
     );
