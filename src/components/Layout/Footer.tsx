@@ -10,6 +10,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import { motion } from "framer-motion";
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 
 const socialLinks = [
     { icon: <XIcon />, href: "https://twitter.com/augeinvest", label: "Twitter" },
@@ -98,20 +99,29 @@ export const Footer = () => {
                             <Typography variant="h6" className="font-bold text-white">
                                 Redes Sociais
                             </Typography>
-                            <Box className="flex gap-4 text-white/80">
-                                {socialLinks.map((social) => (
-                                    <IconButton
-                                        key={social.label}
-                                        component={LinkNext}
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-white/80 hover:text-white"
-                                        size="large"
-                                    >
-                                        {social.icon}
-                                    </IconButton>
-                                ))}
+                            <Box className="flex flex-col gap-12">
+                                <Box className="flex gap-4 text-white/80">
+                                    {socialLinks.map((social) => (
+                                        <IconButton
+                                            key={social.label}
+                                            component={LinkNext}
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-white/80 hover:text-white"
+                                            size="large"
+                                        >
+                                            {social.icon}
+                                        </IconButton>
+                                    ))}
+                                </Box>
+                                <LinkNext
+                                    href="/embaixadores"
+                                    className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+                                >
+                                    <WorkspacePremiumIcon className="text-white" fontSize="medium" />
+                                    <span className="text-lg font-semibold">Embaixadores</span>
+                                </LinkNext>
                             </Box>
                         </Box>
                     </Box>

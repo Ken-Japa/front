@@ -5,6 +5,8 @@ import { FormFields } from "../FormFields";
 import { TermsCheckbox } from "../TermsCheckbox";
 import { GoogleSignInButton } from "../GoogleSignInButton";
 import { SubmitButton } from "../Buttons/styled";
+import { Stack, Typography } from "@mui/material";
+import Link from 'next/link';
 
 interface RegisterFormProps {
     formData: FormData;
@@ -36,6 +38,19 @@ export const RegisterFormContent = ({
             checked={acceptedTerms}
             onChange={onTermsChange}
         />
+
+        <Stack direction="row" justifyContent="center" sx={{ mt: 2, mb: 3 }}>
+            <Typography variant="body2" sx={{ color: 'white', opacity: 0.9 }}>
+                Já possui uma conta?{' '}
+                <Link
+                    href="/login"
+                    className="text-[#0D95F9] hover:text-[#0D95F9]/80 transition-colors underline"
+                >
+                    Faça seu login
+                </Link>
+            </Typography>
+        </Stack>
+
         <SubmitButton
             type="submit"
             variant="contained"
@@ -43,7 +58,7 @@ export const RegisterFormContent = ({
         >
             Criar conta
         </SubmitButton>
-        
+
         <div className="divider-container">
             <div className="divider" />
             <span className="divider-text">ou</span>

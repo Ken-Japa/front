@@ -17,7 +17,7 @@ export const TermsCheckbox = ({ checked, onChange }: TermsCheckboxProps) => (
         label={
             <>
                 Li e aceito os{" "}
-                <StyledLink href="/terms" target="_blank">
+                <StyledLink href="/termos-servicos" target="_blank">
                     termos e condições
                 </StyledLink>
             </>

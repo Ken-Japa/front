@@ -14,6 +14,7 @@ import { FormData, FormErrors } from "./types";
 import { StyledDialog } from "./components/Dialog/styled";
 import { StyledCloseButton } from "./components/CloseButton/styled";
 
+
 export const Register = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
