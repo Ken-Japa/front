@@ -119,8 +119,17 @@ export const Footer = () => {
                                     href="/embaixadores"
                                     className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
                                 >
-                                    <WorkspacePremiumIcon className="text-white" fontSize="medium" />
-                                    <span className="text-lg font-semibold">Embaixadores</span>
+                                    <WorkspacePremiumIcon 
+                                        className={pathname === '/embaixadores' ? 'text-[#FFD700]' : 'text-white'} 
+                                        fontSize="medium" 
+                                    />
+                                    <span className={`text-lg font-semibold ${
+                                        pathname === '/embaixadores' 
+                                            ? 'text-[#FFD700]' 
+                                            : 'text-white'
+                                    }`}>
+                                        Embaixadores
+                                    </span>
                                 </LinkNext>
                             </Box>
                         </Box>
