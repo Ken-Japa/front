@@ -51,8 +51,11 @@ export const Welcome = () => {
                     src="/assets/images/background/HOME.jpg"
                     alt="Welcome Background"
                     fill
-                    className="object-cover"
                     priority
+                    sizes="100vw"
+                    className="object-cover"
+                    loadingClassName="scale-100 blur-xl grayscale"
+                    quality={90}
                 />
             </div>
             <div className="home">

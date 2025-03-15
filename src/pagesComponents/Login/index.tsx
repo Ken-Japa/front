@@ -48,7 +48,11 @@ export const Login = () => {
                             src="/assets/images/background/REGISTER.jpg"
                             alt="Login Background"
                             fill
+                            priority
+                            sizes="(max-width: 900px) 100vw, 900px"
                             className="object-cover"
+                            loadingClassName="scale-100 blur-xl grayscale"
+                            quality={85}
                         />
                     </div>
                     <div className="content">

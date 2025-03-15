@@ -58,7 +58,11 @@ export const TermsServices = () => {
                             src="/assets/images/background/BACKGROUND-DEFAULT.jpg"
                             alt="Terms of Service Background"
                             fill
+                            priority
+                            sizes="100vw"
                             className="object-cover"
+                            loadingClassName="scale-100 blur-xl grayscale"
+                            quality={85}
                         />
                     </div>
                     <div className="opacity-layer">

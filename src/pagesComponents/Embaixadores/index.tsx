@@ -20,7 +20,10 @@ export default function Ambassadors() {
                             alt="Ambassadors Background"
                             fill
                             priority
+                            sizes="100vw"
                             className="object-cover"
+                            loadingClassName="scale-100 blur-xl grayscale"
+                            quality={85}
                         />
                         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
                     </div>

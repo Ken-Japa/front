@@ -34,7 +34,11 @@ export default function AboutPage() {
                             src="/assets/images/background/Quem-Somos.jpg"
                             alt="About Us Background"
                             fill
+                            priority
+                            sizes="100vw"
                             className="object-cover"
+                            loadingClassName="scale-100 blur-xl grayscale"
+                            quality={85}
                         />
                     </div>
                     <div className="opacity" />

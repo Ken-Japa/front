@@ -31,7 +31,11 @@ export const JoinTeam = () => {
                             src="/assets/images/background/Faca-Parte.jpg"
                             alt="Join Team Background"
                             fill
+                            priority
+                            sizes="100vw"
                             className="object-cover"
+                            loadingClassName="scale-100 blur-xl grayscale"
+                            quality={85}
                         />
                     </div>
                     <div className="container">

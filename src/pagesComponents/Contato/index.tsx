@@ -181,15 +181,18 @@ export const Contact = () => {
                             src="/assets/images/background/Contato.jpg"
                             alt="Contact Background"
                             fill
+                            priority
                             className="object-cover"
+                            loadingClassName="scale-100 blur-xl grayscale"
+                            sizes="100vw"
                         />
                     </div>
                     <div className="content-wrapper">
                         <Stack spacing={4} className="content-container">
                             <Header isLoading={isLoading} />
-                            <Stack 
-                                direction={{ xs: 'column', md: 'row' }} 
-                                spacing={4} 
+                            <Stack
+                                direction={{ xs: 'column', md: 'row' }}
+                                spacing={4}
                                 className="form-container"
                             >
                                 <ContactInfo isLoading={isLoading} />
