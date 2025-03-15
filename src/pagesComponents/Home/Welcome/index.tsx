@@ -52,10 +52,10 @@ export const Welcome = () => {
                     alt="Welcome Background"
                     fill
                     className="object-cover"
+                    priority
                 />
             </div>
             <div className="home">
-                {/* Rest of your content */}
                 <div className="welcome mb-20">
                     <div className="title-left">
                         <MatrixRainText
@@ -71,64 +71,66 @@ export const Welcome = () => {
                     </div>
                 </div>
 
-                <Container maxWidth="xl">
-                    <Grid container spacing={4} alignItems="center">
-                        <Grid item xs={12} md={6}>
-                            <Stack spacing={4}>
+                <div className="content-container">
+                    <Container maxWidth="xl">
+                        <Grid container spacing={4} alignItems="center">
+                            <Grid item xs={12} md={6}>
+                                <Stack spacing={4}>
 
 
-                                <Typography variant="h5" className="text-white">
-                                    Domine o Mercado com Dados, Não com Palpites
-                                </Typography>
+                                    <Typography variant="h5" className="text-white">
+                                        Domine o Mercado com Dados, Não com Palpites
+                                    </Typography>
 
-                                <Typography variant="body1" className="text-white/90">
-                                    A única plataforma do Brasil com <span className="text-[#FF6B00] font-bold">histórico de derivativos</span>, simulação de estratégias em cenários reais e fictícios e recomendações através de análises – para você investir como um profissional.
-                                </Typography>
+                                    <Typography variant="body1" className="text-white/90">
+                                        A única plataforma do Brasil com <span className="text-[#FF6B00] font-bold">histórico de derivativos</span>, simulação de estratégias em cenários reais e fictícios e recomendações através de análises – para você investir como um profissional.
+                                    </Typography>
 
-                                <Stack direction="row" spacing={2} justifyContent="flex-end">
-                                    <CustomButton
-                                        value="Experimente Grátis por 21 Dias"
-                                        Icon={RocketLaunchIcon}
-                                        color="secondary"
-                                    />
-                                    <CustomButton
-                                        value="Ver Demonstração em Vídeo"
-                                        Icon={PlayCircleIcon}
-                                        color="primary"
-                                    />
+                                    <Stack direction="row" spacing={2} justifyContent="flex-end">
+                                        <CustomButton
+                                            value="Experimente Grátis por 21 Dias"
+                                            Icon={RocketLaunchIcon}
+                                            color="secondary"
+                                        />
+                                        <CustomButton
+                                            value="Ver Demonstração em Vídeo"
+                                            Icon={PlayCircleIcon}
+                                            color="primary"
+                                        />
+                                    </Stack>
                                 </Stack>
-                            </Stack>
-                        </Grid>
+                            </Grid>
 
-                        <Grid item xs={12} md={6}>
-                            <Grid container spacing={3}>
-                                {highlights.map((item, index) => (
-                                    <Grid item xs={12} md={4} key={index}>
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.2 }}
-                                            className="bg-[#ffffff08] p-6 rounded-lg backdrop-blur-sm border border-white/5 hover:border-[#0D95F9]/30 transition-all"
-                                        >
-                                            <Stack spacing={2} alignItems="center" textAlign="center">
-                                                {item.icon}
-                                                <Typography variant="h3" className="text-[#0D95F9] font-bold">
-                                                    {item.value}
-                                                </Typography>
-                                                <Typography variant="subtitle1" className="text-white">
-                                                    {item.title}
-                                                </Typography>
-                                                <Typography variant="body2" className="text-white/60">
-                                                    {item.description}
-                                                </Typography>
-                                            </Stack>
-                                        </motion.div>
-                                    </Grid>
-                                ))}
+                            <Grid item xs={12} md={6}>
+                                <Grid container spacing={3}>
+                                    {highlights.map((item, index) => (
+                                        <Grid item xs={12} md={4} key={index}>
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: index * 0.2 }}
+                                                className="bg-[#ffffff08] p-6 rounded-lg backdrop-blur-sm border border-white/5 hover:border-[#0D95F9]/30 transition-all"
+                                            >
+                                                <Stack spacing={2} alignItems="center" textAlign="center">
+                                                    {item.icon}
+                                                    <Typography variant="h3" className="text-[#0D95F9] font-bold">
+                                                        {item.value}
+                                                    </Typography>
+                                                    <Typography variant="subtitle1" className="text-white">
+                                                        {item.title}
+                                                    </Typography>
+                                                    <Typography variant="body2" className="text-white/60">
+                                                        {item.description}
+                                                    </Typography>
+                                                </Stack>
+                                            </motion.div>
+                                        </Grid>
+                                    ))}
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Container>
+                    </Container>
+                </div>
             </div>
         </SectionWelcome>
     );

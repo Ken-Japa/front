@@ -107,9 +107,7 @@ export const Home = () => {
             <ErrorBoundary>
                 <MainContainer>
                     <Section>
-                        <Container maxWidth="xl">
-                            <Welcome />
-                        </Container>
+                        <Welcome />
                     </Section>
 
                     <Section withPadding>

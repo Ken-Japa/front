@@ -1,18 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { RegisterForm, StyledDialog } from "./styled";
-import { IconButton } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from "next/navigation";
+import CloseIcon from '@mui/icons-material/Close';
 import { useGoogleLogin } from '@react-oauth/google';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { RegisterFormContent } from "./components/RegisterForm";
+import { RegisterFormContent } from "./components/RegisterForm/index";
 import { RegisterLoadingSkeleton } from "./components/LoadingSkeleton";
 import { validateForm } from "./utils/validation";
 import { FormData, FormErrors } from "./types";
+import { StyledDialog } from "./components/Dialog/styled";
+import { StyledCloseButton } from "./components/CloseButton/styled";
 
 export const Register = () => {
     const router = useRouter();
@@ -112,7 +112,12 @@ export const Register = () => {
     return (
         <PageTransition>
             <ErrorBoundary>
-                <StyledDialog open={true} maxWidth="md" fullWidth>
+                <StyledDialog
+                    open={true}
+                    maxWidth="md"
+                    fullWidth
+                    disableEscapeKeyDown
+                >
                     <div className="background-image">
                         <OptimizedImage
                             src="/assets/images/background/REGISTER.jpg"
@@ -122,12 +127,9 @@ export const Register = () => {
                         />
                     </div>
                     <div className="content">
-                        <IconButton
-                            onClick={() => router.push('/')}
-                            sx={{ position: 'absolute', right: 8, top: 8, color: 'white' }}
-                        >
+                        <StyledCloseButton onClick={() => router.push('/')}>
                             <CloseIcon />
-                        </IconButton>
+                        </StyledCloseButton>
 
                         {isLoading ? (
                             <RegisterLoadingSkeleton />
