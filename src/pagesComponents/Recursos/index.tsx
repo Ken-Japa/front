@@ -20,7 +20,7 @@ export const Solutions = () => {
 
     useEffect(() => {
         if (videoRef.current) {
-            videoRef.current.playbackRate = 0.5; // Slow down to half speed
+            videoRef.current.playbackRate = 0.3;
         }
     }, []);
 
@@ -47,7 +47,7 @@ export const Solutions = () => {
                         <source src="/assets/video/Recursos.mp4" type="video/mp4" />
                     </video>
                     <div className="overlay" />
-                
+
                     <Container maxWidth="xl">
                         <ContentWrapper>
                             {isLoading ? (

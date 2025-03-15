@@ -11,3 +11,29 @@ export const LinkNavbar = styled('a')(({ theme }) => ({
         color: theme.palette.primary.main
     }
 }));
+
+export const MobileNavContainer = styled('div')`
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: auto;
+    min-width: 200px;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    z-index: 50;
+    border-radius: 0 0 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 1rem;
+
+    nav {
+      align-items: flex-end;
+    }
+
+    a {
+      text-align: right;
+      white-space: nowrap;
+    }
+  }
+`;

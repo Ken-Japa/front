@@ -5,15 +5,22 @@ import { CustomButton } from "../Custom/Button";
 import { Logo } from "../Logo";
 import { Navbar } from "./Navbar";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Drawer, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
     const router = useRouter();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [mobileOpen, setMobileOpen] = useState(false);
+    const pathname = usePathname(); // Add this
+
+    // Add this effect to close menu on route change
+    useEffect(() => {
+        setMobileOpen(false);
+    }, [pathname]);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -24,9 +31,9 @@ export const Header = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 100 }}
-            className="sticky top-0 z-50 bg-[#111111]/95 backdrop-blur-sm border-b border-white/5"
+            className="sticky top-0 z-50 bg-[#1A1A1A] border-b border-white/5"
         >
-            <div className="container mx-auto h-20 flex items-center justify-between">
+            <div className="container mx-auto h-20 flex items-center justify-between bg-[#1A1A1A]">
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400 }}
@@ -41,7 +48,7 @@ export const Header = () => {
                             aria-label="open drawer"
                             edge="start"
                             onClick={handleDrawerToggle}
-                            className="text-white"
+                            className="text-white bg-[#1A1A1A]"
                         >
                             <MenuIcon />
                         </IconButton>
@@ -53,7 +60,7 @@ export const Header = () => {
                                 keepMounted: true,
                             }}
                             PaperProps={{
-                                className: "bg-[#111111] w-64 p-4"
+                                className: "bg-[#000000] w-64 p-4"
                             }}
                         >
                             <div className="flex flex-col gap-4">
@@ -84,9 +91,9 @@ export const Header = () => {
                         </Drawer>
                     </>
                 ) : (
-                    <div className="flex items-center justify-between gap-20">
+                    <div className="flex items-center justify-between gap-20 bg-[#1A1A1A]">
                         <Navbar />
-                        <motion.div 
+                        <motion.div
                             className="flex gap-5"
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
