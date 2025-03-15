@@ -1,12 +1,9 @@
-import { post as analiseTecnica } from "@/content/blog/analise-tecnica-tendencias";
-import { post as derivativos } from "@/content/blog/derivativos";
-
 export interface BlogPost {
-  id: string;
+  id?: string;
   title: string;
   description: string;
-  content: string; // Added this line
-  image: string;
+  content: string;
+  image?: string;
   category: string;
   author: string;
   date: string;
@@ -16,4 +13,32 @@ export interface BlogPost {
   relatedPosts?: string[];
 }
 
-export const blogPosts: BlogPost[] = [analiseTecnica, derivativos];
+// Define the context type
+declare const require: {
+  context: (
+    directory: string,
+    useSubdirectories: boolean,
+    regExp: RegExp
+  ) => {
+    keys(): string[];
+    (id: string): any;
+  };
+};
+
+const context = require.context("@/content/blog", false, /\.ts$/);
+
+export const blogPosts: BlogPost[] = context
+  .keys()
+  .filter((key: string) => key !== "./index.ts")
+  .map((key: string) => {
+    const postModule = context(key);
+    return postModule.post;
+  })
+  .sort(
+    (a: BlogPost, b: BlogPost) =>
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+export const getBlogPosts = async (): Promise<BlogPost[]> => {
+  return blogPosts;
+};

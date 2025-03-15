@@ -100,6 +100,19 @@ export default function BlogPost({ post }: BlogPostProps) {
                             </Box>
                         </Box>
                     )}
+
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: '3rem'
+                    }}>
+                        <Link
+                            href="/blog"
+                            className="text-[#0D95F9] hover:text-white transition-colors text-lg font-medium"
+                        >
+                            ← Voltar ao Blog
+                        </Link>
+                    </Box>
                 </motion.div>
             </Container>
         </PostContainer>
