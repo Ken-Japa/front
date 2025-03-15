@@ -2,24 +2,55 @@ import Ambassadors from "@/pagesComponents/Embaixadores";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Embaixadores| Auge Invest",
-    description: "Os Embaixadores da plataforma. Obrigado pelo suporte e patrocínio",
+    title: "Programa de Embaixadores | Auge Invest",
+    description: "Junte-se ao Programa de Embaixadores da Auge Invest. Uma comunidade exclusiva de investidores que compartilham conhecimento e experiências no mercado financeiro.",
     openGraph: {
-        title: 'Embaixadores | Auge Invest',
-        description: 'Faça parte dessa comunidade',
+        title: 'Programa de Embaixadores | Auge Invest',
+        description: 'Faça parte da nossa comunidade exclusiva de embaixadores. Benefícios únicos, networking e oportunidades especiais para membros.',
+        type: 'website',
+        locale: 'pt_BR',
+        url: 'https://augeinvest.com.br/embaixadores',
+        siteName: 'Auge Invest',
         images: [
             {
-                url: '/assets/images/background/Contato.jpg',
-                width: 1120,
-                height: 1120,
-                alt: 'Embaixadores Auge Invest'
+                url: '/assets/images/background/Embaixadores.jpg',
+                width: 1472,
+                height: 832,
+                alt: 'Programa de Embaixadores Auge Invest',
+                type: 'image/jpeg',
             }
         ],
     },
-    keywords: 'embaixadores, patrocínio, AugeInvest, investimentos, agradecimentos',
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Programa de Embaixadores | Auge Invest',
+        description: 'Faça parte da nossa comunidade exclusiva de embaixadores.',
+        images: ['/assets/images/background/Contato.jpg'],
+    },
+    keywords: [
+        'programa de embaixadores',
+        'comunidade de investidores',
+        'auge invest',
+        'investimentos',
+        'benefícios exclusivos',
+        'networking financeiro',
+        'comunidade trading',
+        'embaixadores mercado financeiro'
+    ].join(', '),
     alternates: {
-        canonical: 'https://augeinvest.com.br/embaixadores'
-    }
+        canonical: 'https://augeinvest.com.br/embaixadores',
+        languages: {
+            'pt-BR': 'https://augeinvest.com.br/embaixadores',
+        }
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+        },
+    },
 };
 
 export default function AmbassadorsPage() {
