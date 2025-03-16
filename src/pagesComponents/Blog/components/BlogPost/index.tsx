@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Container, Typography, Box, Chip } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Container, Typography, Box, Chip, Grid } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import type { BlogPost as BlogPostType } from "../../constants/blogPosts";
 import { motion } from "framer-motion";
@@ -10,6 +10,9 @@ import Link from "next/link";
 import { PostContainer, PostContent } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { BlogPostSkeleton } from "./BlogPostSkeleton";
+import { useRouter } from "next/navigation";
+import { BlogCard } from "../BlogCard";
+import { blogPosts } from "../../constants/blogPosts";
 
 interface BlogPostProps {
     post: BlogPostType;
@@ -17,6 +20,19 @@ interface BlogPostProps {
 
 export default function BlogPost({ post }: BlogPostProps) {
     const [imageLoaded, setImageLoaded] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        if (post.relatedPosts && post.relatedPosts.length > 0) {
+            post.relatedPosts.forEach(slug => {
+                router.prefetch(`/blog/${slug}`);
+            });
+        }
+    }, [post.relatedPosts, router]);
+
+    const relatedPostsData = post.relatedPosts
+        ? blogPosts.filter(p => post.relatedPosts?.includes(p.slug))
+        : [];
 
     return (
         <PostContainer>
@@ -93,7 +109,7 @@ export default function BlogPost({ post }: BlogPostProps) {
                             <ReactMarkdown>{post.content}</ReactMarkdown>
                         </PostContent>
 
-                        {post.relatedPosts && post.relatedPosts.length > 0 && (
+                        {relatedPostsData.length > 0 && (
                             <Box sx={{
                                 marginTop: '4rem',
                                 paddingTop: '2rem',
@@ -109,23 +125,13 @@ export default function BlogPost({ post }: BlogPostProps) {
                                 >
                                     Posts Relacionados:
                                 </Typography>
-                                <Box sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: 1
-                                }}>
-                                    {post.relatedPosts.map((slug) => (
-                                        <Link
-                                            key={slug}
-                                            href={`/blog/${slug}`}
-                                            className="text-white no-underline hover:text-[#0D95F9] transition-colors"
-                                        >
-                                            {slug.split('-').map(word =>
-                                                word.charAt(0).toUpperCase() + word.slice(1)
-                                            ).join(' ')}
-                                        </Link>
+                                <Grid container spacing={3}>
+                                    {relatedPostsData.map((relatedPost) => (
+                                        <Grid item xs={12} key={relatedPost.slug}>
+                                            <BlogCard {...relatedPost} isLoading={false} />
+                                        </Grid>
                                     ))}
-                                </Box>
+                                </Grid>
                             </Box>
                         )}
 

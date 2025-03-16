@@ -13,6 +13,7 @@ const BlogHeader = lazy(() => import('./components/BlogHeader').then(mod => ({ d
 const BlogSearch = lazy(() => import('./components/BlogSearch').then(mod => ({ default: mod.BlogSearch })));
 const BlogCard = lazy(() => import('./components/BlogCard').then(mod => ({ default: mod.BlogCard })));
 const BlogCategories = lazy(() => import('./components/BlogCategories').then(mod => ({ default: mod.BlogCategories })));
+const BlogCardList = lazy(() => import('./components/BlogCardList').then(mod => ({ default: mod.BlogCardList })));
 
 export default function Blog() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -72,20 +73,12 @@ export default function Blog() {
                                     </Box>
                                 </ProgressiveLoad>
 
-                                <Grid container spacing={3}>
-                                    {filteredPosts.map((post, index) => (
-                                        <Grid item xs={12} key={post.id}>
-                                            <ProgressiveLoad
-                                                delay={index * 0.1}
-                                                rootMargin="100px"
-                                            >
-                                                <SuspenseWrapper>
-                                                    <BlogCard {...post} isLoading={!imageLoaded} />
-                                                </SuspenseWrapper>
-                                            </ProgressiveLoad>
-                                        </Grid>
-                                    ))}
-                                </Grid>
+                                <SuspenseWrapper>
+                                    <BlogCardList 
+                                        posts={filteredPosts}
+                                        isLoading={!imageLoaded}
+                                    />
+                                </SuspenseWrapper>
                             </Grid>
 
                             <Grid item xs={12} md={4}>
