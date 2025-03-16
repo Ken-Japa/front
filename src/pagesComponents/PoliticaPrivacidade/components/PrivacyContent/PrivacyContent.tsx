@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material";
 import { PrivacySection } from "../PrivacySection";
 import { PRIVACY_SECTIONS } from "../../constants/sections";
+import { PrivacyContentSkeleton } from "./PrivacyContentSkeleton";
 import {
     DadosSection,
     FinalidadeSection,
@@ -12,7 +13,15 @@ import {
     DireitosSection
 } from "./sections";
 
-export const PrivacyContent = () => {
+interface PrivacyContentProps {
+    isLoading?: boolean;
+}
+
+export const PrivacyContent = ({ isLoading }: PrivacyContentProps) => {
+    if (isLoading) {
+        return <PrivacyContentSkeleton />;
+    }
+
     const sections = {
         dados: <DadosSection />,
         finalidade: <FinalidadeSection />,

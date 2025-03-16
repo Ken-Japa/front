@@ -48,7 +48,7 @@ export const PrivacyPolicy = () => {
                                 <>
                                     <Header isLoading={!imageLoaded} />
                                     <QuickNavigation onSectionClick={scrollToSection} isLoading={!imageLoaded} />
-                                    <PrivacyContent />
+                                    <PrivacyContent isLoading={!imageLoaded} />
                                     <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                                 </>
                             </Container>

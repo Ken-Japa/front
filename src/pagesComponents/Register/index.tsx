@@ -8,7 +8,7 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { RegisterFormContent } from "./components/RegisterForm/index";
-import { RegisterLoadingSkeleton } from "./components/LoadingSkeleton";
+import { RegisterFormSkeleton } from "./components/RegisterForm/RegisterFormSkeleton";
 import { validateForm } from "./utils/validation";
 import { FormData, FormErrors } from "./types";
 import { StyledDialog } from "./components/Dialog/styled";
@@ -141,22 +141,19 @@ export const Register = () => {
                             <CloseIcon />
                         </StyledCloseButton>
 
-                        {!imageLoaded ? (
-                            <RegisterLoadingSkeleton />
-                        ) : (
-                            <RegisterFormContent
-                                formData={formData}
-                                errors={errors}
-                                acceptedTerms={acceptedTerms}
-                                onSubmit={handleSubmit}
-                                onChange={handleChange}
-                                onTermsChange={setAcceptedTerms}
-                                onGoogleClick={(e) => {
-                                    e.preventDefault();
-                                    handleGoogleSignIn();
-                                }}
-                            />
-                        )}
+                        <RegisterFormContent
+                            formData={formData}
+                            errors={errors}
+                            acceptedTerms={acceptedTerms}
+                            onSubmit={handleSubmit}
+                            onChange={handleChange}
+                            onTermsChange={setAcceptedTerms}
+                            onGoogleClick={(e) => {
+                                e.preventDefault();
+                                handleGoogleSignIn();
+                            }}
+                            isLoading={!imageLoaded}
+                        />
                     </div>
                 </StyledDialog>
             </ErrorBoundary>

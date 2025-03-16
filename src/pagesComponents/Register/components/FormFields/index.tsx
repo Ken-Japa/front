@@ -1,5 +1,6 @@
 import { FormData, FormErrors } from "../../types";
 import { getPasswordStrength } from "../../utils/passwordUtils";
+import { FormFieldsSkeleton } from "./FormFieldsSkeleton";
 import {
     StyledTextField,
     PasswordStrengthContainer,
@@ -11,6 +12,7 @@ interface FormFieldsProps {
     formData: FormData;
     errors: FormErrors;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isLoading?: boolean;
 }
 
 interface PasswordStrength {
@@ -19,7 +21,7 @@ interface PasswordStrength {
     label: string;
 }
 
-export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
+export const FormFields = ({ formData, errors, onChange, isLoading }: FormFieldsProps) => {
     const passwordStrength: PasswordStrength = getPasswordStrength(formData.password);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +40,9 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
 
         onChange(syntheticEvent);
     };
-
+    if (isLoading) {
+        return <FormFieldsSkeleton />;
+    }
     return (
         <>
             <StyledTextField
@@ -50,7 +54,6 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
                 helperText={errors.name}
                 required
                 id="nome-registrar"
-                autoComplete="on"
             />
             <StyledTextField
                 name="cpf-registrar"

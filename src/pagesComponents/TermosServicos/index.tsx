@@ -2,7 +2,7 @@
 
 import { Container } from "@mui/material";
 import { SectionTermsServices } from "./styled";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -10,7 +10,6 @@ import { Header } from "./components/Header";
 import { QuickNavigation } from "./components/QuickNavigation";
 import { TermsContent } from "./components/TermsContent";
 import { ScrollToTop } from "./components/ScrollToTop";
-import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { useScroll } from "./hooks/useScroll";
 
 export const TermsServices = () => {
@@ -45,15 +44,11 @@ export const TermsServices = () => {
                     </div>
                     <div className="opacity-layer">
                         <Container maxWidth="lg" className="content-wrapper">
-                            {!imageLoaded ? (
-                                <LoadingSkeleton />
-                            ) : (
-                                <>
-                                    <Header />
-                                    <QuickNavigation onSectionClick={scrollToSection} />
-                                    <TermsContent />
-                                </>
-                            )}
+                            <>
+                                <Header isLoading={!imageLoaded} />
+                                <QuickNavigation onSectionClick={scrollToSection} isLoading={!imageLoaded} />
+                                <TermsContent isLoading={!imageLoaded} />
+                            </>
                         </Container>
                         <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                     </div>

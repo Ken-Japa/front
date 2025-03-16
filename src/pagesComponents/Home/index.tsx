@@ -44,7 +44,7 @@ export const Home = () => {
                         <Features isLoading={!imageLoaded} />
                     </Section>
 
-                    <Newsletter />
+                    <Newsletter isLoading={!imageLoaded} />
 
                     <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
 

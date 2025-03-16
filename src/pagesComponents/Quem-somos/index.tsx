@@ -12,7 +12,6 @@ import { MissaoSection } from "./components/MissaoSection";
 import { ValoresSection } from "./components/ValoresSection";
 import { EquipeSection } from "./components/EquipeSection";
 import { CompromissoSection } from "./components/CompromissoSection/";
-import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export default function AboutPage() {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -44,25 +43,21 @@ export default function AboutPage() {
                         />
                     </div>
                     <div className="opacity" />
-                    {!imageLoaded ? (
-                        <LoadingSkeleton />
-                    ) : (
+                    <div className="content">
+                        <div className="opacity" />
                         <div className="content">
-                            <div className="opacity" />
-                            <div className="content">
-                                <div className="container mx-auto px-4 py-16 relative z-10">
-                                    <Stack spacing={8} alignItems="center">
-                                        <Header />
-                                        <HistoriaSection />
-                                        <MissaoSection />
-                                        <ValoresSection />
-                                        <EquipeSection />
-                                        <CompromissoSection />
-                                    </Stack>
-                                </div>
+                            <div className="container mx-auto px-4 py-16 relative z-10">
+                                <Stack spacing={8} alignItems="center">
+                                    <Header isLoading={!imageLoaded} />
+                                    <HistoriaSection isLoading={!imageLoaded} />
+                                    <MissaoSection isLoading={!imageLoaded} />
+                                    <ValoresSection isLoading={!imageLoaded} />
+                                    <EquipeSection isLoading={!imageLoaded} />
+                                    <CompromissoSection isLoading={!imageLoaded} />
+                                </Stack>
                             </div>
                         </div>
-                    )}
+                    </div>
                 </SectionTeam>
             </ErrorBoundary>
         </PageTransition>

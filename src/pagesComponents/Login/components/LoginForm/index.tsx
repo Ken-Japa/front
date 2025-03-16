@@ -50,7 +50,6 @@ export const LoginFormComponent = ({
                 helperText={errors.email}
                 fullWidth
                 id="email-login"
-                autoComplete="on"
             />
 
             <TextField
@@ -97,8 +96,8 @@ export const LoginFormComponent = ({
                 {isBlocked ? `Bloqueado (${blockTimer}s)` : 'Entrar'}
             </Button>
 
-            <SocialLogin 
-                handleGoogleSignIn={handleGoogleSignIn} 
+            <SocialLogin
+                handleGoogleSignIn={handleGoogleSignIn}
                 isLoading={isLoading}
             />
         </LoginFormStyled>

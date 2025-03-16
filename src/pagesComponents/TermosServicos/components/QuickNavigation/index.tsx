@@ -1,28 +1,35 @@
 import { Typography } from "@mui/material";
 import { SECTIONS } from "../../constants/sections";
 import { NavigationContainer } from "./styled";
+import { QuickNavigationSkeleton } from "./QuickNavigationSkeleton";
 
 interface QuickNavigationProps {
     onSectionClick: (sectionId: string) => void;
+    isLoading?: boolean;
 }
 
-export const QuickNavigation = ({ onSectionClick }: QuickNavigationProps) => (
-    <NavigationContainer>
-        <Typography variant="h5" className="navigation-title">
-            Navegação Rápida
-        </Typography>
-        <div className="navigation-content">
-            <div className="navigation-grid">
-                {SECTIONS.map((section) => (
-                    <Typography
-                        key={section.id}
-                        className="navigation-link"
-                        onClick={() => onSectionClick(section.id)}
-                    >
-                        {section.title}
-                    </Typography>
-                ))}
+export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationProps) => {
+    if (isLoading) {
+        return <QuickNavigationSkeleton />;
+    }
+    return (
+        <NavigationContainer>
+            <Typography variant="h5" className="navigation-title">
+                Navegação Rápida
+            </Typography>
+            <div className="navigation-content">
+                <div className="navigation-grid">
+                    {SECTIONS.map((section) => (
+                        <Typography
+                            key={section.id}
+                            className="navigation-link"
+                            onClick={() => onSectionClick(section.id)}
+                        >
+                            {section.title}
+                        </Typography>
+                    ))}
+                </div>
             </div>
-        </div>
-    </NavigationContainer>
-);
+        </NavigationContainer>
+    );
+};
