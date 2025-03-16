@@ -9,10 +9,12 @@ import { useState, ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { blogPosts } from "./constants/blogPosts";
 import { BlogContainer, BlogContent } from "./styled";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export default function Blog() {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
@@ -32,13 +34,26 @@ export default function Blog() {
 
     return (
         <BlogContainer>
+            <div className="absolute inset-0 w-full h-full">
+                <OptimizedImage
+                    src="/assets/images/background/BlogHeader.jpg"
+                    alt="Blog Background"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover opacity-60"
+                    loadingClassName="scale-100 blur-sm"
+                    quality={85}
+                    onLoad={() => setImageLoaded(true)}
+                />
+            </div>
             <BlogContent>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <BlogHeader />
+                    <BlogHeader isLoading={!imageLoaded} />
                     <Container maxWidth="lg" sx={{ py: 8 }}>
                         <Grid container spacing={4}>
                             <Grid item xs={12} md={8}>
@@ -46,12 +61,13 @@ export default function Blog() {
                                     <BlogSearch
                                         value={searchQuery}
                                         onChange={handleSearchChange}
+                                        isLoading={!imageLoaded}
                                     />
                                 </Box>
                                 <Grid container spacing={3}>
                                     {filteredPosts.map((post) => (
                                         <Grid item xs={12} key={post.id}>
-                                            <BlogCard {...post} />
+                                            <BlogCard {...post} isLoading={!imageLoaded} />
                                         </Grid>
                                     ))}
                                 </Grid>
@@ -61,6 +77,7 @@ export default function Blog() {
                                 <BlogCategories
                                     selectedCategory={selectedCategory}
                                     onCategoryChange={setSelectedCategory}
+                                    isLoading={!imageLoaded}
                                 />
                             </Grid>
                         </Grid>

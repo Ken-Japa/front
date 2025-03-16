@@ -3,8 +3,15 @@
 import { Container, Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { HeaderContainer, HeaderContent } from "./styled";
+import { BlogHeaderSkeleton } from "./BlogHeaderSkeleton";
 
-export const BlogHeader = () => {
+interface BlogHeaderProps {
+    isLoading?: boolean;
+}
+export const BlogHeader = ({ isLoading }: BlogHeaderProps) => {
+    if (isLoading) {
+        return <BlogHeaderSkeleton />;
+    }
     return (
         <HeaderContainer>
             <Container maxWidth="lg">

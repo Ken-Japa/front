@@ -3,13 +3,19 @@
 import { Search } from "@mui/icons-material";
 import { SearchContainer, SearchInput, SearchIconWrapper } from "./styled";
 import { ChangeEvent } from "react";
+import { BlogSearchSkeleton } from "./BlogSearchSkeleton";
 
 interface BlogSearchProps {
     value: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    isLoading?: boolean;
 }
 
-export const BlogSearch = ({ value, onChange }: BlogSearchProps) => {
+export const BlogSearch = ({ value, onChange, isLoading }: BlogSearchProps) => {
+    if (isLoading) {
+        return <BlogSearchSkeleton />;
+    }
+
     return (
         <SearchContainer>
             <SearchIconWrapper>

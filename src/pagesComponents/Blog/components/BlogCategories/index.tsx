@@ -3,10 +3,12 @@
 import { Box, Typography } from "@mui/material";
 import { CategoryButton, CategoriesContainer } from "./styled";
 import { motion } from "framer-motion";
+import { BlogCategoriesSkeleton } from "./BlogCategoriesSkeleton";
 
 interface BlogCategoriesProps {
     selectedCategory: string;
     onCategoryChange: (category: string) => void;
+    isLoading?: boolean;
 }
 
 const categories = [
@@ -19,7 +21,10 @@ const categories = [
     { id: "alertas", label: "Alertas" }
 ];
 
-export const BlogCategories = ({ selectedCategory, onCategoryChange }: BlogCategoriesProps) => {
+export const BlogCategories = ({ selectedCategory, onCategoryChange, isLoading }: BlogCategoriesProps) => {
+    if (isLoading) {
+        return <BlogCategoriesSkeleton />;
+    }
     return (
         <CategoriesContainer>
             <Typography variant="h6" className="font-bold text-white mb-8 text-center">

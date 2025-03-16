@@ -1,7 +1,14 @@
 import { Typography, Box, Stack } from "@mui/material";
 import { CustomButton } from "@/components/Custom/Button";
+import { CallToActionSkeleton } from "./CallToActionSkeleton";
 
-export const CallToAction = () => {
+interface CallToActionProps {
+    isLoading?: boolean;
+}
+export const CallToAction = ({ isLoading }: CallToActionProps) => {
+    if (isLoading) {
+        return <CallToActionSkeleton />;
+    }
     return (
         <Box className="mt-12 text-center">
             <Stack

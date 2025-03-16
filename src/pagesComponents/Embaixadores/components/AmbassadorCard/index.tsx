@@ -2,6 +2,7 @@ import { Typography, Avatar, Stack, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { CardContainer } from "./styled";
 import { CROWN } from "../../constants/ambassadors";
+import { AmbassadorCardSkeleton } from "./AmbassadorCardSkeleton";
 
 interface AmbassadorCardProps {
     name: string;
@@ -9,9 +10,13 @@ interface AmbassadorCardProps {
     avatar?: string;
     testimonial: string;
     index: number;
+    isLoading?: boolean;
 }
 
-export const AmbassadorCard = ({ name, role, avatar, testimonial, index }: AmbassadorCardProps) => {
+export const AmbassadorCard = ({ name, role, avatar, testimonial, index, isLoading }: AmbassadorCardProps) => {
+    if (isLoading) {
+        return <AmbassadorCardSkeleton />;
+    }
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}

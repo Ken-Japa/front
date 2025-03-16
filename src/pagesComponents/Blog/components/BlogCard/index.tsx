@@ -5,6 +5,7 @@ import { CalendarToday, Person } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { CardContainer, CardOverlay } from "./styled";
 import Link from "next/link";
+import { BlogCardSkeleton } from "./BlogCardSkeleton";
 
 interface BlogCardProps {
     title: string;
@@ -14,11 +15,14 @@ interface BlogCardProps {
     author: string;
     date: string;
     slug: string;
+    isLoading?: boolean;
 }
 
-export const BlogCard = ({ title, description, image, author, date, slug }: BlogCardProps) => {
+export const BlogCard = ({ title, description, image, author, date, slug, isLoading }: BlogCardProps) => {
     const formattedDate = new Date(date).toLocaleDateString('pt-BR');
-
+    if (isLoading) {
+        return <BlogCardSkeleton />;
+    }
     return (
         <motion.div
             whileHover={{ y: -5 }}
@@ -38,9 +42,9 @@ export const BlogCard = ({ title, description, image, author, date, slug }: Blog
                         </>
                     )}
                     <CardContent sx={{ pt: image ? 2 : 3, pb: 3 }}>
-                        <Typography 
-                            variant="h5" 
-                            sx={{ 
+                        <Typography
+                            variant="h5"
+                            sx={{
                                 fontSize: { xs: '1.25rem', md: '1.5rem' },
                                 fontWeight: 700,
                                 color: '#fff',
@@ -49,17 +53,17 @@ export const BlogCard = ({ title, description, image, author, date, slug }: Blog
                         >
                             {title}
                         </Typography>
-                        <Typography 
-                            variant="body2" 
-                            sx={{ 
+                        <Typography
+                            variant="body2"
+                            sx={{
                                 color: 'rgba(255, 255, 255, 0.8)',
                                 marginBottom: '2rem'
                             }}
                         >
                             {description}
                         </Typography>
-                        <Box sx={{ 
-                            display: 'flex', 
+                        <Box sx={{
+                            display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             color: 'rgba(255, 255, 255, 0.6)'

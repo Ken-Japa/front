@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Container, Box, Stack } from "@mui/material";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
@@ -10,6 +11,7 @@ import { CallToAction } from "./components/CallToAction";
 import { OptimizedImage } from "@/components/OptimizedImage";
 
 export default function Ambassadors() {
+    const [imageLoaded, setImageLoaded] = useState(false);
     return (
         <PageTransition
             direction="up"
@@ -27,8 +29,9 @@ export default function Ambassadors() {
                             priority
                             sizes="100vw"
                             className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
+                            loadingClassName="scale-100 blur"
                             quality={85}
+                            onLoad={() => setImageLoaded(true)}
                         />
                         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
                     </div>
@@ -36,7 +39,7 @@ export default function Ambassadors() {
                     <div className="relative z-10 py-32">
                         <Container maxWidth="lg">
                             <Stack spacing={8} alignItems="center">
-                                <Header />
+                                <Header isLoading={!imageLoaded} />
 
                                 <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
                                     {ambassadors.map((ambassador, index) => (
@@ -44,11 +47,12 @@ export default function Ambassadors() {
                                             key={index}
                                             {...ambassador}
                                             index={index}
+                                            isLoading={!imageLoaded}
                                         />
                                     ))}
                                 </Box>
 
-                                <CallToAction />
+                                <CallToAction isLoading={!imageLoaded} />
                             </Stack>
                         </Container>
                     </div>

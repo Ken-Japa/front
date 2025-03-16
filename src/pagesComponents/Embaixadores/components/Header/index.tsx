@@ -1,8 +1,16 @@
 import { Typography } from "@mui/material";
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { HeaderContainer } from "./styled";
+import { HeaderSkeleton } from "./HeaderSkeleton";
 
-export const Header = () => {
+interface HeaderProps {
+    isLoading?: boolean;
+}
+
+export const Header = ({ isLoading }: HeaderProps) => {
+    if (isLoading) {
+        return <HeaderSkeleton />;
+    }
     return (
         <HeaderContainer spacing={3}>
             <WorkspacePremiumIcon sx={{ fontSize: 60 }} className="text-[#FFD700]" />
