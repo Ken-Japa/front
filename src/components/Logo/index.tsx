@@ -24,9 +24,10 @@ export const Logo = ({
                 priority
                 quality={100}
                 style={{ 
-                    maxWidth: `${width}px`,
-                    width: '100%',
-                    height: 'auto'
+                    maxWidth: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    aspectRatio: `${width}/${height}`
                 }}
             />
         </LogoContainer>

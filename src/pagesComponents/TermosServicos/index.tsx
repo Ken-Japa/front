@@ -11,35 +11,11 @@ import { QuickNavigation } from "./components/QuickNavigation";
 import { TermsContent } from "./components/TermsContent";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
+import { useScroll } from "./hooks/useScroll";
 
 export const TermsServices = () => {
-    const [showScrollTop, setShowScrollTop] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setShowScrollTop(window.scrollY > 400);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const yOffset = -100;
-            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-            window.scrollTo({
-                top: y,
-                behavior: 'smooth'
-            });
-        }
-    };
+    const { showScrollTop, scrollToTop, scrollToSection } = useScroll();
 
     return (
         <PageTransition
@@ -76,10 +52,10 @@ export const TermsServices = () => {
                                     <Header />
                                     <QuickNavigation onSectionClick={scrollToSection} />
                                     <TermsContent />
-                                    <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                                 </>
                             )}
                         </Container>
+                        <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                     </div>
                 </SectionTermsServices>
             </ErrorBoundary>

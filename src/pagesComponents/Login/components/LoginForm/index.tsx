@@ -37,7 +37,7 @@ export const LoginFormComponent = ({
     }
 
     return (
-        <LoginFormStyled onSubmit={handleSubmit}>
+        <LoginFormStyled onSubmit={handleSubmit} id="login">
             <FormHeader />
 
             <TextField
@@ -49,17 +49,20 @@ export const LoginFormComponent = ({
                 error={!!errors.email}
                 helperText={errors.email}
                 fullWidth
+                id="email-login"
+                autoComplete="on"
             />
 
             <TextField
                 label="Senha"
-                name="password"
+                name="senha"
                 type="password"
                 value={formData.password}
                 onChange={handleChange}
                 error={!!errors.password}
                 helperText={errors.password}
                 fullWidth
+                id="senha-login"
             />
 
             <ForgotPasswordLink>
@@ -79,6 +82,7 @@ export const LoginFormComponent = ({
                     }
                     label="Lembrar-me"
                     sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                    id="lembrar-login"
                 />
             </RememberMeContainer>
 

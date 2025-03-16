@@ -7,9 +7,11 @@ export const ScrollButton = styled("button")(({ theme }) => ({
   backgroundColor: "#0D95F9",
   padding: "12px",
   borderRadius: "50%",
-  boxShadow: "0 4px 12px rgba(13, 149, 249, 0.2)",
+  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
   transition: "all 0.3s ease",
   cursor: "pointer",
+  border: "none",
+  color: "white",
 
   "&:hover": {
     backgroundColor: "rgba(13, 149, 249, 0.8)",
@@ -20,5 +22,5 @@ export const ScrollButton = styled("button")(({ theme }) => ({
     bottom: "24px",
     right: "24px",
     padding: "10px",
-  }
+  },
 }));

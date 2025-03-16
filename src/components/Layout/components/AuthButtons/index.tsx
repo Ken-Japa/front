@@ -1,19 +1,19 @@
 import { PermIdentity } from "@mui/icons-material";
 import { CustomButton } from "../../../Custom/Button";
 import { useRouter } from "next/navigation";
-import { ButtonsContainer } from "./styled";
+import { motion } from "framer-motion";
 
 interface AuthButtonsProps {
     onButtonClick?: () => void;
-    fullWidth?: boolean;
+    isFullWidth?: boolean; 
 }
 
-export const AuthButtons = ({ onButtonClick, fullWidth }: AuthButtonsProps) => {
+export const AuthButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) => {
     const router = useRouter();
 
     return (
-        <ButtonsContainer
-            fullwidth={fullWidth}
+        <motion.div 
+            className={`flex gap-4 ${isFullWidth ? 'w-full' : ''}`}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -27,7 +27,7 @@ export const AuthButtons = ({ onButtonClick, fullWidth }: AuthButtonsProps) => {
                     router.push('/login');
                     onButtonClick?.();
                 }}
-                fullWidth={fullWidth}
+                fullWidth={isFullWidth}
             />
             <CustomButton
                 value="Registrar"
@@ -38,8 +38,8 @@ export const AuthButtons = ({ onButtonClick, fullWidth }: AuthButtonsProps) => {
                     router.push('/register');
                     onButtonClick?.();
                 }}
-                fullWidth={fullWidth}
+                fullWidth={isFullWidth}
             />
-        </ButtonsContainer>
+        </motion.div>
     );
 };

@@ -1,4 +1,5 @@
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { Fade } from '@mui/material';
 import { ScrollButton } from "./styled";
 
 interface ScrollToTopProps {
@@ -6,10 +7,15 @@ interface ScrollToTopProps {
     onClick: () => void;
 }
 
-export const ScrollToTop = ({ show, onClick }: ScrollToTopProps) => (
-    show ? (
-        <ScrollButton onClick={onClick}>
-            <ArrowUpwardIcon sx={{ color: "white" }} />
-        </ScrollButton>
-    ) : null
-);
+export const ScrollToTop = ({ show, onClick }: ScrollToTopProps) => {
+    return (
+        <Fade in={show}>
+            <ScrollButton
+                onClick={onClick}
+                aria-label="Voltar ao topo"
+            >
+                <ArrowUpwardIcon />
+            </ScrollButton>
+        </Fade>
+    );
+};

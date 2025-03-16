@@ -43,15 +43,17 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
         <>
             <StyledTextField
                 label="Nome completo"
-                name="name"
+                name="nome-registrar"
                 value={formData.name}
                 onChange={handleChange}
                 error={!!errors.name}
                 helperText={errors.name}
                 required
+                id="nome-registrar"
+                autoComplete="on"
             />
             <StyledTextField
-                name="cpf"
+                name="cpf-registrar"
                 label="CPF"
                 value={formData.cpf}
                 onChange={(e) => {
@@ -67,9 +69,10 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
                 helperText={errors.cpf}
                 required
                 inputProps={{ maxLength: 14 }}
+                id="cpf-registrar"
             />
             <StyledTextField
-                name="phone"
+                name="telefone-registrar"
                 label="Telefone"
                 value={formData.phone}
                 onChange={(e) => {
@@ -84,9 +87,10 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
                 helperText={errors.phone}
                 required
                 inputProps={{ maxLength: 15 }}
+                id="telefone-registrar"
             />
             <StyledTextField
-                name="email"
+                name="email-registrar"
                 label="E-mail"
                 type="email"
                 value={formData.email}
@@ -94,9 +98,10 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
                 error={!!errors.email}
                 helperText={errors.email}
                 required
+                id="email-registrar"
             />
             <StyledTextField
-                name="password"
+                name="senha-registrar"
                 label="Senha"
                 type="password"
                 value={formData.password}
@@ -104,6 +109,7 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
                 error={!!errors.password}
                 helperText={errors.password}
                 required
+                id="senha-registrar"
             />
 
             {formData.password && (
@@ -125,7 +131,7 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
             )}
 
             <StyledTextField
-                name="confirmPassword"
+                name="confirmarsenha-registrar"
                 label="Confirmar Senha"
                 type="password"
                 value={formData.confirmPassword}
@@ -133,6 +139,7 @@ export const FormFields = ({ formData, errors, onChange }: FormFieldsProps) => {
                 error={!!errors.confirmPassword}
                 helperText={errors.confirmPassword}
                 required
+                id="confirmarsenha-registrar"
             />
         </>
     );

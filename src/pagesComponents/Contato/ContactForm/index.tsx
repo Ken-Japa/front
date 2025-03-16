@@ -40,7 +40,7 @@ export const ContactFormComponent = ({
     handleSubmit
 }: ContactFormProps) => {
     return (
-        <ContactFormStyled onSubmit={handleSubmit}>
+        <ContactFormStyled onSubmit={handleSubmit} id="contato-form">
             <TextField
                 className="form-field"
                 label="Nome"
@@ -49,6 +49,7 @@ export const ContactFormComponent = ({
                 onChange={handleChange}
                 error={!!errors.name}
                 helperText={errors.name}
+                id="nome-contato"
             />
             <TextField
                 className="form-field"
@@ -59,6 +60,7 @@ export const ContactFormComponent = ({
                 onChange={handleChange}
                 error={!!errors.email}
                 helperText={errors.email}
+                id="email-contato"
             />
             <Autocomplete
                 className="form-field"
@@ -96,8 +98,10 @@ export const ContactFormComponent = ({
                         error={!!errors.subject}
                         helperText={errors.subject}
                         fullWidth
+                        id="assunto-contato"
                     />
                 )}
+                id="assunto-contato2"
             />
             <TextField
                 className="form-field"
@@ -109,6 +113,7 @@ export const ContactFormComponent = ({
                 onChange={handleChange}
                 error={!!errors.message}
                 helperText={errors.message}
+                id="mensagem-contato"
             />
             <Button
                 className="submit-button"

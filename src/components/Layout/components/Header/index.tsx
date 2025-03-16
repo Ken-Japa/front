@@ -51,7 +51,7 @@ export const Header = () => {
                                 <DrawerContent>
                                     <Navbar />
                                     <div className="mt-4">
-                                        <AuthButtons onButtonClick={toggle} fullWidth />
+                                        <AuthButtons onButtonClick={toggle} isFullWidth />
                                     </div>
                                 </DrawerContent>
                             </Drawer>

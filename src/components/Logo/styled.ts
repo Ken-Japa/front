@@ -5,11 +5,12 @@ export const LogoContainer = styled('div')({
     alignItems: 'center',
     justifyContent: 'center',
     transition: 'opacity 0.2s ease-in-out',
+    width: '60px',
+    height: '60px',
     '& img': {
-        maxWidth: '60px',
-        width: '100%',
-        height: 'auto',
-        objectFit: 'contain'
+        objectFit: 'contain',
+        maxWidth: '100%',
+        height: 'auto'
     },
     '&:hover': {
         opacity: 0.9

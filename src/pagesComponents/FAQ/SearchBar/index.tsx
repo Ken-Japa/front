@@ -17,6 +17,7 @@ export const SearchBar = ({ searchTerm, setSearchTerm }: SearchBarProps) => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="search-input"
+                    id="faq-search"
                 />
                 <SearchIcon className="search-icon" sx={{ fontSize: 20 }} />
                 {searchTerm && (

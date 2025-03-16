@@ -19,6 +19,7 @@ export const BlogSearch = ({ value, onChange }: BlogSearchProps) => {
                 placeholder="Pesquisar artigos..."
                 value={value}
                 onChange={onChange}
+                id="blog-search"
             />
         </SearchContainer>
     );
