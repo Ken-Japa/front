@@ -9,9 +9,11 @@ import { Header } from "./components/Header";
 import { AmbassadorCard } from "./components/AmbassadorCard";
 import { CallToAction } from "./components/CallToAction";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export default function Ambassadors() {
     const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <PageTransition
             direction="up"
@@ -29,11 +31,15 @@ export default function Ambassadors() {
                             priority
                             sizes="100vw"
                             className="object-cover"
-                            loadingClassName="scale-100 blur"
+                            loadingClassName="scale-100 blur-sm grayscale"
                             quality={85}
                             onLoad={() => setImageLoaded(true)}
+                            style={{
+                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                transition: 'filter 0.5s ease-in-out'
+                            }}
                         />
-                        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+                        <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
                     </div>
 
                     <div className="relative z-10 py-32">
@@ -43,16 +49,19 @@ export default function Ambassadors() {
 
                                 <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
                                     {ambassadors.map((ambassador, index) => (
-                                        <AmbassadorCard
-                                            key={index}
-                                            {...ambassador}
-                                            index={index}
-                                            isLoading={!imageLoaded}
-                                        />
+                                        <ProgressiveLoad key={index} rootMargin="100px">
+                                            <AmbassadorCard
+                                                {...ambassador}
+                                                index={index}
+                                                isLoading={!imageLoaded}
+                                            />
+                                        </ProgressiveLoad>
                                     ))}
                                 </Box>
 
-                                <CallToAction isLoading={!imageLoaded} />
+                                <ProgressiveLoad>
+                                    <CallToAction isLoading={!imageLoaded} />
+                                </ProgressiveLoad>
                             </Stack>
                         </Container>
                     </div>

@@ -12,10 +12,10 @@ import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export const Home = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
-
 
     return (
         <PageTransition
@@ -45,59 +45,63 @@ export const Home = () => {
                             />
                             <div className="absolute inset-0 bg-black/50" />
                         </div>
-                        <Welcome
-                            isLoading={!imageLoaded}
-                        />
+                        <Welcome isLoading={!imageLoaded} />
                     </Section>
 
-                    <Section withPadding>
-                        <Features isLoading={!imageLoaded} />
-                    </Section>
+                    <ProgressiveLoad>
+                        <Section withPadding>
+                            <Features isLoading={!imageLoaded} />
+                        </Section>
+                    </ProgressiveLoad>
 
-                    <Newsletter isLoading={!imageLoaded} />
+                    <ProgressiveLoad>
+                        <Newsletter isLoading={!imageLoaded} />
+                    </ProgressiveLoad>
 
-                    <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
-
-                    <Section withPadding>
-                        <Container maxWidth="xl">
-                            <Stack spacing={6} alignItems="center">
-                                <Stack spacing={4} alignItems="center">
-                                    <SectionTitle>
-                                        Escolha o Plano Ideal
-                                    </SectionTitle>
-                                    <SectionSubtitle>
-                                        Invista no seu futuro – Não pague por ferramentas ultrapassadas.
-                                        <br /> <br />
-                                        Escolha a opção que melhor atende às suas necessidades.
-                                    </SectionSubtitle>
+                    <ProgressiveLoad>
+                        <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
+                        <Section withPadding>
+                            <Container maxWidth="xl">
+                                <Stack spacing={6} alignItems="center">
+                                    <Stack spacing={4} alignItems="center">
+                                        <SectionTitle>
+                                            Escolha o Plano Ideal
+                                        </SectionTitle>
+                                        <SectionSubtitle>
+                                            Invista no seu futuro – Não pague por ferramentas ultrapassadas.
+                                            <br /> <br />
+                                            Escolha a opção que melhor atende às suas necessidades.
+                                        </SectionSubtitle>
+                                    </Stack>
+                                    <Plans isLoading={!imageLoaded} />
                                 </Stack>
-                                <Plans isLoading={!imageLoaded} />
-                            </Stack>
-                        </Container>
-                    </Section>
+                            </Container>
+                        </Section>
+                    </ProgressiveLoad>
 
-                    <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
-
-                    <Section withPadding>
-                        <Container maxWidth="xl">
-                            <Questions isLoading={!imageLoaded} />
-                            <Stack alignItems="center" sx={{ mt: 4 }}>
-                                <Typography
-                                    variant="body1"
-                                    className="text-white/90 hover:text-white transition-colors"
-                                >
-                                    Encontre mais respostas acessando o{' '}
-                                    <Link
-                                        href="/faq"
-                                        className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
+                    <ProgressiveLoad>
+                        <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
+                        <Section withPadding>
+                            <Container maxWidth="xl">
+                                <Questions isLoading={!imageLoaded} />
+                                <Stack alignItems="center" sx={{ mt: 4 }}>
+                                    <Typography
+                                        variant="body1"
+                                        className="text-white/90 hover:text-white transition-colors"
                                     >
-                                        FAQ
-                                    </Link>
-                                    .
-                                </Typography>
-                            </Stack>
-                        </Container>
-                    </Section>
+                                        Encontre mais respostas acessando o{' '}
+                                        <Link
+                                            href="/faq"
+                                            className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
+                                        >
+                                            FAQ
+                                        </Link>
+                                        .
+                                    </Typography>
+                                </Stack>
+                            </Container>
+                        </Section>
+                    </ProgressiveLoad>
                 </MainContainer>
             </ErrorBoundary>
         </PageTransition>

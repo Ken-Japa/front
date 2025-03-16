@@ -11,6 +11,7 @@ import { QuickNavigation } from "./components/QuickNavigation/";
 import { PrivacyContent } from "./components/PrivacyContent/PrivacyContent";
 import { ScrollToTop } from "./components/ScrollToTop/";
 import { useScroll } from "./hooks/useScroll";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export const PrivacyPolicy = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -47,8 +48,13 @@ export const PrivacyPolicy = () => {
                             <Container maxWidth="lg">
                                 <>
                                     <Header isLoading={!imageLoaded} />
-                                    <QuickNavigation onSectionClick={scrollToSection} isLoading={!imageLoaded} />
-                                    <PrivacyContent isLoading={!imageLoaded} />
+                                    <QuickNavigation 
+                                        onSectionClick={scrollToSection} 
+                                        isLoading={!imageLoaded} 
+                                    />
+                                    <ProgressiveLoad rootMargin="100px">
+                                        <PrivacyContent isLoading={!imageLoaded} />
+                                    </ProgressiveLoad>
                                     <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                                 </>
                             </Container>

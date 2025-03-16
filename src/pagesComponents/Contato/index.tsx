@@ -151,18 +151,23 @@ export const Contact = () => {
         }
     }, []);
 
+    // Add timer countdown effect
     useEffect(() => {
-        const blockedUntil = localStorage.getItem('contactBlockedUntil');
-        if (blockedUntil) {
-            const timeLeft = parseInt(blockedUntil) - Date.now();
-            if (timeLeft > 0) {
-                setIsBlocked(true);
-                setBlockTimer(Math.ceil(timeLeft / 1000));
-            } else {
-                localStorage.removeItem('contactBlockedUntil');
-            }
+        let timer: NodeJS.Timeout;
+        if (isBlocked && blockTimer > 0) {
+            timer = setInterval(() => {
+                setBlockTimer(prev => {
+                    if (prev <= 1) {
+                        setIsBlocked(false);
+                        localStorage.removeItem('contactBlockedUntil');
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
         }
-    }, []);
+        return () => clearInterval(timer);
+    }, [isBlocked, blockTimer]);
 
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">

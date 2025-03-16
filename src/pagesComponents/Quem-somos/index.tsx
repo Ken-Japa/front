@@ -12,6 +12,7 @@ import { MissaoSection } from "./components/MissaoSection";
 import { ValoresSection } from "./components/ValoresSection";
 import { EquipeSection } from "./components/EquipeSection";
 import { CompromissoSection } from "./components/CompromissoSection/";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export default function AboutPage() {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -50,10 +51,22 @@ export default function AboutPage() {
                                 <Stack spacing={8} alignItems="center">
                                     <Header isLoading={!imageLoaded} />
                                     <HistoriaSection isLoading={!imageLoaded} />
-                                    <MissaoSection isLoading={!imageLoaded} />
-                                    <ValoresSection isLoading={!imageLoaded} />
-                                    <EquipeSection isLoading={!imageLoaded} />
-                                    <CompromissoSection isLoading={!imageLoaded} />
+
+                                    <ProgressiveLoad>
+                                        <MissaoSection isLoading={!imageLoaded} />
+                                    </ProgressiveLoad>
+
+                                    <ProgressiveLoad>
+                                        <ValoresSection isLoading={!imageLoaded} />
+                                    </ProgressiveLoad>
+
+                                    <ProgressiveLoad rootMargin="100px">
+                                        <EquipeSection isLoading={!imageLoaded} />
+                                    </ProgressiveLoad>
+
+                                    <ProgressiveLoad rootMargin="100px">
+                                        <CompromissoSection isLoading={!imageLoaded} />
+                                    </ProgressiveLoad>
                                 </Stack>
                             </div>
                         </div>

@@ -38,6 +38,7 @@ export const JoinTeam = () => {
                                 transition: 'filter 0.5s ease-in-out'
                             }}
                         />
+
                     </div>
                     <div className="container">
                         <div className="content-wrapper">

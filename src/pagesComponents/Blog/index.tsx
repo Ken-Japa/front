@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { blogPosts } from "./constants/blogPosts";
 import { BlogContainer, BlogContent } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export default function Blog() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -54,31 +55,42 @@ export default function Blog() {
                     transition={{ duration: 0.5 }}
                 >
                     <BlogHeader isLoading={!imageLoaded} />
+
                     <Container maxWidth="lg" sx={{ py: 8 }}>
                         <Grid container spacing={4}>
                             <Grid item xs={12} md={8}>
-                                <Box mb={4}>
-                                    <BlogSearch
-                                        value={searchQuery}
-                                        onChange={handleSearchChange}
-                                        isLoading={!imageLoaded}
-                                    />
-                                </Box>
+                                <ProgressiveLoad>
+                                    <Box mb={4}>
+                                        <BlogSearch
+                                            value={searchQuery}
+                                            onChange={handleSearchChange}
+                                            isLoading={!imageLoaded}
+                                        />
+                                    </Box>
+                                </ProgressiveLoad>
+
                                 <Grid container spacing={3}>
-                                    {filteredPosts.map((post) => (
+                                    {filteredPosts.map((post, index) => (
                                         <Grid item xs={12} key={post.id}>
-                                            <BlogCard {...post} isLoading={!imageLoaded} />
+                                            <ProgressiveLoad
+                                                delay={index * 0.1}
+                                                rootMargin="100px"
+                                            >
+                                                <BlogCard {...post} isLoading={!imageLoaded} />
+                                            </ProgressiveLoad>
                                         </Grid>
                                     ))}
                                 </Grid>
                             </Grid>
 
                             <Grid item xs={12} md={4}>
-                                <BlogCategories
-                                    selectedCategory={selectedCategory}
-                                    onCategoryChange={setSelectedCategory}
-                                    isLoading={!imageLoaded}
-                                />
+                                <ProgressiveLoad rootMargin="100px">
+                                    <BlogCategories
+                                        selectedCategory={selectedCategory}
+                                        onCategoryChange={setSelectedCategory}
+                                        isLoading={!imageLoaded}
+                                    />
+                                </ProgressiveLoad>
                             </Grid>
                         </Grid>
                     </Container>

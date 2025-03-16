@@ -11,6 +11,7 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import { CTASection } from "./components/CTASection";
 import { Newsletter } from "../Home/Newsletter";
 import { useRef } from 'react';
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export const Solutions = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -54,7 +55,7 @@ export const Solutions = () => {
                         muted
                         loop
                         playsInline
-                        preload="metadata" // Alterar para metadata para carregamento inicial mais rápido
+                        preload="metadata"
                         className="video-background"
                     >
                         <source src="/assets/video/Recursos.mp4" type="video/mp4" />
@@ -66,14 +67,26 @@ export const Solutions = () => {
                         <ContentWrapper>
                             <>
                                 <Header isLoading={!videoLoaded} />
-                                <FeaturesGrid
-                                    hoveredCard={hoveredCard}
-                                    setHoveredCard={setHoveredCard}
-                                    isLoading={!videoLoaded}
-                                />
-                                <TestimonialsSection isLoading={!videoLoaded} />
-                                <CTASection isLoading={!videoLoaded} />
-                                <Newsletter isLoading={!videoLoaded} />
+
+                                <ProgressiveLoad>
+                                    <FeaturesGrid
+                                        hoveredCard={hoveredCard}
+                                        setHoveredCard={setHoveredCard}
+                                        isLoading={!videoLoaded}
+                                    />
+                                </ProgressiveLoad>
+
+                                <ProgressiveLoad rootMargin="100px">
+                                    <TestimonialsSection isLoading={!videoLoaded} />
+                                </ProgressiveLoad>
+
+                                <ProgressiveLoad rootMargin="100px">
+                                    <CTASection isLoading={!videoLoaded} />
+                                </ProgressiveLoad>
+
+                                <ProgressiveLoad rootMargin="150px">
+                                    <Newsletter isLoading={!videoLoaded} />
+                                </ProgressiveLoad>
                             </>
                         </ContentWrapper>
                     </Container>

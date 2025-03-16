@@ -12,6 +12,7 @@ import { QuestionList } from "./QuestionList";
 import { ContactSupport } from "./ContactSupport";
 import { categorizedQuestions } from "./data/faqData";
 import type { CategoryType } from "./data/faqData";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export const FAQ = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -58,10 +59,28 @@ export const FAQ = () => {
                     <div className="content-container">
                         <>
                             <Header isLoading={!imageLoaded} />
-                            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={!imageLoaded} />
-                            {!searchTerm && <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
-                            <QuestionList questions={filteredQuestions} isLoading={!imageLoaded} />
-                            <ContactSupport />
+                            <SearchBar 
+                                searchTerm={searchTerm} 
+                                setSearchTerm={setSearchTerm} 
+                                isLoading={!imageLoaded} 
+                            />
+                            {!searchTerm && (
+                                <CategoryTabs 
+                                    activeCategory={activeCategory} 
+                                    setActiveCategory={setActiveCategory} 
+                                />
+                            )}
+                            
+                            <ProgressiveLoad>
+                                <QuestionList 
+                                    questions={filteredQuestions} 
+                                    isLoading={!imageLoaded} 
+                                />
+                            </ProgressiveLoad>
+
+                            <ProgressiveLoad>
+                                <ContactSupport />
+                            </ProgressiveLoad>
                         </>
                     </div>
                 </SectionFAQ>

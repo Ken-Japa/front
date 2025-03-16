@@ -11,6 +11,7 @@ import { QuickNavigation } from "./components/QuickNavigation";
 import { TermsContent } from "./components/TermsContent";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { useScroll } from "./hooks/useScroll";
+import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 export const TermsServices = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -46,8 +47,14 @@ export const TermsServices = () => {
                         <Container maxWidth="lg" className="content-wrapper">
                             <>
                                 <Header isLoading={!imageLoaded} />
-                                <QuickNavigation onSectionClick={scrollToSection} isLoading={!imageLoaded} />
-                                <TermsContent isLoading={!imageLoaded} />
+                                <QuickNavigation
+                                    onSectionClick={scrollToSection}
+                                    isLoading={!imageLoaded}
+                                />
+
+                                <ProgressiveLoad rootMargin="100px">
+                                    <TermsContent isLoading={!imageLoaded} />
+                                </ProgressiveLoad>
                             </>
                         </Container>
                     </div>
