@@ -10,11 +10,11 @@ import { useLoginForm } from "./hooks/useLoginForm";
 import { StyledDialog } from "./styled";
 import { StyledCloseButton } from "./components/CloseButton/styled";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import Link from 'next/link';
 
 const LoginFormComponent = lazy(() => import('./components/LoginForm').then(mod => ({ default: mod.LoginFormComponent })));
 
 export const Login = () => {
-    const router = useRouter();
     const [imageLoaded, setImageLoaded] = useState(false);
     const {
         formData,
@@ -40,15 +40,21 @@ export const Login = () => {
                             priority
                             sizes="(max-width: 900px) 100vw, 900px"
                             className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
+                            loadingClassName="scale-100 blur-sm grayscale"
                             quality={85}
-                            onLoadingComplete={() => setImageLoaded(true)}
+                            onLoad={() => setImageLoaded(true)}
+                            style={{
+                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                transition: 'filter 0.5s ease-in-out'
+                            }}
                         />
                     </div>
                     <div className="content">
-                        <StyledCloseButton onClick={() => router.push('/')}>
-                            <CloseIcon />
-                        </StyledCloseButton>
+                        <Link href="/" passHref>
+                            <StyledCloseButton>
+                                <CloseIcon />
+                            </StyledCloseButton>
+                        </Link>
 
                         <SuspenseWrapper>
                             <LoginFormComponent

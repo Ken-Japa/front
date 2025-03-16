@@ -12,6 +12,7 @@ import { FormData, FormErrors } from "./types";
 import { StyledDialog } from "./components/Dialog/styled";
 import { StyledCloseButton } from "./components/CloseButton/styled";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import Link from 'next/link';
 
 const RegisterFormContent = lazy(() => import('./components/RegisterForm').then(mod => ({ default: mod.RegisterFormContent })));
 
@@ -117,7 +118,7 @@ export const Register = () => {
                             priority
                             sizes="(max-width: 900px) 100vw, 900px"
                             className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
+                            loadingClassName="scale-100 blur-sm grayscale"
                             quality={85}
                             onLoad={() => setImageLoaded(true)}
                             style={{
@@ -127,9 +128,11 @@ export const Register = () => {
                         />
                     </div>
                     <div className="content">
-                        <StyledCloseButton onClick={() => router.push('/')}>
-                            <CloseIcon />
-                        </StyledCloseButton>
+                        <Link href="/" passHref>
+                            <StyledCloseButton>
+                                <CloseIcon />
+                            </StyledCloseButton>
+                        </Link>
 
                         <SuspenseWrapper>
                             <RegisterFormContent

@@ -3,15 +3,14 @@
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { Logo } from "../../../Logo";
 import { Navbar } from "../Navbar";
-import { useRouter } from "next/navigation";
 import { Drawer, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { AuthButtons } from "../AuthButtons";
 import { useDrawer } from "../../hooks/useDrawer";
 import { HeaderContainer, HeaderContent, DrawerContent } from "./styled";
+import Link from 'next/link';
 
 export const Header = () => {
-    const router = useRouter();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const { isOpen, toggle } = useDrawer();
@@ -28,7 +27,9 @@ export const Header = () => {
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400 }}
                     >
-                        <Logo width={60} height={60} onClick={() => router.push('/')} />
+                        <Link href="/">
+                            <Logo width={60} height={60} />
+                        </Link>
                     </motion.div>
 
                     {isMobile ? (

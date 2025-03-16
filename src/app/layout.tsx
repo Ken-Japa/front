@@ -75,11 +75,7 @@ export default function RootLayout({
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <link
-          rel="preload"
-          href="/assets/images/logo/Logo6.png"
-          as="image"
-        />
+
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
@@ -93,16 +89,7 @@ export default function RootLayout({
           rel="dns-prefetch"
           href="https://fonts.googleapis.com"
         />
-        <link
-          rel="preload"
-          href="/assets/images/background/HOME.jpg"
-          as="image"
-        />
-        <link
-          rel="preload"
-          href="/assets/images/background/BACKGROUND-DEFAULT.jpg"
-          as="image"
-        />
+
       </head>
       <body className={inter.className}>
         <ErrorBoundary>
