@@ -5,27 +5,17 @@ export const PostContainer = styled(Box)`
   background: #111111;
   min-height: 100vh;
   position: relative;
-
-  &::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("/assets/images/background/BlogPost.jpg") center/cover
-      no-repeat;
-    opacity: 0.1;
-    z-index: 0;
-    pointer-events: none;
-  }
 `;
 
 export const PostContent = styled(Box)`
   color: #fff;
   font-size: 1.1rem;
   line-height: 1.8;
-
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  
   h1,
   h2,
   h3,
