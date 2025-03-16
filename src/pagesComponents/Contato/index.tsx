@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { SectionContact } from "./styled";
-import { Alert, Snackbar, Stack, Box } from "@mui/material";
+import { Alert, Snackbar, Stack } from "@mui/material";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Header } from "./Header";
-import { ContactInfo } from "./ContactInfo";
-import { ContactFormComponent } from "./ContactForm";
-import { ContactFormSkeleton } from "./ContactForm/ContactFormSkeleton";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const Header = lazy(() => import('./Header').then(mod => ({ default: mod.Header })));
+const ContactInfo = lazy(() => import('./ContactInfo').then(mod => ({ default: mod.ContactInfo })));
+const ContactFormComponent = lazy(() => import('./ContactForm').then(mod => ({ default: mod.ContactFormComponent })));
+const ContactFormSkeleton = lazy(() => import('./ContactForm/ContactFormSkeleton').then(mod => ({ default: mod.ContactFormSkeleton })));
 
 interface FormData {
     name: string;
@@ -24,16 +26,6 @@ interface FormErrors {
     subject?: string;
     message?: string;
 }
-
-const subjectOptions = [
-    "Assinaturas",
-    "Problemas de Acesso",
-    "Estratégias",
-    "Relatórios",
-    "Problemas Técnicos",
-    "Parcerias Comerciais",
-    "Outros"
-];
 
 export const Contact = () => {
     const [contactAttempts, setContactAttempts] = useState(0);
@@ -191,25 +183,33 @@ export const Contact = () => {
                     </div>
                     <div className="content-wrapper">
                         <Stack spacing={4} className="content-container">
-                            <Header isLoading={!imageLoaded} />
+                            <SuspenseWrapper>
+                                <Header isLoading={!imageLoaded} />
+                            </SuspenseWrapper>
+
                             <Stack
                                 direction={{ xs: 'column', md: 'row' }}
                                 spacing={4}
                                 className="form-container"
                             >
-                                <ContactInfo isLoading={!imageLoaded} />
-                                {!imageLoaded ? (
-                                    <ContactFormSkeleton />
-                                ) : (
-                                    <ContactFormComponent
-                                        formData={formData}
-                                        errors={errors}
-                                        isBlocked={isBlocked}
-                                        blockTimer={blockTimer}
-                                        handleChange={handleChange}
-                                        handleSubmit={handleSubmit}
-                                    />
-                                )}
+                                <SuspenseWrapper>
+                                    <ContactInfo isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
+
+                                <SuspenseWrapper>
+                                    {!imageLoaded ? (
+                                        <ContactFormSkeleton />
+                                    ) : (
+                                        <ContactFormComponent
+                                            formData={formData}
+                                            errors={errors}
+                                            isBlocked={isBlocked}
+                                            blockTimer={blockTimer}
+                                            handleChange={handleChange}
+                                            handleSubmit={handleSubmit}
+                                        />
+                                    )}
+                                </SuspenseWrapper>
                             </Stack>
                         </Stack>
                         <Snackbar

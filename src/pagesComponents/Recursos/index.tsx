@@ -2,16 +2,18 @@
 
 import { Container } from "@mui/material";
 import { SectionSolutions, ContentWrapper } from "./styled";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Header } from "./components/Header";
-import { FeaturesGrid } from "./components/FeaturesGrid/";
-import { TestimonialsSection } from "./components/TestimonialsSection";
-import { CTASection } from "./components/CTASection";
-import { Newsletter } from "../Home/Newsletter";
 import { useRef } from 'react';
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
+const FeaturesGrid = lazy(() => import('./components/FeaturesGrid').then(mod => ({ default: mod.FeaturesGrid })));
+const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(mod => ({ default: mod.TestimonialsSection })));
+const CTASection = lazy(() => import('./components/CTASection').then(mod => ({ default: mod.CTASection })));
+const Newsletter = lazy(() => import('../Home/Newsletter').then(mod => ({ default: mod.Newsletter })));
 
 export const Solutions = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -41,12 +43,7 @@ export const Solutions = () => {
     }, []);
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionSolutions>
                     <video
@@ -66,26 +63,36 @@ export const Solutions = () => {
                     <Container maxWidth="xl">
                         <ContentWrapper>
                             <>
-                                <Header isLoading={!videoLoaded} />
+                                <SuspenseWrapper>
+                                    <Header isLoading={!videoLoaded} />
+                                </SuspenseWrapper>
 
                                 <ProgressiveLoad>
-                                    <FeaturesGrid
-                                        hoveredCard={hoveredCard}
-                                        setHoveredCard={setHoveredCard}
-                                        isLoading={!videoLoaded}
-                                    />
+                                    <SuspenseWrapper>
+                                        <FeaturesGrid
+                                            hoveredCard={hoveredCard}
+                                            setHoveredCard={setHoveredCard}
+                                            isLoading={!videoLoaded}
+                                        />
+                                    </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="100px">
-                                    <TestimonialsSection isLoading={!videoLoaded} />
+                                    <SuspenseWrapper>
+                                        <TestimonialsSection isLoading={!videoLoaded} />
+                                    </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="100px">
-                                    <CTASection isLoading={!videoLoaded} />
+                                    <SuspenseWrapper>
+                                        <CTASection isLoading={!videoLoaded} />
+                                    </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="150px">
-                                    <Newsletter isLoading={!videoLoaded} />
+                                    <SuspenseWrapper>
+                                        <Newsletter isLoading={!videoLoaded} />
+                                    </SuspenseWrapper>
                                 </ProgressiveLoad>
                             </>
                         </ContentWrapper>

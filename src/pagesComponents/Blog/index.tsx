@@ -1,16 +1,18 @@
 "use client";
 
-import { Container, Typography, Grid, Box } from "@mui/material";
-import { BlogCard } from "./components/BlogCard/";
-import { BlogHeader } from "./components/BlogHeader/";
-import { BlogCategories } from "./components/BlogCategories";
-import { BlogSearch } from "./components/BlogSearch/";
-import { useState, ChangeEvent } from "react";
+import { Container, Grid, Box } from "@mui/material";
+import { useState, ChangeEvent, lazy } from "react";
 import { motion } from "framer-motion";
 import { blogPosts } from "./constants/blogPosts";
 import { BlogContainer, BlogContent } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const BlogHeader = lazy(() => import('./components/BlogHeader').then(mod => ({ default: mod.BlogHeader })));
+const BlogSearch = lazy(() => import('./components/BlogSearch').then(mod => ({ default: mod.BlogSearch })));
+const BlogCard = lazy(() => import('./components/BlogCard').then(mod => ({ default: mod.BlogCard })));
+const BlogCategories = lazy(() => import('./components/BlogCategories').then(mod => ({ default: mod.BlogCategories })));
 
 export default function Blog() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -28,10 +30,7 @@ export default function Blog() {
             const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
             return matchesSearch && matchesCategory;
         })
-        .sort((a, b) => {
-            // Sort by date in descending order (newest first)
-            return new Date(b.date).getTime() - new Date(a.date).getTime();
-        });
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return (
         <BlogContainer>
@@ -54,18 +53,22 @@ export default function Blog() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <BlogHeader isLoading={!imageLoaded} />
+                    <SuspenseWrapper>
+                        <BlogHeader isLoading={!imageLoaded} />
+                    </SuspenseWrapper>
 
                     <Container maxWidth="lg" sx={{ py: 8 }}>
                         <Grid container spacing={4}>
                             <Grid item xs={12} md={8}>
                                 <ProgressiveLoad>
                                     <Box mb={4}>
-                                        <BlogSearch
-                                            value={searchQuery}
-                                            onChange={handleSearchChange}
-                                            isLoading={!imageLoaded}
-                                        />
+                                        <SuspenseWrapper>
+                                            <BlogSearch
+                                                value={searchQuery}
+                                                onChange={handleSearchChange}
+                                                isLoading={!imageLoaded}
+                                            />
+                                        </SuspenseWrapper>
                                     </Box>
                                 </ProgressiveLoad>
 
@@ -76,7 +79,9 @@ export default function Blog() {
                                                 delay={index * 0.1}
                                                 rootMargin="100px"
                                             >
-                                                <BlogCard {...post} isLoading={!imageLoaded} />
+                                                <SuspenseWrapper>
+                                                    <BlogCard {...post} isLoading={!imageLoaded} />
+                                                </SuspenseWrapper>
                                             </ProgressiveLoad>
                                         </Grid>
                                     ))}
@@ -85,11 +90,13 @@ export default function Blog() {
 
                             <Grid item xs={12} md={4}>
                                 <ProgressiveLoad rootMargin="100px">
-                                    <BlogCategories
-                                        selectedCategory={selectedCategory}
-                                        onCategoryChange={setSelectedCategory}
-                                        isLoading={!imageLoaded}
-                                    />
+                                    <SuspenseWrapper>
+                                        <BlogCategories
+                                            selectedCategory={selectedCategory}
+                                            onCategoryChange={setSelectedCategory}
+                                            isLoading={!imageLoaded}
+                                        />
+                                    </SuspenseWrapper>
                                 </ProgressiveLoad>
                             </Grid>
                         </Grid>

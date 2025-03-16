@@ -1,18 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { SectionFAQ } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Header } from "./Header";
-import { SearchBar } from "./SearchBar";
-import { CategoryTabs } from "./CategoryTabs";
-import { QuestionList } from "./QuestionList";
-import { ContactSupport } from "./ContactSupport";
 import { categorizedQuestions } from "./data/faqData";
 import type { CategoryType } from "./data/faqData";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const Header = lazy(() => import('./Header').then(mod => ({ default: mod.Header })));
+const SearchBar = lazy(() => import('./SearchBar').then(mod => ({ default: mod.SearchBar })));
+const CategoryTabs = lazy(() => import('./CategoryTabs').then(mod => ({ default: mod.CategoryTabs })));
+const QuestionList = lazy(() => import('./QuestionList').then(mod => ({ default: mod.QuestionList })));
+const ContactSupport = lazy(() => import('./ContactSupport').then(mod => ({ default: mod.ContactSupport })));
 
 export const FAQ = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -31,12 +33,7 @@ export const FAQ = () => {
             : categorizedQuestions[activeCategory];
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionFAQ>
                     <div className="background-image">
@@ -58,28 +55,40 @@ export const FAQ = () => {
                     </div>
                     <div className="content-container">
                         <>
-                            <Header isLoading={!imageLoaded} />
-                            <SearchBar 
-                                searchTerm={searchTerm} 
-                                setSearchTerm={setSearchTerm} 
-                                isLoading={!imageLoaded} 
-                            />
-                            {!searchTerm && (
-                                <CategoryTabs 
-                                    activeCategory={activeCategory} 
-                                    setActiveCategory={setActiveCategory} 
+                            <SuspenseWrapper>
+                                <Header isLoading={!imageLoaded} />
+                            </SuspenseWrapper>
+
+                            <SuspenseWrapper>
+                                <SearchBar 
+                                    searchTerm={searchTerm} 
+                                    setSearchTerm={setSearchTerm} 
+                                    isLoading={!imageLoaded} 
                                 />
+                            </SuspenseWrapper>
+
+                            {!searchTerm && (
+                                <SuspenseWrapper>
+                                    <CategoryTabs 
+                                        activeCategory={activeCategory} 
+                                        setActiveCategory={setActiveCategory} 
+                                    />
+                                </SuspenseWrapper>
                             )}
                             
                             <ProgressiveLoad>
-                                <QuestionList 
-                                    questions={filteredQuestions} 
-                                    isLoading={!imageLoaded} 
-                                />
+                                <SuspenseWrapper>
+                                    <QuestionList 
+                                        questions={filteredQuestions} 
+                                        isLoading={!imageLoaded} 
+                                    />
+                                </SuspenseWrapper>
                             </ProgressiveLoad>
 
                             <ProgressiveLoad>
-                                <ContactSupport />
+                                <SuspenseWrapper>
+                                    <ContactSupport />
+                                </SuspenseWrapper>
                             </ProgressiveLoad>
                         </>
                     </div>

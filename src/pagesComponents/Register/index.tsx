@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { useRouter } from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import { useGoogleLogin } from '@react-oauth/google';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { RegisterFormContent } from "./components/RegisterForm/index";
-import { RegisterFormSkeleton } from "./components/RegisterForm/RegisterFormSkeleton";
 import { validateForm } from "./utils/validation";
 import { FormData, FormErrors } from "./types";
 import { StyledDialog } from "./components/Dialog/styled";
 import { StyledCloseButton } from "./components/CloseButton/styled";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 
+const RegisterFormContent = lazy(() => import('./components/RegisterForm').then(mod => ({ default: mod.RegisterFormContent })));
 
 export const Register = () => {
     const router = useRouter();
@@ -106,19 +106,9 @@ export const Register = () => {
     }, []);
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
-                <StyledDialog
-                    open={true}
-                    maxWidth="md"
-                    fullWidth
-                    disableEscapeKeyDown
-                >
+                <StyledDialog open={true} maxWidth="md" fullWidth disableEscapeKeyDown>
                     <div className="background-image">
                         <OptimizedImage
                             src="/assets/images/background/REGISTER.jpg"
@@ -141,19 +131,21 @@ export const Register = () => {
                             <CloseIcon />
                         </StyledCloseButton>
 
-                        <RegisterFormContent
-                            formData={formData}
-                            errors={errors}
-                            acceptedTerms={acceptedTerms}
-                            onSubmit={handleSubmit}
-                            onChange={handleChange}
-                            onTermsChange={setAcceptedTerms}
-                            onGoogleClick={(e) => {
-                                e.preventDefault();
-                                handleGoogleSignIn();
-                            }}
-                            isLoading={!imageLoaded}
-                        />
+                        <SuspenseWrapper>
+                            <RegisterFormContent
+                                formData={formData}
+                                errors={errors}
+                                acceptedTerms={acceptedTerms}
+                                onSubmit={handleSubmit}
+                                onChange={handleChange}
+                                onTermsChange={setAcceptedTerms}
+                                onGoogleClick={(e) => {
+                                    e.preventDefault();
+                                    handleGoogleSignIn();
+                                }}
+                                isLoading={!imageLoaded}
+                            />
+                        </SuspenseWrapper>
                     </div>
                 </StyledDialog>
             </ErrorBoundary>

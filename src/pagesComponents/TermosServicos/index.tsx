@@ -2,28 +2,25 @@
 
 import { Container } from "@mui/material";
 import { SectionTermsServices } from "./styled";
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Header } from "./components/Header";
-import { QuickNavigation } from "./components/QuickNavigation";
-import { TermsContent } from "./components/TermsContent";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { useScroll } from "./hooks/useScroll";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
+const QuickNavigation = lazy(() => import('./components/QuickNavigation').then(mod => ({ default: mod.QuickNavigation })));
+const TermsContent = lazy(() => import('./components/TermsContent').then(mod => ({ default: mod.TermsContent })));
 
 export const TermsServices = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const { showScrollTop, scrollToTop, scrollToSection } = useScroll();
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionTermsServices>
                     <div className="background-image">
@@ -46,14 +43,21 @@ export const TermsServices = () => {
                     <div className="opacity-layer">
                         <Container maxWidth="lg" className="content-wrapper">
                             <>
-                                <Header isLoading={!imageLoaded} />
-                                <QuickNavigation
-                                    onSectionClick={scrollToSection}
-                                    isLoading={!imageLoaded}
-                                />
+                                <SuspenseWrapper>
+                                    <Header isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
+
+                                <SuspenseWrapper>
+                                    <QuickNavigation
+                                        onSectionClick={scrollToSection}
+                                        isLoading={!imageLoaded}
+                                    />
+                                </SuspenseWrapper>
 
                                 <ProgressiveLoad rootMargin="100px">
-                                    <TermsContent isLoading={!imageLoaded} />
+                                    <SuspenseWrapper>
+                                        <TermsContent isLoading={!imageLoaded} />
+                                    </SuspenseWrapper>
                                 </ProgressiveLoad>
                             </>
                         </Container>

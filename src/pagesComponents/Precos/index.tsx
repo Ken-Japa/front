@@ -1,28 +1,25 @@
 "use client";
 
+import { useState, lazy } from "react";
 import { SectionPricing } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { VantagensSection } from "./components/VantagensSection";
-import { RecursosSection } from "./components/RecursosSection";
-import { PlanosSection } from "./components/PlanosSection";
-import { EmbaixadorSection } from "./components/EmbaixadorSection/";
-import { TestimonialsSection } from "./components/TestimonialsSection";
-import { FAQSection } from "./components/FAQSection/";
-import { useState } from "react";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const VantagensSection = lazy(() => import('./components/VantagensSection').then(mod => ({ default: mod.VantagensSection })));
+const RecursosSection = lazy(() => import('./components/RecursosSection').then(mod => ({ default: mod.RecursosSection })));
+const PlanosSection = lazy(() => import('./components/PlanosSection').then(mod => ({ default: mod.PlanosSection })));
+const EmbaixadorSection = lazy(() => import('./components/EmbaixadorSection').then(mod => ({ default: mod.EmbaixadorSection })));
+const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(mod => ({ default: mod.TestimonialsSection })));
+const FAQSection = lazy(() => import('./components/FAQSection').then(mod => ({ default: mod.FAQSection })));
 
 export const Pricing = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionPricing>
                     <div className="background-image">
@@ -44,23 +41,36 @@ export const Pricing = () => {
                     </div>
                     <div className="opacity">
                         <>
-                            <VantagensSection isLoading={!imageLoaded} />
-                            <PlanosSection isLoading={!imageLoaded} />
+                            <SuspenseWrapper>
+                                <VantagensSection isLoading={!imageLoaded} />
+                            </SuspenseWrapper>
+
+                            <SuspenseWrapper>
+                                <PlanosSection isLoading={!imageLoaded} />
+                            </SuspenseWrapper>
 
                             <ProgressiveLoad>
-                                <RecursosSection isLoading={!imageLoaded} />
+                                <SuspenseWrapper>
+                                    <RecursosSection isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
                             </ProgressiveLoad>
 
                             <ProgressiveLoad>
-                                <EmbaixadorSection isLoading={!imageLoaded} />
+                                <SuspenseWrapper>
+                                    <EmbaixadorSection isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
                             </ProgressiveLoad>
 
                             <ProgressiveLoad rootMargin="100px">
-                                <TestimonialsSection isLoading={!imageLoaded} />
+                                <SuspenseWrapper>
+                                    <TestimonialsSection isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
                             </ProgressiveLoad>
 
                             <ProgressiveLoad rootMargin="100px">
-                                <FAQSection isLoading={!imageLoaded} />
+                                <SuspenseWrapper>
+                                    <FAQSection isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
                             </ProgressiveLoad>
                         </>
                     </div>

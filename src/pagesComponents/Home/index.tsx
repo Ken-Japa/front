@@ -1,29 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import { Plans } from "./Plans";
-import { Questions } from "./Questions";
-import { Welcome } from "./Welcome";
-import { Newsletter } from "./Newsletter";
+import { useState, lazy } from "react";
 import { Stack, Container, Divider, Typography } from "@mui/material";
 import Link from 'next/link';
-import { Features } from "./Features";
+import { Welcome } from "./Welcome";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const Plans = lazy(() => import('./Plans').then(mod => ({ default: mod.Plans })));
+const Questions = lazy(() => import('./Questions').then(mod => ({ default: mod.Questions })));
+const Newsletter = lazy(() => import('./Newsletter').then(mod => ({ default: mod.Newsletter })));
+const Features = lazy(() => import('./Features').then(mod => ({ default: mod.Features })));
 
 export const Home = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <MainContainer>
                     <Section className="relative min-h-screen">
@@ -50,12 +47,16 @@ export const Home = () => {
 
                     <ProgressiveLoad>
                         <Section withPadding>
-                            <Features isLoading={!imageLoaded} />
+                            <SuspenseWrapper>
+                                <Features isLoading={!imageLoaded} />
+                            </SuspenseWrapper>
                         </Section>
                     </ProgressiveLoad>
 
                     <ProgressiveLoad>
-                        <Newsletter isLoading={!imageLoaded} />
+                        <SuspenseWrapper>
+                            <Newsletter isLoading={!imageLoaded} />
+                        </SuspenseWrapper>
                     </ProgressiveLoad>
 
                     <ProgressiveLoad>
@@ -73,7 +74,9 @@ export const Home = () => {
                                             Escolha a opção que melhor atende às suas necessidades.
                                         </SectionSubtitle>
                                     </Stack>
-                                    <Plans isLoading={!imageLoaded} />
+                                    <SuspenseWrapper>
+                                        <Plans isLoading={!imageLoaded} />
+                                    </SuspenseWrapper>
                                 </Stack>
                             </Container>
                         </Section>
@@ -83,17 +86,13 @@ export const Home = () => {
                         <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
                         <Section withPadding>
                             <Container maxWidth="xl">
-                                <Questions isLoading={!imageLoaded} />
+                                <SuspenseWrapper>
+                                    <Questions isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
                                 <Stack alignItems="center" sx={{ mt: 4 }}>
-                                    <Typography
-                                        variant="body1"
-                                        className="text-white/90 hover:text-white transition-colors"
-                                    >
+                                    <Typography variant="body1" className="text-white/90 hover:text-white transition-colors">
                                         Encontre mais respostas acessando o{' '}
-                                        <Link
-                                            href="/faq"
-                                            className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
-                                        >
+                                        <Link href="/faq" className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline">
                                             FAQ
                                         </Link>
                                         .

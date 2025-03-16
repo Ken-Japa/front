@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { useRouter } from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { LoginFormComponent } from "./components/LoginForm";
 import { useLoginForm } from "./hooks/useLoginForm";
 import { StyledDialog } from "./styled";
 import { StyledCloseButton } from "./components/CloseButton/styled";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const LoginFormComponent = lazy(() => import('./components/LoginForm').then(mod => ({ default: mod.LoginFormComponent })));
 
 export const Login = () => {
     const router = useRouter();
@@ -27,19 +29,9 @@ export const Login = () => {
     } = useLoginForm();
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
-                <StyledDialog
-                    open={true}
-                    maxWidth="md"
-                    fullWidth
-                    disableEscapeKeyDown
-                >
+                <StyledDialog open={true} maxWidth="md" fullWidth disableEscapeKeyDown>
                     <div className="background-image">
                         <OptimizedImage
                             src="/assets/images/background/REGISTER.jpg"
@@ -58,18 +50,20 @@ export const Login = () => {
                             <CloseIcon />
                         </StyledCloseButton>
 
-                        <LoginFormComponent
-                            formData={formData}
-                            errors={errors}
-                            isLoading={!imageLoaded}
-                            isBlocked={isBlocked}
-                            blockTimer={blockTimer}
-                            rememberMe={rememberMe}
-                            handleChange={handleChange}
-                            handleSubmit={handleSubmit}
-                            handleGoogleSignIn={handleGoogleSignIn}
-                            setRememberMe={setRememberMe}
-                        />
+                        <SuspenseWrapper>
+                            <LoginFormComponent
+                                formData={formData}
+                                errors={errors}
+                                isLoading={!imageLoaded}
+                                isBlocked={isBlocked}
+                                blockTimer={blockTimer}
+                                rememberMe={rememberMe}
+                                handleChange={handleChange}
+                                handleSubmit={handleSubmit}
+                                handleGoogleSignIn={handleGoogleSignIn}
+                                setRememberMe={setRememberMe}
+                            />
+                        </SuspenseWrapper>
                     </div>
                 </StyledDialog>
             </ErrorBoundary>

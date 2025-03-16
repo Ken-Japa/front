@@ -1,29 +1,26 @@
 "use client";
 
 import { Stack } from "@mui/material";
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import { SectionTeam } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Header } from "./components/Header";
-import { HistoriaSection } from "./components/HistoriaSection";
-import { MissaoSection } from "./components/MissaoSection";
-import { ValoresSection } from "./components/ValoresSection";
-import { EquipeSection } from "./components/EquipeSection";
-import { CompromissoSection } from "./components/CompromissoSection/";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
+const HistoriaSection = lazy(() => import('./components/HistoriaSection').then(mod => ({ default: mod.HistoriaSection })));
+const MissaoSection = lazy(() => import('./components/MissaoSection').then(mod => ({ default: mod.MissaoSection })));
+const ValoresSection = lazy(() => import('./components/ValoresSection').then(mod => ({ default: mod.ValoresSection })));
+const EquipeSection = lazy(() => import('./components/EquipeSection').then(mod => ({ default: mod.EquipeSection })));
+const CompromissoSection = lazy(() => import('./components/CompromissoSection').then(mod => ({ default: mod.CompromissoSection })));
 
 export default function AboutPage() {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionTeam>
                     <div className="background-image">
@@ -49,23 +46,36 @@ export default function AboutPage() {
                         <div className="content">
                             <div className="container mx-auto px-4 py-16 relative z-10">
                                 <Stack spacing={8} alignItems="center">
-                                    <Header isLoading={!imageLoaded} />
-                                    <HistoriaSection isLoading={!imageLoaded} />
+                                    <SuspenseWrapper>
+                                        <Header isLoading={!imageLoaded} />
+                                    </SuspenseWrapper>
+
+                                    <SuspenseWrapper>
+                                        <HistoriaSection isLoading={!imageLoaded} />
+                                    </SuspenseWrapper>
 
                                     <ProgressiveLoad>
-                                        <MissaoSection isLoading={!imageLoaded} />
+                                        <SuspenseWrapper>
+                                            <MissaoSection isLoading={!imageLoaded} />
+                                        </SuspenseWrapper>
                                     </ProgressiveLoad>
 
                                     <ProgressiveLoad>
-                                        <ValoresSection isLoading={!imageLoaded} />
+                                        <SuspenseWrapper>
+                                            <ValoresSection isLoading={!imageLoaded} />
+                                        </SuspenseWrapper>
                                     </ProgressiveLoad>
 
                                     <ProgressiveLoad rootMargin="100px">
-                                        <EquipeSection isLoading={!imageLoaded} />
+                                        <SuspenseWrapper>
+                                            <EquipeSection isLoading={!imageLoaded} />
+                                        </SuspenseWrapper>
                                     </ProgressiveLoad>
 
                                     <ProgressiveLoad rootMargin="100px">
-                                        <CompromissoSection isLoading={!imageLoaded} />
+                                        <SuspenseWrapper>
+                                            <CompromissoSection isLoading={!imageLoaded} />
+                                        </SuspenseWrapper>
                                     </ProgressiveLoad>
                                 </Stack>
                             </div>
