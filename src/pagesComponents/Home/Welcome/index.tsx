@@ -10,16 +10,14 @@ import { useEffect, useState } from "react";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { motion } from "framer-motion";
 import { Stack, Grid, Typography, Container } from "@mui/material";
-import { OptimizedImage } from "@/components/OptimizedImage";
+
 import { WelcomeSkeleton } from "./WelcomeSkeleton";
 
 interface WelcomeProps {
     isLoading?: boolean;
-    onImageLoad?: () => void;
 }
-export const Welcome = ({ isLoading, onImageLoad }: WelcomeProps) => {
+export const Welcome = ({ isLoading }: WelcomeProps) => {
     const [showAnimation, setShowAnimation] = useState(false);
-    const [localImageLoaded, setLocalImageLoaded] = useState(false);
 
     useEffect(() => {
         const hasAnimationPlayed = localStorage.getItem('matrixAnimationPlayed');
@@ -55,26 +53,6 @@ export const Welcome = ({ isLoading, onImageLoad }: WelcomeProps) => {
     }
     return (
         <SectionWelcome>
-            <div className="background-image">
-                <OptimizedImage
-                    src="/assets/images/background/HOME.jpg"
-                    alt="Welcome Background"
-                    fill
-                    priority
-                    sizes="100vw"
-                    className="object-cover"
-                    loadingClassName="scale-100 blur-xl grayscale opacity-50"
-                    quality={90}
-                    onLoad={() => {
-                        setLocalImageLoaded(true);
-                        onImageLoad?.();
-                    }}
-                    style={{
-                        filter: !localImageLoaded ? 'grayscale(1)' : 'none',
-                        transition: 'filter 0.5s ease-in-out'
-                    }}
-                />
-            </div>
             <div className="home">
                 <div className="welcome mb-20">
                     <div className="title-left">

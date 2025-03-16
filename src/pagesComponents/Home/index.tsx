@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Plans } from "./Plans";
 import { Questions } from "./Questions";
 import { Welcome } from "./Welcome";
@@ -11,18 +11,11 @@ import { Features } from "./Features";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const Home = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
-    useEffect(() => {
-        // Set a timeout to ensure content is shown even if image loading fails
-        const timeout = setTimeout(() => {
-            setImageLoaded(true);
-        }, 100);
-
-        return () => clearTimeout(timeout);
-    }, []);
 
     return (
         <PageTransition
@@ -33,10 +26,27 @@ export const Home = () => {
         >
             <ErrorBoundary>
                 <MainContainer>
-                    <Section>
+                    <Section className="relative min-h-screen">
+                        <div className="absolute inset-0 w-full h-full">
+                            <OptimizedImage
+                                src="/assets/images/background/HOME.jpg"
+                                alt="Home Background"
+                                fill
+                                priority
+                                sizes="100vw"
+                                className="object-cover"
+                                loadingClassName="scale-100 blur-xl grayscale opacity-50"
+                                quality={90}
+                                onLoad={() => setImageLoaded(true)}
+                                style={{
+                                    filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                    transition: 'filter 0.5s ease-in-out'
+                                }}
+                            />
+                            <div className="absolute inset-0 bg-black/50" />
+                        </div>
                         <Welcome
                             isLoading={!imageLoaded}
-                            onImageLoad={() => setImageLoaded(true)}
                         />
                     </Section>
 
