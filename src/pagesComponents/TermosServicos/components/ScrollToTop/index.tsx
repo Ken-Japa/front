@@ -13,6 +13,7 @@ export const ScrollToTop = ({ show, onClick }: ScrollToTopProps) => {
             <ScrollButton
                 onClick={onClick}
                 aria-label="Voltar ao topo"
+                style={{ position: 'fixed' }}
             >
                 <ArrowUpwardIcon />
             </ScrollButton>

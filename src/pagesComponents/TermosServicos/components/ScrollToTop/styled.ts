@@ -12,6 +12,9 @@ export const ScrollButton = styled("button")(({ theme }) => ({
   cursor: "pointer",
   border: "none",
   color: "white",
+  zIndex: 1000,
+  opacity: 1,
+  pointerEvents: "auto",
 
   "&:hover": {
     backgroundColor: "rgba(13, 149, 249, 0.8)",

@@ -19,7 +19,7 @@ export const Home = () => {
         // Set a timeout to ensure content is shown even if image loading fails
         const timeout = setTimeout(() => {
             setImageLoaded(true);
-        }, 500);
+        }, 100);
 
         return () => clearTimeout(timeout);
     }, []);

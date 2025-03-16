@@ -50,8 +50,8 @@ export const TermsServices = () => {
                                 <TermsContent isLoading={!imageLoaded} />
                             </>
                         </Container>
-                        <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                     </div>
+                    <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
                 </SectionTermsServices>
             </ErrorBoundary>
         </PageTransition>
