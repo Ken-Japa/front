@@ -50,11 +50,7 @@ export const Login = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
-                            onLoad={() => setImageLoaded(true)}
-                            style={{
-                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
-                                transition: 'filter 0.5s ease-in-out'
-                            }}
+                            onLoadingComplete={() => setImageLoaded(true)}
                         />
                     </div>
                     <div className="content">

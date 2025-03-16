@@ -1,13 +1,18 @@
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { SearchContainer } from "./styled";
+import { SearchBarSkeleton } from './SearchBarSkeleton';
 
 interface SearchBarProps {
     searchTerm: string;
     setSearchTerm: (term: string) => void;
+    isLoading?: boolean;
 }
 
-export const SearchBar = ({ searchTerm, setSearchTerm }: SearchBarProps) => {
+export const SearchBar = ({ searchTerm, setSearchTerm, isLoading }: SearchBarProps) => {
+    if (isLoading) {
+        return <SearchBarSkeleton />;
+    }
     return (
         <SearchContainer>
             <div className="search-wrapper">

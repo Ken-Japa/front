@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
-import { PrivacySection } from "../components/PrivacySection";
-import { PRIVACY_SECTIONS } from "../constants/sections";
+import { PrivacySection } from "../PrivacySection";
+import { PRIVACY_SECTIONS } from "../../constants/sections";
 import {
     DadosSection,
     FinalidadeSection,

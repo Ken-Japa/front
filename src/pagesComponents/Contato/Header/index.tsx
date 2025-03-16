@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { HeaderSkeleton } from "./HeaderSkeleton";
 import { HeaderContainer } from "./styled";
 
 interface HeaderProps {
@@ -11,11 +11,7 @@ export const Header = ({ isLoading }: HeaderProps) => {
     return (
         <HeaderContainer>
             {isLoading ? (
-                <ContentSkeleton 
-                    type="text"
-                    textLines={3}
-                    className="p-4"
-                />
+                <HeaderSkeleton />
             ) : (
                 <Stack spacing={2}>
                     <MatrixRainText

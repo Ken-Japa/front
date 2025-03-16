@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Plans } from "./Plans";
 import { Questions } from "./Questions";
 import { Welcome } from "./Welcome";
@@ -12,6 +13,17 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
 
 export const Home = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        // Set a timeout to ensure content is shown even if image loading fails
+        const timeout = setTimeout(() => {
+            setImageLoaded(true);
+        }, 500);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
     return (
         <PageTransition
             direction="up"
@@ -22,11 +34,14 @@ export const Home = () => {
             <ErrorBoundary>
                 <MainContainer>
                     <Section>
-                        <Welcome />
+                        <Welcome
+                            isLoading={!imageLoaded}
+                            onImageLoad={() => setImageLoaded(true)}
+                        />
                     </Section>
 
                     <Section withPadding>
-                        <Features />
+                        <Features isLoading={!imageLoaded} />
                     </Section>
 
                     <Newsletter />
@@ -46,7 +61,7 @@ export const Home = () => {
                                         Escolha a opção que melhor atende às suas necessidades.
                                     </SectionSubtitle>
                                 </Stack>
-                                <Plans />
+                                <Plans isLoading={!imageLoaded} />
                             </Stack>
                         </Container>
                     </Section>
@@ -55,7 +70,7 @@ export const Home = () => {
 
                     <Section withPadding>
                         <Container maxWidth="xl">
-                            <Questions />
+                            <Questions isLoading={!imageLoaded} />
                             <Stack alignItems="center" sx={{ mt: 4 }}>
                                 <Typography
                                     variant="body1"

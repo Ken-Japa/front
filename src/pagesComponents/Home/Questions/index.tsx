@@ -3,8 +3,15 @@ import { questions } from "@/helpers/questions";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import { QuestionsSection } from "./styled";
+import { QuestionsSkeleton } from "./QuestionsSkeleton";
 
-export const Questions = () => {
+interface QuestionsProps {
+    isLoading?: boolean;
+}
+export const Questions = ({ isLoading }: QuestionsProps) => {
+    if (isLoading) {
+        return <QuestionsSkeleton />;
+    }
     return (
         <QuestionsSection>
             <Stack direction="column" alignItems="center" spacing={4}>

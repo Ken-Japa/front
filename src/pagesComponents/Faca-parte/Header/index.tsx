@@ -4,12 +4,17 @@ import { Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import GroupsIcon from '@mui/icons-material/Groups';
 import { HeaderContainer } from "./styled";
+import { HeaderSkeleton } from "./HeaderSkeleton";
 
 interface HeaderProps {
     isLoading: boolean;
 }
 
 export const Header = ({ isLoading }: HeaderProps) => {
+    if (isLoading) {
+        return <HeaderSkeleton />;
+    }
+
     return (
         <HeaderContainer>
             <div className="header-content">

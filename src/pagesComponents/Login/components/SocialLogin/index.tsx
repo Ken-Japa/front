@@ -2,12 +2,17 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { Typography } from "@mui/material";
 import Link from 'next/link';
 import { GoogleButton, RegisterLink } from './styled';
+import { SocialLoginSkeleton } from "./SocialLoginSkeleton";
 
 interface SocialLoginProps {
     handleGoogleSignIn: () => void;
+    isLoading?: boolean;
 }
 
-export const SocialLogin = ({ handleGoogleSignIn }: SocialLoginProps) => {
+export const SocialLogin = ({ handleGoogleSignIn, isLoading }: SocialLoginProps) => {
+    if (isLoading) {
+        return <SocialLoginSkeleton />;
+    }
     return (
         <>
             <div className="divider-container">

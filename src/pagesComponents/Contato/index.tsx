@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import { SectionContact } from "./styled";
 import { Alert, Snackbar, Stack, Box } from "@mui/material";
 import { OptimizedImage } from "@/components/OptimizedImage";
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Header } from "./Header";
 import { ContactInfo } from "./ContactInfo";
 import { ContactFormComponent } from "./ContactForm";
+import { ContactFormSkeleton } from "./ContactForm/ContactFormSkeleton";
 
 interface FormData {
     name: string;
@@ -165,12 +165,7 @@ export const Contact = () => {
     }, []);
 
     return (
-        <PageTransition
-            direction="up"
-            duration={0.4}
-            distance={30}
-            className="w-full"
-        >
+        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionContact>
                     <div className="background-image">
@@ -199,13 +194,7 @@ export const Contact = () => {
                             >
                                 <ContactInfo isLoading={!imageLoaded} />
                                 {!imageLoaded ? (
-                                    <Box flex={1}>
-                                        <ContentSkeleton
-                                            type="form"
-                                            formFields={5}
-                                            className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
-                                        />
-                                    </Box>
+                                    <ContactFormSkeleton />
                                 ) : (
                                     <ContactFormComponent
                                         formData={formData}

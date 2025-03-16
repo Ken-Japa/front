@@ -1,8 +1,17 @@
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import HelpIcon from '@mui/icons-material/Help';
 import { HeaderContainer } from "./styled";
+import { HeaderSkeleton } from "./HeaderSkeleton";
 
-export const Header = () => {
+interface HeaderProps {
+    isLoading?: boolean;
+}
+
+export const Header = ({ isLoading }: HeaderProps) => {
+
+    if (isLoading) {
+        return <HeaderSkeleton />;
+    }
     return (
         <HeaderContainer>
             <div className="header-icon-wrapper">

@@ -11,7 +11,6 @@ import { EmbaixadorSection } from "./components/EmbaixadorSection/";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { FAQSection } from "./components/FAQSection/";
 import { useState } from "react";
-import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 export const Pricing = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -43,18 +42,14 @@ export const Pricing = () => {
                         />
                     </div>
                     <div className="opacity">
-                        {!imageLoaded ? (
-                            <LoadingSkeleton />
-                        ) : (
-                            <>
-                                <VantagensSection />
-                                <RecursosSection />
-                                <PlanosSection />
-                                <EmbaixadorSection />
-                                <TestimonialsSection />
-                                <FAQSection />
-                            </>
-                        )}
+                        <>
+                            <VantagensSection isLoading={!imageLoaded} />
+                            <RecursosSection isLoading={!imageLoaded} />
+                            <PlanosSection isLoading={!imageLoaded} />
+                            <EmbaixadorSection isLoading={!imageLoaded} />
+                            <TestimonialsSection isLoading={!imageLoaded} />
+                            <FAQSection isLoading={!imageLoaded} />
+                        </>
                     </div>
                 </SectionPricing>
             </ErrorBoundary>

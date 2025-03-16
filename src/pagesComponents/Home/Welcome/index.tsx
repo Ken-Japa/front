@@ -11,10 +11,15 @@ import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { motion } from "framer-motion";
 import { Stack, Grid, Typography, Container } from "@mui/material";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { WelcomeSkeleton } from "./WelcomeSkeleton";
 
-export const Welcome = () => {
+interface WelcomeProps {
+    isLoading?: boolean;
+    onImageLoad?: () => void;
+}
+export const Welcome = ({ isLoading, onImageLoad }: WelcomeProps) => {
     const [showAnimation, setShowAnimation] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [localImageLoaded, setLocalImageLoaded] = useState(false);
 
     useEffect(() => {
         const hasAnimationPlayed = localStorage.getItem('matrixAnimationPlayed');
@@ -45,6 +50,9 @@ export const Welcome = () => {
         }
     ];
 
+    if (isLoading) {
+        return <WelcomeSkeleton />;
+    }
     return (
         <SectionWelcome>
             <div className="background-image">
@@ -57,9 +65,12 @@ export const Welcome = () => {
                     className="object-cover"
                     loadingClassName="scale-100 blur-xl grayscale opacity-50"
                     quality={90}
-                    onLoad={() => setImageLoaded(true)}
+                    onLoad={() => {
+                        setLocalImageLoaded(true);
+                        onImageLoad?.();
+                    }}
                     style={{
-                        filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                        filter: !localImageLoaded ? 'grayscale(1)' : 'none',
                         transition: 'filter 0.5s ease-in-out'
                     }}
                 />

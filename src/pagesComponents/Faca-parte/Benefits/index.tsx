@@ -3,6 +3,7 @@
 import { Typography, Chip } from "@mui/material";
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import { BenefitsContainer } from "./styled";
+import { BenefitsSkeleton } from "./BenefitsSkeleton";
 
 interface HeaderProps {
     isLoading: boolean;
@@ -18,6 +19,9 @@ const benefits = [
 ];
 
 export const Benefits = ({ isLoading }: HeaderProps) => {
+    if (isLoading) {
+        return <BenefitsSkeleton />;
+    }
     return (
         <BenefitsContainer>
             <Typography variant="h6" className="benefits-title">

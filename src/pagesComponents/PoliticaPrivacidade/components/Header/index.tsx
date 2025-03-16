@@ -2,8 +2,15 @@ import { Typography } from "@mui/material";
 import SecurityIcon from '@mui/icons-material/Security';
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { HeaderWrapper } from "./styled";
+import { HeaderSkeleton } from "./HeaderSkeleton";
 
-export const Header = () => {
+interface HeaderProps {
+    isLoading?: boolean;
+}
+export const Header = ({ isLoading }: HeaderProps) => {
+    if (isLoading) {
+        return <HeaderSkeleton />;
+    }
     return (
         <HeaderWrapper>
             <div className="header-content">

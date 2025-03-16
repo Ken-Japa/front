@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContactInfoSkeleton } from "./ContactInfoSkeleton";
 import { InfoContainer } from "./styled";
 
 interface ContactInfoProps {
@@ -13,11 +13,7 @@ export const ContactInfo = ({ isLoading }: ContactInfoProps) => {
     return (
         <InfoContainer spacing={3} flex={1}>
             {isLoading ? (
-                <ContentSkeleton 
-                    type="text"
-                    textLines={3}
-                    className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
-                />
+                <ContactInfoSkeleton />
             ) : (
                 <>
                     <div className="info-item">

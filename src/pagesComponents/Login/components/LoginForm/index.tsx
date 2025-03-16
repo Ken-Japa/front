@@ -1,7 +1,7 @@
 import { TextField, FormControlLabel, Checkbox, Button } from "@mui/material";
 import { FormHeader } from "../FormHeader";
 import { SocialLogin } from "../SocialLogin";
-import { LoginFormSkeleton } from "../LoginFormSkeleton";
+import { LoginFormSkeleton } from "./LoginFormSkeleton";
 import { LoginFormStyled } from "./styled";
 import { FormData, FormErrors } from "../../types";
 import Link from 'next/link';
@@ -97,7 +97,10 @@ export const LoginFormComponent = ({
                 {isBlocked ? `Bloqueado (${blockTimer}s)` : 'Entrar'}
             </Button>
 
-            <SocialLogin handleGoogleSignIn={handleGoogleSignIn} />
+            <SocialLogin 
+                handleGoogleSignIn={handleGoogleSignIn} 
+                isLoading={isLoading}
+            />
         </LoginFormStyled>
     );
 };

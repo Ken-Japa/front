@@ -3,10 +3,17 @@ import { SectionPlans } from "./styled";
 import { Card } from "./Card";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { useState } from 'react';
+import { PlansSkeleton } from "./PlansSkeleton";
 
-export const Plans = () => {
+interface PlansProps {
+    isLoading?: boolean;
+}
+export const Plans = ({ isLoading }: PlansProps) => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
+    if (isLoading) {
+        return <PlansSkeleton />;
+    }
     return (
         <SectionPlans>
             <div className="background-image">

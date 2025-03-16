@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Stack } from "@mui/material";
 import { SectionFAQ } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Header } from "./Header";
@@ -58,38 +56,13 @@ export const FAQ = () => {
                         />
                     </div>
                     <div className="content-container">
-                        {!imageLoaded ? (
-                            <Stack spacing={3} width="100%">
-                                <ContentSkeleton
-                                    type="text"
-                                    textLines={2}
-                                    className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
-                                />
-                                <ContentSkeleton
-                                    type="text"
-                                    textLines={1}
-                                    className="p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
-                                />
-                                <Stack spacing={2}>
-                                    {Array(8).fill(0).map((_, index) => (
-                                        <ContentSkeleton
-                                            key={index}
-                                            type="card"
-                                            cardHeight={120}
-                                            className="bg-[#ffffff0a] backdrop-blur-sm"
-                                        />
-                                    ))}
-                                </Stack>
-                            </Stack>
-                        ) : (
-                            <>
-                                <Header />
-                                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-                                {!searchTerm && <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
-                                <QuestionList questions={filteredQuestions} />
-                                <ContactSupport />
-                            </>
-                        )}
+                        <>
+                            <Header isLoading={!imageLoaded} />
+                            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={!imageLoaded} />
+                            {!searchTerm && <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
+                            <QuestionList questions={filteredQuestions} isLoading={!imageLoaded} />
+                            <ContactSupport />
+                        </>
                     </div>
                 </SectionFAQ>
             </ErrorBoundary>

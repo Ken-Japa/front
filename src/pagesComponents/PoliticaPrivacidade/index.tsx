@@ -4,12 +4,11 @@ import { useState } from "react";
 import { Container } from "@mui/material";
 import { SectionPolicy } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
-import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Header } from "./components/Header/";
 import { QuickNavigation } from "./components/QuickNavigation/";
-import { PrivacyContent } from "./components/PrivacyContent";
+import { PrivacyContent } from "./components/PrivacyContent/PrivacyContent";
 import { ScrollToTop } from "./components/ScrollToTop/";
 import { useScroll } from "./hooks/useScroll";
 
@@ -46,16 +45,12 @@ export const PrivacyPolicy = () => {
                     <div className="opacity">
                         <div className="section-privacy">
                             <Container maxWidth="lg">
-                                {!imageLoaded ? (
-                                    <LoadingSkeleton />
-                                ) : (
-                                    <>
-                                        <Header />
-                                        <QuickNavigation onSectionClick={scrollToSection} isLoading={!imageLoaded} />
-                                        <PrivacyContent />
-                                        <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
-                                    </>
-                                )}
+                                <>
+                                    <Header isLoading={!imageLoaded} />
+                                    <QuickNavigation onSectionClick={scrollToSection} isLoading={!imageLoaded} />
+                                    <PrivacyContent />
+                                    <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
+                                </>
                             </Container>
                         </div>
                     </div>
