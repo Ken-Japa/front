@@ -23,6 +23,11 @@ export const Logo = ({
                 height={height}
                 priority
                 quality={100}
+                style={{ 
+                    maxWidth: `${width}px`,
+                    width: '100%',
+                    height: 'auto'
+                }}
             />
         </LogoContainer>
     );

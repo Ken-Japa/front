@@ -180,9 +180,13 @@ export const Contact = () => {
                             fill
                             priority
                             className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
+                            loadingClassName="scale-100 blur-xl grayscale opacity-50"
                             sizes="100vw"
-                            onLoadingComplete={() => setImageLoaded(true)}
+                            onLoad={() => setImageLoaded(true)}
+                            style={{
+                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                transition: 'filter 0.5s ease-in-out'
+                            }}
                         />
                     </div>
                     <div className="content-wrapper">

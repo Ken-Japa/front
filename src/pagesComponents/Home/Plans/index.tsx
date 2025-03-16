@@ -2,8 +2,11 @@ import { Stack } from "@mui/material";
 import { SectionPlans } from "./styled";
 import { Card } from "./Card";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { useState } from 'react';
 
 export const Plans = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <SectionPlans>
             <div className="background-image">
@@ -14,8 +17,13 @@ export const Plans = () => {
                     priority
                     sizes="100vw"
                     className="object-cover"
-                    loadingClassName="scale-100 blur-xl grayscale"
+                    loadingClassName="scale-100 blur-xl grayscale opacity-50"
                     quality={85}
+                    onLoad={() => setImageLoaded(true)}
+                    style={{
+                        filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                        transition: 'filter 0.5s ease-in-out'
+                    }}
                 />
             </div>
             <div className="plans">

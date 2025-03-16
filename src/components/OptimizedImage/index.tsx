@@ -28,7 +28,7 @@ export const OptimizedImage = ({
     const [isLoading, setLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
-    const handleLoadingComplete = useCallback(() => {
+    const handleLoad = useCallback(() => {
         setLoading(false);
     }, []);
 
@@ -36,7 +36,7 @@ export const OptimizedImage = ({
         setHasError(true);
         setLoading(false);
         onImageError?.(new Error("Image failed to load"));
-        onError?.(event);  // Call original onError if provided
+        onError?.(event);
     }, [onImageError, onError]);
 
     if (hasError) {
@@ -62,7 +62,7 @@ export const OptimizedImage = ({
                 ${isLoading ? loadingClassName : 'scale-100 blur-0 grayscale-0'}
                 ${className}
             `}
-            onLoadingComplete={handleLoadingComplete}
+            onLoad={handleLoad}
             onError={handleError}
             loading={priority ? undefined : "lazy"}
             {...props}

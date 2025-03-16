@@ -14,6 +14,7 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const Welcome = () => {
     const [showAnimation, setShowAnimation] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
         const hasAnimationPlayed = localStorage.getItem('matrixAnimationPlayed');
@@ -54,8 +55,13 @@ export const Welcome = () => {
                     priority
                     sizes="100vw"
                     className="object-cover"
-                    loadingClassName="scale-100 blur-xl grayscale"
+                    loadingClassName="scale-100 blur-xl grayscale opacity-50"
                     quality={90}
+                    onLoad={() => setImageLoaded(true)}
+                    style={{
+                        filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                        transition: 'filter 0.5s ease-in-out'
+                    }}
                 />
             </div>
             <div className="home">

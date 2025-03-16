@@ -33,7 +33,11 @@ export const JoinTeam = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
-                            onLoadingComplete={() => setImageLoaded(true)}
+                            onLoad={() => setImageLoaded(true)}
+                            style={{
+                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                transition: 'filter 0.5s ease-in-out'
+                            }}
                         />
                     </div>
                     <div className="container">
@@ -42,12 +46,12 @@ export const JoinTeam = () => {
                                 <Grid item xs={12} md={5}>
                                     {!imageLoaded ? (
                                         <Stack spacing={6}>
-                                            <ContentSkeleton 
+                                            <ContentSkeleton
                                                 type="text"
                                                 textLines={3}
                                                 className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                                             />
-                                            <ContentSkeleton 
+                                            <ContentSkeleton
                                                 type="card"
                                                 cardHeight={300}
                                                 className="bg-[#ffffff0a] backdrop-blur-sm"
@@ -62,7 +66,7 @@ export const JoinTeam = () => {
                                 </Grid>
                                 <Grid item xs={12} md={7}>
                                     {!imageLoaded ? (
-                                        <ContentSkeleton 
+                                        <ContentSkeleton
                                             type="form"
                                             formFields={6}
                                             className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"

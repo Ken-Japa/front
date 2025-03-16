@@ -50,26 +50,30 @@ export const FAQ = () => {
                             className="object-cover"
                             loadingClassName="scale-100 blur-xl grayscale"
                             quality={85}
-                            onLoadingComplete={() => setImageLoaded(true)}
+                            onLoad={() => setImageLoaded(true)}
+                            style={{
+                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                transition: 'filter 0.5s ease-in-out'
+                            }}
                         />
                     </div>
                     <div className="content-container">
                         {!imageLoaded ? (
                             <Stack spacing={3} width="100%">
-                                <ContentSkeleton 
+                                <ContentSkeleton
                                     type="text"
                                     textLines={2}
                                     className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                                 />
-                                <ContentSkeleton 
+                                <ContentSkeleton
                                     type="text"
                                     textLines={1}
                                     className="p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                                 />
                                 <Stack spacing={2}>
                                     {Array(8).fill(0).map((_, index) => (
-                                        <ContentSkeleton 
-                                            key={index} 
+                                        <ContentSkeleton
+                                            key={index}
                                             type="card"
                                             cardHeight={120}
                                             className="bg-[#ffffff0a] backdrop-blur-sm"
