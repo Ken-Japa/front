@@ -10,7 +10,7 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src' | 'alt'> {
     alt: string;
     className?: string;
     loadingClassName?: string;
-    onImageError?: (error: Error) => void;  // Renamed to avoid conflict
+    onImageError?: (error: Error) => void;
 }
 
 export const OptimizedImage = ({
@@ -22,7 +22,7 @@ export const OptimizedImage = ({
     sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
     onImageError,
     priority,
-    onError,  // Original onError from ImageProps
+    onError,
     ...props
 }: OptimizedImageProps) => {
     const [isLoading, setLoading] = useState(true);
