@@ -1,16 +1,17 @@
 import { styled } from "@mui/material";
 
 export const NewsletterContainer = styled("div")(({ theme }) => ({
-    width: "100%",
-    padding: "48px 24px",
-    backgroundColor: "rgba(13, 149, 249, 0.1)",
-    borderRadius: "8px",
-    backdropFilter: "blur(4px)",
-    textAlign: "center",
+  width: "100vw",
+  marginLeft: "calc(-50vw + 50%)",
+  marginRight: "calc(-50vw + 50%)",
+  padding: "120px 24px",
+  backgroundColor: "rgba(13, 149, 249, 0.1)",
+  backdropFilter: "blur(4px)",
+  textAlign: "center",
 
-    [theme.breakpoints.down("sm")]: {
-        padding: "32px 16px",
-    }
+  [theme.breakpoints.down("sm")]: {
+    padding: "80px 16px",
+  },
 }));
 
 export const NewsletterForm = styled("form")(({ theme }) => ({

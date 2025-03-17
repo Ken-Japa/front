@@ -29,7 +29,7 @@ export const Welcome = ({ isLoading }: WelcomeProps) => {
     const highlights = [
         {
             icon: <MonitorIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "ativos monitorados",
+            title: "Ativos Monitorados",
             value: "+1500",
             description: "Ações, FIIs, ETFs, moedas e até derivativos obscuros – tudo num só lugar"
         },

@@ -13,7 +13,8 @@ import Link from 'next/link';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { useState } from 'react';
 import { EditDialog } from './components/EditDialog';
-import { ThemePreference } from './components/ThemePreference';
+import { ThemePreference } from '@/components/TrocarTema';
+
 
 export const Perfil = () => {
     const { data: session, status } = useSession();
@@ -60,7 +61,9 @@ export const Perfil = () => {
                                 value={null}
                                 onEdit={() => handleEdit('phone', '')}
                             />
+
                             <ThemePreference />
+
                         </ProfileCard>
 
                         <ProfileCard elevation={3}>

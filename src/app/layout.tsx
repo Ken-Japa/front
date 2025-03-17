@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import theme from "@/theme/mui";
+import { ThemeProvider } from '@/theme/ThemeContext';
 import { Layout } from "@/components/Layout";
 import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -88,18 +87,15 @@ export default function RootLayout({
 
       </head>
       <body className={inter.className}>
-
         <ErrorBoundary>
           <AuthProvider>
             <AppRouterCacheProvider>
-              <ThemeProvider theme={theme}>
-
+              <ThemeProvider>
                 <Layout>
                   <AnimatePresence mode="wait">
                     {children}
                   </AnimatePresence>
                 </Layout>
-
               </ThemeProvider>
             </AppRouterCacheProvider>
           </AuthProvider>

@@ -9,6 +9,7 @@ export const TestimonialCard = styled("div")(({ theme }) => ({
   "& .testimonial-text": {
     color: "rgba(255, 255, 255, 0.95)",
     marginBottom: "16px",
+    fontStyle: "italic",
   },
 
   "& .divider": {
@@ -25,7 +26,7 @@ export const TestimonialCard = styled("div")(({ theme }) => ({
   "& .testimonial-role": {
     color: "rgba(255, 255, 255, 0.85)",
     fontSize: "0.875rem",
-  }
+  },
 }));
 
 export const TestimonialsGrid = styled("div")(({ theme }) => ({
@@ -36,5 +37,5 @@ export const TestimonialsGrid = styled("div")(({ theme }) => ({
 
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
-  }
+  },
 }));

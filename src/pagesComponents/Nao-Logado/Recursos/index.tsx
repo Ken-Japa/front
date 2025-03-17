@@ -79,13 +79,13 @@ export const Solutions = () => {
 
                                 <ProgressiveLoad rootMargin="100px">
                                     <SuspenseWrapper>
-                                        <TestimonialsSection isLoading={!videoLoaded} />
+                                        <CTASection isLoading={!videoLoaded} />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="100px">
                                     <SuspenseWrapper>
-                                        <CTASection isLoading={!videoLoaded} />
+                                        <TestimonialsSection isLoading={!videoLoaded} />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
 

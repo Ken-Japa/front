@@ -45,15 +45,15 @@ export const Pricing = () => {
                                 <VantagensSection isLoading={!imageLoaded} />
                             </SuspenseWrapper>
 
-                            <SuspenseWrapper>
-                                <PlanosSection isLoading={!imageLoaded} />
-                            </SuspenseWrapper>
-
                             <ProgressiveLoad>
                                 <SuspenseWrapper>
                                     <RecursosSection isLoading={!imageLoaded} />
                                 </SuspenseWrapper>
                             </ProgressiveLoad>
+
+                            <SuspenseWrapper>
+                                <PlanosSection isLoading={!imageLoaded} />
+                            </SuspenseWrapper>
 
                             <ProgressiveLoad>
                                 <SuspenseWrapper>

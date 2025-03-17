@@ -40,7 +40,8 @@ export const Plans = ({ isLoading }: PlansProps) => {
                                 'Alerta de preços'
                             ]}
                             valueBtn="Assinar"
-                            colorBtn="secondary"
+                            customColorBtn="#FFFFFF"
+                            textColorBtn="#000000"
                         />
                         <Card
                             title="Anual"
