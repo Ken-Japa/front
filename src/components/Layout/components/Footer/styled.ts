@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 export const FooterContainer = styled(motion.footer)`
     background-color: #111111;
     padding: 3.5rem 0;
+    position: relative;
+    z-index: 2;
 `;
 
 export const TopSection = styled(Box)`

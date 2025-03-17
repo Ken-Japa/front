@@ -14,7 +14,7 @@ export const Questions = ({ isLoading }: QuestionsProps) => {
     }
     return (
         <QuestionsSection>
-            <Stack direction="column" alignItems="center" spacing={4}>
+            <Stack direction="column" alignItems="center" spacing={3}>
                 <h2 className="section-title">Perguntas mais frequentes</h2>
                 <Typography variant="body1" className="section-subtitle">
                     Segurança, Resultados e Tecnologia - Suas Dúvidas Decifradas

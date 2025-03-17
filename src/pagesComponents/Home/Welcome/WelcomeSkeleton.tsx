@@ -1,5 +1,3 @@
-"use client";
-
 import { Stack, Container, Grid } from "@mui/material";
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 
@@ -8,21 +6,21 @@ export const WelcomeSkeleton = () => {
         <Container maxWidth="xl">
             <Stack spacing={4} className="home">
                 <Stack spacing={4} className="welcome">
-                    <ContentSkeleton 
-                        type="text" 
-                        textLines={2} 
-                        className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm" 
+                    <ContentSkeleton
+                        type="text"
+                        textLines={2}
+                        className="p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                     />
                     <Stack direction="row" spacing={2} justifyContent="center">
-                        <ContentSkeleton 
-                            type="text" 
-                            textLines={1} 
-                            className="w-40 p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm" 
+                        <ContentSkeleton
+                            type="text"
+                            textLines={1}
+                            className="w-40 p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                         />
-                        <ContentSkeleton 
-                            type="text" 
-                            textLines={1} 
-                            className="w-40 p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm" 
+                        <ContentSkeleton
+                            type="text"
+                            textLines={1}
+                            className="w-40 p-3 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
                         />
                     </Stack>
                 </Stack>

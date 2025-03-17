@@ -8,6 +8,7 @@ export const SearchContainer = styled(Box)`
     padding: 8px 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    position: relative;
 
     &:hover, &:focus-within {
         border-color: ${({ theme }) => theme.palette.primary.main};
@@ -19,6 +20,7 @@ export const SearchInput = styled(InputBase)`
     width: 100%;
     color: white;
     margin-left: 8px;
+    margin-right: 24px;
 
     input::placeholder {
         color: rgba(255, 255, 255, 0.6);
@@ -30,4 +32,11 @@ export const SearchIconWrapper = styled(Box)`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+export const ClearButtonWrapper = styled(Box)`
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
 `;

@@ -35,7 +35,7 @@ export default function Blog() {
 
     return (
         <BlogContainer>
-            <div className="absolute inset-0 w-full h-full">
+            <div className="absolute inset-0 w-full h-full background-image">
                 <OptimizedImage
                     src="/assets/images/background/BlogHeader.jpg"
                     alt="Blog Background"

@@ -61,7 +61,7 @@ export const Home = () => {
 
                     <ProgressiveLoad>
                         <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
-                        <Section withPadding>
+                        <Section withPadding withBackground >
                             <Container maxWidth="xl">
                                 <Stack spacing={6} alignItems="center">
                                     <Stack spacing={4} alignItems="center">

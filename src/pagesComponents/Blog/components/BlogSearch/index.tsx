@@ -1,7 +1,8 @@
 "use client";
 
-import { Search } from "@mui/icons-material";
-import { SearchContainer, SearchInput, SearchIconWrapper } from "./styled";
+import { Search, Clear } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import { SearchContainer, SearchInput, SearchIconWrapper, ClearButtonWrapper } from "./styled";
 import { ChangeEvent } from "react";
 import { BlogSearchSkeleton } from "./BlogSearchSkeleton";
 
@@ -16,6 +17,13 @@ export const BlogSearch = ({ value, onChange, isLoading }: BlogSearchProps) => {
         return <BlogSearchSkeleton />;
     }
 
+    const handleClear = () => {
+        const event = {
+            target: { value: '' }
+        } as ChangeEvent<HTMLInputElement>;
+        onChange(event);
+    };
+
     return (
         <SearchContainer>
             <SearchIconWrapper>
@@ -27,6 +35,25 @@ export const BlogSearch = ({ value, onChange, isLoading }: BlogSearchProps) => {
                 onChange={onChange}
                 id="blog-search"
             />
+            {value && (
+                <ClearButtonWrapper>
+                    <IconButton
+                        onClick={handleClear}
+                        sx={{
+                            color: 'white',
+                            opacity: 0.6,
+                            padding: '4px',
+                            '&:hover': {
+                                opacity: 1,
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }}
+                        size="small"
+                    >
+                        <Clear fontSize="small" />
+                    </IconButton>
+                </ClearButtonWrapper>
+            )}
         </SearchContainer>
     );
 };

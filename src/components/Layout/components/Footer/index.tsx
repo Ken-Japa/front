@@ -29,7 +29,9 @@ export const Footer = () => {
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
-                            <Logo height={80} width={80} />
+                            <Link href="/">
+                                <Logo height={80} width={80} />
+                            </Link>
                         </motion.div>
                         <Box className="text-center md:text-right max-w-md">
                             <Typography variant="body1" className="text-white/80 mb-2">
@@ -77,8 +79,8 @@ export const Footer = () => {
                                     href="/embaixadores"
                                     className={`
                                         flex items-center gap-2 transition-colors
-                                        ${pathname === '/embaixadores' 
-                                            ? 'text-[#FFD700]' 
+                                        ${pathname === '/embaixadores'
+                                            ? 'text-[#FFD700]'
                                             : 'text-white/80 hover:text-white'
                                         }
                                     `}

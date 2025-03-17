@@ -36,7 +36,7 @@ export const Header = () => {
                         <>
                             <IconButton
                                 color="inherit"
-                                aria-label="open drawer"
+                                aria-label="open menu"
                                 edge="start"
                                 onClick={toggle}
                                 className="text-white bg-[#1A1A1A]"
