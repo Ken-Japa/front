@@ -7,6 +7,7 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { useSearchParams } from 'next/navigation';
 
 const Header = lazy(() => import('./Header').then(mod => ({ default: mod.Header })));
 const ContactInfo = lazy(() => import('./ContactInfo').then(mod => ({ default: mod.ContactInfo })));
@@ -32,10 +33,11 @@ export const Contact = () => {
     const [isBlocked, setIsBlocked] = useState(false);
     const [blockTimer, setBlockTimer] = useState(0);
     const [imageLoaded, setImageLoaded] = useState(false);
+    const searchParams = useSearchParams();
 
     const [formData, setFormData] = useState<FormData>({
-        name: "",
-        email: "",
+        name: searchParams.get('name') || "",
+        email: searchParams.get('email') || "",
         subject: "",
         message: ""
     });

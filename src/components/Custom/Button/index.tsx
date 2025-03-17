@@ -2,9 +2,10 @@ import { Button, ButtonProps, Theme } from '@mui/material';
 import { OverridableStringUnion } from '@mui/types';
 import { ButtonPropsColorOverrides, ButtonPropsSizeOverrides } from '@mui/material';
 import { SxProps } from '@mui/system';
+import { HTMLMotionProps } from 'framer-motion';
 
-interface CustomButtonProps extends Omit<ButtonProps, 'startIcon' | 'variant' | 'color' | 'size'> {
-    value: string;
+interface CustomButtonProps extends Omit<ButtonProps, 'variant' | 'color' | 'size'> {
+    value?: string;
     Icon?: React.ComponentType;
     color?: OverridableStringUnion<
         'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
@@ -19,6 +20,12 @@ interface CustomButtonProps extends Omit<ButtonProps, 'startIcon' | 'variant' | 
     padding?: string;
     borderRadius?: string;
     disabled?: boolean;
+    component?: any;
+    whileHover?: HTMLMotionProps<"button">["whileHover"];
+    whileTap?: HTMLMotionProps<"button">["whileTap"];
+    initial?: HTMLMotionProps<"button">["initial"];
+    animate?: HTMLMotionProps<"button">["animate"];
+    transition?: HTMLMotionProps<"button">["transition"];
 }
 
 export const CustomButton = ({
@@ -38,6 +45,14 @@ export const CustomButton = ({
     disabled = false,
     className,
     sx,
+    children,
+    startIcon,
+    component,
+    whileHover,
+    whileTap,
+    initial,
+    animate,
+    transition,
     ...props
 }: CustomButtonProps) => {
     const customStyles: SxProps<Theme> = {
@@ -72,10 +87,16 @@ export const CustomButton = ({
             disabled={disabled}
             className={className}
             sx={customStyles}
-            startIcon={Icon && <Icon />}
+            startIcon={startIcon || (Icon && <Icon />)}
+            component={component}
+            whileHover={whileHover}
+            whileTap={whileTap}
+            initial={initial}
+            animate={animate}
+            transition={transition}
             {...props}
         >
-            {value}
+            {children || value}
         </Button>
     );
 }
