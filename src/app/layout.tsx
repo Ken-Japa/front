@@ -42,17 +42,8 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     type: 'website',
   },
-  twitter: {
-    title: 'Auge Invest',
-    description: 'Plataforma líder em análise de investimentos',
-    card: 'summary_large_image',
-    images: [
-      {
-        url: '/assets/images/logo/Logo1.png',
-        width: 722,
-        height: 545,
-      },
-    ],
+  icons: {
+    icon: '/favicon.ico',
   },
   robots: {
     index: true,
