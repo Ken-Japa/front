@@ -1,12 +1,20 @@
 import { StyledGoogleButton } from "./styled";
 import GoogleIcon from '@mui/icons-material/Google';
+import { signIn } from "next-auth/react";
 
-export const GoogleSignInButton = ({ onClick }: { onClick: (e: React.MouseEvent<HTMLButtonElement>) => void }) => (
+const handleGoogleSignIn = async () => {
+    await signIn("google", {
+        callbackUrl: '/'
+    });
+};
+
+
+export const GoogleSignInButton = () => (
     <StyledGoogleButton
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
-        onClick={onClick}
+        onClick={handleGoogleSignIn}
     >
         Continuar com Google
     </StyledGoogleButton>

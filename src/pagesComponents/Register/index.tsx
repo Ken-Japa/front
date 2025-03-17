@@ -3,7 +3,7 @@
 import { useState, useEffect, lazy } from "react";
 import { useRouter } from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
-import { useGoogleLogin } from '@react-oauth/google';
+import { signIn } from "next-auth/react";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -77,17 +77,11 @@ export const Register = () => {
         setBlockTimer(600);
     };
 
-    const handleGoogleSignIn = useGoogleLogin({
-        onSuccess: async (response) => {
-            try {
-                console.log('Google login success:', response);
-                router.push('/');
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        },
-        onError: (error) => console.error('Google login failed:', error)
-    });
+    const handleGoogleSignIn = async () => {
+        await signIn("google", {
+            callbackUrl: '/'
+        });
+    };
 
     useEffect(() => {
         const checkBlockStatus = () => {

@@ -47,7 +47,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
         <>
             <StyledTextField
                 label="Nome completo"
-                name="nome-registrar"
+                name="name"
                 value={formData.name}
                 onChange={handleChange}
                 error={!!errors.name}
@@ -56,7 +56,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
                 id="nome-registrar"
             />
             <StyledTextField
-                name="cpf-registrar"
+                name="cpf"
                 label="CPF"
                 value={formData.cpf}
                 onChange={(e) => {
@@ -75,7 +75,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
                 id="cpf-registrar"
             />
             <StyledTextField
-                name="telefone-registrar"
+                name="phone"
                 label="Telefone"
                 value={formData.phone}
                 onChange={(e) => {
@@ -93,7 +93,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
                 id="telefone-registrar"
             />
             <StyledTextField
-                name="email-registrar"
+                name="email"
                 label="E-mail"
                 type="email"
                 value={formData.email}
@@ -104,7 +104,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
                 id="email-registrar"
             />
             <StyledTextField
-                name="senha-registrar"
+                name="password"
                 label="Senha"
                 type="password"
                 value={formData.password}
@@ -134,7 +134,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
             )}
 
             <StyledTextField
-                name="confirmarsenha-registrar"
+                name="confirmPassword"
                 label="Confirmar Senha"
                 type="password"
                 value={formData.confirmPassword}

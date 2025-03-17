@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { validateLoginForm } from "../utils/validation";
 import { FormData, FormErrors } from "../types";
+import { signIn } from "next-auth/react";
 
 export const useLoginForm = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -31,29 +32,41 @@ export const useLoginForm = () => {
     if (isBlocked) return;
 
     if (validateForm()) {
-      try {
-        setLoginAttempts((prev) => {
-          const newAttempts = prev + 1;
-          if (newAttempts >= 5) {
-            const blockDuration = 5 * 60 * 1000;
-            const blockedUntil = Date.now() + blockDuration;
-            localStorage.setItem("loginBlockedUntil", blockedUntil.toString());
-            setIsBlocked(true);
-            setBlockTimer(300);
-            return 0;
-          }
-          return newAttempts;
-        });
+        try {
+            const result = await signIn("credentials", {
+                email: formData.email,
+                password: formData.password,
+                redirect: false,
+                callbackUrl: "/dashboard",
+                remember: rememberMe,
+            });
 
-        // Your login logic here
-      } catch (error) {
-        console.error("Login error:", error);
-      }
+            if (result?.error) {
+                setLoginAttempts((prev) => {
+                    const newAttempts = prev + 1;
+                    if (newAttempts >= 5) {
+                        const blockDuration = 5 * 60 * 1000;
+                        const blockedUntil = Date.now() + blockDuration;
+                        localStorage.setItem("loginBlockedUntil", blockedUntil.toString());
+                        setIsBlocked(true);
+                        setBlockTimer(300);
+                        return 0;
+                    }
+                    return newAttempts;
+                });
+            } else {
+                window.location.href = result?.url || "/dashboard";
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+        }
     }
-  };
+};
 
-  const handleGoogleSignIn = () => {
-    // Handle Google sign-in
+  const handleGoogleSignIn = async () => {
+    await signIn("google", {
+      callbackUrl: '/'
+    });
   };
 
   useEffect(() => {

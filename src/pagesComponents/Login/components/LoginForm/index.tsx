@@ -54,7 +54,7 @@ export const LoginFormComponent = ({
 
             <TextField
                 label="Senha"
-                name="senha"
+                name="password"
                 type="password"
                 value={formData.password}
                 onChange={handleChange}

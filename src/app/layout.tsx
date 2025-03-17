@@ -5,9 +5,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import theme from "@/theme/mui";
 import { Layout } from "@/components/Layout";
-import { GoogleProvider } from "@/components/Providers/GoogleProvider";
 import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { AuthProvider } from "@/providers/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -88,18 +88,21 @@ export default function RootLayout({
 
       </head>
       <body className={inter.className}>
+
         <ErrorBoundary>
-          <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>
-              <GoogleProvider>
+          <AuthProvider>
+            <AppRouterCacheProvider>
+              <ThemeProvider theme={theme}>
+
                 <Layout>
                   <AnimatePresence mode="wait">
                     {children}
                   </AnimatePresence>
                 </Layout>
-              </GoogleProvider>
-            </ThemeProvider>
-          </AppRouterCacheProvider>
+
+              </ThemeProvider>
+            </AppRouterCacheProvider>
+          </AuthProvider>
         </ErrorBoundary>
       </body>
     </html>
