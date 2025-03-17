@@ -3,10 +3,18 @@ import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import GroupsIcon from '@mui/icons-material/Groups';
 import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
+import dynamic from 'next/dynamic';
 
 interface HeaderProps {
     isLoading: boolean;
 }
+
+const DynamicMatrixRainText = dynamic(() => import('@/components/Effects/MatrixRainText').then(mod => ({ 
+    default: mod.MatrixRainText 
+})), {
+    ssr: false,
+    loading: () => <Typography variant="h4" className="title">Junte-se ao Time</Typography>
+});
 
 export const Header = ({ isLoading }: HeaderProps) => {
     if (isLoading) {
@@ -17,7 +25,7 @@ export const Header = ({ isLoading }: HeaderProps) => {
         <HeaderContainer>
             <div className="header-content">
                 <GroupsIcon sx={{ fontSize: 40, color: '#0D95F9' }} />
-                <MatrixRainText
+                <DynamicMatrixRainText
                     text="Junte-se ao Time"
                     className="title"
                 />

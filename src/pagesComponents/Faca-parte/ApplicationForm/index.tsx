@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { JoinTeamForm } from "./styled";
 import { TextField, Button, Stack, MenuItem, Snackbar, Alert } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
+import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { ApplicationFormSkeleton } from "./ApplicationFormSkeleton";
+import dynamic from 'next/dynamic';
 
 interface HeaderProps {
     isLoading: boolean;
@@ -35,6 +37,10 @@ const roles = [
     "Marketing Digital",
     "Outro"
 ];
+
+const DynamicTextField = dynamic(() => import('@mui/material').then(mod => mod.TextField), {
+    loading: () => <ContentSkeleton type="text" textLines={1} />
+});
 
 export const ApplicationForm = ({ isLoading }: HeaderProps) => {
 
@@ -212,7 +218,7 @@ export const ApplicationForm = ({ isLoading }: HeaderProps) => {
         <>
             <JoinTeamForm onSubmit={handleSubmit}>
                 <Stack spacing={3}>
-                    <TextField
+                    <DynamicTextField
                         className="form-field"
                         name="name"
                         label="Nome Completo"

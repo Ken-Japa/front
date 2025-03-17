@@ -1,11 +1,18 @@
+import { Stack } from "@mui/material";
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 
 export const ApplicationFormSkeleton = () => {
     return (
-        <ContentSkeleton
-            type="form"
-            formFields={6}
-            className="p-6 bg-[#ffffff0a] rounded-lg backdrop-blur-sm"
-        />
+        <Stack spacing={3}>
+            <ContentSkeleton type="text" textLines={1} />
+            <ContentSkeleton type="text" textLines={1} />
+            <ContentSkeleton type="text" textLines={1} />
+            <ContentSkeleton type="text" textLines={1} />
+            <ContentSkeleton type="text" textLines={3} />
+            <ContentSkeleton type="text" textLines={1} />
+            <ContentSkeleton type="text" textLines={1} />
+            <ContentSkeleton type="text" textLines={4} />
+            <ContentSkeleton type="text" textLines={1} />
+        </Stack>
     );
 };

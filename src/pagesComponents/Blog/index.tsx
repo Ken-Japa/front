@@ -1,13 +1,18 @@
 "use client";
 
 import { Container, Grid, Box } from "@mui/material";
-import { useState, ChangeEvent, lazy } from "react";
+import { useState, ChangeEvent, lazy, useRef } from "react";
 import { motion } from "framer-motion";
 import { blogPosts } from "./constants/blogPosts";
 import { BlogContainer, BlogContent } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { useVirtualizer } from '@tanstack/react-virtual';
+import { useMemo } from 'react';
+import { useCallback } from 'react';
+import debounce from 'lodash/debounce';
+import { BlogCard } from "./components/BlogCard"; // Add this import
 
 const BlogHeader = lazy(() => import('./components/BlogHeader').then(mod => ({ default: mod.BlogHeader })));
 const BlogSearch = lazy(() => import('./components/BlogSearch').then(mod => ({ default: mod.BlogSearch })));
@@ -19,18 +24,36 @@ export default function Blog() {
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [imageLoaded, setImageLoaded] = useState(false);
 
+    const debouncedSearch = useCallback(
+        debounce((value: string) => {
+            setSearchQuery(value);
+        }, 300),
+        []
+    );
+
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(e.target.value);
+        debouncedSearch(e.target.value);
     };
 
-    const filteredPosts = blogPosts
-        .filter(post => {
-            const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                post.description.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
-            return matchesSearch && matchesCategory;
-        })
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const filteredPosts = useMemo(() => 
+        blogPosts
+            .filter(post => {
+                const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    post.description.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+                return matchesSearch && matchesCategory;
+            })
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+        [searchQuery, selectedCategory]
+    );
+
+    const parentRef = useRef<HTMLDivElement>(null);
+    const rowVirtualizer = useVirtualizer({
+        count: filteredPosts.length,
+        getScrollElement: () => parentRef.current,
+        estimateSize: () => 200, // Estimated height of each blog card
+        overscan: 5
+    });
 
     return (
         <BlogContainer>
@@ -72,12 +95,14 @@ export default function Blog() {
                                     </Box>
                                 </ProgressiveLoad>
 
-                                <SuspenseWrapper>
-                                    <BlogCardList
-                                        posts={filteredPosts}
-                                        isLoading={!imageLoaded}
-                                    />
-                                </SuspenseWrapper>
+                                <Box ref={parentRef} style={{ height: '800px', overflow: 'auto' }}>
+                                    {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+                                        <BlogCard 
+                                            key={virtualRow.index}
+                                            {...filteredPosts[virtualRow.index]}
+                                        />
+                                    ))}
+                                </Box>
                             </Grid>
 
                             <Grid item xs={12} md={4}>
