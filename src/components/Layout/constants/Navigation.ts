@@ -7,11 +7,11 @@ interface NavigationItem {
 
 export const publicNavigation: NavigationItem[] = [
   { name: "Início", path: "/" },
-  { name: "Quem Somos", path: "/quem-somos" },
-  { name: "Soluções", path: "/recursos" },
-  { name: "FAQ", path: "/faq" },
-  { name: "Preços", path: "/precos", highlight: true },
-  { name: "Contato", path: "/contato" },
+  { name: "Quem Somos", path: "/visitante/quem-somos" },
+  { name: "Soluções", path: "/visitante/recursos" },
+  { name: "FAQ", path: "/visitante/faq" },
+  { name: "Preços", path: "/visitante/precos", highlight: true },
+  { name: "Contato", path: "/visitante/contato" },
   { name: "Blog", path: "/blog" },
 ];
 

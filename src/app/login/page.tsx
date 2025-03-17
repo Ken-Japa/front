@@ -1,4 +1,4 @@
-import { Login } from "@/pagesComponents/Login";
+import { Login } from "@/pagesComponents/Nao-Logado/Login";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

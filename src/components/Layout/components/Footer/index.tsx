@@ -76,7 +76,7 @@ export const Footer = () => {
                                     })}
                                 </Box>
                                 <LinkNext
-                                    href="/embaixadores"
+                                    href="/visitante/embaixadores"
                                     className={`
                                         flex items-center gap-2 transition-colors
                                         ${pathname === '/embaixadores'

@@ -1,4 +1,4 @@
-import { Register } from "@/pagesComponents/Register";
+import { Register } from "@/pagesComponents/Nao-Logado/Register";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -26,14 +26,18 @@ export const Header = () => {
         >
             <HeaderContainer>
                 <HeaderContent className="container mx-auto">
-                    <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 400 }}
-                    >
-                        <Link href="/">
-                            <Logo width={60} height={60} />
-                        </Link>
-                    </motion.div>
+                    <div className="flex items-center gap-12">
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 400 }}
+                        >
+                            <Link href="/">
+                                <Logo width={60} height={60} />
+                            </Link>
+                        </motion.div>
+
+                        {!isMobile && <Navbar />}
+                    </div>
 
                     {isMobile ? (
                         <>
@@ -65,8 +69,7 @@ export const Header = () => {
                             </Drawer>
                         </>
                     ) : (
-                        <div className="flex items-center justify-between gap-20">
-                            <Navbar />
+                        <div className="flex items-center">
                             {session ?
                                 <PerfilButtons />
                                 :

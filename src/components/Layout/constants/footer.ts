@@ -24,14 +24,14 @@ export const socialLinks = [
 
 export const publicLinks = [
   { href: "/", label: "Início" },
-  { href: "/quem-somos", label: "Quem somos" },
-  { href: "/recursos", label: "Recursos" },
-  { href: "/precos", label: "Preços" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contato", label: "Fale Conosco" },
-  { href: "/faca-parte", label: "Junte-se a equipe" },
-  { href: "/politica-privacidade", label: "Política de Privacidade" },
-  { href: "/termos-servicos", label: "Termos de Serviço" },
+  { href: "/visitante/quem-somos", label: "Quem somos" },
+  { href: "/visitante/recursos", label: "Recursos" },
+  { href: "/visitante/precos", label: "Preços" },
+  { href: "/visitante/faq", label: "FAQ" },
+  { href: "/visitante/contato", label: "Fale Conosco" },
+  { href: "/visitante/faca-parte", label: "Junte-se a equipe" },
+  { href: "/visitante/politica-privacidade", label: "Política de Privacidade" },
+  { href: "/visitante/termos-servicos", label: "Termos de Serviço" },
   { href: "/blog", label: "Blog" },
 ];
 
