@@ -58,7 +58,7 @@ export const OptimizedImage = ({
             sizes={sizes}
             priority={priority}
             className={`
-                duration-700 ease-in-out
+                duration-500 ease-in-out // Reduced from 700ms
                 ${isLoading ? loadingClassName : 'scale-100 blur-0 grayscale-0'}
                 ${className}
             `}
