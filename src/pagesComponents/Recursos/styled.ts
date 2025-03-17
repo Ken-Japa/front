@@ -7,36 +7,37 @@ export const SectionSolutions = styled("section")(({ theme }) => ({
   overflow: "hidden",
 
   "& .video-background": {
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
     objectFit: "cover",
     zIndex: 0,
   },
 
   "& .overlay": {
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
-    background: "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,21,41,0.9) 100%)",
+    width: "100vw",
+    height: "100vh",
+    background:
+      "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,21,41,0.9) 100%)",
     zIndex: 1,
   },
 
   "&::before": {
-    content: "''",
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
-    right: 0,
-    bottom: 0,
-    background: "radial-gradient(circle at center, rgba(13, 149, 249, 0.1) 0%, transparent 70%)",
+    width: "100vw",
+    height: "100vh",
+    background:
+      "radial-gradient(circle at center, rgba(13, 149, 249, 0.1) 0%, transparent 70%)",
     pointerEvents: "none",
     zIndex: 2,
-  }
+  },
 }));
 
 export const ContentWrapper = styled("div")(({ theme }) => ({
@@ -51,7 +52,7 @@ export const ContentWrapper = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     gap: "48px",
     padding: "48px 0",
-  }
+  },
 }));
 
 export const FeatureCard = styled("div")(({ theme }) => ({
@@ -87,7 +88,7 @@ export const FeatureCard = styled("div")(({ theme }) => ({
 
     "&:hover": {
       transform: "translateY(-5px)",
-    }
+    },
   },
 
   [theme.breakpoints.down("sm")]: {
@@ -96,6 +97,6 @@ export const FeatureCard = styled("div")(({ theme }) => ({
     "& .icon-container": {
       width: "48px",
       height: "48px",
-    }
-  }
+    },
+  },
 }));

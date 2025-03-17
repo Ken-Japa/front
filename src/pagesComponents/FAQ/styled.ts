@@ -11,12 +11,19 @@ export const SectionFAQ = styled("section")(({ theme }) => ({
   backgroundColor: "rgba(0, 0, 0, 0.4)",
 
   "& .background-image": {
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
     zIndex: -1,
+    "& > span": {
+      height: "100vh !important",
+    },
+    "& img": {
+      objectFit: "cover",
+      objectPosition: "center",
+    },
   },
 
   "& .content-container": {
@@ -26,6 +33,8 @@ export const SectionFAQ = styled("section")(({ theme }) => ({
     maxWidth: "900px",
     margin: "0 auto",
     padding: "40px 24px",
+    backgroundColor: "rgba(0, 0, 0, 0.7)", // Add semi-transparent background
+    backdropFilter: "blur(8px)", // Optional: adds blur effect
 
     [theme.breakpoints.down("sm")]: {
       padding: "24px 16px",
