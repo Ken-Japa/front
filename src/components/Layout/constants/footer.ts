@@ -22,7 +22,7 @@ export const socialLinks = [
   },
 ];
 
-export const navigationLinks = [
+export const publicLinks = [
   { href: "/", label: "Início" },
   { href: "/quem-somos", label: "Quem somos" },
   { href: "/recursos", label: "Recursos" },
@@ -31,6 +31,13 @@ export const navigationLinks = [
   { href: "/contato", label: "Fale Conosco" },
   { href: "/faca-parte", label: "Junte-se a equipe" },
   { href: "/politica-privacidade", label: "Política de Privacidade" },
+  { href: "/termos-servicos", label: "Termos de Serviço" },
+  { href: "/blog", label: "Blog" },
+];
+
+export const authLinks = [
+  { href: "/", label: "Início" },
+
   { href: "/termos-servicos", label: "Termos de Serviço" },
   { href: "/blog", label: "Blog" },
 ];

@@ -32,40 +32,43 @@ export const useLoginForm = () => {
     if (isBlocked) return;
 
     if (validateForm()) {
-        try {
-            const result = await signIn("credentials", {
-                email: formData.email,
-                password: formData.password,
-                redirect: false,
-                callbackUrl: "/dashboard",
-                remember: rememberMe,
-            });
+      try {
+        const result = await signIn("credentials", {
+          email: formData.email,
+          password: formData.password,
+          redirect: false,
+          callbackUrl: "/dashboard",
+          remember: rememberMe,
+        });
 
-            if (result?.error) {
-                setLoginAttempts((prev) => {
-                    const newAttempts = prev + 1;
-                    if (newAttempts >= 5) {
-                        const blockDuration = 5 * 60 * 1000;
-                        const blockedUntil = Date.now() + blockDuration;
-                        localStorage.setItem("loginBlockedUntil", blockedUntil.toString());
-                        setIsBlocked(true);
-                        setBlockTimer(300);
-                        return 0;
-                    }
-                    return newAttempts;
-                });
-            } else {
-                window.location.href = result?.url || "/dashboard";
+        if (result?.error) {
+          setLoginAttempts((prev) => {
+            const newAttempts = prev + 1;
+            if (newAttempts >= 5) {
+              const blockDuration = 5 * 60 * 1000;
+              const blockedUntil = Date.now() + blockDuration;
+              localStorage.setItem(
+                "loginBlockedUntil",
+                blockedUntil.toString()
+              );
+              setIsBlocked(true);
+              setBlockTimer(300);
+              return 0;
             }
-        } catch (error) {
-            console.error("Login error:", error);
+            return newAttempts;
+          });
+        } else {
+          window.location.href = result?.url || "/dashboard";
         }
+      } catch (error) {
+        console.error("Login error:", error);
+      }
     }
-};
+  };
 
   const handleGoogleSignIn = async () => {
     await signIn("google", {
-      callbackUrl: '/'
+      callbackUrl: "/dashboard",
     });
   };
 

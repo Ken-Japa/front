@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { useProgressiveLoading } from '../hooks/useProgressiveLoading';
+import { useProgressiveLoading } from './useProgressiveLoading';
 
 interface ProgressiveLoadProps {
     children: ReactNode;

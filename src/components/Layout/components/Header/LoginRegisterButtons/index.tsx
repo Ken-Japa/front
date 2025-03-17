@@ -1,16 +1,16 @@
 import { PermIdentity } from "@mui/icons-material";
-import { CustomButton } from "../../../Custom/Button";
+import { CustomButton } from "../../../../Custom/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface AuthButtonsProps {
     onButtonClick?: () => void;
-    isFullWidth?: boolean; 
+    isFullWidth?: boolean;
 }
 
-export const AuthButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) => {
+export const LoginsButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) => {
     return (
-        <motion.div 
+        <motion.div
             className={`flex gap-4 ${isFullWidth ? 'w-full' : ''}`}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}

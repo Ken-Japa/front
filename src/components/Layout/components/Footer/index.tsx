@@ -6,7 +6,7 @@ import LinkNext from "next/link";
 import EmailIcon from '@mui/icons-material/Email';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { FooterContainer, TopSection } from "./styled";
-import { socialLinks } from "../../constants/footer";
+import { socialLinks } from "../../constants/Footer";
 import { motion } from "framer-motion";
 import { FooterNavigation } from "./components/FooterNavigation";
 import { usePathname } from 'next/navigation';

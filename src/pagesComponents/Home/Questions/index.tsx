@@ -1,5 +1,5 @@
 import { CustomAccordion } from "@/components/Custom/Accordion";
-import { questions } from "@/helpers/questions";
+import { questions } from "@/pagesComponents/Home/Questions/questions";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import { QuestionsSection } from "./styled";
