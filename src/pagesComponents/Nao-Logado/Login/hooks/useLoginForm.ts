@@ -37,7 +37,7 @@ export const useLoginForm = () => {
           email: formData.email,
           password: formData.password,
           redirect: false,
-          callbackUrl: "/dashboard",
+          callbackUrl: "/visao-economia",
           remember: rememberMe,
         });
 
@@ -58,7 +58,7 @@ export const useLoginForm = () => {
             return newAttempts;
           });
         } else {
-          window.location.href = result?.url || "/dashboard";
+          window.location.href = result?.url || "/visao-economia";
         }
       } catch (error) {
         console.error("Login error:", error);
@@ -68,7 +68,7 @@ export const useLoginForm = () => {
 
   const handleGoogleSignIn = async () => {
     await signIn("google", {
-      callbackUrl: "/dashboard",
+      callbackUrl: "/visao-economia",
     });
   };
 

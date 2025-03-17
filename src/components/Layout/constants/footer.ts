@@ -36,8 +36,11 @@ export const publicLinks = [
 ];
 
 export const authLinks = [
-  { href: "/", label: "Início" },
-
-  { href: "/termos-servicos", label: "Termos de Serviço" },
+  { href: "/alertas", label: "Alertas" },
+  { href: "/empresas", label: "Empresas" },
+  { href: "/indicadores", label: "Indicadores" },
+  { href: "/visao-economia", label: "Visão Economia" },
+  { href: "/dashboard", label: "Posições" },
   { href: "/blog", label: "Blog" },
+  { href: "/termos-servicos", label: "Termos de Serviço" },
 ];

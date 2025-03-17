@@ -46,9 +46,10 @@ export const PerfilButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) 
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem component={Link} href="/profile">
+                    <MenuItem component={Link} href="/perfil">
                         Perfil
                     </MenuItem>
+
                     <MenuItem component={Link} href="/settings">
                         Configurações
                     </MenuItem>

@@ -1,4 +1,4 @@
-import { Dashboard } from "@/pagesComponents/Logado/Dashboard";
+import { VisaoEconomia } from "@/pagesComponents/Logado/Visao-Economia";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,6 +6,6 @@ export const metadata: Metadata = {
     description: "Vsão Geral",
 };
 
-export default function DashboardPage() {
-    return <Dashboard />;
+export default function VisaoEconomiaPage() {
+    return <VisaoEconomia />;
 }
