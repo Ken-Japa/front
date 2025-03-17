@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from 'react';
 import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";

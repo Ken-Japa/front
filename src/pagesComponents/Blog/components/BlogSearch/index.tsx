@@ -1,5 +1,3 @@
-"use client";
-
 import { Search, Clear } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { SearchContainer, SearchInput, SearchIconWrapper, ClearButtonWrapper } from "./styled";

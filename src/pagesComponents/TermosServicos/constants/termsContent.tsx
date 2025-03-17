@@ -111,5 +111,5 @@ export const TERMS_SECTIONS = [
             </>
         )
     },
-    // ... Add all other sections following the same pattern
+
 ] as const;

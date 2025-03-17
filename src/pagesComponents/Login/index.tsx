@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, lazy } from "react";
-import { useRouter } from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";

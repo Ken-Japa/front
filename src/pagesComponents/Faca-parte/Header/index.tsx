@@ -1,5 +1,3 @@
-"use client";
-
 import { Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import GroupsIcon from '@mui/icons-material/Groups';

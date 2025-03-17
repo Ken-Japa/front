@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { JoinTeamForm } from "./styled";
 import { TextField, Button, Stack, MenuItem, Snackbar, Alert } from "@mui/material";

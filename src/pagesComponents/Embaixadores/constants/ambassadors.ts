@@ -5,7 +5,6 @@ interface Ambassador {
   testimonial: string;
 }
 
-// Fix the path to point to the correct location in the public folder
 export const CROWN = "/assets/icons/Crown.png";
 
 export const ambassadors: Ambassador[] = [

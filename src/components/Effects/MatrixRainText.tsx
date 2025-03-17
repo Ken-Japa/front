@@ -7,17 +7,17 @@ interface Props {
     className?: string;
     onComplete?: () => void;
     triggerOnce?: boolean;
-    charDelay?: number;    // New prop for customization
-    animationDuration?: number;  // New prop for customization
+    charDelay?: number;
+    animationDuration?: number;
 }
 
-export const MatrixRainText = ({ 
-    text, 
-    className = '', 
-    onComplete, 
+export const MatrixRainText = ({
+    text,
+    className = '',
+    onComplete,
     triggerOnce = false,
     charDelay = 25,
-    animationDuration = 0.2 
+    animationDuration = 0.2
 }: Props) => {
     const containerRef = useRef<HTMLSpanElement>(null);
     const hasPlayedRef = useRef(false);

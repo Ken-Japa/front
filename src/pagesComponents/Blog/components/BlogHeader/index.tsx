@@ -1,5 +1,3 @@
-"use client";
-
 import { Container, Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { HeaderContainer, HeaderContent } from "./styled";

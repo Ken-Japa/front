@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Typography } from "@mui/material";
 import { CategoryButton, CategoriesContainer } from "./styled";
 import { motion } from "framer-motion";

@@ -1,5 +1,3 @@
-"use client";
-
 import { Typography, Chip } from "@mui/material";
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import { BenefitsContainer } from "./styled";

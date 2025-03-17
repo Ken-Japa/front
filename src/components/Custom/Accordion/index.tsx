@@ -1,5 +1,3 @@
-"use client";
-
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ReactNode } from 'react';
 import {
@@ -20,8 +18,8 @@ interface Props {
   bodyColor?: string;
 }
 
-export const CustomAccordion = ({ 
-  title, 
+export const CustomAccordion = ({
+  title,
   children,
   body,
   variant = 'light',

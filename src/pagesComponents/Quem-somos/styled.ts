@@ -1,5 +1,3 @@
-"use client";
-
 import { styled } from "@mui/material";
 
 export const SectionTeam = styled("section")(({ theme }) => ({
@@ -33,7 +31,7 @@ export const SectionTeam = styled("section")(({ theme }) => ({
 }));
 
 export const BaseSection = styled("section")(({ theme }) => ({
-  maxWidth: "64rem", // 5xl in tailwind
+  maxWidth: "64rem",
   width: "100%",
   textAlign: "center",
   transform: "scale(1)",

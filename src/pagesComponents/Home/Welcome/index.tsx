@@ -1,4 +1,3 @@
-"use client";
 import { CustomButton } from "@/components/Custom/Button";
 import { SectionWelcome } from "./styled";
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
@@ -10,7 +9,6 @@ import { useEffect, useState } from "react";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { motion } from "framer-motion";
 import { Stack, Grid, Typography, Container } from "@mui/material";
-
 import { WelcomeSkeleton } from "./WelcomeSkeleton";
 
 interface WelcomeProps {

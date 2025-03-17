@@ -27,7 +27,7 @@ export const StyledDialog = styled(Dialog)({
       flexDirection: "column",
       alignItems: "center",
       padding: "16px",
-      /* Estilização da barra de rolagem */
+
       "&::-webkit-scrollbar": {
         width: "8px",
       },

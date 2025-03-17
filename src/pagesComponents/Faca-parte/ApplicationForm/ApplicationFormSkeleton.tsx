@@ -1,5 +1,3 @@
-"use client";
-
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 
 export const ApplicationFormSkeleton = () => {

@@ -1,6 +1,4 @@
-"use client";
-
-import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+import { CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { CalendarToday, Person } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { CardContainer, CardOverlay } from "./styled";

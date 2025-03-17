@@ -1,5 +1,3 @@
-"use client";
-
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { LogoContainer } from "./styled";
 
@@ -9,10 +7,10 @@ interface LogoProps {
     onClick?: () => void;
 }
 
-export const Logo = ({ 
-    width = 60, 
-    height = 60, 
-    onClick 
+export const Logo = ({
+    width = 60,
+    height = 60,
+    onClick
 }: LogoProps) => {
     return (
         <LogoContainer onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default' }}>
@@ -23,7 +21,7 @@ export const Logo = ({
                 height={height}
                 priority
                 quality={100}
-                style={{ 
+                style={{
                     maxWidth: '100%',
                     width: 'auto',
                     height: 'auto',

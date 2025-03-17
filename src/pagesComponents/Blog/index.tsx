@@ -11,7 +11,6 @@ import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 
 const BlogHeader = lazy(() => import('./components/BlogHeader').then(mod => ({ default: mod.BlogHeader })));
 const BlogSearch = lazy(() => import('./components/BlogSearch').then(mod => ({ default: mod.BlogSearch })));
-const BlogCard = lazy(() => import('./components/BlogCard').then(mod => ({ default: mod.BlogCard })));
 const BlogCategories = lazy(() => import('./components/BlogCategories').then(mod => ({ default: mod.BlogCategories })));
 const BlogCardList = lazy(() => import('./components/BlogCardList').then(mod => ({ default: mod.BlogCardList })));
 
@@ -74,7 +73,7 @@ export default function Blog() {
                                 </ProgressiveLoad>
 
                                 <SuspenseWrapper>
-                                    <BlogCardList 
+                                    <BlogCardList
                                         posts={filteredPosts}
                                         isLoading={!imageLoaded}
                                     />
