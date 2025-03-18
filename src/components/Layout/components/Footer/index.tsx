@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Typography, Box, IconButton, Link } from "@mui/material";
+import { Container, Typography, Box, IconButton, Link, useTheme } from "@mui/material";
 import { Logo } from "../../../Logo";
 import LinkNext from "next/link";
 import EmailIcon from '@mui/icons-material/Email';
@@ -15,7 +15,18 @@ import { useSession } from "next-auth/react";
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
     const pathname = usePathname();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+    const theme = useTheme();
+    const isLoading = status === "loading";
+
+    if (isLoading) {
+        return (
+            <FooterContainer>
+                <Container maxWidth="lg">
+                </Container>
+            </FooterContainer>
+        );
+    }
 
     return (
         <FooterContainer

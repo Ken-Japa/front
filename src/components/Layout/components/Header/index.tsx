@@ -16,13 +16,25 @@ export const Header = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const { isOpen, toggle } = useDrawer();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+    const isLoading = status === "loading";
+
+
+    if (isLoading) {
+        return (
+            <HeaderContainer>
+                <HeaderContent className="container mx-auto">
+
+                </HeaderContent>
+            </HeaderContainer>
+        );
+    }
 
     return (
         <motion.div
-            initial={{ y: -100 }}
+            initial={{ y: -50 }}
             animate={{ y: 0 }}
-            transition={{ type: "spring", stiffness: 100 }}
+            transition={{ type: "spring", stiffness: 70, damping: 20 }}
         >
             <HeaderContainer>
                 <HeaderContent className="container mx-auto">
