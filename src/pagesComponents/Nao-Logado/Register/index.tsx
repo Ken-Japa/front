@@ -84,10 +84,19 @@ export const Register = () => {
     };
 
     const handleGoogleSignIn = async () => {
-        await signIn("google", {
-            callbackUrl: '/'
-        });
+        try {
+            const searchParams = new URLSearchParams(window.location.search);
+            const callbackUrl = searchParams.get("callbackUrl") || "/visao-economia";
+
+            await signIn("google", {
+                callbackUrl,
+                redirect: true,
+            });
+        } catch (error) {
+            console.error("Google sign-in error:", error);
+        }
     };
+
 
     useEffect(() => {
         const checkBlockStatus = () => {

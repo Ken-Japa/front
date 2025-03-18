@@ -33,11 +33,14 @@ export const useLoginForm = () => {
 
     if (validateForm()) {
       try {
+        const searchParams = new URLSearchParams(window.location.search);
+        const callbackUrl = searchParams.get("callbackUrl") || "/visao-economia";
+
         const result = await signIn("credentials", {
           email: formData.email,
           password: formData.password,
           redirect: false,
-          callbackUrl: "/visao-economia",
+          callbackUrl,
           remember: rememberMe,
         });
 
@@ -67,9 +70,17 @@ export const useLoginForm = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    await signIn("google", {
-      callbackUrl: "/visao-economia",
-    });
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const callbackUrl = searchParams.get("callbackUrl") || "/visao-economia";
+
+      await signIn("google", {
+        callbackUrl,
+        redirect: true,
+      });
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
   };
 
   useEffect(() => {
