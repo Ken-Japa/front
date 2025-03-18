@@ -6,7 +6,7 @@ import LinkNext from "next/link";
 import EmailIcon from '@mui/icons-material/Email';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { FooterContainer, TopSection } from "./styled";
-import { socialLinks } from "../../constants/Footer";
+import { socialLinks } from "../../constants/footer";
 import { motion } from "framer-motion";
 import { FooterNavigation } from "./components/FooterNavigation";
 import { usePathname } from 'next/navigation';
@@ -57,7 +57,7 @@ export const Footer = () => {
                                 Redes Sociais
                             </Typography>
                             <Box className="flex flex-col gap-12">
-                                <Box className="flex gap-4 text-white/80">
+                                <Box className="flex gap-4">
                                     {socialLinks.map((social) => {
                                         const Icon = social.icon;
                                         return (
@@ -67,7 +67,14 @@ export const Footer = () => {
                                                 href={social.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-white/80 hover:text-white"
+                                                sx={{
+                                                    color: 'rgba(255, 255, 255, 1)',
+                                                    borderRadius: '50%',
+                                                    '&:hover': {
+                                                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                                        color: 'rgba(255, 255, 255, 1)'
+                                                    }
+                                                }}
                                                 size="large"
                                             >
                                                 <Icon />

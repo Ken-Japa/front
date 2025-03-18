@@ -42,5 +42,5 @@ export const authLinks = [
   { href: "/visao-economia", label: "Visão Economia" },
   { href: "/dashboard", label: "Posições" },
   { href: "/blog", label: "Blog" },
-  { href: "/termos-servicos", label: "Termos de Serviço" },
+  { href: "/visitante/termos-servicos", label: "Termos de Serviço" },
 ];

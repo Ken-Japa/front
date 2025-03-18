@@ -2,7 +2,7 @@
 import { Typography, Box } from "@mui/material";
 import LinkNext from "next/link";
 import { usePathname } from 'next/navigation';
-import { publicLinks, authLinks } from "../../../constants/Footer";
+import { publicLinks, authLinks } from "../../../constants/footer";
 import { NavigationGrid } from "../styled";
 import { useSession } from "next-auth/react";
 

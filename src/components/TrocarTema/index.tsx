@@ -14,18 +14,24 @@ export const ThemePreference = () => {
         <ThemeContainer>
             <ProfileInfo>
                 <ProfileLabel>Preferência de Tema</ProfileLabel>
-                <FormControlLabel
-                    control={
-                        <Switch
-                            checked={isDarkMode}
-                            onChange={toggleTheme}
-                            color="primary"
-                        />
-                    }
-                    label={isDarkMode ? 'Modo Escuro' : 'Modo Claro'}
-                />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={isDarkMode}
+                                onChange={toggleTheme}
+                                color="primary"
+                            />
+                        }
+                        label={isDarkMode ? 'Modo Escuro' : 'Modo Claro'}
+                    />
+                    {isDarkMode ? (
+                        <DarkModeIcon sx={{ color: '#4FC3F7' }} /> 
+                    ) : (
+                        <LightModeIcon sx={{ color: '#FFB74D' }} />
+                    )}
+                </div>
             </ProfileInfo>
-            {isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
         </ThemeContainer>
     );
 };

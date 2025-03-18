@@ -1,56 +1,85 @@
 import { CustomAccordion } from "@/components/Custom/Accordion";
 import { CustomButton } from "@/components/Custom/Button";
-import { ProfileInfo, ProfileLabel, ProfileValue } from "../../styled";
+import { ProfileInfo } from "../../styled";
+import { Chip, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { Chip } from "@mui/material";
+import {
+    SubscriptionContainer,
+    SubscriptionField,
+    LabelRow,
+    StyledProfileLabel,
+    StyledProfileValue,
+    ButtonContainer
+} from "./styled";
 
-export const SubscriptionInfo = () => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-    >
-        <CustomAccordion title="Informações da Assinatura">
-            <ProfileInfo>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <ProfileLabel>Plano Atual</ProfileLabel>
-                    <Chip
-                        label="A ser implementado"
-                        color="primary"
-                        size="small"
-                    />
-                </div>
+export const SubscriptionInfo = () => {
+    const theme = useTheme();
 
-                <ProfileLabel>Status da Assinatura</ProfileLabel>
-                <ProfileValue>
-                    <Chip
-                        label="Ativo"
-                        color="success"
-                        size="small"
-                    />
-                </ProfileValue>
+    return (
+        <SubscriptionContainer
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+        >
+            <CustomAccordion
+                title="Informações da Assinatura"
+                variant={theme.palette.mode === 'dark' ? 'dark' : 'light'}
+            >
+                <ProfileInfo>
+                    <SubscriptionField>
+                        <LabelRow>
+                            <StyledProfileLabel>Plano Atual</StyledProfileLabel>
+                            <Chip
+                                label="A ser implementado"
+                                color="primary"
+                                size="small"
+                                sx={{ fontSize: '0.75rem' }}
+                            />
+                        </LabelRow>
+                    </SubscriptionField>
 
-                <ProfileLabel>Data de Início</ProfileLabel>
-                <ProfileValue>A ser implementado</ProfileValue>
+                    <SubscriptionField>
+                        <StyledProfileLabel>Status da Assinatura</StyledProfileLabel>
+                        <Chip
+                            label="Ativo"
+                            color="success"
+                            size="small"
+                            sx={{
+                                width: 'fit-content',
+                                fontSize: '0.75rem'
+                            }}
+                        />
+                    </SubscriptionField>
 
-                <ProfileLabel>Próxima Cobrança</ProfileLabel>
-                <ProfileValue>A ser implementado</ProfileValue>
+                    <SubscriptionField>
+                        <StyledProfileLabel>Data de Início</StyledProfileLabel>
+                        <StyledProfileValue>A ser implementado</StyledProfileValue>
+                    </SubscriptionField>
 
-                <ProfileLabel>Método de Pagamento</ProfileLabel>
-                <ProfileValue>A ser implementado</ProfileValue>
+                    <SubscriptionField>
+                        <StyledProfileLabel>Próxima Cobrança</StyledProfileLabel>
+                        <StyledProfileValue>A ser implementado</StyledProfileValue>
+                    </SubscriptionField>
 
-                <CustomButton
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    sx={{ mt: 2 }}
-                    component={motion.button}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                >
-                    Alterar Plano
-                </CustomButton>
-            </ProfileInfo>
-        </CustomAccordion>
-    </motion.div>
-);
+                    <SubscriptionField>
+                        <StyledProfileLabel>Método de Pagamento</StyledProfileLabel>
+                        <StyledProfileValue>A ser implementado</StyledProfileValue>
+                    </SubscriptionField>
+
+                    <ButtonContainer>
+                        <CustomButton
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                            component={motion.button}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            Alterar Plano
+                        </CustomButton>
+                    </ButtonContainer>
+                </ProfileInfo>
+            </CustomAccordion>
+        </SubscriptionContainer>
+    );
+};

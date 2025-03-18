@@ -1,10 +1,10 @@
 "use client";
 
-import { Container, Typography, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ProfileCard } from './styled';
+import { ProfileContainer, ProfileCard, ProfileTitle, ContactButton } from './styled';
 import { UserInfo } from './components/UserInfo';
 import { SubscriptionInfo } from './components/SubscriptionInfo';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
@@ -40,12 +40,12 @@ export const Perfil = () => {
         <PageTransition direction="up" duration={0.4} distance={30}>
             <ErrorBoundary>
                 <SuspenseWrapper fallback={<ProfileSkeleton />}>
-                    <Container maxWidth="xl" sx={{ py: 4 }}>
-                        <Typography variant="h4" component="h1" gutterBottom>
+                    <ProfileContainer>
+                        <ProfileTitle>
                             Perfil
-                        </Typography>
+                        </ProfileTitle>
 
-                        <ProfileCard elevation={3}>
+                        <ProfileCard elevation={0}>
                             <UserInfo
                                 label="Nome"
                                 value={session?.user?.name}
@@ -61,28 +61,24 @@ export const Perfil = () => {
                                 value={null}
                                 onEdit={() => handleEdit('phone', '')}
                             />
-
                             <ThemePreference />
-
                         </ProfileCard>
 
-                        <ProfileCard elevation={3}>
+                        <ProfileCard elevation={0}>
                             <SubscriptionInfo />
                         </ProfileCard>
 
-                        <Link
-                            href={`/visitante/contato?name=${session?.user?.name}&email=${session?.user?.email}`}
-                            passHref
-                        >
+                        <ContactButton>
                             <Button
                                 variant="outlined"
                                 startIcon={<ContactSupportIcon />}
-                                fullWidth
-                                sx={{ mt: 2 }}
+                                component={Link}
+                                href={`/visitante/contato?name=${session?.user?.name}&email=${session?.user?.email}`}
                             >
                                 Precisa de Ajuda? Entre em Contato
                             </Button>
-                        </Link>
+                        </ContactButton>
+
                         <EditDialog
                             open={!!editField}
                             title={editField || ""}
@@ -90,7 +86,7 @@ export const Perfil = () => {
                             onClose={() => setEditField(null)}
                             onSave={handleSave}
                         />
-                    </Container>
+                    </ProfileContainer>
                 </SuspenseWrapper>
             </ErrorBoundary>
         </PageTransition>
