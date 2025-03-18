@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { AuthProvider } from "@/providers/AuthProvider";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {

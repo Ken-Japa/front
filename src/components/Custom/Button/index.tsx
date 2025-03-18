@@ -21,8 +21,8 @@ interface CustomButtonProps extends Omit<ButtonProps, 'variant' | 'color' | 'siz
     borderRadius?: string;
     disabled?: boolean;
     component?: any;
-    whileHover?: HTMLMotionProps<"button">["whileHover"];
-    whileTap?: HTMLMotionProps<"button">["whileTap"];
+    whilehover?: HTMLMotionProps<"button">["whileHover"];
+    whiletap?: HTMLMotionProps<"button">["whileTap"];
     initial?: HTMLMotionProps<"button">["initial"];
     animate?: HTMLMotionProps<"button">["animate"];
     transition?: HTMLMotionProps<"button">["transition"];
@@ -48,8 +48,8 @@ export const CustomButton = ({
     children,
     startIcon,
     component,
-    whileHover,
-    whileTap,
+    whilehover,
+    whiletap,
     initial,
     animate,
     transition,
@@ -89,8 +89,8 @@ export const CustomButton = ({
             sx={customStyles}
             startIcon={startIcon || (Icon && <Icon />)}
             component={component}
-            whileHover={whileHover}
-            whileTap={whileTap}
+            whilehover={whilehover}
+            whiletap={whiletap}
             initial={initial}
             animate={animate}
             transition={transition}
