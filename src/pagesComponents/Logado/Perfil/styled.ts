@@ -1,5 +1,7 @@
 import { styled } from "@mui/material";
-import { Paper, Container } from "@mui/material";
+import { Paper } from "@mui/material";
+import { Button as MuiButton, ButtonProps } from "@mui/material";
+import { ElementType } from "react";
 
 export const ProfileContainer = styled("div")`
   min-height: 100vh;
@@ -22,7 +24,7 @@ export const ProfileCard = styled(Paper)`
   background: ${({ theme }) =>
     theme.palette.mode === "dark"
       ? "rgba(19, 47, 76, 0.4)"
-      : "rgba(255, 255, 255, 0.9)"};
+      : "rgba(255, 255, 255, 0.8)"};
   backdrop-filter: blur(10px);
   border-radius: 16px;
   border: 1px solid
@@ -46,6 +48,32 @@ export const ContactButton = styled("div")`
   justify-content: center;
   max-width: 800px;
   margin: 2rem auto;
+`;
+
+export const StyledContactButton = styled(MuiButton)<
+  ButtonProps & {
+    component?: ElementType;
+  }
+>`
+  background: ${({ theme }) =>
+    theme.palette.mode === "dark"
+      ? "rgba(19, 47, 76, 0.4)"
+      : "rgba(255, 255, 255, 0.8)"};
+  backdrop-filter: blur(10px);
+  color: ${({ theme }) =>
+    theme.palette.mode === "dark" ? "#fff" : theme.palette.primary.main};
+  border: 1px solid
+    ${({ theme }) =>
+      theme.palette.mode === "dark"
+        ? "rgba(255, 255, 255, 0.1)"
+        : theme.palette.primary.main};
+
+  &:hover {
+    background: ${({ theme }) =>
+      theme.palette.mode === "dark"
+        ? "rgba(19, 47, 76, 0.6)"
+        : "rgba(255, 255, 255, 0.9)"};
+  }
 `;
 
 export const ProfileSection = styled("div")`

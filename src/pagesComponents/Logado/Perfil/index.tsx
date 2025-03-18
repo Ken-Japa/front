@@ -1,10 +1,9 @@
 "use client";
 
-import { Button } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ProfileContainer, ProfileCard, ProfileTitle, ContactButton } from './styled';
+import { ProfileContainer, ProfileCard, ProfileTitle, ContactButton, StyledContactButton } from './styled';
 import { UserInfo } from './components/UserInfo';
 import { SubscriptionInfo } from './components/SubscriptionInfo';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
@@ -14,6 +13,7 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { useState } from 'react';
 import { EditDialog } from './components/EditDialog';
 import { ThemePreference } from '@/components/TrocarTema';
+
 
 
 export const Perfil = () => {
@@ -26,10 +26,21 @@ export const Perfil = () => {
         setEditValue(value || "");
     };
 
+    // Add loading state for save operations
+    const [isSaving, setIsSaving] = useState(false);
+
     const handleSave = async (value: string) => {
-        // To be implemented when database is connected
-        console.log(`Saving ${editField}: ${value}`);
-        setEditField(null);
+        setIsSaving(true);
+        try {
+            // API call here
+            console.log(`Saving ${editField}: ${value}`);
+            // Show success notification
+        } catch (error) {
+            // Show error notification
+        } finally {
+            setIsSaving(false);
+            setEditField(null);
+        }
     };
 
     if (status === "loading") {
@@ -69,14 +80,14 @@ export const Perfil = () => {
                         </ProfileCard>
 
                         <ContactButton>
-                            <Button
-                                variant="outlined"
+                            <StyledContactButton
+                                variant="contained"
                                 startIcon={<ContactSupportIcon />}
                                 component={Link}
                                 href={`/visitante/contato?name=${session?.user?.name}&email=${session?.user?.email}`}
                             >
                                 Precisa de Ajuda? Entre em Contato
-                            </Button>
+                            </StyledContactButton>
                         </ContactButton>
 
                         <EditDialog
