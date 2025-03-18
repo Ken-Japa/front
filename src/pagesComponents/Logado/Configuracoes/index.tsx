@@ -55,9 +55,14 @@ export const Configuracoes = () => {
             <ErrorBoundary>
                 <ConfiguracoesWrapper>
                     <Container maxWidth="md" sx={{ py: 4 }}>
-                        <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
-                            Configurações
-                        </Typography>
+                        <Typography 
+                                            variant="h4" 
+                                            component="h1" 
+                                            gutterBottom 
+                                            sx={{ mb: 4, textAlign: 'center' }}
+                                        >
+                                            Configurações
+                                        </Typography>
 
                         <SuspenseWrapper fallback={<ContentSkeleton type="form" formFields={1} />}>
                             <ProgressiveLoad delay={0.2}>

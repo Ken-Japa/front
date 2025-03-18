@@ -1,4 +1,4 @@
-import { IconButton, Menu, MenuItem, Avatar } from '@mui/material';
+import { IconButton, Menu, MenuItem, Avatar, useTheme } from '@mui/material';
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useSession, signOut } from 'next-auth/react';
@@ -13,6 +13,7 @@ interface AuthButtonsProps {
 export const PerfilButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) => {
     const { data: session } = useSession();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const theme = useTheme();
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -32,12 +33,20 @@ export const PerfilButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) 
             <div>
                 <IconButton
                     onClick={handleMenu}
-                    sx={{ padding: 0 }}
+                    sx={{
+                        padding: 0,
+                        bgcolor: theme.palette.mode === 'light' ? 'rgba(255, 255, 255, 0.1)' : 'inherit',
+                    }}
                     aria-label="account menu"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                 >
-                    <Avatar alt={session?.user?.name || 'User'}>
+                    <Avatar
+                        alt={session?.user?.name || 'User'}
+                        sx={{
+                            color: theme.palette.mode === 'light' ? 'text.primary' : 'inherit',
+                        }}
+                    >
                         {session?.user?.name?.[0] || 'U'}
                     </Avatar>
                 </IconButton>
@@ -46,6 +55,12 @@ export const PerfilButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) 
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
+                    PaperProps={{
+                        sx: {
+                            bgcolor: theme.palette.mode === 'light' ? 'rgba(255, 255, 255)' : 'rgba(33, 33, 33, 0.95)',
+                            color: theme.palette.mode === 'light' ? 'text.primary' : 'inherit',
+                        }
+                    }}
                 >
                     <MenuItem component={Link} href="/perfil" onClick={handleClose}>
                         Perfil
