@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Visão Geral Economia | AugeInvest",
-    description: "Vsão Geral",
+    description: "Visão Geral",
 };
 
 export default function DashboardPage() {
