@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { ViewMode } from './types';
+import { SuspenseWrapper } from '@/components/SuspenseWrapper';
+import { ContentSkeleton } from '../../../../../components/Skeletons/ContentSkeleton';
 import { EmpresasContainer, ContentPlaceholder, ControlsWrapper } from './styled';
 import { ModoVisualizacao } from './Elementos/ModoVisualizacao';
 import { SearchBar } from './Elementos/SearchBar';
@@ -11,21 +13,25 @@ export const Empresas = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     return (
-        <EmpresasContainer>
-            <ControlsWrapper>
-                <ModoVisualizacao
-                    viewMode={viewMode}
-                    onChangeView={setViewMode}
-                />
-                <SearchBar
-                    value={searchQuery}
-                    onChange={setSearchQuery}
-                />
-            </ControlsWrapper>
-            <ContentPlaceholder>
-                EMPRESAS<br />
-                Visualização será implementada quando a API estiver disponível
-            </ContentPlaceholder>
-        </EmpresasContainer>
+        <SuspenseWrapper
+            fallback={<ContentSkeleton height={400} />}
+        >
+            <EmpresasContainer>
+                <ControlsWrapper>
+                    <ModoVisualizacao
+                        viewMode={viewMode}
+                        onChangeView={setViewMode}
+                    />
+                    <SearchBar
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                    />
+                </ControlsWrapper>
+                <ContentPlaceholder>
+                    EMPRESAS<br />
+                    Visualização será implementada quando a API estiver disponível
+                </ContentPlaceholder>
+            </EmpresasContainer>
+        </SuspenseWrapper>
     );
 };

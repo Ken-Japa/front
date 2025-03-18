@@ -8,18 +8,20 @@ interface ContentSkeletonProps {
   cardHeight?: number;
   formFields?: number;
   textLines?: number;
+  height?: number;
 }
 
-export const ContentSkeleton = ({ 
+export const ContentSkeleton = ({
   type = "text",
   className = "",
   cardHeight = 200,
   formFields = 4,
-  textLines = 3
+  textLines = 3,
+  height
 }: ContentSkeletonProps) => {
   if (type === "card") {
     return (
-      <Box className={`p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm ${className}`}>
+      <Box className={`p-4 bg-[#ffffff0a] rounded-lg backdrop-blur-sm ${className}`} style={{ height }}>
         <Stack spacing={2}>
           <Skeleton variant="rectangular" height={cardHeight} className="bg-white/10" />
           <Skeleton variant="text" className="bg-white/10" />
@@ -35,14 +37,14 @@ export const ContentSkeleton = ({
 
   if (type === "form") {
     return (
-      <Stack spacing={3} className={`p-4 ${className}`}>
+      <Stack spacing={3} className={`p-4 ${className}`} style={{ height }}>
         <Skeleton variant="text" width="40%" height={32} className="bg-white/10" />
         {Array(formFields).fill(0).map((_, index) => (
-          <Skeleton 
+          <Skeleton
             key={index}
-            variant="rounded" 
-            height={56} 
-            className="bg-white/10" 
+            variant="rounded"
+            height={56}
+            className="bg-white/10"
           />
         ))}
       </Stack>
@@ -50,13 +52,13 @@ export const ContentSkeleton = ({
   }
 
   return (
-    <Stack spacing={1} className={className}>
+    <Stack spacing={1} className={className} style={{ height }}>
       {Array(textLines).fill(0).map((_, index) => (
-        <Skeleton 
+        <Skeleton
           key={index}
-          variant="text" 
+          variant="text"
           width={index === textLines - 1 ? "60%" : "100%"}
-          className="bg-white/10" 
+          className="bg-white/10"
         />
       ))}
     </Stack>
