@@ -72,8 +72,8 @@ export const SubscriptionInfo = () => {
                             color="primary"
                             fullWidth
                             component={motion.button}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                            whilehover={{ scale: 1.02 }}
+                            whiletap={{ scale: 0.98 }}
                         >
                             Alterar Plano
                         </CustomButton>
