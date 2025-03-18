@@ -2,6 +2,10 @@ import { StyledGoogleButton } from "./styled";
 import GoogleIcon from '@mui/icons-material/Google';
 import { signIn } from "next-auth/react";
 
+interface GoogleSignInButtonProps {
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
 const handleGoogleSignIn = async () => {
     await signIn("google", {
         callbackUrl: '/'
@@ -9,7 +13,7 @@ const handleGoogleSignIn = async () => {
 };
 
 
-export const GoogleSignInButton = () => (
+export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({ onClick }) => (
     <StyledGoogleButton
         variant="outlined"
         fullWidth

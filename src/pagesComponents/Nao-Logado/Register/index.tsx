@@ -32,7 +32,13 @@ export const Register = () => {
         confirmPassword: ""
     });
     const [errors, setErrors] = useState<FormErrors>({});
-
+    const handleClose = () => {
+        try {
+            router.back();
+        } catch {
+            router.push('/');
+        }
+    };
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -122,11 +128,11 @@ export const Register = () => {
                         />
                     </div>
                     <div className="content">
-                        <Link href="/" passHref>
-                            <StyledCloseButton>
-                                <CloseIcon />
-                            </StyledCloseButton>
-                        </Link>
+
+                        <StyledCloseButton>
+                            <CloseIcon onClick={handleClose} />
+                        </StyledCloseButton>
+
 
                         <SuspenseWrapper>
                             <RegisterFormContent
