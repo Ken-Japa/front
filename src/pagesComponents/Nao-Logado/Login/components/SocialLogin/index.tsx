@@ -31,7 +31,7 @@ export const SocialLogin = ({ handleGoogleSignIn, isLoading }: SocialLoginProps)
                 Continuar com Google
             </GoogleButton>
 
-            <Typography className="login-text">
+            <Typography className="login-text text-white">
                 Não tem uma conta?{' '}
                 <RegisterLink>
                     <Link href="/register">

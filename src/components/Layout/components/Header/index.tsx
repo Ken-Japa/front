@@ -31,9 +31,13 @@ export const Header = () => {
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 400 }}
                         >
-                            <Link href="/">
+                            {session ?
                                 <Logo width={60} height={60} />
-                            </Link>
+                                :
+                                <Link href="/">
+                                    <Logo width={60} height={60} />
+                                </Link>
+                            }
                         </motion.div>
 
                         {!isMobile && <Navbar />}

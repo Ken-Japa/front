@@ -21,6 +21,7 @@ export const PerfilButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) 
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <motion.div
             className={`flex gap-4 ${isFullWidth ? 'w-full' : ''}`}
@@ -46,14 +47,17 @@ export const PerfilButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) 
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem component={Link} href="/perfil">
+                    <MenuItem component={Link} href="/perfil" onClick={handleClose}>
                         Perfil
                     </MenuItem>
 
-                    <MenuItem component={Link} href="/settings">
+                    <MenuItem component={Link} href="/perfil/configuracoes" onClick={handleClose}>
                         Configurações
                     </MenuItem>
-                    <MenuItem onClick={() => signOut({ callbackUrl: '/' })}>
+                    <MenuItem onClick={() => {
+                        handleClose();
+                        signOut({ callbackUrl: '/' });
+                    }}>
                         Sair
                     </MenuItem>
                 </Menu>

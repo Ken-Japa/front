@@ -10,10 +10,12 @@ import { socialLinks } from "../../constants/footer";
 import { motion } from "framer-motion";
 import { FooterNavigation } from "./components/FooterNavigation";
 import { usePathname } from 'next/navigation';
+import { useSession } from "next-auth/react";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
     const pathname = usePathname();
+    const { data: session } = useSession();
 
     return (
         <FooterContainer
@@ -29,9 +31,13 @@ export const Footer = () => {
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
-                            <Link href="/">
-                                <Logo height={80} width={80} />
-                            </Link>
+                            {session ?
+                                <Logo width={60} height={60} />
+                                :
+                                <Link href="/">
+                                    <Logo width={60} height={60} />
+                                </Link>
+                            }
                         </motion.div>
                         <Box className="text-center md:text-right max-w-md">
                             <Typography variant="body1" className="text-white/80 mb-2">
