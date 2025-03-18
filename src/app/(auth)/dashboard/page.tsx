@@ -2,8 +2,16 @@ import { Dashboard } from "@/pagesComponents/Logado/Dashboard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Visão Geral Economia | AugeInvest",
-    description: "Visão Geral",
+    title: "Dashboard | Acompanhamento de Carteira | AugeInvest",
+    description: "Monitore a evolução da sua carteira de investimentos em tempo real. Acompanhe posições reais e simuladas, análise de performance, indicadores personalizados e histórico completo de suas operações na plataforma AugeInvest.",
+    openGraph: {
+        title: 'Dashboard de Investimentos | AugeInvest',
+        description: 'Acompanhamento completo da sua carteira: posições reais, simulações, análise de performance e indicadores personalizados.',
+        type: 'website',
+        siteName: 'AugeInvest',
+    },
+    keywords: 'dashboard investimentos, acompanhamento carteira, posição real, simulação investimentos, análise performance, portfolio tracking, auge invest dashboard',
+    robots: 'index, follow',
 };
 
 export default function DashboardPage() {

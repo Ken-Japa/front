@@ -1,6 +1,8 @@
 "use client";
 
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from '@mui/material';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ProfileContainer, ProfileCard, ProfileTitle, ContactButton, StyledContactButton } from './styled';
@@ -79,6 +81,22 @@ export const Perfil = () => {
                             <SubscriptionInfo />
                         </ProfileCard>
 
+                        <ProfileCard elevation={0} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Button
+                                variant="text"
+                                color="error"
+                                endIcon={<LogoutIcon />}
+                                onClick={() => signOut({ callbackUrl: '/' })}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 0.5
+                                }}
+                            >
+                                Fazer logout
+                            </Button>
+                        </ProfileCard>
+
                         <ContactButton>
                             <StyledContactButton
                                 variant="contained"
@@ -89,6 +107,15 @@ export const Perfil = () => {
                                 Precisa de Ajuda? Entre em Contato
                             </StyledContactButton>
                         </ContactButton>
+
+                        <EditDialog
+                            open={!!editField}
+                            title={editField || ""}
+                            value={editValue}
+                            onClose={() => setEditField(null)}
+                            onSave={handleSave}
+                        />
+
 
                         <EditDialog
                             open={!!editField}
