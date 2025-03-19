@@ -1,22 +1,25 @@
 "use client";
 
-import { useState, lazy } from "react";
-import { Stack, Container, Divider, Typography } from "@mui/material";
+import { type FC, useState, lazy } from "react";
 import Link from 'next/link';
-import { Welcome } from "./Welcome";
+
+import { Stack, Container, Divider, Typography } from "@mui/material";
+
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+import { Welcome } from "./Welcome";
+import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
 
 const Plans = lazy(() => import('./Plans').then(mod => ({ default: mod.Plans })));
 const Questions = lazy(() => import('./Questions').then(mod => ({ default: mod.Questions })));
 const Newsletter = lazy(() => import('./Newsletter').then(mod => ({ default: mod.Newsletter })));
 const Features = lazy(() => import('./Features').then(mod => ({ default: mod.Features })));
 
-export const Home = () => {
+export const Home: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (

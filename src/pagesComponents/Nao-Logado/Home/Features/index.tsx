@@ -1,43 +1,20 @@
-import { useState } from 'react';
+import { type FC, useState } from 'react';
 import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
-import ShowChartIcon from '@mui/icons-material/ShowChart';
-import TimelineIcon from '@mui/icons-material/Timeline';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { OptimizedImage } from "@/components/OptimizedImage";
+
+import { FEATURES_DATA, ICON_STYLES } from './constants';
 import { FeaturesSkeleton } from "./FeaturesSkeleton";
 
 interface FeaturesProps {
     isLoading?: boolean;
 }
 
-export const Features = ({ isLoading }: FeaturesProps) => {
+export const Features: FC<FeaturesProps> = ({ isLoading }) => {
     const [activeFeature, setActiveFeature] = useState(0);
 
-    const features = [
-        {
-            icon: <ShowChartIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Análise Técnica Profissional",
-            description: "Gráficos, dados e ferramentas que fundos pagam muito para usar",
-            image: "/assets/images/imagens/Analise-Tecnica.jpg",
-            highlights: ["Simule estratégias complexas em cenários históricos", "Visualize volatilidade em tempo real com heatmaps interativos", "Histograma: descubra as oportunidades do mercado para comprar e vender"]
-        },
-        {
-            icon: <TimelineIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Fundamentalista Além do Óbvio",
-            description: "Dados que você não encontra em nenhuma outra plataforma",
-            image: "/assets/images/imagens/Analise-Fundamentalista.jpg",
-            highlights: ["Histórico completo de dividendos ajustados por proventos", "Valuation comparativo entre BDRs e ativos internacionais", "Alertas de balanços com insights"]
-        },
-        {
-            icon: <NotificationsActiveIcon sx={{ fontSize: 40, color: "#0D95F9" }} />,
-            title: "Alertas Que Geram Lucro",
-            description: "Não apenas notificações – gatilhos para ação",
-            image: "/assets/images/imagens/Alertas-Inteligentes.jpg",
-            highlights: ["👉 PETR4 atingiu faixa de preço barato (5% abaixo da média histórica)", "👉 Vale3: estratégia de trava de alta tem ROI potencial de 11% neste ciclo", "👉 Dólar futuro em zona de risco alto - hora de hedge?"]
-        }
-    ];
     if (isLoading) {
         return <FeaturesSkeleton />;
     }
@@ -67,8 +44,8 @@ export const Features = ({ isLoading }: FeaturesProps) => {
                             className="relative h-[500px] rounded-xl overflow-hidden"
                         >
                             <OptimizedImage
-                                src={features[activeFeature].image}
-                                alt={features[activeFeature].title}
+                                src={FEATURES_DATA[activeFeature].image}
+                                alt={FEATURES_DATA[activeFeature].title}
                                 fill
                                 priority
                                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -79,10 +56,10 @@ export const Features = ({ isLoading }: FeaturesProps) => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                             <div className="absolute bottom-0 left-0 p-8">
                                 <Typography variant="h4" className="text-white mb-3">
-                                    {features[activeFeature].title}
+                                    {FEATURES_DATA[activeFeature].title}
                                 </Typography>
                                 <Typography className="text-white/70 mb-4">
-                                    {features[activeFeature].description}
+                                    {FEATURES_DATA[activeFeature].description}
                                 </Typography>
                             </div>
                         </motion.div>
@@ -91,48 +68,52 @@ export const Features = ({ isLoading }: FeaturesProps) => {
 
                 <Grid item xs={12} md={6}>
                     <Grid container spacing={3}>
-                        {features.map((feature, index) => (
-                            <Grid item xs={12} key={index}>
-                                <motion.div
-                                    className={`p-6 rounded-xl cursor-pointer transition-all ${activeFeature === index
-                                        ? 'bg-[#0D95F9]/10 border border-[#0D95F9]/30'
-                                        : 'bg-white/5 hover:bg-white/10'
+                        {FEATURES_DATA.map((feature, index) => {
+                            const Icon = feature.icon;
+                            return (
+                                <Grid item xs={12} key={index}>
+                                    <motion.div
+                                        className={`p-6 rounded-xl cursor-pointer transition-all ${
+                                            activeFeature === index
+                                                ? 'bg-[#0D95F9]/10 border border-[#0D95F9]/30'
+                                                : 'bg-white/5 hover:bg-white/10'
                                         }`}
-                                    onClick={() => setActiveFeature(index)}
-                                    whileHover={{ scale: 1.02 }}
-                                >
-                                    <div className="flex items-start gap-4">
-                                        <div className="p-3 rounded-lg bg-white/5">
-                                            {feature.icon}
+                                        onClick={() => setActiveFeature(index)}
+                                        whileHover={{ scale: 1.02 }}
+                                    >
+                                        <div className="flex items-start gap-4">
+                                            <div className="p-3 rounded-lg bg-white/5">
+                                                <Icon sx={ICON_STYLES} />
+                                            </div>
+                                            <div>
+                                                <Typography variant="h6" className="text-white mb-2">
+                                                    {feature.title}
+                                                </Typography>
+                                                <Typography className="text-white/70 mb-3">
+                                                    {feature.description}
+                                                </Typography>
+                                                {activeFeature === index && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        className="flex gap-2 flex-wrap"
+                                                    >
+                                                        {feature.highlights.map((highlight, idx) => (
+                                                            <span
+                                                                key={idx}
+                                                                className="px-3 py-1 rounded-full bg-[#0969A6]/20 text-[#52BCFF] text-sm"
+                                                            >
+                                                                {highlight}
+                                                            </span>
+                                                        ))}
+                                                    </motion.div>
+                                                )}
+                                            </div>
                                         </div>
-                                        <div>
-                                            <Typography variant="h6" className="text-white mb-2">
-                                                {feature.title}
-                                            </Typography>
-                                            <Typography className="text-white/70 mb-3">
-                                                {feature.description}
-                                            </Typography>
-                                            {activeFeature === index && (
-                                                <motion.div
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
-                                                    className="flex gap-2 flex-wrap"
-                                                >
-                                                    {feature.highlights.map((highlight, idx) => (
-                                                        <span
-                                                            key={idx}
-                                                            className="px-3 py-1 rounded-full bg-[#0969A6]/20 text-[#52BCFF] text-sm"
-                                                        >
-                                                            {highlight}
-                                                        </span>
-                                                    ))}
-                                                </motion.div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </Grid>
-                        ))}
+                                    </motion.div>
+                                </Grid>
+                            );
+                        })}
                     </Grid>
                 </Grid>
             </Grid>

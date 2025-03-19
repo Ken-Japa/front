@@ -1,17 +1,18 @@
+import { type FC } from 'react';
+import { Stack, Typography } from "@mui/material";
 import { CustomAccordion } from "@/components/Custom/Accordion";
-import { questions } from "@/pagesComponents/Nao-Logado/Home/Questions/questions";
-import { Stack } from "@mui/material";
-import { Typography } from "@mui/material";
 import { QuestionsSection } from "./styled";
 import { QuestionsSkeleton } from "./QuestionsSkeleton";
+import { questions } from "./questions";
 
 interface QuestionsProps {
     isLoading?: boolean;
 }
-export const Questions = ({ isLoading }: QuestionsProps) => {
+export const Questions: FC<QuestionsProps> = ({ isLoading }) => {
     if (isLoading) {
         return <QuestionsSkeleton />;
     }
+
     return (
         <QuestionsSection>
             <Stack direction="column" alignItems="center" spacing={3}>
@@ -21,7 +22,11 @@ export const Questions = ({ isLoading }: QuestionsProps) => {
                 </Typography>
                 <Stack maxWidth="800px" width="100%">
                     {questions.map((item, index) => (
-                        <CustomAccordion key={index} body={item.body} title={item.title} />
+                        <CustomAccordion 
+                            key={index} 
+                            body={item.body} 
+                            title={item.title} 
+                        />
                     ))}
                 </Stack>
             </Stack>

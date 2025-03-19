@@ -1,4 +1,7 @@
+import { type FC } from 'react';
+
 import { Stack } from "@mui/material";
+
 import { SectionPlans } from "./styled";
 import { Card } from "./Card";
 import { PlansSkeleton } from "./PlansSkeleton";
@@ -6,7 +9,7 @@ import { PlansSkeleton } from "./PlansSkeleton";
 interface PlansProps {
     isLoading?: boolean;
 }
-export const Plans = ({ isLoading }: PlansProps) => {
+export const Plans: FC<PlansProps> = ({ isLoading }) => {
     if (isLoading) {
         return <PlansSkeleton />;
     }

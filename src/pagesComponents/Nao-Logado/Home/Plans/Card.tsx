@@ -1,12 +1,16 @@
-import { CustomButton } from "@/components/Custom/Button";
-import { CardContainer } from "./styled";
+import { type FC } from 'react';
+
 import { OverridableStringUnion } from '@mui/types';
 import { ButtonPropsColorOverrides } from '@mui/material';
 
-type Props = {
+import { CustomButton } from "@/components/Custom/Button";
+
+import { CardContainer } from "./styled";
+
+interface CardProps {
     title: string;
     price: string;
-    list?: string[];
+    list?: readonly string[];
     discount?: string;
     valueBtn: string;
     colorBtn?: OverridableStringUnion<
@@ -16,17 +20,16 @@ type Props = {
     customColorBtn?: string;
     textColorBtn?: string;
 }
-
-export const Card = ({ 
-    title, 
-    price, 
-    list, 
-    discount, 
-    valueBtn, 
+export const Card: FC<CardProps> = ({
+    title,
+    price,
+    list,
+    discount,
+    valueBtn,
     colorBtn,
     customColorBtn,
-    textColorBtn 
-}: Props) => {
+    textColorBtn
+}) => {
     return (
         <CardContainer
             className="glow-hover gradient-bg"

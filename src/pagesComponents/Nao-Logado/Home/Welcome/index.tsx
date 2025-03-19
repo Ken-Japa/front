@@ -1,21 +1,24 @@
-import { CustomButton } from "@/components/Custom/Button";
-import { SectionWelcome } from "./styled";
+import { type FC, useEffect, useState } from "react";
+import Link from "next/link";
+
+import { Stack, Grid, Typography, Container } from "@mui/material";
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import MonitorIcon from '@mui/icons-material/Monitor';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import { useEffect, useState } from "react";
-import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { motion } from "framer-motion";
-import { Stack, Grid, Typography, Container } from "@mui/material";
+
+import { CustomButton } from "@/components/Custom/Button";
+import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+
+import { SectionWelcome } from "./styled";
 import { WelcomeSkeleton } from "./WelcomeSkeleton";
-import Link from "next/link";
 
 interface WelcomeProps {
     isLoading?: boolean;
 }
-export const Welcome = ({ isLoading }: WelcomeProps) => {
+export const Welcome: FC<WelcomeProps> = ({ isLoading }) => {
     const [showAnimation, setShowAnimation] = useState(false);
 
     useEffect(() => {
