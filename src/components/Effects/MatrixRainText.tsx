@@ -5,6 +5,7 @@ import { useEffect, useRef, useCallback } from 'react';
 interface Props {
     text: string;
     className?: string;
+    fontSize?: string;
     onComplete?: () => void;
     triggerOnce?: boolean;
     charDelay?: number;
@@ -14,6 +15,7 @@ interface Props {
 export const MatrixRainText = ({
     text,
     className = '',
+    fontSize,
     onComplete,
     triggerOnce = false,
     charDelay = 25,
@@ -100,7 +102,11 @@ export const MatrixRainText = ({
                     }
                 }
             `}</style>
-            <span ref={containerRef} className={className}></span>
+            <span 
+                ref={containerRef} 
+                className={className}
+                style={{ fontSize: fontSize }}
+            ></span>
         </>
     );
 };

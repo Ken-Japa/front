@@ -1,24 +1,31 @@
+import { type FC, type FormEvent, type ChangeEvent } from 'react';
+
 import { TextField, Button, Autocomplete } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
+
 import { ContactFormStyled } from "./styled";
 
+interface FormData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+interface FormErrors {
+    name?: string;
+    email?: string;
+    subject?: string;
+    message?: string;
+}
+
 interface ContactFormProps {
-    formData: {
-        name: string;
-        email: string;
-        subject: string;
-        message: string;
-    };
-    errors: {
-        name?: string;
-        email?: string;
-        subject?: string;
-        message?: string;
-    };
+    formData: FormData;
+    errors: FormErrors;
     isBlocked: boolean;
     blockTimer: number;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    handleSubmit: (e: React.FormEvent) => void;
+    handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    handleSubmit: (e: FormEvent) => void;
 }
 
 const subjectOptions = [
@@ -29,35 +36,53 @@ const subjectOptions = [
     "Problemas Técnicos",
     "Parcerias Comerciais",
     "Outros"
-];
+] as const;
 
-export const ContactFormComponent = ({
+const autocompleteStyles = {
+    backgroundColor: 'rgba(0, 21, 41, 0.98)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(13, 149, 249, 0.2)',
+    '& .MuiAutocomplete-option': {
+        color: 'white',
+        '&:hover': {
+            backgroundColor: 'rgba(13, 149, 249, 0.4)'
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'rgba(13, 149, 249, 0.3)'
+        }
+    }
+};
+
+export const ContactFormComponent: FC<ContactFormProps> = ({
     formData,
     errors,
     isBlocked,
     blockTimer,
     handleChange,
     handleSubmit
-}: ContactFormProps) => {
+}) => {
+    const commonTextFieldProps = {
+        className: "form-field",
+        onChange: handleChange
+    };
+
     return (
         <ContactFormStyled onSubmit={handleSubmit} id="contato-form">
             <TextField
-                className="form-field"
+                {...commonTextFieldProps}
                 label="Nome"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
                 error={!!errors.name}
                 helperText={errors.name}
                 id="nome-contato"
             />
             <TextField
-                className="form-field"
+                {...commonTextFieldProps}
                 label="Email"
                 name="email"
                 type="email"
                 value={formData.email}
-                onChange={handleChange}
                 error={!!errors.email}
                 helperText={errors.email}
                 id="email-contato"
@@ -70,25 +95,10 @@ export const ContactFormComponent = ({
                 onChange={(_, newValue) => {
                     handleChange({
                         target: { name: 'subject', value: newValue || '' }
-                    } as React.ChangeEvent<HTMLInputElement>);
+                    } as ChangeEvent<HTMLInputElement>);
                 }}
                 componentsProps={{
-                    paper: {
-                        sx: {
-                            backgroundColor: 'rgba(0, 21, 41, 0.98)',
-                            backdropFilter: 'blur(10px)',
-                            border: '1px solid rgba(13, 149, 249, 0.2)',
-                            '& .MuiAutocomplete-option': {
-                                color: 'white',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(13, 149, 249, 0.4)'
-                                },
-                                '&.Mui-focused': {
-                                    backgroundColor: 'rgba(13, 149, 249, 0.3)'
-                                }
-                            }
-                        }
-                    }
+                    paper: { sx: autocompleteStyles }
                 }}
                 renderInput={(params) => (
                     <TextField
@@ -104,13 +114,12 @@ export const ContactFormComponent = ({
                 id="assunto-contato2"
             />
             <TextField
-                className="form-field"
+                {...commonTextFieldProps}
                 label="Mensagem"
                 name="message"
                 multiline
                 rows={4}
                 value={formData.message}
-                onChange={handleChange}
                 error={!!errors.message}
                 helperText={errors.message}
                 id="mensagem-contato"

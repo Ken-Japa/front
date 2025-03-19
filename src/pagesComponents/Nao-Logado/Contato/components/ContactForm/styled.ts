@@ -1,4 +1,11 @@
-import { styled } from "@mui/material";
+import { styled } from '@mui/material';
+
+export const ContactFormSkeletonStyled = styled('div')({
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem'
+});
 
 export const ContactFormStyled = styled("form")(({ theme }) => ({
   flex: "1 1 auto",

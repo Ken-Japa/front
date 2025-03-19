@@ -1,232 +1,104 @@
 "use client";
 
-import { useState, useEffect, lazy } from "react";
-import { SectionContact } from "./styled";
-import { Alert, Snackbar, Stack } from "@mui/material";
+import { useState, lazy, type FormEvent } from "react";
+import { useSearchParams } from 'next/navigation';
+
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
-import { useSearchParams } from 'next/navigation';
 
-const Header = lazy(() => import('./Header').then(mod => ({ default: mod.Header })));
-const ContactInfo = lazy(() => import('./ContactInfo').then(mod => ({ default: mod.ContactInfo })));
-const ContactFormComponent = lazy(() => import('./ContactForm').then(mod => ({ default: mod.ContactFormComponent })));
-const ContactFormSkeleton = lazy(() => import('./ContactForm/ContactFormSkeleton').then(mod => ({ default: mod.ContactFormSkeleton })));
+import { SectionContact } from "./styled";
+import { useContactForm } from "./hooks/useContactForm";
+import { useBlockTimer } from "./hooks/useBlockTimer";
+import { useSnackbar } from "./hooks/useSnackbar";
+import { submitContactForm } from './services/contactService';
+import { CONTACT_CONSTANTS } from './constants';
+import { ContactContent } from './components/ContactContent';
+import { SnackbarNotification } from './components/SnackbarNotification';
 
-interface FormData {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-}
-
-interface FormErrors {
-    name?: string;
-    email?: string;
-    subject?: string;
-    message?: string;
-}
+const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
+const ContactInfo = lazy(() => import('./components/ContactInfo').then(mod => ({ default: mod.ContactInfo })));
+const ContactFormComponent = lazy(() => import('./components/ContactForm').then(mod => ({ default: mod.ContactFormComponent })));
+const ContactFormSkeleton = lazy(() => import('./components/ContactForm/ContactFormSkeleton').then(mod => ({ default: mod.ContactFormSkeleton })));
 
 export const Contact = () => {
-    const [contactAttempts, setContactAttempts] = useState(0);
-    const [isBlocked, setIsBlocked] = useState(false);
-    const [blockTimer, setBlockTimer] = useState(0);
     const [imageLoaded, setImageLoaded] = useState(false);
     const searchParams = useSearchParams();
 
-    const [formData, setFormData] = useState<FormData>({
-        name: searchParams.get('name') || "",
-        email: searchParams.get('email') || "",
-        subject: "",
-        message: ""
-    });
+    const { isBlocked, blockTimer, handleBlock } = useBlockTimer(CONTACT_CONSTANTS.BLOCK_DURATION, 'contactBlockedUntil');
+    const { formData, errors, handleChange, validateForm } = useContactForm(searchParams);
+    const { snackbar, showSnackbar } = useSnackbar();
+    const [contactAttempts, setContactAttempts] = useState(0);
 
-    const [errors, setErrors] = useState<FormErrors>({});
-    const [snackbar, setSnackbar] = useState({
-        open: false,
-        message: '',
-        severity: 'success' as 'success' | 'error'
-    });
-
-    const validateForm = (): boolean => {
-        const newErrors: FormErrors = {};
-
-        if (!formData.name.trim()) {
-            newErrors.name = 'Nome é obrigatório';
-        }
-
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email é obrigatório';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email inválido';
-        }
-
-        if (!formData.subject.trim()) {
-            newErrors.subject = 'Assunto é obrigatório';
-        }
-
-        if (!formData.message.trim()) {
-            newErrors.message = 'Mensagem é obrigatória';
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        // Clear error when user starts typing
-        if (errors[name as keyof FormErrors]) {
-            setErrors(prev => ({
-                ...prev,
-                [name]: undefined
-            }));
-        }
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         if (isBlocked) {
-            setSnackbar({
-                open: true,
-                message: `Aguarde ${blockTimer} segundos antes de tentar novamente.`,
-                severity: 'error'
-            });
+            showSnackbar(CONTACT_CONSTANTS.MESSAGES.WAIT_BLOCK(blockTimer), 'error');
             return;
         }
 
-        if (!validateForm()) {
-            return;
-        }
+        if (!validateForm()) return;
 
-        setContactAttempts((prev) => {
+        setContactAttempts(prev => {
             const newAttempts = prev + 1;
-
-            // Block after 2 attempts (mais restrito que login/registro)
-            if (newAttempts >= 3) {
-                const blockDuration = 15 * 60 * 1000; // 15 minutes
-                const blockedUntil = Date.now() + blockDuration;
-                localStorage.setItem('contactBlockedUntil', blockedUntil.toString());
-                setIsBlocked(true);
-                setBlockTimer(900); // 15 minutes in seconds
+            if (newAttempts >= CONTACT_CONSTANTS.MAX_ATTEMPTS) {
+                handleBlock();
                 return 0;
             }
-
             return newAttempts;
         });
 
         try {
-            // ... existing submission logic ...
+            await submitContactForm(formData);
+            showSnackbar(CONTACT_CONSTANTS.MESSAGES.SUCCESS, 'success');
         } catch (error) {
-            setSnackbar({
-                open: true,
-                message: 'Erro ao enviar mensagem. Tente novamente.',
-                severity: 'error'
-            });
+            showSnackbar(CONTACT_CONSTANTS.MESSAGES.ERROR, 'error');
         }
     };
 
-    useEffect(() => {
-        const blockedUntil = localStorage.getItem('contactBlockedUntil');
-        if (blockedUntil) {
-            const timeLeft = parseInt(blockedUntil) - Date.now();
-            if (timeLeft > 0) {
-                setIsBlocked(true);
-                setBlockTimer(Math.ceil(timeLeft / 1000));
-            } else {
-                localStorage.removeItem('contactBlockedUntil');
-            }
+    const imageProps = {
+        src: "/assets/images/background/Contato.jpg",
+        alt: "Contact Background",
+        fill: true,
+        priority: true,
+        className: "object-cover",
+        loadingClassName: "scale-100 blur-xl grayscale opacity-50",
+        sizes: "100vw",
+        onLoad: () => setImageLoaded(true),
+        style: {
+            filter: !imageLoaded ? 'grayscale(1)' : 'none',
+            transition: 'filter 0.5s ease-in-out'
         }
-    }, []);
-
-    // Add timer countdown effect
-    useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (isBlocked && blockTimer > 0) {
-            timer = setInterval(() => {
-                setBlockTimer(prev => {
-                    if (prev <= 1) {
-                        setIsBlocked(false);
-                        localStorage.removeItem('contactBlockedUntil');
-                        return 0;
-                    }
-                    return prev - 1;
-                });
-            }, 1000);
-        }
-        return () => clearInterval(timer);
-    }, [isBlocked, blockTimer]);
+    };
 
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionContact>
                     <div className="background-image">
-                        <OptimizedImage
-                            src="/assets/images/background/Contato.jpg"
-                            alt="Contact Background"
-                            fill
-                            priority
-                            className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale opacity-50"
-                            sizes="100vw"
-                            onLoad={() => setImageLoaded(true)}
-                            style={{
-                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
-                                transition: 'filter 0.5s ease-in-out'
-                            }}
-                        />
+                        <OptimizedImage {...imageProps} />
                     </div>
                     <div className="content-wrapper">
-                        <Stack spacing={4} className="content-container">
-                            <SuspenseWrapper>
-                                <Header isLoading={!imageLoaded} />
-                            </SuspenseWrapper>
-
-                            <Stack
-                                direction={{ xs: 'column', md: 'row' }}
-                                spacing={4}
-                                className="form-container"
-                            >
-                                <SuspenseWrapper>
-                                    <ContactInfo isLoading={!imageLoaded} />
-                                </SuspenseWrapper>
-
-                                <SuspenseWrapper>
-                                    {!imageLoaded ? (
-                                        <ContactFormSkeleton />
-                                    ) : (
-                                        <ContactFormComponent
-                                            formData={formData}
-                                            errors={errors}
-                                            isBlocked={isBlocked}
-                                            blockTimer={blockTimer}
-                                            handleChange={handleChange}
-                                            handleSubmit={handleSubmit}
-                                        />
-                                    )}
-                                </SuspenseWrapper>
-                            </Stack>
-                        </Stack>
-                        <Snackbar
+                        <ContactContent
+                            imageLoaded={imageLoaded}
+                            formData={formData}
+                            errors={errors}
+                            isBlocked={isBlocked}
+                            blockTimer={blockTimer}
+                            handleChange={handleChange}
+                            handleSubmit={handleSubmit}
+                            Header={Header}
+                            ContactInfo={ContactInfo}
+                            ContactFormComponent={ContactFormComponent}
+                            ContactFormSkeleton={ContactFormSkeleton}
+                        />
+                        <SnackbarNotification
                             open={snackbar.open}
-                            autoHideDuration={6000}
-                            onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
-                        >
-                            <Alert
-                                onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
-                                severity={snackbar.severity}
-                                sx={{ width: '100%' }}
-                            >
-                                {snackbar.message}
-                            </Alert>
-                        </Snackbar>
+                            message={snackbar.message}
+                            severity={snackbar.severity}
+                            onClose={() => showSnackbar('', 'success', false)}
+                        />
                     </div>
                 </SectionContact>
             </ErrorBoundary>
