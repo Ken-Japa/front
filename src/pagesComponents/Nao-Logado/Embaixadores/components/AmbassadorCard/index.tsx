@@ -1,7 +1,11 @@
-import { Typography, Avatar, Stack, Box } from "@mui/material";
+import { type FC } from 'react';
 import { motion } from "framer-motion";
-import { CardContainer } from "./styled";
+
+import { Typography, Avatar, Stack, Box } from "@mui/material";
+
 import { CROWN } from "../../constants/ambassadors";
+
+import { CardContainer } from "./styled";
 import { AmbassadorCardSkeleton } from "./AmbassadorCardSkeleton";
 
 interface AmbassadorCardProps {
@@ -13,22 +17,41 @@ interface AmbassadorCardProps {
     isLoading?: boolean;
 }
 
-export const AmbassadorCard = ({ name, role, avatar, testimonial, index, isLoading }: AmbassadorCardProps) => {
+const ANIMATION_CONFIG = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.3, ease: "easeOut" }
+} as const;
+
+const AVATAR_STYLES = {
+    width: 120,
+    height: 120,
+    border: '4px solid #FFD700'
+} as const;
+
+export const AmbassadorCard: FC<AmbassadorCardProps> = ({ 
+    name, 
+    role, 
+    avatar, 
+    testimonial, 
+    index, 
+    isLoading 
+}) => {
     if (isLoading) {
         return <AmbassadorCardSkeleton />;
     }
+
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
+            {...ANIMATION_CONFIG}
+            transition={{ ...ANIMATION_CONFIG.transition, delay: index * 0.1 }}
         >
             <CardContainer>
                 <Stack spacing={3} alignItems="center" textAlign="center">
                     <Avatar
                         src={avatar || CROWN}
                         alt={name}
-                        sx={{ width: 120, height: 120, border: '4px solid #FFD700' }}
+                        sx={AVATAR_STYLES}
                     />
                     <Box>
                         <Typography variant="h6" className="text-white font-bold">

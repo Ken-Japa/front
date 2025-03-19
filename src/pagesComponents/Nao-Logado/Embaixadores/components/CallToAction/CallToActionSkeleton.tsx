@@ -1,17 +1,32 @@
-import { Box, Stack, Skeleton } from "@mui/material";
+import { type FC } from 'react';
 
-export const CallToActionSkeleton = () => {
-    return (
-        <Box className="mt-12 text-center">
-            <Stack
-                spacing={3}
-                className="bg-black/40 backdrop-blur-sm p-8 rounded-lg"
-                alignItems="center"
-            >
-                <Skeleton variant="text" width={200} height={24} sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />
-                <Skeleton variant="text" width={300} height={32} sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />
-                <Skeleton variant="rectangular" width={200} height={40} sx={{ bgcolor: 'rgba(255,255,255,0.1)', borderRadius: 1 }} />
-            </Stack>
-        </Box>
-    );
-};
+import { CallToActionContainer, ContentStack, StyledSkeleton } from "./styled";
+
+const SKELETON_DIMENSIONS = {
+    title: { width: 200, height: 24 },
+    subtitle: { width: 300, height: 32 },
+    button: { width: 200, height: 40, borderRadius: 1 }
+} as const;
+
+export const CallToActionSkeleton: FC = () => (
+    <CallToActionContainer>
+        <ContentStack spacing={3} alignItems="center">
+            <StyledSkeleton 
+                variant="text" 
+                width={SKELETON_DIMENSIONS.title.width} 
+                height={SKELETON_DIMENSIONS.title.height}
+            />
+            <StyledSkeleton 
+                variant="text" 
+                width={SKELETON_DIMENSIONS.subtitle.width} 
+                height={SKELETON_DIMENSIONS.subtitle.height}
+            />
+            <StyledSkeleton 
+                variant="rectangular" 
+                width={SKELETON_DIMENSIONS.button.width} 
+                height={SKELETON_DIMENSIONS.button.height}
+                sx={{ borderRadius: SKELETON_DIMENSIONS.button.borderRadius }}
+            />
+        </ContentStack>
+    </CallToActionContainer>
+);

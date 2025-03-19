@@ -1,21 +1,30 @@
-import { Typography, Box, Stack } from "@mui/material";
+import { type FC } from 'react';
+
+import { Typography } from "@mui/material";
+
 import { CustomButton } from "@/components/Custom/Button";
+
 import { CallToActionSkeleton } from "./CallToActionSkeleton";
+import { CallToActionContainer, ContentStack } from "./styled";
 
 interface CallToActionProps {
     isLoading?: boolean;
 }
-export const CallToAction = ({ isLoading }: CallToActionProps) => {
+
+const BUTTON_STYLES = {
+    customColor: "#FFD700",
+    textColor: "#000000",
+    className: "mt-4 max-w-xs mx-auto"
+} as const;
+
+export const CallToAction: FC<CallToActionProps> = ({ isLoading }) => {
     if (isLoading) {
         return <CallToActionSkeleton />;
     }
+
     return (
-        <Box className="mt-12 text-center">
-            <Stack
-                spacing={3}
-                className="bg-black/40 backdrop-blur-sm p-8 rounded-lg"
-                alignItems="center"
-            >
+        <CallToActionContainer>
+            <ContentStack spacing={3} alignItems="center">
                 <Typography variant="body1" className="text-white/90">
                     Quer participar deste grupo seleto?
                 </Typography>
@@ -24,11 +33,9 @@ export const CallToAction = ({ isLoading }: CallToActionProps) => {
                 </Typography>
                 <CustomButton
                     value="Fazer parte"
-                    customColor="#FFD700"
-                    textColor="#000000"
-                    className="mt-4 max-w-xs mx-auto"
+                    {...BUTTON_STYLES}
                 />
-            </Stack>
-        </Box>
+            </ContentStack>
+        </CallToActionContainer>
     );
 };

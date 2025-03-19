@@ -1,22 +1,49 @@
+import { type FC } from 'react';
+
 import { Stack, Skeleton } from "@mui/material";
+
 import { CardContainer } from "./styled";
 
-export const AmbassadorCardSkeleton = () => {
-    return (
-        <CardContainer>
-            <Stack spacing={3} alignItems="center" textAlign="center">
+const SKELETON_STYLES = {
+    bgcolor: 'rgba(255,255,255,0.1)'
+} as const;
+
+const SKELETON_DIMENSIONS = {
+    avatar: { width: 120, height: 120 },
+    name: { width: 150, height: 30 },
+    role: { width: 120, height: 24 },
+    testimonial: { width: "100%", height: 80 }
+} as const;
+
+export const AmbassadorCardSkeleton: FC = () => (
+    <CardContainer>
+        <Stack spacing={3} alignItems="center" textAlign="center">
+            <Skeleton 
+                variant="circular" 
+                width={SKELETON_DIMENSIONS.avatar.width} 
+                height={SKELETON_DIMENSIONS.avatar.height} 
+                sx={SKELETON_STYLES} 
+            />
+            <Stack spacing={1} width="100%" alignItems="center">
                 <Skeleton 
-                    variant="circular" 
-                    width={120} 
-                    height={120} 
-                    sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} 
+                    variant="text" 
+                    width={SKELETON_DIMENSIONS.name.width} 
+                    height={SKELETON_DIMENSIONS.name.height} 
+                    sx={SKELETON_STYLES} 
                 />
-                <Stack spacing={1} width="100%" alignItems="center">
-                    <Skeleton variant="text" width={150} height={30} sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />
-                    <Skeleton variant="text" width={120} height={24} sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />
-                </Stack>
-                <Skeleton variant="text" width="100%" height={80} sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />
+                <Skeleton 
+                    variant="text" 
+                    width={SKELETON_DIMENSIONS.role.width} 
+                    height={SKELETON_DIMENSIONS.role.height} 
+                    sx={SKELETON_STYLES} 
+                />
             </Stack>
-        </CardContainer>
-    );
-};
+            <Skeleton 
+                variant="text" 
+                width={SKELETON_DIMENSIONS.testimonial.width} 
+                height={SKELETON_DIMENSIONS.testimonial.height} 
+                sx={SKELETON_STYLES} 
+            />
+        </Stack>
+    </CardContainer>
+);
