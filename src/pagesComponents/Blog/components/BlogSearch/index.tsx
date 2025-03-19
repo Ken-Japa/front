@@ -1,7 +1,7 @@
+import { ChangeEvent } from "react";
 import { Search, Clear } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { SearchContainer, SearchInput, SearchIconWrapper, ClearButtonWrapper } from "./styled";
-import { ChangeEvent } from "react";
 import { BlogSearchSkeleton } from "./BlogSearchSkeleton";
 
 interface BlogSearchProps {

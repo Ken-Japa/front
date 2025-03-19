@@ -1,13 +1,14 @@
 "use client";
 
-import { Grid, Pagination, Box } from "@mui/material";
 import { useState } from "react";
-import { BlogCard } from "../BlogCard";
+import { Grid, Pagination, Box } from "@mui/material";
+import { Typography } from "@mui/material";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 import type { BlogPost } from "../../constants/blogPosts";
+import { BlogCard } from "../BlogCard";
 import { BlogCardListSkeleton } from "./BlogCardListSkeleton";
-import { Typography } from "@mui/material";
+
 
 interface BlogCardListProps {
     posts: BlogPost[];

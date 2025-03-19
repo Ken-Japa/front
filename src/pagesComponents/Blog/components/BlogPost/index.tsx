@@ -1,24 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { type FC, useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { Container, Typography, Box, Chip, Grid } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
-import type { BlogPost as BlogPostType } from "../../constants/blogPosts";
 import { motion } from "framer-motion";
 import ReactMarkdown from 'react-markdown';
-import Link from "next/link";
-import { PostContainer, PostContent } from "./styled";
+
 import { OptimizedImage } from "@/components/OptimizedImage";
+
+import { PostContainer, PostContent } from "./styled";
 import { BlogPostSkeleton } from "./BlogPostSkeleton";
-import { useRouter } from "next/navigation";
 import { BlogCard } from "../BlogCard";
 import { blogPosts } from "../../constants/blogPosts";
+import type { BlogPost as BlogPostType } from "../../constants/blogPosts";
 
 interface BlogPostProps {
     post: BlogPostType;
 }
 
-export default function BlogPost({ post }: BlogPostProps) {
+const BlogPost: FC<BlogPostProps> = ({ post }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const router = useRouter();
 
@@ -152,4 +155,6 @@ export default function BlogPost({ post }: BlogPostProps) {
             )}
         </PostContainer>
     );
-}
+};
+
+export default BlogPost;

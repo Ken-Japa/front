@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { CalendarToday, Person } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { CardContainer, CardOverlay } from "./styled";
-import Link from "next/link";
 import { BlogCardSkeleton } from "./BlogCardSkeleton";
 
 interface BlogCardProps {

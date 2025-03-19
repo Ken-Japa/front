@@ -1,5 +1,5 @@
-import { Container, Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
+import { Container, Typography } from "@mui/material";
 import { HeaderContainer, HeaderContent } from "./styled";
 import { BlogHeaderSkeleton } from "./BlogHeaderSkeleton";
 

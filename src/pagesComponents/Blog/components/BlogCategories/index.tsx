@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import { Box, Typography } from "@mui/material";
 import { CategoryButton, CategoriesContainer } from "./styled";
-import { motion } from "framer-motion";
 import { BlogCategoriesSkeleton } from "./BlogCategoriesSkeleton";
 
 interface BlogCategoriesProps {

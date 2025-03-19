@@ -1,41 +1,43 @@
 "use client";
 
+import { type FC, useState, useCallback, useMemo, useRef, lazy, ChangeEvent } from "react";
+
 import { Container, Grid, Box } from "@mui/material";
-import { useState, ChangeEvent, lazy, useRef } from "react";
 import { motion } from "framer-motion";
-import { blogPosts } from "./constants/blogPosts";
-import { BlogContainer, BlogContent } from "./styled";
+import { useVirtualizer } from '@tanstack/react-virtual';
+import debounce from 'lodash/debounce';
+
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
-import { useVirtualizer } from '@tanstack/react-virtual';
-import { useMemo } from 'react';
-import { useCallback } from 'react';
-import debounce from 'lodash/debounce';
-import { BlogCard } from "./components/BlogCard"; // Add this import
+
+import { BlogContainer, BlogContent } from "./styled";
+import { blogPosts } from "./constants/blogPosts";
+import { BlogCard } from "./components/BlogCard";
 
 const BlogHeader = lazy(() => import('./components/BlogHeader').then(mod => ({ default: mod.BlogHeader })));
 const BlogSearch = lazy(() => import('./components/BlogSearch').then(mod => ({ default: mod.BlogSearch })));
 const BlogCategories = lazy(() => import('./components/BlogCategories').then(mod => ({ default: mod.BlogCategories })));
 const BlogCardList = lazy(() => import('./components/BlogCardList').then(mod => ({ default: mod.BlogCardList })));
 
-export default function Blog() {
+const Blog: FC = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [imageLoaded, setImageLoaded] = useState(false);
 
-    const debouncedSearch = useCallback(
-        debounce((value: string) => {
-            setSearchQuery(value);
-        }, 300),
-        []
-    );
+    const debouncedSearch = useCallback((value: string) => {
+        const debouncedFn = debounce((searchValue: string) => {
+            setSearchQuery(searchValue);
+        }, 300);
+        debouncedFn(value);
+        return () => debouncedFn.cancel();
+    }, []);
 
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         debouncedSearch(e.target.value);
     };
 
-    const filteredPosts = useMemo(() => 
+    const filteredPosts = useMemo(() =>
         blogPosts
             .filter(post => {
                 const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -51,7 +53,7 @@ export default function Blog() {
     const rowVirtualizer = useVirtualizer({
         count: filteredPosts.length,
         getScrollElement: () => parentRef.current,
-        estimateSize: () => 200, // Estimated height of each blog card
+        estimateSize: () => 200,
         overscan: 5
     });
 
@@ -97,7 +99,7 @@ export default function Blog() {
 
                                 <Box ref={parentRef} style={{ height: '800px', overflow: 'auto' }}>
                                     {rowVirtualizer.getVirtualItems().map((virtualRow) => (
-                                        <BlogCard 
+                                        <BlogCard
                                             key={virtualRow.index}
                                             {...filteredPosts[virtualRow.index]}
                                         />
@@ -122,4 +124,6 @@ export default function Blog() {
             </BlogContent>
         </BlogContainer>
     );
-}
+};
+
+export default Blog;
