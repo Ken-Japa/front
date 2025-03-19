@@ -14,7 +14,7 @@ const categories = [
     { id: "analise-tecnica", label: "Análise Técnica" },
     { id: "fundamentalista", label: "Análise Fundamentalista" },
     { id: "economia", label: "Economia" },
-    { id: "noticias", label: "Notícias" },
+    { id: "noticia", label: "Notícias" },
     { id: "educacional", label: "Educacional" },
     { id: "alertas", label: "Alertas" }
 ];

@@ -1,10 +1,9 @@
 "use client";
 
-import { type FC, useState, useCallback, useMemo, useRef, lazy, ChangeEvent } from "react";
+import { type FC, useState, useMemo, useEffect, lazy, ChangeEvent } from "react";
 
 import { Container, Grid, Box } from "@mui/material";
 import { motion } from "framer-motion";
-import debounce from 'lodash/debounce';
 
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
@@ -20,31 +19,33 @@ const BlogCardList = lazy(() => import('./components/BlogCardList').then(mod => 
 
 const Blog: FC = () => {
     const [searchQuery, setSearchQuery] = useState("");
+    const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [imageLoaded, setImageLoaded] = useState(false);
 
-    const debouncedSearch = useCallback((value: string) => {
-        const debouncedFn = debounce((searchValue: string) => {
-            setSearchQuery(searchValue);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearchQuery(searchQuery);
         }, 300);
-        debouncedFn(value);
-        return () => debouncedFn.cancel();
-    }, []);
+
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
 
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-        debouncedSearch(e.target.value);
+        setSearchQuery(e.target.value);
     };
 
     const filteredPosts = useMemo(() =>
         blogPosts
             .filter(post => {
-                const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    post.description.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesSearch = post.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+                    post.description.toLowerCase().includes(debouncedSearchQuery.toLowerCase());
                 const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
                 return matchesSearch && matchesCategory;
             })
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-        [searchQuery, selectedCategory]
+        [debouncedSearchQuery, selectedCategory]
     );
 
     return (
