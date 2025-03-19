@@ -1,21 +1,23 @@
 "use client";
 
-import { useState, lazy } from "react";
+import { type FC, useState, lazy } from "react";
 import { Container } from "@mui/material";
-import { SectionPolicy } from "./styled";
-import { OptimizedImage } from "@/components/OptimizedImage";
+
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { useScroll } from "./hooks/useScroll";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+import { SectionPolicy } from "./styled";
+import { useScroll } from "./hooks/useScroll";
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const QuickNavigation = lazy(() => import('./components/QuickNavigation').then(mod => ({ default: mod.QuickNavigation })));
 const PrivacyContent = lazy(() => import('./components/PrivacyContent/PrivacyContent').then(mod => ({ default: mod.PrivacyContent })));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop').then(mod => ({ default: mod.ScrollToTop })));
 
-export const PrivacyPolicy = () => {
+export const PrivacyPolicy: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const { showScrollTop, scrollToTop, scrollToSection } = useScroll();
 

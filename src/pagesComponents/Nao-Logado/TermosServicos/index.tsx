@@ -1,21 +1,24 @@
 "use client";
 
+import { type FC, useState, lazy } from 'react';
+
 import { Container } from "@mui/material";
-import { SectionTermsServices } from "./styled";
-import { useState, lazy } from 'react';
-import { OptimizedImage } from "@/components/OptimizedImage";
+
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ScrollToTop } from "./components/ScrollToTop";
-import { useScroll } from "./hooks/useScroll";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+import { SectionTermsServices } from "./styled";
+import { ScrollToTop } from "./components/ScrollToTop";
+import { useScroll } from "./hooks/useScroll";
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const QuickNavigation = lazy(() => import('./components/QuickNavigation').then(mod => ({ default: mod.QuickNavigation })));
 const TermsContent = lazy(() => import('./components/TermsContent').then(mod => ({ default: mod.TermsContent })));
 
-export const TermsServices = () => {
+export const TermsServices: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const { showScrollTop, scrollToTop, scrollToSection } = useScroll();
 

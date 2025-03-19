@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, lazy } from "react";
-import { SectionPricing } from "./styled";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { SectionPricing } from "./styled";
 
 const VantagensSection = lazy(() => import('./components/VantagensSection').then(mod => ({ default: mod.VantagensSection })));
 const RecursosSection = lazy(() => import('./components/RecursosSection').then(mod => ({ default: mod.RecursosSection })));

@@ -1,7 +1,7 @@
-import { Stack, Typography } from "@mui/material";
 import Link from 'next/link';
-import { CTAContainer } from "./styled";
+import { Stack, Typography } from "@mui/material";
 import { CustomButton } from "@/components/Custom/Button";
+import { CTAContainer } from "./styled";
 import { CTASkeleton } from "./CTASkeleton";
 
 interface CTASkeletonProps {

@@ -1,5 +1,5 @@
-import { BaseSection, ContentWrapper } from "../../styled";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+import { BaseSection, ContentWrapper } from "../../styled";
 import { VantagemCard, VantagensGrid } from "./styled";
 import { VantagensSkeleton } from "./VantagensSkeleton";
 

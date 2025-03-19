@@ -1,16 +1,22 @@
+import { type FC } from 'react';
+
 import { Typography } from "@mui/material";
 import SecurityIcon from '@mui/icons-material/Security';
+
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+
 import { HeaderWrapper } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
 
 interface HeaderProps {
     isLoading?: boolean;
 }
-export const Header = ({ isLoading }: HeaderProps) => {
+
+export const Header: FC<HeaderProps> = ({ isLoading }) => {
     if (isLoading) {
         return <HeaderSkeleton />;
     }
+
     return (
         <HeaderWrapper>
             <div className="header-content">

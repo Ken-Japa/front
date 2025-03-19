@@ -1,13 +1,16 @@
 "use client";
 
+import { type FC, useState, lazy } from 'react';
+
 import { Stack } from "@mui/material";
-import { useState, lazy } from 'react';
-import { SectionTeam } from "./styled";
-import { OptimizedImage } from "@/components/OptimizedImage";
+
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+import { SectionTeam } from "./styled";
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const HistoriaSection = lazy(() => import('./components/HistoriaSection').then(mod => ({ default: mod.HistoriaSection })));
@@ -16,7 +19,7 @@ const ValoresSection = lazy(() => import('./components/ValoresSection').then(mod
 const EquipeSection = lazy(() => import('./components/EquipeSection').then(mod => ({ default: mod.EquipeSection })));
 const CompromissoSection = lazy(() => import('./components/CompromissoSection').then(mod => ({ default: mod.CompromissoSection })));
 
-export default function AboutPage() {
+const AboutPage: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
@@ -85,4 +88,6 @@ export default function AboutPage() {
             </ErrorBoundary>
         </PageTransition>
     );
-}
+};
+
+export default AboutPage;

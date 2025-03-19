@@ -1,13 +1,15 @@
 "use client";
 
+import { type FC, useState, useEffect, useRef, lazy } from 'react';
+
 import { Container } from "@mui/material";
-import { SectionSolutions, ContentWrapper } from "./styled";
-import { useState, useEffect, lazy } from 'react';
+
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { useRef } from 'react';
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+import { SectionSolutions, ContentWrapper } from "./styled";
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const FeaturesGrid = lazy(() => import('./components/FeaturesGrid').then(mod => ({ default: mod.FeaturesGrid })));
@@ -15,7 +17,7 @@ const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'
 const CTASection = lazy(() => import('./components/CTASection').then(mod => ({ default: mod.CTASection })));
 const Newsletter = lazy(() => import('../Home/Newsletter').then(mod => ({ default: mod.Newsletter })));
 
-export const Solutions = () => {
+export const Solutions: FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
     const [videoLoaded, setVideoLoaded] = useState(false);

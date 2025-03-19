@@ -1,8 +1,8 @@
+import { CustomButton } from "@/components/Custom/Button";
 import { PLANOS } from "../../constants/planos";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { PlanosSkeleton } from "./PlanosSkeleton";
 import { PlanosGrid, PlanoCard } from "./styled";
-import { CustomButton } from "@/components/Custom/Button";
 
 interface PlanosSectionProps {
     isLoading?: boolean;

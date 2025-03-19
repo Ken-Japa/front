@@ -1,8 +1,8 @@
+import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+import { CustomButton } from "@/components/Custom/Button";
 import { EMBAIXADOR_BENEFICIOS } from "../../constants/embaixador";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { EmbaixadorCard, Description } from "./styled";
-import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-import { CustomButton } from "@/components/Custom/Button";
 import { EmbaixadorSkeleton } from "./EmbaixadorSkeleton";
 
 interface EmbaixadorSectionProps {
