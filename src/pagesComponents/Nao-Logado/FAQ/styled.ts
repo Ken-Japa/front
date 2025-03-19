@@ -1,16 +1,6 @@
 import { styled } from "@mui/material/styles";
 
-export const SectionFAQ = styled("section")(({ theme }) => ({
-  width: "100%",
-  minHeight: "100vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "relative",
-  padding: "2rem 0",
-  backgroundColor: "rgba(0, 0, 0, 0.4)",
-
-  "& .background-image": {
+const BACKGROUND_STYLES = {
     position: "fixed",
     top: 0,
     left: 0,
@@ -18,26 +8,40 @@ export const SectionFAQ = styled("section")(({ theme }) => ({
     height: "100vh",
     zIndex: -1,
     "& > span": {
-      height: "100vh !important",
+        height: "100vh !important",
     },
     "& img": {
-      objectFit: "cover",
-      objectPosition: "center",
+        objectFit: "cover",
+        objectPosition: "center",
     },
-  },
+} as const;
 
-  "& .content-container": {
+const CONTENT_STYLES = {
     position: "relative",
     zIndex: 1,
     width: "100%",
     maxWidth: "900px",
     margin: "0 auto",
     padding: "40px 24px",
-    backgroundColor: "rgba(0, 0, 0, 0.7)", // Add semi-transparent background
-    backdropFilter: "blur(8px)", // Optional: adds blur effect
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backdropFilter: "blur(8px)",
+} as const;
 
-    [theme.breakpoints.down("sm")]: {
-      padding: "24px 16px",
+export const SectionFAQ = styled("section")(({ theme }) => ({
+    width: "100%",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    padding: "2rem 0",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+
+    "& .background-image": BACKGROUND_STYLES,
+    "& .content-container": {
+        ...CONTENT_STYLES,
+        [theme.breakpoints.down("sm")]: {
+            padding: "24px 16px",
+        },
     },
-  },
 }));

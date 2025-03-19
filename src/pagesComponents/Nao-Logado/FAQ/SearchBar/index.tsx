@@ -1,7 +1,14 @@
+import { type FC } from 'react';
+
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+
 import { SearchContainer } from "./styled";
 import { SearchBarSkeleton } from './SearchBarSkeleton';
+
+const ICON_STYLES = {
+    fontSize: 20
+} as const;
 
 interface SearchBarProps {
     searchTerm: string;
@@ -9,10 +16,14 @@ interface SearchBarProps {
     isLoading?: boolean;
 }
 
-export const SearchBar = ({ searchTerm, setSearchTerm, isLoading }: SearchBarProps) => {
+export const SearchBar: FC<SearchBarProps> = ({ searchTerm, setSearchTerm, isLoading }) => {
     if (isLoading) {
         return <SearchBarSkeleton />;
     }
+
+    const handleClear = () => setSearchTerm('');
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value);
+
     return (
         <SearchContainer>
             <div className="search-wrapper">
@@ -20,18 +31,18 @@ export const SearchBar = ({ searchTerm, setSearchTerm, isLoading }: SearchBarPro
                     type="text"
                     placeholder="Buscar pergunta..."
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={handleChange}
                     className="search-input"
                     id="faq-search"
                 />
-                <SearchIcon className="search-icon" sx={{ fontSize: 20 }} />
+                <SearchIcon className="search-icon" sx={ICON_STYLES} />
                 {searchTerm && (
                     <button
-                        onClick={() => setSearchTerm('')}
+                        onClick={handleClear}
                         className="clear-button"
                         aria-label="Limpar pesquisa"
                     >
-                        <CloseIcon sx={{ fontSize: 20 }} />
+                        <CloseIcon sx={ICON_STYLES} />
                     </button>
                 )}
             </div>

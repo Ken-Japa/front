@@ -1,14 +1,27 @@
 "use client";
 
-import { useState, lazy } from "react";
-import { SectionFAQ } from "./styled";
+import { type FC, useState, lazy } from "react";
+
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { categorizedQuestions } from "./data/faqData";
-import type { CategoryType } from "./data/faqData";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+
+import { categorizedQuestions } from "./data/faqData";
+import { useQuestionFilter } from "./hooks/useQuestionFilter";
+import { SectionFAQ } from "./styled";
+
+const IMAGE_PROPS = {
+    src: "/assets/images/background/BACKGROUND-DEFAULT.jpg",
+    alt: "FAQ Background",
+    fill: true,
+    priority: true,
+    sizes: "100vw",
+    className: "object-cover",
+    loadingClassName: "scale-100 blur-xl grayscale",
+    quality: 85,
+} as const;
 
 const Header = lazy(() => import('./Header').then(mod => ({ default: mod.Header })));
 const SearchBar = lazy(() => import('./SearchBar').then(mod => ({ default: mod.SearchBar })));
@@ -16,21 +29,15 @@ const CategoryTabs = lazy(() => import('./CategoryTabs').then(mod => ({ default:
 const QuestionList = lazy(() => import('./QuestionList').then(mod => ({ default: mod.QuestionList })));
 const ContactSupport = lazy(() => import('./ContactSupport').then(mod => ({ default: mod.ContactSupport })));
 
-export const FAQ = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [activeCategory, setActiveCategory] = useState<CategoryType>('todas');
+export const FAQ: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
-
-    const filteredQuestions = searchTerm
-        ? Object.values(categorizedQuestions)
-            .flat()
-            .filter(q =>
-                q.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                q.body.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-        : activeCategory === 'todas'
-            ? Object.values(categorizedQuestions).flat()
-            : categorizedQuestions[activeCategory];
+    const {
+        searchTerm,
+        setSearchTerm,
+        activeCategory,
+        setActiveCategory,
+        filteredQuestions
+    } = useQuestionFilter(categorizedQuestions);
 
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
@@ -38,14 +45,7 @@ export const FAQ = () => {
                 <SectionFAQ>
                     <div className="background-image">
                         <OptimizedImage
-                            src="/assets/images/background/BACKGROUND-DEFAULT.jpg"
-                            alt="FAQ Background"
-                            fill
-                            priority
-                            sizes="100vw"
-                            className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
-                            quality={85}
+                            {...IMAGE_PROPS}
                             onLoad={() => setImageLoaded(true)}
                             style={{
                                 filter: !imageLoaded ? 'grayscale(1)' : 'none',
@@ -54,43 +54,41 @@ export const FAQ = () => {
                         />
                     </div>
                     <div className="content-container">
-                        <>
-                            <SuspenseWrapper>
-                                <Header isLoading={!imageLoaded} />
-                            </SuspenseWrapper>
+                        <SuspenseWrapper>
+                            <Header isLoading={!imageLoaded} />
+                        </SuspenseWrapper>
 
+                        <SuspenseWrapper>
+                            <SearchBar
+                                searchTerm={searchTerm}
+                                setSearchTerm={setSearchTerm}
+                                isLoading={!imageLoaded}
+                            />
+                        </SuspenseWrapper>
+
+                        {!searchTerm && (
                             <SuspenseWrapper>
-                                <SearchBar 
-                                    searchTerm={searchTerm} 
-                                    setSearchTerm={setSearchTerm} 
-                                    isLoading={!imageLoaded} 
+                                <CategoryTabs
+                                    activeCategory={activeCategory}
+                                    setActiveCategory={setActiveCategory}
                                 />
                             </SuspenseWrapper>
+                        )}
 
-                            {!searchTerm && (
-                                <SuspenseWrapper>
-                                    <CategoryTabs 
-                                        activeCategory={activeCategory} 
-                                        setActiveCategory={setActiveCategory} 
-                                    />
-                                </SuspenseWrapper>
-                            )}
-                            
-                            <ProgressiveLoad>
-                                <SuspenseWrapper>
-                                    <QuestionList 
-                                        questions={filteredQuestions} 
-                                        isLoading={!imageLoaded} 
-                                    />
-                                </SuspenseWrapper>
-                            </ProgressiveLoad>
+                        <ProgressiveLoad>
+                            <SuspenseWrapper>
+                                <QuestionList
+                                    questions={filteredQuestions}
+                                    isLoading={!imageLoaded}
+                                />
+                            </SuspenseWrapper>
+                        </ProgressiveLoad>
 
-                            <ProgressiveLoad>
-                                <SuspenseWrapper>
-                                    <ContactSupport />
-                                </SuspenseWrapper>
-                            </ProgressiveLoad>
-                        </>
+                        <ProgressiveLoad>
+                            <SuspenseWrapper>
+                                <ContactSupport />
+                            </SuspenseWrapper>
+                        </ProgressiveLoad>
                     </div>
                 </SectionFAQ>
             </ErrorBoundary>
