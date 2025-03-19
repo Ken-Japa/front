@@ -3,9 +3,7 @@
 import { type FC, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-import { Container, Typography, Box, Chip, Grid } from "@mui/material";
-import PersonIcon from '@mui/icons-material/Person';
+import { Container, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import ReactMarkdown from 'react-markdown';
 
@@ -13,9 +11,13 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 
 import { PostContainer, PostContent } from "./styled";
 import { BlogPostSkeleton } from "./BlogPostSkeleton";
-import { BlogCard } from "../BlogCard";
 import { blogPosts } from "../../constants/blogPosts";
 import type { BlogPost as BlogPostType } from "../../constants/blogPosts";
+import { useSnackbar } from 'notistack';
+
+import { BlogPostHeader } from "./components/BlogPostHeader";
+import { ShareSection } from "./components/ShareSection";
+import { RelatedPosts } from "./components/RelatedPosts";
 
 interface BlogPostProps {
     post: BlogPostType;
@@ -24,6 +26,7 @@ interface BlogPostProps {
 const BlogPost: FC<BlogPostProps> = ({ post }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const router = useRouter();
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         if (post.relatedPosts && post.relatedPosts.length > 0) {
@@ -62,81 +65,13 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
                         transition={{ duration: 0.5 }}
                         className="bg-white/5 backdrop-blur-sm rounded-lg p-8"
                     >
-                        <Box className="mb-8">
-                            <Typography
-                                variant="h1"
-                                sx={{
-                                    fontSize: { xs: '2rem', md: '3rem' },
-                                    fontWeight: 700,
-                                    color: '#0D95F9',
-                                    textAlign: 'center',
-                                    marginBottom: '2rem'
-                                }}
-                            >
-                                {post.title}
-                            </Typography>
-                            <Box sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                marginBottom: '2rem'
-                            }}>
-                                <Typography variant="body2" color="text.secondary" sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 1
-                                }}>
-                                    <PersonIcon fontSize="small" />
-                                    {post.author} em {new Date(post.date).toLocaleDateString('pt-BR')}
-                                </Typography>
-                                {post.readTime && (
-                                    <Typography variant="body2" color="text.secondary">
-                                        Tempo de leitura: {post.readTime}
-                                    </Typography>
-                                )}
-                            </Box>
-                            {post.tags && (
-                                <Box sx={{
-                                    display: 'flex',
-                                    gap: 1,
-                                    flexWrap: 'wrap',
-                                    justifyContent: 'center'
-                                }}>
-                                    {post.tags.map(tag => (
-                                        <Chip key={tag} label={tag} size="small" />
-                                    ))}
-                                </Box>
-                            )}
-                        </Box>
+                        <BlogPostHeader post={post} />
                         <PostContent>
                             <ReactMarkdown>{post.content}</ReactMarkdown>
                         </PostContent>
 
-                        {relatedPostsData.length > 0 && (
-                            <Box sx={{
-                                marginTop: '4rem',
-                                paddingTop: '2rem',
-                                borderTop: '1px solid rgba(255, 255, 255, 0.1)'
-                            }}>
-                                <Typography
-                                    variant="h3"
-                                    sx={{
-                                        fontSize: '1.75rem',
-                                        color: '#0D95F9',
-                                        marginBottom: '1.5rem'
-                                    }}
-                                >
-                                    Posts Relacionados:
-                                </Typography>
-                                <Grid container spacing={3}>
-                                    {relatedPostsData.map((relatedPost) => (
-                                        <Grid item xs={12} key={relatedPost.slug}>
-                                            <BlogCard {...relatedPost} isLoading={false} />
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </Box>
-                        )}
+                        <ShareSection title={post.title} description={post.description} />
+                        <RelatedPosts posts={relatedPostsData} />
 
                         <Box sx={{
                             display: 'flex',
