@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import { Box, Typography } from "@mui/material";
 import { CategoryButton, CategoriesContainer } from "./styled";
 import { BlogCategoriesSkeleton } from "./BlogCategoriesSkeleton";
+import type { BlogPost } from "../../constants/blogPosts";
 
 interface BlogCategoriesProps {
     selectedCategory: string;
     onCategoryChange: (category: string) => void;
     isLoading?: boolean;
+    posts: BlogPost[];
 }
 
 const categories = [
@@ -19,7 +21,12 @@ const categories = [
     { id: "alertas", label: "Alertas" }
 ];
 
-export const BlogCategories = ({ selectedCategory, onCategoryChange, isLoading }: BlogCategoriesProps) => {
+export const BlogCategories = ({
+    selectedCategory,
+    onCategoryChange,
+    isLoading,
+    posts
+}: BlogCategoriesProps) => {
     if (isLoading) {
         return <BlogCategoriesSkeleton />;
     }
@@ -40,6 +47,11 @@ export const BlogCategories = ({ selectedCategory, onCategoryChange, isLoading }
                             isSelected={selectedCategory === category.id}
                         >
                             {category.label}
+                            {selectedCategory === category.id && (
+                                <span className="ml-2">({posts.filter(post =>
+                                    selectedCategory === 'all' ? true : post.category.includes(selectedCategory)
+                                ).length})</span>
+                            )}
                         </CategoryButton>
                     </motion.div>
                 ))}

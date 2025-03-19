@@ -39,13 +39,13 @@ const Blog: FC = () => {
     const filteredPosts = useMemo(() =>
         blogPosts
             .filter(post => {
-                const matchesSearch = post.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-                    post.description.toLowerCase().includes(debouncedSearchQuery.toLowerCase());
-                const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+                const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    post.description.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCategory = selectedCategory === "all" || post.category.includes(selectedCategory);
                 return matchesSearch && matchesCategory;
             })
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-        [debouncedSearchQuery, selectedCategory]
+        [searchQuery, selectedCategory]
     );
 
     return (
@@ -97,12 +97,13 @@ const Blog: FC = () => {
                             </Grid>
 
                             <Grid item xs={12} md={4}>
-                                <ProgressiveLoad rootMargin="100px">
+                                <ProgressiveLoad>
                                     <SuspenseWrapper>
                                         <BlogCategories
                                             selectedCategory={selectedCategory}
                                             onCategoryChange={setSelectedCategory}
                                             isLoading={!imageLoaded}
+                                            posts={blogPosts} // Add this prop
                                         />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
