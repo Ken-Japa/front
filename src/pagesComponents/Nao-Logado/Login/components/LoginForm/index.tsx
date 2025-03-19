@@ -47,6 +47,8 @@ export const LoginFormComponent = ({
         return <LoginFormSkeleton />;
     }
 
+    const isFormValid = formData.email.trim() !== '' && formData.password.trim() !== '';
+
     return (
         <LoginFormStyled onSubmit={handleSubmit} id="login">
             <FormHeader />
@@ -100,7 +102,7 @@ export const LoginFormComponent = ({
                 color="primary"
                 fullWidth
                 size="large"
-                disabled={isBlocked}
+                disabled={isBlocked || !isFormValid}
             >
                 {isBlocked ? `Bloqueado (${blockTimer}s)` : 'Entrar'}
             </Button>

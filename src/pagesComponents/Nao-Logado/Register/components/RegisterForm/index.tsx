@@ -36,6 +36,8 @@ export const RegisterFormContent = ({
         return <RegisterFormSkeleton />;
     }
 
+    const isFormValid = Object.values(formData).every(value => value.trim() !== '') && acceptedTerms;
+
     return (
         <RegisterFormStyled onSubmit={onSubmit}>
             <RegisterHeader />
@@ -70,7 +72,7 @@ export const RegisterFormContent = ({
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={!acceptedTerms}
+                disabled={!isFormValid}
             >
                 Criar conta
             </SubmitButton>

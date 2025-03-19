@@ -3,7 +3,7 @@ import { styled } from "@mui/material";
 export const HeaderContainer = styled("div")(({ theme }) => ({
   width: "100%",
   textAlign: "center",
-  marginBottom: theme.spacing(4),
+  marginBottom: theme.spacing(2),
 
   "& .matrix-title": {
     color: "white",
@@ -15,6 +15,6 @@ export const HeaderContainer = styled("div")(({ theme }) => ({
 
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.5rem",
-    }
-  }
+    },
+  },
 }));
