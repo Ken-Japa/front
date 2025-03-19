@@ -1,12 +1,15 @@
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+
 import { HeaderContainer } from "./styled";
+
+const skeletonProps = {
+    type: "text" as const,
+    textLines: 1,
+    className: "matrix-title bg-[#ffffff0a] backdrop-blur-sm"
+};
 
 export const HeaderSkeleton = () => (
     <HeaderContainer>
-        <ContentSkeleton 
-            type="text" 
-            textLines={1} 
-            className="matrix-title bg-[#ffffff0a] backdrop-blur-sm" 
-        />
+        <ContentSkeleton {...skeletonProps} />
     </HeaderContainer>
 );

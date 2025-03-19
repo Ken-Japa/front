@@ -1,4 +1,7 @@
+import { type FC } from 'react';
+
 import { Checkbox } from "@mui/material";
+
 import { StyledFormControlLabel, StyledLink } from "./styled";
 
 interface TermsCheckboxProps {
@@ -6,18 +9,24 @@ interface TermsCheckboxProps {
     onChange: (checked: boolean) => void;
 }
 
-export const TermsCheckbox = ({ checked, onChange }: TermsCheckboxProps) => (
+export const TermsCheckbox: FC<TermsCheckboxProps> = ({ checked, onChange }) => (
     <StyledFormControlLabel
         control={
             <Checkbox
                 checked={checked}
                 onChange={(e) => onChange(e.target.checked)}
+                color="primary"
+                id="terms-checkbox"
             />
         }
         label={
             <>
                 Li e aceito os{" "}
-                <StyledLink href="/termos-servicos" target="_blank">
+                <StyledLink 
+                    href="/visitante/termos-servicos" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     termos e condições
                 </StyledLink>
             </>

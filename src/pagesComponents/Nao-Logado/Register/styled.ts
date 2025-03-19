@@ -1,12 +1,27 @@
-import { Dialog, styled } from "@mui/material";
+import { Dialog, styled, IconButton } from "@mui/material";
 
-export const StyledDialog = styled(Dialog)({
+export const StyledDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialog-container": {
+    height: "100vh",
+    padding: theme.spacing(2),
+
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(1),
+    },
+  },
+
   "& .MuiDialog-paper": {
     minHeight: "80vh",
     position: "relative",
-    margin: "32px",
+    margin: theme.spacing(2),
     width: "100%",
     overflow: "hidden",
+    backgroundColor: "transparent",
+
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+      minHeight: "100vh",
+    },
 
     "& .background-image": {
       position: "absolute",
@@ -26,7 +41,7 @@ export const StyledDialog = styled(Dialog)({
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      padding: "16px",
+      padding: theme.spacing(4, 2),
 
       "&::-webkit-scrollbar": {
         width: "8px",
@@ -52,65 +67,32 @@ export const StyledDialog = styled(Dialog)({
       right: 0,
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      backdropFilter: "blur(1px)",
+      backdropFilter: "blur(2px)",
       zIndex: 1,
     },
   },
-  "& .MuiDialog-container": {
-    height: "100%",
-  },
-});
+}));
 
-export const RegisterForm = styled("form")({
-  position: "relative",
-  width: "100%",
-  maxWidth: "400px",
-  padding: "32px",
-  margin: "0 auto",
-  display: "flex",
-  flexDirection: "column",
-  gap: "12px",
-  alignItems: "center",
-  "& .divider-container": {
-    display: "flex",
-    alignItems: "center",
-    margin: "24px 0",
-    width: "100%",
-    "& .divider": {
-      flex: 1,
-      borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
-    },
-    "& .divider-text": {
-      margin: "0 16px",
-      color: "rgba(255, 255, 255, 0.7)",
-      fontSize: "14px",
-    },
+export const StyledCloseButton = styled(IconButton)(({ theme }) => ({
+  position: "fixed",
+  right: "calc(50% - 450px)",
+  top: theme.spacing(5),
+  color: "white",
+  zIndex: 1300,
+  transition: "all 0.3s ease",
+  backgroundColor: "rgba(0, 0, 0, 0.2)",
+  margin: theme.spacing(1),
+  padding: theme.spacing(1),
+
+  "&:hover": {
+    opacity: 0.8,
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
   },
-  "& .login-text": {
-    marginTop: "24px",
-    fontFamily: '"Roboto Mono", monospace',
-    letterSpacing: "0.5px",
-    textAlign: "center",
-    width: "100%",
+
+  [theme.breakpoints.down("md")]: {
+    right: theme.spacing(2),
+    top: theme.spacing(2),
+    margin: theme.spacing(0.5),
+    padding: theme.spacing(0.5),
   },
-  "& .MuiTextField-root": {
-    marginBottom: "0",
-    width: "100%",
-  },
-  "& .MuiOutlinedInput-root": {
-    color: "white",
-    "& fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.23)",
-    },
-    "&:hover fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.5)",
-    },
-  },
-  "& .MuiInputLabel-root": {
-    color: "rgba(255, 255, 255, 0.7)",
-  },
-  "& .MuiFormHelperText-root": {
-    color: "#f44336",
-    marginLeft: 0,
-  },
-});
+}));

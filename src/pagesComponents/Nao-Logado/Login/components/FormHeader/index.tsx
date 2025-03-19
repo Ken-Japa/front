@@ -1,5 +1,5 @@
-import { HeaderContainer, Title, Subtitle } from './styled';
 import { MatrixRainText } from '@/components/Effects/MatrixRainText';
+import { HeaderContainer, Title, Subtitle } from './styled';
 
 export const FormHeader = () => {
     return (

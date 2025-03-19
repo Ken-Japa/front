@@ -1,3 +1,5 @@
+import { type ChangeEvent } from 'react';
+
 import { FormData, FormErrors } from "../../types";
 import { getPasswordStrength } from "../../utils/passwordUtils";
 import { FormFieldsSkeleton } from "./FormFieldsSkeleton";
@@ -11,7 +13,7 @@ import {
 interface FormFieldsProps {
     formData: FormData;
     errors: FormErrors;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     isLoading?: boolean;
 }
 
@@ -22,12 +24,32 @@ interface PasswordStrength {
 }
 
 export const FormFields = ({ formData, errors, onChange, isLoading }: FormFieldsProps) => {
+    if (isLoading) {
+        return <FormFieldsSkeleton />;
+    }
+
     const passwordStrength: PasswordStrength = getPasswordStrength(formData.password);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatCPF = (value: string): string => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+            .slice(0, 14);
+    };
+
+    const formatPhone = (value: string): string => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
+            .slice(0, 15);
+    };
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         let processedValue = value;
-
 
         const syntheticEvent = {
             ...e,
@@ -40,9 +62,12 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
 
         onChange(syntheticEvent);
     };
-    if (isLoading) {
-        return <FormFieldsSkeleton />;
-    }
+
+    const createMaskedChangeHandler = (name: string, formatter: (value: string) => string) => (e: ChangeEvent<HTMLInputElement>) => {
+        const masked = formatter(e.target.value);
+        handleChange({ target: { name, value: masked } } as ChangeEvent<HTMLInputElement>);
+    };
+
     return (
         <>
             <StyledTextField
@@ -59,15 +84,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
                 name="cpf"
                 label="CPF"
                 value={formData.cpf}
-                onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, '');
-                    const masked = value
-                        .replace(/(\d{3})(\d)/, '$1.$2')
-                        .replace(/(\d{3})(\d)/, '$1.$2')
-                        .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
-                        .slice(0, 14);
-                    handleChange({ target: { name: 'cpf', value: masked } } as React.ChangeEvent<HTMLInputElement>);
-                }}
+                onChange={createMaskedChangeHandler('cpf', formatCPF)}
                 error={!!errors.cpf}
                 helperText={errors.cpf}
                 required
@@ -78,14 +95,7 @@ export const FormFields = ({ formData, errors, onChange, isLoading }: FormFields
                 name="phone"
                 label="Telefone"
                 value={formData.phone}
-                onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, '');
-                    const masked = value
-                        .replace(/(\d{2})(\d)/, '($1) $2')
-                        .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
-                        .slice(0, 15);
-                    handleChange({ target: { name: 'phone', value: masked } } as React.ChangeEvent<HTMLInputElement>);
-                }}
+                onChange={createMaskedChangeHandler('phone', formatPhone)}
                 error={!!errors.phone}
                 helperText={errors.phone}
                 required

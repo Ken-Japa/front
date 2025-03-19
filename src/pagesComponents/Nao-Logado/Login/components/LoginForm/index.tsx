@@ -1,11 +1,17 @@
+import { type FormEvent, type ChangeEvent } from 'react';
+import Link from 'next/link';
+
 import { TextField, FormControlLabel, Checkbox, Button } from "@mui/material";
+
+import { FormData, FormErrors } from "../../types";
 import { FormHeader } from "../FormHeader";
 import { SocialLogin } from "../SocialLogin";
 import { LoginFormSkeleton } from "./LoginFormSkeleton";
-import { LoginFormStyled } from "./styled";
-import { FormData, FormErrors } from "../../types";
-import Link from 'next/link';
-import { ForgotPasswordLink, RememberMeContainer } from './styled';
+import { 
+    LoginFormStyled, 
+    ForgotPasswordLink, 
+    RememberMeContainer 
+} from "./styled";
 
 interface LoginFormProps {
     formData: FormData;
@@ -14,9 +20,9 @@ interface LoginFormProps {
     isBlocked: boolean;
     blockTimer: number;
     rememberMe: boolean;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent) => void;
-    handleGoogleSignIn: () => void;
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleSubmit: (e: FormEvent) => void;
+    handleGoogleSignIn: () => Promise<void>;
     setRememberMe: (value: boolean) => void;
 }
 
@@ -32,6 +38,11 @@ export const LoginFormComponent = ({
     handleGoogleSignIn,
     setRememberMe
 }: LoginFormProps) => {
+    const commonTextFieldProps = {
+        fullWidth: true,
+        onChange: handleChange,
+    };
+
     if (isLoading) {
         return <LoginFormSkeleton />;
     }
@@ -41,26 +52,24 @@ export const LoginFormComponent = ({
             <FormHeader />
 
             <TextField
+                {...commonTextFieldProps}
                 label="E-mail"
                 name="email"
                 type="email"
                 value={formData.email}
-                onChange={handleChange}
                 error={!!errors.email}
                 helperText={errors.email}
-                fullWidth
                 id="email-login"
             />
 
             <TextField
+                {...commonTextFieldProps}
                 label="Senha"
                 name="password"
                 type="password"
                 value={formData.password}
-                onChange={handleChange}
                 error={!!errors.password}
                 helperText={errors.password}
-                fullWidth
                 id="senha-login"
             />
 

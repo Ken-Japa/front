@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import { signIn } from "next-auth/react";
+
+import { LOGIN_CONSTANTS } from "../constants";
 import { validateLoginForm } from "../utils/validation";
 import { FormData, FormErrors } from "../types";
-import { signIn } from "next-auth/react";
+
+const DEFAULT_REDIRECT = "/visao-economia";
 
 export const useLoginForm = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -15,16 +19,22 @@ export const useLoginForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const validateForm = () => {
     const newErrors = validateLoginForm(formData.email, formData.password);
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handleBlockUser = () => {
+    const blockedUntil = Date.now() + LOGIN_CONSTANTS.BLOCK_DURATION;
+    localStorage.setItem("loginBlockedUntil", blockedUntil.toString());
+    setIsBlocked(true);
+    setBlockTimer(LOGIN_CONSTANTS.BLOCK_TIMER);
+    setLoginAttempts(0);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,7 +44,7 @@ export const useLoginForm = () => {
     if (validateForm()) {
       try {
         const searchParams = new URLSearchParams(window.location.search);
-        const callbackUrl = searchParams.get("callbackUrl") || "/visao-economia";
+        const callbackUrl = searchParams.get("callbackUrl") || DEFAULT_REDIRECT;
 
         const result = await signIn("credentials", {
           email: formData.email,
@@ -45,23 +55,16 @@ export const useLoginForm = () => {
         });
 
         if (result?.error) {
-          setLoginAttempts((prev) => {
+          setLoginAttempts(prev => {
             const newAttempts = prev + 1;
-            if (newAttempts >= 5) {
-              const blockDuration = 5 * 60 * 1000;
-              const blockedUntil = Date.now() + blockDuration;
-              localStorage.setItem(
-                "loginBlockedUntil",
-                blockedUntil.toString()
-              );
-              setIsBlocked(true);
-              setBlockTimer(300);
+            if (newAttempts >= LOGIN_CONSTANTS.MAX_LOGIN_ATTEMPTS) {
+              handleBlockUser();
               return 0;
             }
             return newAttempts;
           });
         } else {
-          window.location.href = result?.url || "/visao-economia";
+          window.location.href = result?.url || DEFAULT_REDIRECT;
         }
       } catch (error) {
         console.error("Login error:", error);
@@ -69,10 +72,10 @@ export const useLoginForm = () => {
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = async (): Promise<void> => {
     try {
       const searchParams = new URLSearchParams(window.location.search);
-      const callbackUrl = searchParams.get("callbackUrl") || "/visao-economia";
+      const callbackUrl = searchParams.get("callbackUrl") || DEFAULT_REDIRECT;
 
       await signIn("google", {
         callbackUrl,
@@ -100,7 +103,7 @@ export const useLoginForm = () => {
     let interval: NodeJS.Timeout;
     if (isBlocked && blockTimer > 0) {
       interval = setInterval(() => {
-        setBlockTimer((prev) => {
+        setBlockTimer(prev => {
           if (prev <= 1) {
             setIsBlocked(false);
             localStorage.removeItem("loginBlockedUntil");

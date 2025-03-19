@@ -1,11 +1,13 @@
+import Link from 'next/link';
+
 import GoogleIcon from '@mui/icons-material/Google';
 import { Typography } from "@mui/material";
-import Link from 'next/link';
+
 import { GoogleButton, RegisterLink } from './styled';
 import { SocialLoginSkeleton } from "./SocialLoginSkeleton";
 
 interface SocialLoginProps {
-    handleGoogleSignIn: () => void;
+    handleGoogleSignIn: () => Promise<void>;
     isLoading?: boolean;
 }
 
@@ -13,6 +15,15 @@ export const SocialLogin = ({ handleGoogleSignIn, isLoading }: SocialLoginProps)
     if (isLoading) {
         return <SocialLoginSkeleton />;
     }
+
+    const handleGoogleClick = async () => {
+        try {
+            await handleGoogleSignIn();
+        } catch (error) {
+            console.error('Failed to sign in with Google:', error);
+        }
+    };
+
     return (
         <>
             <div className="divider-container">
@@ -26,12 +37,17 @@ export const SocialLogin = ({ handleGoogleSignIn, isLoading }: SocialLoginProps)
                 fullWidth
                 size="large"
                 startIcon={<GoogleIcon />}
-                onClick={handleGoogleSignIn}
+                onClick={handleGoogleClick}
+                aria-label="Continuar com Google"
             >
                 Continuar com Google
             </GoogleButton>
 
-            <Typography className="login-text text-white">
+            <Typography 
+                component="p" 
+                className="login-text text-white"
+                variant="body1"
+            >
                 Não tem uma conta?{' '}
                 <RegisterLink>
                     <Link href="/register">

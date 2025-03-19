@@ -1,4 +1,4 @@
-import { Dialog, styled } from "@mui/material";
+import { Dialog, styled, IconButton } from "@mui/material";
 
 export const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-container": {
@@ -54,43 +54,22 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const LoginForm = styled("form")({
-  position: "relative",
-  width: "100%",
-  maxWidth: "400px",
-  padding: "40px",
-  margin: "0 auto",
-  "& .divider-container": {
-    display: "flex",
-    alignItems: "center",
-    margin: "32px 0",
-    "& .divider": {
-      flex: 1,
-      borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
-    },
-    "& .divider-text": {
-      margin: "0 16px",
-      color: "rgba(255, 255, 255, 0.7)",
-    },
+export const StyledCloseButton = styled(IconButton)(({ theme }) => ({
+  position: "absolute",
+  right: theme.spacing(3),
+  top: theme.spacing(3),
+  color: "white",
+  zIndex: 10,
+  transition: "all 0.3s ease",
+  backgroundColor: "rgba(0, 0, 0, 0.2)",
+
+  "&:hover": {
+    opacity: 0.8,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
   },
-  "& .login-text": {
-    marginTop: "32px",
-    fontFamily: '"Roboto Mono", monospace',
-    letterSpacing: "0.5px",
+
+  [theme.breakpoints.down("sm")]: {
+    right: theme.spacing(2),
+    top: theme.spacing(2),
   },
-  "& .MuiTextField-root": {
-    marginBottom: "16px",
-  },
-  "& .MuiOutlinedInput-root": {
-    color: "white",
-    "& fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.23)",
-    },
-    "&:hover fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.5)",
-    },
-  },
-  "& .MuiInputLabel-root": {
-    color: "rgba(255, 255, 255, 0.7)",
-  },
-});
+}));

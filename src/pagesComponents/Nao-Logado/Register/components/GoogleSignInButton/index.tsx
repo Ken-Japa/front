@@ -1,25 +1,34 @@
-import { StyledGoogleButton } from "./styled";
-import GoogleIcon from '@mui/icons-material/Google';
+import { type MouseEvent } from 'react';
 import { signIn } from "next-auth/react";
 
+import GoogleIcon from '@mui/icons-material/Google';
+
+import { StyledGoogleButton } from "./styled";
+
 interface GoogleSignInButtonProps {
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const handleGoogleSignIn = async () => {
-    await signIn("google", {
-        callbackUrl: '/'
-    });
+export const GoogleSignInButton = ({ onClick }: GoogleSignInButtonProps) => {
+    const handleGoogleSignIn = async () => {
+        try {
+            await signIn("google", {
+                callbackUrl: '/'
+            });
+        } catch (error) {
+            console.error('Failed to sign in with Google:', error);
+        }
+    };
+
+    return (
+        <StyledGoogleButton
+            variant="outlined"
+            fullWidth
+            startIcon={<GoogleIcon />}
+            onClick={handleGoogleSignIn}
+            aria-label="Continuar com Google"
+        >
+            Continuar com Google
+        </StyledGoogleButton>
+    );
 };
-
-
-export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({ onClick }) => (
-    <StyledGoogleButton
-        variant="outlined"
-        fullWidth
-        startIcon={<GoogleIcon />}
-        onClick={handleGoogleSignIn}
-    >
-        Continuar com Google
-    </StyledGoogleButton>
-);

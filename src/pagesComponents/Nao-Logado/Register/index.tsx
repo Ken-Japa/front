@@ -1,37 +1,33 @@
 "use client";
 
-import { useState, useEffect, lazy } from "react";
+import { useState, lazy } from "react";
 import { useRouter } from "next/navigation";
+
 import CloseIcon from '@mui/icons-material/Close';
-import { signIn } from "next-auth/react";
+
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { validateForm } from "./utils/validation";
-import { FormData, FormErrors } from "./types";
-import { StyledDialog } from "./components/Dialog/styled";
-import { StyledCloseButton } from "./components/CloseButton/styled";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
-import Link from 'next/link';
+
+import { useBlockTimer } from "./hooks/useBlockTimer";
+import { useRegisterForm } from "./hooks/useRegisterForm";
+import { useGoogleSignIn } from "./hooks/useGoogleSignIn";
+import { StyledCloseButton, StyledDialog } from "./styled";
+import { BlockTimer } from "./components/BlockTimer";
+
+const BLOCK_DURATION = 10 * 60 * 1000;
+const DEFAULT_REDIRECT = "/visao-economia";
 
 const RegisterFormContent = lazy(() => import('./components/RegisterForm').then(mod => ({ default: mod.RegisterFormContent })));
 
 export const Register = () => {
     const router = useRouter();
     const [imageLoaded, setImageLoaded] = useState(false);
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
-    const [registerAttempts, setRegisterAttempts] = useState(0);
-    const [isBlocked, setIsBlocked] = useState(false);
-    const [blockTimer, setBlockTimer] = useState(0);
-    const [formData, setFormData] = useState<FormData>({
-        name: "",
-        cpf: "",
-        phone: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-    });
-    const [errors, setErrors] = useState<FormErrors>({});
+    const { isBlocked, blockTimer, handleBlockUser } = useBlockTimer(BLOCK_DURATION);
+    const { formData, errors, acceptedTerms, setAcceptedTerms, handleChange, handleSubmit } = useRegisterForm(handleBlockUser);
+    const { handleGoogleClick } = useGoogleSignIn(DEFAULT_REDIRECT);
+
     const handleClose = () => {
         try {
             router.back();
@@ -39,81 +35,6 @@ export const Register = () => {
             router.push('/');
         }
     };
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-        if (errors[name as keyof FormErrors]) {
-            setErrors(prev => ({ ...prev, [name]: undefined }));
-        }
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (isBlocked) return;
-
-        if (!acceptedTerms) {
-            alert("Você precisa aceitar os termos e condições para continuar");
-            return;
-        }
-
-        const { errors: validationErrors, isValid } = validateForm(formData, acceptedTerms);
-        setErrors(validationErrors);
-
-        if (isValid) {
-            handleRegisterAttempt();
-        }
-    };
-
-    const handleRegisterAttempt = () => {
-        setRegisterAttempts((prev) => {
-            const newAttempts = prev + 1;
-            if (newAttempts >= 5) {
-                handleBlockUser();
-                return 0;
-            }
-            return newAttempts;
-        });
-    };
-
-    const handleBlockUser = () => {
-        const blockDuration = 10 * 60 * 1000;
-        const blockedUntil = Date.now() + blockDuration;
-        localStorage.setItem('registerBlockedUntil', blockedUntil.toString());
-        setIsBlocked(true);
-        setBlockTimer(600);
-    };
-
-    const handleGoogleSignIn = async () => {
-        try {
-            const searchParams = new URLSearchParams(window.location.search);
-            const callbackUrl = searchParams.get("callbackUrl") || "/visao-economia";
-
-            await signIn("google", {
-                callbackUrl,
-                redirect: true,
-            });
-        } catch (error) {
-            console.error("Google sign-in error:", error);
-        }
-    };
-
-
-    useEffect(() => {
-        const checkBlockStatus = () => {
-            const blockedUntil = localStorage.getItem('registerBlockedUntil');
-            if (blockedUntil) {
-                const timeLeft = parseInt(blockedUntil) - Date.now();
-                if (timeLeft > 0) {
-                    setIsBlocked(true);
-                    setBlockTimer(Math.ceil(timeLeft / 1000));
-                } else {
-                    localStorage.removeItem('registerBlockedUntil');
-                }
-            }
-        };
-
-        checkBlockStatus();
-    }, []);
 
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
@@ -137,26 +58,25 @@ export const Register = () => {
                         />
                     </div>
                     <div className="content">
-
-                        <StyledCloseButton>
-                            <CloseIcon onClick={handleClose} />
+                        <StyledCloseButton onClick={handleClose}>
+                            <CloseIcon />
                         </StyledCloseButton>
 
-
                         <SuspenseWrapper>
-                            <RegisterFormContent
-                                formData={formData}
-                                errors={errors}
-                                acceptedTerms={acceptedTerms}
-                                onSubmit={handleSubmit}
-                                onChange={handleChange}
-                                onTermsChange={setAcceptedTerms}
-                                onGoogleClick={(e) => {
-                                    e.preventDefault();
-                                    handleGoogleSignIn();
-                                }}
-                                isLoading={!imageLoaded}
-                            />
+                            {isBlocked ? (
+                                <BlockTimer seconds={blockTimer} />
+                            ) : (
+                                <RegisterFormContent
+                                    formData={formData}
+                                    errors={errors}
+                                    acceptedTerms={acceptedTerms}
+                                    onSubmit={handleSubmit}
+                                    onChange={handleChange}
+                                    onTermsChange={setAcceptedTerms}
+                                    onGoogleClick={handleGoogleClick}
+                                    isLoading={!imageLoaded}
+                                />
+                            )}
                         </SuspenseWrapper>
                     </div>
                 </StyledDialog>
