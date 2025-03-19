@@ -1,22 +1,33 @@
+import { type FC } from 'react';
+import dynamic from 'next/dynamic';
+
 import { Typography } from "@mui/material";
-import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import GroupsIcon from '@mui/icons-material/Groups';
+
 import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
-import dynamic from 'next/dynamic';
 
 interface HeaderProps {
     isLoading: boolean;
 }
 
-const DynamicMatrixRainText = dynamic(() => import('@/components/Effects/MatrixRainText').then(mod => ({ 
-    default: mod.MatrixRainText 
-})), {
-    ssr: false,
-    loading: () => <Typography variant="h4" className="title">Junte-se ao Time</Typography>
-});
+const ICON_STYLES = {
+    fontSize: 40,
+    color: '#0D95F9'
+} as const;
 
-export const Header = ({ isLoading }: HeaderProps) => {
+const LOADING_TITLE = <Typography variant="h4" className="title">Junte-se ao Time</Typography>;
+
+const DynamicMatrixRainText = dynamic(
+    () => import('@/components/Effects/MatrixRainText').then(mod => ({
+        default: mod.MatrixRainText
+    })), {
+    ssr: false,
+    loading: () => LOADING_TITLE
+}
+);
+
+export const Header: FC<HeaderProps> = ({ isLoading }) => {
     if (isLoading) {
         return <HeaderSkeleton />;
     }
@@ -24,7 +35,7 @@ export const Header = ({ isLoading }: HeaderProps) => {
     return (
         <HeaderContainer>
             <div className="header-content">
-                <GroupsIcon sx={{ fontSize: 40, color: '#0D95F9' }} />
+                <GroupsIcon sx={ICON_STYLES} />
                 <DynamicMatrixRainText
                     text="Junte-se ao Time"
                     className="title"

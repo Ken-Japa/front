@@ -1,0 +1,25 @@
+import { type FC } from 'react';
+import { Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+
+interface SubmitButtonProps {
+    isSubmitting: boolean;
+    isBlocked: boolean;
+    blockTimer: number;
+}
+
+export const SubmitButton: FC<SubmitButtonProps> = ({ isSubmitting, isBlocked, blockTimer }) => (
+    <Button
+        className="submit-button"
+        type="submit"
+        variant="contained"
+        size="large"
+        fullWidth
+        disabled={isSubmitting || isBlocked}
+        endIcon={<SendIcon />}
+    >
+        {isSubmitting ? 'Enviando...' :
+            isBlocked ? `Aguarde ${blockTimer}s` :
+                'Enviar Candidatura'}
+    </Button>
+);
