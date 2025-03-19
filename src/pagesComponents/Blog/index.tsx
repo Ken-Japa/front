@@ -4,7 +4,6 @@ import { type FC, useState, useCallback, useMemo, useRef, lazy, ChangeEvent } fr
 
 import { Container, Grid, Box } from "@mui/material";
 import { motion } from "framer-motion";
-import { useVirtualizer } from '@tanstack/react-virtual';
 import debounce from 'lodash/debounce';
 
 import { OptimizedImage } from "@/components/OptimizedImage";
@@ -13,7 +12,6 @@ import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 
 import { BlogContainer, BlogContent } from "./styled";
 import { blogPosts } from "./constants/blogPosts";
-import { BlogCard } from "./components/BlogCard";
 
 const BlogHeader = lazy(() => import('./components/BlogHeader').then(mod => ({ default: mod.BlogHeader })));
 const BlogSearch = lazy(() => import('./components/BlogSearch').then(mod => ({ default: mod.BlogSearch })));
@@ -48,14 +46,6 @@ const Blog: FC = () => {
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
         [searchQuery, selectedCategory]
     );
-
-    const parentRef = useRef<HTMLDivElement>(null);
-    const rowVirtualizer = useVirtualizer({
-        count: filteredPosts.length,
-        getScrollElement: () => parentRef.current,
-        estimateSize: () => 200,
-        overscan: 5
-    });
 
     return (
         <BlogContainer>
@@ -97,14 +87,12 @@ const Blog: FC = () => {
                                     </Box>
                                 </ProgressiveLoad>
 
-                                <Box ref={parentRef} style={{ height: '800px', overflow: 'auto' }}>
-                                    {rowVirtualizer.getVirtualItems().map((virtualRow) => (
-                                        <BlogCard
-                                            key={virtualRow.index}
-                                            {...filteredPosts[virtualRow.index]}
-                                        />
-                                    ))}
-                                </Box>
+                                <SuspenseWrapper>
+                                    <BlogCardList
+                                        posts={filteredPosts}
+                                        isLoading={!imageLoaded}
+                                    />
+                                </SuspenseWrapper>
                             </Grid>
 
                             <Grid item xs={12} md={4}>
