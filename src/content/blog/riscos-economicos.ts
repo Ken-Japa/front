@@ -19,7 +19,7 @@ export const post = {
     "crises cambiais",
   ],
   readTime: "15 min",
-  relatedPosts: ["cicloeconomico", "erros-iniciantes"],
+  relatedPosts: ["cicloeconomico", "erros-iniciantes", "analise-setorial"],
   content: `
 
   Em tempos de incerteza econômica, proteger o patrimônio é uma prioridade para investidores. Crises econômicas podem surgir de várias formas, incluindo inflação, juros altos, crises cambiais e recessões globais. Este artigo explora os principais riscos macroeconômicos e oferece estratégias de hedge e proteção patrimonial utilizando derivativos, ouro, dólar e outros ativos defensivos. Compreender esses conceitos ajudará você a navegar pelas turbulências econômicas e preservar seu patrimônio.

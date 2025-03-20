@@ -18,7 +18,8 @@ const categories = [
     { id: "economia", label: "Economia" },
     { id: "noticia", label: "Notícias" },
     { id: "educacional", label: "Educacional" },
-    { id: "alertas", label: "Alertas" }
+    { id: "alertas", label: "Alertas" },
+    { id: "indicadores", label: "Indicadores" },
 ];
 
 export const BlogCategories = ({

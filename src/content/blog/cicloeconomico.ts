@@ -20,6 +20,7 @@ export const post = {
   relatedPosts: [
     "principais-indicadores-economicos",
     "analisetecnica-vs-analisefundamentalista",
+    "analise-setorial",
   ],
   content: `
 O ciclo econômico é um fenômeno recorrente que afeta todas as economias do mundo. Compreender suas fases—expansão, pico, recessão e recuperação—é crucial para investidores que desejam ajustar suas carteiras de acordo com o momento econômico. Este artigo detalha cada fase do ciclo econômico e explica como elas influenciam diferentes tipos de ativos, setores e estratégias de investimento.

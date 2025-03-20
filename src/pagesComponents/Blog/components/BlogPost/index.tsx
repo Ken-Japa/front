@@ -3,7 +3,6 @@
 import { type FC, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 import { Container, Box } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -18,7 +17,6 @@ import { BlogPostHeader } from "./components/BlogPostHeader";
 import { ShareSection } from "./components/ShareSection";
 import { RelatedPosts } from "./components/RelatedPosts";
 import { BlogMarkdown } from "./components/BlogMarkdown";
-
 interface BlogPostProps {
     post: BlogPostType;
 }
@@ -86,8 +84,9 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
                         </Box>
                     </motion.div>
                 </Container>
-            )}
-        </PostContainer>
+            )
+            }
+        </PostContainer >
     );
 };
 

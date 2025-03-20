@@ -15,7 +15,7 @@ export const PostContent = styled(Box)`
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
   backdrop-filter: blur(4px);
-  
+
   h1,
   h2,
   h3,
@@ -36,25 +36,25 @@ export const PostContent = styled(Box)`
 
   h2 {
     font-size: 2.5rem;
-    color: #00c2a8; // Teal
+    color: #0d95f9; // Teal
     letter-spacing: -0.3px;
   }
 
   h3 {
     font-size: 2rem;
-    color: #9d8df1; // Purple
+    color: #ff6b6b; // Purple
     letter-spacing: -0.2px;
   }
 
   h4 {
     font-size: 1.75rem;
-    color: #ff6b6b; // Coral
+    color: #4ecdc4; // Coral
     letter-spacing: -0.1px;
   }
 
   h5 {
     font-size: 1.5rem;
-    color: #4ecdc4; // Mint
+    color: #9d8df1; // Mint
   }
 
   h6 {

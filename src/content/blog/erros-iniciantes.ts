@@ -20,6 +20,7 @@ export const post = {
   relatedPosts: [
     "analisetecnica-vs-analisefundamentalista",
     "principais-indicadores-economicos",
+    "cicloeconomico",
   ],
   content: `
 
