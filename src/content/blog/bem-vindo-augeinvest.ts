@@ -1,6 +1,6 @@
 export const post = {
   id: "1",
-  title: "Como dar os primeiros passos no mercado financeiro",
+  title: "Como Dar os Primeiros Passos no Mercado",
   description:
     "Descubra os conceitos básicos do mercado financeiro, os principais tipos de investimentos no Brasil e como a Auge Invest pode ajudá-lo a tomar decisões estratégicas",
   image: "",
@@ -16,8 +16,9 @@ export const post = {
   ],
   readTime: "8 min",
   relatedPosts: [
+    "erros-iniciantes",
+    "analisetecnica-vs-analisefundamentalista",
     "principais-indicadores-economicos",
-    "analise-fundamentalista-vs-analise-tecnica-como-escolher",
   ],
   content: `
 ## Introdução  
@@ -113,6 +114,6 @@ A **Auge Invest** é uma plataforma moderna, pensada para investidores que quere
 
 Se você quer aprofundar seus conhecimentos, acompanhar análises detalhadas e ter acesso a dados exclusivos, **experimente a Auge Invest gratuitamente por 21 dias!**  
 
-🔗 **Acesse agora e comece sua jornada no mercado financeiro: [www.augeinvest.com/register](#)**  
+🔗 Acesse agora e comece sua jornada no mercado financeiro: **[www.augeinvest.com/register](/register)**  
 `,
 };

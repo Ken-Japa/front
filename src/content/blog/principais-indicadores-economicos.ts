@@ -1,8 +1,8 @@
 export const post = {
   id: "2",
-  title: "Principais Indicadores Econômicos para Investidores",
+  title: "Principais Indicadores Econômicos",
   description:
-    "Descubra como interpretar os principais indicadores macroeconômicos e sua influência nos investimentos.",
+    "Descubra como interpretar os principais indicadores macroeconômicos e sua influência nos investimentos",
   image: "",
   category: ["economia", "educacional"],
   author: "Auge Invest",
@@ -10,7 +10,7 @@ export const post = {
   slug: "principais-indicadores-economicos",
   tags: ["indicadores", "investimentos", "macroeconomia"],
   readTime: "15 min",
-  relatedPosts: ["", ""],
+  relatedPosts: ["analisetecnica-vs-analisefundamentalista", "cicloeconomico"],
   content: `
 Investir no mercado financeiro exige mais do que simplesmente escolher ativos promissores. Acompanhar os principais indicadores econômicos permite ao investidor entender o cenário macroeconômico e tomar decisões mais embasadas. Neste artigo, explicaremos os principais indicadores, como eles afetam os investimentos e como você pode monitorá-los na Auge Invest.
 
@@ -83,7 +83,6 @@ Na Auge Invest, disponibilizamos:
 - **Alertas personalizados** para mudanças nos indicadores, permitindo que investidores reajam rapidamente às condições do mercado.
 - **Análises aprofundadas** elaboradas por especialistas para guiar a tomada de decisões estratégicas.
 
----
 
 Compreender os indicadores econômicos é essencial para qualquer investidor que deseja tomar decisões embasadas e maximizar seus retornos. Continue acompanhando nosso blog para mais insights sobre o mercado financeiro e estratégias de investimento!
     `,

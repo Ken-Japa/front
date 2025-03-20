@@ -3,9 +3,9 @@
 import { type FC, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import { Container, Box } from "@mui/material";
 import { motion } from "framer-motion";
-import ReactMarkdown from 'react-markdown';
 
 import { OptimizedImage } from "@/components/OptimizedImage";
 
@@ -13,11 +13,11 @@ import { PostContainer, PostContent } from "./styled";
 import { BlogPostSkeleton } from "./BlogPostSkeleton";
 import { blogPosts } from "../../constants/blogPosts";
 import type { BlogPost as BlogPostType } from "../../constants/blogPosts";
-import { useSnackbar } from 'notistack';
 
 import { BlogPostHeader } from "./components/BlogPostHeader";
 import { ShareSection } from "./components/ShareSection";
 import { RelatedPosts } from "./components/RelatedPosts";
+import { BlogMarkdown } from "./components/BlogMarkdown";
 
 interface BlogPostProps {
     post: BlogPostType;
@@ -26,7 +26,6 @@ interface BlogPostProps {
 const BlogPost: FC<BlogPostProps> = ({ post }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const router = useRouter();
-    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         if (post.relatedPosts && post.relatedPosts.length > 0) {
@@ -67,7 +66,7 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
                     >
                         <BlogPostHeader post={post} />
                         <PostContent>
-                            <ReactMarkdown>{post.content}</ReactMarkdown>
+                            <BlogMarkdown content={post.content} />
                         </PostContent>
 
                         <ShareSection title={post.title} description={post.description} />

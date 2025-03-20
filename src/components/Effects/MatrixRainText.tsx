@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from 'react';
+import styles from './MatrixRainText.module.css';
 
 interface Props {
     text: string;
@@ -24,14 +25,18 @@ export const MatrixRainText = ({
     const containerRef = useRef<HTMLSpanElement>(null);
     const hasPlayedRef = useRef(false);
 
+    // Update createCharSpan to use CSS classes
     const createCharSpan = useCallback((char: string) => {
         const charSpan = document.createElement('span');
         charSpan.style.opacity = '0';
         charSpan.style.position = 'relative';
         charSpan.style.display = 'inline-block';
         charSpan.textContent = char;
+        if (fontSize) {
+            charSpan.style.fontSize = fontSize;
+        }
         return charSpan;
-    }, []);
+    }, [fontSize]);
 
     const animateChar = useCallback((charSpan: HTMLSpanElement, delay: number) => {
         setTimeout(() => {
@@ -89,24 +94,9 @@ export const MatrixRainText = ({
     }, [text, onComplete, triggerOnce, charDelay, createCharSpan, animateChar]);
 
     return (
-        <>
-            <style jsx global>{`
-                @keyframes matrixDrop {
-                    0% {
-                        transform: translateY(-20px);
-                        opacity: 0;
-                    }
-                    100% {
-                        transform: translateY(0);
-                        opacity: 1;
-                    }
-                }
-            `}</style>
-            <span 
-                ref={containerRef} 
-                className={className}
-                style={{ fontSize: fontSize }}
-            ></span>
-        </>
+        <span 
+            ref={containerRef} 
+            className={`${styles.container} ${className}`}
+        />
     );
 };
