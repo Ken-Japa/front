@@ -6,7 +6,6 @@ export const HeaderContainer = styled("div")({
 });
 
 export const SubtitleText = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[300],
   opacity: 0.9,
 }));
 
