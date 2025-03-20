@@ -23,6 +23,7 @@ export const post = {
     "cicloeconomico",
     "analise-fundamentalista",
     "indicadores-fundamentalista",
+    "valuation",
   ],
   content: `
 A análise fundamentalista é uma abordagem crucial para avaliar o valor intrínseco de uma empresa, considerando fatores econômicos, financeiros e outros aspectos qualitativos e quantitativos. 

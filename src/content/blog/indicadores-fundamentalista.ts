@@ -21,7 +21,7 @@ export const post = {
   relatedPosts: [
     "cicloeconomico",
     "analise-fundamentalista",
-    "analisetecnica-vs-analisefundamentalista",
+    "valuation",
     "indicadores-fundamentalista2",
   ],
   content: `
