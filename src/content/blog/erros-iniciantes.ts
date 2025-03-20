@@ -2,7 +2,7 @@ export const post = {
   id: "4",
   title: "Os Maiores Erros de Investidores Iniciantes",
   description:
-    "Descubra as diferenças entre Análise Fundamentalista e Análise Técnica, suas vantagens e desvantagens, e aprenda como combiná-las para tomar decisões de investimento mais informadas",
+    "Os investidores iniciantes frequentemente cometem erros comuns que podem custar caro em termos de retorno financeiro e estabilidade emocional. Este artigo analisa os maiores erros de investidores iniciantes e fornece dicas práticas para evitá-los.",
   image: "",
   category: ["economia", "educacional"],
   author: "Auge Invest",

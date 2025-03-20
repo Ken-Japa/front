@@ -1,6 +1,6 @@
 export const post = {
   id: "7",
-  title: "Como Analisar Setores da Economia Antes de Investir?",
+  title: "Como Analisar Setores da Economia Antes de Investir",
   description:
     "A análise setorial permite identificar oportunidades de investimento em setores que estão em crescimento ou que têm potencial de crescimento futuro",
   image: "",

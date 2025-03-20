@@ -34,3 +34,39 @@ Shows all posts with a specific tag.
 Example: npm run blog-summary tag "educação financeira"
 
 All summaries will be saved as markdown files in the src/content/utils/summaries directory with the format: blog-summary-[type]-[date].md
+
+
+
+Formato post:
+
+export const post = {
+  id: "",
+  title: "",
+  description:
+    "",
+  image: "",
+  category: ["f", ""],
+  author: "Auge Invest",
+  date: "2024-03-20",
+  slug: "",
+  tags: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    " ",
+    "",
+  ],
+  readTime: "20 min",
+  relatedPosts: [
+    "",
+    "",
+    "",
+  ],
+  content: `
+
+
+  `,
+};

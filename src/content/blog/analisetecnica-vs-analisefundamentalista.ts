@@ -17,7 +17,11 @@ export const post = {
     "economia",
   ],
   readTime: "15 min",
-  relatedPosts: ["principais-indicadores-economicos", "cicloeconomico"],
+  relatedPosts: [
+    "principais-indicadores-economicos",
+    "analise-fundamentalista",
+    "indicadores-fundamentalista",
+  ],
   content: `
 No mundo dos investimentos, escolher a abordagem certa para analisar o mercado de ações é crucial para o sucesso. Dois métodos amplamente utilizados são a **Análise Fundamentalista** e a **Análise Técnica**. Enquanto ambas têm como objetivo ajudar os investidores a tomar decisões informadas, elas se baseiam em princípios e premissas distintas. Neste artigo, vamos explorar as diferenças entre essas duas abordagens, seus prós e contras, e como combiná-las para maximizar os resultados.
 
