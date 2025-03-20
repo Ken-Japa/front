@@ -65,7 +65,7 @@ export const Debentures = () => {
                             maximumFractionDigits: 2
                         })}
                     </DebenturesValue>
-                    <DebenturesVariation isPositive={selectedDebenture.variation >= 0}>
+                    <DebenturesVariation $isPositive={selectedDebenture.variation >= 0}>
                         {selectedDebenture.variation >= 0 ? '+' : ''}{selectedDebenture.variation}%
                     </DebenturesVariation>
                 </DebenturesInfo>

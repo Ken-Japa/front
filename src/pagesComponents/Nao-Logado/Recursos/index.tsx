@@ -26,20 +26,23 @@ export const Solutions: FC = () => {
         const videoElement = videoRef.current;
 
         if (videoElement) {
-            videoElement.playbackRate = 0.3;
-
             const handleVideoLoad = () => {
+                videoElement.playbackRate = 0.4;
                 setVideoLoaded(true);
-                videoElement.removeEventListener('canplay', handleVideoLoad);
             };
-            videoElement.addEventListener('canplay', handleVideoLoad);
 
-            if (videoElement.readyState >= 3) {
-                handleVideoLoad();
-            }
+            const handleVideoError = (e: ErrorEvent) => {
+                console.error('Video loading error:', e);
+                videoElement.load();
+            };
+            videoElement.addEventListener('loadeddata', handleVideoLoad);
+            videoElement.addEventListener('error', handleVideoError as EventListener);
+
+            videoElement.load();
 
             return () => {
-                videoElement.removeEventListener('canplay', handleVideoLoad);
+                videoElement.removeEventListener('loadeddata', handleVideoLoad);
+                videoElement.removeEventListener('error', handleVideoError as EventListener);
             };
         }
     }, []);
@@ -54,10 +57,13 @@ export const Solutions: FC = () => {
                         muted
                         loop
                         playsInline
-                        preload="metadata"
                         className="video-background"
+                        crossOrigin="anonymous"
                     >
-                        <source src="/assets/video/Recursos.mp4" type="video/mp4" />
+                        <source
+                            src="/assets/video/Recursos.mp4"
+                            type="video/mp4"
+                        />
                         Your browser does not support the video tag.
                     </video>
                     <div className="overlay" />

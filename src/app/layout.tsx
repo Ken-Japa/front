@@ -67,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -87,7 +87,7 @@ export default function RootLayout({
         />
 
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning >
         <ErrorBoundary>
           <AuthProvider>
             <AppRouterCacheProvider>

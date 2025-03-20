@@ -65,7 +65,7 @@ export const Commodities = () => {
                             maximumFractionDigits: 2
                         })}
                     </CommodityValue>
-                    <CommodityVariation isPositive={selectedCommodity.variation >= 0}>
+                    <CommodityVariation $isPositive={selectedCommodity.variation >= 0}>
                         {selectedCommodity.variation >= 0 ? '+' : ''}{selectedCommodity.variation}%
                     </CommodityVariation>
                 </CommodityInfo>

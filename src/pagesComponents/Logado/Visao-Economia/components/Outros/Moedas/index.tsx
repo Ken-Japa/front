@@ -81,7 +81,7 @@ export const Moedas = () => {
                     <MainCurrencyValue>
                         R$ {formatCurrencyValue(selectedCurrency.value)}
                     </MainCurrencyValue>
-                    <MainCurrencyVariation isPositive={selectedCurrency.variation >= 0}>
+                    <MainCurrencyVariation $isPositive={selectedCurrency.variation >= 0}>
                         {selectedCurrency.variation >= 0 ? <TrendingUpIcon /> : <TrendingDownIcon />}
                         {selectedCurrency.variation >= 0 ? '+' : ''}{selectedCurrency.variation}%
                     </MainCurrencyVariation>

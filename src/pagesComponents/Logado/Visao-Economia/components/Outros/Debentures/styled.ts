@@ -38,8 +38,11 @@ export const DebenturesValue = styled(Typography)`
   font-weight: 700;
 `;
 
-export const DebenturesVariation = styled(Typography)<{ isPositive: boolean }>`
-  color: ${({ theme, isPositive }) =>
-    isPositive ? theme.palette.success.main : theme.palette.error.main};
-  font-weight: 500;
+interface DebenturesVariationProps {
+    $isPositive: boolean; // Changed from isPositive to $isPositive
+}
+
+export const DebenturesVariation = styled('div')<DebenturesVariationProps>`
+    color: ${props => props.$isPositive ? '#4caf50' : '#f44336'};
+    font-weight: 500;
 `;
