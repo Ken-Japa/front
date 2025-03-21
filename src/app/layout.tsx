@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: 'Auge Invest',
     images: [
       {
-        url: '/assets/images/logo/Logo1.png',
+        url: '/assets/images/logo/Logo6.png',
         width: 722,
         height: 545,
       },
