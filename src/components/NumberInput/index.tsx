@@ -42,20 +42,22 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = event.target.value;
-      
-      // Allow only numbers, comma, and dot
-      if (!/^[\d.,]*$/.test(inputValue)) {
+
+      if (!/^-?[\d.,]*$/.test(inputValue)) {
         return;
       }
 
-      // Count decimal separators
       const decimalCount = (inputValue.match(/[.,]/g) || []).length;
       if (decimalCount > 1) {
         return;
       }
 
+      if (inputValue.split('-').length > 2 || (inputValue.includes('-') && inputValue.indexOf('-') !== 0)) {
+        return;
+      }
+
       setLocalValue(inputValue);
-      
+
       if (!inputValue.endsWith(',') && !inputValue.endsWith('.')) {
         const numericValue = parseNumber(inputValue);
         onChange?.(numericValue);

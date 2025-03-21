@@ -2,8 +2,18 @@ import { Grid, Typography, Paper, Tooltip } from '@mui/material';
 import { MetricCardProps } from '../types/types';
 import { FormulaText } from '../styled';
 import { formatMetricValue } from '../utils/utils';
+import { getMetricColor } from '../utils/metricFormatting';
 
-export const MetricCard = ({ title, value, formula, description, missingFields = [], type }: MetricCardProps) => (
+export const MetricCard = ({
+    title,
+    value,
+    formula,
+    description,
+    missingFields = [],
+    type,
+    isInvalid = false,
+    metricKey
+}: MetricCardProps) => (
     <Grid item xs={12} sm={6}>
         <Tooltip title={
             missingFields.length > 0
@@ -25,8 +35,17 @@ export const MetricCard = ({ title, value, formula, description, missingFields =
                 <Typography variant="subtitle2" color="text.secondary">
                     {title}
                 </Typography>
-                <Typography variant="h6">
-                    {missingFields.length > 0 ? '---' : formatMetricValue(value, type)}
+                <Typography
+                    variant="h6"
+                    sx={{
+                        color: !isInvalid && !missingFields.length
+                            ? getMetricColor(metricKey, value)
+                            : 'text.primary'
+                    }}
+                >
+                    {missingFields.length > 0 ? '---' :
+                        isInvalid ? 'N/A' :
+                            formatMetricValue(value, type)}
                 </Typography>
             </Paper>
         </Tooltip>

@@ -5,39 +5,43 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
     title: "Valor de Mercado",
     metrics: [
       {
-        title: "Market Cap",
+        title: "Capitalização de Mercado",
         ...metrics.marketCap,
         formula: "Preço da Ação × Quantidade de Ações",
         description: "Valor total de mercado da empresa",
         type: "currency",
+        metricKey: "valorMercado",
       },
       {
-        title: "Enterprise Value (EV)",
+        title: "Valor da Empresa (EV)",
         ...metrics.enterpriseValue,
         formula: "Market Cap + Dívida Líquida - Caixa",
         description: "Valor total da empresa considerando dívida e caixa",
         type: "currency",
+        metricKey: "valorEmpresa",
       },
     ],
   },
   {
-    title: "Valuation",
+    title: "Valoração",
     metrics: [
       {
         title: "P/L (Preço/Lucro)",
         ...metrics.precoLucro,
         formula: "Preço da Ação / (Lucro Líquido por Ação)",
         description:
-          "Indica quantos anos seriam necessários para o investidor recuperar o investimento através dos lucros da empresa",
-        type: "multiplier",
+          "Indica quantos anos de lucro seriam necessários para recuperar o investimento (quanto menor, melhor)",
+        type: "ratio",
+        metricKey: "precoLucro",
       },
       {
         title: "EV/EBITDA",
         ...metrics.evEbitda,
         formula: "(Market Cap + Dívida Líquida - Caixa) / EBITDA",
         description:
-          "Indica quanto tempo a empresa levaria para pagar seu próprio valor considerando sua geração de caixa",
-        type: "multiplier",
+          "Indica quantos anos de EBITDA seriam necessários para igualar o Valor da Empresa (EV)",
+        type: "ratio",
+        metricKey: "evEbitda",
       },
       {
         title: "P/VP (Preço/Valor Patrimonial)",
@@ -45,12 +49,13 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
         formula: "Preço da Ação / (Patrimônio Líquido / Ações)",
         description:
           "Relação entre o preço de mercado e o valor contábil da empresa",
-        type: "multiplier",
+        type: "ratio",
+        metricKey: "precoValorPatrimonial",
       },
     ],
   },
   {
-    title: "Lucratividade",
+    title: "Margens",
     metrics: [
       {
         title: "Margem Líquida",
@@ -58,35 +63,36 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
         formula: "(Lucro Líquido / Receita Líquida) × 100",
         description: "Percentual de lucro em relação à receita",
         type: "percentage",
+        metricKey: "margemLiquida",
       },
       {
         title: "Margem Bruta",
         ...metrics.margemBruta,
-        formula: "((Receita Líquida - CPV) / Receita Líquida) × 100",
-        description: "Percentual de lucro bruto em relação à receita líquida",
+        formula: "((Receita Líquida - Custo) / Receita Líquida) × 100",
+        description: "Percentual de lucro bruto em relação à receita",
         type: "percentage",
+        metricKey: "margemBruta",
       },
     ],
   },
   {
-    title: "Retorno",
+    title: "Rentabilidade",
     metrics: [
       {
         title: "ROE (Retorno sobre Patrimônio)",
         ...metrics.roe,
         formula: "(Lucro Líquido / Patrimônio Líquido) × 100",
-        description:
-          "Mede a eficiência da empresa em gerar lucro a partir do capital dos acionistas",
+        description: "Retorno sobre o Patrimônio Líquido",
         type: "percentage",
+        metricKey: "retornoPatrimonio",
       },
       {
         title: "ROIC (Retorno sobre Capital Investido)",
         ...metrics.roic,
-        formula:
-          "(EBIT × (1 - Taxa IR)) / (Dívida Líquida + Patrimônio Líquido) × 100",
-        description:
-          "Avalia a eficiência da empresa em gerar retorno sobre o capital total investido",
+        formula: "(NOPAT / Capital Investido) × 100",
+        description: "Retorno sobre o Capital Investido",
         type: "percentage",
+        metricKey: "retornoInvestido",
       },
     ],
   },
@@ -99,7 +105,8 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
         formula: "Dívida Líquida / EBITDA",
         description:
           "Indica quantos anos de geração de caixa seriam necessários para pagar a dívida líquida",
-        type: "multiplier",
+        type: "ratio",
+        metricKey: "dividaLiquidaEbitda",
       },
     ],
   },
@@ -107,12 +114,13 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
     title: "Dividendos",
     metrics: [
       {
-        title: "Dividend Yield",
+        title: "Rendimento de Dividendos",
         ...metrics.dividendYield,
-        formula: "(Dividendos Pagos / (Preço da Ação × Ações)) × 100",
+        formula: "(Dividendos / Market Cap) × 100",
         description:
           "Percentual de retorno em dividendos em relação ao preço da ação",
         type: "percentage",
+        metricKey: "dividendos",
       },
     ],
   },

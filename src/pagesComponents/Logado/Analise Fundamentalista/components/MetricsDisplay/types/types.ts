@@ -1,12 +1,14 @@
-import { MetricType } from "../constants/constants";
+export type MetricType = "currency" | "percentage" | "ratio" | "number";
 
 export interface MetricCardProps {
   title: string;
   value: number;
-  formula: string;
-  description: string;
+  formula?: string;
+  description?: string;
   missingFields?: string[];
   type: MetricType;
+  isInvalid?: boolean;
+  metricKey: string;
 }
 
 export interface MetricCategory {
@@ -18,5 +20,6 @@ export interface MetricCategory {
     description: string;
     missingFields: string[];
     type: MetricType;
+    metricKey: string;
   }[];
 }

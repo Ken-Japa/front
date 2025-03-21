@@ -1,38 +1,48 @@
 import React, { ReactNode } from "react";
-import { MetricType } from "../constants/constants";
+import { MetricType } from "../types/types";
 import { UnitText } from "../styled";
 
 export const formatMetricValue = (
-  value: number,
+  value: number | undefined | null,
   type: MetricType
 ): ReactNode => {
-  switch (type) {
-    case "currency":
-      return React.createElement(
-        React.Fragment,
-        null,
-        `R$ ${value.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`
-      );
-    case "multiplier":
-      return React.createElement(
-        React.Fragment,
-        null,
-        value.toLocaleString("pt-BR", { maximumFractionDigits: 2 }),
-        React.createElement(UnitText, null, "x")
-      );
-    case "percentage":
-      return React.createElement(
-        React.Fragment,
-        null,
-        value.toLocaleString("pt-BR", { maximumFractionDigits: 2 }),
-        React.createElement(UnitText, null, "%")
-      );
-    default:
-      return React.createElement(
-        React.Fragment,
-        null,
-        value.toLocaleString("pt-BR", { maximumFractionDigits: 2 })
-      );
+  if (value === undefined || value === null) {
+    return "---";
+  }
+
+  try {
+    switch (type) {
+      case "currency":
+        return React.createElement(
+          React.Fragment,
+          null,
+          `R$ ${value.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`
+        );
+      case "ratio":
+        return React.createElement(
+          React.Fragment,
+          null,
+          value.toLocaleString("pt-BR", { maximumFractionDigits: 2 }),
+          React.createElement(UnitText, null, "x")
+        );
+      case "percentage":
+        return React.createElement(
+          React.Fragment,
+          null,
+          value.toLocaleString("pt-BR", { maximumFractionDigits: 2 }),
+          React.createElement(UnitText, null, "%")
+        );
+      case "number":
+        return React.createElement(
+          React.Fragment,
+          null,
+          value.toLocaleString("pt-BR", { maximumFractionDigits: 2 })
+        );
+      default:
+        return value.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
+    }
+  } catch (error) {
+    return "---";
   }
 };
 

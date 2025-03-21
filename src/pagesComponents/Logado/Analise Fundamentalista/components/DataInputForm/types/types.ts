@@ -1,5 +1,4 @@
 import { Control } from "react-hook-form";
-import { DadosAnaliseFundamental } from "../../../types";
 
 export interface FormSectionProps {
   title: string;
@@ -8,8 +7,10 @@ export interface FormSectionProps {
 }
 
 export interface FormFieldProps {
-  control: Control<DadosAnaliseFundamental>;
-  name: keyof DadosAnaliseFundamental;
+  control: Control<any>;
+  name: string;
   label: string;
   tooltip: string;
+  allowNegative?: boolean;
+  warning?: string;
 }

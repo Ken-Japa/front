@@ -6,6 +6,22 @@ import { FormField } from './components/FormField';
 import { FormContainer } from './styled';
 import { FORM_SECTIONS } from './constants/constants';
 
+const ALLOW_NEGATIVE_FIELDS = [
+    'ebit',
+    'ebitda',
+    'lucroLiquido',
+    'dividaLiquida',
+    'impostoRenda'
+];
+
+const FIELD_WARNINGS = {
+    lucroLiquido: 'Lucro negativo invalida o cálculo do P/L',
+    ebitda: 'EBITDA negativo invalida o cálculo do EV/EBITDA',
+    dividaLiquida: 'Valor negativo indica que o caixa supera a dívida (ativo líquido positivo)',
+    ebit: 'EBIT negativo invalida o cálculo do ROIC',
+    impostoRenda: 'Valor negativo indica créditos fiscais. O ROIC ajustará o lucro operacional para refletir esse benefício.'
+};
+
 export const DataInputForm = ({ control }: { control: Control<DadosAnaliseFundamental> }) => {
     return (
         <FormContainer container spacing={3}>
@@ -20,6 +36,8 @@ export const DataInputForm = ({ control }: { control: Control<DadosAnaliseFundam
                             <FormField
                                 key={fieldIndex}
                                 control={control}
+                                allowNegative={ALLOW_NEGATIVE_FIELDS.includes(field.name)}
+                                warning={FIELD_WARNINGS[field.name as keyof typeof FIELD_WARNINGS]}
                                 {...field}
                             />
                         ))}
