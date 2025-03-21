@@ -1,5 +1,5 @@
-import { JoinTeam } from "@/pagesComponents/Nao-Logado/Faca-parte";
 import { Metadata } from "next";
+import { JoinTeam } from "@/pagesComponents/Nao-Logado/Faca-parte";
 
 export const metadata: Metadata = {
     title: 'Junte-se a nós | Auge Invest',

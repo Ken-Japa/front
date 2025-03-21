@@ -1,5 +1,5 @@
-import Ambassadors from "@/pagesComponents/Nao-Logado/Embaixadores";
 import { Metadata } from "next";
+import Ambassadors from "@/pagesComponents/Nao-Logado/Embaixadores";
 
 export const metadata: Metadata = {
     title: "Programa de Embaixadores | Auge Invest",

@@ -1,5 +1,5 @@
-import { VisaoEconomia } from "@/pagesComponents/Logado/Visao-Economia";
 import { Metadata } from "next";
+import { VisaoEconomia } from "@/pagesComponents/Logado/Visao-Economia";
 
 export const metadata: Metadata = {
     title: "Visão Geral da Economia | Análise de Mercado | AugeInvest",

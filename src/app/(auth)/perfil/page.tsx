@@ -1,5 +1,5 @@
-import { Perfil } from "@/pagesComponents/Logado/Perfil";
 import { Metadata } from "next";
+import { Perfil } from "@/pagesComponents/Logado/Perfil";
 
 export const metadata: Metadata = {
     title: "Meu Perfil | Gerenciamento de Conta | AugeInvest",

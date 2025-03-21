@@ -1,5 +1,5 @@
-import AboutPage from "@/pagesComponents/Nao-Logado/Quem-somos";
 import { Metadata } from "next";
+import AboutPage from "@/pagesComponents/Nao-Logado/Quem-somos";
 
 export const metadata: Metadata = {
     title: 'Quem Somos | Auge Invest',

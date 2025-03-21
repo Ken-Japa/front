@@ -17,6 +17,7 @@ import { BlogPostHeader } from "./components/BlogPostHeader";
 import { ShareSection } from "./components/ShareSection";
 import { RelatedPosts } from "./components/RelatedPosts";
 import { BlogMarkdown } from "./components/BlogMarkdown";
+
 interface BlogPostProps {
     post: BlogPostType;
 }

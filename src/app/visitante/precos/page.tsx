@@ -1,5 +1,5 @@
-import { Pricing } from "@/pagesComponents/Nao-Logado/Precos";
 import { Metadata } from "next";
+import { Pricing } from "@/pagesComponents/Nao-Logado/Precos";
 
 export const metadata: Metadata = {
     title: 'Planos e Preços | Auge Invest',

@@ -1,5 +1,5 @@
-import { EmpresaDetalhes } from "@/pagesComponents/Logado/Empresa/components/EmpresaDetalhes";
 import { Metadata } from "next";
+import { EmpresaDetalhes } from "@/pagesComponents/Logado/Empresa/components/EmpresaDetalhes";
 
 type Props = {
     params: { slug: string }

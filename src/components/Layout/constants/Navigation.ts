@@ -20,6 +20,6 @@ export const authNavigation: NavigationItem[] = [
   { name: "Posições", path: "/dashboard" },
   { name: "Empresas", path: "/empresa" },
   { name: "Alertas", path: "/alertas" },
-  { name: "Indicadores", path: "/indicadores" },
+  { name: "Análise", path: "/fundamentalista" },
   { name: "Blog", path: "/blog" },
 ];

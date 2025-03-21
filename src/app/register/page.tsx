@@ -1,5 +1,5 @@
-import { Register } from "@/pagesComponents/Nao-Logado/Register";
 import { Metadata } from "next";
+import { Register } from "@/pagesComponents/Nao-Logado/Register";
 
 export const metadata: Metadata = {
     title: 'Criar Conta | Auge Invest',

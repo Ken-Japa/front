@@ -1,5 +1,5 @@
-import { Alertas } from "@/pagesComponents/Logado/Alertas";
 import { Metadata } from "next";
+import { Alertas } from "@/pagesComponents/Logado/Alertas";
 
 export const metadata: Metadata = {
     title: "Alertas de Investimentos | AugeInvest",

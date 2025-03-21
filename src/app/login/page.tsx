@@ -1,5 +1,5 @@
-import { Login } from "@/pagesComponents/Nao-Logado/Login";
 import { Metadata } from "next";
+import { Login } from "@/pagesComponents/Nao-Logado/Login";
 
 export const metadata: Metadata = {
     title: 'Login | Auge Invest',

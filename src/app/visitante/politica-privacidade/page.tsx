@@ -1,5 +1,5 @@
-import { PrivacyPolicy } from "@/pagesComponents/Nao-Logado/PoliticaPrivacidade";
 import { Metadata } from "next";
+import { PrivacyPolicy } from "@/pagesComponents/Nao-Logado/PoliticaPrivacidade";
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade | Auge Invest',

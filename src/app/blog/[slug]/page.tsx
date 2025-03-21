@@ -1,7 +1,7 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/pagesComponents/Blog/constants/blogPosts";
 import BlogPost from "@/pagesComponents/Blog/components/BlogPost";
-import { Metadata } from "next";
 
 interface Props {
     params: {

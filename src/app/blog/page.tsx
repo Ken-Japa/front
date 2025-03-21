@@ -1,5 +1,5 @@
-import Blog from "@/pagesComponents/Blog";
 import { Metadata } from "next";
+import Blog from "@/pagesComponents/Blog";
 
 export const metadata: Metadata = {
     title: "Blog | Auge Invest",

@@ -1,5 +1,5 @@
-import { Contact } from "@/pagesComponents/Nao-Logado/Contato";
 import { Metadata } from "next";
+import { Contact } from "@/pagesComponents/Nao-Logado/Contato";
 
 export const metadata: Metadata = {
     title: "Contato | Auge Invest",

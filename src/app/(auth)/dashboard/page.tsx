@@ -1,5 +1,6 @@
-import { Dashboard } from "@/pagesComponents/Logado/Dashboard";
 import { Metadata } from "next";
+import { Dashboard } from "@/pagesComponents/Logado/Dashboard";
+
 
 export const metadata: Metadata = {
     title: "Dashboard | Acompanhamento de Carteira | AugeInvest",

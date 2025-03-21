@@ -1,5 +1,5 @@
-import { Solutions } from "@/pagesComponents/Nao-Logado/Recursos";
 import { Metadata } from "next";
+import { Solutions } from "@/pagesComponents/Nao-Logado/Recursos";
 
 export const metadata: Metadata = {
     title: 'Recursos e Soluções | Auge Invest',
