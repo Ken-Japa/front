@@ -23,31 +23,28 @@ export const FORM_SECTIONS = [
       {
         name: "receitaLiquida",
         label: "Receita Líquida",
-        tooltip:
-          "Receita total após deduções: 'Receita Líquida' ou 'Vendas Líquidas'. Não use Receita Bruta",
+        tooltip: "Receita total após deduções",
       },
       {
         name: "custoProdutos",
         label: "Custo dos Produtos Vendidos",
-        tooltip:
-          "Custos diretos associados à produção: 'Custo dos Produtos Vendidos' ou 'Custo das Vendas'",
+        tooltip: "Custos diretos associados à produção",
       },
       {
         name: "ebitda",
         label: "EBITDA",
         tooltip:
-          "Lucro antes de juros, impostos, depreciação e amortização (ajustado ou reportado pela empresa). DRE (seção de Resultados Operacionais) ou em Métricas Não-IFRS.",
+          "Lucro antes de juros, impostos, depreciação e amortização (ajustado ou reportado pela empresa)",
       },
       {
         name: "ebit",
         label: "EBIT",
-        tooltip:
-          "Lucro operacional (inclui depreciação e amortização). DRE, 'Lucro Operacional' ou 'Resultado Antes do Resultado Financeiro' ou calcule: EBIT = EBITDA - Depreciação, Depleção e Amortização",
+        tooltip: "Lucro operacional (inclui depreciação e amortização)",
       },
       {
         name: "lucroLiquido",
         label: "Lucro Líquido",
-        tooltip: "Lucro final após todas as deduções. Não use Lucro Bruto",
+        tooltip: "Lucro final após todas as deduções",
       },
       {
         name: "impostoRenda",
@@ -69,14 +66,12 @@ export const FORM_SECTIONS = [
       {
         name: "dividaLiquida",
         label: "Dívida Líquida",
-        tooltip:
-          "Total de dívidas menos o caixa disponível. Seção de Endividamento. Não confunda com Dívida Bruta",
+        tooltip: "Total de dívidas menos o caixa disponível",
       },
       {
         name: "caixaEquivalentes",
         label: "Caixa e Equivalentes",
-        tooltip:
-          "Dinheiro disponível e investimentos de alta liquidez. Do fim do período. Pode estar como 'Disponibilidades ajustadas'",
+        tooltip: "Dinheiro disponível e investimentos de alta liquidez",
       },
     ],
   },
@@ -87,8 +82,7 @@ export const FORM_SECTIONS = [
       {
         name: "dividendosPagos",
         label: "Dividendos Pagos",
-        tooltip:
-          "Total de dividendos distribuídos no período. Demonstração do Fluxo de Caixa (DFC), seção 'Atividades de Financiamento'. Diferente de Dividendos Propostos",
+        tooltip: "Total de dividendos distribuídos no período",
       },
     ],
   },
