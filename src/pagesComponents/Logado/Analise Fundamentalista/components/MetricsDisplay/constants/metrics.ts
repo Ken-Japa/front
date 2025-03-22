@@ -118,5 +118,30 @@ export const calculateMetrics = (
       if (data.patrimonioLiquido <= 0) return NaN;
       return (data.lucroLiquido / data.patrimonioLiquido) * 100;
     }),
+    payoutRatio: calculateMetric(
+      ["dividendosPagos", "lucroLiquido"],
+      () => {
+        if (data.lucroLiquido <= 0) return NaN;
+        return (data.dividendosPagos / data.lucroLiquido) * 100;
+      }
+    ),
+
+    evReceita: calculateMetric(
+      ["precoAcao", "acoesCirculacao", "dividaLiquida", "caixaEquivalentes", "receitaLiquida"],
+      () => {
+        if (data.receitaLiquida <= 0) return NaN;
+        const marketCap = (data.precoAcao * data.acoesCirculacao) / 1000;
+        const enterpriseValue = marketCap + data.dividaLiquida - data.caixaEquivalentes;
+        return enterpriseValue / data.receitaLiquida;
+      }
+    ),
+
+    margemOperacional: calculateMetric(
+      ["ebit", "receitaLiquida"],
+      () => {
+        if (data.receitaLiquida <= 0) return NaN;
+        return (data.ebit / data.receitaLiquida) * 100;
+      }
+    ),
   };
 };

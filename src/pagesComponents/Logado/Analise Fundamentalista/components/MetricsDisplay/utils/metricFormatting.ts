@@ -13,15 +13,18 @@ const metricThresholds: Record<string, MetricThreshold> = {
   roe: { min: 10, max: 15, isHigherBetter: true },
   roic: { min: 10, max: 15, isHigherBetter: true },
   dividaLiquidaEbitda: { min: 3, max: 5, isHigherBetter: false },
-  dividendYield: { min: 2, max: 4, isHigherBetter: true }
+  dividendos: { min: 2, max: 4, isHigherBetter: true },
+  evReceita: { min: 1, max: 3, isHigherBetter: false },
+  margemOperacional: { min: 10, max: 20, isHigherBetter: true },
+  distribuicaoLucro: { min: 25, max: 75, isHigherBetter: true },
 };
 
 export const getMetricColor = (metricKey: string, value: number): string => {
   const threshold = metricThresholds[metricKey];
-  if (!threshold) return 'inherit'; // Neutral color for metrics without thresholds
+  if (!threshold) return "inherit"; // Neutral color for metrics without thresholds
 
   const { min, max, isHigherBetter } = threshold;
-  
+
   // Calculate percentage within range
   let percentage: number;
   if (isHigherBetter) {
@@ -31,7 +34,7 @@ export const getMetricColor = (metricKey: string, value: number): string => {
   } else {
     if (value <= min) percentage = 1;
     else if (value >= max) percentage = 0;
-    else percentage = 1 - ((value - min) / (max - min));
+    else percentage = 1 - (value - min) / (max - min);
   }
 
   // Convert percentage to color (green to yellow to red)

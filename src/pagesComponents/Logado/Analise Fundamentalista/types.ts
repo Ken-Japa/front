@@ -15,9 +15,13 @@ export interface DadosAnaliseFundamental {
   patrimonioLiquido: number; // Patrimônio Líquido
   dividaLiquida: number; // Dívida Líquida
   caixaEquivalentes: number; // Caixa e Equivalentes
-  
+
   // Outros Dados Relevantes
   dividendosPagos: number; // Dividendos Pagos
+
+  fluxoCaixaOperacional: number; // Fluxo de Caixa Operacional
+  capex: number; // CAPEX (Capital Expenditure)
+  fluxoCaixaLivre: number; // Fluxo de Caixa Livre (FCO - CAPEX)
 }
 
 export interface MetricasCalculadas {
@@ -31,4 +35,10 @@ export interface MetricasCalculadas {
   precoValorPatrimonial: number; // P/VPA
   margemBruta: number; // Margem Bruta
   liquidezCorrente: number; // Liquidez Corrente
+  payoutRatio: number; // Índice de Distribuição de Dividendos
+  evReceita: number; // EV/Receita
+  margemOperacional: number; // Margem Operacional
+  margemFCO: number; // Margem do Fluxo de Caixa Operacional
+  coberturaCapex: number; // Cobertura de CAPEX pelo FCO
+  margemFCL: number; // Margem do Fluxo de Caixa Livre
 }
