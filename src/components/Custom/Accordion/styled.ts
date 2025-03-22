@@ -10,6 +10,10 @@ export interface AccordionCustomTheme {
   borderColor: string;
   hoverColor?: string;
   linkColor?: string;
+  customBackground?: string;
+  customBorderColor?: string;
+  customTitleColor?: string;
+  customContentBackground?: string;  // New prop
 }
 
 export const lightTheme: AccordionCustomTheme = {
@@ -43,29 +47,29 @@ export const StyledAccordion = styled(Accordion, {
     margin: '8px 0',
   },
   borderRadius: '4px',
-  border: `1px solid ${customTheme.borderColor}`,
+  border: `1px solid ${customTheme.customBorderColor || customTheme.borderColor}`,
   marginBottom: '8px',
-  backgroundColor: customTheme.background,
+  backgroundColor: customTheme.customBackground || customTheme.background,
 }));
 
 export const StyledAccordionSummary = styled(AccordionSummary, {
   shouldForwardProp: (prop) => prop !== 'customTheme'
 })<StyledProps>(({ customTheme }) => ({
-  backgroundColor: customTheme.background,
+  backgroundColor: customTheme.customBackground || customTheme.background,
   '& .MuiAccordionSummary-content': {
     margin: '12px 0',
-    color: customTheme.titleColor,
+    color: customTheme.customTitleColor || customTheme.titleColor,
     fontWeight: 500,
   },
   '& .MuiAccordionSummary-expandIconWrapper': {
-    color: customTheme.titleColor,
+    color: customTheme.customTitleColor || customTheme.titleColor,
   },
 }));
 
 export const StyledAccordionDetails = styled(AccordionDetails, {
   shouldForwardProp: (prop) => prop !== 'customTheme'
 })<StyledProps>(({ customTheme }) => ({
-  backgroundColor: customTheme.background,
+  backgroundColor: customTheme.customContentBackground || customTheme.background,
   padding: '16px 24px',
   color: customTheme.bodyColor,
   borderTop: `1px solid ${customTheme.borderColor}`,

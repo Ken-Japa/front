@@ -16,6 +16,10 @@ interface Props {
   className?: string;
   titleColor?: string;
   bodyColor?: string;
+  customBackground?: string;
+  customBorderColor?: string;
+  customTitleColor?: string;
+  customContentBackground?: string;  // New prop
 }
 
 export const CustomAccordion = ({
@@ -25,13 +29,21 @@ export const CustomAccordion = ({
   variant = 'light',
   className,
   titleColor,
-  bodyColor
+  bodyColor,
+  customBackground,
+  customBorderColor,
+  customTitleColor,
+  customContentBackground
 }: Props) => {
   const baseTheme = variant === 'light' ? lightTheme : darkTheme;
   const customTheme = {
     ...baseTheme,
     titleColor: titleColor || baseTheme.titleColor,
-    bodyColor: bodyColor || baseTheme.bodyColor
+    bodyColor: bodyColor || baseTheme.bodyColor,
+    customBackground,
+    customBorderColor,
+    customTitleColor,
+    customContentBackground  // Add to theme
   };
 
   const content = body ? (

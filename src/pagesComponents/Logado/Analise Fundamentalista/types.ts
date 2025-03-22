@@ -18,9 +18,7 @@ export interface DadosAnaliseFundamental {
 
   // Outros Dados Relevantes
   dividendosPagos: number; // Dividendos Pagos
-
   fluxoCaixaOperacional: number; // Fluxo de Caixa Operacional
-  capex: number; // CAPEX (Capital Expenditure)
   fluxoCaixaLivre: number; // Fluxo de Caixa Livre (FCO - CAPEX)
 }
 
@@ -38,7 +36,4 @@ export interface MetricasCalculadas {
   payoutRatio: number; // Índice de Distribuição de Dividendos
   evReceita: number; // EV/Receita
   margemOperacional: number; // Margem Operacional
-  margemFCO: number; // Margem do Fluxo de Caixa Operacional
-  coberturaCapex: number; // Cobertura de CAPEX pelo FCO
-  margemFCL: number; // Margem do Fluxo de Caixa Livre
 }

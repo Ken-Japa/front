@@ -15,6 +15,7 @@ import { DataInputForm } from './components/DataInputForm';
 import { MetricsDisplay } from './components/MetricsDisplay';
 import { HelpDialog } from './components/HelpDialog';
 import { BackgroundContainer, ContentContainer, StyledPaper } from './styled';
+import { ValuationSection } from './components/ValuationSection';
 
 export const AnaliseFundamentalista = () => {
     const [helpOpen, setHelpOpen] = useState(false);
@@ -31,8 +32,8 @@ export const AnaliseFundamentalista = () => {
     return (
         <PageTransition>
             <ErrorBoundary>
-                <BackgroundContainer >
-                    <Container maxWidth="lg" >
+                <BackgroundContainer>
+                    <Container maxWidth="lg">
                         <ContentContainer>
                             <SuspenseWrapper>
                                 <ProgressiveLoad>
@@ -55,8 +56,22 @@ export const AnaliseFundamentalista = () => {
                                                 <MetricsDisplay data={formValues} />
                                             </StyledPaper>
                                         </Grid>
+                                        <Grid item xs={12}>
+                                            <StyledPaper>
+                                                <ValuationSection 
+                                                    fluxoCaixaOperacional={formValues.fluxoCaixaOperacional}
+                                                    fluxoCaixaLivre={formValues.fluxoCaixaLivre}
+                                                    precoAcao={formValues.precoAcao}
+                                                    acoesCirculacao={formValues.acoesCirculacao}
+                                                    dividaLiquida={formValues.dividaLiquida}
+                                                    ebitda={formValues.ebitda}
+                                                    lucroLiquido={formValues.lucroLiquido}
+                                                    patrimonioLiquido={formValues.patrimonioLiquido}
+                                                    caixaEquivalentes={formValues.caixaEquivalentes}
+                                                />
+                                            </StyledPaper>
+                                        </Grid>
                                     </Grid>
-
                                     <HelpDialog
                                         open={helpOpen}
                                         onClose={() => setHelpOpen(false)}
