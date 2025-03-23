@@ -21,6 +21,7 @@ import { SaveReportSection } from './components/SaveReportSection';
 import { generateReport } from './components/SaveReportSection/utils/reportGenerator';
 import { ValuationResults, SensitivityResults } from './components/ValuationSection/types';
 import { GenerateReportParams } from './components/SaveReportSection/utils/types';
+import { generatePDF } from './components/SaveReportSection/utils/pdfGenerator';
 
 export const AnaliseFundamentalista = () => {
     const [helpOpen, setHelpOpen] = useState(false);
@@ -51,56 +52,26 @@ export const AnaliseFundamentalista = () => {
         sensitivityResultsRef.current = sensitivityResults;
     }, [sensitivityResults]);
 
-    const handleSaveReport = async (params: GenerateReportParams) => {  // Add async here
-        const calculatedMetrics = metricsRef.current?.getMetrics();
-        if (!calculatedMetrics) return;
+    const handleSaveReport = async (params: GenerateReportParams) => {
+        let content: string | Blob;
+        let mimeType: string;
+        let fileExtension: string;
 
-        // Get the latest valuation results from ValuationSection
-        const valuationRef = document.querySelector('form[name="valuation-form"]');
-        if (valuationRef) {
-            const event = new Event('submit', { cancelable: true });
-            valuationRef.dispatchEvent(event);
+        if (params.options.format === 'pdf') {
+            content = await generatePDF(params);
+            mimeType = 'application/pdf';
+            fileExtension = 'pdf';
+        } else {
+            content = generateReport(params);
+            mimeType = 'text/markdown';
+            fileExtension = 'md';
         }
 
-        // Wait for state updates
-        await new Promise(resolve => setTimeout(resolve, 100));
-
-        const newMetricsResults: MetricasCalculadas = {
-            margemBruta: calculatedMetrics.margemBruta.value,
-            margemOperacional: calculatedMetrics.margemOperacional.value,
-            margemLiquida: calculatedMetrics.margemLiquida.value,
-            roe: calculatedMetrics.roe.value,
-            roic: calculatedMetrics.roic.value,
-            precoLucro: calculatedMetrics.precoLucro.value,
-            evEbitda: calculatedMetrics.evEbitda.value,
-            precoValorPatrimonial: calculatedMetrics.precoValorPatrimonial.value,
-            dividaLiquidaEbitda: calculatedMetrics.dividaLiquidaEbitda.value,
-            dividendYield: calculatedMetrics.dividendYield.value,
-            payoutRatio: calculatedMetrics.payoutRatio.value,
-            evReceita: calculatedMetrics.evReceita.value,
-            enterpriseValue: calculatedMetrics.enterpriseValue.value,
-            rendimentoDividendos: calculatedMetrics.dividendYield.value,
-            indiceDistribuicao: calculatedMetrics.payoutRatio.value
-        };
-
-        setMetricsResults(newMetricsResults);
-
-        // Use the current state values
-        const report = generateReport({
-            options: params.options,
-            fundamentalData: formValues,
-            valuationResults: valuationResultsRef.current,
-            sensitivityResults: sensitivityResultsRef.current,
-            metricsResults: newMetricsResults
-        });
-
-        console.log('Valuation Results:', results);
-        console.log('Sensitivity Results:', sensitivityResults);
-        const blob = new Blob([report], { type: 'text/markdown' });
+        const blob = content instanceof Blob ? content : new Blob([content], { type: mimeType });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `${params.options.companyName}.md`;
+        a.download = `${params.options.companyName}.${fileExtension}`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);

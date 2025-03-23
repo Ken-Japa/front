@@ -6,7 +6,11 @@ import {
     FormControlLabel,
     Checkbox,
     Button,
-    Typography
+    Typography,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem
 } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { SaveReportContainer } from './styled';
@@ -28,6 +32,7 @@ export interface SaveReportOptions {
     showFormulas: boolean;
     showDescriptions: boolean;
     showCalculations: boolean;
+    format: 'markdown' | 'pdf';
 }
 
 export const SaveReportSection: FC<SaveReportSectionProps> = ({
@@ -41,8 +46,9 @@ export const SaveReportSection: FC<SaveReportSectionProps> = ({
     const [options, setOptions] = useState<SaveReportOptions>({
         companyName: '',
         showFormulas: false,
-        showDescriptions: true,
+        showDescriptions: false,
         showCalculations: false,
+        format: 'pdf'
     });
 
     const handleSave = () => {
@@ -122,6 +128,18 @@ export const SaveReportSection: FC<SaveReportSectionProps> = ({
                     Salvar Relatório
                 </Button>
             </Box>
+            <FormControl fullWidth sx={{ my: 4 }}>
+                <InputLabel>Formato do Arquivo</InputLabel>
+                <Select
+                    value={options.format}
+                    label="Formato do Arquivo"
+                    onChange={(e) => setOptions({ ...options, format: e.target.value as SaveReportOptions['format'] })}
+                    disabled={!isEnabled}
+                >
+                    <MenuItem value="markdown">Markdown (.md)</MenuItem>
+                    <MenuItem value="pdf">PDF (.pdf)</MenuItem>
+                </Select>
+            </FormControl>
         </SaveReportContainer>
     );
 };
