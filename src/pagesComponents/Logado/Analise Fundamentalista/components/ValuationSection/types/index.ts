@@ -1,3 +1,23 @@
+interface ValuationDetails {
+  fluxosCaixa: number[];
+  valorPresente: number;
+  valorTerminal: number;
+  valorPresenteTerminal: number;
+  spreadWaccCrescimento: number;
+  waccUtilizado: number; // Add this line
+}
+
+export interface ValuationResults {
+  precoJusto: number;
+  enterpriseValue: number;
+  equityValue: number;
+  subvalorizacao: number;
+  pl: number;
+  taxaProjecaoUtilizada: number;
+  crescimentoTerminalUtilizado: number;
+  detalhes: ValuationDetails;
+}
+
 export interface ValuationSectionProps {
   fluxoCaixaOperacional: number;
   fluxoCaixaLivre: number;
@@ -8,6 +28,8 @@ export interface ValuationSectionProps {
   lucroLiquido: number;
   patrimonioLiquido: number;
   caixaEquivalentes: number;
+  onResultsChange?: (results: ValuationResults | null) => void;
+  onSensitivityResultsChange?: (results: SensitivityResults | null) => void;
 }
 
 export interface HistoricalFCF {

@@ -1,3 +1,4 @@
+import { forwardRef, useImperativeHandle } from 'react';
 import { Grid } from '@mui/material';
 import { DadosAnaliseFundamental } from '../../types';
 import { MetricCard } from './components/MetricCard';
@@ -6,27 +7,39 @@ import { calculateMetrics } from './constants/metrics';
 import { metricCategories } from './constants/categories';
 import { CategoryContainer, CategoryTitle, MetricsGrid } from './styled';
 
-export const MetricsDisplay = ({ data }: { data: DadosAnaliseFundamental }) => {
-    const getFieldLabel = (field: keyof DadosAnaliseFundamental): string =>
-        FIELD_LABELS[field] || field;
+interface MetricsDisplayProps {
+    data: DadosAnaliseFundamental;
+}
 
-    const metrics = calculateMetrics(data, getFieldLabel);
-    const categories = metricCategories(metrics);
+export const MetricsDisplay = forwardRef<{ getMetrics: () => any }, MetricsDisplayProps>(
+    ({ data }, ref) => {
+        const getFieldLabel = (field: keyof DadosAnaliseFundamental): string =>
+            FIELD_LABELS[field] || field;
 
-    return (
-        <Grid container spacing={3}>
-            {categories.map((category, idx) => (
-                <CategoryContainer item xs={12} key={idx}>
-                    <CategoryTitle variant="h6" gutterBottom>
-                        {category.title}
-                    </CategoryTitle>
-                    <MetricsGrid container spacing={2}>
-                        {category.metrics.map((metric, metricIdx) => (
-                            <MetricCard key={metricIdx} {...metric} />
-                        ))}
-                    </MetricsGrid>
-                </CategoryContainer>
-            ))}
-        </Grid>
-    );
-};
+        const metrics = calculateMetrics(data, getFieldLabel);
+        const categories = metricCategories(metrics);
+
+        useImperativeHandle(ref, () => ({
+            getMetrics: () => metrics
+        }));
+
+        return (
+            <Grid container spacing={3}>
+                {categories.map((category, idx) => (
+                    <CategoryContainer item xs={12} key={idx}>
+                        <CategoryTitle variant="h6" gutterBottom>
+                            {category.title}
+                        </CategoryTitle>
+                        <MetricsGrid container spacing={2}>
+                            {category.metrics.map((metric, metricIdx) => (
+                                <MetricCard key={metricIdx} {...metric} />
+                            ))}
+                        </MetricsGrid>
+                    </CategoryContainer>
+                ))}
+            </Grid>
+        );
+    }
+);
+
+MetricsDisplay.displayName = 'MetricsDisplay';

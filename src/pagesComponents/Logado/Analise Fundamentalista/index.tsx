@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Box, Container, Typography, Grid, IconButton } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
@@ -10,15 +10,23 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ProgressiveLoad } from '@/components/ProgressiveLoad';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 
-import { DadosAnaliseFundamental } from './types';
+import { DadosAnaliseFundamental, MetricasCalculadas } from './types';
 import { DataInputForm } from './components/DataInputForm';
 import { MetricsDisplay } from './components/MetricsDisplay';
 import { HelpDialog } from './components/HelpDialog';
 import { BackgroundContainer, ContentContainer, StyledPaper } from './styled';
 import { ValuationSection } from './components/ValuationSection';
+import { SaveReportSection } from './components/SaveReportSection';
+
+import { generateReport } from './components/SaveReportSection/utils/reportGenerator';
+import { ValuationResults, SensitivityResults } from './components/ValuationSection/types';
+import { GenerateReportParams } from './components/SaveReportSection/utils/types';
 
 export const AnaliseFundamentalista = () => {
     const [helpOpen, setHelpOpen] = useState(false);
+    const [results, setResults] = useState<ValuationResults | null>(null);
+    const [sensitivityResults, setSensitivityResults] = useState<SensitivityResults | null>(null);
+
     const { control, watch } = useForm<DadosAnaliseFundamental>({
         defaultValues: {
             precoAcao: 0,
@@ -28,6 +36,78 @@ export const AnaliseFundamentalista = () => {
     });
 
     const formValues = watch();
+
+    const [metricsResults, setMetricsResults] = useState<MetricasCalculadas | undefined>(undefined);
+
+    const valuationResultsRef = useRef<ValuationResults | null>(null);
+    const sensitivityResultsRef = useRef<SensitivityResults | null>(null);
+
+    // Update the refs when results change
+    useEffect(() => {
+        valuationResultsRef.current = results;
+    }, [results]);
+
+    useEffect(() => {
+        sensitivityResultsRef.current = sensitivityResults;
+    }, [sensitivityResults]);
+
+    const handleSaveReport = async (params: GenerateReportParams) => {  // Add async here
+        const calculatedMetrics = metricsRef.current?.getMetrics();
+        if (!calculatedMetrics) return;
+
+        // Get the latest valuation results from ValuationSection
+        const valuationRef = document.querySelector('form[name="valuation-form"]');
+        if (valuationRef) {
+            const event = new Event('submit', { cancelable: true });
+            valuationRef.dispatchEvent(event);
+        }
+
+        // Wait for state updates
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        const newMetricsResults: MetricasCalculadas = {
+            margemBruta: calculatedMetrics.margemBruta.value,
+            margemOperacional: calculatedMetrics.margemOperacional.value,
+            margemLiquida: calculatedMetrics.margemLiquida.value,
+            roe: calculatedMetrics.roe.value,
+            roic: calculatedMetrics.roic.value,
+            precoLucro: calculatedMetrics.precoLucro.value,
+            evEbitda: calculatedMetrics.evEbitda.value,
+            precoValorPatrimonial: calculatedMetrics.precoValorPatrimonial.value,
+            dividaLiquidaEbitda: calculatedMetrics.dividaLiquidaEbitda.value,
+            dividendYield: calculatedMetrics.dividendYield.value,
+            payoutRatio: calculatedMetrics.payoutRatio.value,
+            evReceita: calculatedMetrics.evReceita.value,
+            enterpriseValue: calculatedMetrics.enterpriseValue.value,
+            rendimentoDividendos: calculatedMetrics.dividendYield.value,
+            indiceDistribuicao: calculatedMetrics.payoutRatio.value
+        };
+
+        setMetricsResults(newMetricsResults);
+
+        // Use the current state values
+        const report = generateReport({
+            options: params.options,
+            fundamentalData: formValues,
+            valuationResults: valuationResultsRef.current,
+            sensitivityResults: sensitivityResultsRef.current,
+            metricsResults: newMetricsResults
+        });
+
+        console.log('Valuation Results:', results);
+        console.log('Sensitivity Results:', sensitivityResults);
+        const blob = new Blob([report], { type: 'text/markdown' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${params.options.companyName}.md`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    };
+
+    const metricsRef = useRef<any>(null);
 
     return (
         <PageTransition>
@@ -53,12 +133,15 @@ export const AnaliseFundamentalista = () => {
                                         </Grid>
                                         <Grid item xs={12} md={6}>
                                             <StyledPaper>
-                                                <MetricsDisplay data={formValues} />
+                                                <MetricsDisplay
+                                                    ref={metricsRef}
+                                                    data={formValues}
+                                                />
                                             </StyledPaper>
                                         </Grid>
                                         <Grid item xs={12}>
                                             <StyledPaper>
-                                                <ValuationSection 
+                                                <ValuationSection
                                                     fluxoCaixaOperacional={formValues.fluxoCaixaOperacional}
                                                     fluxoCaixaLivre={formValues.fluxoCaixaLivre}
                                                     precoAcao={formValues.precoAcao}
@@ -68,6 +151,20 @@ export const AnaliseFundamentalista = () => {
                                                     lucroLiquido={formValues.lucroLiquido}
                                                     patrimonioLiquido={formValues.patrimonioLiquido}
                                                     caixaEquivalentes={formValues.caixaEquivalentes}
+                                                    onResultsChange={setResults}
+                                                    onSensitivityResultsChange={setSensitivityResults}
+                                                />
+                                            </StyledPaper>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <StyledPaper>
+                                                <SaveReportSection
+                                                    onSave={handleSaveReport}
+                                                    isEnabled={!!formValues.precoAcao && !!formValues.acoesCirculacao}
+                                                    fundamentalData={formValues}
+                                                    valuationResults={results}
+                                                    sensitivityResults={sensitivityResults}
+                                                    metricsResults={metricsResults}
                                                 />
                                             </StyledPaper>
                                         </Grid>

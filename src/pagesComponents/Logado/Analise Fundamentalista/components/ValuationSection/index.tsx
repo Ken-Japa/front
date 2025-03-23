@@ -24,7 +24,9 @@ export const ValuationSection = ({
     dividaLiquida,
     ebitda,
     lucroLiquido,
-    caixaEquivalentes
+    caixaEquivalentes,
+    onResultsChange,
+    onSensitivityResultsChange
 }: ValuationSectionProps) => {
     const [fco, setFco] = useState(defaultFCO);
     const [fcl, setFcl] = useState(defaultFCL);
@@ -51,7 +53,7 @@ export const ValuationSection = ({
             ...prev,
             [scenario]: { ...prev[scenario], [field]: value }
         }));
-        
+
         // Instead of resetting, trigger recalculation immediately
         calculateValuation();
     };
@@ -63,7 +65,7 @@ export const ValuationSection = ({
         }
 
         setIsCalculating(true);
-        
+
         const baseInputs = {
             ...valuationInputs,
             tipo: 'base' as const,
@@ -103,6 +105,8 @@ export const ValuationSection = ({
 
             setResults(baseResults);
             setSensitivityResults({ base: baseResults, otimista, pessimista });
+            onResultsChange?.(baseResults);
+            onSensitivityResultsChange?.({ base: baseResults, otimista, pessimista });
         } catch (error) {
             console.error('Error calculating valuation:', error);
         } finally {

@@ -32,8 +32,10 @@ export interface MetricasCalculadas {
   dividendYield: number; // Dividend Yield
   precoValorPatrimonial: number; // P/VPA
   margemBruta: number; // Margem Bruta
-  liquidezCorrente: number; // Liquidez Corrente
   payoutRatio: number; // Índice de Distribuição de Dividendos
   evReceita: number; // EV/Receita
   margemOperacional: number; // Margem Operacional
+  enterpriseValue: number; // Valor da Empresa (EV)
+  rendimentoDividendos: number; // Rendimento de Dividendos
+  indiceDistribuicao: number; // Índice de Distribuição
 }
