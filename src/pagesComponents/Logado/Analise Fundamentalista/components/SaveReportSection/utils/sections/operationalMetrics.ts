@@ -5,7 +5,7 @@ import { formatNumber, hasValue, formatCurrency } from "../helpers";
 export const generateOperationalMetrics = (
   fundamentalData: DadosAnaliseFundamental
 ): string => {
-  let section = `### Dados Operacionais\n`;
+  let section = `### Dados Operacionais\n\n`;
 
   // Calculate Enterprise Value if possible
   if (
@@ -64,8 +64,8 @@ export const generateOperationalMetrics = (
 
   operationalMetrics.forEach((metric) => {
     const value = formatNumber(metric.value);
-    section += `- ${metric.name}: ${formatCurrency(value)}\n`;
+    section += `- ${metric.name}: ${formatCurrency(value)}\n\n`;
   });
 
-  return section + "\n";
+  return section + "\n\n";
 };

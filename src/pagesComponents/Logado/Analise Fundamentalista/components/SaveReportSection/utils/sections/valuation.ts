@@ -9,25 +9,39 @@ export const generateValuation = (
 ): string => {
   if (!valuationResults) return "";
 
-  let section = `\n## Resultados da Avaliação\n`;
-  section += `- Preço Justo: ${formatCurrency(valuationResults.precoJusto)}\n`;
-  section += `- Enterprise Value (EV): ${formatCurrency(valuationResults.enterpriseValue)}\n`;
-  section += `- Equity Value: ${formatCurrency(valuationResults.equityValue)}\n`;
+  let section = `\n\n## Resultados da Avaliação\n\n`;
+  section += `- Preço Justo: ${formatCurrency(
+    valuationResults.precoJusto
+  )}\n\n`;
+  section += `- Enterprise Value (EV): ${formatCurrency(
+    valuationResults.enterpriseValue
+  )}\n`;
+  section += `- Equity Value: ${formatCurrency(
+    valuationResults.equityValue
+  )}\n`;
 
   if (hasValue(valuationResults.subvalorizacao)) {
-    section += `- Subvalorização: ${formatPercentage(valuationResults.subvalorizacao)}\n`;
+    section += `- Subvalorização: ${formatPercentage(
+      valuationResults.subvalorizacao
+    )}\n`;
   }
 
   if (options.showCalculations) {
     section += `\n### Detalhes dos Cálculos\n`;
     if (hasValue(valuationResults.taxaProjecaoUtilizada)) {
-      section += `- Taxa de Crescimento Projetada: ${formatPercentage(valuationResults.taxaProjecaoUtilizada)}\n`;
+      section += `- Taxa de Crescimento Projetada: ${formatPercentage(
+        valuationResults.taxaProjecaoUtilizada
+      )}\n`;
     }
     if (hasValue(valuationResults.crescimentoTerminalUtilizado)) {
-      section += `- Crescimento Terminal: ${formatPercentage(valuationResults.crescimentoTerminalUtilizado)}\n`;
+      section += `- Crescimento Terminal: ${formatPercentage(
+        valuationResults.crescimentoTerminalUtilizado
+      )}\n`;
     }
     if (hasValue(valuationResults.detalhes.waccUtilizado)) {
-      section += `- WACC Utilizado: ${formatPercentage(valuationResults.detalhes.waccUtilizado)}\n`;
+      section += `- WACC Utilizado: ${formatPercentage(
+        valuationResults.detalhes.waccUtilizado
+      )}\n`;
     }
     if (valuationResults.detalhes.fluxosCaixa.length > 0) {
       section += `- Fluxos de Caixa Projetados:\n`;
@@ -39,5 +53,5 @@ export const generateValuation = (
     }
   }
 
-  return section + "\n";
+  return section + "\n\n";
 };

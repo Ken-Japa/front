@@ -28,7 +28,7 @@ export const generateDebt = (
 
   if (endividamento.length === 0) return "";
 
-  let section = `### Indicadores de Endividamento\n`;
+  let section = `### Indicadores de Endividamento\n\n`;
   endividamento.forEach((metric) => {
     const value = formatNumber(metric.value);
     section += `- ${metric.name}: ${
@@ -42,9 +42,9 @@ export const generateDebt = (
       section += `  > ${METRIC_DESCRIPTIONS[metric.key]}\n`;
     }
     if (options.showFormulas && metric.key && METRIC_FORMULAS[metric.key]) {
-      section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n`;
+      section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n\n`;
     }
   });
 
-  return section + "\n";
+  return section + "\n\n";
 };

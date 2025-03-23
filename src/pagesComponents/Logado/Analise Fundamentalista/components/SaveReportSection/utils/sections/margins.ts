@@ -28,10 +28,10 @@ export const generateMargins = (
 
   if (margens.length === 0) return "";
 
-  let section = `### Margens\n`;
+  let section = `### Margens\n\n`;
   margens.forEach((metric) => {
     const value = formatNumber(metric.value);
-    section += `- ${metric.name}: ${formatPercentage(value)}\n`;
+    section += `- ${metric.name}: ${formatPercentage(value)}\n\n`;
     if (
       options.showDescriptions &&
       metric.key &&
@@ -40,9 +40,9 @@ export const generateMargins = (
       section += `  > ${METRIC_DESCRIPTIONS[metric.key]}\n`;
     }
     if (options.showFormulas && metric.key && METRIC_FORMULAS[metric.key]) {
-      section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n`;
+      section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n\n`;
     }
   });
 
-  return section + "\n";
+  return section + "\n\n";
 };

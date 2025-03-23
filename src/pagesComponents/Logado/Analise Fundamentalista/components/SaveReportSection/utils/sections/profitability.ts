@@ -25,7 +25,7 @@ export const generateProfitability = (
 
   if (rentabilidade.length === 0) return "";
 
-  let section = `### Indicadores de Rentabilidade\n`;
+  let section = `### Indicadores de Rentabilidade\n\n`;
   rentabilidade.forEach((metric) => {
     const value = formatNumber(metric.value);
     section += `- ${metric.name}: ${formatPercentage(value)}\n`;
@@ -34,12 +34,12 @@ export const generateProfitability = (
       metric.key &&
       METRIC_DESCRIPTIONS[metric.key]
     ) {
-      section += `  > ${METRIC_DESCRIPTIONS[metric.key]}\n`;
+      section += `  > ${METRIC_DESCRIPTIONS[metric.key]}\n\n`;
     }
     if (options.showFormulas && metric.key && METRIC_FORMULAS[metric.key]) {
       section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n`;
     }
   });
 
-  return section + "\n";
+  return section + "\n\n";
 };

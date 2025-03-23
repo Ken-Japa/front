@@ -1,10 +1,3 @@
-import { SaveReportOptions } from "../index";
-import { DadosAnaliseFundamental, MetricasCalculadas } from "../../../types";
-import {
-  ValuationResults,
-  SensitivityResults,
-} from "../../ValuationSection/types";
-
 import { GenerateReportParams } from "./types";
 import {
   generateBasicInfo,

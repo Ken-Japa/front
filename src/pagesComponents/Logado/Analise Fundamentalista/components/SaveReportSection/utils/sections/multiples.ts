@@ -33,7 +33,7 @@ export const generateMultiples = (
 
   if (multiplos.length === 0) return "";
 
-  let section = `### Múltiplos\n`;
+  let section = `### Múltiplos\n\n`;
   multiplos.forEach((metric) => {
     const value = formatNumber(metric.value);
     section += `- ${metric.name}: ${value.toFixed(2)}x\n`;
@@ -45,9 +45,9 @@ export const generateMultiples = (
       section += `  > ${METRIC_DESCRIPTIONS[metric.key]}\n`;
     }
     if (options.showFormulas && metric.key && METRIC_FORMULAS[metric.key]) {
-      section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n`;
+      section += `  Formula: ${METRIC_FORMULAS[metric.key]}\n\n`;
     }
   });
 
-  return section + "\n";
+  return section + "\n\n";
 };
