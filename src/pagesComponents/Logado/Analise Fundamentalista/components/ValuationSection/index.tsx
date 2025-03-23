@@ -33,9 +33,13 @@ export const ValuationSection = ({
     const [scenarioInputs, setScenarioInputs] = useState(DEFAULT_SCENARIO_INPUTS);
     const [results, setResults] = useState<ValuationResults | null>(null);
     const [sensitivityResults, setSensitivityResults] = useState<SensitivityResults | null>(null);
+    const [isCalculating, setIsCalculating] = useState(false);
 
     const handleValuationInputChange = (field: keyof ValuationInputs, value: number) => {
         setValuationInputs(prev => ({ ...prev, [field]: value }));
+        // Reset results to trigger new calculation
+        setResults(null);
+        setSensitivityResults(null);
     };
 
     const handleScenarioChange = (
@@ -47,18 +51,26 @@ export const ValuationSection = ({
             ...prev,
             [scenario]: { ...prev[scenario], [field]: value }
         }));
+        
+        // Instead of resetting, trigger recalculation immediately
+        calculateValuation();
     };
 
-    const [isCalculating, setIsCalculating] = useState(false);
+    const calculateValuation = useCallback(() => { // Remove async
+        if (!fcl || !acoesCirculacao || !precoAcao) {
+            console.error('Missing required inputs for calculation');
+            return;
+        }
 
-    const calculateValuation = useCallback(async () => {
         setIsCalculating(true);
-        try {
-            const baseInputs = {
-                ...valuationInputs,
-                crescimentoProjecao: calculateGrowthRate(historicalData, valuationInputs.crescimentoProjecao)
-            };
+        
+        const baseInputs = {
+            ...valuationInputs,
+            tipo: 'base' as const,
+            crescimentoProjecao: calculateGrowthRate(historicalData, valuationInputs.crescimentoProjecao)
+        };
 
+        try {
             const baseResults = calculateScenario(
                 baseInputs,
                 fcl,
@@ -66,29 +78,26 @@ export const ValuationSection = ({
                 caixaEquivalentes,
                 acoesCirculacao,
                 precoAcao,
-                ebitda,
                 lucroLiquido
             );
 
             const otimista = calculateScenario(
-                scenarioInputs.otimista,
+                { ...scenarioInputs.otimista, tipo: 'otimista' as const },
                 fcl,
                 dividaLiquida,
                 caixaEquivalentes,
                 acoesCirculacao,
                 precoAcao,
-                ebitda,
                 lucroLiquido
             );
 
             const pessimista = calculateScenario(
-                scenarioInputs.pessimista,
+                { ...scenarioInputs.pessimista, tipo: 'pessimista' as const },
                 fcl,
                 dividaLiquida,
                 caixaEquivalentes,
                 acoesCirculacao,
                 precoAcao,
-                ebitda,
                 lucroLiquido
             );
 
@@ -96,23 +105,10 @@ export const ValuationSection = ({
             setSensitivityResults({ base: baseResults, otimista, pessimista });
         } catch (error) {
             console.error('Error calculating valuation:', error);
-            setResults(null);
-            setSensitivityResults(null);
         } finally {
             setIsCalculating(false);
         }
-    }, [
-        valuationInputs,
-        historicalData,
-        scenarioInputs,
-        fcl,
-        dividaLiquida,
-        caixaEquivalentes,
-        acoesCirculacao,
-        precoAcao,
-        ebitda,
-        lucroLiquido
-    ]);
+    }, [fcl, acoesCirculacao, precoAcao, dividaLiquida, caixaEquivalentes, lucroLiquido, valuationInputs, scenarioInputs, historicalData]);
 
     useEffect(() => {
         if (fcl && historicalData.length > 0) {

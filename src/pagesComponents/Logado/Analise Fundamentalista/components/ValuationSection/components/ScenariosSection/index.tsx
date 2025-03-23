@@ -1,9 +1,8 @@
 import { FC } from 'react';
-import { Grid, Typography, Box } from '@mui/material';
-import { NumberInput } from '@/components/NumberInput';
-import { CustomAccordion } from '@/components/Custom/Accordion';
+import { Grid, Typography, Box, Slider } from '@mui/material';
 import { ScenarioInputs, ValuationResults } from '../../types';
-import { ScenarioContainer } from './styled';
+import { SensitivityContainer } from './styled';  // Renamed from ScenarioContainer
+import type { SyntheticEvent } from 'react';
 
 interface ScenariosSectionProps {
     scenarioInputs: {
@@ -26,95 +25,134 @@ export const ScenariosSection: FC<ScenariosSectionProps> = ({
     sensitivityResults,
     onScenarioChange
 }) => {
+    const handleSliderChange = (
+        scenario: 'otimista' | 'pessimista',
+        field: keyof ScenarioInputs
+    ) => (_: Event | SyntheticEvent, value: number | number[]) => {
+        const newValue = Array.isArray(value) ? value[0] : value;
+        onScenarioChange(scenario, field, newValue);
+    };
+
     return (
-        <CustomAccordion
-            title="Análise de Sensibilidade"
-            customBackground="rgba(13, 149, 249, 0.15)"
-            customBorderColor="rgba(13, 149, 249, 0.3)"
-            customTitleColor="#FFFFFF"
-            customContentBackground="rgba(13, 149, 249, 0.08)"
-            variant="dark"
-        >
-            <ScenarioContainer>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="h6" gutterBottom>
-                            Cenário Otimista
-                        </Typography>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <NumberInput
-                                    label="WACC (%)"
-                                    value={scenarioInputs.otimista.wacc}
-                                    onChange={(value) => onScenarioChange('otimista', 'wacc', value ?? 0)}
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <NumberInput
-                                    label="Crescimento Terminal (%)"
-                                    value={scenarioInputs.otimista.crescimentoTerminal}
-                                    onChange={(value) => onScenarioChange('otimista', 'crescimentoTerminal', value ?? 0)}
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <NumberInput
-                                    label="Crescimento Projeção (%)"
-                                    value={scenarioInputs.otimista.crescimentoProjecao}
-                                    onChange={(value) => onScenarioChange('otimista', 'crescimentoProjecao', value ?? 0)}
-                                    fullWidth
-                                />
-                            </Grid>
-                        </Grid>
-                    </Grid>
+        <SensitivityContainer>
+            <Typography variant="h6" gutterBottom >
+                Análise de Sensibilidade
+            </Typography>
 
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="h6" gutterBottom>
-                            Cenário Pessimista
+            <Grid container spacing={4}>
+                {/* Pessimistic Scenario */}
+                <Grid item xs={12} md={6}>
+                    <Typography variant="h6" gutterBottom>
+                        Cenário Pessimista
+                    </Typography>
+                    <Box sx={{ px: 2, py: 1 }}>
+                        <Typography gutterBottom>
+                            WACC: {scenarioInputs.pessimista.wacc}%
                         </Typography>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <NumberInput
-                                    label="WACC (%)"
-                                    value={scenarioInputs.pessimista.wacc}
-                                    onChange={(value) => onScenarioChange('pessimista', 'wacc', value ?? 0)}
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <NumberInput
-                                    label="Crescimento Terminal (%)"
-                                    value={scenarioInputs.pessimista.crescimentoTerminal}
-                                    onChange={(value) => onScenarioChange('pessimista', 'crescimentoTerminal', value ?? 0)}
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <NumberInput
-                                    label="Crescimento Projeção (%)"
-                                    value={scenarioInputs.pessimista.crescimentoProjecao}
-                                    onChange={(value) => onScenarioChange('pessimista', 'crescimentoProjecao', value ?? 0)}
-                                    fullWidth
-                                />
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                        <Slider
+                            value={scenarioInputs.pessimista.wacc}
+                            onChange={handleSliderChange('pessimista', 'wacc')}
+                            min={12}
+                            max={20}
+                            step={0.5}
+                            marks
+                            valueLabelDisplay="auto"
+                            sx={{ width: '100%' }}
+                        />
 
-                    {sensitivityResults && (
-                        <Grid item xs={12}>
-                            <Typography variant="h6" gutterBottom>
-                                Comparação de Cenários
-                            </Typography>
-                            <Box sx={{ mt: 2 }}>
-                                <Typography>
-                                    Variação de Preço: R$ {sensitivityResults.pessimista.precoJusto.toFixed(2)} - R$ {sensitivityResults.otimista.precoJusto.toFixed(2)}
-                                </Typography>
-                            </Box>
-                        </Grid>
-                    )}
+                        <Typography gutterBottom sx={{ mt: 2 }}>
+                            Crescimento Terminal: {scenarioInputs.pessimista.crescimentoTerminal}%
+                        </Typography>
+                        <Slider
+                            value={scenarioInputs.pessimista.crescimentoTerminal}
+                            onChange={handleSliderChange('pessimista', 'crescimentoTerminal')}
+                            min={0}
+                            max={2}
+                            step={0.5}
+                            marks
+                            valueLabelDisplay="auto"
+                            sx={{ width: '100%' }}
+                        />
+
+                        <Typography gutterBottom sx={{ mt: 2 }}>
+                            Crescimento Projeção: {scenarioInputs.pessimista.crescimentoProjecao}%
+                        </Typography>
+                        <Slider
+                            value={scenarioInputs.pessimista.crescimentoProjecao}
+                            onChange={handleSliderChange('pessimista', 'crescimentoProjecao')}
+                            min={-5}
+                            max={0}
+                            step={0.5}
+                            marks
+                            valueLabelDisplay="auto"
+                            sx={{ width: '100%' }}
+                        />
+                    </Box>
                 </Grid>
-            </ScenarioContainer>
-        </CustomAccordion>
+
+                {/* Optimistic Scenario */}
+                <Grid item xs={12} md={6}>
+                    <Typography variant="h6" gutterBottom>
+                        Cenário Otimista
+                    </Typography>
+                    <Box sx={{ px: 2, py: 1 }}>
+                        <Typography gutterBottom>
+                            WACC: {scenarioInputs.otimista.wacc}%
+                        </Typography>
+                        <Slider
+                            value={scenarioInputs.otimista.wacc}
+                            onChange={handleSliderChange('otimista', 'wacc')}
+                            min={5}
+                            max={12}
+                            step={0.5}
+                            marks
+                            valueLabelDisplay="auto"
+                            sx={{ width: '100%' }}
+                        />
+
+                        <Typography gutterBottom sx={{ mt: 2 }}>
+                            Crescimento Terminal: {scenarioInputs.otimista.crescimentoTerminal}%
+                        </Typography>
+                        <Slider
+                            value={scenarioInputs.otimista.crescimentoTerminal}
+                            onChange={handleSliderChange('otimista', 'crescimentoTerminal')}
+                            min={2}
+                            max={5}
+                            step={0.5}
+                            marks
+                            valueLabelDisplay="auto"
+                            sx={{ width: '100%' }}
+                        />
+
+                        <Typography gutterBottom sx={{ mt: 2 }}>
+                            Crescimento Projeção: {scenarioInputs.otimista.crescimentoProjecao}%
+                        </Typography>
+                        <Slider
+                            value={scenarioInputs.otimista.crescimentoProjecao}
+                            onChange={handleSliderChange('otimista', 'crescimentoProjecao')}
+                            min={0}
+                            max={10}
+                            step={0.5}
+                            marks
+                            valueLabelDisplay="auto"
+                            sx={{ width: '100%' }}
+                        />
+                    </Box>
+                </Grid>
+
+                {sensitivityResults && (
+                    <Grid item xs={12}>
+                        <Typography variant="h6" gutterBottom>
+                            Comparação de Cenários
+                        </Typography>
+                        <Box sx={{ mt: 2 }}>
+                            <Typography>
+                                Variação de Preço: R$ {sensitivityResults.pessimista.precoJusto.toFixed(2)} - R$ {sensitivityResults.otimista.precoJusto.toFixed(2)}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                )}
+            </Grid>
+        </SensitivityContainer>
     );
 };

@@ -15,7 +15,7 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
       {
         title: "Valor da Empresa (EV)",
         ...metrics.enterpriseValue,
-        formula: "Market Cap + Dívida Líquida - Caixa",
+        formula: "Capitalização Mercado + Dívida Líquida - Caixa",
         description: "Valor total da empresa considerando dívida e caixa",
         type: "currency",
         metricKey: "valorEmpresa",
@@ -37,7 +37,7 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
       {
         title: "EV/EBITDA",
         ...metrics.evEbitda,
-        formula: "(Market Cap + Dívida Líquida - Caixa) / EBITDA",
+        formula: "(Capitalização Mercado + Dívida Líquida - Caixa) / EBITDA",
         description:
           "Indica quantos anos de EBITDA seriam necessários para igualar o Valor da Empresa (EV)",
         type: "ratio",
@@ -88,6 +88,40 @@ export const metricCategories = (metrics: any): MetricCategory[] => [
         description: "Percentual de lucro operacional em relação à receita, antes dos efeitos financeiros e impostos",
         type: "percentage",
         metricKey: "margemOperacional",
+      },
+    ],
+  },
+  {
+    title: "Rentabilidade",
+    metrics: [
+      {
+        title: "ROE (Retorno sobre Patrimônio)",
+        ...metrics.roe,
+        formula: "(Lucro Líquido / Patrimônio Líquido) × 100",
+        description: "Mede a eficiência da empresa em gerar lucro a partir do patrimônio dos acionistas",
+        type: "percentage",
+        metricKey: "roe",
+      },
+      {
+        title: "ROIC (Retorno sobre Capital Investido)",
+        ...metrics.roic,
+        formula: "(EBIT × (1 - Taxa IR) / (Dívida Líquida + PL)) × 100",
+        description: "Mede o retorno gerado pelo capital total investido na empresa",
+        type: "percentage",
+        metricKey: "roic",
+      },
+    ],
+  },
+  {
+    title: "Endividamento",
+    metrics: [
+      {
+        title: "Dívida Líquida/EBITDA",
+        ...metrics.dividaLiquidaEbitda,
+        formula: "Dívida Líquida / EBITDA",
+        description: "Indica quantos anos de geração de caixa seriam necessários para pagar a dívida líquida",
+        type: "ratio",
+        metricKey: "dividaLiquidaEbitda",
       },
     ],
   },

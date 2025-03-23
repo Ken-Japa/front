@@ -21,42 +21,41 @@ export const ResultsSection: FC<ResultsSectionProps> = ({
                         Resultados do Valuation
                     </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={6}>
                     <Typography variant="subtitle1">
                         Preço Justo: R$ {results.precoJusto.toFixed(2)}
                     </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={6}>
                     <Typography variant="subtitle1">
                         Subvalorização: {results.subvalorizacao.toFixed(2)}%
                     </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="subtitle1">
-                        EV/EBITDA: {results.evEbitda.toFixed(2)}x
-                    </Typography>
+
+                {/* Add growth rates section */}
+                <Grid item xs={12}>
+                    <Box title="Taxas Utilizadas no Cálculo">
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} md={4}>
+                                <Typography variant="subtitle2" gutterBottom>
+                                    WACC: {results.detalhes.waccUtilizado.toFixed(2)}%
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <Typography variant="subtitle2" gutterBottom>
+                                    Taxa de Crescimento na Projeção: {results.taxaProjecaoUtilizada.toFixed(2)}%
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <Typography variant="subtitle2" gutterBottom>
+                                    Crescimento Terminal: {results.crescimentoTerminalUtilizado.toFixed(2)}%
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Box>
                 </Grid>
 
-                <Grid item xs={12}>
-                    <CustomAccordion
-                        title="Análise de Sensibilidade"
-                        customBackground="rgba(13, 149, 249, 0.15)"
-                        customBorderColor="rgba(13, 149, 249, 0.3)"
-                        customTitleColor="#FFFFFF"
-                        customContentBackground="rgba(13, 149, 249, 0.08)"
-                        variant="dark"
-                    >
-                        <Box sx={{ p: 3 }}>
-                            <Typography>
-                                {sensitivityResults ? (
-                                    `Variação de Preço: R$ ${sensitivityResults.pessimista.precoJusto.toFixed(2)} - R$ ${sensitivityResults.otimista.precoJusto.toFixed(2)}`
-                                ) : (
-                                    'Análise de sensibilidade não disponível'
-                                )}
-                            </Typography>
-                        </Box>
-                    </CustomAccordion>
-                </Grid>
+
             </Grid>
         </ResultsContainer>
     );

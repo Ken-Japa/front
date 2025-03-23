@@ -36,13 +36,13 @@ export const calculateMetrics = (
   return {
     marketCap: calculateMetric(
       ["precoAcao", "acoesCirculacao"],
-      () => (data.precoAcao * data.acoesCirculacao) / 1000
+      () => data.precoAcao * data.acoesCirculacao
     ),
     enterpriseValue: calculateMetric(
       ["precoAcao", "acoesCirculacao", "dividaLiquida", "caixaEquivalentes"],
       () => {
         const marketCap = (data.precoAcao * data.acoesCirculacao) / 1000;
-        return marketCap + data.dividaLiquida - data.caixaEquivalentes;
+        return (marketCap + data.dividaLiquida - data.caixaEquivalentes) * 1000;
       }
     ),
     precoLucro: calculateMetric(
@@ -71,21 +71,26 @@ export const calculateMetrics = (
       }
     ),
     roic: calculateMetric(
-      ["ebit", "impostoRenda", "dividaLiquida", "patrimonioLiquido"],
+      [
+        "ebit",
+        "impostoRenda",
+        "lucroLiquido",
+        "dividaLiquida",
+        "patrimonioLiquido",
+        "caixaEquivalentes",
+      ],
       () => {
-        if (data.ebit <= 0) return NaN;
-        if (data.dividaLiquida < 0) return NaN;
-
-        const taxRate = data.impostoRenda / data.ebit;
-        const lucroAposImpostos = data.ebit * (1 - taxRate);
-
-        const capitalInvestido = data.dividaLiquida + data.patrimonioLiquido;
-        return (lucroAposImpostos / capitalInvestido) * 100;
+        if (data.ebit === 0) return NaN;
+        const ebt = data.lucroLiquido + data.impostoRenda;
+        const taxRate = data.impostoRenda / ebt;
+        const nopat = data.ebit * (1 - taxRate);
+        const dividaBruta = data.dividaLiquida + data.caixaEquivalentes;
+        const capitalInvestido = dividaBruta + data.patrimonioLiquido;
+        return (nopat / capitalInvestido) * 100;
       }
     ),
     dividaLiquidaEbitda: calculateMetric(["dividaLiquida", "ebitda"], () => {
-      if (data.ebitda <= 0) return NaN; // Invalid ratio for negative EBITDA
-      if (data.dividaLiquida <= 0) return NaN; // Invalid ratio for negative divida Liquida
+      if (data.ebitda === 0) return NaN; // Avoid division by zero
       return data.dividaLiquida / data.ebitda;
     }),
     dividendYield: calculateMetric(
@@ -115,33 +120,34 @@ export const calculateMetrics = (
       );
     }),
     roe: calculateMetric(["lucroLiquido", "patrimonioLiquido"], () => {
-      if (data.patrimonioLiquido <= 0) return NaN;
+      if (data.patrimonioLiquido === 0) return NaN; // Only check for division by zero
       return (data.lucroLiquido / data.patrimonioLiquido) * 100;
     }),
-    payoutRatio: calculateMetric(
-      ["dividendosPagos", "lucroLiquido"],
-      () => {
-        if (data.lucroLiquido <= 0) return NaN;
-        return (data.dividendosPagos / data.lucroLiquido) * 100;
-      }
-    ),
+    payoutRatio: calculateMetric(["dividendosPagos", "lucroLiquido"], () => {
+      if (data.lucroLiquido <= 0) return NaN;
+      return (data.dividendosPagos / data.lucroLiquido) * 100;
+    }),
 
     evReceita: calculateMetric(
-      ["precoAcao", "acoesCirculacao", "dividaLiquida", "caixaEquivalentes", "receitaLiquida"],
+      [
+        "precoAcao",
+        "acoesCirculacao",
+        "dividaLiquida",
+        "caixaEquivalentes",
+        "receitaLiquida",
+      ],
       () => {
         if (data.receitaLiquida <= 0) return NaN;
         const marketCap = (data.precoAcao * data.acoesCirculacao) / 1000;
-        const enterpriseValue = marketCap + data.dividaLiquida - data.caixaEquivalentes;
+        const enterpriseValue =
+          marketCap + data.dividaLiquida - data.caixaEquivalentes;
         return enterpriseValue / data.receitaLiquida;
       }
     ),
 
-    margemOperacional: calculateMetric(
-      ["ebit", "receitaLiquida"],
-      () => {
-        if (data.receitaLiquida <= 0) return NaN;
-        return (data.ebit / data.receitaLiquida) * 100;
-      }
-    ),
+    margemOperacional: calculateMetric(["ebit", "receitaLiquida"], () => {
+      if (data.receitaLiquida <= 0) return NaN;
+      return (data.ebit / data.receitaLiquida) * 100;
+    }),
   };
 };
