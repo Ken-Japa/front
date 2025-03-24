@@ -17,6 +17,7 @@ export const EmpresasContainer = styled(Box)`
   background-repeat: no-repeat;
   position: relative;
   margin-top: -64px;
+  padding-bottom: 64px;
   padding-top: 64px;
 
   &::before {
@@ -47,6 +48,8 @@ export const SearchBarWrapper = styled(Box)`
 `;
 
 export const ContentContainer = styled(Container)`
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 16px;

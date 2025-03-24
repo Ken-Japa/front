@@ -8,6 +8,7 @@ import { ContentSkeleton } from '../../../components/Skeletons/ContentSkeleton';
 import { ModoVisualizacao } from '../components/EmpresaView/Elementos/ModoVisualizacao';
 import { ViewMode } from '../components/EmpresaView/types';
 import { SearchBar } from '../components/EmpresaView/Elementos/SearchBar';
+import { RedeNeural } from '../components/EmpresaView/Elementos/ModoVisualizacao/RedeNeural';
 
 export const Empresa = () => {
     const [viewMode, setViewMode] = useState<ViewMode>('neural');
@@ -25,6 +26,33 @@ export const Empresa = () => {
         }
     };
 
+    const renderVisualization = () => {
+        switch (viewMode) {
+            case 'neural':
+                return <RedeNeural />;
+            case 'tabela':
+                return (
+                    <ContentPlaceholder>
+                        Visualização em Tabela será implementada em breve
+                    </ContentPlaceholder>
+                );
+            case 'cartao':
+                return (
+                    <ContentPlaceholder>
+                        Visualização em Cartões será implementada em breve
+                    </ContentPlaceholder>
+                );
+            case 'arvore':
+                return (
+                    <ContentPlaceholder>
+                        Visualização em Árvore será implementada em breve
+                    </ContentPlaceholder>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <SuspenseWrapper fallback={<ContentSkeleton height={600} />}>
             <EmpresasContainer>
@@ -35,7 +63,7 @@ export const Empresa = () => {
                     />
                 </SearchBarWrapper>
 
-                <ContentContainer maxWidth="md">
+                <ContentContainer>
                     <ControlsWrapper>
                         <ModoVisualizacao
                             viewMode={viewMode}
@@ -43,10 +71,7 @@ export const Empresa = () => {
                         />
                     </ControlsWrapper>
 
-                    <ContentPlaceholder marginBottom={12}>
-                        EMPRESAS<br />
-                        Visualização será implementada quando a API estiver disponível
-                    </ContentPlaceholder>
+                    {renderVisualization()}
                 </ContentContainer>
             </EmpresasContainer>
         </SuspenseWrapper>
