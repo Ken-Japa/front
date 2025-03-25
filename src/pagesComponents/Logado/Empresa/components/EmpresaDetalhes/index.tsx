@@ -7,6 +7,7 @@ import { GraficoHistorico } from './components/GraficoHistorico';
 import { AlertasSection } from './components/AlertasSection';
 import { DividendosTab } from './components/DividendosTab';
 import { DerivativosTab } from './components/DerivativosTab';
+import { Noticias } from './components/Noticias';
 import { EmpresaContainer, TabPanel, ContentContainer } from './styled';
 
 interface EmpresaDetalhesProps {
@@ -45,6 +46,7 @@ export const EmpresaDetalhes = ({ slug }: EmpresaDetalhesProps) => {
                     />
                     <GraficoHistorico />
                     <AlertasSection />
+                    <Noticias symbol={slug} />
                 </TabPanel>
 
                 <TabPanel value={currentTab} index="dividendos">

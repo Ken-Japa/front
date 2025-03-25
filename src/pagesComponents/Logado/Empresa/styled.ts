@@ -56,7 +56,7 @@ export const SearchBarWrapper = styled(Box)`
 export const VisualizationWrapper = styled(Box)`
   flex: 1;
   display: flex;
-  min-height: calc(100vh - 300px);
+  min-height: 100vh;
   width: 100%;
 `;
 

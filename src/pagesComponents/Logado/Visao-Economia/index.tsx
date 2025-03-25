@@ -12,6 +12,7 @@ import { PosicaoUsuario } from './components/Outros/PosicaoUsuario';
 import { Moedas } from './components/Outros/Moedas';
 import { Commodities } from './components/Outros/Commodities';
 import { Debentures } from './components/Outros/Debentures';
+import { Calendario } from '../components/EmpresaView/Elementos/Calendario';
 import { BackgroundContainer, DashboardItem } from './styled';
 
 export const VisaoEconomia = () => {
@@ -102,7 +103,9 @@ export const VisaoEconomia = () => {
 
                             {/* Bottom Calendars - Full Width */}
                             <Grid item xs={12}>
-                                <DashboardItem>Calendário de Eventos Econômicos</DashboardItem>
+                                <DashboardItem>
+                                    <Calendario />
+                                </DashboardItem>
                             </Grid>
                             <Grid item xs={12}>
                                 <DashboardItem>Calendário de Proventos</DashboardItem>

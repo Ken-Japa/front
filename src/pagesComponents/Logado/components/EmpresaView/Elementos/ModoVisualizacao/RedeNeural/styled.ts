@@ -2,8 +2,8 @@ import { styled } from "@mui/material/styles";
 
 export const GraphContainer = styled("div")(({ theme }) => ({
   flex: 1,
-  height: "calc(100vh - 240px)", // Increased space for footer
-  minHeight: "700px",
+  height: "calc(100vh - 64px)",
+  minHeight: "calc(100vh - 64px)",
   width: "100%",
   background:
     theme.palette.mode === "dark"

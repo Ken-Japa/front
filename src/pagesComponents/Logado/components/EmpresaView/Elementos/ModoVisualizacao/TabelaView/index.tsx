@@ -129,15 +129,58 @@ const SegmentoSection: React.FC<SegmentoSectionProps> = ({ segmento, valorMercad
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ ml: 4 }}>
                             <Table size="small">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Empresa</TableCell>
+                                        <TableCell align="right">Valor de Mercado</TableCell>
+                                        <TableCell align="right">Participação</TableCell>
+                                        <TableCell>Códigos</TableCell>
+                                        <TableCell align="right">Preço</TableCell>
+                                        <TableCell align="right">Variação</TableCell>
+                                    </TableRow>
+                                </TableHead>
                                 <TableBody>
                                     {segmento.empresasDetalhes
                                         .sort((a, b) => b.valorMercado - a.valorMercado)
                                         .map((empresa, index) => (
-                                            <TableRow key={index}>
-                                                <TableCell>{empresa.empresa}</TableCell>
-                                                <TableCell align="right">{formatCurrency(empresa.valorMercado)}</TableCell>
-                                                <TableCell align="right">{`${((empresa.valorMercado / segmento.valorMercado) * 100).toFixed(2)}%`}</TableCell>
-                                            </TableRow>
+                                            <React.Fragment key={index}>
+                                                {empresa.codigos.map((codigo, cIndex) => (
+                                                    <TableRow key={`${index}-${cIndex}`}>
+                                                        {cIndex === 0 && (
+                                                            <>
+                                                                <TableCell rowSpan={empresa.codigos.length}>
+                                                                    {empresa.empresa}
+                                                                </TableCell>
+                                                                <TableCell align="right" rowSpan={empresa.codigos.length}>
+                                                                    {formatCurrency(empresa.valorMercado)}
+                                                                </TableCell>
+                                                                <TableCell align="right" rowSpan={empresa.codigos.length}>
+                                                                    {`${((empresa.valorMercado / segmento.valorMercado) * 100).toFixed(2)}%`}
+                                                                </TableCell>
+                                                            </>
+                                                        )}
+                                                        <TableCell>{codigo.codigo}</TableCell>
+                                                        <TableCell align="right">
+                                                            {`R$ ${codigo.preco.toFixed(2)}`.replace('.', ',')}
+                                                        </TableCell>
+                                                        <TableCell 
+                                                            align="right"
+                                                            sx={{ 
+                                                                color: codigo.variacao 
+                                                                    ? codigo.variacao > 0 
+                                                                        ? 'success.main' 
+                                                                        : 'error.main'
+                                                                    : 'text.primary' 
+                                                            }}
+                                                        >
+                                                            {codigo.variacao 
+                                                                ? `${codigo.variacao > 0 ? '+' : ''}${codigo.variacao.toFixed(2)}%`
+                                                                : '-'
+                                                            }
+                                                        </TableCell>
+                                                    </TableRow>
+                                                ))}
+                                            </React.Fragment>
                                         ))}
                                 </TableBody>
                             </Table>

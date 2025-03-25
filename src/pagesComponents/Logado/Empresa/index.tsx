@@ -11,6 +11,7 @@ import { ViewMode } from '../components/EmpresaView/Elementos/ModoVisualizacao/t
 import { SearchBar } from '../components/EmpresaView/Elementos/SearchBar';
 import { RedeNeural } from '../components/EmpresaView/Elementos/ModoVisualizacao/RedeNeural';
 import { TabelaView } from '../components/EmpresaView/Elementos/ModoVisualizacao/TabelaView';
+import { MapaArvore } from '../components/EmpresaView/Elementos/ModoVisualizacao/MapaArvore';
 
 export const Empresa = () => {
     const [viewMode, setViewMode] = useState<ViewMode>('neural');
@@ -53,9 +54,7 @@ export const Empresa = () => {
             case 'arvore':
                 return (
                     <VisualizationWrapper>
-                        <ContentPlaceholder>
-                            Visualização em Árvore será implementada em breve
-                        </ContentPlaceholder>
+                        <MapaArvore />
                     </VisualizationWrapper>
                 );
             default:
