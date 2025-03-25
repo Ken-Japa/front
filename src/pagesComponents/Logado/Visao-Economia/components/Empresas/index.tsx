@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { ViewMode } from '../../../components/EmpresaView/types';
+import { ViewMode } from '../../../components/EmpresaView/Elementos/ModoVisualizacao/types';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 import { ContentSkeleton } from '../../../../../components/Skeletons/ContentSkeleton';
 import { EmpresasContainer, ContentPlaceholder, ControlsWrapper } from './styled';

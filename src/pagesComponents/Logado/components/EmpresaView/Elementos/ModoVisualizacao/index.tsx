@@ -1,5 +1,5 @@
 import { IconButton } from '@mui/material';
-import { ViewMode } from '../../types';
+import { ViewMode } from './types';
 import { ViewControls } from './styled';
 import GridViewIcon from '@mui/icons-material/GridView';
 import TableRowsIcon from '@mui/icons-material/TableRows';

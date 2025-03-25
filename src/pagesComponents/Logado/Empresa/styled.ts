@@ -3,11 +3,9 @@ import { Box, Container } from "@mui/material";
 
 export const EmpresasContainer = styled(Box)`
   width: 100%;
-  height: 100%;
-  min-height: 600px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   background-image: ${({ theme }) =>
     theme.palette.mode === "dark"
       ? "url('/assets/images/background/Empresas-Dark.jpg')"
@@ -17,7 +15,6 @@ export const EmpresasContainer = styled(Box)`
   background-repeat: no-repeat;
   position: relative;
   margin-top: -64px;
-  padding-bottom: 64px;
   padding-top: 64px;
 
   &::before {
@@ -40,6 +37,15 @@ export const EmpresasContainer = styled(Box)`
   }
 `;
 
+export const ContentContainer = styled(Container)`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 64px;
+`;
+
 export const SearchBarWrapper = styled(Box)`
   display: flex;
   justify-content: center;
@@ -47,12 +53,11 @@ export const SearchBarWrapper = styled(Box)`
   padding: 0 16px;
 `;
 
-export const ContentContainer = styled(Container)`
-  width: 100vw;
-  height: 100vh;
+export const VisualizationWrapper = styled(Box)`
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  min-height: calc(100vh - 300px);
+  width: 100%;
 `;
 
 export const ControlsWrapper = styled(Box)`
@@ -69,7 +74,6 @@ export const ControlsWrapper = styled(Box)`
 
 export const ContentPlaceholder = styled(Box)`
   flex: 1;
-  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
