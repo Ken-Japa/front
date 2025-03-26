@@ -13,13 +13,14 @@ export const EmpresasContainer = styled(Box)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
   margin-top: -64px;
   padding-top: 64px;
 
   &::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -29,11 +30,6 @@ export const EmpresasContainer = styled(Box)`
         ? "rgba(0, 0, 0, 0.8)"
         : "rgba(255, 255, 255, 0.2)"};
     pointer-events: none;
-  }
-
-  & > * {
-    position: relative;
-    z-index: 1;
   }
 `;
 

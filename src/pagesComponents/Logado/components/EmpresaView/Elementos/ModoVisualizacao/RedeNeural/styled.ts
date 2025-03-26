@@ -7,9 +7,8 @@ export const GraphContainer = styled("div")(({ theme }) => ({
   width: "100%",
   background:
     theme.palette.mode === "dark"
-      ? "rgba(18, 18, 18, 0.95)" // Slightly lighter than pure black
-      : "rgba(90, 90, 90, 0.85)", // Light gray instead of white
-  borderRadius: "12px",
+      ? "rgba(18, 18, 18, 0.95)"
+      : "rgba(90, 90, 90, 0.85)",
   backdropFilter: "blur(10px)",
   boxShadow:
     theme.palette.mode === "dark"
@@ -17,6 +16,6 @@ export const GraphContainer = styled("div")(({ theme }) => ({
       : "0 4px 24px rgba(0, 0, 0, 0.1)",
   "& .vis-network": {
     outline: "none",
-    height: "100% !important",
+    height: "100%",
   },
 }));

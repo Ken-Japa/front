@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Graph, { GraphData } from 'react-graph-vis';
+import { CircularProgress, Box } from '@mui/material';
 import { DEFAULT_GRAPH_OPTIONS } from './constants/graphOptions';
 import { CORES_INDUSTRIAS } from './constants/colors';
 import { SumarioData } from './types';
@@ -11,12 +12,17 @@ import { createEmpresaNode } from './components/EmpresaNode';
 import { generateSegmentColors, adjustColorHSL } from './utils/graphUtils';
 import { GraphContainer } from './styled';
 
-export const RedeNeural: React.FC = () => {
+interface RedeNeuralProps {
+  onLoadingChange?: (loading: boolean) => void;
+}
+export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        onLoadingChange?.(true);
         const response = await import('@/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario.json');
         const data: SumarioData = response.default;
 
@@ -60,7 +66,7 @@ export const RedeNeural: React.FC = () => {
           edges.push({
             from: 'Mercado Total',
             to: industriaNode.id,
-            color: { color: corIndustria, opacity: 0.9 },
+            color: { color: corIndustria, opacity: 0.9, highlight: '#FFFFFF' },
             width: 3,
             smooth: { enabled: true, type: 'curvedCW', roundness: 0.1 },
             physics: false
@@ -86,7 +92,7 @@ export const RedeNeural: React.FC = () => {
             edges.push({
               from: industriaNode.id,
               to: segmentoNode.id,
-              color: { color: segmentColors[segIndex], opacity: 0.5 },
+              color: { color: segmentColors[segIndex], opacity: 0.5, highlight: '#FFFFFF' },
               width: 2
             });
 
@@ -108,7 +114,7 @@ export const RedeNeural: React.FC = () => {
               edges.push({
                 from: segmentoNode.id,
                 to: empresaNode.id,
-                color: { color: empresaNode.color.background, opacity: 0.4 },
+                color: { color: empresaNode.color.background, opacity: 0.4, highlight: '#FFFFFF' },
                 width: 1
               });
             });
@@ -119,10 +125,13 @@ export const RedeNeural: React.FC = () => {
       } catch (error) {
         console.error('Error loading data:', error);
       }
+      finally {
+        onLoadingChange?.(false);
+      }
     };
 
     fetchData();
-  }, []);
+  }, [onLoadingChange]);
 
   return (
     <GraphContainer>
