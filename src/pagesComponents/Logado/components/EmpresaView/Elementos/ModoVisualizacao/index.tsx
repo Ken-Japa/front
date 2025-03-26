@@ -5,7 +5,7 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import TableRowsIcon from '@mui/icons-material/TableRows';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
-import { RedeNeural } from './RedeNeural';
+
 
 interface ModoVisualizacaoProps {
     viewMode: ViewMode;

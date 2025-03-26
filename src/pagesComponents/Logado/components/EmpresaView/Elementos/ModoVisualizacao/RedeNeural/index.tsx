@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Graph, { GraphData } from 'react-graph-vis';
-import { CircularProgress, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import { DEFAULT_GRAPH_OPTIONS } from './constants/graphOptions';
 import { CORES_INDUSTRIAS } from './constants/colors';
-import { SumarioData } from './types';
+
 import { createCentralNode } from './components/CentralNode';
 import { createIndustriaNode } from './components/IndustriaNode';
 import { createSegmentoNode } from './components/SegmentoNode';
@@ -11,20 +11,21 @@ import { createEmpresaNode } from './components/EmpresaNode';
 
 import { generateSegmentColors, adjustColorHSL } from './utils/graphUtils';
 import { GraphContainer } from './styled';
+import { sumarioService } from './services/sumarioService';
 
 interface RedeNeuralProps {
   onLoadingChange?: (loading: boolean) => void;
 }
 export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
+  const [error, setError] = useState<string | null>(null);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         onLoadingChange?.(true);
-        const response = await import('@/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario.json');
-        const data: SumarioData = response.default;
+        const data = await sumarioService.getSumarioData();
 
         const nodes: any[] = [];
         const edges: any[] = [];
@@ -124,6 +125,7 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
         setGraphData({ nodes, edges });
       } catch (error) {
         console.error('Error loading data:', error);
+        setError('Failed to load graph data');
       }
       finally {
         onLoadingChange?.(false);
@@ -132,6 +134,10 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
 
     fetchData();
   }, [onLoadingChange]);
+
+  if (error) {
+    return <Box sx={{ p: 2 }}>{error}</Box>;
+  }
 
   return (
     <GraphContainer>

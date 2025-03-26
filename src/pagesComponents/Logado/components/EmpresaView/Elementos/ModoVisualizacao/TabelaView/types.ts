@@ -1,56 +1,46 @@
-export interface CodigoDetalhe {
-  codigo: string;
-  preco: number;
-  variacao?: number; // Make variacao optional since some codes might not have it
+export interface Codigo {
+    codigo: string;
+    preco: number;
+    variacao?: number;
 }
 
 export interface EmpresaDetalhe {
-  empresa: string;
-  valorMercado: number;
-  participacao: number;
-  codigos: CodigoDetalhe[];
+    empresa: string;
+    valorMercado: number;
+    codigos: Codigo[];
 }
 
 export interface Segmento {
-  segmento: string;
-  valorMercado: number;
-  empresas: number;
-  participacao: number;
-  empresasDetalhes: EmpresaDetalhe[];
+    segmento: string;
+    valorMercado: number;
+    empresasDetalhes: EmpresaDetalhe[];
 }
 
-export interface IndustriaData {
-  industria: string;
-  valorMercadoTotal: number;
-  participacao: number;
-  qtdSegmentos: number;
-  empresas: number;
-  segmentos: Segmento[];
+export interface Industria {
+    industria: string;
+    valorMercadoTotal: number;
+    segmentos: Segmento[];
 }
 
 export interface SumarioTotal {
-  valorMercadoTotalGeral: number;
-  qtdIndustriasTotal: number;
-  qtdEmpresasTotal: number;
-  qtdSegmentosTotal: number;
-  industrias: string[];
+    valorMercadoTotalGeral: number;
 }
 
 export interface SumarioData {
-  sumarioTotal: SumarioTotal;
-  sumario: IndustriaData[];
+    sumario: Industria[];
+    sumarioTotal: SumarioTotal;
 }
 
 export interface IndustriaRowProps {
-  industria: string;
-  valorMercadoTotal: number;
-  valorMercadoGeral: number;
-  segmentos: Segmento[];
-  hideSegmentos: boolean;
+    industria: string;
+    valorMercadoTotal: number;
+    valorMercadoGeral: number;
+    segmentos: Segmento[];
+    hideSegmentos: boolean;
 }
 
 export interface SegmentoSectionProps {
-  segmento: Segmento;
-  valorMercadoIndustria: number;
-  valorMercadoTotal: number;  // Add this new prop
+    segmento: Segmento;
+    valorMercadoIndustria: number;
+    valorMercadoTotal: number;
 }
