@@ -46,9 +46,11 @@ export interface IndustriaRowProps {
   valorMercadoTotal: number;
   valorMercadoGeral: number;
   segmentos: Segmento[];
+  hideSegmentos: boolean;
 }
 
 export interface SegmentoSectionProps {
   segmento: Segmento;
   valorMercadoIndustria: number;
+  valorMercadoTotal: number;  // Add this new prop
 }

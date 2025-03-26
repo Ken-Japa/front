@@ -1,6 +1,6 @@
 {
   "sumarioTotal": {
-    "valorMercadoTotalGeral": 2458415262228,
+    "valorMercadoTotalGeral": 4161466760512,
     "qtdIndustriasTotal": 11,
     "qtdEmpresasTotal": 321,
     "qtdSegmentosTotal": 41,
@@ -21,21 +21,21 @@
   "sumario": [
     {
       "industria": "Materiais Básicos",
-      "valorMercadoTotal": 231474785544,
-      "participacao": 9.415609685656614,
+      "valorMercadoTotal": 490545920937,
+      "participacao": 11.78781302765101,
       "qtdSegmentos": 5,
       "empresas": 26,
       "segmentos": [
         {
           "segmento": "Químico",
-          "valorMercado": 10111309138,
+          "valorMercado": 17196530418,
           "empresas": 8,
-          "participacao": 4.368211904478895,
+          "participacao": 3.505590340075118,
           "empresasDetalhes": [
             {
               "empresa": "Cristal",
-              "valorMercado": 554363171,
-              "participacao": 5.482605302973183,
+              "valorMercado": 559485387,
+              "participacao": 3.2534783087079813,
               "codigos": [
                 {
                   "codigo": "CRPG3",
@@ -44,8 +44,8 @@
                 },
                 {
                   "codigo": "CRPG5",
-                  "preco": 18.69,
-                  "variacao": -49.89
+                  "preco": 18.45,
+                  "variacao": -50.54
                 },
                 {
                   "codigo": "CRPG6",
@@ -56,13 +56,13 @@
             },
             {
               "empresa": "UNIPAR",
-              "valorMercado": 6145590610,
-              "participacao": 60.77937610377114,
+              "valorMercado": 5988718418,
+              "participacao": 34.825155263479616,
               "codigos": [
                 {
                   "codigo": "UNIP3",
-                  "preco": 50.5,
-                  "variacao": -30.06
+                  "preco": 50.01,
+                  "variacao": -30.73
                 },
                 {
                   "codigo": "UNIP5",
@@ -71,15 +71,15 @@
                 },
                 {
                   "codigo": "UNIP6",
-                  "preco": 54.71,
-                  "variacao": -29.63
+                  "preco": 54.22,
+                  "variacao": -30.26
                 }
               ]
             },
             {
               "empresa": "FER Heringer",
               "valorMercado": 206273416,
-              "participacao": 2.040026797566596,
+              "participacao": 1.1995060107246338,
               "codigos": [
                 {
                   "codigo": "FHER3",
@@ -90,42 +90,42 @@
             },
             {
               "empresa": "Nutriplant",
-              "valorMercado": 47282507,
-              "participacao": 0.46762003173559774,
+              "valorMercado": 48077137,
+              "participacao": 0.279574634134782,
               "codigos": [
                 {
                   "codigo": "NUTR3",
-                  "preco": 3.57,
-                  "variacao": -13.35
+                  "preco": 3.63,
+                  "variacao": -11.89
                 }
               ]
             },
             {
               "empresa": "Vittia",
-              "valorMercado": 798167331,
-              "participacao": 7.893808013448556,
+              "valorMercado": 814701891,
+              "participacao": 4.737594568188203,
               "codigos": [
                 {
                   "codigo": "VITT3",
-                  "preco": 5.31,
-                  "variacao": -48.25
+                  "preco": 5.42,
+                  "variacao": -47.17
                 }
               ]
             },
             {
               "empresa": "Braskem",
-              "valorMercado": 1474565689,
-              "participacao": 14.583331088734436,
+              "valorMercado": 8697388212,
+              "participacao": 50.57641280299337,
               "codigos": [
                 {
                   "codigo": "BRKM3",
-                  "preco": 10.93,
-                  "variacao": -39.07
+                  "preco": 10.51,
+                  "variacao": -41.42
                 },
                 {
                   "codigo": "BRKM5",
-                  "preco": 10.79,
-                  "variacao": -38.02
+                  "preco": 10.74,
+                  "variacao": -38.31
                 },
                 {
                   "codigo": "BRKM6",
@@ -136,25 +136,25 @@
             },
             {
               "empresa": "Dexxos Par",
-              "valorMercado": 828310400,
-              "participacao": 8.19192043972892,
+              "valorMercado": 830381223,
+              "participacao": 4.8287718674391495,
               "codigos": [
                 {
                   "codigo": "DEXP3",
-                  "preco": 8,
-                  "variacao": -32.72
+                  "preco": 8.02,
+                  "variacao": -32.55
                 },
                 {
                   "codigo": "DEXP4",
-                  "preco": 8.06,
-                  "variacao": -29.61
+                  "preco": 7.93,
+                  "variacao": -30.74
                 }
               ]
             },
             {
               "empresa": "Sansuy",
-              "valorMercado": 56756014,
-              "participacao": 0.5613122220415688,
+              "valorMercado": 51504734,
+              "participacao": 0.29950654433227314,
               "codigos": [
                 {
                   "codigo": "SNSY3",
@@ -163,8 +163,8 @@
                 },
                 {
                   "codigo": "SNSY5",
-                  "preco": 4.35,
-                  "variacao": 14.47
+                  "preco": 4.34,
+                  "variacao": 14.21
                 }
               ]
             }
@@ -172,60 +172,60 @@
         },
         {
           "segmento": "Mineração",
-          "valorMercado": 90892357862,
+          "valorMercado": 305098991795,
           "empresas": 4,
-          "participacao": 39.266634440718676,
+          "participacao": 62.19580650313539,
           "empresasDetalhes": [
             {
               "empresa": "Bradespar",
-              "valorMercado": 6953464477,
-              "participacao": 7.650219050931985,
+              "valorMercado": 6932906240,
+              "participacao": 2.272346492923946,
               "codigos": [
                 {
                   "codigo": "BRAP3",
-                  "preco": 16.9,
-                  "variacao": -23.98
+                  "preco": 16.7,
+                  "variacao": -24.88
                 },
                 {
                   "codigo": "BRAP4",
-                  "preco": 18.2,
-                  "variacao": -25.44
+                  "preco": 18.13,
+                  "variacao": -25.73
                 }
               ]
             },
             {
               "empresa": "CBA",
-              "valorMercado": 3281405879,
-              "participacao": 3.610210975032787,
+              "valorMercado": 3177234362,
+              "participacao": 1.0413781911592896,
               "codigos": [
                 {
                   "codigo": "CBAV3",
-                  "preco": 5.05,
-                  "variacao": 10.99
+                  "preco": 4.88,
+                  "variacao": 7.25
                 }
               ]
             },
             {
               "empresa": "CSNMINERACAO",
-              "valorMercado": 34941602432,
-              "participacao": 38.44283859931449,
+              "valorMercado": 34722189121,
+              "participacao": 11.380630567383287,
               "codigos": [
                 {
                   "codigo": "CMIN3",
-                  "preco": 6.36,
-                  "variacao": -11.17
+                  "preco": 6.33,
+                  "variacao": -11.59
                 }
               ]
             },
             {
               "empresa": "VALE",
-              "valorMercado": 45715885074,
-              "participacao": 50.29673137472073,
+              "valorMercado": 260266662072,
+              "participacao": 85.30564474853347,
               "codigos": [
                 {
                   "codigo": "VALE3",
-                  "preco": 57.44,
-                  "variacao": -22.23
+                  "preco": 57.34,
+                  "variacao": -22.37
                 }
               ]
             }
@@ -233,19 +233,19 @@
         },
         {
           "segmento": "Embalagem",
-          "valorMercado": 1750757585,
+          "valorMercado": 1745960994,
           "empresas": 1,
-          "participacao": 0.7563491552159604,
+          "participacao": 0.3559220288010979,
           "empresasDetalhes": [
             {
               "empresa": "IRANI",
-              "valorMercado": 1750757585,
+              "valorMercado": 1745960994,
               "participacao": 100,
               "codigos": [
                 {
                   "codigo": "RANI3",
-                  "preco": 7.3,
-                  "variacao": -34.29
+                  "preco": 7.28,
+                  "variacao": -34.47
                 }
               ]
             }
@@ -253,26 +253,26 @@
         },
         {
           "segmento": "Metalurgia",
-          "valorMercado": 30830317453,
+          "valorMercado": 69333075518,
           "empresas": 9,
-          "participacao": 13.319082413466413,
+          "participacao": 14.133860370414606,
           "empresasDetalhes": [
             {
               "empresa": "PARANAPANEMA",
-              "valorMercado": 1068285547,
-              "participacao": 3.4650488066773004,
+              "valorMercado": 82212522,
+              "participacao": 0.11857619380905192,
               "codigos": [
                 {
                   "codigo": "PMAM3",
-                  "preco": 1.11,
-                  "variacao": -74.13
+                  "preco": 1.09,
+                  "variacao": -74.59
                 }
               ]
             },
             {
               "empresa": "MANGELS INDL",
-              "valorMercado": 24153792,
-              "participacao": 0.07834428574023544,
+              "valorMercado": 24153798,
+              "participacao": 0.03483733819615326,
               "codigos": [
                 {
                   "codigo": "MGEL4",
@@ -283,8 +283,8 @@
             },
             {
               "empresa": "PANATLANTICA",
-              "valorMercado": 663310150,
-              "participacao": 2.15148660409092,
+              "valorMercado": 663539100,
+              "participacao": 0.9570311067878914,
               "codigos": [
                 {
                   "codigo": "PATI3",
@@ -300,20 +300,20 @@
             },
             {
               "empresa": "TEKNO",
-              "valorMercado": 187204830,
-              "participacao": 0.6072101926468607,
+              "valorMercado": 262875750,
+              "participacao": 0.37914912620853397,
               "codigos": [
                 {
                   "codigo": "TKNO4",
-                  "preco": 74,
-                  "variacao": 23.31
+                  "preco": 75,
+                  "variacao": 24.98
                 }
               ]
             },
             {
               "empresa": "FERBASA",
-              "valorMercado": 3210382825,
-              "participacao": 10.41307093218921,
+              "valorMercado": 3174635860,
+              "participacao": 4.578818747447332,
               "codigos": [
                 {
                   "codigo": "FESA3",
@@ -322,71 +322,71 @@
                 },
                 {
                   "codigo": "FESA4",
-                  "preco": 7.63,
-                  "variacao": -83.12
+                  "preco": 7.58,
+                  "variacao": -83.23
                 }
               ]
             },
             {
               "empresa": "SID NACIONAL",
-              "valorMercado": 2308745402,
-              "participacao": 7.488555398495721,
+              "valorMercado": 13194635047,
+              "participacao": 19.030794391306724,
               "codigos": [
                 {
                   "codigo": "CSNA3",
-                  "preco": 10.06,
-                  "variacao": -44.2
+                  "preco": 9.95,
+                  "variacao": -44.81
                 }
               ]
             },
             {
               "empresa": "GERDAU",
-              "valorMercado": 6154431282,
-              "participacao": 19.962270227616912,
+              "valorMercado": 34780222107,
+              "participacao": 50.163968419330374,
               "codigos": [
                 {
                   "codigo": "GGBR3",
-                  "preco": 16.15,
-                  "variacao": -24.53
+                  "preco": 16.12,
+                  "variacao": -24.67
                 },
                 {
                   "codigo": "GGBR4",
-                  "preco": 17.39,
-                  "variacao": -25.14
+                  "preco": 17.32,
+                  "variacao": -25.44
                 }
               ]
             },
             {
               "empresa": "GERDAU MET",
-              "valorMercado": 9799738496,
-              "participacao": 31.78604472996245,
+              "valorMercado": 9764384715,
+              "participacao": 14.083299553710127,
               "codigos": [
                 {
                   "codigo": "GOAU3",
-                  "preco": 9.73,
-                  "variacao": -9.07
+                  "preco": 9.69,
+                  "variacao": -9.44
                 },
                 {
                   "codigo": "GOAU4",
-                  "preco": 9.63,
-                  "variacao": -8.02
+                  "preco": 9.59,
+                  "variacao": -8.4
                 }
               ]
             },
             {
               "empresa": "USIMINAS",
-              "valorMercado": 7414065129,
-              "participacao": 24.047968822580387,
+              "valorMercado": 7386416619,
+              "participacao": 10.65352512320381,
               "codigos": [
                 {
                   "codigo": "USIM3",
-                  "preco": 5.94,
-                  "variacao": -28.86
+                  "preco": 5.9,
+                  "variacao": -29.34
                 },
                 {
                   "codigo": "USIM5",
-                  "preco": 5.96,
-                  "variacao": -32.5
+                  "preco": 5.9,
+                  "variacao": -33.18
                 }
               ]
             }
@@ -394,70 +394,70 @@
         },
         {
           "segmento": "Madeira Papel",
-          "valorMercado": 97890043506,
+          "valorMercado": 97171362212,
           "empresas": 4,
-          "participacao": 42.28972208612006,
+          "participacao": 19.8088207575738,
           "empresasDetalhes": [
             {
               "empresa": "KLABIN S/A",
-              "valorMercado": 24602223190,
-              "participacao": 25.13250817841556,
+              "valorMercado": 23793853502,
+              "participacao": 24.486487541554318,
               "codigos": [
                 {
                   "codigo": "KLBN3",
-                  "preco": 3.96,
-                  "variacao": -8.97
+                  "preco": 3.91,
+                  "variacao": -10.11
                 },
                 {
                   "codigo": "KLBN4",
-                  "preco": 3.85,
-                  "variacao": -11.7
+                  "preco": 3.81,
+                  "variacao": -12.61
                 },
                 {
                   "codigo": "KLBN11",
-                  "preco": 19.29,
-                  "variacao": -10.53
+                  "preco": 19.11,
+                  "variacao": -11.36
                 }
               ]
             },
             {
               "empresa": "SUZANO S.A.",
-              "valorMercado": 67390079006,
-              "participacao": 68.8426285170355,
+              "valorMercado": 67516488777,
+              "participacao": 69.48187947566117,
               "codigos": [
                 {
                   "codigo": "SUZB3",
-                  "preco": 53.35,
-                  "variacao": 1.37
+                  "preco": 53.41,
+                  "variacao": 1.48
                 }
               ]
             },
             {
               "empresa": "DEXCO",
-              "valorMercado": 4595170081,
-              "participacao": 4.694215996255377,
+              "valorMercado": 4562348581,
+              "participacao": 4.695157582587209,
               "codigos": [
                 {
                   "codigo": "DXCO3",
-                  "preco": 5.6,
-                  "variacao": -29.74
+                  "preco": 5.56,
+                  "variacao": -30.24
                 }
               ]
             },
             {
               "empresa": "EUCATEX",
-              "valorMercado": 1302571229,
-              "participacao": 1.3306473082935766,
+              "valorMercado": 1298671352,
+              "participacao": 1.3364754001973052,
               "codigos": [
                 {
                   "codigo": "EUCA3",
-                  "preco": 15.7,
-                  "variacao": -8.72
+                  "preco": 15.73,
+                  "variacao": -8.55
                 },
                 {
                   "codigo": "EUCA4",
-                  "preco": 13.2,
-                  "variacao": -19.12
+                  "preco": 13.02,
+                  "variacao": -20.22
                 }
               ]
             }
@@ -467,50 +467,50 @@
     },
     {
       "industria": "Bens de Capital e Serviço",
-      "valorMercadoTotal": 141677827813,
-      "participacao": 5.762973814464565,
+      "valorMercadoTotal": 185398370562,
+      "participacao": 4.455120783884137,
       "qtdSegmentos": 5,
       "empresas": 42,
       "segmentos": [
         {
           "segmento": "Construção",
-          "valorMercado": 1151193343,
+          "valorMercado": 1142432047,
           "empresas": 5,
-          "participacao": 0.8125430497984875,
+          "participacao": 0.6162039307772413,
           "empresasDetalhes": [
             {
               "empresa": "ETERNIT",
-              "valorMercado": 307647319,
-              "participacao": 26.724209349428108,
+              "valorMercado": 305176259,
+              "participacao": 26.712858747387713,
               "codigos": [
                 {
                   "codigo": "ETER3",
-                  "preco": 4.98,
-                  "variacao": -41.89
+                  "preco": 4.94,
+                  "variacao": -42.36
                 }
               ]
             },
             {
               "empresa": "HAGA S/A",
-              "valorMercado": 19393945,
-              "participacao": 1.6846818232513008,
+              "valorMercado": 18373725,
+              "participacao": 1.6082991586457134,
               "codigos": [
                 {
                   "codigo": "HAGA3",
-                  "preco": 2.13,
-                  "variacao": -19.62
+                  "preco": 2.25,
+                  "variacao": -15.09
                 },
                 {
                   "codigo": "HAGA4",
-                  "preco": 1.26,
-                  "variacao": 5.88
+                  "preco": 1.22,
+                  "variacao": 2.52
                 }
               ]
             },
             {
               "empresa": "PORTOBELLO",
               "valorMercado": 524470900,
-              "participacao": 45.558889233430875,
+              "participacao": 45.90827974208605,
               "codigos": [
                 {
                   "codigo": "PTBL3",
@@ -522,7 +522,7 @@
             {
               "empresa": "SONDOTECNICA",
               "valorMercado": 109442016,
-              "participacao": 9.506831903214021,
+              "participacao": 9.579739669190145,
               "codigos": [
                 {
                   "codigo": "SOND5",
@@ -538,8 +538,8 @@
             },
             {
               "empresa": "AZEVEDO",
-              "valorMercado": 190239163,
-              "participacao": 16.525387690675693,
+              "valorMercado": 184969147,
+              "participacao": 16.190822682690378,
               "codigos": [
                 {
                   "codigo": "AZEV3",
@@ -557,14 +557,14 @@
         },
         {
           "segmento": "Máquinas e Equipamentos",
-          "valorMercado": 8989544661,
+          "valorMercado": 9093177322,
           "empresas": 11,
-          "participacao": 6.3450610443189905,
+          "participacao": 4.904669493283979,
           "empresasDetalhes": [
             {
               "empresa": "METISA",
-              "valorMercado": 382120294,
-              "participacao": 4.25071912326973,
+              "valorMercado": 511416334,
+              "participacao": 5.624176411502294,
               "codigos": [
                 {
                   "codigo": "MTSA3",
@@ -573,27 +573,27 @@
                 },
                 {
                   "codigo": "MTSA4",
-                  "preco": 41.82,
-                  "variacao": -8.03
+                  "preco": 42.8,
+                  "variacao": -5.87
                 }
               ]
             },
             {
               "empresa": "AERIS",
-              "valorMercado": 256556391,
-              "participacao": 2.853942003459167,
+              "valorMercado": 254692773,
+              "participacao": 2.8009216578653673,
               "codigos": [
                 {
                   "codigo": "AERI3",
-                  "preco": 4.13,
-                  "variacao": 313
+                  "preco": 4.1,
+                  "variacao": 310
                 }
               ]
             },
             {
               "empresa": "ARMAC",
-              "valorMercado": 1652775896,
-              "participacao": 18.385535178109283,
+              "valorMercado": 1652776373,
+              "participacao": 18.176005091215792,
               "codigos": [
                 {
                   "codigo": "ARML3",
@@ -604,8 +604,8 @@
             },
             {
               "empresa": "BARDELLA",
-              "valorMercado": 15296727,
-              "participacao": 0.17016131046506627,
+              "valorMercado": 14820354,
+              "participacao": 0.16298322880104504,
               "codigos": [
                 {
                   "codigo": "BDLL3",
@@ -614,15 +614,15 @@
                 },
                 {
                   "codigo": "BDLL4",
-                  "preco": 9.1,
-                  "variacao": 9.64
+                  "preco": 9,
+                  "variacao": 8.43
                 }
               ]
             },
             {
               "empresa": "ACO ALTONA",
-              "valorMercado": 300059923,
-              "participacao": 3.3378767703526955,
+              "valorMercado": 315059475,
+              "participacao": 3.464789741180415,
               "codigos": [
                 {
                   "codigo": "EALT3",
@@ -631,15 +631,15 @@
                 },
                 {
                   "codigo": "EALT4",
-                  "preco": 13.27,
-                  "variacao": 45.98
+                  "preco": 13.35,
+                  "variacao": 46.86
                 }
               ]
             },
             {
               "empresa": "INEPAR",
-              "valorMercado": 64458189,
-              "participacao": 0.7170350827627976,
+              "valorMercado": 65110020,
+              "participacao": 0.7160315662433312,
               "codigos": [
                 {
                   "codigo": "INEP3",
@@ -655,20 +655,20 @@
             },
             {
               "empresa": "KEPLER WEBER",
-              "valorMercado": 1437760800,
-              "participacao": 15.993699950538574,
+              "valorMercado": 1428773965,
+              "participacao": 15.712593237824906,
               "codigos": [
                 {
                   "codigo": "KEPL3",
-                  "preco": 7.99,
-                  "variacao": -27.03
+                  "preco": 7.95,
+                  "variacao": -27.4
                 }
               ]
             },
             {
               "empresa": "METALFRIO",
-              "valorMercado": 1697361764,
-              "participacao": 18.88150988741164,
+              "valorMercado": 1697362000,
+              "participacao": 18.66632465082814,
               "codigos": [
                 {
                   "codigo": "FRIO3",
@@ -679,20 +679,20 @@
             },
             {
               "empresa": "MILLS",
-              "valorMercado": 2271527525,
-              "participacao": 25.268549305447408,
+              "valorMercado": 2238743690,
+              "participacao": 24.62003775713899,
               "codigos": [
                 {
                   "codigo": "MILS3",
-                  "preco": 9.7,
-                  "variacao": -27.07
+                  "preco": 9.56,
+                  "variacao": -28.12
                 }
               ]
             },
             {
               "empresa": "NORDON MET",
               "valorMercado": 35822232,
-              "participacao": 0.39848772491681606,
+              "participacao": 0.39394626027287316,
               "codigos": [
                 {
                   "codigo": "NORD3",
@@ -703,13 +703,13 @@
             },
             {
               "empresa": "ROMI",
-              "valorMercado": 875804920,
-              "participacao": 9.742483663266825,
+              "valorMercado": 878600106,
+              "participacao": 9.662190397126844,
               "codigos": [
                 {
                   "codigo": "ROMI3",
-                  "preco": 9.4,
-                  "variacao": -29.64
+                  "preco": 9.43,
+                  "variacao": -29.42
                 }
               ]
             }
@@ -717,38 +717,38 @@
         },
         {
           "segmento": "Serviço",
-          "valorMercado": 12905270938,
+          "valorMercado": 12885694613,
           "empresas": 7,
-          "participacao": 9.10888537551099,
+          "participacao": 6.950273928481389,
           "empresasDetalhes": [
             {
               "empresa": "ESTAPAR",
-              "valorMercado": 664093427,
-              "participacao": 5.145908444622846,
+              "valorMercado": 666263665,
+              "participacao": 5.170568487071129,
               "codigos": [
                 {
                   "codigo": "ALPK3",
-                  "preco": 3.05,
-                  "variacao": -30.05
+                  "preco": 3.07,
+                  "variacao": -29.59
                 }
               ]
             },
             {
               "empresa": "ATMASA",
-              "valorMercado": 30716901,
-              "participacao": 0.23801825740483343,
+              "valorMercado": 30449798,
+              "participacao": 0.23630699713525796,
               "codigos": [
                 {
                   "codigo": "ATMP3",
-                  "preco": 1.15,
-                  "variacao": -71.18
+                  "preco": 1.14,
+                  "variacao": -71.43
                 }
               ]
             },
             {
               "empresa": "DTCOM-DIRECT",
-              "valorMercado": 47314510,
-              "participacao": 0.36662934259427943,
+              "valorMercado": 41653834,
+              "participacao": 0.32325641147801737,
               "codigos": [
                 {
                   "codigo": "DTCY3",
@@ -759,49 +759,49 @@
             },
             {
               "empresa": "GPS",
-              "valorMercado": 9353485910,
-              "participacao": 72.47802820209182,
+              "valorMercado": 9366792029,
+              "participacao": 72.69140166918217,
               "codigos": [
                 {
                   "codigo": "GGPS3",
-                  "preco": 13.86,
-                  "variacao": -27.81
+                  "preco": 13.83,
+                  "variacao": -27.97
                 }
               ]
             },
             {
               "empresa": "PRINER",
-              "valorMercado": 805932937,
-              "participacao": 6.244990445159146,
+              "valorMercado": 804531282,
+              "participacao": 6.24360041241651,
               "codigos": [
                 {
                   "codigo": "PRNR3",
-                  "preco": 17.25,
-                  "variacao": 43.75
+                  "preco": 17.22,
+                  "variacao": 43.5
                 }
               ]
             },
             {
               "empresa": "SEQUOIA LOG",
-              "valorMercado": 63387470,
-              "participacao": 0.49117504238793996,
+              "valorMercado": 72490253,
+              "participacao": 0.5625637978946568,
               "codigos": [
                 {
                   "codigo": "SEQL3",
-                  "preco": 2.04,
-                  "variacao": 363.64
+                  "preco": 2.05,
+                  "variacao": 365.91
                 }
               ]
             },
             {
               "empresa": "VALID",
-              "valorMercado": 1940339783,
-              "participacao": 15.035250265739133,
+              "valorMercado": 1903513752,
+              "participacao": 14.772302224822251,
               "codigos": [
                 {
                   "codigo": "VLID3",
-                  "preco": 23.71,
-                  "variacao": 14.32
+                  "preco": 23.26,
+                  "variacao": 12.15
                 }
               ]
             }
@@ -809,151 +809,151 @@
         },
         {
           "segmento": "Transporte",
-          "valorMercado": 88808646636,
+          "valorMercado": 89920211431,
           "empresas": 12,
-          "participacao": 62.68351795541231,
+          "participacao": 48.5010796796239,
           "empresasDetalhes": [
             {
               "empresa": "AZUL",
-              "valorMercado": 191517183,
-              "participacao": 0.21565150495420957,
+              "valorMercado": 1891398275,
+              "participacao": 2.1034184027151213,
               "codigos": [
                 {
                   "codigo": "AZUL4",
-                  "preco": 3.67,
-                  "variacao": -76.92
+                  "preco": 3.59,
+                  "variacao": -77.42
                 }
               ]
             },
             {
               "empresa": "HIDROVIAS",
-              "valorMercado": 2691492171,
-              "participacao": 3.0306645500765472,
+              "valorMercado": 3033651885,
+              "participacao": 3.3737152490214766,
               "codigos": [
                 {
                   "codigo": "HBSA3",
-                  "preco": 2.24,
-                  "variacao": -40.27
+                  "preco": 2.23,
+                  "variacao": -40.53
                 }
               ]
             },
             {
               "empresa": "LOG-IN",
-              "valorMercado": 2328551131,
-              "participacao": 2.621986956454851,
+              "valorMercado": 2326402784,
+              "participacao": 2.587185624874957,
               "codigos": [
                 {
                   "codigo": "LOGN3",
-                  "preco": 21.7,
-                  "variacao": -48.33
+                  "preco": 21.68,
+                  "variacao": -48.38
                 }
               ]
             },
             {
               "empresa": "TREVISA",
-              "valorMercado": 249408000,
-              "participacao": 0.28083751914636035,
+              "valorMercado": 248160951,
+              "participacao": 0.2759790563775815,
               "codigos": [
                 {
                   "codigo": "LUXM4",
-                  "preco": 11.4,
-                  "variacao": -28.71
+                  "preco": 11.94,
+                  "variacao": -25.33
                 }
               ]
             },
             {
               "empresa": "RUMO S.A.",
-              "valorMercado": 32237604283,
-              "participacao": 36.3000738150332,
+              "valorMercado": 31625497984,
+              "participacao": 35.17062235587349,
               "codigos": [
                 {
                   "codigo": "RAIL3",
-                  "preco": 17.38,
-                  "variacao": -23.84
+                  "preco": 17.05,
+                  "variacao": -25.28
                 }
               ]
             },
             {
               "empresa": "CCR SA",
-              "valorMercado": 24017800693,
-              "participacao": 27.044439480585442,
+              "valorMercado": 23815799922,
+              "participacao": 26.48548034195291,
               "codigos": [
                 {
                   "codigo": "CCRO3",
-                  "preco": 11.89,
-                  "variacao": -16.33
+                  "preco": 11.79,
+                  "variacao": -17.03
                 }
               ]
             },
             {
               "empresa": "ECORODOVIAS",
-              "valorMercado": 3795020712,
-              "participacao": 4.273255877386187,
+              "valorMercado": 3767167915,
+              "participacao": 4.189456246875848,
               "codigos": [
                 {
                   "codigo": "ECOR3",
-                  "preco": 5.44,
-                  "variacao": -42.98
+                  "preco": 5.41,
+                  "variacao": -43.29
                 }
               ]
             },
             {
               "empresa": "TRIUNFO PART",
-              "valorMercado": 216480003,
-              "participacao": 0.2437600517518149,
+              "valorMercado": 215600004,
+              "participacao": 0.23976812395001984,
               "codigos": [
                 {
                   "codigo": "TPIS3",
-                  "preco": 4.92,
-                  "variacao": 20.59
+                  "preco": 4.9,
+                  "variacao": 20.1
                 }
               ]
             },
             {
               "empresa": "JSL",
-              "valorMercado": 1672757083,
-              "participacao": 1.883552048547851,
+              "valorMercado": 1644113874,
+              "participacao": 1.8284141549885096,
               "codigos": [
                 {
                   "codigo": "JSLG3",
-                  "preco": 5.84,
-                  "variacao": -49.22
+                  "preco": 5.74,
+                  "variacao": -50.09
                 }
               ]
             },
             {
               "empresa": "TEGMA",
-              "valorMercado": 2304161228,
-              "participacao": 2.594523523642991,
+              "valorMercado": 2279080747,
+              "participacao": 2.5345589281102234,
               "codigos": [
                 {
                   "codigo": "TGMA3",
-                  "preco": 34.91,
-                  "variacao": 29.06
+                  "preco": 34.53,
+                  "variacao": 27.65
                 }
               ]
             },
             {
               "empresa": "SANTOS BRP",
-              "valorMercado": 11536675169,
-              "participacao": 12.99048640644798,
+              "valorMercado": 11519386034,
+              "participacao": 12.810674986945916,
               "codigos": [
                 {
                   "codigo": "STBP3",
-                  "preco": 13.35,
-                  "variacao": 48.17
+                  "preco": 13.33,
+                  "variacao": 47.95
                 }
               ]
             },
             {
               "empresa": "WILSON SONS",
-              "valorMercado": 7567178980,
-              "participacao": 8.520768265972565,
+              "valorMercado": 7553951056,
+              "participacao": 8.400726528313939,
               "codigos": [
                 {
                   "codigo": "PORT3",
-                  "preco": 17.16,
-                  "variacao": 6.92
+                  "preco": 17.13,
+                  "variacao": 6.73
                 }
               ]
             }
@@ -961,43 +961,43 @@
         },
         {
           "segmento": "Equipamentos e Componentes de Transporte",
-          "valorMercado": 29823172235,
+          "valorMercado": 72356855149,
           "empresas": 7,
-          "participacao": 21.049992574959216,
+          "participacao": 39.02777296783349,
           "empresasDetalhes": [
             {
               "empresa": "EMBRAER",
-              "valorMercado": 9155769579,
-              "participacao": 30.70018677709588,
+              "valorMercado": 51640020544,
+              "participacao": 71.36852539771235,
               "codigos": [
                 {
                   "codigo": "EMBR3",
-                  "preco": 70.36,
-                  "variacao": 194.76
+                  "preco": 69.74,
+                  "variacao": 192.17
                 }
               ]
             },
             {
               "empresa": "FRAS-LE",
-              "valorMercado": 7503753224,
-              "participacao": 25.160815103343413,
+              "valorMercado": 7514553608,
+              "participacao": 10.385406596964094,
               "codigos": [
                 {
                   "codigo": "FRAS3",
-                  "preco": 27.79,
-                  "variacao": 69.35
+                  "preco": 27.83,
+                  "variacao": 69.59
                 }
               ]
             },
             {
               "empresa": "MARCOPOLO",
-              "valorMercado": 7398266368,
-              "participacao": 24.80710740528639,
+              "valorMercado": 7469281169,
+              "participacao": 10.322838317971353,
               "codigos": [
                 {
                   "codigo": "POMO3",
-                  "preco": 5.53,
-                  "variacao": 1.84
+                  "preco": 5.47,
+                  "variacao": 0.74
                 },
                 {
                   "codigo": "POMO4",
@@ -1008,54 +1008,54 @@
             },
             {
               "empresa": "RANDON PART",
-              "valorMercado": 2974092517,
-              "participacao": 9.972421758372345,
+              "valorMercado": 2999733873,
+              "participacao": 4.1457493789950295,
               "codigos": [
                 {
                   "codigo": "RAPT3",
-                  "preco": 8.75,
-                  "variacao": -23.78
+                  "preco": 8.6,
+                  "variacao": -25.09
                 },
                 {
                   "codigo": "RAPT4",
-                  "preco": 9.46,
-                  "variacao": -27.95
+                  "preco": 9.36,
+                  "variacao": -28.71
                 }
               ]
             },
             {
               "empresa": "RECRUSUL",
-              "valorMercado": 97729872,
-              "participacao": 0.3276977755079514,
+              "valorMercado": 60168207,
+              "participacao": 0.0831548121820653,
               "codigos": [
                 {
                   "codigo": "RCSL3",
-                  "preco": 3.34,
-                  "variacao": 58.29
+                  "preco": 3.32,
+                  "variacao": 57.35
                 },
                 {
                   "codigo": "RCSL4",
-                  "preco": 1.15,
-                  "variacao": 22.34
+                  "preco": 1.14,
+                  "variacao": 21.28
                 }
               ]
             },
             {
               "empresa": "TUPY",
-              "valorMercado": 2664398286,
-              "participacao": 8.933986850912877,
+              "valorMercado": 2645657179,
+              "participacao": 3.6564015580168063,
               "codigos": [
                 {
                   "codigo": "TUPY3",
-                  "preco": 18.48,
-                  "variacao": -30.94
+                  "preco": 18.35,
+                  "variacao": -31.43
                 }
               ]
             },
             {
               "empresa": "WETZEL S/A",
-              "valorMercado": 29162389,
-              "participacao": 0.09778432948113912,
+              "valorMercado": 27440569,
+              "participacao": 0.0379239381583035,
               "codigos": [
                 {
                   "codigo": "MWET4",
@@ -1070,26 +1070,26 @@
     },
     {
       "industria": "Comunicação",
-      "valorMercadoTotal": 31263215738,
-      "participacao": 1.2716816486758602,
+      "valorMercadoTotal": 131644908711,
+      "participacao": 3.163425693079506,
       "qtdSegmentos": 2,
       "empresas": 8,
       "segmentos": [
         {
           "segmento": "Mídia",
-          "valorMercado": 4220508501,
+          "valorMercado": 4207909947,
           "empresas": 1,
-          "participacao": 13.499918039045584,
+          "participacao": 3.1964091799688377,
           "empresasDetalhes": [
             {
               "empresa": "ELETROMIDIA",
-              "valorMercado": 4220508501,
+              "valorMercado": 4207909947,
               "participacao": 100,
               "codigos": [
                 {
                   "codigo": "ELMD3",
-                  "preco": 30.15,
-                  "variacao": 97.06
+                  "preco": 30.06,
+                  "variacao": 96.47
                 }
               ]
             }
@@ -1097,14 +1097,14 @@
         },
         {
           "segmento": "Telecomunicação",
-          "valorMercado": 27042707237,
+          "valorMercado": 127436998764,
           "empresas": 7,
-          "participacao": 86.50008196095442,
+          "participacao": 96.80359082003116,
           "empresasDetalhes": [
             {
               "empresa": "BRISANET",
               "valorMercado": 1486504093,
-              "participacao": 5.496876033795004,
+              "participacao": 1.166461943876166,
               "codigos": [
                 {
                   "codigo": "BRIT3",
@@ -1114,20 +1114,20 @@
             },
             {
               "empresa": "DESKTOP",
-              "valorMercado": 967783747,
-              "participacao": 3.5787236038109094,
+              "valorMercado": 965166270,
+              "participacao": 0.7573673888753352,
               "codigos": [
                 {
                   "codigo": "DESK3",
-                  "preco": 8.37,
-                  "variacao": -43.41
+                  "preco": 8.33,
+                  "variacao": -43.68
                 }
               ]
             },
             {
               "empresa": "OI",
-              "valorMercado": 532352799,
-              "participacao": 1.9685632593456899,
+              "valorMercado": 419507075,
+              "participacao": 0.32918781756378557,
               "codigos": [
                 {
                   "codigo": "OIBR3",
@@ -1143,8 +1143,8 @@
             },
             {
               "empresa": "TELEBRAS",
-              "valorMercado": 1206470192,
-              "participacao": 4.461351378124228,
+              "valorMercado": 1267779392,
+              "participacao": 0.994828349926692,
               "codigos": [
                 {
                   "codigo": "TELB3",
@@ -1160,37 +1160,37 @@
             },
             {
               "empresa": "TELEF BRASIL",
-              "valorMercado": 14133092287,
-              "participacao": 52.26212066395119,
+              "valorMercado": 80015651512,
+              "participacao": 62.78839919965521,
               "codigos": [
                 {
                   "codigo": "VIVT3",
-                  "preco": 49.28,
-                  "variacao": -8.09
+                  "preco": 49.07,
+                  "variacao": -8.49
                 }
               ]
             },
             {
               "empresa": "TIM",
-              "valorMercado": 7387782427,
-              "participacao": 27.31894540829104,
+              "valorMercado": 41928324541,
+              "participacao": 32.901217815594414,
               "codigos": [
                 {
                   "codigo": "TIMS3",
-                  "preco": 17.48,
-                  "variacao": -3.53
+                  "preco": 17.32,
+                  "variacao": -4.42
                 }
               ]
             },
             {
               "empresa": "UNIFIQUE",
-              "valorMercado": 1328721692,
-              "participacao": 4.9134196526819425,
+              "valorMercado": 1354065881,
+              "participacao": 1.0625374845083948,
               "codigos": [
                 {
                   "codigo": "FIQE3",
-                  "preco": 3.67,
-                  "variacao": -3.42
+                  "preco": 3.74,
+                  "variacao": -1.58
                 }
               ]
             }
@@ -1200,45 +1200,45 @@
     },
     {
       "industria": "Consumo Cíclico",
-      "valorMercadoTotal": 222660463693,
-      "participacao": 9.057072949148893,
+      "valorMercadoTotal": 218348024868,
+      "participacao": 5.246900610618739,
       "qtdSegmentos": 8,
       "empresas": 91,
       "segmentos": [
         {
           "segmento": "Automóveis e Motocicletas",
-          "valorMercado": 5990463234,
+          "valorMercado": 5942994838,
           "empresas": 3,
-          "participacao": 2.69040274804221,
+          "participacao": 2.721799220117872,
           "empresasDetalhes": [
             {
               "empresa": "IOCHP-MAXION",
-              "valorMercado": 1978369947,
-              "participacao": 33.02532491596626,
+              "valorMercado": 1932254068,
+              "participacao": 32.51313724260718,
               "codigos": [
                 {
                   "codigo": "MYPK3",
-                  "preco": 12.87,
-                  "variacao": -2.43
+                  "preco": 12.57,
+                  "variacao": -4.7
                 }
               ]
             },
             {
               "empresa": "METAL LEVE",
-              "valorMercado": 3936049780,
-              "participacao": 65.70526562387045,
+              "valorMercado": 3934697263,
+              "participacao": 66.20731416156079,
               "codigos": [
                 {
                   "codigo": "LEVE3",
-                  "preco": 29.06,
-                  "variacao": -16.52
+                  "preco": 29.03,
+                  "variacao": -16.6
                 }
               ]
             },
             {
               "empresa": "PLASCAR PART",
               "valorMercado": 76043507,
-              "participacao": 1.269409460163294,
+              "participacao": 1.2795485958320463,
               "codigos": [
                 {
                   "codigo": "PLAS3",
@@ -1251,62 +1251,62 @@
         },
         {
           "segmento": "Diversos",
-          "valorMercado": 54078627468,
+          "valorMercado": 53316795394,
           "empresas": 10,
-          "participacao": 24.287485335772306,
+          "participacao": 24.418263195296642,
           "empresasDetalhes": [
             {
               "empresa": "LOCALIZA",
-              "valorMercado": 36560077895,
-              "participacao": 67.6054101347778,
+              "valorMercado": 35986290617,
+              "participacao": 67.4952242554505,
               "codigos": [
                 {
                   "codigo": "RENT3",
-                  "preco": 33.78,
-                  "variacao": -47.25
+                  "preco": 33.24,
+                  "variacao": -48.09
                 }
               ]
             },
             {
               "empresa": "MOVIDA",
-              "valorMercado": 1760788254,
-              "participacao": 3.255978075704516,
+              "valorMercado": 1739050149,
+              "participacao": 3.261730447504922,
               "codigos": [
                 {
                   "codigo": "MOVI3",
-                  "preco": 4.85,
-                  "variacao": -59.78
+                  "preco": 4.8,
+                  "variacao": -60.2
                 }
               ]
             },
             {
               "empresa": "VAMOS",
-              "valorMercado": 5383539380,
-              "participacao": 9.955022218686315,
+              "valorMercado": 5361918761,
+              "participacao": 10.05671612739764,
               "codigos": [
                 {
                   "codigo": "VAMO3",
-                  "preco": 4.98,
-                  "variacao": -49.9
+                  "preco": 4.96,
+                  "variacao": -50.1
                 }
               ]
             },
             {
               "empresa": "ANIMA",
-              "valorMercado": 985439895,
-              "participacao": 1.8222354026701497,
+              "valorMercado": 989478334,
+              "participacao": 1.85584734920387,
               "codigos": [
                 {
                   "codigo": "ANIM3",
-                  "preco": 2.43,
-                  "variacao": -44.14
+                  "preco": 2.45,
+                  "variacao": -43.68
                 }
               ]
             },
             {
               "empresa": "BAHEMA",
               "valorMercado": 211124640,
-              "participacao": 0.39040310356421115,
+              "participacao": 0.39598148845937364,
               "codigos": [
                 {
                   "codigo": "BAHI3",
@@ -1316,61 +1316,61 @@
             },
             {
               "empresa": "COGNA ON",
-              "valorMercado": 3696913873,
-              "participacao": 6.836182880542925,
+              "valorMercado": 3621847551,
+              "participacao": 6.793070596676529,
               "codigos": [
                 {
                   "codigo": "COGN3",
-                  "preco": 1.97,
-                  "variacao": -43.39
+                  "preco": 1.93,
+                  "variacao": -44.54
                 }
               ]
             },
             {
               "empresa": "CRUZEIRO EDU",
-              "valorMercado": 1341516056,
-              "participacao": 2.4806769676131606,
+              "valorMercado": 1330580524,
+              "participacao": 2.4956123378520543,
               "codigos": [
                 {
                   "codigo": "CSED3",
-                  "preco": 3.68,
-                  "variacao": -25.96
+                  "preco": 3.65,
+                  "variacao": -26.56
                 }
               ]
             },
             {
               "empresa": "SER EDUCA",
-              "valorMercado": 648756355,
-              "participacao": 1.1996538843074174,
+              "valorMercado": 637171400,
+              "participacao": 1.195066948963148,
               "codigos": [
                 {
                   "codigo": "SEER3",
-                  "preco": 5.03,
-                  "variacao": -39.4
+                  "preco": 4.95,
+                  "variacao": -40.36
                 }
               ]
             },
             {
               "empresa": "YDUQS PART",
-              "valorMercado": 3443047563,
-              "participacao": 6.36674361796138,
+              "valorMercado": 3393902445,
+              "participacao": 6.365540951814093,
               "codigos": [
                 {
                   "codigo": "YDUQ3",
-                  "preco": 11.92,
-                  "variacao": -47.28
+                  "preco": 11.74,
+                  "variacao": -48.08
                 }
               ]
             },
             {
               "empresa": "DOTZ SA",
-              "valorMercado": 47423557,
-              "participacao": 0.08769371417213202,
+              "valorMercado": 45430973,
+              "participacao": 0.0852094966778753,
               "codigos": [
                 {
                   "codigo": "DOTZ3",
-                  "preco": 3.57,
-                  "variacao": 257
+                  "preco": 3.42,
+                  "variacao": 242
                 }
               ]
             }
@@ -1378,43 +1378,43 @@
         },
         {
           "segmento": "Hotéis e Restaurantes",
-          "valorMercado": 1375323279,
+          "valorMercado": 1451200661,
           "empresas": 3,
-          "participacao": 0.6176773622892789,
+          "participacao": 0.6646273360509252,
           "empresasDetalhes": [
             {
               "empresa": "HOTEIS OTHON",
-              "valorMercado": 59710332,
-              "participacao": 4.341548849766834,
+              "valorMercado": 65956950,
+              "participacao": 4.544991728059859,
               "codigos": [
                 {
                   "codigo": "HOOT4",
-                  "preco": 3.25,
-                  "variacao": 14.84
+                  "preco": 3.59,
+                  "variacao": 26.86
                 }
               ]
             },
             {
               "empresa": "IMC S/A",
-              "valorMercado": 306415380,
-              "participacao": 22.279516727354107,
+              "valorMercado": 315006456,
+              "participacao": 21.7066091868325,
               "codigos": [
                 {
                   "codigo": "MEAL3",
-                  "preco": 1.07,
-                  "variacao": -46.23
+                  "preco": 1.1,
+                  "variacao": -44.72
                 }
               ]
             },
             {
               "empresa": "ZAMP S.A.",
-              "valorMercado": 1009197567,
-              "participacao": 73.37893442287906,
+              "valorMercado": 1070237255,
+              "participacao": 73.74839908510764,
               "codigos": [
                 {
                   "codigo": "ZAMP3",
-                  "preco": 2.48,
-                  "variacao": -60.57
+                  "preco": 2.63,
+                  "variacao": -58.19
                 }
               ]
             }
@@ -1422,43 +1422,43 @@
         },
         {
           "segmento": "Produtos para o Lar",
-          "valorMercado": 6206094878,
+          "valorMercado": 6241356080,
           "empresas": 4,
-          "participacao": 2.7872460045519554,
+          "participacao": 2.858444029330307,
           "empresasDetalhes": [
             {
               "empresa": "MOBLY",
-              "valorMercado": 138722528,
-              "participacao": 2.235262765507466,
+              "valorMercado": 139950274,
+              "participacao": 2.2423055535713003,
               "codigos": [
                 {
                   "codigo": "MBLY3",
-                  "preco": 1.13,
-                  "variacao": -46.45
+                  "preco": 1.14,
+                  "variacao": -45.97
                 }
               ]
             },
             {
               "empresa": "UNICASA",
-              "valorMercado": 98468706,
-              "participacao": 1.5866451921168967,
+              "valorMercado": 100451265,
+              "participacao": 1.6094461477993416,
               "codigos": [
                 {
                   "codigo": "UCAS3",
-                  "preco": 1.49,
-                  "variacao": -45.22
+                  "preco": 1.52,
+                  "variacao": -44.12
                 }
               ]
             },
             {
               "empresa": "WHIRLPOOL",
-              "valorMercado": 5966982643,
-              "participacao": 96.14713858391643,
+              "valorMercado": 5999033541,
+              "participacao": 96.1174697310332,
               "codigos": [
                 {
                   "codigo": "WHRL3",
-                  "preco": 3.85,
-                  "variacao": -4.7
+                  "preco": 3.88,
+                  "variacao": -3.96
                 },
                 {
                   "codigo": "WHRL4",
@@ -1469,8 +1469,8 @@
             },
             {
               "empresa": "HERCULES",
-              "valorMercado": 1921001,
-              "participacao": 0.03095345845919567,
+              "valorMercado": 1921000,
+              "participacao": 0.03077856759616253,
               "codigos": [
                 {
                   "codigo": "HETA4",
@@ -1483,26 +1483,26 @@
         },
         {
           "segmento": "Construção de Edifícios Residenciais",
-          "valorMercado": 65442148382,
+          "valorMercado": 63510724276,
           "empresas": 32,
-          "participacao": 29.391005163911988,
+          "participacao": 29.0869241040283,
           "empresasDetalhes": [
             {
               "empresa": "ALPHAVILLE",
-              "valorMercado": 410192981,
-              "participacao": 0.6268024371779708,
+              "valorMercado": 400426490,
+              "participacao": 0.630486417159813,
               "codigos": [
                 {
                   "codigo": "AVLL3",
-                  "preco": 2.1,
-                  "variacao": -58.9
+                  "preco": 2.05,
+                  "variacao": -59.88
                 }
               ]
             },
             {
               "empresa": "HABITASUL",
-              "valorMercado": 273097207,
-              "participacao": 0.41731088259186183,
+              "valorMercado": 273097200,
+              "participacao": 0.43000170933840287,
               "codigos": [
                 {
                   "codigo": "HBTS5",
@@ -1513,80 +1513,80 @@
             },
             {
               "empresa": "TENDA",
-              "valorMercado": 1756544163,
-              "participacao": 2.684117509019831,
+              "valorMercado": 1739383187,
+              "participacao": 2.7387235885409256,
               "codigos": [
                 {
                   "codigo": "TEND3",
-                  "preco": 14.33,
-                  "variacao": -3.04
+                  "preco": 14.19,
+                  "variacao": -3.99
                 }
               ]
             },
             {
               "empresa": "CURY S/A",
-              "valorMercado": 7022512344,
-              "participacao": 10.730870727238468,
+              "valorMercado": 7063375222,
+              "participacao": 11.121547270197281,
               "codigos": [
                 {
                   "codigo": "CURY3",
-                  "preco": 24.06,
-                  "variacao": 40.37
+                  "preco": 24.2,
+                  "variacao": 41.19
                 }
               ]
             },
             {
               "empresa": "CYRELA REALT",
-              "valorMercado": 9212159912,
-              "participacao": 14.0767993407347,
+              "valorMercado": 9112319824,
+              "participacao": 14.347686832227552,
               "codigos": [
                 {
                   "codigo": "CYRE3",
-                  "preco": 23.98,
-                  "variacao": 1.61
+                  "preco": 23.73,
+                  "variacao": 0.55
                 }
               ]
             },
             {
               "empresa": "DIRECIONAL",
-              "valorMercado": 5564144947,
-              "participacao": 8.502387352140214,
+              "valorMercado": 5527710105,
+              "participacao": 8.703585367690195,
               "codigos": [
                 {
                   "codigo": "DIRR3",
-                  "preco": 32.07,
-                  "variacao": 50.78
+                  "preco": 31.86,
+                  "variacao": 49.79
                 }
               ]
             },
             {
               "empresa": "EVEN",
-              "valorMercado": 1339999961,
-              "participacao": 2.047609979394518,
+              "valorMercado": 1338000011,
+              "participacao": 2.1067308336548374,
               "codigos": [
                 {
                   "codigo": "EVEN3",
-                  "preco": 6.71,
-                  "variacao": -10.89
+                  "preco": 6.69,
+                  "variacao": -11.16
                 }
               ]
             },
             {
               "empresa": "EZTEC",
-              "valorMercado": 3438588932,
-              "participacao": 5.254394938149358,
+              "valorMercado": 3376713388,
+              "participacao": 5.31676095099426,
               "codigos": [
                 {
                   "codigo": "EZTC3",
-                  "preco": 15.56,
-                  "variacao": -16.66
+                  "preco": 15.28,
+                  "variacao": -18.16
                 }
               ]
             },
             {
               "empresa": "FICA",
               "valorMercado": 21436054,
-              "participacao": 0.03275573087068155,
+              "participacao": 0.03375186512886367,
               "codigos": [
                 {
                   "codigo": "FIEI3",
@@ -1597,20 +1597,20 @@
             },
             {
               "empresa": "GAFISA",
-              "valorMercado": 150717054,
-              "participacao": 0.23030578568452842,
+              "valorMercado": 156514007,
+              "participacao": 0.24643713134152512,
               "codigos": [
                 {
                   "codigo": "GFSA3",
-                  "preco": 1.3,
-                  "variacao": -78.22
+                  "preco": 1.35,
+                  "variacao": -77.39
                 }
               ]
             },
             {
               "empresa": "GENERALSHOPP",
               "valorMercado": 11572610,
-              "participacao": 0.01768372568157171,
+              "participacao": 0.018221505315714315,
               "codigos": [
                 {
                   "codigo": "GSHP3",
@@ -1621,32 +1621,32 @@
             },
             {
               "empresa": "HBR REALTY",
-              "valorMercado": 342587141,
-              "participacao": 0.5234961710001399,
+              "valorMercado": 343619029,
+              "participacao": 0.5410409547633671,
               "codigos": [
                 {
                   "codigo": "HBRE3",
-                  "preco": 3.32,
-                  "variacao": -36.64
+                  "preco": 3.33,
+                  "variacao": -36.45
                 }
               ]
             },
             {
               "empresa": "HELBOR",
-              "valorMercado": 238254776,
-              "participacao": 0.36406930684679734,
+              "valorMercado": 232900741,
+              "participacao": 0.36671088805077695,
               "codigos": [
                 {
                   "codigo": "HBOR3",
-                  "preco": 1.78,
-                  "variacao": -42.58
+                  "preco": 1.74,
+                  "variacao": -43.87
                 }
               ]
             },
             {
               "empresa": "IGUATEMI S.A",
-              "valorMercado": 5044274509,
-              "participacao": 7.707990391078662,
+              "valorMercado": 5151530046,
+              "participacao": 8.11127585888153,
               "codigos": [
                 {
                   "codigo": "IGTI4",
@@ -1655,75 +1655,75 @@
                 },
                 {
                   "codigo": "IGTI11",
-                  "preco": 19.15,
-                  "variacao": -22.5
+                  "preco": 18.98,
+                  "variacao": -23.19
                 }
               ]
             },
             {
               "empresa": "JHSF PART",
-              "valorMercado": 2656174102,
-              "participacao": 4.058812504894149,
+              "valorMercado": 2677598256,
+              "participacao": 4.215978146248026,
               "codigos": [
                 {
                   "codigo": "JHSF3",
-                  "preco": 3.91,
-                  "variacao": -19.55
+                  "preco": 3.93,
+                  "variacao": -19.14
                 }
               ]
             },
             {
               "empresa": "JOAO FORTES",
-              "valorMercado": 30796775,
-              "participacao": 0.047059541536186356,
+              "valorMercado": 29934466,
+              "participacao": 0.04713293123522432,
               "codigos": [
                 {
                   "codigo": "JFEN3",
-                  "preco": 2.5,
-                  "variacao": -6.37
+                  "preco": 2.43,
+                  "variacao": -8.99
                 }
               ]
             },
             {
               "empresa": "LAVVI",
-              "valorMercado": 1937478060,
-              "participacao": 2.960596661177015,
+              "valorMercado": 1878124516,
+              "participacao": 2.9571769766601803,
               "codigos": [
                 {
                   "codigo": "LAVV3",
-                  "preco": 9.71,
-                  "variacao": 18.41
+                  "preco": 9.61,
+                  "variacao": 17.2
                 }
               ]
             },
             {
               "empresa": "LOG COM PROP",
-              "valorMercado": 1595522513,
-              "participacao": 2.438065608247745,
+              "valorMercado": 1599915223,
+              "participacao": 2.519126086560141,
               "codigos": [
                 {
                   "codigo": "LOGG3",
-                  "preco": 18.15,
-                  "variacao": -21.09
+                  "preco": 18.21,
+                  "variacao": -20.83
                 }
               ]
             },
             {
               "empresa": "MELNICK",
-              "valorMercado": 666249842,
-              "participacao": 1.0180745260851696,
+              "valorMercado": 655936387,
+              "participacao": 1.0327962631153162,
               "codigos": [
                 {
                   "codigo": "MELK3",
-                  "preco": 3.22,
-                  "variacao": -29.54
+                  "preco": 3.18,
+                  "variacao": -30.42
                 }
               ]
             },
             {
               "empresa": "MITRE REALTY",
-              "valorMercado": 356461063,
-              "participacao": 0.5446964560504028,
+              "valorMercado": 354345569,
+              "participacao": 0.5579302913632544,
               "codigos": [
                 {
                   "codigo": "MTRE3",
@@ -1734,104 +1734,104 @@
             },
             {
               "empresa": "MOURA DUBEUX",
-              "valorMercado": 1208260723,
-              "participacao": 1.846303571739608,
+              "valorMercado": 1198071322,
+              "participacao": 1.886407903007867,
               "codigos": [
                 {
                   "codigo": "MDNE3",
-                  "preco": 14.23,
-                  "variacao": 15.04
+                  "preco": 14.11,
+                  "variacao": 14.07
                 }
               ]
             },
             {
               "empresa": "MRV",
-              "valorMercado": 2892929162,
-              "participacao": 4.420590144922116,
+              "valorMercado": 2836646042,
+              "participacao": 4.466404806962557,
               "codigos": [
                 {
                   "codigo": "MRVE3",
-                  "preco": 5.14,
-                  "variacao": -52.63
+                  "preco": 5.04,
+                  "variacao": -53.55
                 }
               ]
             },
             {
               "empresa": "MULTIPLAN",
-              "valorMercado": 12132853767,
-              "participacao": 18.53981580216148,
+              "valorMercado": 11818160363,
+              "participacao": 18.60813350457405,
               "codigos": [
                 {
                   "codigo": "MULT3",
-                  "preco": 23.37,
-                  "variacao": -19.19
+                  "preco": 23.03,
+                  "variacao": -20.37
                 }
               ]
             },
             {
               "empresa": "PDG REALT",
-              "valorMercado": 1342499586,
-              "participacao": 2.0514295743525093,
+              "valorMercado": 10600517,
+              "participacao": 0.016690908694306637,
               "codigos": [
                 {
                   "codigo": "PDGR3",
-                  "preco": 0.77,
-                  "variacao": 71.11
+                  "preco": 0.76,
+                  "variacao": 68.89
                 }
               ]
             },
             {
               "empresa": "PLANOEPLANO",
-              "valorMercado": 2454968032,
-              "participacao": 3.7513561102392603,
+              "valorMercado": 2393797693,
+              "participacao": 3.769123593359161,
               "codigos": [
                 {
                   "codigo": "PLPL3",
-                  "preco": 12.04,
-                  "variacao": 1.18
+                  "preco": 11.74,
+                  "variacao": -1.34
                 }
               ]
             },
             {
               "empresa": "RNI",
-              "valorMercado": 111612987,
-              "participacao": 0.17055214377818223,
+              "valorMercado": 113363778,
+              "participacao": 0.17849548921431355,
               "codigos": [
                 {
                   "codigo": "RDNI3",
-                  "preco": 2.55,
-                  "variacao": -44.2
+                  "preco": 2.59,
+                  "variacao": -43.33
                 }
               ]
             },
             {
               "empresa": "ROSSI RESID",
-              "valorMercado": 61199998,
-              "participacao": 0.09351770917232477,
+              "valorMercado": 60599999,
+              "participacao": 0.09541695468099089,
               "codigos": [
                 {
                   "codigo": "RSID3",
-                  "preco": 3.06,
-                  "variacao": -26.97
+                  "preco": 3.03,
+                  "variacao": -27.68
                 }
               ]
             },
             {
               "empresa": "SAO CARLOS",
-              "valorMercado": 1025414816,
-              "participacao": 1.566902739828209,
+              "valorMercado": 1007516627,
+              "participacao": 1.5863724410095088,
               "codigos": [
                 {
                   "codigo": "SCAR3",
-                  "preco": 17.76,
-                  "variacao": -22.95
+                  "preco": 17.45,
+                  "variacao": -24.3
                 }
               ]
             },
             {
               "empresa": "SYN PROP TEC",
-              "valorMercado": 780012904,
-              "participacao": 1.1919121289339336,
+              "valorMercado": 778486425,
+              "participacao": 1.2257558607219055,
               "codigos": [
                 {
                   "codigo": "SYNE3",
@@ -1842,37 +1842,37 @@
             },
             {
               "empresa": "TECNISA",
-              "valorMercado": 129430896,
-              "participacao": 0.1977791059738501,
+              "valorMercado": 131241099,
+              "participacao": 0.2066439967361458,
               "codigos": [
                 {
                   "codigo": "TCSA3",
-                  "preco": 1.43,
-                  "variacao": -62.95
+                  "preco": 1.45,
+                  "variacao": -62.44
                 }
               ]
             },
             {
               "empresa": "TRISUL",
-              "valorMercado": 1196218146,
-              "participacao": 1.8279017049034139,
+              "valorMercado": 1179422000,
+              "participacao": 1.8570438511684404,
               "codigos": [
                 {
                   "codigo": "TRIS3",
-                  "preco": 6.41,
-                  "variacao": 13.85
+                  "preco": 6.32,
+                  "variacao": 12.26
                 }
               ]
             },
             {
               "empresa": "VIVER",
-              "valorMercado": 37982419,
-              "participacao": 0.05803968839514313,
+              "valorMercado": 38366080,
+              "participacao": 0.06040882140356588,
               "codigos": [
                 {
                   "codigo": "VIVR3",
-                  "preco": 0.99,
-                  "variacao": -79.16
+                  "preco": 1,
+                  "variacao": -78.95
                 }
               ]
             }
@@ -1880,14 +1880,14 @@
         },
         {
           "segmento": "Varejo",
-          "valorMercado": 53100691571,
+          "valorMercado": 51735680880,
           "empresas": 16,
-          "participacao": 23.84828033243217,
+          "participacao": 23.694137334778397,
           "empresasDetalhes": [
             {
               "empresa": "AREZZO CO",
               "valorMercado": 7285331020,
-              "participacao": 13.71984206695107,
+              "participacao": 14.081830752161546,
               "codigos": [
                 {
                   "codigo": "ARZZ3",
@@ -1897,37 +1897,37 @@
             },
             {
               "empresa": "CEA MODAS",
-              "valorMercado": 3347540594,
-              "participacao": 6.304137469705197,
+              "valorMercado": 3313634825,
+              "participacao": 6.40493131362457,
               "codigos": [
                 {
                   "codigo": "CEAB3",
-                  "preco": 10.85,
-                  "variacao": 32.32
+                  "preco": 10.75,
+                  "variacao": 31.1
                 }
               ]
             },
             {
               "empresa": "GRAZZIOTIN",
-              "valorMercado": 572411056,
-              "participacao": 1.077972883337384,
+              "valorMercado": 587201402,
+              "participacao": 1.1350027524756139,
               "codigos": [
                 {
                   "codigo": "CGRA3",
-                  "preco": 27.5,
-                  "variacao": 5.77
+                  "preco": 27.2,
+                  "variacao": 4.62
                 },
                 {
                   "codigo": "CGRA4",
-                  "preco": 27.83,
-                  "variacao": 2.39
+                  "preco": 28.49,
+                  "variacao": 4.82
                 }
               ]
             },
             {
               "empresa": "GRUPO SOMA",
               "valorMercado": 5312739206,
-              "participacao": 10.005028275190032,
+              "participacao": 10.269004129515189,
               "codigos": [
                 {
                   "codigo": "SOMA3",
@@ -1937,92 +1937,92 @@
             },
             {
               "empresa": "GUARARAPES",
-              "valorMercado": 3614207885,
-              "participacao": 6.806329217327624,
+              "valorMercado": 3539328076,
+              "participacao": 6.841174245313228,
               "codigos": [
                 {
                   "codigo": "GUAR3",
-                  "preco": 7.24,
-                  "variacao": 11.04
+                  "preco": 7.09,
+                  "variacao": 8.74
                 }
               ]
             },
             {
               "empresa": "LOJAS RENNER",
-              "valorMercado": 13615205054,
-              "participacao": 25.64035354566964,
+              "valorMercado": 13413890178,
+              "participacao": 25.927734882069654,
               "codigos": [
                 {
                   "codigo": "LREN3",
-                  "preco": 12.85,
-                  "variacao": -25.72
+                  "preco": 12.66,
+                  "variacao": -26.82
                 }
               ]
             },
             {
               "empresa": "LOJAS MARISA",
-              "valorMercado": 847202387,
-              "participacao": 1.5954639420603791,
+              "valorMercado": 821529612,
+              "participacao": 1.5879362135109876,
               "codigos": [
                 {
                   "codigo": "AMAR3",
-                  "preco": 1.65,
-                  "variacao": -54.29
+                  "preco": 1.6,
+                  "variacao": -55.68
                 }
               ]
             },
             {
               "empresa": "VESTE",
-              "valorMercado": 804843523,
-              "participacao": 1.515693109050864,
+              "valorMercado": 785463429,
+              "participacao": 1.5182238169859377,
               "codigos": [
                 {
                   "codigo": "VSTE3",
-                  "preco": 7.06,
-                  "variacao": -58.1
+                  "preco": 6.89,
+                  "variacao": -59.11
                 }
               ]
             },
             {
               "empresa": "AMERICANAS",
-              "valorMercado": 1800184524,
-              "participacao": 3.3901338584131335,
+              "valorMercado": 1664030217,
+              "participacao": 3.2164073009103498,
               "codigos": [
                 {
                   "codigo": "AMER3",
-                  "preco": 8.99,
-                  "variacao": 898.89
+                  "preco": 8.31,
+                  "variacao": 823.33
                 }
               ]
             },
             {
               "empresa": "GRUPO SBF",
-              "valorMercado": 3016000596,
-              "participacao": 5.679776490231505,
+              "valorMercado": 2952557393,
+              "participacao": 5.707004030445457,
               "codigos": [
                 {
                   "codigo": "SBFG3",
-                  "preco": 12.36,
-                  "variacao": 6.55
+                  "preco": 12.1,
+                  "variacao": 4.31
                 }
               ]
             },
             {
               "empresa": "QUERO-QUERO",
-              "valorMercado": 544192259,
-              "participacao": 1.0248308315765908,
+              "valorMercado": 535915530,
+              "participacao": 1.0358721889503042,
               "codigos": [
                 {
                   "codigo": "LJQQ3",
-                  "preco": 2.63,
-                  "variacao": -53.78
+                  "preco": 2.59,
+                  "variacao": -54.48
                 }
               ]
             },
             {
               "empresa": "ESPACOLASER",
-              "valorMercado": 252996165,
-              "participacao": 0.47644608293231605,
+              "valorMercado": 252996095,
+              "participacao": 0.4890166529108218,
               "codigos": [
                 {
                   "codigo": "ESPA3",
@@ -2033,49 +2033,49 @@
             },
             {
               "empresa": "PETZ",
-              "valorMercado": 2002726286,
-              "participacao": 3.771563470735951,
+              "valorMercado": 1943507491,
+              "participacao": 3.7566094771380927,
               "codigos": [
                 {
                   "codigo": "PETZ3",
-                  "preco": 4.32,
-                  "variacao": 9.92
+                  "preco": 4.2,
+                  "variacao": 6.87
                 }
               ]
             },
             {
               "empresa": "ALLIED",
-              "valorMercado": 678165177,
-              "participacao": 1.2771305927216359,
+              "valorMercado": 677224494,
+              "participacao": 1.3090085652314314,
               "codigos": [
                 {
                   "codigo": "ALLD3",
-                  "preco": 7.21,
-                  "variacao": -9.88
+                  "preco": 7.2,
+                  "variacao": -10
                 }
               ]
             },
             {
               "empresa": "CASAS BAHIA",
-              "valorMercado": 959427743,
-              "participacao": 1.8068083759646822,
+              "valorMercado": 920442092,
+              "participacao": 1.7791243419313436,
               "codigos": [
                 {
                   "codigo": "BHIA3",
-                  "preco": 10.09,
-                  "variacao": -9.67
+                  "preco": 9.68,
+                  "variacao": -13.34
                 }
               ]
             },
             {
               "empresa": "MAGAZ LUIZA",
-              "valorMercado": 8447518096,
-              "participacao": 15.908489788131991,
+              "valorMercado": 7729889820,
+              "participacao": 14.941119336825476,
               "codigos": [
                 {
                   "codigo": "MGLU3",
-                  "preco": 11.2,
-                  "variacao": 406.79
+                  "preco": 10.46,
+                  "variacao": 373.3
                 }
               ]
             }
@@ -2083,62 +2083,62 @@
         },
         {
           "segmento": "Têxteis, Vestuário e Calçado",
-          "valorMercado": 21968842898,
+          "valorMercado": 21889396352,
           "empresas": 17,
-          "participacao": 9.866521668745925,
+          "participacao": 10.025003141307556,
           "empresasDetalhes": [
             {
               "empresa": "MUNDIAL",
-              "valorMercado": 183936090,
-              "participacao": 0.837258889118576,
+              "valorMercado": 177685824,
+              "participacao": 0.8117438285764564,
               "codigos": [
                 {
                   "codigo": "MNDL3",
-                  "preco": 18.54,
-                  "variacao": -56.88
+                  "preco": 17.91,
+                  "variacao": -58.35
                 }
               ]
             },
             {
               "empresa": "TECHNOS",
-              "valorMercado": 358353667,
-              "participacao": 1.6311904485084363,
+              "valorMercado": 356061892,
+              "participacao": 1.6266409830322581,
               "codigos": [
                 {
                   "codigo": "TECN3",
-                  "preco": 5.59,
-                  "variacao": 61.56
+                  "preco": 5.62,
+                  "variacao": 62.43
                 }
               ]
             },
             {
               "empresa": "VIVARA S.A.",
-              "valorMercado": 4610579212,
-              "participacao": 20.98690055460198,
+              "valorMercado": 4525547895,
+              "participacao": 20.67461259426877,
               "codigos": [
                 {
                   "codigo": "VIVA3",
-                  "preco": 19.52,
-                  "variacao": -41.71
+                  "preco": 19.16,
+                  "variacao": -42.79
                 }
               ]
             },
             {
               "empresa": "TRACK FIELD",
-              "valorMercado": 746502724,
-              "participacao": 3.398006565325114,
+              "valorMercado": 707322900,
+              "participacao": 3.231349501949025,
               "codigos": [
                 {
                   "codigo": "TFCO4",
-                  "preco": 10.82,
-                  "variacao": -26.34
+                  "preco": 10.8,
+                  "variacao": -26.48
                 }
               ]
             },
             {
               "empresa": "CEDRO",
-              "valorMercado": 227057120,
-              "participacao": 1.0335415527081349,
+              "valorMercado": 234540500,
+              "participacao": 1.0714799815782514,
               "codigos": [
                 {
                   "codigo": "CEDO3",
@@ -2155,7 +2155,7 @@
             {
               "empresa": "COTEMINAS",
               "valorMercado": 113580545,
-              "participacao": 0.5170074069323886,
+              "participacao": 0.5188838612702187,
               "codigos": [
                 {
                   "codigo": "CTNM3",
@@ -2171,8 +2171,8 @@
             },
             {
               "empresa": "SANTANENSE",
-              "valorMercado": 26615133,
-              "participacao": 0.12114945299382604,
+              "valorMercado": 25366652,
+              "participacao": 0.11588557122399717,
               "codigos": [
                 {
                   "codigo": "CTSA3",
@@ -2181,15 +2181,15 @@
                 },
                 {
                   "codigo": "CTSA4",
-                  "preco": 0.71,
-                  "variacao": -69.13
+                  "preco": 0.7,
+                  "variacao": -69.57
                 }
               ]
             },
             {
               "empresa": "DOHLER",
-              "valorMercado": 376057405,
-              "participacao": 1.711776112861345,
+              "valorMercado": 386733500,
+              "participacao": 1.7667618319893263,
               "codigos": [
                 {
                   "codigo": "DOHL3",
@@ -2205,8 +2205,8 @@
             },
             {
               "empresa": "KARSTEN",
-              "valorMercado": 172471578,
-              "participacao": 0.7850735644147261,
+              "valorMercado": 194269452,
+              "participacao": 0.8875048396766314,
               "codigos": [
                 {
                   "codigo": "CTKA3",
@@ -2215,15 +2215,15 @@
                 },
                 {
                   "codigo": "CTKA4",
-                  "preco": 28.12,
-                  "variacao": 56.22
+                  "preco": 28.5,
+                  "variacao": 58.33
                 }
               ]
             },
             {
               "empresa": "PETTENATI",
-              "valorMercado": 417644451,
-              "participacao": 1.9010762330046136,
+              "valorMercado": 410159600,
+              "participacao": 1.8737821427520742,
               "codigos": [
                 {
                   "codigo": "PTNT3",
@@ -2232,15 +2232,15 @@
                 },
                 {
                   "codigo": "PTNT4",
-                  "preco": 7.43,
-                  "variacao": -9.39
+                  "preco": 7.88,
+                  "variacao": -3.9
                 }
               ]
             },
             {
               "empresa": "SPRINGS",
               "valorMercado": 16399999,
-              "participacao": 0.07465117337378303,
+              "participacao": 0.07492211633557248,
               "codigos": [
                 {
                   "codigo": "SGPS3",
@@ -2252,7 +2252,7 @@
             {
               "empresa": "TEKA",
               "valorMercado": 11278596,
-              "participacao": 0.05133905346023837,
+              "participacao": 0.05152538616703102,
               "codigos": [
                 {
                   "codigo": "TEKA4",
@@ -2264,7 +2264,7 @@
             {
               "empresa": "TEX RENAUX",
               "valorMercado": 16677366,
-              "participacao": 0.07591372052425335,
+              "participacao": 0.07618924584220531,
               "codigos": [
                 {
                   "codigo": "TXRX4",
@@ -2275,13 +2275,13 @@
             },
             {
               "empresa": "ALPARGATAS",
-              "valorMercado": 4611183161,
-              "participacao": 20.989649670715217,
+              "valorMercado": 4739338479,
+              "participacao": 21.651298202962888,
               "codigos": [
                 {
                   "codigo": "ALPA3",
-                  "preco": 6.6,
-                  "variacao": -30.16
+                  "preco": 6.57,
+                  "variacao": -30.48
                 },
                 {
                   "codigo": "ALPA4",
@@ -2292,37 +2292,37 @@
             },
             {
               "empresa": "CAMBUCI",
-              "valorMercado": 489545400,
-              "participacao": 2.2283622413475737,
+              "valorMercado": 433319600,
+              "participacao": 1.9795867964189349,
               "codigos": [
                 {
                   "codigo": "CAMB3",
-                  "preco": 10.26,
-                  "variacao": 6.32
+                  "preco": 10.27,
+                  "variacao": 6.42
                 }
               ]
             },
             {
               "empresa": "GRENDENE",
-              "valorMercado": 5133290451,
-              "participacao": 23.366230414744894,
+              "valorMercado": 5124268077,
+              "participacao": 23.409819049358134,
               "codigos": [
                 {
                   "codigo": "GRND3",
-                  "preco": 5.69,
-                  "variacao": -15.45
+                  "preco": 5.68,
+                  "variacao": -15.6
                 }
               ]
             },
             {
               "empresa": "VULCABRAS",
-              "valorMercado": 4457670000,
-              "participacao": 20.2908729453649,
+              "valorMercado": 4416845475,
+              "participacao": 20.178014066598234,
               "codigos": [
                 {
                   "codigo": "VULC3",
-                  "preco": 16.24,
-                  "variacao": -20.7
+                  "preco": 16.03,
+                  "variacao": -21.73
                 }
               ]
             }
@@ -2330,26 +2330,26 @@
         },
         {
           "segmento": "Viagem, Entretenimento e Lazer",
-          "valorMercado": 14498271983,
+          "valorMercado": 14259876387,
           "empresas": 6,
-          "participacao": 6.511381384254163,
+          "participacao": 6.530801639090007,
           "empresasDetalhes": [
             {
               "empresa": "BIC MONARK",
-              "valorMercado": 174624000,
-              "participacao": 1.2044469865426444,
+              "valorMercado": 175078750,
+              "participacao": 1.2277718631531078,
               "codigos": [
                 {
                   "codigo": "BMKS3",
-                  "preco": 384,
-                  "variacao": 17.37
+                  "preco": 385,
+                  "variacao": 17.67
                 }
               ]
             },
             {
               "empresa": "SPTURIS",
               "valorMercado": 384933240,
-              "participacao": 2.655028409257012,
+              "participacao": 2.6994149847674973,
               "codigos": [
                 {
                   "codigo": "AHEB3",
@@ -2360,32 +2360,32 @@
             },
             {
               "empresa": "TIME FOR FUN",
-              "valorMercado": 50559465,
-              "participacao": 0.3487275246269602,
+              "valorMercado": 49885339,
+              "participacao": 0.3498300942179128,
               "codigos": [
                 {
                   "codigo": "SHOW3",
-                  "preco": 0.75,
-                  "variacao": -65.6
+                  "preco": 0.74,
+                  "variacao": -66.06
                 }
               ]
             },
             {
               "empresa": "SMART FIT",
-              "valorMercado": 12655723580,
-              "participacao": 87.29125508777538,
+              "valorMercado": 12422803704,
+              "participacao": 87.11719068844968,
               "codigos": [
                 {
                   "codigo": "SMFT3",
-                  "preco": 21.19,
-                  "variacao": -16.77
+                  "preco": 20.8,
+                  "variacao": -18.3
                 }
               ]
             },
             {
               "empresa": "ESTRELA",
-              "valorMercado": 39339685,
-              "participacao": 0.2713405090353381,
+              "valorMercado": 39339700,
+              "participacao": 0.27587686549558027,
               "codigos": [
                 {
                   "codigo": "ESTR3",
@@ -2401,8 +2401,8 @@
             },
             {
               "empresa": "CVC BRASIL",
-              "valorMercado": 1193092013,
-              "participacao": 8.229201482762665,
+              "valorMercado": 1187835654,
+              "participacao": 8.329915503916212,
               "codigos": [
                 {
                   "codigo": "CVCB3",
@@ -2417,26 +2417,26 @@
     },
     {
       "industria": "Consumo Não Cíclico",
-      "valorMercadoTotal": 246476516519,
-      "participacao": 10.02582925293201,
+      "valorMercadoTotal": 447712240068,
+      "participacao": 10.758520152469425,
       "qtdSegmentos": 5,
       "empresas": 25,
       "segmentos": [
         {
           "segmento": "Bebidas",
-          "valorMercado": 37655340971,
+          "valorMercado": 214304046011,
           "empresas": 1,
-          "participacao": 15.277455841557744,
+          "participacao": 47.8664702082862,
           "empresasDetalhes": [
             {
               "empresa": "AMBEV S/A",
-              "valorMercado": 37655340971,
+              "valorMercado": 214304046011,
               "participacao": 100,
               "codigos": [
                 {
                   "codigo": "ABEV3",
-                  "preco": 13.62,
-                  "variacao": -5.87
+                  "preco": 13.6,
+                  "variacao": -6.01
                 }
               ]
             }
@@ -2444,50 +2444,50 @@
         },
         {
           "segmento": "Agricultura",
-          "valorMercado": 23230271565,
+          "valorMercado": 23096564418,
           "empresas": 8,
-          "participacao": 9.424943152022056,
+          "participacao": 5.158796733922668,
           "empresasDetalhes": [
             {
               "empresa": "AGROGALAXY",
-              "valorMercado": 134908047,
-              "participacao": 0.5807424447127852,
+              "valorMercado": 132362667,
+              "participacao": 0.5730837911843067,
               "codigos": [
                 {
                   "codigo": "AGXY3",
-                  "preco": 0.53,
-                  "variacao": -86.05
+                  "preco": 0.52,
+                  "variacao": -86.32
                 }
               ]
             },
             {
               "empresa": "BOA SAFRA",
-              "valorMercado": 1456065826,
-              "participacao": 6.267967302602647,
+              "valorMercado": 1427648180,
+              "participacao": 6.181214461867677,
               "codigos": [
                 {
                   "codigo": "SOJA3",
-                  "preco": 10.76,
-                  "variacao": -28.69
+                  "preco": 10.55,
+                  "variacao": -30.09
                 }
               ]
             },
             {
               "empresa": "BRASILAGRO",
-              "valorMercado": 2299081263,
-              "participacao": 9.89691944223296,
+              "valorMercado": 2283678792,
+              "participacao": 9.887525913681973,
               "codigos": [
                 {
                   "codigo": "AGRO3",
-                  "preco": 22.39,
-                  "variacao": -13.82
+                  "preco": 22.24,
+                  "variacao": -14.4
                 }
               ]
             },
             {
               "empresa": "POMIFRUTAS",
               "valorMercado": 4107210,
-              "participacao": 0.01768042180870648,
+              "participacao": 0.01778277463984687,
               "codigos": [
                 {
                   "codigo": "FRTA3",
@@ -2497,49 +2497,49 @@
             },
             {
               "empresa": "RAIZEN",
-              "valorMercado": 2554799673,
-              "participacao": 10.997717636883769,
+              "valorMercado": 2568389020,
+              "participacao": 11.120221057632104,
               "codigos": [
                 {
                   "codigo": "RAIZ4",
-                  "preco": 1.88,
-                  "variacao": -49.6
+                  "preco": 1.89,
+                  "variacao": -49.33
                 }
               ]
             },
             {
               "empresa": "SLC AGRICOLA",
-              "valorMercado": 8201597600,
-              "participacao": 35.30564667335606,
+              "valorMercado": 8166131265,
+              "participacao": 35.35647604210709,
               "codigos": [
                 {
                   "codigo": "SLCE3",
-                  "preco": 18.5,
-                  "variacao": -2.17
+                  "preco": 18.42,
+                  "variacao": -2.59
                 }
               ]
             },
             {
               "empresa": "TERRASANTAPA",
-              "valorMercado": 1424158582,
-              "participacao": 6.13061529657585,
+              "valorMercado": 1443404550,
+              "participacao": 6.249434001860042,
               "codigos": [
                 {
                   "codigo": "LAND3",
-                  "preco": 14.81,
-                  "variacao": -9.14
+                  "preco": 15,
+                  "variacao": -7.98
                 }
               ]
             },
             {
               "empresa": "3TENTOS",
-              "valorMercado": 7155553364,
-              "participacao": 30.80271078182723,
+              "valorMercado": 7070842734,
+              "participacao": 30.61426195702696,
               "codigos": [
                 {
                   "codigo": "TTEN3",
-                  "preco": 14.35,
-                  "variacao": 28.82
+                  "preco": 14.19,
+                  "variacao": 27.38
                 }
               ]
             }
@@ -2547,26 +2547,26 @@
         },
         {
           "segmento": "Processadores de Alimentos",
-          "valorMercado": 128512409765,
+          "valorMercado": 153704386211,
           "empresas": 10,
-          "participacao": 52.13981907079307,
+          "participacao": 34.331066353614744,
           "empresasDetalhes": [
             {
               "empresa": "BRF SA",
-              "valorMercado": 5898105703,
-              "participacao": 4.58952229888567,
+              "valorMercado": 33329789231,
+              "participacao": 21.684344899075313,
               "codigos": [
                 {
                   "codigo": "BRFS3",
-                  "preco": 20.13,
-                  "variacao": 48.12
+                  "preco": 19.81,
+                  "variacao": 45.77
                 }
               ]
             },
             {
               "empresa": "EXCELSIOR",
-              "valorMercado": 409265474,
-              "participacao": 0.3184637769600538,
+              "valorMercado": 409265500,
+              "participacao": 0.2662679381434012,
               "codigos": [
                 {
                   "codigo": "BAUH4",
@@ -2577,68 +2577,68 @@
             },
             {
               "empresa": "JBS",
-              "valorMercado": 91541648335,
-              "participacao": 71.231757697482,
+              "valorMercado": 90366049563,
+              "participacao": 58.792108534201915,
               "codigos": [
                 {
                   "codigo": "JBSS3",
-                  "preco": 41.27,
-                  "variacao": 73.99
+                  "preco": 40.74,
+                  "variacao": 71.75
                 }
               ]
             },
             {
               "empresa": "MARFRIG",
-              "valorMercado": 15815100337,
-              "participacao": 12.30628261186586,
+              "valorMercado": 15073798212,
+              "participacao": 9.80700589201613,
               "codigos": [
                 {
                   "codigo": "MRFG3",
-                  "preco": 17.85,
-                  "variacao": 94.87
+                  "preco": 17.57,
+                  "variacao": 91.81
                 }
               ]
             },
             {
               "empresa": "MINERVA",
-              "valorMercado": 3698355998,
-              "participacao": 2.8778201301826627,
+              "valorMercado": 3631554743,
+              "participacao": 2.3626877752302584,
               "codigos": [
                 {
                   "codigo": "BEEF3",
-                  "preco": 6.09,
-                  "variacao": -16
+                  "preco": 5.98,
+                  "variacao": -17.52
                 }
               ]
             },
             {
               "empresa": "MINUPAR",
-              "valorMercado": 205902842,
-              "participacao": 0.1602202015949413,
+              "valorMercado": 209239971,
+              "participacao": 0.1361314248461086,
               "codigos": [
                 {
                   "codigo": "MNPR3",
-                  "preco": 29,
-                  "variacao": 61.02
+                  "preco": 29.47,
+                  "variacao": 63.63
                 }
               ]
             },
             {
               "empresa": "CAMIL",
-              "valorMercado": 1386000013,
-              "participacao": 1.0784950772726645,
+              "valorMercado": 1372000026,
+              "participacao": 0.8926225593305883,
               "codigos": [
                 {
                   "codigo": "CAML3",
-                  "preco": 3.96,
-                  "variacao": -50.5
+                  "preco": 3.92,
+                  "variacao": -51
                 }
               ]
             },
             {
               "empresa": "JOSAPAR",
               "valorMercado": 224416500,
-              "participacao": 0.17462632629048966,
+              "participacao": 0.1460052673395598,
               "codigos": [
                 {
                   "codigo": "JOPA4",
@@ -2649,25 +2649,25 @@
             },
             {
               "empresa": "M.DIASBRANCO",
-              "valorMercado": 8064810310,
-              "participacao": 6.275510921277914,
+              "valorMercado": 7837680284,
+              "participacao": 5.099191036253648,
               "codigos": [
                 {
                   "codigo": "MDIA3",
-                  "preco": 23.79,
-                  "variacao": -38.92
+                  "preco": 23.12,
+                  "variacao": -40.64
                 }
               ]
             },
             {
               "empresa": "JALLESMACHAD",
-              "valorMercado": 1268804253,
-              "participacao": 0.9873009581877402,
+              "valorMercado": 1250592181,
+              "participacao": 0.8136346735630764,
               "codigos": [
                 {
                   "codigo": "JALL3",
-                  "preco": 4.18,
-                  "variacao": -46.27
+                  "preco": 4.12,
+                  "variacao": -47.04
                 }
               ]
             }
@@ -2675,31 +2675,31 @@
         },
         {
           "segmento": "Produtos de higiene pessoal e limpeza",
-          "valorMercado": 14027923652,
+          "valorMercado": 14166608981,
           "empresas": 2,
-          "participacao": 5.691383442981529,
+          "participacao": 3.1642219517715953,
           "empresasDetalhes": [
             {
               "empresa": "Bombril",
               "valorMercado": 450681785,
-              "participacao": 3.2127476323678525,
+              "participacao": 3.1812961422486232,
               "codigos": [
                 {
                   "codigo": "BOBR4",
-                  "preco": 1.74,
-                  "variacao": -12.12
+                  "preco": 1.73,
+                  "variacao": -12.63
                 }
               ]
             },
             {
               "empresa": "Grupo Natura",
-              "valorMercado": 13577241867,
-              "participacao": 96.78725236763215,
+              "valorMercado": 13715927196,
+              "participacao": 96.81870385775137,
               "codigos": [
                 {
                   "codigo": "NTCO3",
-                  "preco": 9.79,
-                  "variacao": -38.47
+                  "preco": 9.89,
+                  "variacao": -37.84
                 }
               ]
             }
@@ -2707,55 +2707,55 @@
         },
         {
           "segmento": "Varejo e Distribuição",
-          "valorMercado": 43050570566,
+          "valorMercado": 42440634447,
           "empresas": 4,
-          "participacao": 17.4663984926456,
+          "participacao": 9.479444752404799,
           "empresasDetalhes": [
             {
               "empresa": "Carrefour Brasil",
-              "valorMercado": 15712474247,
-              "participacao": 36.49771429373162,
+              "valorMercado": 15607014601,
+              "participacao": 36.773754220121496,
               "codigos": [
                 {
                   "codigo": "CRFB3",
-                  "preco": 7.44,
-                  "variacao": -35.97
+                  "preco": 7.4,
+                  "variacao": -36.32
                 }
               ]
             },
             {
               "empresa": "Grupo Pão de Açúcar",
-              "valorMercado": 1348083000,
-              "participacao": 3.131394037933318,
+              "valorMercado": 1289453551,
+              "participacao": 3.0382522971240538,
               "codigos": [
                 {
                   "codigo": "PCAR3",
-                  "preco": 2.75,
-                  "variacao": -31.25
+                  "preco": 2.63,
+                  "variacao": -34.25
                 }
               ]
             },
             {
               "empresa": "Grupo Mateus",
-              "valorMercado": 15334558965,
-              "participacao": 35.61987393753791,
+              "valorMercado": 15267104424,
+              "participacao": 35.97284683165047,
               "codigos": [
                 {
                   "codigo": "GMAT3",
-                  "preco": 6.82,
-                  "variacao": 1.79
+                  "preco": 6.79,
+                  "variacao": 1.34
                 }
               ]
             },
             {
               "empresa": "Assaí",
-              "valorMercado": 10655454354,
-              "participacao": 24.75101773079715,
+              "valorMercado": 10277061871,
+              "participacao": 24.215146651103975,
               "codigos": [
                 {
                   "codigo": "ASAI3",
-                  "preco": 7.88,
-                  "variacao": -38.77
+                  "preco": 7.6,
+                  "variacao": -40.95
                 }
               ]
             }
@@ -2765,33 +2765,33 @@
     },
     {
       "industria": "Finança",
-      "valorMercadoTotal": 810115632444,
-      "participacao": 32.95275801818007,
+      "valorMercadoTotal": 1284386389203,
+      "participacao": 30.86379065646982,
       "qtdSegmentos": 5,
       "empresas": 41,
       "segmentos": [
         {
           "segmento": "Serviços Financeiros Diversificados",
-          "valorMercado": 639059965995,
+          "valorMercado": 1115758498246,
           "empresas": 25,
-          "participacao": 78.88503077851367,
+          "participacao": 86.87093756407378,
           "empresasDetalhes": [
             {
               "empresa": "B3",
-              "valorMercado": 67668456449,
-              "participacao": 10.588749108018673,
+              "valorMercado": 67234336863,
+              "participacao": 6.025886154458518,
               "codigos": [
                 {
                   "codigo": "B3SA3",
-                  "preco": 12.47,
-                  "variacao": -15
+                  "preco": 12.39,
+                  "variacao": -15.54
                 }
               ]
             },
             {
               "empresa": "Cielo",
               "valorMercado": 12307167990,
-              "participacao": 1.9258236542541127,
+              "participacao": 1.1030315260289008,
               "codigos": [
                 {
                   "codigo": "CIEL3",
@@ -2802,7 +2802,7 @@
             {
               "empresa": "ClearSale",
               "valorMercado": 1967585270,
-              "participacao": 0.30788742445108735,
+              "participacao": 0.1763450848094003,
               "codigos": [
                 {
                   "codigo": "CLSA3",
@@ -2814,7 +2814,7 @@
             {
               "empresa": "CSU Digital",
               "valorMercado": 701404028,
-              "participacao": 0.10975558872756673,
+              "participacao": 0.06286342690668496,
               "codigos": [
                 {
                   "codigo": "CSUD3",
@@ -2825,8 +2825,8 @@
             },
             {
               "empresa": "Alfa Holding",
-              "valorMercado": 347673225,
-              "participacao": 0.05440384995149582,
+              "valorMercado": 346359400,
+              "participacao": 0.031042506110819282,
               "codigos": [
                 {
                   "codigo": "RPAD3",
@@ -2847,42 +2847,42 @@
             },
             {
               "empresa": "Banco BMG",
-              "valorMercado": 793721469,
-              "participacao": 0.12420140694687329,
+              "valorMercado": 795826829,
+              "participacao": 0.07132608268286188,
               "codigos": [
                 {
                   "codigo": "BMGB4",
-                  "preco": 3.77,
-                  "variacao": 16.72
+                  "preco": 3.78,
+                  "variacao": 17.03
                 }
               ]
             },
             {
               "empresa": "Banestes",
-              "valorMercado": 2774119250,
-              "participacao": 0.43409373104459253,
+              "valorMercado": 2740952561,
+              "participacao": 0.24565822848840904,
               "codigos": [
                 {
                   "codigo": "BEES3",
-                  "preco": 8.75,
-                  "variacao": -2.13
+                  "preco": 8.6,
+                  "variacao": -3.8
                 },
                 {
                   "codigo": "BEES4",
-                  "preco": 8.7,
-                  "variacao": -6.45
+                  "preco": 8.8,
+                  "variacao": -5.38
                 }
               ]
             },
             {
               "empresa": "ABC Brasil",
-              "valorMercado": 2536125902,
-              "participacao": 0.39685257048629496,
+              "valorMercado": 2525173325,
+              "participacao": 0.22631898649838966,
               "codigos": [
                 {
                   "codigo": "ABCB4",
-                  "preco": 20.83,
-                  "variacao": -13.53
+                  "preco": 20.75,
+                  "variacao": -13.86
                 },
                 {
                   "codigo": "ABCB10",
@@ -2893,7 +2893,7 @@
             {
               "empresa": "Alfa Invest",
               "valorMercado": 950036700,
-              "participacao": 0.14866158898262655,
+              "participacao": 0.08514716235578589,
               "codigos": [
                 {
                   "codigo": "BRIV3",
@@ -2907,76 +2907,76 @@
             },
             {
               "empresa": "Amazonia",
-              "valorMercado": 5319933704,
-              "participacao": 0.8324623645790422,
+              "valorMercado": 5298631273,
+              "participacao": 0.4748905145091505,
               "codigos": [
                 {
                   "codigo": "BAZA3",
-                  "preco": 94.9,
-                  "variacao": 8.83
+                  "preco": 94.52,
+                  "variacao": 8.39
                 }
               ]
             },
             {
               "empresa": "Bradesco",
-              "valorMercado": 23046242269,
-              "participacao": 3.6062722585223423,
+              "valorMercado": 130012538929,
+              "participacao": 11.65239065025119,
               "codigos": [
                 {
                   "codigo": "BBDC3",
-                  "preco": 11.72,
-                  "variacao": -24.39
+                  "preco": 11.59,
+                  "variacao": -25.23
                 },
                 {
                   "codigo": "BBDC4",
-                  "preco": 13.1,
-                  "variacao": -24.8
+                  "preco": 12.86,
+                  "variacao": -26.18
                 }
               ]
             },
             {
               "empresa": "Brasil",
-              "valorMercado": 164761506250,
-              "participacao": 25.78185381922189,
+              "valorMercado": 163156868514,
+              "participacao": 14.622955484586193,
               "codigos": [
                 {
                   "codigo": "BBAS3",
-                  "preco": 28.73,
-                  "variacao": -47.39
+                  "preco": 28.47,
+                  "variacao": -47.87
                 }
               ]
             },
             {
               "empresa": "BTGP Banco",
-              "valorMercado": 149288949601,
-              "participacao": 23.360710660158617,
+              "valorMercado": 158442155149,
+              "participacao": 14.200398688253326,
               "codigos": [
                 {
                   "codigo": "BPAC3",
-                  "preco": 18.52,
-                  "variacao": 6.07
+                  "preco": 18.03,
+                  "variacao": 3.26
                 },
                 {
                   "codigo": "BPAC5",
-                  "preco": 8.44,
-                  "variacao": -10.02
+                  "preco": 8.43,
+                  "variacao": -10.13
                 },
                 {
                   "codigo": "BPAC11",
-                  "preco": 35.58,
-                  "variacao": -2.49
+                  "preco": 35.46,
+                  "variacao": -2.82
                 }
               ]
             },
             {
               "empresa": "Banese",
-              "valorMercado": 516684150,
-              "participacao": 0.08085065212863647,
+              "valorMercado": 656143315,
+              "participacao": 0.058806929638579815,
               "codigos": [
                 {
                   "codigo": "BGIP3",
-                  "preco": 27,
-                  "variacao": 4.45
+                  "preco": 30.45,
+                  "variacao": 17.79
                 },
                 {
                   "codigo": "BGIP4",
@@ -2987,13 +2987,13 @@
             },
             {
               "empresa": "Banrisul",
-              "valorMercado": 4949882637,
-              "participacao": 0.7745568335348874,
+              "valorMercado": 4802509515,
+              "participacao": 0.43042553765439956,
               "codigos": [
                 {
                   "codigo": "BRSR3",
-                  "preco": 12.33,
-                  "variacao": -6.09
+                  "preco": 12.34,
+                  "variacao": -6.02
                 },
                 {
                   "codigo": "BRSR5",
@@ -3002,15 +3002,15 @@
                 },
                 {
                   "codigo": "BRSR6",
-                  "preco": 11.22,
-                  "variacao": -12
+                  "preco": 11.1,
+                  "variacao": -12.94
                 }
               ]
             },
             {
               "empresa": "Merc Invest",
-              "valorMercado": 85122960,
-              "participacao": 0.013320026997382902,
+              "valorMercado": 85335726,
+              "participacao": 0.007648225501678891,
               "codigos": [
                 {
                   "codigo": "BMIN3",
@@ -3019,15 +3019,15 @@
                 },
                 {
                   "codigo": "BMIN4",
-                  "preco": 16.5,
-                  "variacao": 7.14
+                  "preco": 16.3,
+                  "variacao": 5.84
                 }
               ]
             },
             {
               "empresa": "Mercantil",
-              "valorMercado": 3486569514,
-              "participacao": 0.5455778329927928,
+              "valorMercado": 3369006001,
+              "participacao": 0.3019475994398574,
               "codigos": [
                 {
                   "codigo": "BMEB3",
@@ -3036,15 +3036,15 @@
                 },
                 {
                   "codigo": "BMEB4",
-                  "preco": 37.4,
-                  "variacao": 146.7
+                  "preco": 37.25,
+                  "variacao": 145.71
                 }
               ]
             },
             {
               "empresa": "Nord Brasil",
-              "valorMercado": 9869975000,
-              "participacao": 1.5444520898180036,
+              "valorMercado": 9869974000,
+              "participacao": 0.8845976988314087,
               "codigos": [
                 {
                   "codigo": "BNBR3",
@@ -3055,71 +3055,71 @@
             },
             {
               "empresa": "Banco PAN",
-              "valorMercado": 4616896086,
-              "participacao": 0.7224511519527923,
+              "valorMercado": 4555744913,
+              "participacao": 0.40830922822113785,
               "codigos": [
                 {
                   "codigo": "BPAN4",
-                  "preco": 7.55,
-                  "variacao": -10.76
+                  "preco": 7.45,
+                  "variacao": -11.94
                 }
               ]
             },
             {
               "empresa": "Pine",
-              "valorMercado": 1040794974,
-              "participacao": 0.16286342900223907,
+              "valorMercado": 1019103801,
+              "participacao": 0.09133731023353676,
               "codigos": [
                 {
                   "codigo": "PINE4",
-                  "preco": 4.46,
-                  "variacao": 20.87
+                  "preco": 4.45,
+                  "variacao": 20.6
                 }
               ]
             },
             {
               "empresa": "Santander BR",
-              "valorMercado": 17405194883,
-              "participacao": 2.723562076979827,
+              "valorMercado": 102185621468,
+              "participacao": 9.158399566630084,
               "codigos": [
                 {
                   "codigo": "SANB3",
-                  "preco": 12.89,
-                  "variacao": -13.84
-                },
-                {
-                  "codigo": "SANB4",
-                  "preco": 14.21,
+                  "preco": 12.83,
                   "variacao": -14.24
                 },
                 {
+                  "codigo": "SANB4",
+                  "preco": 14.08,
+                  "variacao": -15.03
+                },
+                {
                   "codigo": "SANB11",
-                  "preco": 27.11,
-                  "variacao": -13.69
+                  "preco": 27.07,
+                  "variacao": -13.82
                 }
               ]
             },
             {
               "empresa": "BR Partners",
-              "valorMercado": 1502487080,
-              "participacao": 0.23510893499026592,
+              "valorMercado": 1494087339,
+              "participacao": 0.13390777138141832,
               "codigos": [
                 {
                   "codigo": "BRBI11",
-                  "preco": 14.31,
-                  "variacao": -3.31
+                  "preco": 14.23,
+                  "variacao": -3.85
                 }
               ]
             },
             {
               "empresa": "BRB Banco",
-              "valorMercado": 3340372108,
-              "participacao": 0.5227008865747248,
+              "valorMercado": 3677885658,
+              "participacao": 0.3296309787271822,
               "codigos": [
                 {
                   "codigo": "BSLI3",
-                  "preco": 7.21,
-                  "variacao": -49.58
+                  "preco": 7.7,
+                  "variacao": -46.15
                 },
                 {
                   "codigo": "BSLI4",
@@ -3130,35 +3130,35 @@
             },
             {
               "empresa": "ItauUnibanco",
-              "valorMercado": 52990141925,
-              "participacao": 8.291888828068851,
+              "valorMercado": 329397368055,
+              "participacao": 29.522281799584842,
               "codigos": [
                 {
                   "codigo": "ITUB3",
-                  "preco": 28.94,
-                  "variacao": 3.47
+                  "preco": 28.56,
+                  "variacao": 2.11
                 },
                 {
                   "codigo": "ITUB4",
-                  "preco": 32.92,
-                  "variacao": 0.58
+                  "preco": 32.44,
+                  "variacao": -0.89
                 }
               ]
             },
             {
               "empresa": "Itaúsa",
-              "valorMercado": 106792922571,
-              "participacao": 16.710939231614386,
+              "valorMercado": 108166681624,
+              "participacao": 9.694452858216245,
               "codigos": [
                 {
                   "codigo": "ITSA3",
-                  "preco": 10.1,
-                  "variacao": -0.3
+                  "preco": 9.91,
+                  "variacao": -2.17
                 },
                 {
                   "codigo": "ITSA4",
-                  "preco": 9.83,
-                  "variacao": -3.06
+                  "preco": 9.71,
+                  "variacao": -4.24
                 }
               ]
             }
@@ -3168,7 +3168,7 @@
           "segmento": "Intermediários financeiros",
           "valorMercado": 1499906000,
           "empresas": 3,
-          "participacao": 0.18514714936125892,
+          "participacao": 0.11677996688603469,
           "empresasDetalhes": [
             {
               "empresa": "Merc Financ",
@@ -3212,14 +3212,14 @@
         },
         {
           "segmento": "Participações - Diversificadas",
-          "valorMercado": 9696249033,
+          "valorMercado": 8540796422,
           "empresas": 3,
-          "participacao": 1.196896917511373,
+          "participacao": 0.6649709537407834,
           "empresasDetalhes": [
             {
               "empresa": "Par Al Bahia",
-              "valorMercado": 855967713,
-              "participacao": 8.827823110636066,
+              "valorMercado": 875349400,
+              "participacao": 10.249037171114532,
               "codigos": [
                 {
                   "codigo": "PEAB3",
@@ -3230,8 +3230,8 @@
             },
             {
               "empresa": "Mont Aranha",
-              "valorMercado": 4850487000,
-              "participacao": 50.02436492185751,
+              "valorMercado": 3797878200,
+              "participacao": 44.46749474343108,
               "codigos": [
                 {
                   "codigo": "MOAR3",
@@ -3242,13 +3242,13 @@
             },
             {
               "empresa": "Simpar",
-              "valorMercado": 3989794320,
-              "participacao": 41.14781196750643,
+              "valorMercado": 3867568822,
+              "participacao": 45.28346808545439,
               "codigos": [
                 {
                   "codigo": "SIMH3",
-                  "preco": 4.57,
-                  "variacao": -51.38
+                  "preco": 4.43,
+                  "variacao": -52.87
                 }
               ]
             }
@@ -3256,38 +3256,38 @@
         },
         {
           "segmento": "Seguro Vida",
-          "valorMercado": 159642339268,
+          "valorMercado": 158373179910,
           "empresas": 8,
-          "participacao": 19.706117605258708,
+          "participacao": 12.330649191033181,
           "empresasDetalhes": [
             {
               "empresa": "BBSeguridade",
-              "valorMercado": 80579961541,
-              "participacao": 50.475307434405714,
+              "valorMercado": 79739957993,
+              "participacao": 50.34940767010833,
               "codigos": [
                 {
                   "codigo": "BBSE3",
-                  "preco": 40.28,
-                  "variacao": 25.6
+                  "preco": 39.87,
+                  "variacao": 24.32
                 }
               ]
             },
             {
               "empresa": "Caixa Seguri",
-              "valorMercado": 44699998855,
-              "participacao": 28.0000901139138,
+              "valorMercado": 44369999885,
+              "participacao": 28.016107216016305,
               "codigos": [
                 {
                   "codigo": "CXSE3",
-                  "preco": 14.91,
-                  "variacao": 24.35
+                  "preco": 14.79,
+                  "variacao": 23.35
                 }
               ]
             },
             {
               "empresa": "Seg Al Bahia",
               "valorMercado": 300479970,
-              "participacao": 0.18822072601652903,
+              "participacao": 0.18972907544746917,
               "codigos": [
                 {
                   "codigo": "CSAB3",
@@ -3302,7 +3302,7 @@
             {
               "empresa": "Alfa Consorc",
               "valorMercado": 816419100,
-              "participacao": 0.5114051220644132,
+              "participacao": 0.5155033828732574,
               "codigos": [
                 {
                   "codigo": "BRGE3",
@@ -3332,20 +3332,20 @@
             },
             {
               "empresa": "Porto Seguro",
-              "valorMercado": 27130752164,
-              "participacao": 16.994709729512405,
+              "valorMercado": 27079026558,
+              "participacao": 17.098240101883675,
               "codigos": [
                 {
                   "codigo": "PSSA3",
-                  "preco": 41.96,
-                  "variacao": 45.29
+                  "preco": 41.88,
+                  "variacao": 45.01
                 }
               ]
             },
             {
               "empresa": "Alper S.A.",
               "valorMercado": 843109240,
-              "participacao": 0.5281238322276324,
+              "participacao": 0.5323560722081355,
               "codigos": [
                 {
                   "codigo": "APER3",
@@ -3355,25 +3355,25 @@
             },
             {
               "empresa": "Wiz Co",
-              "valorMercado": 999420000,
-              "participacao": 0.6260369301668908,
+              "valorMercado": 997820891,
+              "participacao": 0.6300441094679287,
               "codigos": [
                 {
                   "codigo": "WIZC3",
-                  "preco": 6.25,
-                  "variacao": -9.81
+                  "preco": 6.24,
+                  "variacao": -9.96
                 }
               ]
             },
             {
               "empresa": "IRBBrasil Re",
-              "valorMercado": 4272198398,
-              "participacao": 2.67610611169261,
+              "valorMercado": 4226366273,
+              "participacao": 2.6686123719948993,
               "codigos": [
                 {
                   "codigo": "IRBR3",
-                  "preco": 52.2,
-                  "variacao": 9.71
+                  "preco": 51.64,
+                  "variacao": 8.53
                 }
               ]
             }
@@ -3381,31 +3381,31 @@
         },
         {
           "segmento": "Imobiliária",
-          "valorMercado": 217172148,
+          "valorMercado": 214008625,
           "empresas": 2,
-          "participacao": 0.026807549355000532,
+          "participacao": 0.016662324266204558,
           "empresasDetalhes": [
             {
               "empresa": "Lopes Brasil",
-              "valorMercado": 206576436,
-              "participacao": 95.12105392078178,
+              "valorMercado": 203625347,
+              "participacao": 95.14819648039887,
               "codigos": [
                 {
                   "codigo": "LPSB3",
-                  "preco": 1.4,
-                  "variacao": -40.17
+                  "preco": 1.38,
+                  "variacao": -41.03
                 }
               ]
             },
             {
               "empresa": "Nexpe",
-              "valorMercado": 10595712,
-              "participacao": 4.878946079218224,
+              "valorMercado": 10383278,
+              "participacao": 4.8518035196011375,
               "codigos": [
                 {
                   "codigo": "NEXP3",
-                  "preco": 3.99,
-                  "variacao": -21.15
+                  "preco": 3.91,
+                  "variacao": -22.73
                 }
               ]
             }
@@ -3415,20 +3415,20 @@
     },
     {
       "industria": "Saúde",
-      "valorMercadoTotal": 162112917797,
-      "participacao": 6.594204009703436,
+      "valorMercadoTotal": 160072332126,
+      "participacao": 3.8465363617684103,
       "qtdSegmentos": 3,
       "empresas": 21,
       "segmentos": [
         {
           "segmento": "Equipamento",
-          "valorMercado": 119581606,
+          "valorMercado": 120049979,
           "empresas": 1,
-          "participacao": 0.07376439066363713,
+          "participacao": 0.07499733239689628,
           "empresasDetalhes": [
             {
               "empresa": "Baumer",
-              "valorMercado": 119581606,
+              "valorMercado": 120049979,
               "participacao": 100,
               "codigos": [
                 {
@@ -3447,26 +3447,26 @@
         },
         {
           "segmento": "Serviço Hospitalar Médico e Diagnóstico",
-          "valorMercado": 105213324630,
+          "valorMercado": 104426705776,
           "empresas": 10,
-          "participacao": 64.90125898649825,
+          "participacao": 65.23719895190952,
           "empresasDetalhes": [
             {
               "empresa": "Alliar",
-              "valorMercado": 1950200349,
-              "participacao": 1.8535678402504634,
+              "valorMercado": 1714043250,
+              "participacao": 1.6413840092559275,
               "codigos": [
                 {
                   "codigo": "AALR3",
-                  "preco": 12.8,
-                  "variacao": 16.89
+                  "preco": 11.25,
+                  "variacao": 2.74
                 }
               ]
             },
             {
               "empresa": "Dasa",
               "valorMercado": 2610412384,
-              "participacao": 2.481066341340268,
+              "participacao": 2.499755560229442,
               "codigos": [
                 {
                   "codigo": "DASA3",
@@ -3477,8 +3477,8 @@
             },
             {
               "empresa": "Fleury",
-              "valorMercado": 6434966285,
-              "participacao": 6.116113436800538,
+              "valorMercado": 6434965109,
+              "participacao": 6.162183381330912,
               "codigos": [
                 {
                   "codigo": "FLRY3",
@@ -3489,8 +3489,8 @@
             },
             {
               "empresa": "Hapvida",
-              "valorMercado": 16737612515,
-              "participacao": 15.908263115779844,
+              "valorMercado": 16812998173,
+              "participacao": 16.100285887658508,
               "codigos": [
                 {
                   "codigo": "HAPV3",
@@ -3501,73 +3501,73 @@
             },
             {
               "empresa": "Mater Dei",
-              "valorMercado": 1297792196,
-              "participacao": 1.233486538481604,
+              "valorMercado": 1283037830,
+              "participacao": 1.2286491472326764,
               "codigos": [
                 {
                   "codigo": "MATD3",
-                  "preco": 3.76,
-                  "variacao": -54.53
+                  "preco": 3.78,
+                  "variacao": -54.29
                 }
               ]
             },
             {
               "empresa": "Kora Saude",
-              "valorMercado": 685186301,
-              "participacao": 0.6512352911663714,
+              "valorMercado": 680546254,
+              "participacao": 0.6516975221451518,
               "codigos": [
                 {
                   "codigo": "KRSA3",
-                  "preco": 8.86,
-                  "variacao": 571.21
+                  "preco": 8.8,
+                  "variacao": 566.67
                 }
               ]
             },
             {
               "empresa": "Odontoprev",
-              "valorMercado": 6055351797,
-              "participacao": 5.755308862536796,
+              "valorMercado": 6038777076,
+              "participacao": 5.7827899780286565,
               "codigos": [
                 {
                   "codigo": "ODPV3",
-                  "preco": 10.96,
-                  "variacao": -3.61
+                  "preco": 10.93,
+                  "variacao": -3.87
                 }
               ]
             },
             {
               "empresa": "Oncoclínicas",
-              "valorMercado": 3617247034,
-              "participacao": 3.4380122923789793,
+              "valorMercado": 3519484082,
+              "participacao": 3.3702912064941053,
               "codigos": [
                 {
                   "codigo": "ONCO3",
-                  "preco": 5.55,
-                  "variacao": -52.36
+                  "preco": 5.4,
+                  "variacao": -53.65
                 }
               ]
             },
             {
               "empresa": "Qualicorp",
-              "valorMercado": 533946882,
-              "participacao": 0.5074897916948373,
+              "valorMercado": 522586321,
+              "participacao": 0.5004335980117685,
               "codigos": [
                 {
                   "codigo": "QUAL3",
-                  "preco": 1.88,
-                  "variacao": -40.32
+                  "preco": 1.84,
+                  "variacao": -41.59
                 }
               ]
             },
             {
               "empresa": "Rede D'Or",
-              "valorMercado": 65290608887,
-              "participacao": 62.05545648957029,
+              "valorMercado": 64809855297,
+              "participacao": 62.06252970961286,
               "codigos": [
                 {
                   "codigo": "RDOR3",
-                  "preco": 28.52,
-                  "variacao": 1.75
+                  "preco": 28.31,
+                  "variacao": 1
                 }
               ]
             }
@@ -3575,98 +3575,98 @@
         },
         {
           "segmento": "Produtos Farmacêuticos e Outros",
-          "valorMercado": 56780011561,
+          "valorMercado": 55525576371,
           "empresas": 10,
-          "participacao": 35.024976622838096,
+          "participacao": 34.68780371569358,
           "empresasDetalhes": [
             {
               "empresa": "BiomM",
-              "valorMercado": 1297587463,
-              "participacao": 2.2852891842157756,
+              "valorMercado": 1293782255,
+              "participacao": 2.330065421303252,
               "codigos": [
                 {
                   "codigo": "BIOM3",
-                  "preco": 10.3,
-                  "variacao": 63.49
+                  "preco": 10.2,
+                  "variacao": 61.9
                 }
               ]
             },
             {
               "empresa": "Blau",
-              "valorMercado": 2452314626,
-              "participacao": 4.318975214306579,
+              "valorMercado": 2403878191,
+              "participacao": 4.329316952854724,
               "codigos": [
                 {
                   "codigo": "BLAU3",
-                  "preco": 13.67,
-                  "variacao": -14.4
+                  "preco": 13.4,
+                  "variacao": -16.09
                 }
               ]
             },
             {
               "empresa": "Viveo",
-              "valorMercado": 493915355,
-              "participacao": 0.8698754040748583,
+              "valorMercado": 484230900,
+              "participacao": 0.8720862198071753,
               "codigos": [
                 {
                   "codigo": "VVEO3",
-                  "preco": 1.53,
-                  "variacao": -89.05
+                  "preco": 1.5,
+                  "variacao": -89.26
                 }
               ]
             },
             {
               "empresa": "D1000VarejoFarma",
-              "valorMercado": 297038665,
-              "participacao": 0.5231394936946867,
+              "valorMercado": 290966330,
+              "participacao": 0.5240221696320227,
               "codigos": [
                 {
                   "codigo": "DMVF3",
-                  "preco": 5.82,
-                  "variacao": 3.37
+                  "preco": 5.75,
+                  "variacao": 2.13
                 }
               ]
             },
             {
               "empresa": "Dimed",
-              "valorMercado": 1311290968,
-              "participacao": 2.3094235664099005,
+              "valorMercado": 1302269127,
+              "participacao": 2.345350038869928,
               "codigos": [
                 {
                   "codigo": "PNVL3",
-                  "preco": 8.72,
-                  "variacao": -30.85
+                  "preco": 8.66,
+                  "variacao": -31.32
                 }
               ]
             },
             {
               "empresa": "Pague Menos",
-              "valorMercado": 2011232509,
-              "participacao": 3.542148819112672,
+              "valorMercado": 1967646101,
+              "participacao": 3.5436752386917423,
               "codigos": [
                 {
                   "codigo": "PGMN3",
-                  "preco": 3.23,
-                  "variacao": -8.24
+                  "preco": 3.16,
+                  "variacao": -10.23
                 }
               ]
             },
             {
               "empresa": "Hypera",
-              "valorMercado": 12915445647,
-              "participacao": 22.74646533512001,
+              "valorMercado": 12801431767,
+              "participacao": 23.055018252248086,
               "codigos": [
                 {
                   "codigo": "HYPE3",
-                  "preco": 20.39,
-                  "variacao": -41.73
+                  "preco": 20.21,
+                  "variacao": -42.24
                 }
               ]
             },
             {
               "empresa": "Ourofino S/A",
-              "valorMercado": 1141021329,
-              "participacao": 2.0095475461011065,
+              "valorMercado": 1141021752,
+              "participacao": 2.0549480556061996,
               "codigos": [
                 {
                   "codigo": "OFSA3",
@@ -3677,25 +3677,25 @@
             },
             {
               "empresa": "Profarma",
-              "valorMercado": 895165823,
-              "participacao": 1.5765509699453018,
+              "valorMercado": 888975164,
+              "participacao": 1.601019245726003,
               "codigos": [
                 {
                   "codigo": "PFRM3",
-                  "preco": 7.23,
-                  "variacao": 35.9
+                  "preco": 7.18,
+                  "variacao": 34.96
                 }
               ]
             },
             {
               "empresa": "RaiaDrogasil",
-              "valorMercado": 33964999176,
-              "participacao": 59.81858446701911,
+              "valorMercado": 32951374784,
+              "participacao": 59.34449840526087,
               "codigos": [
                 {
                   "codigo": "RADL3",
-                  "preco": 19.76,
-                  "variacao": -32.97
+                  "preco": 19.18,
+                  "variacao": -34.94
                 }
               ]
             }
@@ -3705,33 +3705,33 @@
     },
     {
       "industria": "Tecnologia da Informação",
-      "valorMercadoTotal": 30934580323,
-      "participacao": 1.25831387391261,
+      "valorMercadoTotal": 30681546745,
+      "participacao": 0.7372772272540065,
       "qtdSegmentos": 2,
       "empresas": 15,
       "segmentos": [
         {
           "segmento": "Hardware e Equipamentos",
-          "valorMercado": 5957364371,
+          "valorMercado": 5893366930,
           "empresas": 3,
-          "participacao": 19.25794469747719,
+          "participacao": 19.208180666316665,
           "empresasDetalhes": [
             {
               "empresa": "Intelbras",
-              "valorMercado": 4193422142,
-              "participacao": 70.39056000021188,
+              "valorMercado": 4147556476,
+              "participacao": 70.37668832203529,
               "codigos": [
                 {
                   "codigo": "INTB3",
-                  "preco": 12.8,
-                  "variacao": -41.23
+                  "preco": 12.66,
+                  "variacao": -41.87
                 }
               ]
             },
             {
               "empresa": "Multilaser",
-              "valorMercado": 1001058213,
-              "participacao": 16.803709671899135,
+              "valorMercado": 992852463,
+              "participacao": 16.84694801448584,
               "codigos": [
                 {
                   "codigo": "MLAS3",
@@ -3742,13 +3742,13 @@
             },
             {
               "empresa": "Positivo Tecnologia",
-              "valorMercado": 762884016,
-              "participacao": 12.805730327888988,
+              "valorMercado": 752957991,
+              "participacao": 12.776363663478865,
               "codigos": [
                 {
                   "codigo": "POSI3",
-                  "preco": 5.38,
-                  "variacao": -20.77
+                  "preco": 5.31,
+                  "variacao": -21.8
                 }
               ]
             }
@@ -3756,38 +3756,38 @@
         },
         {
           "segmento": "Softwares e Serviços",
-          "valorMercado": 24977215952,
+          "valorMercado": 24788179815,
           "empresas": 12,
-          "participacao": 80.74205530252281,
+          "participacao": 80.79181933368334,
           "empresasDetalhes": [
             {
               "empresa": "Bemobi Tech",
-              "valorMercado": 1400553149,
-              "participacao": 5.60732289656107,
+              "valorMercado": 1394560262,
+              "participacao": 5.6259082853518505,
               "codigos": [
                 {
                   "codigo": "BMOB3",
-                  "preco": 16.36,
-                  "variacao": 18.21
+                  "preco": 16.29,
+                  "variacao": 17.7
                 }
               ]
             },
             {
               "empresa": "Enjoei",
-              "valorMercado": 209118254,
-              "participacao": 0.8372360410458607,
+              "valorMercado": 207068178,
+              "participacao": 0.8353504756920369,
               "codigos": [
                 {
                   "codigo": "ENJU3",
-                  "preco": 1.03,
-                  "variacao": -36.02
+                  "preco": 1.01,
+                  "variacao": -37.27
                 }
               ]
             },
             {
               "empresa": "GetNinjas",
               "valorMercado": 253477068,
-              "participacao": 1.0148331522901508,
+              "participacao": 1.0225723304081171,
               "codigos": [
                 {
                   "codigo": "NINJ3",
@@ -3797,109 +3797,109 @@
             },
             {
               "empresa": "Infracomm",
-              "valorMercado": 71814350,
-              "participacao": 0.28751943426364784,
+              "valorMercado": 63834974,
+              "participacao": 0.2575218288572029,
               "codigos": [
                 {
                   "codigo": "IFCM3",
-                  "preco": 0.09,
-                  "variacao": -94.12
+                  "preco": 0.08,
+                  "variacao": -94.77
                 }
               ]
             },
             {
               "empresa": "WDC Networks",
-              "valorMercado": 215328051,
-              "participacao": 0.8620978871856935,
+              "valorMercado": 195461230,
+              "participacao": 0.7885259484914706,
               "codigos": [
                 {
                   "codigo": "LVTC3",
-                  "preco": 3.33,
-                  "variacao": -22.2
+                  "preco": 3.08,
+                  "variacao": -28.04
                 }
               ]
             },
             {
               "empresa": "Locaweb",
-              "valorMercado": 1559195594,
-              "participacao": 6.242471526836243,
+              "valorMercado": 1531051024,
+              "participacao": 6.176536701874009,
               "codigos": [
                 {
                   "codigo": "LWSA3",
-                  "preco": 2.76,
-                  "variacao": -53.38
+                  "preco": 2.72,
+                  "variacao": -54.05
                 }
               ]
             },
             {
               "empresa": "Meliuz",
-              "valorMercado": 319911117,
-              "participacao": 1.2808117510566015,
+              "valorMercado": 317312677,
+              "participacao": 1.2800967209701517,
               "codigos": [
                 {
                   "codigo": "CASH3",
-                  "preco": 3.67,
-                  "variacao": -54.18
+                  "preco": 3.64,
+                  "variacao": -54.56
                 }
               ]
             },
             {
               "empresa": "Neogrid",
-              "valorMercado": 213166834,
-              "participacao": 0.853445133395386,
+              "valorMercado": 211612803,
+              "participacao": 0.8536843147795279,
               "codigos": [
                 {
                   "codigo": "NGRD3",
-                  "preco": 23.32,
-                  "variacao": 1765.6
+                  "preco": 23.15,
+                  "variacao": 1752
                 }
               ]
             },
             {
               "empresa": "Padtec",
-              "valorMercado": 118409704,
-              "participacao": 0.4740708661347766,
+              "valorMercado": 116025648,
+              "participacao": 0.46806844579120627,
               "codigos": [
                 {
                   "codigo": "PDTC3",
-                  "preco": 1.49,
-                  "variacao": -55.39
+                  "preco": 1.46,
+                  "variacao": -56.29
                 }
               ]
             },
             {
               "empresa": "TC",
-              "valorMercado": 216113511,
-              "participacao": 0.8652425931509599,
+              "valorMercado": 217314077,
+              "participacao": 0.8766842850982441,
               "codigos": [
                 {
                   "codigo": "TRAD3",
-                  "preco": 5.4,
-                  "variacao": 506.74
+                  "preco": 5.43,
+                  "variacao": 510.11
                 }
               ]
             },
             {
               "empresa": "Totvs",
-              "valorMercado": 20343692874,
-              "participacao": 81.44900101394616,
+              "valorMercado": 20223804242,
+              "participacao": 81.58648352938778,
               "codigos": [
                 {
                   "codigo": "TOTS3",
-                  "preco": 33.93,
-                  "variacao": 0.03
+                  "preco": 33.74,
+                  "variacao": -0.53
                 }
               ]
             },
             {
               "empresa": "Westwing",
-              "valorMercado": 56435446,
-              "participacao": 0.22594770413345866,
+              "valorMercado": 56657632,
+              "participacao": 0.22856713329840753,
               "codigos": [
                 {
                   "codigo": "WEST3",
-                  "preco": 5.08,
-                  "variacao": 273.53
+                  "preco": 5.1,
+                  "variacao": 275
                 }
               ]
             }
@@ -3909,50 +3909,50 @@
     },
     {
       "industria": "Petróleo, Gás e Biocombustíveis",
-      "valorMercadoTotal": 167106140374,
-      "participacao": 6.7973113794679225,
+      "valorMercadoTotal": 608988375768,
+      "participacao": 14.63398390074066,
       "qtdSegmentos": 2,
       "empresas": 12,
       "segmentos": [
         {
           "segmento": "Equipamentos e Serviços",
-          "valorMercado": 1192899004,
+          "valorMercado": 1153320067,
           "empresas": 3,
-          "participacao": 0.7138570739113324,
+          "participacao": 0.18938293617600485,
           "empresasDetalhes": [
             {
               "empresa": "Lupatech",
-              "valorMercado": 56455152,
-              "participacao": 4.732601151538894,
+              "valorMercado": 56033846,
+              "participacao": 4.858481838936043,
               "codigos": [
                 {
                   "codigo": "LUPA3",
-                  "preco": 1.34,
-                  "variacao": -38.53
+                  "preco": 1.33,
+                  "variacao": -38.99
                 }
               ]
             },
             {
               "empresa": "OceanPact",
-              "valorMercado": 1125772007,
-              "participacao": 94.37278455469311,
+              "valorMercado": 1087779147,
+              "participacao": 94.31719590464735,
               "codigos": [
                 {
                   "codigo": "OPCT3",
-                  "preco": 5.63,
-                  "variacao": -8.6
+                  "preco": 5.44,
+                  "variacao": -11.69
                 }
               ]
             },
             {
               "empresa": "OSX Brasil",
-              "valorMercado": 10671845,
-              "participacao": 0.8946142937679912,
+              "valorMercado": 9507074,
+              "participacao": 0.8243222564166135,
               "codigos": [
                 {
                   "codigo": "OSXB3",
-                  "preco": 3.39,
-                  "variacao": -19.67
+                  "preco": 3.02,
+                  "variacao": -28.44
                 }
               ]
             }
@@ -3960,14 +3960,14 @@
         },
         {
           "segmento": "Exploração Refino e Distribuição",
-          "valorMercado": 165913241370,
+          "valorMercado": 607835055701,
           "empresas": 9,
-          "participacao": 99.28614292608867,
+          "participacao": 99.810617063824,
           "empresasDetalhes": [
             {
               "empresa": "3R Petroleum",
               "valorMercado": 6323602206,
-              "participacao": 3.8113909135786534,
+              "participacao": 1.0403483883809823,
               "codigos": [
                 {
                   "codigo": "RRRP3",
@@ -3977,20 +3977,20 @@
             },
             {
               "empresa": "Cosan",
-              "valorMercado": 2515029834,
-              "participacao": 1.5158704713575448,
+              "valorMercado": 14279260678,
+              "participacao": 2.3491999258799097,
               "codigos": [
                 {
                   "codigo": "CSAN3",
-                  "preco": 7.79,
-                  "variacao": -57.71
+                  "preco": 7.65,
+                  "variacao": -58.47
                 }
               ]
             },
             {
               "empresa": "Enauta Participações",
               "valorMercado": 4154561877,
-              "participacao": 2.5040568448271046,
+              "participacao": 0.6835015252959793,
               "codigos": [
                 {
                   "codigo": "ENAT3",
@@ -4000,78 +4000,78 @@
             },
             {
               "empresa": "Petrobras",
-              "valorMercado": 88840192534,
-              "participacao": 53.546173771555196,
+              "valorMercado": 503576962047,
+              "participacao": 82.84763396317084,
               "codigos": [
                 {
                   "codigo": "PETR3",
-                  "preco": 41.22,
-                  "variacao": 11.32
+                  "preco": 40.63,
+                  "variacao": 9.72
                 },
                 {
                   "codigo": "PETR4",
-                  "preco": 37.33,
-                  "variacao": 5.45
+                  "preco": 37.04,
+                  "variacao": 4.63
                 }
               ]
             },
             {
               "empresa": "PetroRecôncavo",
-              "valorMercado": 4853696348,
-              "participacao": 2.925442422751457,
+              "valorMercado": 4815877116,
+              "participacao": 0.7922999950119654,
               "codigos": [
                 {
                   "codigo": "RECV3",
-                  "preco": 16.54,
-                  "variacao": -18.4
+                  "preco": 16.41,
+                  "variacao": -19.04
                 }
               ]
             },
             {
               "empresa": "PetroRio",
-              "valorMercado": 35593902810,
-              "participacao": 21.453322541401445,
+              "valorMercado": 35038177003,
+              "participacao": 5.764421889519255,
               "codigos": [
                 {
                   "codigo": "PRIO3",
-                  "preco": 39.69,
-                  "variacao": -14.18
+                  "preco": 39.09,
+                  "variacao": -15.48
                 }
               ]
             },
             {
               "empresa": "Petro Manguinhos",
-              "valorMercado": 194274941,
-              "participacao": 0.1170942954256141,
+              "valorMercado": 198336480,
+              "participacao": 0.032629983766116255,
               "codigos": [
                 {
                   "codigo": "RPMG3",
-                  "preco": 2.87,
-                  "variacao": 32.87
+                  "preco": 2.93,
+                  "variacao": 35.65
                 }
               ]
             },
             {
               "empresa": "Ultrapar",
-              "valorMercado": 3542160052,
-              "participacao": 2.1349471704315,
+              "valorMercado": 19731497355,
+              "participacao": 3.246192724479208,
               "codigos": [
                 {
                   "codigo": "UGPA3",
-                  "preco": 18,
-                  "variacao": -29.19
+                  "preco": 17.69,
+                  "variacao": -30.41
                 }
               ]
             },
             {
               "empresa": "Vibra Energia",
-              "valorMercado": 19895820768,
-              "participacao": 11.991701568671488,
+              "valorMercado": 19716780939,
+              "participacao": 3.243771604495756,
               "codigos": [
                 {
                   "codigo": "VBBR3",
-                  "preco": 17.77,
-                  "variacao": -19.19
+                  "preco": 17.62,
+                  "variacao": -19.87
                 }
               ]
             }
@@ -4081,21 +4081,21 @@
     },
     {
       "industria": "Utilidades",
-      "valorMercadoTotal": 414537152261,
-      "participacao": 16.861966268681368,
+      "valorMercadoTotal": 603632288148,
+      "participacao": 14.50527717476549,
       "qtdSegmentos": 3,
       "empresas": 38,
       "segmentos": [
         {
           "segmento": "Utilidades elétricas",
-          "valorMercado": 343982449719,
+          "valorMercado": 476278382333,
           "empresas": 32,
-          "participacao": 82.97988439463745,
+          "participacao": 78.90207195414717,
           "empresasDetalhes": [
             {
               "empresa": "AES Brasil",
               "valorMercado": 7331474697,
-              "participacao": 2.131351382312992,
+              "participacao": 1.5393255224155955,
               "codigos": [
                 {
                   "codigo": "AESB3",
@@ -4105,8 +4105,8 @@
             },
             {
               "empresa": "Afluente Transmissão",
-              "valorMercado": 466195924,
-              "participacao": 0.13552898538307304,
+              "valorMercado": 466195850,
+              "participacao": 0.09788305900351559,
               "codigos": [
                 {
                   "codigo": "AFLT3",
@@ -4117,13 +4117,13 @@
             },
             {
               "empresa": "Alupar",
-              "valorMercado": 9349992550,
-              "participacao": 2.7181597658944603,
+              "valorMercado": 9321467100,
+              "participacao": 1.9571467960270976,
               "codigos": [
                 {
                   "codigo": "ALUP3",
-                  "preco": 10.02,
-                  "variacao": 0.3
+                  "preco": 9.79,
+                  "variacao": -2
                 },
                 {
                   "codigo": "ALUP4",
@@ -4132,15 +4132,15 @@
                 },
                 {
                   "codigo": "ALUP11",
-                  "preco": 29.51,
-                  "variacao": -1.04
+                  "preco": 29.41,
+                  "variacao": -1.37
                 }
               ]
             },
             {
               "empresa": "Ampla Energia",
               "valorMercado": 3344347672,
-              "participacao": 0.9722436928779374,
+              "participacao": 0.7021833860310984,
               "codigos": [
                 {
                   "codigo": "CBEE3",
@@ -4151,25 +4151,25 @@
             },
             {
               "empresa": "Auren",
-              "valorMercado": 8150925760,
-              "participacao": 2.369576054434902,
+              "valorMercado": 8161429269,
+              "participacao": 1.7135838139497515,
               "codigos": [
                 {
                   "codigo": "AURE3",
-                  "preco": 7.76,
-                  "variacao": -42.48
+                  "preco": 7.77,
+                  "variacao": -42.4
                 }
               ]
             },
             {
               "empresa": "Eletrobras",
-              "valorMercado": 17226806518,
-              "participacao": 5.008048094335224,
+              "valorMercado": 97612520963,
+              "participacao": 20.494845994238755,
               "codigos": [
                 {
                   "codigo": "ELET3",
-                  "preco": 42.26,
-                  "variacao": 3.63
+                  "preco": 41.84,
+                  "variacao": 2.6
                 },
                 {
                   "codigo": "ELET5",
@@ -4178,15 +4178,15 @@
                 },
                 {
                   "codigo": "ELET6",
-                  "preco": 45.37,
-                  "variacao": 0.42
+                  "preco": 45.19,
+                  "variacao": 0.02
                 }
               ]
             },
             {
               "empresa": "Celesc",
-              "valorMercado": 3079946585,
-              "participacao": 0.8953789902700021,
+              "valorMercado": 3045063159,
+              "participacao": 0.6393452384053367,
               "codigos": [
                 {
                   "codigo": "CLSC3",
@@ -4195,15 +4195,15 @@
                 },
                 {
                   "codigo": "CLSC4",
-                  "preco": 80.89,
-                  "variacao": 28.38
+                  "preco": 81.3,
+                  "variacao": 29.03
                 }
               ]
             },
             {
               "empresa": "CELGPAR",
               "valorMercado": 1824591819,
-              "participacao": 0.5304316602461878,
+              "participacao": 0.38309356180778714,
               "codigos": [
                 {
                   "codigo": "GPAR3",
@@ -4214,13 +4214,13 @@
             },
             {
               "empresa": "Coelba",
-              "valorMercado": 6776125000,
-              "participacao": 1.9699042801559878,
+              "valorMercado": 6755832000,
+              "participacao": 1.4184628676420838,
               "codigos": [
                 {
                   "codigo": "CEEB3",
-                  "preco": 37.67,
-                  "variacao": -5.8
+                  "preco": 37.68,
+                  "variacao": -5.78
                 },
                 {
                   "codigo": "CEEB5",
@@ -4231,13 +4231,13 @@
             },
             {
               "empresa": "CEB",
-              "valorMercado": 1317825179,
-              "participacao": 0.38310826034192563,
+              "valorMercado": 1343241360,
+              "participacao": 0.2820286222986381,
               "codigos": [
                 {
                   "codigo": "CEBR3",
-                  "preco": 17.9,
-                  "variacao": 11.87
+                  "preco": 18.15,
+                  "variacao": 13.44
                 },
                 {
                   "codigo": "CEBR5",
@@ -4253,37 +4253,37 @@
             },
             {
               "empresa": "Cemig",
-              "valorMercado": 5975109727,
-              "participacao": 1.7370391227462565,
+              "valorMercado": 34499970864,
+              "participacao": 7.243656681415077,
               "codigos": [
                 {
                   "codigo": "CMIG3",
-                  "preco": 15.01,
-                  "variacao": -1.12
+                  "preco": 14.85,
+                  "variacao": -2.17
                 },
                 {
                   "codigo": "CMIG4",
-                  "preco": 10.77,
-                  "variacao": -5.11
+                  "preco": 10.65,
+                  "variacao": -6.17
                 }
               ]
             },
             {
               "empresa": "Coelce",
-              "valorMercado": 2086570298,
-              "participacao": 0.6065920804112314,
+              "valorMercado": 2089956494,
+              "participacao": 0.43880985816794077,
               "codigos": [
                 {
                   "codigo": "COCE5",
-                  "preco": 24.14,
-                  "variacao": -43.86
+                  "preco": 24.18,
+                  "variacao": -43.77
                 }
               ]
             },
             {
               "empresa": "Cosern",
               "valorMercado": 4758473000,
-              "participacao": 1.3833476108700333,
+              "participacao": 0.9990948941858575,
               "codigos": [
                 {
                   "codigo": "CSRN3",
@@ -4301,8 +4301,8 @@
             },
             {
               "empresa": "CEEE-D",
-              "valorMercado": 955191300,
-              "participacao": 0.2776860565939622,
+              "valorMercado": 740704900,
+              "participacao": 0.1555193196826894,
               "codigos": [
                 {
                   "codigo": "CEED3",
@@ -4313,13 +4313,13 @@
             },
             {
               "empresa": "COPEL",
-              "valorMercado": 5248027619,
-              "participacao": 1.5256672610149515,
+              "valorMercado": 29928336496,
+              "participacao": 6.283790658185905,
               "codigos": [
                 {
                   "codigo": "CPLE3",
-                  "preco": 9.49,
-                  "variacao": 3.6
+                  "preco": 9.45,
+                  "variacao": 3.17
                 },
                 {
                   "codigo": "CPLE5",
@@ -4328,8 +4328,8 @@
                 },
                 {
                   "codigo": "CPLE6",
-                  "preco": 10.56,
-                  "variacao": 6.34
+                  "preco": 10.49,
+                  "variacao": 5.64
                 },
                 {
                   "codigo": "CPLE11",
@@ -4339,20 +4339,20 @@
             },
             {
               "empresa": "CPFL Energia",
-              "valorMercado": 44776591143,
-              "participacao": 13.017115024204895,
+              "valorMercado": 44407870214,
+              "participacao": 9.323931520148506,
               "codigos": [
                 {
                   "codigo": "CPFE3",
-                  "preco": 38.85,
-                  "variacao": 2.83
+                  "preco": 38.54,
+                  "variacao": 2.01
                 }
               ]
             },
             {
               "empresa": "Transmissora Paulista",
               "valorMercado": 17690667311,
-              "participacao": 5.142898227933299,
+              "participacao": 3.7143544547086327,
               "codigos": [
                 {
                   "codigo": "TRPL3",
@@ -4366,8 +4366,8 @@
             },
             {
               "empresa": "Elektro",
-              "valorMercado": 8863354000,
-              "participacao": 2.576687853476389,
+              "valorMercado": 8618846000,
+              "participacao": 1.8096235982371238,
               "codigos": [
                 {
                   "codigo": "EKTR3",
@@ -4383,8 +4383,8 @@
             },
             {
               "empresa": "Eletrobras Participações",
-              "valorMercado": 477189075,
-              "participacao": 0.13872483185982795,
+              "valorMercado": 485301700,
+              "participacao": 0.10189454697120624,
               "codigos": [
                 {
                   "codigo": "LIPR3",
@@ -4395,20 +4395,20 @@
             },
             {
               "empresa": "EMAE",
-              "valorMercado": 1800884075,
-              "participacao": 0.5235395225748133,
+              "valorMercado": 1472340683,
+              "participacao": 0.3091344763093997,
               "codigos": [
                 {
                   "codigo": "EMAE4",
-                  "preco": 39.69,
-                  "variacao": -30.25
+                  "preco": 39.85,
+                  "variacao": -29.96
                 }
               ]
             },
             {
               "empresa": "Energisa MT",
-              "valorMercado": 17527408331,
-              "participacao": 5.095436800719972,
+              "valorMercado": 17891570000,
+              "participacao": 3.756536232520151,
               "codigos": [
                 {
                   "codigo": "ENMT3",
@@ -4424,71 +4424,71 @@
             },
             {
               "empresa": "ENERGISA",
-              "valorMercado": 21472009500,
-              "participacao": 6.24218169198473,
+              "valorMercado": 21192637108,
+              "participacao": 4.449632377642268,
               "codigos": [
                 {
                   "codigo": "ENGI3",
-                  "preco": 12.05,
-                  "variacao": -28.27
+                  "preco": 12.06,
+                  "variacao": -28.21
                 },
                 {
                   "codigo": "ENGI4",
-                  "preco": 7.45,
-                  "variacao": -11.41
+                  "preco": 7.38,
+                  "variacao": -12.25
                 },
                 {
                   "codigo": "ENGI11",
-                  "preco": 41.88,
-                  "variacao": -17.07
+                  "preco": 41.2,
+                  "variacao": -18.42
                 }
               ]
             },
             {
               "empresa": "ENEVA",
-              "valorMercado": 23596936183,
-              "participacao": 6.859924453202885,
+              "valorMercado": 23326372780,
+              "participacao": 4.897634166333184,
               "codigos": [
                 {
                   "codigo": "ENEV3",
-                  "preco": 12.2,
-                  "variacao": -7.72
+                  "preco": 12.07,
+                  "variacao": -8.7
                 }
               ]
             },
             {
               "empresa": "ENGIE BRASIL",
-              "valorMercado": 31666159038,
-              "participacao": 9.205748451372491,
+              "valorMercado": 31600883320,
+              "participacao": 6.634960664224643,
               "codigos": [
                 {
                   "codigo": "EGIE3",
-                  "preco": 38.78,
-                  "variacao": -13.65
+                  "preco": 38.73,
+                  "variacao": -13.76
                 }
               ]
             },
             {
               "empresa": "EQUATORIAL",
-              "valorMercado": 41429297743,
-              "participacao": 12.044014971357894,
+              "valorMercado": 41178589987,
+              "participacao": 8.645907837616097,
               "codigos": [
                 {
                   "codigo": "EQTL3",
-                  "preco": 33.05,
-                  "variacao": -3.62
+                  "preco": 32.85,
+                  "variacao": -4.2
                 }
               ]
             },
             {
               "empresa": "EQTL PARA",
               "valorMercado": 32328165,
-              "participacao": 0.00939820186361512,
+              "participacao": 0.006787661627984006,
               "codigos": [
                 {
                   "codigo": "EQPA3",
-                  "preco": 6.14,
-                  "variacao": -17.69
+                  "preco": 6.18,
+                  "variacao": -17.16
                 },
                 {
                   "codigo": "EQPA5",
@@ -4504,32 +4504,32 @@
             },
             {
               "empresa": "LIGHT S/A",
-              "valorMercado": 1769638150,
-              "participacao": 0.5144559414137614,
+              "valorMercado": 2000621918,
+              "participacao": 0.42005305976730706,
               "codigos": [
                 {
                   "codigo": "LIGT3",
-                  "preco": 4.75,
-                  "variacao": -27.37
+                  "preco": 5.37,
+                  "variacao": -17.89
                 }
               ]
             },
             {
               "empresa": "NEOENERGIA",
-              "valorMercado": 25756771506,
-              "participacao": 7.487815592638741,
+              "valorMercado": 25501875247,
+              "participacao": 5.354405363115941,
               "codigos": [
                 {
                   "codigo": "NEOE3",
-                  "preco": 21.23,
-                  "variacao": 4.02
+                  "preco": 21.01,
+                  "variacao": 2.94
                 }
               ]
             },
             {
               "empresa": "REDE ENERGIA",
               "valorMercado": 14244673500,
-              "participacao": 4.141104731254895,
+              "participacao": 2.9908293192363575,
               "codigos": [
                 {
                   "codigo": "REDE3",
@@ -4540,30 +4540,30 @@
             },
             {
               "empresa": "RENOVA",
-              "valorMercado": 248361302,
-              "participacao": 0.07220173651385031,
+              "valorMercado": 745741700,
+              "participacao": 0.15657685245907277,
               "codigos": [
                 {
                   "codigo": "RNEW3",
-                  "preco": 0.99,
-                  "variacao": -16.81
+                  "preco": 1,
+                  "variacao": -15.97
                 },
                 {
                   "codigo": "RNEW4",
-                  "preco": 0.97,
-                  "variacao": -18.49
+                  "preco": 1,
+                  "variacao": -15.97
                 },
                 {
                   "codigo": "RNEW11",
-                  "preco": 2.92,
-                  "variacao": -18.89
+                  "preco": 2.96,
+                  "variacao": -17.78
                 }
               ]
             },
             {
               "empresa": "GER PARANAP",
-              "valorMercado": 2987719360,
-              "participacao": 0.868567382562882,
+              "valorMercado": 2979055000,
+              "participacao": 0.6254860834555223,
               "codigos": [
                 {
                   "codigo": "GEPA3",
@@ -4579,13 +4579,13 @@
             },
             {
               "empresa": "TAESA",
-              "valorMercado": 11750857689,
-              "participacao": 3.41612128717593,
+              "valorMercado": 11685402057,
+              "participacao": 2.4534815121694744,
               "codigos": [
                 {
                   "codigo": "TAEE3",
-                  "preco": 11.31,
-                  "variacao": -8.05
+                  "preco": 11.35,
+                  "variacao": -7.72
                 },
                 {
                   "codigo": "TAEE4",
@@ -4594,8 +4594,8 @@
                 },
                 {
                   "codigo": "TAEE11",
-                  "preco": 34.13,
-                  "variacao": -8.28
+                  "preco": 33.92,
+                  "variacao": -8.84
                 }
               ]
             }
@@ -4603,13 +4603,13 @@
         },
         {
           "segmento": "Utilidades de gás",
-          "valorMercado": 17717426500,
+          "valorMercado": 17198623800,
           "empresas": 1,
-          "participacao": 4.274026200875909,
+          "participacao": 2.8491888418969396,
           "empresasDetalhes": [
             {
               "empresa": "COMGAS",
-              "valorMercado": 17717426500,
+              "valorMercado": 17198623800,
               "participacao": 100,
               "codigos": [
                 {
@@ -4619,8 +4619,8 @@
                 },
                 {
                   "codigo": "CGAS5",
-                  "preco": 139,
-                  "variacao": 9.02
+                  "preco": 137,
+                  "variacao": 7.45
                 }
               ]
             }
@@ -4628,77 +4628,77 @@
         },
         {
           "segmento": "Utilidades da água",
-          "valorMercado": 52837276042,
+          "valorMercado": 110155282015,
           "empresas": 5,
-          "participacao": 12.746089404486646,
+          "participacao": 18.24873920395588,
           "empresasDetalhes": [
             {
               "empresa": "AMBIPAR",
-              "valorMercado": 20265511125,
-              "participacao": 38.35457208068615,
+              "valorMercado": 20136901554,
+              "participacao": 18.28046843115333,
               "codigos": [
                 {
                   "codigo": "AMBP3",
-                  "preco": 121.32,
-                  "variacao": 621.28
+                  "preco": 120.55,
+                  "variacao": 616.71
                 }
               ]
             },
             {
               "empresa": "SABESP",
-              "valorMercado": 12232225089,
-              "participacao": 23.150748875238545,
+              "valorMercado": 69786349537,
+              "participacao": 63.35270380179963,
               "codigos": [
                 {
                   "codigo": "SBSP3",
-                  "preco": 101.79,
-                  "variacao": 43.02
+                  "preco": 102.1,
+                  "variacao": 43.46
                 }
               ]
             },
             {
               "empresa": "COPASA",
-              "valorMercado": 8331343171,
-              "participacao": 15.767927105813461,
+              "valorMercado": 8171636882,
+              "participacao": 7.418288739787582,
               "codigos": [
                 {
                   "codigo": "CSMG3",
-                  "preco": 21.91,
-                  "variacao": 10.05
+                  "preco": 21.49,
+                  "variacao": 7.94
                 }
               ]
             },
             {
               "empresa": "SANEPAR",
-              "valorMercado": 8380754713,
-              "participacao": 15.861443550455162,
+              "valorMercado": 8426315876,
+              "participacao": 7.649488723430055,
               "codigos": [
                 {
                   "codigo": "SAPR3",
-                  "preco": 5.85,
-                  "variacao": 6.17
+                  "preco": 5.88,
+                  "variacao": 6.72
                 },
                 {
                   "codigo": "SAPR4",
-                  "preco": 5.56,
-                  "variacao": -6.55
+                  "preco": 5.47,
+                  "variacao": -8.07
                 },
                 {
                   "codigo": "SAPR11",
-                  "preco": 28.09,
-                  "variacao": -3.83
+                  "preco": 27.87,
+                  "variacao": -4.59
                 }
               ]
             },
             {
               "empresa": "ORIZON",
-              "valorMercado": 3627441944,
-              "participacao": 6.865308387806689,
+              "valorMercado": 3634078166,
+              "participacao": 3.2990503038294094,
               "codigos": [
                 {
                   "codigo": "ORVR3",
-                  "preco": 43.73,
-                  "variacao": 22.32
+                  "preco": 43.81,
+                  "variacao": 22.55
                 }
               ]
             }
@@ -4708,21 +4708,21 @@
     },
     {
       "industria": "Outros",
-      "valorMercadoTotal": 56029722,
-      "participacao": 0.002279099176646897,
+      "valorMercadoTotal": 56363376,
+      "participacao": 0.0013544112987956538,
       "qtdSegmentos": 1,
       "empresas": 2,
       "segmentos": [
         {
           "segmento": "Outros",
-          "valorMercado": 56029722,
+          "valorMercado": 56363376,
           "empresas": 2,
           "participacao": 100,
           "empresasDetalhes": [
             {
               "empresa": "ATOMPAR",
               "valorMercado": 52846856,
-              "participacao": 94.31932573215337,
+              "participacao": 93.76098408299744,
               "codigos": [
                 {
                   "codigo": "ATOM3",
@@ -4732,8 +4732,8 @@
             },
             {
               "empresa": "CEMEPE",
-              "valorMercado": 3182866,
-              "participacao": 5.680674267846626,
+              "valorMercado": 3516520,
+              "participacao": 6.2390159170025585,
               "codigos": [
                 {
                   "codigo": "MAPT4",
