@@ -12,9 +12,12 @@ import { FlatTableView } from './components/FlatTableView';
 import { useSortableData } from './hooks/useSortableData';
 import { sumarioService } from './services/sumarioService';
 
+interface TabelaViewProps {
+    onLoadingChange?: (loading: boolean) => void;
+}
 
 
-export const TabelaView = () => {
+export const TabelaView: React.FC<TabelaViewProps> = ({ onLoadingChange }) => {
     const [data, setData] = useState<SumarioData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -26,6 +29,7 @@ export const TabelaView = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
+                onLoadingChange?.(true);
                 const response = await sumarioService.getSumarioData();
                 setData(response);
             } catch (error) {
@@ -33,11 +37,12 @@ export const TabelaView = () => {
                 console.error('Error loading data:', error);
             } finally {
                 setIsLoading(false);
+                onLoadingChange?.(false);
             }
         };
 
         fetchData();
-    }, []);
+    }, [onLoadingChange]);
 
     if (isLoading) return <CircularProgress />;
     if (error) return <Typography color="error">{error}</Typography>;

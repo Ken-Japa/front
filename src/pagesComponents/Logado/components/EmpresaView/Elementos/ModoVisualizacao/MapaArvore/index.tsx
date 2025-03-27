@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, memo } from 'react';
 import { Box } from '@mui/material';
 
-const MapaArvoreComponent: React.FC = () => {
+interface MapaArvoreProps {
+    onLoadingChange?: (loading: boolean) => void;
+}
+
+const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => {
     const container = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!container.current) return;
+        onLoadingChange?.(true);
         const currentContainer = container.current;
 
         // Clear any existing widgets first
@@ -38,13 +43,26 @@ const MapaArvoreComponent: React.FC = () => {
 
         currentContainer.appendChild(script);
 
+        let attempts = 0;
+        const maxAttempts = 10;
+        const checkWidgetLoaded = setInterval(() => {
+            attempts++;
+            const widget = currentContainer.querySelector('.tradingview-widget-container__widget');
+            if ((widget && widget.children.length > 0) || attempts >= maxAttempts) {
+                clearInterval(checkWidgetLoaded);
+                onLoadingChange?.(false);
+            }
+        }, 20);
+
         return () => {
+            clearInterval(checkWidgetLoaded);
+            onLoadingChange?.(false);
             const scriptElement = currentContainer.querySelector('script[src*="embed-widget-stock-heatmap"]');
             if (scriptElement) {
                 scriptElement.remove();
             }
         };
-    }, []);
+    }, [onLoadingChange]);
 
     return (
         <Box

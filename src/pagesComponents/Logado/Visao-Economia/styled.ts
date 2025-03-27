@@ -17,6 +17,7 @@ export const BackgroundContainer = styled(Box)(({ theme }) => ({
 
 export const DashboardItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
+  display: "flex",
   height: "100%",
   background:
     theme.palette.mode === "dark"

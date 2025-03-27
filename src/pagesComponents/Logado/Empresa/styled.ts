@@ -33,15 +33,6 @@ export const EmpresasContainer = styled(Box)`
   }
 `;
 
-export const ContentContainer = styled(Container)`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  margin-bottom: 64px;
-`;
-
 export const SearchBarWrapper = styled(Box)`
   display: flex;
   justify-content: center;
@@ -49,11 +40,13 @@ export const SearchBarWrapper = styled(Box)`
   padding: 0 16px;
 `;
 
-export const VisualizationWrapper = styled(Box)`
+export const ContentContainer = styled(Container)`
   flex: 1;
   display: flex;
-  min-height: 100vh;
-  width: 100%;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 64px;
 `;
 
 export const ControlsWrapper = styled(Box)`
@@ -65,19 +58,5 @@ export const ControlsWrapper = styled(Box)`
     theme.palette.mode === "dark"
       ? "rgba(255, 255, 255, 0.05)"
       : "rgba(0, 0, 0, 0.02)"};
-  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-`;
-
-export const ContentPlaceholder = styled(Box)`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.palette.text.secondary};
-  font-style: italic;
-  background: ${({ theme }) =>
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.02)"
-      : "rgba(0, 0, 0, 0.01)"};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;

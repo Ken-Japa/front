@@ -6,7 +6,6 @@ import TableRowsIcon from '@mui/icons-material/TableRows';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 
-
 interface ModoVisualizacaoProps {
     viewMode: ViewMode;
     onChangeView: (mode: ViewMode) => void;
