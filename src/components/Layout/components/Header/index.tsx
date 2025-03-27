@@ -1,16 +1,18 @@
 "use client";
 
+import Link from 'next/link';
+import { useSession } from "next-auth/react";
+
+import { Drawer, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
+import { motion } from "framer-motion";
+
 import { Logo } from "../../../Logo";
 import { Navbar } from "./Navbar";
-import { Drawer, IconButton, useMediaQuery, useTheme } from "@mui/material";
-import { motion } from "framer-motion";
 import { LoginsButtons } from "./LoginRegisterButtons";
 import { PerfilButtons } from "./PerfilButtons";
 import { useDrawer } from "../../hooks/useDrawer";
 import { HeaderContainer, HeaderContent, DrawerContent } from "./styled";
-import Link from 'next/link';
-import { useSession } from "next-auth/react";
 
 export const Header = () => {
     const theme = useTheme();

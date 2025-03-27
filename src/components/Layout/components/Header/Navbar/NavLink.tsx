@@ -1,6 +1,7 @@
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { LinkNavbar } from "./styled";
-import { usePathname, useRouter } from "next/navigation";
+
 
 interface NavLinkProps {
     path: string;

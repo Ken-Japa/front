@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+
+import { AnimatePresence } from "framer-motion";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+
 import { ThemeProvider } from '@/theme/ThemeContext';
 import { Layout } from "@/components/Layout";
-import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { AuthProvider } from "@/providers/AuthProvider";
 

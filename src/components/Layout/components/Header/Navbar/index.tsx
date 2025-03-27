@@ -1,14 +1,16 @@
 "use client";
 
-import { publicNavigation, authNavigation } from "@/components/Layout/constants/Navigation";
-import { motion } from "framer-motion";
-import { LinkNavbar, MobileNavContainer } from "./styled";
 import { usePathname, useRouter } from "next/navigation";
-import { NavLink } from "./NavLink";
-import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton } from "@mui/material";
-import { useDrawer } from "../../../hooks/useDrawer";
 import { useSession } from "next-auth/react";
+
+import { IconButton } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
+import { motion } from "framer-motion";
+
+import { NavLink } from "./NavLink";
+import { useDrawer } from "../../../hooks/useDrawer";
+import { publicNavigation, authNavigation } from "@/components/Layout/constants/Navigation";
+import { LinkNavbar, MobileNavContainer } from "./styled";
 
 export const Navbar = () => {
     const router = useRouter();

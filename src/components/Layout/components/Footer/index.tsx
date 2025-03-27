@@ -1,16 +1,26 @@
 "use client";
 
-import { Container, Typography, Box, IconButton, Link, useTheme } from "@mui/material";
-import { Logo } from "../../../Logo";
-import LinkNext from "next/link";
-import EmailIcon from '@mui/icons-material/Email';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import { FooterContainer, TopSection } from "./styled";
-import { socialLinks } from "../../constants/footer";
-import { motion } from "framer-motion";
-import { FooterNavigation } from "./components/FooterNavigation";
 import { usePathname } from 'next/navigation';
 import { useSession } from "next-auth/react";
+import LinkNext from "next/link";
+
+import { Container, Typography, Box, IconButton, Link, useTheme } from "@mui/material";
+import EmailIcon from '@mui/icons-material/Email';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import { motion } from "framer-motion";
+
+import { Logo } from "../../../Logo";
+import { FooterNavigation } from "./components/FooterNavigation";
+import {
+    FooterContainer,
+    TopSection,
+    MainContent,
+    LogoSection,
+    NavigationSection,
+    SocialSection,
+    SectionTitle
+} from "./styled";
+import { socialLinks } from "../../constants/footer";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -34,23 +44,27 @@ export const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <Container maxWidth="lg">
+            <Container
+                maxWidth={false}
+                disableGutters
+            >
                 <TopSection>
-                    {/* Top Section */}
-                    <Box className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ type: "spring", stiffness: 300 }}
-                        >
-                            {session ?
-                                <Logo width={60} height={60} />
-                                :
-                                <Link href="/">
+                    <MainContent>
+                        {/* Top Section */}
+                        <LogoSection>
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                            >
+                                {session ?
                                     <Logo width={60} height={60} />
-                                </Link>
-                            }
-                        </motion.div>
-                        <Box className="text-center md:text-right max-w-md">
+                                    :
+                                    <Link href="/">
+                                        <Logo width={60} height={60} />
+                                    </Link>
+                                }
+                            </motion.div>
+
                             <Typography variant="body1" className="text-white/80 mb-2">
                                 Inovações tecnológicas com o objetivo de fornecer ao investidor a melhor visão do mercado.
                             </Typography>
@@ -62,61 +76,65 @@ export const Footer = () => {
                                 <EmailIcon fontSize="small" />
                                 capitalauge@gmail.com
                             </Link>
-                        </Box>
-                    </Box>
 
-                    {/* Middle Section */}
-                    <Box className="flex flex-col md:flex-row justify-center gap-12">
-                        <FooterNavigation />
+                        </LogoSection>
 
-                        <Box className="flex flex-col gap-8">
-                            <Typography variant="h6" className="font-bold text-white">
+                        {/* Middle Section */}
+                        <NavigationSection>
+                            <Box sx={{ width: '100%', textAlign: 'center' }}>
+                                <SectionTitle variant="h6">
+                                    Links
+                                </SectionTitle>
+                                <FooterNavigation />
+                            </Box>
+                        </NavigationSection>
+
+                        <SocialSection>
+                            <Typography variant="h6">
                                 Redes Sociais
                             </Typography>
-                            <Box className="flex flex-col gap-12">
-                                <Box className="flex gap-4">
-                                    {socialLinks.map((social) => {
-                                        const Icon = social.icon;
-                                        return (
-                                            <IconButton
-                                                key={social.label}
-                                                component={LinkNext}
-                                                href={social.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                sx={{
-                                                    color: 'rgba(255, 255, 255, 1)',
-                                                    borderRadius: '50%',
-                                                    '&:hover': {
-                                                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                                        color: 'rgba(255, 255, 255, 1)'
-                                                    }
-                                                }}
-                                                size="large"
-                                            >
-                                                <Icon />
-                                            </IconButton>
-                                        );
-                                    })}
-                                </Box>
-                                <LinkNext
-                                    href="/visitante/embaixadores"
-                                    className={`
-                                        flex items-center gap-2 transition-colors
-                                        ${pathname === '/embaixadores'
-                                            ? 'text-[#FFD700]'
-                                            : 'text-white/80 hover:text-white'
-                                        }
-                                    `}
-                                >
-                                    <WorkspacePremiumIcon />
-                                    <span className="text-lg font-bold">
-                                        Programa de Embaixadores
-                                    </span>
-                                </LinkNext>
+                            <Box sx={{ display: 'flex', gap: 3 }}>
+                                {socialLinks.map((social) => {
+                                    const Icon = social.icon;
+                                    return (
+                                        <IconButton
+                                            key={social.label}
+                                            component={LinkNext}
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            sx={{
+                                                color: 'white',
+                                                transition: 'transform 0.2s',
+                                                '&:hover': {
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                                    transform: 'scale(1.1)'
+                                                }
+                                            }}
+                                        >
+                                            <Icon />
+                                        </IconButton>
+                                    );
+                                })}
                             </Box>
-                        </Box>
-                    </Box>
+                            <LinkNext
+                                href="/visitante/embaixadores"
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    color: pathname === '/embaixadores' ? '#FFD700' : 'rgba(255, 255, 255, 0.8)',
+                                    transition: 'color 0.2s'
+                                }}
+                            >
+                                <WorkspacePremiumIcon />
+                                <span style={{ fontWeight: 'bold' }}>
+                                    Programa de Embaixadores
+                                </span>
+                            </LinkNext>
+                        </SocialSection>
+
+                    </MainContent>
 
                     {/* Bottom Section */}
                     <Typography
@@ -127,6 +145,6 @@ export const Footer = () => {
                     </Typography>
                 </TopSection>
             </Container>
-        </FooterContainer>
+        </FooterContainer >
     );
 };

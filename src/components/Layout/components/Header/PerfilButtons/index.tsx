@@ -1,8 +1,9 @@
-import { IconButton, Menu, MenuItem, Avatar, useTheme } from '@mui/material';
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { useSession, signOut } from 'next-auth/react';
 import { useState } from 'react';
+import Link from "next/link";
+import { useSession, signOut } from 'next-auth/react';
+
+import { IconButton, Menu, MenuItem, Avatar, useTheme } from '@mui/material';
+import { motion } from "framer-motion";
 
 interface AuthButtonsProps {
     onButtonClick?: () => void;

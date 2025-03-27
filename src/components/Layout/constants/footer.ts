@@ -38,7 +38,7 @@ export const publicLinks = [
 export const authLinks = [
   { href: "/alertas", label: "Alertas" },
   { href: "/empresas", label: "Empresas" },
-  { href: "/indicadores", label: "Indicadores" },
+  { href: "/fundamentalista", label: "Análise" },
   { href: "/visao-economia", label: "Visão Economia" },
   { href: "/dashboard", label: "Posições" },
   { href: "/blog", label: "Blog" },

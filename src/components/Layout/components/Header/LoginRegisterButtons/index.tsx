@@ -1,7 +1,8 @@
-import { PermIdentity } from "@mui/icons-material";
-import { CustomButton } from "../../../../Custom/Button";
 import Link from "next/link";
+import { PermIdentity } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import { CustomButton } from "../../../../Custom/Button";
+
 
 interface AuthButtonsProps {
     onButtonClick?: () => void;

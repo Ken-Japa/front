@@ -1,10 +1,13 @@
 "use client";
-import { Typography, Box } from "@mui/material";
-import LinkNext from "next/link";
+
 import { usePathname } from 'next/navigation';
+import { useSession } from "next-auth/react";
+import LinkNext from "next/link";
+
+import { Box } from "@mui/material";
+
 import { publicLinks, authLinks } from "../../../constants/footer";
 import { NavigationGrid } from "../styled";
-import { useSession } from "next-auth/react";
 
 export const FooterNavigation = () => {
     const pathname = usePathname();
@@ -12,9 +15,7 @@ export const FooterNavigation = () => {
 
     return (
         <Box className="flex flex-col gap-8">
-            <Typography variant="h6" className="font-bold text-white">
-                Links
-            </Typography>
+
             <NavigationGrid>
 
                 {session ?

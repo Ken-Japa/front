@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 import { useSession } from "next-auth/react";
 import { Header } from "./components/Header";
-import { Footer } from "./components//Footer";
+import { Footer } from "./components/Footer";
 
 
 type Props = {
