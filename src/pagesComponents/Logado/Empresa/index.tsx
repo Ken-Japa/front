@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { PageTransition } from '@/components/PageTransition';

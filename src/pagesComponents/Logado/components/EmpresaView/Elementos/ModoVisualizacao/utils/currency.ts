@@ -8,3 +8,8 @@ export const formatCurrency = (value: number): string => {
   }
   return `R$ ${(value / 1e6).toFixed(1)} Mi`.replace(".", ",");
 };
+
+export const formatPercentage = (value: number | undefined): string => {
+  if (value === undefined || isNaN(value)) return "0.00%";
+  return `${value > 0 ? "+" : ""}${value.toFixed(2)}%`;
+};

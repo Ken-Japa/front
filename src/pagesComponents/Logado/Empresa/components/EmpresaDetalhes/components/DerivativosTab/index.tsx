@@ -1,23 +1,22 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import React from 'react';
+import { Paper, Typography, Box } from '@mui/material';
 
-export const DerivativosTab = () => {
-    return (
-        <TableContainer component={Paper}>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Código</TableCell>
-                        <TableCell>Tipo</TableCell>
-                        <TableCell>Strike</TableCell>
-                        <TableCell>Vencimento</TableCell>
-                        <TableCell align="right">Último</TableCell>
-                        <TableCell align="right">Volume</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {/* Will be populated with API data */}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    );
+interface DerivativosTabProps {
+  codigoBase: string;
+}
+
+export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) => {
+  return (
+    <Paper sx={{ p: 3 }}>
+      <Typography variant="h6" gutterBottom>
+        Derivativos para {codigoBase}
+      </Typography>
+      <Box>
+        {/* Conteúdo dos derivativos será implementado aqui */}
+        <Typography>
+          Informações sobre derivativos serão exibidas nesta seção.
+        </Typography>
+      </Box>
+    </Paper>
+  );
 };

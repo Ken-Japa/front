@@ -5,6 +5,7 @@ import { ViewMode } from './Elementos/ModoVisualizacao/types';
 import { RedeNeural } from './Elementos/ModoVisualizacao/RedeNeural';
 import { TabelaView } from './Elementos/ModoVisualizacao/TabelaView';
 import { MapaArvore } from './Elementos/ModoVisualizacao/MapaArvore';
+import { CardsView } from './Elementos/ModoVisualizacao/Cards';
 import { VisualizationWrapper, ContentPlaceholder } from './styled';
 
 interface VisualizationContentProps {
@@ -52,7 +53,7 @@ export const VisualizationContent = ({ viewMode, isLoading, setIsLoading }: Visu
                 return (
                     <VisualizationWrapper>
                         <ContentPlaceholder>
-                            Visualização em Cartões será implementada em breve
+                            <CardsView onLoadingChange={setIsLoading} />
                         </ContentPlaceholder>
                     </VisualizationWrapper>
                 );
