@@ -29,6 +29,14 @@ export const createEmpresaNode = (
         l: -0.1
     });
 
+
+    let companyUrl = '';
+    if (empresa.codigos && empresa.codigos.length > 0) {
+        companyUrl = `/empresa/${empresa.codigos[0].codigo}`;
+    } else {
+        companyUrl = `/empresa/${encodeURIComponent(empresa.empresa)}`;
+    }
+
     return {
         id: `empresa-${empresa.empresa}-${empIndex}`,
         label: `${empresa.empresa}\n${formatCurrency(empresa.valorMercado)}`,
@@ -40,6 +48,8 @@ export const createEmpresaNode = (
             background: empresaColor,
             border: empresaColor,
             highlight: { background: empresaColor, border: '#FFFFFF' }
-        }
+        },
+        url: companyUrl,
+        title: `Clique para ver detalhes de ${empresa.empresa} (${empresa.codigos?.[0]?.codigo || ''})`
     };
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Graph, { GraphData } from 'react-graph-vis';
 import { Box } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { DEFAULT_GRAPH_OPTIONS } from './constants/graphOptions';
 import { CORES_INDUSTRIAS } from './constants/colors';
 
@@ -19,7 +20,7 @@ interface RedeNeuralProps {
 export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
   const [error, setError] = useState<string | null>(null);
-
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -132,6 +133,16 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
       }
     };
 
+
+    const options = {
+      ...DEFAULT_GRAPH_OPTIONS,
+      interaction: {
+        ...DEFAULT_GRAPH_OPTIONS.interaction,
+        navigationButtons: true,
+        multiselect: false
+      }
+    };
+
     fetchData();
   }, [onLoadingChange]);
 
@@ -146,9 +157,17 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
           graph={graphData}
           options={DEFAULT_GRAPH_OPTIONS}
           events={{
-            select: ({ nodes, edges }) => {
-              console.log('Selected nodes:', nodes);
-              console.log('Selected edges:', edges);
+            doubleClick: ({ nodes }) => {
+              if (nodes.length > 0) {
+                const nodeId = nodes[0];
+                const node = graphData.nodes.find((n: any) => n.id === nodeId);
+
+                if (node && nodeId.startsWith('empresa-')) {
+                  if (node.url) {
+                    router.push(node.url);
+                  }
+                }
+              }
             }
           }}
         />

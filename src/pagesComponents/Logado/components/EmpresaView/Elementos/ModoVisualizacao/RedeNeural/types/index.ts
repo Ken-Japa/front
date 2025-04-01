@@ -2,6 +2,11 @@ export interface EmpresaNode {
   empresa: string;
   valorMercado: number;
   participacao: number;
+  codigos?: {
+    codigo: string;
+    preco: number;
+    variacao?: number;
+  }[];
 }
 
 export interface SegmentoNode {

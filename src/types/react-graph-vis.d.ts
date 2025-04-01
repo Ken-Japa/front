@@ -8,6 +8,10 @@ declare module 'react-graph-vis' {
     color?: string | {
       background?: string;
       border?: string;
+      highlight?: {
+        background?: string;
+        border?: string;
+      };
       opacity?: number;
     };
     size?: number;
@@ -15,12 +19,24 @@ declare module 'react-graph-vis' {
       size?: number;
       color?: string;
     };
+    url?: string;
   }
 
   export interface Edge {
     from: string;
     to: string;
-    color?: string;
+    color?: string | {
+      color?: string;
+      opacity?: number;
+      highlight?: string;
+    };
+    width?: number;
+    smooth?: boolean | {
+      enabled?: boolean;
+      type?: string;
+      roundness?: number;
+    };
+    physics?: boolean;
   }
 
   export interface GraphData {
@@ -28,8 +44,25 @@ declare module 'react-graph-vis' {
     edges: Edge[];
   }
 
+  export interface EventParams {
+    nodes: string[];
+    edges: string[];
+    pointer: {
+      DOM: { x: number; y: number };
+      canvas: { x: number; y: number };
+    };
+    event: MouseEvent;
+  }
+
   export interface GraphEvents {
-    select?: (params: { nodes: string[]; edges: string[] }) => void;
+    select?: (params: EventParams) => void;
+    click?: (params: EventParams) => void;
+    doubleClick?: (params: EventParams) => void;
+    hoverNode?: (params: EventParams) => void;
+    blurNode?: (params: EventParams) => void;
+    dragStart?: (params: EventParams) => void;
+    dragging?: (params: EventParams) => void;
+    dragEnd?: (params: EventParams) => void;
     // Add other events as needed
   }
 
@@ -37,6 +70,7 @@ declare module 'react-graph-vis' {
     nodes?: any;
     edges?: any;
     physics?: any;
+    interaction?: any;
     height?: string;
     width?: string;
     background?: string;
