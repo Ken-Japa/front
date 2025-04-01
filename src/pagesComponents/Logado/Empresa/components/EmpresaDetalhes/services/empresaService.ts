@@ -17,13 +17,11 @@ export const getEmpresaBySlug = async (
     );
 
     // Tratamento seguro para os dados de empresas e sumário
-    const empresas = empresasResponse.default?.empresas || 
-                    empresasResponse.empresas || 
-                    [];
-                    
-    const sumario = sumarioResponse.default?.sumario || 
-                   sumarioResponse.sumario || 
-                   [];
+    const empresas =
+      empresasResponse.default?.empresas || empresasResponse.empresas || [];
+
+    const sumario =
+      sumarioResponse.default?.sumario || sumarioResponse.sumario || [];
 
     // Tratamento seguro para os dados de dividendos
     let dividendosData: any[] = [];
@@ -34,17 +32,23 @@ export const getEmpresaBySlug = async (
     // Verificar se dividendosResponse é um array
     if (Array.isArray(dividendosObj)) {
       dividendosData = dividendosObj;
-    } 
+    }
     // Verificar se dividendosResponse.default é um array
     else if (Array.isArray(dividendosObj.default)) {
       dividendosData = dividendosObj.default;
-    } 
+    }
     // Verificar se dividendosResponse.dividendosEmpresas existe e é um array
-    else if (dividendosObj.dividendosEmpresas && Array.isArray(dividendosObj.dividendosEmpresas)) {
+    else if (
+      dividendosObj.dividendosEmpresas &&
+      Array.isArray(dividendosObj.dividendosEmpresas)
+    ) {
       dividendosData = dividendosObj.dividendosEmpresas;
     }
     // Verificar se dividendosResponse.default.dividendosEmpresas existe e é um array
-    else if (dividendosObj.default?.dividendosEmpresas && Array.isArray(dividendosObj.default.dividendosEmpresas)) {
+    else if (
+      dividendosObj.default?.dividendosEmpresas &&
+      Array.isArray(dividendosObj.default.dividendosEmpresas)
+    ) {
       dividendosData = dividendosObj.default.dividendosEmpresas;
     }
     // Verificar outras possíveis estruturas
@@ -68,7 +72,7 @@ export const getEmpresaBySlug = async (
       // Se ainda não encontrou, tentar usar o objeto diretamente
       if (dividendosData.length === 0) {
         // Converter objeto em array se necessário
-        if (typeof dividendosObj === 'object' && dividendosObj !== null) {
+        if (typeof dividendosObj === "object" && dividendosObj !== null) {
           const tempArray = Object.values(dividendosObj).filter(Array.isArray);
           if (tempArray.length > 0) {
             dividendosData = tempArray[0];
@@ -83,10 +87,10 @@ export const getEmpresaBySlug = async (
         (cod: any) => cod.codigo.toLowerCase() === slug.toLowerCase()
       )
     );
-    
+
     // Armazenar o código usado para encontrar a empresa
     let codigoEncontrado: string | undefined;
-    
+
     if (empresa) {
       // Se encontrou por código, armazenar qual código foi usado
       codigoEncontrado = slug;
@@ -173,102 +177,110 @@ export const getCodigoPrincipal = (codigos: Codigo[]): string => {
 };
 
 // Add this import at the top of the file
-import { PriceDataPoint } from '../utils/metricasCalculations';
+import { PriceDataPoint } from "../utils/metricasCalculations";
 
 // Add this function to the file
-export const getHistoricalData = async (codigoAtivo: string): Promise<PriceDataPoint[]> => {
+export const getHistoricalData = async (
+  codigoAtivo: string
+): Promise<PriceDataPoint[]> => {
   try {
     // In a real implementation, you would fetch data from an API
     // For now, we'll generate mock data
-    
+
     // Try to import historical data if available
     try {
-      const historicalResponse = await import(
+      const historicalResponse = (await import(
         "@/pagesComponents/Logado/components/EmpresaView/mockdata_example/historicoempresas.json"
-      ) as { 
+      )) as {
         default?: Record<string, any>;
         [key: string]: any;
       };
-      
+
       // Check if we have data for this specific code
       let historicalData: any[] = [];
-      
+
       try {
         // Try different ways to access the data structure
-        if (historicalResponse.default && historicalResponse.default[codigoAtivo]) {
+        if (
+          historicalResponse.default &&
+          historicalResponse.default[codigoAtivo]
+        ) {
           historicalData = historicalResponse.default[codigoAtivo];
         } else if (historicalResponse[codigoAtivo]) {
           historicalData = historicalResponse[codigoAtivo];
-        } else if (historicalResponse.default && historicalResponse.default.data && 
-                  historicalResponse.default.data[codigoAtivo]) {
+        } else if (
+          historicalResponse.default &&
+          historicalResponse.default.data &&
+          historicalResponse.default.data[codigoAtivo]
+        ) {
           historicalData = historicalResponse.default.data[codigoAtivo];
         } else {
           // Try to find the data in any property
           const findDataInObject = (obj: any, targetKey: string): any[] => {
-            if (!obj || typeof obj !== 'object') return [];
-            
+            if (!obj || typeof obj !== "object") return [];
+
             // Direct property match
             if (obj[targetKey] && Array.isArray(obj[targetKey])) {
               return obj[targetKey];
             }
-            
+
             // Search in nested properties
             for (const key in obj) {
-              if (typeof obj[key] === 'object' && obj[key] !== null) {
+              if (typeof obj[key] === "object" && obj[key] !== null) {
                 // Check if this property is the target
                 if (key === targetKey && Array.isArray(obj[key])) {
                   return obj[key];
                 }
-                
+
                 // Recursively search in this property
                 const result = findDataInObject(obj[key], targetKey);
                 if (result.length > 0) return result;
               }
             }
-            
+
             return [];
           };
-          
+
           historicalData = findDataInObject(historicalResponse, codigoAtivo);
         }
       } catch (e) {
-        console.error('Error parsing historical data structure:', e);
+        console.error("Error parsing historical data structure:", e);
       }
-      
+
       if (Array.isArray(historicalData) && historicalData.length > 0) {
         return historicalData;
       }
     } catch (err) {
-      console.log('Mock historical data not available, generating random data');
+      console.log("Mock historical data not available, generating random data");
     }
-    
+
     // Generate random historical data
     const hoje = new Date();
     const dados: PriceDataPoint[] = [];
-    
+
     // Generate 2 years of data (730 days)
     const pontos = 730;
-    
+
     // Random starting value between 10 and 100
     let valor = Math.random() * 90 + 10;
-    
+
     for (let i = 0; i < pontos; i++) {
       const data = new Date(hoje);
       data.setDate(hoje.getDate() - (pontos - i));
-      
+
       // Random variation between -5% and +5%
       const variacao = (Math.random() - 0.5) * 0.1;
       valor = valor * (1 + variacao);
-      
+
       dados.push({
         data: data.toISOString(),
-        valor: valor
+        valor: valor,
       });
     }
-    
+
     return dados;
   } catch (err) {
-    console.error('Error fetching historical data:', err);
+    console.error("Error fetching historical data:", err);
     return [];
   }
 };
@@ -286,16 +298,14 @@ export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
     const dividendosResponse = await import(
       "@/pagesComponents/Logado/components/EmpresaView/mockdata_example/dividendosEmpresas.json"
     );
-    
+
     // Tratamento seguro para os dados de empresas
-    const empresasRaw = empresasResponse.default?.empresas || 
-                    empresasResponse.empresas || 
-                    [];
-    
+    const empresasRaw =
+      empresasResponse.default?.empresas || empresasResponse.empresas || [];
+
     // Tratamento seguro para os dados de sumário
-    const sumario = sumarioResponse.default?.sumario || 
-                   sumarioResponse.sumario || 
-                   [];
+    const sumario =
+      sumarioResponse.default?.sumario || sumarioResponse.sumario || [];
 
     // Tratamento seguro para os dados de dividendos
     let dividendosData: any[] = [];
@@ -306,9 +316,15 @@ export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
       dividendosData = dividendosObj;
     } else if (Array.isArray(dividendosObj.default)) {
       dividendosData = dividendosObj.default;
-    } else if (dividendosObj.dividendosEmpresas && Array.isArray(dividendosObj.dividendosEmpresas)) {
+    } else if (
+      dividendosObj.dividendosEmpresas &&
+      Array.isArray(dividendosObj.dividendosEmpresas)
+    ) {
       dividendosData = dividendosObj.dividendosEmpresas;
-    } else if (dividendosObj.default?.dividendosEmpresas && Array.isArray(dividendosObj.default.dividendosEmpresas)) {
+    } else if (
+      dividendosObj.default?.dividendosEmpresas &&
+      Array.isArray(dividendosObj.default.dividendosEmpresas)
+    ) {
       dividendosData = dividendosObj.default.dividendosEmpresas;
     } else {
       const possibleArrays = [
@@ -325,7 +341,11 @@ export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
         }
       }
 
-      if (dividendosData.length === 0 && typeof dividendosObj === 'object' && dividendosObj !== null) {
+      if (
+        dividendosData.length === 0 &&
+        typeof dividendosObj === "object" &&
+        dividendosObj !== null
+      ) {
         const tempArray = Object.values(dividendosObj).filter(Array.isArray);
         if (tempArray.length > 0) {
           dividendosData = tempArray[0];
@@ -334,62 +354,65 @@ export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
     }
 
     // Transformar os dados brutos em EmpresaDetalhada[]
-    const empresasDetalhadas: EmpresaDetalhada[] = empresasRaw.map((empresa: any) => {
-      // Buscar dividendos da empresa
-      const dividendosEmpresa = dividendosData.find(
-        (div: any) =>
-          div.nomeEmpresa &&
-          div.nomeEmpresa.toLowerCase() === empresa.nome.toLowerCase()
-      );
+    const empresasDetalhadas: EmpresaDetalhada[] = empresasRaw.map(
+      (empresa: any) => {
+        // Buscar dividendos da empresa
+        const dividendosEmpresa = dividendosData.find(
+          (div: any) =>
+            div.nomeEmpresa &&
+            div.nomeEmpresa.toLowerCase() === empresa.nome.toLowerCase()
+        );
 
-      // Buscar informações adicionais do sumário
-      let valorMercado = 0;
-      let participacao = 0;
+        // Buscar informações adicionais do sumário
+        let valorMercado = 0;
+        let participacao = 0;
 
-      for (const industria of sumario) {
-        for (const segmento of industria.segmentos) {
-          const empresaDetalhe = segmento.empresasDetalhes.find(
-            (emp: any) => emp.empresa.toLowerCase() === empresa.nome.toLowerCase()
-          );
+        for (const industria of sumario) {
+          for (const segmento of industria.segmentos) {
+            const empresaDetalhe = segmento.empresasDetalhes.find(
+              (emp: any) =>
+                emp.empresa.toLowerCase() === empresa.nome.toLowerCase()
+            );
 
-          if (empresaDetalhe) {
-            valorMercado = empresaDetalhe.valorMercado;
-            participacao = empresaDetalhe.participacao;
-            break;
+            if (empresaDetalhe) {
+              valorMercado = empresaDetalhe.valorMercado;
+              participacao = empresaDetalhe.participacao;
+              break;
+            }
           }
         }
+
+        // Mapear códigos para o formato correto
+        const codigosMapeados: Codigo[] = empresa.codigos.map((cod: any) => ({
+          codigo: cod.codigo,
+          derivativos:
+            typeof cod.derivativos === "string"
+              ? cod.derivativos === "true"
+              : Boolean(cod.derivativos),
+          preco: cod.preco || 0,
+          variacao: cod.variacao || 0,
+          "data inicial": cod["data inicial"] || "",
+          "valor mercado": cod["valor mercado"] || 0,
+          precoAnterior: cod.precoAnterior || 0,
+          derivativo: cod.derivativo || [],
+        }));
+
+        // Construir objeto com todos os detalhes
+        return {
+          nome: empresa.nome,
+          setor: empresa.setor,
+          subsetor: empresa.subsetor,
+          descricao: empresa.descricao || "",
+          site: empresa.site || "",
+          valorMercado,
+          participacao,
+          codigos: codigosMapeados,
+          dividendos: dividendosEmpresa?.dividendos || [],
+          temDerivativo: Boolean(empresa.derivativos),
+        };
       }
+    );
 
-      // Mapear códigos para o formato correto
-      const codigosMapeados: Codigo[] = empresa.codigos.map((cod: any) => ({
-        codigo: cod.codigo,
-        derivativos:
-          typeof cod.derivativos === "string"
-            ? cod.derivativos === "true"
-            : Boolean(cod.derivativos),
-        preco: cod.preco || 0,
-        variacao: cod.variacao || 0,
-        "data inicial": cod["data inicial"] || "",
-        "valor mercado": cod["valor mercado"] || 0,
-        precoAnterior: cod.precoAnterior || 0,
-        derivativo: cod.derivativo || [],
-      }));
-
-      // Construir objeto com todos os detalhes
-      return {
-        nome: empresa.nome,
-        setor: empresa.setor,
-        subsetor: empresa.subsetor,
-        descricao: empresa.descricao || "",
-        site: empresa.site || "",
-        valorMercado,
-        participacao,
-        codigos: codigosMapeados,
-        dividendos: dividendosEmpresa?.dividendos || [],
-        temDerivativo: Boolean(empresa.derivativos),
-      };
-    });
-    
     return empresasDetalhadas;
   } catch (error) {
     console.error("Erro ao buscar todas as empresas:", error);

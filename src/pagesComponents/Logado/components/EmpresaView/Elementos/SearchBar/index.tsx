@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { TextField } from '@mui/material';
+import { TextField, Autocomplete, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { SearchContainer } from './styled';
+
+import sumarioData from '../../mockdata_example/sumario.json';
+
+interface SearchOption {
+    label: string;
+    value: string;
+    type: 'empresa' | 'codigo';
+}
 
 interface SearchBarProps {
     defaultValue?: string;
@@ -10,24 +18,104 @@ interface SearchBarProps {
 
 export const SearchBar = ({ defaultValue = '' }: SearchBarProps) => {
     const [searchQuery, setSearchQuery] = useState(defaultValue);
+    const [options, setOptions] = useState<SearchOption[]>([]);
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handleSearch = (query: string) => {
-        setSearchQuery(query);
-        if (query.length >= 5) {
-            router.push(`/empresa/${query}`);
+    useEffect(() => {
+        // Use the mock data instead of fetching
+        const loadCompanies = () => {
+            try {
+                setLoading(true);
+
+                // Extract all companies and their codes
+                const searchOptions: SearchOption[] = [];
+
+                sumarioData.sumario.forEach(industria => {
+                    industria.segmentos.forEach(segmento => {
+                        segmento.empresasDetalhes.forEach(empresa => {
+                            // Check if codigos exists and has items
+                            if (empresa.codigos && empresa.codigos.length > 0) {
+                                // Add company name as an option
+                                searchOptions.push({
+                                    label: `${empresa.empresa} (Empresa)`,
+                                    value: empresa.codigos[0].codigo,
+                                    type: 'empresa'
+                                });
+
+                                // Add each code as an option
+                                empresa.codigos.forEach(codigo => {
+                                    searchOptions.push({
+                                        label: `${codigo.codigo} (${empresa.empresa})`,
+                                        value: codigo.codigo,
+                                        type: 'codigo'
+                                    });
+                                });
+                            }
+                        });
+                    });
+                });
+
+                setOptions(searchOptions);
+            } catch (error) {
+                console.error('Error loading companies:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadCompanies();
+    }, []);
+
+    const handleOptionSelect = (option: SearchOption | null) => {
+        if (option) {
+            router.push(`/empresa/${option.value}`);
         }
     };
 
     return (
         <SearchContainer>
-            <TextField
-                size="small"
-                placeholder="Buscar empresa..."
-                value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-                InputProps={{
-                    endAdornment: <SearchIcon color="action" />
+            <Autocomplete
+                freeSolo
+                options={options}
+                loading={loading}
+                filterOptions={(options, { inputValue }) => {
+                    const inputLower = inputValue.toLowerCase();
+                    if (inputLower.length < 3) {
+                        return [];
+                    }
+                    return options.filter(option =>
+                        option.label.toLowerCase().includes(inputLower)
+                    );
+                }}
+                getOptionLabel={(option) => {
+                    if (typeof option === 'string') {
+                        return option;
+                    }
+                    return option.label;
+                }}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        size="small"
+                        placeholder="Buscar empresa ou código..."
+                        InputProps={{
+                            ...params.InputProps,
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <SearchIcon color="action" />
+                                </InputAdornment>
+                            )
+                        }}
+                    />
+                )}
+                onChange={(_, newValue) => {
+                    if (newValue && typeof newValue !== 'string') {
+                        handleOptionSelect(newValue);
+                    }
+                }}
+                onInputChange={(_, newInputValue) => {
+                    setSearchQuery(newInputValue);
                 }}
             />
         </SearchContainer>
