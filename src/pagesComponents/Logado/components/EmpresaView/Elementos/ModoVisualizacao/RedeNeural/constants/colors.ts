@@ -6,8 +6,8 @@ export const CORES_INDUSTRIAS = [
   '#59A14F', // Green
   '#EDC948', // Yellow
   '#B07AA1', // Purple
-  '#FF9DA7', // Pink
+  '#FF7C91', // Pink (slightly darker)
   '#9C755F', // Brown
-  '#BAB0AC', // Gray
+  '#C2B6B2', // Gray (slightly lighter)
   '#D37295'  // Rose
 ];

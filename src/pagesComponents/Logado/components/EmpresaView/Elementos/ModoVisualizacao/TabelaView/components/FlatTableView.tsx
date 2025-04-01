@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import {
     Table, TableHead, TableBody, TableRow,
     TableCell, TableSortLabel
@@ -7,7 +6,6 @@ import {
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import { SumarioData } from '../types';
 import { formatCurrency } from '../../utils/currency';
-
 
 interface FlatTableViewProps {
     data: SumarioData;
@@ -22,8 +20,6 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
     order,
     handleSort
 }) => {
-    const router = useRouter();
-
     const allEmpresas = data.sumario.flatMap(industria =>
         industria.segmentos.flatMap(segmento =>
             segmento.empresasDetalhes.map(empresa => ({
@@ -40,10 +36,6 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
         }
         return 0;
     });
-
-    const handleDoubleClick = (codigo: string) => {
-        router.push(`/empresa/${codigo}`);
-    };
 
     return (
         <Table sx={{ width: '100%', tableLayout: 'fixed' }}>
@@ -75,11 +67,7 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
                             <TableRow key={`${index}-${cIndex}`}>
                                 {cIndex === 0 && (
                                     <>
-                                        <TableCell
-                                            rowSpan={empresa.codigos.length}
-                                            onDoubleClick={() => handleDoubleClick(empresa.codigos[0].codigo)}
-                                            sx={{ cursor: 'pointer' }}
-                                        >
+                                        <TableCell rowSpan={empresa.codigos.length}>
                                             {empresa.empresa}
                                         </TableCell>
                                         <TableCell rowSpan={empresa.codigos.length}>
@@ -96,12 +84,7 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
                                         </TableCell>
                                     </>
                                 )}
-                                <TableCell
-                                    onDoubleClick={() => handleDoubleClick(codigo.codigo)}
-                                    sx={{ cursor: 'pointer' }}
-                                >
-                                    {codigo.codigo}
-                                </TableCell>
+                                <TableCell>{codigo.codigo}</TableCell>
                                 <TableCell align="right">
                                     {`R$ ${codigo.preco.toFixed(2)}`.replace('.', ',')}
                                 </TableCell>

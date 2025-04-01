@@ -128,24 +128,24 @@ export const LineChart: React.FC<LineChartProps> = ({
         axis: {
             domain: {
                 line: {
-                    stroke: '#777777',
+                    stroke: xAxisProps.tickColor || '#777777',
                     strokeWidth: 1,
                 }
             },
             ticks: {
                 text: {
-                    fill: '#ffffff', // Texto branco para melhor contraste no fundo escuro
+                    fill: xAxisProps.tickTextColor || yAxisProps.tickTextColor || '#333333',
                     fontSize: 12,
                     fontWeight: 'bold',
                 },
                 line: {
-                    stroke: '#777777',
+                    stroke: xAxisProps.tickColor || yAxisProps.tickColor || '#777777',
                     strokeWidth: 1,
                 },
             },
             legend: {
                 text: {
-                    fill: '#ffffff', // Texto branco para melhor contraste no fundo escuro
+                    fill: xAxisProps.legendColor || yAxisProps.legendColor || '#333333',
                     fontSize: 14,
                     fontWeight: 'bold',
                 }
