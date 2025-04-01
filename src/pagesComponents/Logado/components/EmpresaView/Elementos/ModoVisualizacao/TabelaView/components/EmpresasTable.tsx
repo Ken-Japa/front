@@ -8,6 +8,7 @@ import { EmpresaDetalhe } from '../types';
 import { formatCurrency } from '../../utils/currency';
 import { useSortableData } from '../hooks/useSortableData';
 import { StyledTableSortLabel, StyledTable } from './styled';
+import { useRouter } from 'next/navigation';
 
 interface EmpresasTableProps {
     empresas: EmpresaDetalhe[];
@@ -23,6 +24,7 @@ export const EmpresasTable: React.FC<EmpresasTableProps> = ({
     useIndustryTotal = false
 }) => {
     const { orderBy, order, handleSort } = useSortableData('valorMercado');
+    const router = useRouter();
 
     const sortedEmpresas = [...empresas].sort((a, b) => {
         if (orderBy === 'valorMercado') {
@@ -44,6 +46,10 @@ export const EmpresasTable: React.FC<EmpresasTableProps> = ({
 
         return 0;
     });
+
+    const handleDoubleClick = (codigo: string) => {
+        router.push(`/empresa/${codigo}`);
+    };
 
     return (
         <StyledTable size="small">
@@ -93,7 +99,8 @@ export const EmpresasTable: React.FC<EmpresasTableProps> = ({
                             <TableRow key={`${index}-${cIndex}`}>
                                 {cIndex === 0 && (
                                     <>
-                                        <TableCell rowSpan={empresa.codigos.length}>
+                                        <TableCell rowSpan={empresa.codigos.length} onDoubleClick={() => handleDoubleClick(empresa.codigos[0].codigo)}
+                                            sx={{ cursor: 'pointer' }}>
                                             {empresa.empresa}
                                         </TableCell>
                                         <TableCell align="right" rowSpan={empresa.codigos.length}>
@@ -106,7 +113,10 @@ export const EmpresasTable: React.FC<EmpresasTableProps> = ({
                                         )}
                                     </>
                                 )}
-                                <TableCell>{codigo.codigo}</TableCell>
+                                <TableCell
+                                    onDoubleClick={() => handleDoubleClick(codigo.codigo)}
+                                    sx={{ cursor: 'pointer' }}
+                                >{codigo.codigo}</TableCell>
                                 <TableCell align="right">
                                     {`R$ ${codigo.preco.toFixed(2)}`.replace('.', ',')}
                                 </TableCell>

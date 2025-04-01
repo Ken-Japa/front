@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { CardContent, Typography, Divider, Box } from '@mui/material';
 import { CardContainer, CardHeader, CodesContainer } from '../styled';
 import { formatCurrency } from '../../utils/currency';
@@ -20,12 +21,25 @@ interface CompanyCardProps {
 }
 
 export const CompanyCard: React.FC<CompanyCardProps> = ({ empresa, totalMarketValue }) => {
+    const router = useRouter();
+
+    const handleDoubleClick = () => {
+        if (empresa.codigos && empresa.codigos.length > 0) {
+            router.push(`/empresa/${empresa.codigos[0].codigo}`);
+        }
+    };
     return (
         <CardContainer>
             <CardContent sx={{ flexGrow: 1 }}>
                 <CardHeader>
-                    <Box>
-                        <Typography variant="h6" component="div" noWrap title={empresa.empresa}>
+                    <Box >
+                        <Typography variant="h6" component="div" noWrap title={empresa.empresa} sx={{
+                            cursor: 'pointer', transition: 'color 0.1s ease',
+                            '&:hover': {
+                                color: '#4dabf5'
+                            }
+                        }}
+                            onDoubleClick={handleDoubleClick}>
                             {empresa.empresa}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" noWrap>

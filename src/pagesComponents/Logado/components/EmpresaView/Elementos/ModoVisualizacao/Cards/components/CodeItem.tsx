@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { Typography, Box } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
@@ -14,11 +15,22 @@ interface CodeItemProps {
 }
 
 export const CodeItem: React.FC<CodeItemProps> = ({ codigo }) => {
+    const router = useRouter();
+
+    const handleDoubleClick = () => {
+        router.push(`/empresa/${codigo.codigo}`);
+    };
     return (
         <CodeChip
             label={
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}>
-                    <Typography variant="caption" fontWeight="bold">
+                    <Typography variant="caption" fontWeight="bold" sx={{
+                        cursor: 'pointer', transition: 'color 0.1s ease',
+                        '&:hover': {
+                            color: '#4dabf5'
+                        }
+                    }}
+                        onDoubleClick={handleDoubleClick}>
                         {codigo.codigo}
                     </Typography>
                     {codigo.preco !== undefined && (
