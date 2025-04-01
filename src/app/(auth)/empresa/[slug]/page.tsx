@@ -13,5 +13,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function EmpresaPage({ params }: Props) {
+
     return <EmpresaDetalhes slug={params.slug} />;
 }

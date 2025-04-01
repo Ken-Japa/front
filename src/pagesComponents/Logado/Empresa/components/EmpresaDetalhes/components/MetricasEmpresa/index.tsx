@@ -20,7 +20,7 @@ export const MetricasEmpresa = ({
     valorizacao12m
 }: MetricasEmpresaProps) => {
     return (
-        <Paper sx={{ p: 3 }}>
+        <Paper sx={{ p: 3, mb: 3 }}>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
                     <Box sx={{ textAlign: 'center' }}>

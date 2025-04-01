@@ -24,6 +24,12 @@ export interface Dividendo {
   valorUltimoDiaCom: string;
 }
 
+export interface DividendoExtended extends Dividendo {
+  date?: string | Date;
+  value?: number;
+  amount?: number;
+}
+
 export interface EmpresaDetalhada {
   nome: string;
   setor: string;

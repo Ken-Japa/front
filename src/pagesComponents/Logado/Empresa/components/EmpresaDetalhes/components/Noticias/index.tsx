@@ -48,7 +48,7 @@ const NoticiasComponent: React.FC<NoticiasProps> = ({ symbol }) => {
     }, [symbol]);
 
     return (
-        <Box sx={{ width: '100%', height: '500px' }}>
+        <Box sx={{ width: '100%', height: '500px', mb: 3 }}>
             <div className="tradingview-widget-container" ref={container}>
                 <div className="tradingview-widget-container__widget"></div>
             </div>
