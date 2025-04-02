@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Grid, Typography, AccordionSummary, AccordionDetails, Box } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PublicIcon from '@mui/icons-material/Public';
 import CategoryIcon from '@mui/icons-material/Category';
@@ -93,12 +93,14 @@ export const InformacoesAdicionais: React.FC<InformacoesAdicionaisProps> = ({ em
 
                     {empresaInfo.perspectivas && (
                         <Grid item xs={12}>
-                            <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                <TimelineIcon color="primary" /> Perspectivas Futuras
-                            </Typography>
-                            <Typography variant="body2" sx={{ mt: 1 }}>
-                                {empresaInfo.perspectivas}
-                            </Typography>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                                <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+                                    <TimelineIcon color="primary" /> Perspectivas Futuras
+                                </Typography>
+                                <Typography variant="body2" sx={{ mt: 1, maxWidth: '90%' }}>
+                                    {empresaInfo.perspectivas}
+                                </Typography>
+                            </Box>
                         </Grid>
                     )}
                 </Grid>

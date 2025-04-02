@@ -1,5 +1,6 @@
 interface EmpresaInfo {
   nome: string;
+  link?: string;
   descricao: string;
   fundacao: string;
   sede: string;
@@ -21,6 +22,7 @@ interface EmpresaInfo {
 export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   PETROBRAS: {
     nome: "Petrobras",
+    link: "https://www.investidorpetrobras.com.br/",
     descricao:
       "A Petrobras é uma empresa brasileira de capital aberto que atua na exploração, produção, refino, comercialização e transporte de petróleo, gás natural e seus derivados.",
     fundacao: "1953",
@@ -71,6 +73,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BRASKEM: {
     nome: "Braskem",
+    link: "https://www.braskem.com.br",
     descricao:
       "Empresa brasileira líder na produção de resinas termoplásticas e químicos básicos, com operações globais e foco em soluções sustentáveis.",
     fundacao: "2002",
@@ -112,6 +115,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   NUTRIPLANT: {
     nome: "Nutriplant Indústria e Comércio SA",
+    link: "https://www.nutriplant.com.br/ri",
     descricao:
       "Fabricante brasileira de fertilizantes especiais e micronutrientes para agricultura, com tecnologia pioneira em FTE (Elementos Traço Fundidos).",
     fundacao: "1965",
@@ -150,6 +154,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   VITTIA: {
     nome: "Vittia Grupo",
+    link: "https://www.vittia.com.br/",
     descricao:
       "Líder latino-americana em controle biológico e inoculantes, com soluções sustentáveis para agricultura.",
     fundacao: "1971",
@@ -188,6 +193,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "FER HERINGER": {
     nome: "Fertilizantes Heringer",
+    link: "https://www.heringer.com.br",
     descricao:
       "Uma das principais distribuidoras de fertilizantes do Brasil, com operações integradas desde a importação até a entrega no campo.",
     fundacao: "1970",
@@ -220,6 +226,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   CRISTAL: {
     nome: "Cristal Pigmentos do Brasil",
+    link: "https://www.tronox-al.com.br/",
     descricao:
       "Empresa especializada na produção de dióxido de titânio e minerais pesados, com operações integradas de mineração e industrialização.",
     fundacao: "1969",
@@ -260,6 +267,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   UNIPAR: {
     nome: "Unipar Carbocloro",
+    link: "https://www.unipar.com/",
     descricao:
       "Líder na produção de cloro, soda cáustica e PVC na América do Sul, com foco em soluções para tratamento de água, indústria química e construção civil.",
     fundacao: "1969",
@@ -300,8 +308,9 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
     perspectivas:
       "Expansão da capacidade produtiva de PVC e desenvolvimento de produtos especiais para o setor de saneamento básico, com investimentos previstos de R$ 1,5 bilhão até 2025.",
   },
-  DEXXOS: {
+  "DEXXOS PAR": {
     nome: "Dexxos Participações",
+    link: "https://www.dexxos.com.br/",
     descricao:
       "Holding industrial com atuação nos setores químico e de tubos de aço, controladora da GPC Química e da Apolo Tubos.",
     fundacao: "1997",
@@ -343,6 +352,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   SANSUY: {
     nome: "Sansuy S.A. Indústria de Plásticos",
+    link: "https://www.sansuy.com.br",
     descricao:
       "Empresa brasileira especializada na fabricação de produtos de PVC flexível, laminados e geomembranas para diversos setores industriais.",
     fundacao: "1966",
@@ -384,6 +394,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BRADESPAR: {
     nome: "Bradespar",
+    link: "https://www.bradespar.bradesco/inicio",
     descricao:
       "Holding de investimentos com foco no setor de mineração, sendo um dos principais acionistas da Vale S.A.",
     fundacao: "2000",
@@ -422,6 +433,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CBA: {
     nome: "Companhia Brasileira de Alumínio",
+    link: "https://www.cba.com.br/",
     descricao:
       "Uma das maiores produtoras integradas de alumínio do Brasil, com operações que abrangem desde a mineração de bauxita até produtos de alumínio de alto valor agregado.",
     fundacao: "1955",
@@ -468,6 +480,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CSNMINERACAO: {
     nome: "CSN Mineração",
+    link: "https://www.csn.com.br/",
     descricao:
       "Segunda maior exportadora de minério de ferro do Brasil, subsidiária da Companhia Siderúrgica Nacional (CSN), com foco em minério de alta qualidade.",
     fundacao: "2015",
@@ -512,6 +525,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   VALE: {
     nome: "Vale S.A.",
+    link: "https://vale.com/pt/home",
     descricao:
       "Uma das maiores empresas de mineração do mundo e a maior produtora global de minério de ferro e níquel, com operações em cinco continentes.",
     fundacao: "1942",
@@ -562,6 +576,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   IRANI: {
     nome: "Irani Papel e Embalagem S.A.",
+    link: "https://www.irani.com.br/",
     descricao:
       "Empresa brasileira especializada na produção de papel para embalagens, embalagens de papelão ondulado e resinas, com foco em soluções sustentáveis.",
     fundacao: "1941",
@@ -613,6 +628,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PARANAPANEMA: {
     nome: "Paranapanema S.A.",
+    link: "https://www.paranapanema.com.br",
     descricao:
       "Maior produtora brasileira não-integrada de cobre refinado e produtos de cobre, com atuação nos segmentos de tubos, barras, vergalhões, fios e ligas de cobre.",
     fundacao: "1961",
@@ -664,6 +680,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MANGELS INDL": {
     nome: "Mangels Industrial S.A.",
+    link: "https://www.mangels.com.br",
     descricao:
       "Empresa brasileira especializada na fabricação de produtos siderúrgicos, com destaque para rodas de aço, cilindros para GLP e componentes para a indústria automotiva.",
     fundacao: "1928",
@@ -712,6 +729,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PANATLANTICA: {
     nome: "Panatlantica S.A.",
+    link: "https://www.panatlantica.com.br",
     descricao:
       "Empresa brasileira especializada no processamento e distribuição de aços planos, oferecendo serviços de corte, dobra, tratamento superficial e logística integrada.",
     fundacao: "1952",
@@ -757,6 +775,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TEKNO: {
     nome: "Tekno S.A. Indústria e Comércio",
+    link: "https://teknokroma.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de perfis de aço, telhas metálicas e sistemas construtivos, com foco em soluções para construção civil e industrial.",
     fundacao: "1961",
@@ -802,6 +821,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   FERBASA: {
     nome: "Companhia de Ferro Ligas da Bahia - FERBASA",
+    link: "https://www.ferbasa.com.br",
     descricao:
       "Maior produtora integrada de ferroligas da América Latina e única produtora integrada de ferrocromo das Américas, com operações de mineração e metalurgia.",
     fundacao: "1961",
@@ -848,6 +868,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SID NACIONAL": {
     nome: "Companhia Siderúrgica Nacional - CSN",
+    link: "https://www.csn.com.br/",
     descricao:
       "Uma das maiores empresas siderúrgicas integradas da América Latina, com atuação diversificada em siderurgia, mineração, cimento, logística e energia.",
     fundacao: "1941",
@@ -901,6 +922,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GERDAU: {
     nome: "Gerdau S.A.",
+    link: "https://www2.gerdau.com.br/",
     descricao:
       "Maior produtora de aço longo das Américas e uma das principais fornecedoras de aços especiais do mundo, com operações em 10 países.",
     fundacao: "1901",
@@ -957,6 +979,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "GERDAU MET": {
     nome: "Metalúrgica Gerdau S.A.",
+    link: "https://www2.gerdau.com.br/",
     descricao:
       "Holding controladora da Gerdau S.A., que atua como principal veículo de investimento da família Gerdau no grupo siderúrgico.",
     fundacao: "1946",
@@ -995,6 +1018,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   USIMINAS: {
     nome: "Usinas Siderúrgicas de Minas Gerais S.A.",
+    link: "https://www.usiminas.com/",
     descricao:
       "Uma das maiores empresas siderúrgicas do Brasil, líder na produção de aços planos, com atuação integrada em mineração, siderurgia, transformação do aço e bens de capital.",
     fundacao: "1956",
@@ -1048,6 +1072,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "KLABIN S/A": {
     nome: "Klabin S.A.",
+    link: "https://klabin.com.br/",
     descricao:
       "Maior produtora e exportadora de papéis para embalagens do Brasil, única companhia do país a fornecer simultaneamente celulose de fibra curta, celulose de fibra longa e celulose fluff.",
     fundacao: "1899",
@@ -1107,6 +1132,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SUZANO S.A.": {
     nome: "Suzano S.A.",
+    link: "https://www.suzano.com.br/",
     descricao:
       "Maior produtora mundial de celulose de eucalipto e uma das maiores produtoras de papéis da América Latina, com forte atuação em inovação e desenvolvimento de bioprodutos.",
     fundacao: "1924",
@@ -1164,6 +1190,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DEXCO: {
     nome: "Dexco S.A.",
+    link: "https://www.dex.co/",
     descricao:
       "Líder brasileira na produção de painéis de madeira, louças e metais sanitários, pisos laminados e revestimentos cerâmicos, com marcas reconhecidas como Duratex, Durafloor, Ceusa, Portinari, Deca e Hydra.",
     fundacao: "1951",
@@ -1226,6 +1253,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   EUCATEX: {
     nome: "Eucatex S.A. Indústria e Comércio",
+    link: "https://www.eucatex.com.br/",
     descricao:
       "Empresa brasileira especializada na produção de painéis de madeira, pisos laminados, tintas e vernizes, com foco em soluções para construção civil e indústria moveleira.",
     fundacao: "1951",
@@ -1290,6 +1318,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ETERNIT: {
     nome: "Eternit S.A.",
+    link: "https://www.eternit.com.br/",
     descricao:
       "Empresa brasileira líder no mercado de coberturas, com atuação nos segmentos de telhas de fibrocimento, telhas de concreto, louças e metais sanitários.",
     fundacao: "1940",
@@ -1340,6 +1369,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "HAGA S/A": {
     nome: "Haga S.A. Indústria e Comércio",
+    link: "https://www.haga.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de fechaduras, ferragens e acessórios para portas e janelas, com foco no mercado de construção civil e moveleiro.",
     fundacao: "1937",
@@ -1388,6 +1418,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PORTOBELLO: {
     nome: "Portobello S.A.",
+    link: "https://www.portobello.com.br/",
     descricao:
       "Uma das maiores empresas de revestimentos cerâmicos da América Latina, com atuação nos segmentos de porcelanatos, cerâmicas e produtos complementares para arquitetura e design de interiores.",
     fundacao: "1979",
@@ -1450,6 +1481,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SONDOTECNICA: {
     nome: "Sondotécnica Engenharia de Solos S.A.",
+    link: "https://www.sondotecnica.com.br/",
     descricao:
       "Empresa brasileira de engenharia consultiva, especializada em projetos de infraestrutura, gerenciamento de obras e consultoria técnica em diversos segmentos da engenharia.",
     fundacao: "1954",
@@ -1498,6 +1530,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   AZEVEDO: {
     nome: "Azevedo & Travassos S.A.",
+    link: "https://www.azevedotravassos.com.br/",
     descricao:
       "Empresa brasileira de engenharia e construção, especializada em obras de infraestrutura, saneamento, energia e construção civil pesada, com mais de um século de atuação no mercado.",
     fundacao: "1922",
@@ -1551,6 +1584,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   METISA: {
     nome: "Metisa - Metalúrgica Timboense S.A.",
+    link: "https://www.metisa.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de peças e implementos agrícolas, com foco em discos para arados, grades e plantadeiras, além de componentes para o setor ferroviário e industrial.",
     fundacao: "1941",
@@ -1606,6 +1640,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   AERIS: {
     nome: "Aeris Energy S.A.",
+    link: "https://aerisenergy.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de pás para turbinas eólicas, sendo uma das maiores do setor no mundo, com foco em soluções para energia renovável.",
     fundacao: "2010",
@@ -1659,6 +1694,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ARMAC: {
     nome: "Armac Locação, Logística e Serviços S.A.",
+    link: "https://armac.com.br/",
     descricao:
       "Empresa brasileira especializada na locação de equipamentos pesados para infraestrutura, construção civil, mineração, agronegócio e indústria, com foco em soluções integradas de maquinário e serviços.",
     fundacao: "2013",
@@ -1708,6 +1744,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BARDELLA: {
     nome: "Bardella S.A. Indústrias Mecânicas",
+    link: "https://bardella.com.br/",
     descricao:
       "Tradicional empresa brasileira de bens de capital, especializada na fabricação de equipamentos para siderurgia, mineração, energia e movimentação de materiais.",
     fundacao: "1911",
@@ -1761,6 +1798,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ACO ALTONA": {
     nome: "Electro Aço Altona S.A.",
+    link: "https://www.altona.com.br/",
     descricao:
       "Empresa brasileira especializada na fundição e usinagem de peças em aço, com foco em componentes de grande porte para os setores de mineração, cimento, energia e óleo e gás.",
     fundacao: "1924",
@@ -1815,6 +1853,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   INEPAR: {
     nome: "Inepar S.A. Indústria e Construções",
+    link: "https://www.inepar.com.br/",
     descricao:
       "Empresa brasileira que atua no setor de bens de capital e infraestrutura, com foco em equipamentos para energia, óleo e gás, mineração e siderurgia.",
     fundacao: "1953",
@@ -1861,6 +1900,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "KEPLER WEBER": {
     nome: "Kepler Weber S.A.",
+    link: "https://www.kepler.com.br/",
     descricao:
       "Empresa brasileira líder na fabricação de sistemas de armazenagem de grãos na América Latina, com foco em silos, secadores, transportadores e equipamentos para o agronegócio.",
     fundacao: "1925",
@@ -1917,6 +1957,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   METALFRIO: {
     nome: "Metalfrio Solutions S.A.",
+    link: "https://www.metalfrio.com.br/",
     descricao:
       "Empresa multinacional brasileira especializada na fabricação de equipamentos de refrigeração comercial, com foco em refrigeradores, freezers e expositores para o varejo alimentício e indústria de bebidas.",
     fundacao: "1960",
@@ -1974,6 +2015,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MILLS: {
     nome: "Mills Estruturas e Serviços de Engenharia S.A.",
+    link: "https://www.mills.com.br/",
     descricao:
       "Empresa brasileira líder em soluções de acesso, formas, escoramento e equipamentos para construção civil, indústria e infraestrutura, com foco em locação de equipamentos e serviços especializados.",
     fundacao: "1952",
@@ -2024,6 +2066,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "NORDON MET": {
     nome: "Nordon Indústrias Metalúrgicas S.A.",
+    link: "https://www.nordon.ind.br/",
     descricao:
       "Empresa brasileira tradicional especializada na fabricação de equipamentos industriais, com foco em vasos de pressão, trocadores de calor e equipamentos para os setores químico, petroquímico e de óleo e gás.",
     fundacao: "1926",
@@ -2071,6 +2114,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ROMI: {
     nome: "Indústrias Romi S.A.",
+    link: "https://www.romi.com/",
     descricao:
       "Empresa brasileira líder na fabricação de máquinas-ferramenta, máquinas para processamento de plásticos e peças fundidas de alta precisão, sendo a maior fabricante de tornos e centros de usinagem do Brasil.",
     fundacao: "1930",
@@ -2127,6 +2171,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ESTAPAR: {
     nome: "Estapar Estacionamentos S.A.",
+    link: "https://www.estapar.com.br/",
     descricao:
       "Maior empresa de estacionamentos da América Latina, com operações em aeroportos, shopping centers, hospitais, universidades e edifícios comerciais, oferecendo serviços de estacionamento, valet e gestão de mobilidade urbana.",
     fundacao: "1981",
@@ -2177,6 +2222,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ATMASA: {
     nome: "Atmasa Indústria e Comércio de Equipamentos S.A.",
+    link: "https://www.atmasa.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de equipamentos para movimentação de materiais, com foco em transportadores, elevadores e sistemas automatizados para diversos setores industriais.",
     fundacao: "1953",
@@ -2231,6 +2277,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "DTCOM-DIRECT": {
     nome: "DTCOM Direct to Company S.A.",
+    link: "https://dtcom.com.br/",
     descricao:
       "Empresa brasileira especializada em soluções de educação corporativa a distância, com foco em treinamentos, capacitações e desenvolvimento de conteúdo educacional para empresas.",
     fundacao: "2000",
@@ -2285,6 +2332,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GPS: {
     nome: "GPS Participações e Empreendimentos S.A.",
+    link: "https://www.gpssa.com.br/",
     descricao:
       "Uma das maiores empresas de serviços terceirizados do Brasil, especializada em limpeza, segurança, facilities e serviços de apoio para diversos setores, incluindo indústria, comércio, saúde e educação.",
     fundacao: "1962",
@@ -2340,6 +2388,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PRINER: {
     nome: "Priner Serviços Industriais S.A.",
+    link: "https://www.priner.com.br/",
     descricao:
       "Empresa brasileira especializada em serviços de acesso, isolamento, pintura industrial e tratamento de superfícies, com foco nos setores de óleo e gás, petroquímica, siderurgia, papel e celulose, e energia.",
     fundacao: "2008",
@@ -2390,6 +2439,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SEQUOIA LOG": {
     nome: "Sequoia Logística e Transportes S.A.",
+    link: "https://sequoialog.com.br/",
     descricao:
       "Empresa brasileira de logística integrada, especializada em soluções de e-commerce, transporte, armazenagem e distribuição, com foco em operações customizadas para diversos setores da economia.",
     fundacao: "2010",
@@ -2446,6 +2496,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   VALID: {
     nome: "Valid Soluções S.A.",
+    link: "https://valid.com/",
     descricao:
       "Empresa multinacional brasileira especializada em soluções de segurança, identificação, meios de pagamento e telecomunicações, com atuação global em documentos seguros, cartões bancários e certificação digital.",
     fundacao: "1957",
@@ -2508,6 +2559,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   AZUL: {
     nome: "Azul S.A.",
+    link: "https://www.voeazul.com.br/br/pt/home",
     descricao:
       "Terceira maior companhia aérea do Brasil, com foco em conectar cidades médias e pequenas à sua malha aérea, operando voos domésticos e internacionais com uma frota diversificada de aeronaves.",
     fundacao: "2008",
@@ -2569,6 +2621,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   HIDROVIAS: {
     nome: "Hidrovias do Brasil S.A.",
+    link: "https://hbsa.com.br/",
     descricao:
       "Empresa brasileira de logística integrada com foco em transporte hidroviário, operando terminais portuários, navegação fluvial e cabotagem para o escoamento de commodities agrícolas e minerais.",
     fundacao: "2010",
@@ -2619,6 +2672,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "LOG-IN": {
     nome: "Log-In Logística Intermodal S.A.",
+    link: "https://www.loginlogistica.com.br/",
     descricao:
       "Empresa brasileira especializada em soluções de logística intermodal, com foco em navegação de cabotagem, terminais portuários e transporte de contêineres ao longo da costa brasileira e Mercosul.",
     fundacao: "2007",
@@ -2669,6 +2723,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TREVISA: {
     nome: "Trevisa Investimentos S.A.",
+    link: "https://trevisa.com.br/",
     descricao:
       "Holding brasileira com atuação diversificada, principalmente no setor de navegação fluvial através de sua subsidiária Navegação Aliança, operando no transporte hidroviário de cargas na região Sul do Brasil.",
     fundacao: "1930",
@@ -2720,6 +2775,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "RUMO S.A": {
     nome: "Rumo S.A.",
+    link: "https://rumolog.com/",
     descricao:
       "Maior operadora logística ferroviária do Brasil, com atuação nos principais corredores de exportação do país, oferecendo serviços de transporte ferroviário, elevação portuária e armazenagem para o agronegócio e outros setores.",
     fundacao: "2008 (na configuração atual após fusões)",
@@ -2775,6 +2831,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CCR SA": {
     nome: "CCR S.A.",
+    link: "https://www.grupoccr.com.br/",
     descricao:
       "Uma das maiores empresas de infraestrutura de transporte das Américas, com atuação em concessões de rodovias, mobilidade urbana, aeroportos e serviços correlatos, gerenciando importantes ativos de infraestrutura no Brasil e exterior.",
     fundacao: "1999",
@@ -2824,6 +2881,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   ECORODOVIAS: {
     nome: "EcoRodovias Infraestrutura e Logística S.A.",
+    link: "https://www.ecorodovias.com.br/",
     descricao:
       "Uma das maiores empresas de infraestrutura de transporte do Brasil, com foco em concessões rodoviárias, operando importantes corredores de exportação e ligações entre grandes centros urbanos.",
     fundacao: "1997",
@@ -2874,6 +2932,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "TRIUNFO PART": {
     nome: "Triunfo Participações e Investimentos S.A.",
+    link: "https://www.triunfo.com/",
     descricao:
       "Empresa brasileira de infraestrutura com atuação diversificada em concessões rodoviárias, aeroportuárias e no setor de energia, focada na gestão de ativos de longo prazo em setores regulados.",
     fundacao: "1999",
@@ -2924,6 +2983,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   JSL: {
     nome: "JSL S.A.",
+    link: "https://jsl.com.br/",
     descricao:
       "Uma das maiores empresas de logística do Brasil, oferecendo soluções integradas de transporte, armazenagem, distribuição e gestão de frotas para diversos setores da economia, com atuação nacional.",
     fundacao: "1956",
@@ -2979,6 +3039,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TEGMA: {
     nome: "Tegma Gestão Logística S.A.",
+    link: "https://www.tegma.com.br/",
     descricao:
       "Empresa brasileira especializada em logística de transporte, com foco no setor automotivo, oferecendo soluções integradas para montadoras, concessionárias e outros segmentos industriais.",
     fundacao: "1969",
@@ -3029,6 +3090,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SANTOS BRP": {
     nome: "Santos Brasil Participações S.A.",
+    link: "https://www.santosbrasil.com.br/",
     descricao:
       "Uma das maiores operadoras portuárias e de logística integrada do Brasil, especializada na movimentação de contêineres, gestão de terminais portuários e soluções logísticas para comércio exterior.",
     fundacao: "1997",
@@ -3079,6 +3141,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "WILSON SONS": {
     nome: "Wilson Sons Limited",
+    link: "https://www.wilsonsons.com.br/pt-br/",
     descricao:
       "Uma das maiores empresas de serviços marítimos, portuários e logísticos do Brasil, com mais de 180 anos de história, oferecendo soluções integradas para o comércio internacional e a indústria de óleo e gás.",
     fundacao: "1837",
@@ -3128,6 +3191,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   EMBRAER: {
     nome: "Embraer S.A.",
+    link: "https://embraer.com/br/pt",
     descricao:
       "Uma das maiores fabricantes aeronáuticas do mundo, com atuação nos segmentos de aviação comercial, executiva, defesa e segurança, e serviços aeronáuticos, sendo a terceira maior fabricante de jatos comerciais do mundo.",
     fundacao: "1969",
@@ -3178,6 +3242,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "FRAS-LE": {
     nome: "Fras-le S.A.",
+    link: "https://www.fras-le.com/pt/",
     descricao:
       "Uma das maiores fabricantes mundiais de materiais de fricção, com foco em sistemas de freios para veículos leves, pesados e ferroviários, sendo parte do Grupo Randon e com presença global em mais de 100 países.",
     fundacao: "1954",
@@ -3239,6 +3304,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MARCOPOLO: {
     nome: "Marcopolo S.A.",
+    link: "https://onibus.marcopolo.com.br/",
     descricao:
       "Uma das maiores fabricantes de carrocerias de ônibus do mundo, com atuação global em veículos para transporte coletivo urbano, rodoviário e micros, sendo referência em tecnologia e design no setor.",
     fundacao: "1949",
@@ -3289,6 +3355,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "RANDON PART": {
     nome: "Randon S.A. Implementos e Participações",
+    link: "https://randon.com.br/pt",
     descricao:
       "Um dos maiores conglomerados industriais do Brasil, com atuação nos segmentos de implementos rodoviários, autopeças, veículos especiais e serviços financeiros, sendo líder na América Latina em semirreboques.",
     fundacao: "1949",
@@ -3339,6 +3406,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   RECRUSUL: {
     nome: "Recrusul S.A.",
+    link: "https://www.recrusul.com.br/home/pt",
     descricao:
       "Empresa brasileira do setor metalmecânico, com atuação histórica na fabricação de implementos rodoviários, equipamentos para refrigeração e transporte de cargas refrigeradas, passando por processos de reestruturação nos últimos anos.",
     fundacao: "1953",
@@ -3387,6 +3455,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TUPY: {
     nome: "Tupy S.A.",
+    link: "https://www.tupy.com.br/",
     descricao:
       "Uma das maiores fundições do mundo, especializada em componentes complexos em ferro fundido para os setores automotivo, de máquinas agrícolas, construção, mineração e indústria, com presença global e liderança em blocos e cabeçotes de motor.",
     fundacao: "1938",
@@ -3437,6 +3506,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "WETZEL S/A": {
     nome: "Wetzel S.A.",
+    link: "https://wetzel.com.br/",
     descricao:
       "Empresa brasileira do setor metalúrgico, especializada na fundição de peças em ferro e alumínio para a indústria automotiva, eletrotécnica e de construção civil, com mais de 85 anos de atuação no mercado nacional.",
     fundacao: "1932",
@@ -3485,6 +3555,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   ELETROMIDIA: {
     nome: "Eletromidia S.A.",
+    link: "https://eletromidia.com.br/",
     descricao:
       "Maior empresa de mídia out-of-home (OOH) do Brasil, especializada em publicidade em ambientes de alto tráfego como shoppings, aeroportos, elevadores, metrôs e ônibus, oferecendo soluções digitais e estáticas para anunciantes.",
     fundacao: "1993",
@@ -3535,6 +3606,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BRISANET: {
     nome: "Brisanet Participações S.A.",
+    link: "https://www.brisanet.com.br/",
     descricao:
       "Maior provedor de internet banda larga via fibra óptica do Nordeste brasileiro, com foco em cidades de médio e pequeno porte, oferecendo serviços de internet, TV por assinatura e telefonia para clientes residenciais e corporativos.",
     fundacao: "1998",
@@ -3585,6 +3657,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DESKTOP: {
     nome: "Desktop Sigmanet Comunicação Multimídia S.A.",
+    link: "https://www.desktop.com.br/",
     descricao:
       "Provedor de serviços de telecomunicações com foco em internet banda larga via fibra óptica, atuando principalmente no interior de São Paulo e expandindo para outras regiões, atendendo clientes residenciais e corporativos.",
     fundacao: "1997",
@@ -3635,6 +3708,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   OI: {
     nome: "Oi S.A.",
+    link: "https://www.oi.com.br/",
     descricao:
       "Uma das maiores empresas de telecomunicações do Brasil, com atuação nacional em telefonia fixa, móvel, banda larga e TV por assinatura, passando por processo de reestruturação após recuperação judicial.",
     fundacao: "1998 (como Telemar, rebrand para Oi em 2007)",
@@ -3685,6 +3759,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TELEBRAS: {
     nome: "Telecomunicações Brasileiras S.A.",
+    link: "https://www.telebras.com.br/",
     descricao:
       "Empresa estatal brasileira de telecomunicações, reativada em 2010 após a privatização do sistema Telebrás nos anos 90, com foco em infraestrutura de banda larga, satélites e redes governamentais.",
     fundacao: "1972 (reativada em 2010)",
@@ -3738,6 +3813,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "TELEF BRASIL": {
     nome: "Telefônica Brasil S.A. (Vivo)",
+    link: "https://www.telefonica.com.br/",
     descricao:
       "Maior empresa de telecomunicações do Brasil, subsidiária do grupo espanhol Telefónica, operando sob a marca Vivo com serviços de telefonia móvel, fixa, banda larga, TV por assinatura e soluções digitais.",
     fundacao: "1998 (após privatização do sistema Telebrás)",
@@ -3788,6 +3864,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TIM: {
     nome: "TIM S.A.",
+    link: "https://www.tim.com.br/",
     descricao:
       "Uma das principais operadoras de telecomunicações do Brasil, subsidiária do grupo italiano Telecom Italia, com atuação em telefonia móvel, fixa, banda larga e serviços corporativos.",
     fundacao: "1998 (início das operações no Brasil)",
@@ -3838,6 +3915,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   UNIFIQUE: {
     nome: "Unifique Telecomunicações S.A.",
+    link: "https://unifique.com.br/",
     descricao:
       "Provedor regional de serviços de telecomunicações com foco em internet banda larga via fibra óptica, telefonia e TV por assinatura, atuando principalmente na região Sul do Brasil, especialmente em Santa Catarina.",
     fundacao: "1997",
@@ -3887,6 +3965,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "IOCHP-MAXION": {
     nome: "Iochpe-Maxion S.A.",
+    link: "https://www.iochpe.com.br/",
     descricao:
       "Maior fabricante de rodas e chassis da América Latina e um dos líderes globais no setor, fornecendo componentes automotivos para montadoras em todo o mundo, com operações em mais de 14 países.",
     fundacao: "1918",
@@ -3943,6 +4022,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "METAL LEVE": {
     nome: "Mahle Metal Leve S.A.",
+    link: "https://ri.mahle.com.br/",
     descricao:
       "Empresa líder na fabricação de componentes de precisão para motores a combustão, como pistões, anéis, bronzinas e filtros, fornecendo para o mercado original e de reposição, sendo parte do grupo alemão Mahle.",
     fundacao: "1950",
@@ -3999,6 +4079,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "PLASCAR PART": {
     nome: "Plascar Participações Industriais S.A.",
+    link: "https://plascar.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de componentes plásticos e acabamentos internos e externos para a indústria automotiva, sendo uma das principais fornecedoras de peças termoplásticas para montadoras no Brasil.",
     fundacao: "1963",
@@ -4054,6 +4135,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   LOCALIZA: {
     nome: "Localiza Rent a Car S.A.",
+    link: "https://www.localiza.com/brasil/pt-br",
     descricao:
       "Maior empresa de aluguel de carros da América Latina, com atuação nos segmentos de aluguel de carros (RAC), gestão de frotas para empresas e venda de seminovos, recentemente fundida com a Unidas para formar a Companhia de Locação das Américas.",
     fundacao: "1973",
@@ -4117,6 +4199,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MOVIDA: {
     nome: "Movida Participações S.A.",
+    link: "https://www.movida.com.br/",
     descricao:
       "Uma das principais empresas de locação de veículos do Brasil, com atuação nos segmentos de aluguel de carros para pessoas físicas, gestão de frotas corporativas e venda de seminovos, parte do Grupo Simpar.",
     fundacao: "2006",
@@ -4167,6 +4250,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   VAMOS: {
     nome: "Vamos Locação de Caminhões, Máquinas e Equipamentos S.A.",
+    link: "https://vamos.com.br/",
     descricao:
       "Empresa brasileira especializada na locação de caminhões, máquinas e equipamentos pesados para diversos setores da economia, oferecendo também serviços de manutenção e comercialização de veículos seminovos, parte do Grupo Simpar.",
     fundacao: "2015",
@@ -4222,6 +4306,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ANIMA: {
     nome: "Ânima Holding S.A.",
+    link: "https://ri.animaeducacao.com.br/",
     descricao:
       "Um dos maiores grupos educacionais privados do Brasil, com foco no ensino superior de qualidade, reunindo diversas instituições de ensino reconhecidas e oferecendo cursos de graduação, pós-graduação, ensino técnico e educação continuada.",
     fundacao: "2003",
@@ -4277,6 +4362,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BAHEMA: {
     nome: "Bahema Educação S.A.",
+    link: "https://www.biomaeducacao.com.br/",
     descricao:
       "Grupo educacional brasileiro focado na educação básica de alta qualidade, reunindo escolas de referência com metodologias pedagógicas diferenciadas e inovadoras, desde a educação infantil até o ensino médio.",
     fundacao:
@@ -4328,6 +4414,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "COGNA ON": {
     nome: "Cogna Educação S.A.",
+    link: "https://ri.cogna.com.br/",
     descricao:
       "Maior grupo educacional do Brasil e um dos maiores do mundo, com atuação em todos os segmentos do setor, desde a educação básica até o ensino superior, incluindo sistemas de ensino, editoras e soluções educacionais.",
     fundacao: "1966 (como Kroton Educacional, rebrand para Cogna em 2019)",
@@ -4383,6 +4470,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CRUZEIRO EDU": {
     nome: "Cruzeiro do Sul Educacional S.A.",
+    link: "https://www.cruzeirodosul.edu.br/",
     descricao:
       "Um dos maiores grupos educacionais privados do Brasil, com foco no ensino superior de qualidade, reunindo instituições tradicionais e oferecendo cursos de graduação e pós-graduação nas modalidades presencial e a distância.",
     fundacao: "2001",
@@ -4433,6 +4521,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SER EDUCA": {
     nome: "Ser Educacional S.A.",
+    link: "https://www.sereducacional.com/",
     descricao:
       "Um dos principais grupos de ensino superior privado do Brasil, com forte presença nas regiões Norte e Nordeste, oferecendo cursos de graduação e pós-graduação nas modalidades presencial e a distância.",
     fundacao: "2003",
@@ -4483,6 +4572,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "YDUQS PART": {
     nome: "YDUQS Participações S.A.",
+    link: "https://www.yduqs.com.br/",
     descricao:
       "Um dos maiores grupos de ensino superior privado do Brasil, anteriormente conhecido como Estácio Participações, com atuação nacional e internacional, oferecendo cursos de graduação e pós-graduação nas modalidades presencial e a distância.",
     fundacao: "1970 (como Estácio de Sá, rebrand para YDUQS em 2019)",
@@ -4538,6 +4628,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "DOTZ SA": {
     nome: "Dotz S.A.",
+    link: "https://www.dotz.com.br/home",
     descricao:
       "Empresa brasileira de tecnologia especializada em programas de fidelidade e marketplace, oferecendo soluções de engajamento, CRM e monetização de dados para empresas, além de um ecossistema de benefícios para consumidores.",
     fundacao: "2000",
@@ -4593,6 +4684,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "HOTEIS OTHON": {
     nome: "Hotéis Othon S.A.",
+    link: "https://www.ciahoteisothon.com.br/",
     descricao:
       "Uma das mais tradicionais redes hoteleiras do Brasil, com atuação no segmento de hotelaria de luxo e negócios, conhecida por seus hotéis em localizações privilegiadas, principalmente no Rio de Janeiro, atualmente em processo de recuperação judicial.",
     fundacao: "1943",
@@ -4649,6 +4741,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "IMC S/A": {
     nome: "International Meal Company Alimentação S.A.",
+    link: "https://grupoimc.com.br/",
     descricao:
       "Empresa multinacional do setor de alimentação fora do lar, operando restaurantes, cafeterias e serviços de alimentação em locais de alta circulação como aeroportos, shopping centers e rodovias, com marcas próprias e franquias internacionais.",
     fundacao: "2006",
@@ -4705,6 +4798,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ZAMP S.A.": {
     nome: "Zamp S.A.",
+    link: "https://ri.zamp.com.br/",
     descricao:
       "Empresa brasileira do setor de alimentação, anteriormente conhecida como BK Brasil, responsável pela operação das redes Burger King e Popeyes no Brasil, sendo uma das maiores empresas de fast-food do país.",
     fundacao: "2011 (como BK Brasil, rebrand para Zamp em 2022)",
@@ -4760,6 +4854,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   MOBLY: {
     nome: "Mobly S.A.",
+    link: "https://investors.grupotoky.com.br/",
     descricao:
       "Empresa brasileira de comércio eletrônico especializada em móveis, decoração e artigos para casa, com operação omnichannel que combina plataforma online com lojas físicas, oferecendo uma ampla variedade de produtos para o lar.",
     fundacao: "2011",
@@ -4816,6 +4911,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   UNICASA: {
     nome: "Unicasa Indústria de Móveis S.A.",
+    link: "https://ri.unicasamoveis.com.br/",
     descricao:
       "Empresa brasileira especializada na fabricação de móveis modulados para cozinhas, dormitórios e outros ambientes, com marcas reconhecidas como Dell Anno, Favorita, New e Casa Brasileira, operando através de rede de revendedores exclusivos e multimarcas.",
     fundacao: "1985",
@@ -4866,6 +4962,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   WHIRLPOOL: {
     nome: "Whirlpool S.A.",
+    link: "https://www.whirlpool.com.br/investidor/",
     descricao:
       "Subsidiária brasileira da Whirlpool Corporation, líder mundial em eletrodomésticos de linha branca, detentora de marcas como Brastemp, Consul e KitchenAid no Brasil, fabricando e comercializando refrigeradores, lavadoras, fogões, micro-ondas e outros eletrodomésticos.",
     fundacao: "1950 (como Multibrás, parte da Whirlpool desde 1997)",
@@ -4916,6 +5013,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   HERCULES: {
     nome: "Hercules S.A. Fábrica de Talheres",
+    link: "http://www.hercules.ind.br/#/investidores",
     descricao:
       "Tradicional empresa brasileira fabricante de talheres, panelas e utensílios domésticos, com mais de 100 anos de história, atualmente em recuperação judicial, buscando reestruturar suas operações e retomar sua posição no mercado.",
     fundacao: "1911",
@@ -4971,6 +5069,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   ALPHAVILLE: {
     nome: "Alphaville Urbanismo S.A.",
+    link: "https://ri.alphaville.com.br/",
     descricao:
       "Empresa brasileira especializada no desenvolvimento de loteamentos residenciais planejados de alto padrão, com foco em empreendimentos que combinam infraestrutura completa, áreas verdes e segurança, criando comunidades planejadas em diversas regiões do país.",
     fundacao: "1973",
@@ -5025,64 +5124,9 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
       "Expansão para novas regiões com potencial de crescimento, desenvolvimento de produtos para diferentes segmentos de renda, diversificação para empreendimentos com componentes comerciais e de serviços, fortalecimento da marca em novos mercados e possível internacionalização em países da América Latina.",
   },
 
-  AVLL3: {
-    nome: "Alphaville S.A.",
-    descricao:
-      "Empresa brasileira de desenvolvimento urbano focada na criação e comercialização de loteamentos residenciais planejados, com forte presença nacional e reconhecimento pela qualidade de seus empreendimentos e infraestrutura diferenciada.",
-    fundacao: "1973 (como Alphaville Urbanismo, reestruturada em 2018)",
-    sede: "São Paulo, Brasil",
-    fatos_relevantes: [
-      "Uma das principais desenvolvedoras de comunidades planejadas do Brasil",
-      "Mais de 120 empreendimentos em todo o território nacional",
-      "Reestruturação financeira e societária em 2018",
-      "Parceria com a Pátria Investimentos",
-      "IPO na B3 em 2020",
-    ],
-    sustentabilidade: {
-      esg_score: 71,
-      iniciativas: [
-        "Preservação de áreas verdes nos empreendimentos",
-        "Gestão sustentável de recursos hídricos",
-        "Projetos de urbanismo com baixo impacto ambiental",
-        "Programas sociais nas comunidades onde atua",
-        "Infraestrutura para mobilidade sustentável",
-      ],
-    },
-    concorrentes: [
-      "Tamboré",
-      "Damha",
-      "Terras Alpha",
-      "Reserva Santa Maria",
-      "FGM Urbanismo",
-    ],
-    produtos_principais: [
-      "Loteamentos residenciais de alto padrão",
-      "Loteamentos comerciais",
-      "Desenvolvimento urbano planejado",
-      "Projetos de urbanização",
-      "Gestão de infraestrutura urbana",
-    ],
-    mercados_atuacao: ["Brasil"],
-    vantagens_competitivas: [
-      "Marca premium no segmento de loteamentos",
-      "Expertise em desenvolvimento urbano de grande escala",
-      "Capacidade de estruturação de projetos complexos",
-      "Presença nacional consolidada",
-      "Padrão de qualidade reconhecido pelo mercado",
-    ],
-    riscos_negocio: [
-      "Ciclos longos de desenvolvimento imobiliário",
-      "Complexidade regulatória para aprovações",
-      "Necessidade de capital intensivo para novos projetos",
-      "Sensibilidade a ciclos econômicos",
-      "Competição crescente no segmento de loteamentos",
-    ],
-    perspectivas:
-      "Consolidação da reestruturação financeira, lançamento de novos empreendimentos em regiões com demanda reprimida, desenvolvimento de produtos para diferentes faixas de renda, otimização do portfólio de terrenos e fortalecimento da presença digital na comercialização de lotes.",
-  },
-
   HABITASUL: {
     nome: "Habitasul Desenvolvimentos Imobiliários S.A.",
+    link: "https://ri.habitasul.com.br/",
     descricao:
       "Empresa brasileira de desenvolvimento imobiliário com foco em empreendimentos de alto padrão, conhecida principalmente pelo desenvolvimento de Jurerê Internacional em Florianópolis, além de outros projetos residenciais, comerciais e turísticos no Sul do Brasil.",
     fundacao: "1967",
@@ -5138,6 +5182,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TENDA: {
     nome: "Construtora Tenda S.A.",
+    link: "https://ri.tenda.com/",
     descricao:
       "Empresa brasileira do setor de construção civil focada no desenvolvimento de empreendimentos residenciais econômicos, atendendo principalmente o segmento de baixa renda através do programa Casa Verde e Amarela (antigo Minha Casa Minha Vida), com atuação em diversas regiões do país.",
     fundacao: "1969 (separação da Gafisa em 2017)",
@@ -5188,6 +5233,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CURY S/A": {
     nome: "Cury Construtora e Incorporadora S.A.",
+    link: "https://ri.cury.net/",
     descricao:
       "Empresa brasileira do setor de construção civil especializada no desenvolvimento de empreendimentos residenciais para o segmento econômico e média renda, com forte atuação nas regiões metropolitanas de São Paulo e Rio de Janeiro.",
     fundacao: "1962",
@@ -5238,6 +5284,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CYRELA REALT": {
     nome: "Cyrela Brazil Realty S.A.",
+    link: "https://ri.cyrela.com.br/",
     descricao:
       "Uma das maiores incorporadoras e construtoras do Brasil, com foco em empreendimentos residenciais de médio e alto padrão, presente nas principais cidades brasileiras e com atuação diversificada em diferentes segmentos do mercado imobiliário através de marcas e empresas do grupo.",
     fundacao: "1962",
@@ -5288,6 +5335,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DIRECIONAL: {
     nome: "Direcional Engenharia S.A.",
+    link: "https://ri.direcional.com.br/",
     descricao:
       "Empresa brasileira do setor de construção civil com foco principal no segmento econômico, desenvolvendo empreendimentos residenciais populares através do programa Casa Verde e Amarela, além de atuar em outros segmentos do mercado imobiliário através de suas subsidiárias.",
     fundacao: "1981",
@@ -5338,6 +5386,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   EVEN: {
     nome: "Even Construtora e Incorporadora S.A.",
+    link: "https://ri.even.com.br/",
     descricao:
       "Incorporadora e construtora brasileira focada principalmente no desenvolvimento de empreendimentos residenciais de médio e alto padrão, com forte atuação nas regiões metropolitanas de São Paulo, Rio de Janeiro, Minas Gerais e Rio Grande do Sul.",
     fundacao: "2002",
@@ -5389,6 +5438,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   EZTEC: {
     nome: "EZTEC Empreendimentos e Participações S.A.",
+    link: "https://ri.eztec.com.br/",
     descricao:
       "Incorporadora e construtora brasileira focada no desenvolvimento de empreendimentos residenciais de médio e alto padrão, com forte atuação na região metropolitana de São Paulo, conhecida por sua solidez financeira e baixo endividamento.",
     fundacao: "1979",
@@ -5441,6 +5491,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   FICA: {
     nome: "FII Campus Faria Lima (FICA11)",
+    link: "https://ri.fica.net.br/",
     descricao:
       "Fundo de Investimento Imobiliário especializado em edifícios corporativos de alto padrão, com foco em ativos localizados na região da Faria Lima, principal centro financeiro e comercial de São Paulo, buscando gerar renda através de locações de longo prazo.",
     fundacao: "2012",
@@ -5497,6 +5548,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GAFISA: {
     nome: "Gafisa S.A.",
+    link: "https://ri.gafisa.com.br/",
     descricao:
       "Tradicional incorporadora e construtora brasileira com mais de 65 anos de atuação, focada principalmente no desenvolvimento de empreendimentos residenciais de médio e alto padrão, com presença em diversas regiões do país e histórico de reinvenção após reestruturações.",
     fundacao: "1954",
@@ -5547,6 +5599,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GENERALSHOPP: {
     nome: "General Shopping e Outlets do Brasil S.A.",
+    link: "https://ri.generalshopping.com.br/",
     descricao:
       "Empresa brasileira especializada no desenvolvimento, administração e investimento em shopping centers e outlets, com foco em empreendimentos de médio porte em regiões com potencial de crescimento, sendo pioneira no conceito de outlets no Brasil.",
     fundacao: "1989",
@@ -5603,6 +5656,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "HBR REALTY": {
     nome: "HBR Realty Empreendimentos Imobiliários S.A.",
+    link: "https://ri.hbrrealty.com.br/",
     descricao:
       "Empresa brasileira de investimentos imobiliários focada no desenvolvimento, aquisição e gestão de propriedades comerciais, incluindo shopping centers, edifícios corporativos e galpões logísticos, com estratégia de diversificação de ativos e geração de renda recorrente.",
     fundacao: "2007",
@@ -5659,6 +5713,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   HELBOR: {
     nome: "Helbor Empreendimentos S.A.",
+    link: "https://ri.helbor.com.br/",
     descricao:
       "Incorporadora brasileira com foco no desenvolvimento de empreendimentos residenciais e comerciais de médio e alto padrão, atuando principalmente nas regiões Sudeste e Nordeste do Brasil, com mais de 40 anos de experiência no mercado imobiliário.",
     fundacao: "1977",
@@ -5709,6 +5764,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "IGUATEMI S.A": {
     nome: "Iguatemi S.A.",
+    link: "https://ri.iguatemi.com.br/",
     descricao:
       "Uma das principais empresas de shopping centers do Brasil, focada no desenvolvimento, propriedade e administração de empreendimentos comerciais de alto padrão, com portfólio premium de shopping centers, outlets e torres comerciais nas principais regiões do país.",
     fundacao: "1979",
@@ -5765,6 +5821,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "JHSF PART": {
     nome: "JHSF Participações S.A.",
+    link: "https://ri.jhsf.com.br/",
     descricao:
       "Grupo empresarial brasileiro focado no desenvolvimento e gestão de empreendimentos imobiliários de alto padrão, com atuação diversificada em shopping centers de luxo, incorporação residencial premium, hotéis, aeroporto executivo e marcas de varejo exclusivas.",
     fundacao: "1972",
@@ -5814,6 +5871,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "JOAO FORTES": {
     nome: "João Fortes Engenharia S.A.",
+    link: "https://ri.joaofortes.com.br/",
     descricao:
       "Tradicional incorporadora brasileira fundada na década de 1950, com foco em empreendimentos residenciais e comerciais de médio e alto padrão, principalmente no Rio de Janeiro, que passou por processo de recuperação judicial após enfrentar dificuldades financeiras no setor.",
     fundacao: "1950",
@@ -5864,6 +5922,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   LAVVI: {
     nome: "Lavvi Incorporadora S.A.",
+    link: "https://ri.lavvi.com.br/",
     descricao:
       "Incorporadora brasileira focada no desenvolvimento de empreendimentos residenciais de médio e alto padrão na cidade de São Paulo, fruto de uma joint venture entre a Cyrela Brazil Realty e a Lavvi Empreendimentos Imobiliários, com foco em projetos de qualidade superior e localizações privilegiadas.",
     fundacao: "2016",
@@ -5914,6 +5973,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "LOG COM PROP": {
     nome: "LOG Commercial Properties e Participações S.A.",
+    link: "https://ri.logcp.com.br/",
     descricao:
       "Empresa brasileira especializada no desenvolvimento, construção e locação de galpões logísticos e industriais de alto padrão, com presença nacional e foco em atender a crescente demanda por infraestrutura logística moderna, originada como uma divisão da MRV Engenharia.",
     fundacao: "2008",
@@ -5970,6 +6030,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MELNICK: {
     nome: "Melnick Desenvolvimento Imobiliário S.A.",
+    link: "https://ri.melnick.com.br/",
     descricao:
       "Incorporadora brasileira com forte atuação no Rio Grande do Sul, especializada no desenvolvimento de empreendimentos residenciais e comerciais de médio e alto padrão, conhecida pela qualidade construtiva e inovação em seus projetos, com parceria estratégica com a Even Construtora.",
     fundacao: "1969",
@@ -6026,6 +6087,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MITRE REALTY": {
     nome: "Mitre Realty Empreendimentos e Participações S.A.",
+    link: "https://ri.mitrerealty.com.br/",
     descricao:
       "Incorporadora brasileira focada no desenvolvimento de empreendimentos residenciais e comerciais de médio e alto padrão, com atuação concentrada na cidade de São Paulo, especialmente em bairros nobres, conhecida por projetos com arquitetura diferenciada e localizações premium.",
     fundacao: "1965",
@@ -6076,6 +6138,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MOURA DUBEUX": {
     nome: "Moura Dubeux Engenharia S.A.",
+    link: "https://ri.mouradubeux.com.br/",
     descricao:
       "Incorporadora e construtora brasileira com forte atuação no Nordeste, especializada no desenvolvimento de empreendimentos residenciais de médio e alto padrão, com foco em projetos em localizações privilegiadas nas principais capitais nordestinas, sendo uma das líderes regionais do setor.",
     fundacao: "1983",
@@ -6126,6 +6189,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MRV: {
     nome: "MRV Engenharia e Participações S.A.",
+    link: "https://ri.mrv.com.br/",
     descricao:
       "Maior incorporadora e construtora da América Latina, focada no desenvolvimento de empreendimentos residenciais econômicos para o segmento popular, com presença nacional e modelo de negócio baseado em escala, padronização e eficiência construtiva, sendo a principal empresa do programa Casa Verde e Amarela.",
     fundacao: "1979",
@@ -6182,6 +6246,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MULTIPLAN: {
     nome: "Multiplan Empreendimentos Imobiliários S.A.",
+    link: "https://ri.multiplan.com.br/",
     descricao:
       "Uma das maiores empresas de shopping centers do Brasil, com foco no desenvolvimento, propriedade e administração de empreendimentos comerciais de alto padrão, além de projetos multiuso que integram shopping centers, torres comerciais e residenciais em complexos planejados.",
     fundacao: "1974",
@@ -6237,6 +6302,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "PDG REALT": {
     nome: "PDG Realty S.A. Empreendimentos e Participações",
+    link: "https://ri.pdg.com.br/",
     descricao:
       "Incorporadora brasileira que já foi uma das maiores do país, com atuação nacional em diversos segmentos do mercado imobiliário, que passou por processo de recuperação judicial após enfrentar graves dificuldades financeiras durante a crise do setor, buscando reestruturação e retomada gradual de suas operações.",
     fundacao: "1979",
@@ -6287,6 +6353,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PLANOEPLANO: {
     nome: "Plano&Plano Desenvolvimento Imobiliário S.A.",
+    link: "https://ri.planoeplano.com.br/",
     descricao:
       "Incorporadora brasileira focada no desenvolvimento de empreendimentos residenciais econômicos e de médio padrão, com forte atuação na região metropolitana de São Paulo, originada de uma parceria com a Cyrela e posteriormente tornando-se independente, com foco em eficiência construtiva e padronização.",
     fundacao: "1997",
@@ -6339,6 +6406,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   RNI: {
     nome: "RNI Negócios Imobiliários S.A.",
+    link: "https://ri.rni.com.br/",
     descricao:
       "Incorporadora brasileira pertencente ao Grupo Rodobens, com atuação nacional no desenvolvimento de empreendimentos residenciais de diferentes padrões, com foco em cidades médias do interior do país, combinando a solidez do grupo controlador com expertise imobiliária.",
     fundacao: "1991",
@@ -6395,6 +6463,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ROSSI RESID": {
     nome: "Rossi Residencial S.A.",
+    link: "https://ri.rossiresidencial.com.br/",
     descricao:
       "Tradicional incorporadora brasileira com mais de 40 anos de atuação no mercado imobiliário nacional, focada no desenvolvimento de empreendimentos residenciais de diferentes padrões, que passou por processo de reestruturação após enfrentar dificuldades financeiras durante a crise do setor.",
     fundacao: "1980",
@@ -6445,6 +6514,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SAO CARLOS": {
     nome: "São Carlos Empreendimentos e Participações S.A.",
+    link: "https://ri.scsa.com.br/",
     descricao:
       "Empresa brasileira especializada na aquisição, desenvolvimento e administração de edifícios comerciais de alto padrão, com foco em lajes corporativas em localizações premium nas principais capitais do país, atuando como proprietária e gestora de longo prazo desses ativos.",
     fundacao: "1989",
@@ -6500,7 +6570,8 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
 
   "SYN PROP TEC": {
-    nome: "Syn Prop Tech S.A. (antiga LPS Brasil)",
+    nome: "Syn Prop Tech S.A.",
+    link: "https://ri.syn.com.br/",
     descricao:
       "Empresa brasileira de tecnologia imobiliária (proptech) que evoluiu da tradicional LPS Brasil, focada em soluções digitais para o mercado imobiliário, incluindo plataformas de intermediação, gestão de vendas, big data e serviços financeiros relacionados ao setor, buscando transformar digitalmente a experiência imobiliária.",
     fundacao: "1935 (como Lopes, posteriormente LPS Brasil)",
@@ -6551,6 +6622,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TECNISA: {
     nome: "Tecnisa S.A.",
+    link: "https://ri.tecnisa.com.br/",
     descricao:
       "Incorporadora brasileira focada no desenvolvimento de empreendimentos residenciais de médio e alto padrão, com forte atuação na região metropolitana de São Paulo, conhecida por sua inovação tecnológica e pioneirismo em marketing digital no setor imobiliário.",
     fundacao: "1977",
@@ -6601,6 +6673,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TRISUL: {
     nome: "Trisul S.A.",
+    link: "https://ri.trisul-sa.com.br/",
     descricao:
       "Incorporadora brasileira com foco no desenvolvimento de empreendimentos residenciais de médio e alto padrão na região metropolitana de São Paulo, conhecida por sua solidez financeira, conservadorismo na gestão e consistência operacional ao longo de mais de 40 anos de atuação.",
     fundacao: "1978",
@@ -6653,6 +6726,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   VIVER: {
     nome: "Viver Incorporadora e Construtora S.A.",
+    link: "https://ri.viver.com.br/",
     descricao:
       "Incorporadora brasileira com mais de 30 anos de atuação no mercado imobiliário nacional, que passou por processo de recuperação judicial e reestruturação após enfrentar graves dificuldades financeiras, buscando retomar gradualmente suas operações com foco em nichos específicos do mercado.",
     fundacao: "1992",
@@ -6702,7 +6776,8 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
 
   "AREZZO CO": {
-    nome: "Arezzo&Co (Arezzo Indústria e Comércio S.A.)",
+    nome: "Arezzo Indústria e Comércio S.A.",
+    link: "https://ri.azzas2154.com.br/",
     descricao:
       "Grupo brasileiro líder no setor de calçados, bolsas e acessórios femininos, com um portfólio diversificado de marcas que atendem diferentes segmentos do mercado, operando através de lojas próprias, franquias e canais multimarca, com crescente expansão internacional e estratégia omnichannel.",
     fundacao: "1972",
@@ -6764,6 +6839,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CEA MODAS": {
     nome: "C&A Modas S.A.",
+    link: "https://ri.cea.com.br/",
     descricao:
       "Varejista multinacional de moda com forte presença no Brasil, focada em oferecer produtos acessíveis seguindo as tendências da moda, com estratégia omnichannel e expansão no mercado de serviços financeiros através do C&A Pay, buscando integrar experiência física e digital.",
     fundacao: "1841 (global), 1976 (Brasil)",
@@ -6820,6 +6896,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GRAZZIOTIN: {
     nome: "Grazziotin S.A.",
+    link: "https://www.grazziotin.com.br/",
     descricao:
       "Tradicional rede varejista da região Sul do Brasil, com mais de 90 anos de história, focada em moda, utilidades domésticas e materiais de construção, operando através de diferentes bandeiras para atender diversos segmentos do mercado, com forte presença em cidades de pequeno e médio porte.",
     fundacao: "1929",
@@ -6876,6 +6953,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "GRUPO SOMA": {
     nome: "Grupo de Moda SOMA S.A.",
+    link: "https://www.somagrupo.com.br/investidores/central-de-resultados/",
     descricao:
       "Grupo brasileiro de moda premium que reúne marcas autorais e reconhecidas no mercado nacional, com foco em vestuário e acessórios de médio e alto padrão, operando através de lojas próprias, franquias, canais multimarca e e-commerce, com estratégia baseada na força e autenticidade de cada marca do portfólio.",
     fundacao: "2014 (como grupo, marcas mais antigas)",
@@ -6932,6 +7010,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GUARARAPES: {
     nome: "Guararapes Confecções S.A.",
+    link: "https://ri.riachuelo.com.br/",
     descricao:
       "Maior grupo de moda verticalmente integrado do Brasil, controlador da rede Riachuelo, com operações que vão desde a fabricação têxtil até o varejo, incluindo shopping centers e serviços financeiros, combinando produção nacional com importação e distribuição em larga escala através de sua rede de lojas.",
     fundacao: "1947",
@@ -6988,6 +7067,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "LOJAS RENNER": {
     nome: "Lojas Renner S.A.",
+    link: "https://lojasrenner.mzweb.com.br/",
     descricao:
       "Maior varejista de moda do Brasil, com operação omnichannel e portfólio de marcas próprias, além de expansão para serviços financeiros e operações internacionais, conhecida por sua excelência em gestão, experiência do cliente e inovação no varejo de moda.",
     fundacao: "1965",
@@ -7044,6 +7124,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "LOJAS MARISA": {
     nome: "Marisa Lojas S.A.",
+    link: "https://ri.marisa.com.br/",
     descricao:
       "Uma das maiores redes de varejo de moda feminina e moda íntima do Brasil, com foco no público feminino das classes B, C e D, operando através de lojas físicas e e-commerce, além de oferecer serviços financeiros por meio do Cartão Marisa, passando por processo de reestruturação para recuperar rentabilidade.",
     fundacao: "1948",
@@ -7099,7 +7180,8 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
 
   VESTE: {
-    nome: "Grupo de Moda Veste S.A. (antiga Restoque)",
+    nome: "Grupo de Moda Veste S.A.",
+    link: "https://www.veste.com/",
     descricao:
       "Grupo brasileiro de moda premium e luxo, anteriormente conhecido como Restoque, que reúne marcas reconhecidas no segmento de alto padrão, operando através de lojas próprias, franquias e canais multimarca, com foco em vestuário e acessórios de luxo acessível e lifestyle.",
     fundacao: "1982 (Le Lis Blanc), 2008 (como Restoque)",
@@ -7155,6 +7237,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   AMERICANAS: {
     nome: "Americanas S.A.",
+    link: "https://ri.americanas.io/",
     descricao:
       "Conglomerado brasileiro de varejo multicanal, resultado da fusão entre Lojas Americanas e B2W Digital, que opera uma das maiores plataformas de e-commerce do país e extensa rede de lojas físicas, passando por processo de recuperação judicial após revelação de inconsistências contábeis, buscando reestruturação financeira e operacional.",
     fundacao: "1929 (Lojas Americanas)",
@@ -7211,6 +7294,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "GRUPO SBF": {
     nome: "Grupo SBF S.A.",
+    link: "https://ri.gruposbf.com.br/",
     descricao:
       "Maior varejista de artigos esportivos da América Latina, controlador das redes Centauro e Fisia (distribuidora exclusiva da Nike no Brasil), com operação omnichannel e foco em experiência do cliente, expandindo sua atuação para o ecossistema de esporte e bem-estar através de aquisições estratégicas.",
     fundacao: "1981 (Centauro)",
@@ -7267,6 +7351,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "QUERO-QUERO": {
     nome: "Lojas Quero-Quero S.A.",
+    link: "https://ri.quero-quero.com.br/",
     descricao:
       "Maior rede varejista de material de construção, eletrodomésticos e móveis da região Sul do Brasil, com forte atuação em cidades de pequeno e médio porte, combinando varejo físico, serviços financeiros e estratégia omnichannel, com foco no atendimento personalizado e conhecimento das necessidades regionais.",
     fundacao: "1967",
@@ -7323,6 +7408,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ESPACOLASER: {
     nome: "MPM Corpóreos S.A. (Espaçolaser)",
+    link: "https://ri.espacolaser.com.br/",
     descricao:
       "Maior rede de depilação a laser do mundo, com modelo de negócio baseado em franquias e foco em democratizar o acesso a tratamentos estéticos, expandindo para novos serviços e mercados internacionais, com estratégia de crescimento através de aquisições e desenvolvimento de novas tecnologias.",
     fundacao: "2004",
@@ -7384,6 +7470,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PETZ: {
     nome: "Petz S.A. (Pet Center Comércio e Participações)",
+    link: "https://ri.petz.com.br/",
     descricao:
       "Maior ecossistema pet do Brasil, combinando varejo físico, e-commerce, serviços veterinários e de estética animal, com estratégia omnichannel e expansão através de aquisições estratégicas, buscando atender todas as necessidades dos tutores de animais de estimação em um único ecossistema.",
     fundacao: "2002",
@@ -7440,6 +7527,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ALLIED: {
     nome: "Allied Tecnologia S.A.",
+    link: "https://ri.alliedbrasil.com.br/",
     descricao:
       "Uma das maiores varejistas de produtos de tecnologia e telefonia do Brasil, com operação multicanal que inclui lojas próprias, e-commerce e distribuição para outros varejistas, além de serviços de trade-in e recondicionamento de dispositivos, buscando se consolidar como ecossistema completo de tecnologia.",
     fundacao: "2001",
@@ -7495,7 +7583,8 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
 
   "CASAS BAHIA": {
-    nome: "Casas Bahia S.A. (anteriormente Via)",
+    nome: "Casas Bahia S.A.",
+    link: "https://ri.grupocasasbahia.com.br/",
     descricao:
       "Uma das maiores redes varejistas do Brasil, com foco em eletrodomésticos, móveis e eletrônicos, operando através de extensa rede de lojas físicas e plataforma digital, passando por processo de reestruturação financeira e operacional para adaptar-se ao novo cenário competitivo do varejo.",
     fundacao: "1952",
@@ -7552,6 +7641,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MAGAZ LUIZA": {
     nome: "Magazine Luiza S.A.",
+    link: "https://ri.magazineluiza.com.br/",
     descricao:
       "Uma das maiores varejistas multicanal do Brasil, pioneira na transformação digital do varejo tradicional, com operação que combina extensa rede física, marketplace, serviços financeiros e logística própria, conhecida por sua cultura de inovação e capacidade de adaptação às mudanças do mercado.",
     fundacao: "1957",
@@ -7607,6 +7697,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   MUNDIAL: {
     nome: "Mundial S.A. - Produtos de Consumo",
+    link: "https://www.mundial.com/investidores",
     descricao:
       "Tradicional empresa brasileira com atuação diversificada em segmentos como cutelaria, ferramentas, materiais para manicure e beleza, além de produtos para pet e jardinagem, com marcas reconhecidas no mercado nacional e presença internacional, passando por processo de reestruturação financeira e foco em produtos de maior valor agregado.",
     fundacao: "1896",
@@ -7669,6 +7760,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TECHNOS: {
     nome: "Technos S.A.",
+    link: "https://www.grupotechnos.com.br/pt",
     descricao:
       "Maior empresa de relógios da América Latina, com portfólio diversificado de marcas próprias e licenciadas que atendem diferentes segmentos do mercado, combinando produção nacional e importação, com estratégia omnichannel e expansão para acessórios e smartwatches, buscando se adaptar às mudanças no mercado de relógios tradicional.",
     fundacao: "1956",
@@ -7725,6 +7817,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "VIVARA S.A.": {
     nome: "Vivara Participações S.A.",
+    link: "https://ri.vivara.com.br/",
     descricao:
       "Maior rede de joalherias do Brasil, com modelo verticalizado que integra design, fabricação e varejo de joias, relógios e acessórios, operando através das marcas Vivara e Life by Vivara, com estratégia omnichannel e expansão contínua da rede de lojas, posicionada no segmento premium acessível do mercado.",
     fundacao: "1962",
@@ -7781,6 +7874,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "TRACK FIELD": {
     nome: "Track&Field S.A.",
+    link: "https://www.tfco.com.br/ri/",
     descricao:
       "Empresa brasileira especializada em moda esportiva premium, com foco em produtos de alta performance e lifestyle esportivo, operando através de lojas próprias e franquias, além de e-commerce, com estratégia de expansão baseada no conceito de comunidade e experiência, incluindo academias próprias e eventos esportivos.",
     fundacao: "1988",
@@ -7837,6 +7931,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CEDRO: {
     nome: "Companhia de Fiação e Tecidos Cedro e Cachoeira",
+    link: "https://cedro.com.br/investidores/",
     descricao:
       "Uma das mais tradicionais empresas têxteis do Brasil, com mais de 150 anos de história, especializada na produção de tecidos para vestuário, decoração e aplicações técnicas, passando por processo de reestruturação para enfrentar os desafios do setor têxtil brasileiro, com foco em inovação e sustentabilidade.",
     fundacao: "1872",
@@ -7893,6 +7988,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COTEMINAS: {
     nome: "Companhia de Tecidos Norte de Minas (Coteminas)",
+    link: "https://ri.springs.com/a-companhia/o-grupo-coteminas/",
     descricao:
       "Um dos maiores grupos têxteis da América Latina, com operações verticalizadas que vão desde a fiação até produtos acabados, controlador de marcas tradicionais no segmento de cama, mesa e banho, com presença internacional e estratégia de diversificação para enfrentar os desafios do setor têxtil.",
     fundacao: "1967",
@@ -7954,6 +8050,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SANTANENSE: {
     nome: "Companhia Tecidos Santanense",
+    link: "https://www.santanense.com.br/",
     descricao:
       "Tradicional empresa têxtil brasileira especializada na produção de tecidos profissionais, jeanswear e workwear, parte do grupo Coteminas, com foco em tecidos técnicos e especiais para aplicações industriais e uniformes, combinando tradição e inovação para atender mercados específicos.",
     fundacao: "1891",
@@ -8010,6 +8107,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DOHLER: {
     nome: "Döhler S.A.",
+    link: "https://www.dohler.com.br/investidores",
     descricao:
       "Tradicional empresa têxtil brasileira com mais de 140 anos de história, especializada na produção de artigos de cama, mesa, banho e decoração, com modelo verticalizado que integra desde a fiação até produtos acabados, combinando tradição familiar, qualidade reconhecida e constante inovação em produtos para o lar.",
     fundacao: "1881",
@@ -8071,6 +8169,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   KARSTEN: {
     nome: "Karsten S.A.",
+    link: "https://www.karstensa.com.br/relacoes-com-investidores/",
     descricao:
       "Tradicional empresa têxtil brasileira especializada na produção de artigos de cama, mesa e banho de alta qualidade, com mais de 130 anos de história, combinando tradição familiar, inovação tecnológica e design diferenciado, com foco no mercado premium e exportações, passando por processo de reestruturação para enfrentar os desafios do setor.",
     fundacao: "1882",
@@ -8127,6 +8226,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PETTENATI: {
     nome: "Pettenati S.A. Indústria Têxtil",
+    link: "https://www.pettenati.com.br/investidores/",
     descricao:
       "Uma das maiores empresas têxteis da América Latina, especializada na produção de tecidos sintéticos de alta tecnologia para vestuário esportivo, moda e aplicações técnicas, com operações no Brasil e América Central, fornecedora de grandes marcas globais e pioneira em inovações tecnológicas no setor têxtil.",
     fundacao: "1964",
@@ -8189,6 +8289,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SPRINGS: {
     nome: "Springs Global Participações S.A.",
+    link: "https://ri.springs.com/",
     descricao:
       "Uma das maiores empresas têxteis do mundo, resultado da fusão entre a brasileira Coteminas e a americana Springs Industries, com operações verticalizadas que vão desde a fiação até produtos acabados, controladora de marcas tradicionais no segmento de cama, mesa e banho, com presença global e estratégia de transformação digital.",
     fundacao: "2006 (fusão Coteminas-Springs)",
@@ -8250,6 +8351,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TEKA: {
     nome: "Teka - Tecelagem Kuehnrich S.A.",
+    link: "https://www.teka.com.br/pagina-exemplo/relacao-com-investidores/",
     descricao:
       "Tradicional empresa têxtil brasileira com mais de 90 anos de história, especializada na produção de artigos de cama, mesa e banho, com reconhecimento de qualidade e tradição, passando por longo processo de recuperação judicial e reestruturação para enfrentar os desafios do setor têxtil e recuperar sua posição no mercado.",
     fundacao: "1926",
@@ -8305,7 +8407,8 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
 
   "TEX RENAUX": {
-    nome: "Têxtil Renauxview S.A. (antiga Têxtil Renaux)",
+    nome: "Têxtil Renauxview S.A.",
+    link: "https://www.renauxview.com.br/relacao-com-investidores/",
     descricao:
       "Uma das mais antigas empresas têxteis do Brasil, fundada por imigrantes europeus, tradicionalmente especializada em tecidos finos para decoração e vestuário, passando por profunda reestruturação após processo de recuperação judicial, com redirecionamento estratégico e foco em nichos específicos do mercado têxtil.",
     fundacao: "1892",
@@ -8362,6 +8465,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ALPARGATAS: {
     nome: "Alpargatas S.A.",
+    link: "https://ri.alpargatas.com.br/",
     descricao:
       "Maior empresa de calçados da América Latina, controladora de marcas icônicas como Havaianas e Osklen, com presença global e estratégia de expansão internacional, combinando escala industrial, inovação em produtos e forte capacidade de construção de marcas, em processo de transformação para se tornar uma empresa global de marcas desejadas.",
     fundacao: "1907",
@@ -8425,6 +8529,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CAMBUCI: {
     nome: "Cambuci S.A.",
+    link: "https://ri.cambuci.com.br",
     descricao:
       "Empresa brasileira de artigos esportivos, controladora da tradicional marca Penalty, com atuação no desenvolvimento, produção e comercialização de calçados, vestuário e equipamentos esportivos, passando por processo de reestruturação financeira e reposicionamento estratégico para enfrentar a competição com marcas globais.",
     fundacao: "1945",
@@ -8480,6 +8585,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GRENDENE: {
     nome: "Grendene S.A.",
+    link: "https://ri.grendene.com.br/",
     descricao:
       "Uma das maiores produtoras de calçados do mundo, especializada em calçados sintéticos e injetados, controladora de marcas como Melissa, Ipanema e Rider, com modelo de negócio baseado em escala, inovação em design e materiais, eficiência operacional e forte capacidade de desenvolvimento de produtos diferenciados.",
     fundacao: "1971",
@@ -8543,6 +8649,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   VULCABRAS: {
     nome: "Vulcabras Azaleia S.A.",
+    link: "https://www.vulcabrasri.com/",
     descricao:
       "Uma das maiores empresas de calçados esportivos e femininos da América Latina, detentora das marcas Olympikus e Azaleia, além de licenciada da Under Armour no Brasil, com modelo de negócio baseado em produção verticalizada, desenvolvimento tecnológico próprio e forte presença no mercado brasileiro de calçados esportivos.",
     fundacao: "1952",
@@ -8592,6 +8699,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "BIC MONARK": {
     nome: "Bicicletas Monark S.A.",
+    link: "https://www.monark.com.br/acionistas",
     descricao:
       "Tradicional fabricante brasileira de bicicletas, com mais de 70 anos de história, passando por processo de reestruturação após perda de participação no mercado, com operações reduzidas e foco em nichos específicos, mantendo o reconhecimento da marca histórica no setor de bicicletas brasileiro.",
     fundacao: "1948",
@@ -8649,6 +8757,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SPTURIS: {
     nome: "São Paulo Turismo S.A.",
+    link: "https://spturis.com/",
     descricao:
       "Empresa de economia mista ligada à Prefeitura de São Paulo, responsável pela gestão de espaços para eventos, promoção do turismo na cidade e organização de grandes eventos municipais, incluindo a administração do Anhembi, Autódromo de Interlagos e outros equipamentos turísticos da capital paulista.",
     fundacao: "1970",
@@ -8704,6 +8813,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "TIME FOR FUN": {
     nome: "T4F Entretenimento S.A.",
+    link: "https://ri.t4f.com.br/",
     descricao:
       "Maior empresa de entretenimento ao vivo da América Latina, especializada na produção e promoção de shows, festivais, espetáculos teatrais e eventos especiais, com atuação em diversos países da região, combinando capacidade de produção, relacionamento com artistas internacionais e gestão de venues próprios.",
     fundacao: "1983",
@@ -8765,6 +8875,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SMART FIT": {
     nome: "Smart Fit Escola de Ginástica e Dança S.A.",
+    link: "https://investor.smartfit.com.br/",
     descricao:
       "Maior rede de academias da América Latina, com modelo de negócio baseado em escala, tecnologia e preço acessível, operando diferentes marcas para diversos segmentos do mercado fitness, com presença em vários países e estratégia de crescimento acelerado através de unidades próprias e franquias.",
     fundacao: "2009",
@@ -8828,6 +8939,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ESTRELA: {
     nome: "Manufatura de Brinquedos Estrela S.A.",
+    link: "https://www.estrela.com.br/relacao-com-investidores",
     descricao:
       "Tradicional fabricante brasileira de brinquedos, com mais de 80 anos de história, detentora de marcas icônicas no mercado nacional, passando por processo de reestruturação para enfrentar a competição com produtos importados e adaptar-se às novas tendências do mercado de brinquedos e entretenimento infantil.",
     fundacao: "1937",
@@ -8884,6 +8996,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CVC BRASIL": {
     nome: "CVC Corp",
+    link: "https://www.cvccorp.com.br/ri/",
     descricao:
       "Maior grupo de turismo da América Latina, com portfólio diversificado de marcas que atendem diferentes segmentos do mercado de viagens, incluindo lazer, corporativo e online, combinando forte presença física através de franquias com estratégia omnichannel, passando por transformação digital para enfrentar novos competidores online.",
     fundacao: "1972",
@@ -8943,6 +9056,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "AMBEV S/A": {
     nome: "Ambev S.A. (Companhia de Bebidas das Américas)",
+    link: "https://ri.ambev.com.br/",
     descricao:
       "Maior empresa de bebidas da América Latina e uma das maiores cervejarias do mundo, parte do grupo Anheuser-Busch InBev, com portfólio diversificado que inclui cervejas, refrigerantes, águas, energéticos e outras bebidas não alcoólicas, combinando escala global com forte presença local em diversos mercados das Américas.",
     fundacao: "1999 (fusão entre Brahma e Antarctica)",
@@ -9009,6 +9123,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   AGROGALAXY: {
     nome: "AgroGalaxy Participações S.A.",
+    link: "https://ri.agrogalaxy.com.br/",
     descricao:
       "Uma das maiores plataformas de varejo de insumos agrícolas e serviços do agronegócio brasileiro, formada pela combinação de empresas regionais tradicionais, oferecendo soluções completas para produtores rurais, incluindo insumos, assistência técnica, originação de grãos e serviços financeiros.",
     fundacao: "2020 (consolidação de empresas)",
@@ -9067,6 +9182,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "BOA SAFRA": {
     nome: "Boa Safra Sementes S.A.",
+    link: "https://ri.boasafrasementes.com.br/",
     descricao:
       "Empresa brasileira especializada na produção e comercialização de sementes de soja, milho e outras culturas, com foco em genética de alta performance, tecnologia de produção e tratamento industrial de sementes, atendendo produtores rurais em diversas regiões agrícolas do país.",
     fundacao: "1985",
@@ -9123,6 +9239,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BRASILAGRO: {
     nome: "BrasilAgro - Companhia Brasileira de Propriedades Agrícolas",
+    link: "https://ri.brasil-agro.com/",
     descricao:
       "Empresa de agronegócio focada na aquisição, desenvolvimento, exploração e comercialização de propriedades rurais com potencial para agricultura, combinando valorização imobiliária com produção agrícola, principalmente grãos, cana-de-açúcar e pecuária, com operações no Brasil e Paraguai.",
     fundacao: "2005",
@@ -9236,6 +9353,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   RAIZEN: {
     nome: "Raízen S.A.",
+    link: "https://ri.raizen.com.br/",
     descricao:
       "Uma das maiores empresas de energia do Brasil, joint venture entre Cosan e Shell, integrada em toda a cadeia de valor do etanol, açúcar e bioenergia, com atuação também na distribuição de combustíveis através da rede Shell, combinando produção agrícola, processamento industrial, logística, trading e varejo.",
     fundacao: "2011 (joint venture Cosan-Shell)",
@@ -9293,6 +9411,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SLC AGRICOLA": {
     nome: "SLC Agrícola S.A.",
+    link: "https://ri.slcagricola.com.br/",
     descricao:
       "Uma das maiores produtoras de grãos e fibras do mundo, com foco em soja, milho e algodão, operando fazendas de larga escala com alto nível de tecnificação em diversas regiões agrícolas do Brasil, combinando produção eficiente, sustentabilidade e gestão profissionalizada.",
     fundacao: "1977",
@@ -9348,6 +9467,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TERRASANTAPA: {
     nome: "Terra Santa Agro S.A.",
+    link: "https://www.terrasantapa.com.br/",
     descricao:
       "Empresa brasileira de produção agrícola de larga escala, especializada no cultivo de soja, milho e algodão em áreas do Cerrado brasileiro, com modelo de negócio baseado em tecnificação, eficiência operacional e sustentabilidade, passando por processo de reestruturação após fusão com a SLC Agrícola.",
     fundacao: "2003 (como Brasil Ecodiesel, renomeada posteriormente)",
@@ -9403,6 +9523,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "3TENTOS": {
     nome: "3tentos Agroindustrial S.A.",
+    link: "https://ri.3tentos.com.br/",
     descricao:
       "Empresa integrada do agronegócio brasileiro com atuação na distribuição de insumos agrícolas, originação de grãos e industrialização de soja, oferecendo soluções completas para produtores rurais, principalmente na região Sul do Brasil, combinando relacionamento próximo com produtores e escala operacional.",
     fundacao: "1995",
@@ -9458,6 +9579,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "BRF SA": {
     nome: "BRF S.A.",
+    link: "https://ri.brf-global.com/",
     descricao:
       "Uma das maiores companhias de alimentos do mundo, com foco em produtos de proteína animal (aves e suínos), dona de marcas icônicas como Sadia e Perdigão, com operações globais e forte presença no mercado brasileiro e internacional de alimentos processados, congelados e refrigerados.",
     fundacao: "2009 (fusão entre Sadia e Perdigão)",
@@ -9522,6 +9644,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   EXCELSIOR: {
     nome: "Excelsior Alimentos S.A.",
+    link: "https://ri.excelsior.com.br/",
     descricao:
       "Empresa brasileira especializada na produção de embutidos e produtos cárneos, com tradição no sul do Brasil, focada em produtos de qualidade superior como linguiças, salsichas e presuntos, combinando tradição artesanal com processos industriais modernos.",
     fundacao: "1974",
@@ -9579,6 +9702,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   JBS: {
     nome: "JBS S.A.",
+    link: "https://ri.jbs.com.br/",
     descricao:
       "Maior empresa de proteína animal do mundo e segunda maior empresa de alimentos global, com operações diversificadas em processamento de carnes bovina, suína, ovina e de aves, além de produtos de valor agregado, couros e biodiesel, presente em mais de 20 países com marcas reconhecidas globalmente.",
     fundacao: "1953",
@@ -9643,6 +9767,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MARFRIG: {
     nome: "Marfrig Global Foods S.A.",
+    link: "https://ri.marfrig.com.br/",
     descricao:
       "Uma das maiores empresas globais de proteína animal, com foco em carne bovina, presente nas Américas com operações integradas desde a produção até a distribuição, incluindo marcas próprias e produtos de valor agregado, com forte atuação no mercado de food service e varejo.",
     fundacao: "2000",
@@ -9700,6 +9825,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MINERVA: {
     nome: "Minerva S.A.",
+    link: "https://ri.minervafoods.com/",
     descricao:
       "Líder na América do Sul na exportação de carne bovina in natura e derivados, com operações em Brasil, Argentina, Colômbia, Paraguai e Uruguai, focada na produção, comercialização e exportação de carne bovina, subprodutos e produtos processados, com forte presença em mercados internacionais.",
     fundacao: "1992",
@@ -9763,6 +9889,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MINUPAR: {
     nome: "Minupar Participações S.A.",
+    link: "https://www.minupar.com.br/",
     descricao:
       "Holding brasileira do setor alimentício, controladora da Companhia Minuano de Alimentos, com atuação no processamento de carnes de aves, industrialização de produtos e prestação de serviços para terceiros, passando por processo de reestruturação após enfrentar desafios financeiros e operacionais.",
     fundacao: "1990",
@@ -9819,6 +9946,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CAMIL: {
     nome: "Camil Alimentos S.A.",
+    link: "https://ri.camil.com.br/",
     descricao:
       "Uma das maiores empresas de alimentos da América Latina, líder no processamento e comercialização de arroz e feijão no Brasil, com presença em diversos países da região, atuando também em categorias como açúcar, pescados e outros grãos, com marcas reconhecidas em cada mercado onde opera.",
     fundacao: "1963",
@@ -9881,6 +10009,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   JOSAPAR: {
     nome: "Josapar - Joaquim Oliveira S.A. Participações",
+    link: "https://josapar.com.br/investidores/",
     descricao:
       "Uma das maiores empresas de alimentos do Brasil, com foco no beneficiamento, industrialização e comercialização de arroz e seus derivados, dona da tradicional marca Tio João, além de atuação em outros segmentos alimentícios como feijão, óleos e produtos de conveniência.",
     fundacao: "1920",
@@ -9937,6 +10066,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "M.DIASBRANCO": {
     nome: "M. Dias Branco S.A. Indústria e Comércio de Alimentos",
+    link: "https://ri.mdiasbranco.com.br/",
     descricao:
       "Maior fabricante de biscoitos e massas da América Latina, líder no mercado brasileiro nessas categorias, com portfólio diversificado que inclui também farinhas, margarinas, bolos, snacks e torradas, dona de marcas tradicionais como Adria, Vitarella, Piraquê, Fortaleza e Richester.",
     fundacao: "1951",
@@ -9997,6 +10127,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   JALLESMACHAD: {
     nome: "Jalles Machado S.A.",
+    link: "https://ri.jalles.com/",
     descricao:
       "Uma das maiores produtoras de açúcar, etanol e bioenergia do Brasil, com foco em produtos orgânicos e sustentáveis, operando usinas no estado de Goiás, com destaque para a produção de açúcar orgânico para exportação e geração de energia a partir de biomassa.",
     fundacao: "1983",
@@ -10055,6 +10186,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BOMBRIL: {
     nome: "Bombril S.A.",
+    link: "https://ri.bombril.com.br/",
     descricao:
       "Tradicional empresa brasileira de produtos de limpeza e higiene doméstica, conhecida principalmente por suas esponjas de aço, com mais de 70 anos de história e um portfólio diversificado que inclui detergentes, desinfetantes, amaciantes e outros produtos para o lar, sendo uma das marcas mais reconhecidas pelos consumidores brasileiros.",
     fundacao: "1948",
@@ -10111,6 +10243,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "GRUPO NATURA": {
     nome: "Natura &Co",
+    link: "https://ri.naturaeco.com/",
     descricao:
       "Grupo global de cosméticos e beleza de origem brasileira, proprietário das marcas Natura, Avon, The Body Shop e Aesop, com forte compromisso com sustentabilidade, inovação e uso de ingredientes naturais da biodiversidade, operando através de múltiplos canais de venda, incluindo venda direta, varejo e e-commerce em escala global.",
     fundacao: "1969 (Natura), 2020 (configuração atual após aquisição da Avon)",
@@ -10174,6 +10307,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CARREFOUR BRASIL": {
     nome: "Grupo Carrefour Brasil",
+    link: "https://ri.grupocarrefourbrasil.com.br/",
     descricao:
       "Maior varejista alimentar do Brasil, subsidiária do grupo francês Carrefour, com operações em múltiplos formatos que incluem hipermercados, supermercados, atacarejo (Atacadão), lojas de conveniência, e-commerce e serviços financeiros, fortalecida pela aquisição do Grupo BIG (ex-Walmart Brasil).",
     fundacao: "1975 (no Brasil)",
@@ -10230,6 +10364,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "GRUPO PÃO DE AÇÚCAR": {
     nome: "GPA - Grupo Pão de Açúcar",
+    link: "https://www.gpari.com.br/",
     descricao:
       "Um dos maiores grupos varejistas do Brasil, controlado pelo grupo francês Casino, com foco em supermercados premium e de vizinhança após a separação do Assaí, operando formatos como Pão de Açúcar, Extra e Minuto, com forte presença no e-commerce alimentar e estratégia de proximidade com o consumidor.",
     fundacao: "1948",
@@ -10285,6 +10420,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "GRUPO MATEUS": {
     nome: "Grupo Mateus S.A.",
+    link: "https://ri.grupomateus.com.br/",
     descricao:
       "Um dos maiores varejistas alimentares do Brasil, com forte presença nas regiões Norte e Nordeste, operando nos formatos de atacarejo, supermercados, eletro e atacado, com rápida expansão orgânica e modelo de negócio adaptado às características regionais, combinando preços competitivos e sortimento adequado ao consumidor local.",
     fundacao: "1986",
@@ -10341,6 +10477,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ASSAÍ: {
     nome: "Assaí Atacadista",
+    link: "https://ri.assai.com.br/",
     descricao:
       "Uma das maiores redes de atacarejo do Brasil, focada na venda de alimentos e produtos básicos em formato cash & carry, atendendo pequenos comerciantes, transformadores e consumidores finais, com estratégia de expansão acelerada e preços competitivos, operando como empresa independente após separação do GPA.",
     fundacao: "1974 (adquirido pelo GPA em 2007)",
@@ -10396,6 +10533,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   B3: {
     nome: "B3 S.A. - Brasil, Bolsa, Balcão",
+    link: "https://ri.b3.com.br/pt-br/",
     descricao:
       "Principal infraestrutura de mercado financeiro do Brasil, resultante da fusão entre BM&FBOVESPA e CETIP, oferecendo serviços de negociação, pós-negociação, registro de operações de balcão, acesso a dados de mercado e tecnologia para o sistema financeiro, atuando como depositária central e contraparte central garantidora.",
     fundacao:
@@ -10453,6 +10591,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CIELO: {
     nome: "Cielo S.A.",
+    link: "https://ri.cielo.com.br/",
     descricao:
       "Uma das maiores empresas de meios de pagamento eletrônicos do Brasil, oferecendo soluções de adquirência, processamento de transações com cartões e serviços financeiros para estabelecimentos comerciais de todos os portes, com ampla rede de aceitação e diversas soluções tecnológicas para o varejo físico e digital.",
     fundacao: "1995 (como Visanet Brasil)",
@@ -10513,6 +10652,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CLEARSALE: {
     nome: "ClearSale S.A.",
+    link: "https://ri.clear.sale/",
     descricao:
       "Empresa brasileira líder em soluções antifraude para e-commerce e meios de pagamento, utilizando tecnologias avançadas como inteligência artificial, machine learning e big data para análise de risco em transações digitais, com atuação no Brasil e expansão internacional, oferecendo proteção contra fraudes para diversos segmentos do varejo e serviços financeiros.",
     fundacao: "2001",
@@ -10575,6 +10715,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CSU DIGITAL": {
     nome: "CSU Digital S.A.",
+    link: "https://ri.csu.com.br/",
     descricao:
       "Empresa brasileira especializada em soluções digitais para o mercado financeiro e de meios de pagamento, com atuação em processamento de cartões, gestão de programas de fidelidade, serviços de contact center e desenvolvimento de plataformas tecnológicas para instituições financeiras, fintechs e varejistas, combinando expertise em tecnologia com conhecimento profundo do setor financeiro.",
     fundacao: "1992",
@@ -10632,6 +10773,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ALFA HOLDING": {
     nome: "Alfa Holdings S.A.",
+    link: "https://bancoalfa.com.br/",
     descricao:
       "Holding do Conglomerado Financeiro Alfa, um dos mais tradicionais grupos financeiros privados do Brasil, com controle do Banco Alfa e diversas outras empresas nos segmentos bancário, de seguros, previdência, leasing, corretagem de valores e administração de recursos, caracterizado por uma gestão conservadora e foco em nichos específicos do mercado financeiro.",
     fundacao: "1925 (origem do Grupo Alfa)",
@@ -10689,6 +10831,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "BANCO BMG": {
     nome: "Banco BMG S.A.",
+    link: "https://bancobmg.mzweb.com.br/",
     descricao:
       "Instituição financeira brasileira com foco em crédito consignado, cartões de crédito e soluções financeiras para pessoas físicas, especialmente aposentados, pensionistas e servidores públicos, que passou por transformação digital nos últimos anos, expandindo seu portfólio para banco digital completo, mantendo sua expertise em produtos de crédito como diferencial competitivo.",
     fundacao: "1930",
@@ -10745,6 +10888,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BANESTES: {
     nome: "Banco do Estado do Espírito Santo S.A.",
+    link: "https://ri.banestes.com.br/",
     descricao:
       "Instituição financeira pública estadual, controlada pelo governo do Espírito Santo, com forte atuação regional e foco no desenvolvimento econômico e social do estado, oferecendo serviços bancários completos para pessoas físicas, empresas e setor público, com destaque para o financiamento de projetos estratégicos e infraestrutura local.",
     fundacao: "1937",
@@ -10802,6 +10946,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ABC BRASIL": {
     nome: "Banco ABC Brasil S.A.",
+    link: "https://ri.abcbrasil.com.br/",
     descricao:
       "Banco múltiplo de médio porte com foco no segmento corporate e middle market, especializado em operações estruturadas, financiamento ao comércio exterior, mercado de capitais e gestão de patrimônio para empresas de médio e grande porte, subsidiária do Arab Banking Corporation, combinando expertise internacional com profundo conhecimento do mercado brasileiro.",
     fundacao: "1989",
@@ -10858,6 +11003,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ALFA INVEST": {
     nome: "Banco Alfa de Investimento S.A.",
+    link: "https://www.alfa.com.br/",
     descricao:
       "Instituição financeira do Conglomerado Financeiro Alfa, focada em serviços de banco de investimento, gestão de recursos, tesouraria e operações estruturadas para clientes de alta renda e empresas, caracterizada por uma gestão conservadora e tradicional, com ênfase em relacionamentos de longo prazo e soluções financeiras personalizadas.",
     fundacao: "1966 (como parte do Grupo Alfa)",
@@ -10915,6 +11061,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   AMAZONIA: {
     nome: "Banco da Amazônia S.A.",
+    link: "https://ri.bancoamazonia.com.br/",
     descricao:
       "Instituição financeira pública federal, principal agente de desenvolvimento da região amazônica, responsável pela operacionalização do Fundo Constitucional de Financiamento do Norte (FNO), com foco no financiamento de atividades produtivas sustentáveis, infraestrutura e projetos que promovam o desenvolvimento socioeconômico da Amazônia Legal.",
     fundacao: "1942 (como Banco de Crédito da Borracha)",
@@ -10971,6 +11118,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BRADESCO: {
     nome: "Banco Bradesco S.A.",
+    link: "https://www.bradescori.com.br/",
     descricao:
       "Um dos maiores bancos privados do Brasil e da América Latina, com atuação em todos os segmentos do mercado financeiro, incluindo banco de varejo, corporate, investimentos, seguros, previdência e gestão de ativos, caracterizado por sua extensa rede de agências, forte presença digital e diversificação de receitas entre serviços bancários e seguros.",
     fundacao: "1943",
@@ -11030,6 +11178,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BRASIL: {
     nome: "Banco do Brasil S.A.",
+    link: "https://ri.bb.com.br/",
     descricao:
       "Maior instituição financeira da América Latina em ativos, banco múltiplo com controle estatal e capital aberto, com atuação em todos os segmentos do mercado financeiro, destacando-se como líder no agronegócio brasileiro e no relacionamento com o setor público, combinando sua função de agente de políticas públicas com operação comercial competitiva.",
     fundacao: "1808",
@@ -11085,6 +11234,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "BTGP BANCO": {
     nome: "Banco BTG Pactual S.A.",
+    link: "https://ri.btgpactual.com/",
     descricao:
       "Maior banco de investimentos da América Latina, com atuação em investment banking, wealth management, asset management, corporate lending, sales & trading e private equity, caracterizado por sua cultura meritocrática e empreendedora, forte capacidade de inovação e expansão para o varejo digital através do BTG Pactual Digital.",
     fundacao: "1983 (como Pactual)",
@@ -11151,6 +11301,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BANESE: {
     nome: "Banco do Estado de Sergipe S.A.",
+    link: "https://ri.banese.com.br/",
     descricao:
       "Instituição financeira pública estadual, controlada pelo governo de Sergipe, com forte atuação regional e foco no desenvolvimento econômico e social do estado, oferecendo serviços bancários completos para pessoas físicas, empresas e setor público, com destaque para o financiamento de projetos locais e inclusão financeira.",
     fundacao: "1961",
@@ -11207,6 +11358,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BANRISUL: {
     nome: "Banco do Estado do Rio Grande do Sul S.A.",
+    link: "https://ri.banrisul.com.br/",
     descricao:
       "Instituição financeira pública estadual, controlada pelo governo do Rio Grande do Sul, com forte presença regional e atuação nacional, oferecendo serviços bancários completos para pessoas físicas, empresas e setor público, destacando-se pela rede de adquirência Banricompras e forte relacionamento com o agronegócio gaúcho.",
     fundacao: "1928",
@@ -11266,6 +11418,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MERC INVEST": {
     nome: "Mercantil do Brasil Investimentos S.A.",
+    link: "https://ri.bancomercantil.com.br/",
     descricao:
       "Braço de investimentos do Banco Mercantil do Brasil, focado em gestão de recursos, administração de fundos, corretagem de valores mobiliários e serviços de banco de investimento para clientes de média e alta renda, combinando a tradição e solidez do grupo Mercantil com soluções financeiras personalizadas e assessoria especializada.",
     fundacao: "1970 (como parte do Grupo Mercantil do Brasil)",
@@ -11322,6 +11475,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MERCANTIL: {
     nome: "Banco Mercantil do Brasil S.A.",
+    link: "https://ri.bancomercantil.com.br/",
     descricao:
       "Instituição financeira privada com forte presença regional, especialmente em Minas Gerais, oferecendo serviços bancários completos para pessoas físicas e jurídicas, com foco em crédito consignado, financiamento imobiliário e atendimento a pequenas e médias empresas, caracterizada por sua tradição, relacionamento próximo com clientes e gestão conservadora.",
     fundacao: "1943",
@@ -11379,6 +11533,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "NORD BRASIL": {
     nome: "Banco do Nordeste do Brasil S.A.",
+    link: "https://ri.bnb.gov.br/",
     descricao:
       "Maior banco de desenvolvimento regional da América Latina, instituição financeira pública federal com foco no desenvolvimento econômico e social do Nordeste brasileiro, principal operador do Fundo Constitucional de Financiamento do Nordeste (FNE), com forte atuação em microcrédito através do Crediamigo e financiamento de projetos estruturantes para a região.",
     fundacao: "1952",
@@ -11436,6 +11591,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "BANCO PAN": {
     nome: "Banco Pan S.A.",
+    link: "https://ri.bancopan.com.br/",
     descricao:
       "Instituição financeira brasileira especializada em crédito consignado, financiamento de veículos e cartões de crédito, com foco em clientes das classes C, D e E, que passou por transformação digital significativa após a entrada do BTG Pactual em seu controle, expandindo sua atuação para banco digital completo com serviços bancários, investimentos e seguros.",
     fundacao: "1969 (como Banco Panamericano)",
@@ -11493,6 +11649,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PINE: {
     nome: "Banco Pine S.A.",
+    link: "https://www.pine.com/relacao-com-investidores/",
     descricao:
       "Banco múltiplo de médio porte com foco no segmento corporate e middle market, especializado em operações estruturadas, crédito corporativo, mercado de capitais e gestão de patrimônio para empresas de médio e grande porte e seus executivos, que tem expandido sua atuação para o segmento de alta renda através da plataforma digital Pine Online.",
     fundacao: "1997",
@@ -11550,6 +11707,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SANTANDER BR": {
     nome: "Banco Santander (Brasil) S.A.",
+    link: "https://www.santander.com.br/ri/home",
     descricao:
       "Terceiro maior banco privado do Brasil, subsidiária do grupo espanhol Santander, com atuação em todos os segmentos do mercado financeiro, incluindo banco de varejo, corporate, investimentos, seguros e gestão de ativos, caracterizado por sua forte presença no financiamento de veículos, crédito imobiliário e serviços para pequenas e médias empresas.",
     fundacao: "1982 (entrada no Brasil via Banco Geral do Comércio)",
@@ -11609,6 +11767,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "BR PARTNERS": {
     nome: "BR Partners Banco de Investimento S.A.",
+    link: "https://ri.brpartners.com.br/",
     descricao:
       "Banco de investimento independente brasileiro, focado em fusões e aquisições, mercado de capitais, gestão de recursos, tesouraria e operações estruturadas para clientes corporativos e de alta renda, caracterizado por sua estrutura de partnership, independência e foco em relacionamentos de longo prazo com clientes.",
     fundacao: "2009",
@@ -11669,6 +11828,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "BRB BANCO": {
     nome: "Banco de Brasília S.A.",
+    link: "https://ri.brb.com.br/",
     descricao:
       "Instituição financeira pública controlada pelo Governo do Distrito Federal, com forte atuação regional e expansão nacional, oferecendo serviços bancários completos para pessoas físicas, empresas e setor público, que passou por significativa transformação digital e expansão de atuação nos últimos anos, incluindo parcerias estratégicas como a criação do banco digital BRB Nação e acordos com times de futebol.",
     fundacao: "1964",
@@ -11727,6 +11887,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ITAUUNIBANCO: {
     nome: "Itaú Unibanco Holding S.A.",
+    link: "https://www.itau.com.br/relacoes-com-investidores/",
     descricao:
       "Maior banco privado do Brasil e da América Latina, com atuação em todos os segmentos do mercado financeiro, incluindo banco de varejo, corporate, investimentos, seguros, previdência e gestão de ativos, caracterizado por sua solidez financeira, liderança em inovação tecnológica e forte presença internacional na América Latina.",
     fundacao: "2008 (fusão entre Itaú e Unibanco)",
@@ -11794,6 +11955,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ITAUSA: {
     nome: "Itaúsa S.A.",
+    link: "https://www.itausa.com.br/",
     descricao:
       "Holding de investimentos brasileira, controladora do Itaú Unibanco e com participações em empresas de diversos setores como indústria, infraestrutura, saúde e tecnologia, caracterizada por sua gestão de longo prazo, governança corporativa robusta e diversificação estratégica de investimentos em empresas líderes em seus segmentos.",
     fundacao: "1966",
@@ -11852,6 +12014,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "MERC FINANC": {
     nome: "Mercantil Financeira S.A.",
+    link: "https://ri.bancomercantil.com.br/",
     descricao:
       "Subsidiária financeira do Banco Mercantil do Brasil, especializada em crédito pessoal, financiamento de veículos e crédito consignado para pessoas físicas, com foco em clientes de média e baixa renda, caracterizada por sua capilaridade através de correspondentes bancários e processos de concessão de crédito ágeis e simplificados.",
     fundacao: "1971",
@@ -11910,6 +12073,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DMFINANCEIRA: {
     nome: "DM Financeira S.A.",
+    link: "https://www.vocedmfinanceira.com.br/informacoes-financeiras/",
     descricao:
       "Instituição financeira especializada em crédito consignado para aposentados, pensionistas e servidores públicos, com forte atuação no Nordeste brasileiro, caracterizada por sua capilaridade através de correspondentes bancários, processos de concessão de crédito ágeis e foco em atendimento personalizado para clientes de média e baixa renda.",
     fundacao: "2004",
@@ -11968,6 +12132,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ALFA FINANC": {
     nome: "Financeira Alfa S.A.",
+    link: "https://www.alfa.com.br/",
     descricao:
       "Instituição financeira pertencente ao Conglomerado Financeiro Alfa, especializada em financiamento de veículos, crédito pessoal e crédito consignado para pessoas físicas, com foco em clientes de média e alta renda, caracterizada por sua gestão conservadora, solidez financeira e atendimento personalizado.",
     fundacao: "1954 (como parte do Grupo Alfa)",
@@ -12023,6 +12188,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "PAR AL BAHIA": {
     nome: "Participações Industriais do Nordeste S.A. (Bahia Participações)",
+    link: "https://www.aliancaparticipacoes.com.br/",
     descricao:
       "Holding de investimentos com sede na Bahia, com participações em empresas de diversos setores como indústria, infraestrutura e serviços financeiros, caracterizada por sua gestão de longo prazo, governança corporativa robusta e foco em investimentos estratégicos em empresas com potencial de crescimento sustentável.",
     fundacao: "1951",
@@ -12078,6 +12244,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MONT ARANHA": {
     nome: "Monteiro Aranha S.A.",
+    link: "https://www.monteiroaranha.com.br/",
     descricao:
       "Tradicional holding de investimentos brasileira, com participações em empresas de diversos setores como indústria, imobiliário, energia e consumo, caracterizada por sua gestão de longo prazo, governança corporativa robusta e histórico centenário de investimentos estratégicos em empresas líderes em seus segmentos.",
     fundacao: "1919",
@@ -12134,6 +12301,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SIMPAR: {
     nome: "Simpar S.A.",
+    link: "https://ri.simpar.com.br/",
     descricao:
       "Holding de investimentos focada em logística, mobilidade e serviços, controladora de empresas como JSL, Movida, Vamos e CS Infra, caracterizada por sua estratégia de crescimento através de aquisições estratégicas, diversificação de negócios relacionados e forte capacidade de execução em setores intensivos em ativos e operações.",
     fundacao: "2016 (como holding, originada da JSL fundada em 1956)",
@@ -12188,6 +12356,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BBSEGURIDADE: {
     nome: "BB Seguridade Participações S.A.",
+    link: "https://www.bbseguridaderi.com.br/",
     descricao:
       "Holding de investimentos em seguros, previdência, capitalização e planos de saúde, subsidiária do Banco do Brasil, com participações em empresas como Brasilseg, Brasilprev, Brasilcap e Brasildental, caracterizada por sua forte capacidade de distribuição através da rede do Banco do Brasil, liderança em segmentos específicos do mercado segurador e consistente geração de valor para acionistas.",
     fundacao: "2012 (IPO em 2013)",
@@ -12245,6 +12414,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CAIXA SEGURI": {
     nome: "Caixa Seguridade Participações S.A.",
+    link: "https://www.ri.caixaseguridade.com.br/",
     descricao:
       "Holding de investimentos em seguros, previdência, capitalização e consórcios, subsidiária da Caixa Econômica Federal, com participações em empresas como Caixa Vida e Previdência, Caixa Consórcios e joint ventures com parceiros estratégicos, caracterizada por sua ampla capacidade de distribuição através da rede da Caixa e foco em produtos para a população de baixa e média renda.",
     fundacao: "2015 (IPO em 2021)",
@@ -12302,6 +12472,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "SEG AL BAHIA": {
     nome: "Seguradora Líder do Consórcio do Seguro DPVAT (Seguradora Líder)",
+    link: "https://www.alba.com.br/relacao-com-investidores/informacoes-financeiras/",
     descricao:
       "Empresa responsável pela administração do Seguro DPVAT (Danos Pessoais Causados por Veículos Automotores de Via Terrestre) no Brasil até 2020, formada por um consórcio de seguradoras, que operava um seguro obrigatório de caráter social que indenizava vítimas de acidentes de trânsito, independentemente de apuração de culpa.",
     fundacao: "2007",
@@ -12352,6 +12523,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ALFA CONSORC": {
     nome: "Consórcio Alfa S.A.",
+    link: "https://www.alfa.com.br/",
     descricao:
       "Empresa do Conglomerado Financeiro Alfa especializada na administração de grupos de consórcio para aquisição de bens móveis, imóveis e serviços, caracterizada por sua gestão conservadora, solidez financeira e foco em clientes de média e alta renda, oferecendo planos de consórcio com condições diferenciadas e atendimento personalizado.",
     fundacao: "1998 (como parte do Grupo Alfa)",
@@ -12408,6 +12580,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "PORTO SEGURO": {
     nome: "Porto Seguro S.A.",
+    link: "https://ri.portoseguro.com.br/",
     descricao:
       "Uma das maiores seguradoras do Brasil, com atuação diversificada em seguros, produtos financeiros, serviços de assistência, consórcios e saúde, caracterizada por sua forte presença no seguro auto, inovação constante em serviços complementares e estratégia de ecossistema que vai além do negócio tradicional de seguros, oferecendo soluções integradas para diferentes necessidades dos clientes.",
     fundacao: "1945",
@@ -12466,6 +12639,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ALPER S.A.": {
     nome: "Alper Consultoria e Corretora de Seguros S.A.",
+    link: "https://www.alperseguros.com.br/",
     descricao:
       "Corretora de seguros independente listada na B3, com foco em seguros corporativos, benefícios, seguros para pessoas físicas de alta renda e resseguros, caracterizada por sua estratégia de crescimento via aquisições, modelo de negócio baseado em consultoria especializada e desenvolvimento de soluções personalizadas para gestão de riscos e proteção patrimonial.",
     fundacao: "2010 (resultado da fusão de corretoras tradicionais)",
@@ -12523,6 +12697,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "WIZ CO": {
     nome: "Wiz Soluções e Corretagem de Seguros S.A.",
+    link: "https://ri.wiz.co/",
     descricao:
       "Corretora de seguros listada na B3, originalmente focada na distribuição de produtos através da rede da Caixa Econômica Federal, que passou por transformação estratégica para diversificar canais e parceiros, expandindo sua atuação para múltiplos segmentos do mercado de distribuição de seguros, consórcios, previdência e produtos financeiros.",
     fundacao: "1973 (como GEA Seguros, renomeada para Wiz em 2015)",
@@ -12580,6 +12755,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "IRBBRASIL RE": {
     nome: "IRB Brasil Resseguros S.A.",
+    link: "https://ri.irbre.com/",
     descricao:
       "Maior resseguradora da América Latina, anteriormente estatal e privatizada em 2013, com atuação em diversos ramos de resseguros no Brasil e exterior, oferecendo capacidade de resseguro, desenvolvimento de produtos e serviços técnicos para o mercado segurador, passando por reestruturação após desafios de governança e resultados financeiros nos últimos anos.",
     fundacao: "1939 (como Instituto de Resseguros do Brasil)",
@@ -12636,6 +12812,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "LOPES BRASIL": {
     nome: "LPS Brasil Consultoria de Imóveis S.A. (Lopes)",
+    link: "https://ri.lopes.com.br/",
     descricao:
       "Uma das maiores empresas de intermediação imobiliária do Brasil, com atuação em imóveis residenciais novos, usados e comerciais, oferecendo serviços completos de consultoria imobiliária, incluindo avaliação, intermediação, financiamento e assessoria jurídica, caracterizada por sua forte presença no segmento de lançamentos imobiliários e parceria com as principais incorporadoras do país.",
     fundacao: "1935",
@@ -12692,6 +12869,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   NEXPE: {
     nome: "Nexpe Serviços Financeiros S.A.",
+    link: "https://www.nexpe.co/informacoes-financeiras/central-de-resultados/",
     descricao:
       "Empresa de tecnologia financeira (fintech) especializada em soluções de crédito para pequenas e médias empresas, oferecendo plataforma digital para antecipação de recebíveis, empréstimos com garantias e gestão financeira, caracterizada por sua abordagem baseada em dados e algoritmos proprietários para análise de risco e concessão de crédito de forma ágil e desburocratizada.",
     fundacao: "2016",
@@ -12748,6 +12926,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BAUMER: {
     nome: "Baumer S.A.",
+    link: "https://www.baumer.com.br/investidores/central-de-resultados",
     descricao:
       "Empresa brasileira especializada na fabricação e comercialização de equipamentos e implantes médico-hospitalares, com foco em ortopedia, traumatologia e biomateriais, caracterizada por sua tradição de mais de 60 anos no mercado, investimento contínuo em pesquisa e desenvolvimento, e produção nacional de tecnologia médica de alta complexidade.",
     fundacao: "1952",
@@ -12803,6 +12982,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   ALLIAR: {
     nome: "Centro de Imagem Diagnósticos S.A. (Alliar)",
+    link: "https://ri.allianca.com/",
     descricao:
       "Uma das maiores redes de diagnóstico por imagem e medicina diagnóstica do Brasil, com atuação em múltiplos estados através de marcas regionais reconhecidas, caracterizada por sua estratégia de consolidação do setor via aquisições, investimento em tecnologia de ponta e modelo de negócio baseado em escala e eficiência operacional.",
     fundacao: "2011 (como resultado da fusão de clínicas regionais)",
@@ -12859,6 +13039,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DASA: {
     nome: "Diagnósticos da América S.A. (DASA)",
+    link: "https://www.dasa3.com.br/",
     descricao:
       "Maior empresa de medicina diagnóstica da América Latina, com atuação em diagnósticos laboratoriais, por imagem, genômica, vacinas e coordenação de cuidados, que expandiu sua atuação para um ecossistema integrado de saúde incluindo hospitais e cuidados ambulatoriais, caracterizada por sua escala nacional, diversificação de serviços e estratégia de transformação digital da jornada de saúde.",
     fundacao: "1961 (como Laboratório Clínico Dr. Sérgio Franco)",
@@ -12915,6 +13096,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   FLEURY: {
     nome: "Fleury S.A.",
+    link: "https://ri.fleury.com.br/",
     descricao:
       "Uma das principais empresas de medicina diagnóstica e saúde integrada do Brasil, reconhecida pela excelência técnica, inovação e atendimento premium, que expandiu sua atuação para além do diagnóstico tradicional, incluindo medicina preventiva, coordenação de cuidados e saúde digital, caracterizada por seu foco em qualidade, precisão diagnóstica e experiência diferenciada do paciente.",
     fundacao: "1926 (pelo Dr. Gastão Fleury da Silveira)",
@@ -12971,6 +13153,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   HAPVIDA: {
     nome: "Hapvida NotreDame Intermédica",
+    link: "https://ri.hapvida.com.br/",
     descricao:
       "Maior operadora de saúde verticalizada do Brasil, formada pela fusão da Hapvida com a NotreDame Intermédica em 2022, com atuação nacional em planos de saúde e odontológicos, rede própria de hospitais, clínicas e centros de diagnóstico, caracterizada por seu modelo de negócio verticalizado que integra financiamento e prestação de serviços de saúde, com foco em eficiência operacional e controle de custos assistenciais.",
     fundacao: "1979 (Hapvida) e 1968 (NotreDame Intermédica), fusão em 2022",
@@ -13027,6 +13210,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "MATER DEI": {
     nome: "Hospital Mater Dei S.A.",
+    link: "https://ri.materdei.com.br/",
     descricao:
       "Rede de hospitais de alta complexidade com origem em Minas Gerais e expansão para outros estados, reconhecida pela excelência médica, qualidade assistencial e acreditações internacionais, caracterizada por seu modelo de negócio focado em serviços hospitalares de alta complexidade, corpo clínico qualificado e investimento contínuo em tecnologia médica avançada.",
     fundacao: "1980",
@@ -13082,6 +13266,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "KORA SAUDE": {
     nome: "Kora Saúde Participações S.A.",
+    link: "https://ri.korasaude.com.br/",
     descricao:
       "Grupo hospitalar em rápida expansão, com foco em mercados regionais fora do eixo Rio-São Paulo, caracterizado por sua estratégia de aquisições de hospitais de médio porte em cidades estratégicas, implementação de gestão profissionalizada e eficiente, e desenvolvimento de centros de excelência em especialidades médicas de alta complexidade.",
     fundacao: "2016 (como Meridional, rebatizada para Kora Saúde em 2021)",
@@ -13140,6 +13325,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ODONTOPREV: {
     nome: "Odontoprev S.A.",
+    link: "https://ri.odontoprev.com.br/",
     descricao:
       "Maior operadora de planos odontológicos da América Latina, com atuação nacional através de rede credenciada de dentistas, caracterizada por seu modelo de negócio escalável, plataforma tecnológica proprietária para gestão de benefícios odontológicos, e parcerias estratégicas com seguradoras e instituições financeiras para distribuição de seus produtos.",
     fundacao: "1987",
@@ -13196,6 +13382,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ONCOCLÍNICAS: {
     nome: "Oncoclínicas do Brasil Serviços Médicos S.A.",
+    link: "https://ri.grupooncoclinicas.com/",
     descricao:
       "Maior grupo dedicado ao tratamento oncológico da América Latina, com rede de clínicas, centros de tratamento e parcerias com hospitais de referência, caracterizado por seu modelo de negócio focado em oncologia e especialidades relacionadas, equipe médica altamente especializada e acesso a tecnologias avançadas para diagnóstico e tratamento do câncer.",
     fundacao: "2010",
@@ -13252,6 +13439,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   QUALICORP: {
     nome: "Qualicorp Consultoria e Corretora de Seguros S.A.",
+    link: "https://ri.qualicorp.com.br/",
     descricao:
       "Líder no mercado brasileiro de planos de saúde coletivos por adesão, atuando como administradora de benefícios e corretora de seguros, caracterizada por seu modelo de negócio baseado na criação e gestão de contratos coletivos para entidades de classe e associações profissionais, oferecendo acesso a planos de saúde com condições diferenciadas para profissionais liberais e autônomos.",
     fundacao: "1997",
@@ -13308,6 +13496,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "REDE D'OR": {
     nome: "Rede D'Or São Luiz S.A.",
+    link: "https://ri.rededorsaoluiz.com.br/",
     descricao:
       "Maior rede hospitalar privada do Brasil, com presença nacional e foco em serviços hospitalares de alta complexidade, caracterizada por sua estratégia de crescimento via aquisições, investimento contínuo em tecnologia médica avançada, e modelo de negócio verticalizado que inclui hospitais, clínicas, laboratórios e operações de planos de saúde.",
     fundacao: "1977 (como laboratório de análises clínicas)",
@@ -13365,6 +13554,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BIOMM: {
     nome: "Biomm S.A.",
+    link: "https://ri.biomm.com/",
     descricao:
       "Empresa biofarmacêutica brasileira focada no desenvolvimento, produção e comercialização de produtos biológicos, especialmente insulina, caracterizada por sua estratégia de nacionalização da produção de medicamentos biotecnológicos, parcerias internacionais para transferência de tecnologia, e foco em doenças crônicas de alta prevalência como diabetes.",
     fundacao: "2001",
@@ -13421,6 +13611,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   BLAU: {
     nome: "Blau Farmacêutica S.A.",
+    link: "https://ri.blau.com/",
     descricao:
       "Empresa farmacêutica brasileira especializada na produção e comercialização de medicamentos de alta complexidade, com foco em produtos biológicos, oncológicos e especialidades, caracterizada por sua integração vertical, capacidade produtiva própria, e atuação tanto no mercado privado quanto institucional, com presença crescente na América Latina.",
     fundacao: "1987",
@@ -13484,6 +13675,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   VIVEO: {
     nome: "Viveo (CM Hospitalar S.A.)",
+    link: "https://ri.viveo.com.br/",
     descricao:
       "Maior ecossistema de saúde do Brasil, atuando na distribuição de materiais médico-hospitalares, medicamentos especiais e equipamentos, além de serviços para o setor de saúde, caracterizada por sua estratégia de consolidação via aquisições, ampla cobertura nacional e portfólio completo de produtos e serviços para hospitais, clínicas e o setor de saúde em geral.",
     fundacao: "1952 (como Mafra, rebatizada para Viveo em 2021)",
@@ -13540,6 +13732,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   D1000VAREJOFARMA: {
     nome: "D1000 Varejo Farma Participações S.A.",
+    link: "https://ri.reded1000.com.br/",
     descricao:
       "Rede de farmácias com atuação nacional, anteriormente conhecida como Drogaria Onofre e adquirida pela Profarma em 2013, passando por reposicionamento estratégico e rebrand para D1000 em 2020, caracterizada por sua estratégia de expansão via lojas físicas e plataforma digital, foco em experiência do cliente e mix diferenciado de produtos.",
     fundacao: "1934 (como Drogaria Onofre, rebatizada para D1000 em 2020)",
@@ -13596,6 +13789,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   DIMED: {
     nome: "Dimed S.A. Distribuidora de Medicamentos (Panvel)",
+    link: "https://ri.grupopanvel.com.br/",
     descricao:
       "Grupo empresarial com atuação integrada no setor farmacêutico, incluindo rede de farmácias (Panvel), distribuição de medicamentos (Dimed) e laboratório farmacêutico (Lifar), com forte presença na região Sul do Brasil, caracterizada por sua integração vertical, marca regional forte e reconhecida, e estratégia de expansão geográfica seletiva.",
     fundacao: "1967",
@@ -13653,6 +13847,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "PAGUE MENOS": {
     nome: "Empreendimentos Pague Menos S.A.",
+    link: "https://ri.paguemenos.com.br/",
     descricao:
       "Uma das maiores redes de farmácias do Brasil, com forte presença nacional e pioneirismo em serviços farmacêuticos, caracterizada por sua estratégia de expansão para regiões menos atendidas, modelo de negócio focado em conveniência e serviços de saúde complementares, e forte presença nas regiões Norte e Nordeste do país.",
     fundacao: "1981",
@@ -13711,6 +13906,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   HYPERA: {
     nome: "Hypera S.A.",
+    link: "https://ri.hypera.com.br/",
     descricao:
       "Maior empresa farmacêutica brasileira, com foco em medicamentos isentos de prescrição (OTC), medicamentos de prescrição, produtos de consumo e genéricos, caracterizada por seu portfólio diversificado de marcas líderes, forte capacidade de marketing e distribuição, e estratégia de crescimento via desenvolvimento de produtos e aquisições estratégicas.",
     fundacao: "2001 (como Hypermarcas, rebatizada para Hypera em 2017)",
@@ -13767,6 +13963,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "OUROFINO S/A": {
     nome: "Ourofino Saúde Animal Participações S.A.",
+    link: "https://ri.ourofino.com/",
     descricao:
       "Maior empresa brasileira dedicada exclusivamente à saúde animal, com foco em produtos veterinários para animais de produção, animais de companhia e operações internacionais, caracterizada por sua capacidade de inovação local, conhecimento do mercado agropecuário brasileiro, e estratégia de expansão internacional na América Latina.",
     fundacao: "1987",
@@ -13828,6 +14025,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PROFARMA: {
     nome: "Profarma Distribuidora de Produtos Farmacêuticos S.A.",
+    link: "https://ri.profarma.com.br/",
     descricao:
       "Empresa brasileira com atuação na distribuição de medicamentos, produtos de higiene e beleza, e varejo farmacêutico através da rede D1000, caracterizada por sua transformação estratégica de distribuidor tradicional para um ecossistema integrado de saúde, com operações complementares em distribuição e varejo.",
     fundacao: "1961",
@@ -13886,6 +14084,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   RAIADROGASIL: {
     nome: "RaiaDrogasil S.A.",
+    link: "https://ri.rdsaude.com.br/",
     descricao:
       "Maior rede de farmácias do Brasil, formada pela fusão da Droga Raia com a Drogasil em 2011, com atuação nacional através de múltiplas bandeiras, caracterizada por sua escala, estratégia de expansão acelerada, investimento em tecnologia e transformação digital, e evolução para um ecossistema de saúde e bem-estar além do varejo farmacêutico tradicional.",
     fundacao: "1905 (Drogasil) e 1905 (Raia), fusão em 2011",
@@ -13943,6 +14142,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   INTELBRAS: {
     nome: "Intelbras S.A. Indústria de Telecomunicação Eletrônica Brasileira",
+    link: "https://ri.intelbras.com.br/",
     descricao:
       "Maior empresa brasileira de segurança eletrônica, redes e comunicação, com atuação diversificada em múltiplos segmentos tecnológicos, caracterizada por sua capacidade de desenvolvimento e fabricação local, ampla rede de distribuição nacional, e estratégia de crescimento via diversificação de portfólio e aquisições estratégicas.",
     fundacao: "1976",
@@ -14000,6 +14200,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   MULTILASER: {
     nome: "Multilaser Industrial S.A.",
+    link: "https://ri.multilaser.com.br/",
     descricao:
       "Uma das maiores empresas brasileiras de produtos eletrônicos e de informática, com atuação diversificada em múltiplos segmentos de consumo, caracterizada por sua estratégia de amplo portfólio de produtos acessíveis, forte capacidade de distribuição nacional, e modelo de negócio focado em alta rotatividade e escala.",
     fundacao: "1987",
@@ -14056,6 +14257,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "POSITIVO TECNOLOGIA": {
     nome: "Positivo Tecnologia S.A.",
+    link: "https://ri.positivotecnologia.com.br/",
     descricao:
       "Maior fabricante brasileira de computadores e soluções tecnológicas educacionais, com atuação diversificada em hardware, software e serviços, caracterizada por sua forte presença no setor educacional, parcerias com o setor público, e estratégia de diversificação para novos segmentos tecnológicos.",
     fundacao: "1989",
@@ -14115,6 +14317,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   BEMOBI: {
     nome: "Bemobi Mobile Tech S.A.",
+    link: "https://ri.bemobi.com.br/",
     descricao:
       "Empresa brasileira de tecnologia especializada em distribuição e monetização de aplicativos e serviços digitais para dispositivos móveis, com foco em mercados emergentes, caracterizada por seu modelo de negócio baseado em assinaturas de serviços digitais via operadoras de telefonia, forte presença internacional e tecnologia proprietária de distribuição sem consumo de dados.",
     fundacao: "2007",
@@ -14177,6 +14380,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ENJOEI: {
     nome: "Enjoei.com.br Atividades de Internet S.A.",
+    link: "https://ri.enjoei.com/pt-br/",
     descricao:
       "Plataforma brasileira de marketplace C2C (consumer-to-consumer) especializada em produtos usados, com foco em moda, decoração e lifestyle, caracterizada por seu posicionamento de marca diferenciado, curadoria de produtos, comunidade engajada e modelo de negócio que promove a economia circular e o consumo consciente.",
     fundacao: "2009",
@@ -14233,6 +14437,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   GETNINJAS: {
     nome: "GetNinjas S.A.",
+    link: "https://ri.reaginvestimentos.com.br/",
     descricao:
       "Maior plataforma de contratação de serviços da América Latina, conectando profissionais autônomos a clientes em diversas categorias de serviços, caracterizada por seu modelo de marketplace que democratiza o acesso a serviços locais, promove a formalização de profissionais autônomos e utiliza tecnologia para otimizar o matching entre oferta e demanda.",
     fundacao: "2011",
@@ -14289,6 +14494,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   INFRACOMM: {
     nome: "Infracommerce CXAAS S.A.",
+    link: "https://ri.infracommerce.com.br/",
     descricao:
       "Líder em soluções de comércio digital na América Latina, oferecendo uma plataforma completa de e-commerce como serviço (CXAAS - Commerce Experience as a Service), caracterizada por seu modelo end-to-end que inclui tecnologia, operação, marketing e logística para marcas e varejistas, com forte presença regional e estratégia de crescimento via aquisições.",
     fundacao: "2012",
@@ -14352,6 +14558,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "WDC NETWORKS": {
     nome: "WDC Networks S.A.",
+    link: "https://ri.wdcnet.com.br/",
     descricao:
       "Empresa brasileira especializada na distribuição de produtos e soluções de tecnologia, com foco em infraestrutura de redes, segurança, energia solar e IoT, caracterizada por seu amplo portfólio de marcas globais, forte capacidade logística e de suporte técnico, e estratégia de expansão para novas verticais tecnológicas.",
     fundacao: "2003",
@@ -14408,6 +14615,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   LOCAWEB: {
     nome: "Locaweb Serviços de Internet S.A.",
+    link: "https://ri.lwsa.tech/",
     descricao:
       "Maior empresa brasileira de serviços digitais e hospedagem, com um ecossistema completo de soluções para presença online e transformação digital de empresas, caracterizada por sua estratégia de one-stop-shop para negócios digitais, crescimento via aquisições de empresas de software e tecnologia, e foco em pequenas e médias empresas.",
     fundacao: "1998",
@@ -14464,6 +14672,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   MELIUZ: {
     nome: "Méliuz S.A.",
+    link: "https://ri.meliuz.com.br/#",
     descricao:
       "Plataforma brasileira de marketplace e serviços financeiros que conecta consumidores a varejistas através de um programa de cashback e ofertas, caracterizada por seu modelo de negócio que combina tecnologia, marketplace, serviços financeiros e programa de fidelidade, com foco em gerar valor tanto para consumidores quanto para varejistas parceiros.",
     fundacao: "2011",
@@ -14520,6 +14729,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   NEOGRID: {
     nome: "Neogrid Participações S.A.",
+    link: "https://ri.neogrid.com/",
     descricao:
       "Empresa brasileira líder em soluções de tecnologia para supply chain, oferecendo plataformas de colaboração e visibilidade para cadeias de suprimentos, caracterizada por seu foco em conectar indústrias e varejistas através de soluções de software como serviço (SaaS), com forte presença no setor de bens de consumo e varejo.",
     fundacao: "1999",
@@ -14576,6 +14786,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PADTEC: {
     nome: "Padtec Holding S.A.",
+    link: "https://www.padtec.com.br/investor/central-de-resultados/",
     descricao:
       "Empresa brasileira especializada em sistemas ópticos de alta capacidade, com foco no desenvolvimento, fabricação e comercialização de equipamentos e componentes para redes ópticas de telecomunicações, caracterizada por sua capacidade de inovação tecnológica, presença internacional e atuação em projetos de infraestrutura crítica de comunicações.",
     fundacao: "2001",
@@ -14638,6 +14849,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TC: {
     nome: "TC Traders Club S.A.",
+    link: "https://ri.tc.com.br/",
     descricao:
       "Plataforma brasileira de informações financeiras e comunidade para investidores, oferecendo um ecossistema completo de ferramentas, conteúdo e networking para o mercado financeiro, caracterizada por seu modelo de assinatura, comunidade engajada e estratégia de expansão para novos segmentos do mercado financeiro.",
     fundacao: "2016",
@@ -14694,6 +14906,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TOTVS: {
     nome: "TOTVS S.A.",
+    link: "https://ri.totvs.com/",
     descricao:
       "Maior empresa de tecnologia do Brasil, líder em software de gestão empresarial (ERP), com um ecossistema completo de soluções para negócios que abrange software, plataformas de tecnologia, serviços financeiros e business performance, caracterizada por sua forte presença no mercado de pequenas e médias empresas, estratégia de expansão para novos segmentos e modelo de negócio baseado em receita recorrente.",
     fundacao: "1983",
@@ -14756,6 +14969,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   WESTWING: {
     nome: "Westwing Brasil Comércio Varejista S.A.",
+    link: "https://ri.westwing.com.br/",
     descricao:
       "Empresa de e-commerce especializada em móveis, decoração e lifestyle, com um modelo de negócio baseado em curadoria, conteúdo e clube de compras, caracterizada por seu posicionamento premium, forte componente editorial e estratégia de marca própria, oferecendo uma experiência diferenciada de compra online para produtos de casa e decoração.",
     fundacao: "2011 (no Brasil)",
@@ -14811,6 +15025,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   LUPATECH: {
     nome: "Lupatech S.A.",
+    link: "https://lupatech.globalri.com.br/pt/central-de-resultados",
     descricao:
       "Empresa brasileira de tecnologia industrial especializada em equipamentos e serviços para o setor de óleo e gás, com foco em válvulas industriais, equipamentos de completação de poços e serviços para o setor energético, caracterizada por sua capacidade de desenvolvimento de soluções de alta complexidade, presença internacional e histórico de superação de desafios financeiros.",
     fundacao: "1980",
@@ -14872,6 +15087,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   OCEANPACT: {
     nome: "OceanPact Serviços Marítimos S.A.",
+    link: "https://ri.oceanpact.com/",
     descricao:
       "Empresa brasileira especializada em serviços marítimos e ambientais, com foco em proteção ambiental, resposta a emergências, geociências e logística offshore, caracterizada por sua frota própria de embarcações especializadas, capacidade técnica diferenciada e atuação em toda a cadeia de valor de serviços marítimos para o setor de óleo e gás.",
     fundacao: "2007",
@@ -14928,6 +15144,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "OSX BRASIL": {
     nome: "OSX Brasil S.A.",
+    link: "https://www.osx.com.br/",
     descricao:
       "Empresa brasileira do setor de equipamentos e serviços para a indústria offshore de petróleo e gás, originalmente concebida como parte do Grupo EBX para atuar na construção naval e arrendamento de unidades de produção offshore, caracterizada por sua trajetória desafiadora que incluiu um ambicioso projeto de construção naval no Porto do Açu e posterior processo de recuperação judicial.",
     fundacao: "2009",
@@ -14983,6 +15200,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "3R PETROLEUM": {
     nome: "3R Petroleum Óleo e Gás S.A.",
+    link: "https://ri.bravaenergia.com/",
     descricao:
       "Empresa brasileira independente de exploração e produção de petróleo e gás natural, com foco na aquisição e revitalização de campos maduros, caracterizada por sua estratégia de crescimento via aquisições de ativos da Petrobras e outras operadoras, expertise técnica em campos maduros e modelo de negócio focado em eficiência operacional e extensão da vida útil de reservatórios.",
     fundacao: "2014",
@@ -15039,6 +15257,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COSAN: {
     nome: "Cosan S.A.",
+    link: "https://www.cosan.com.br/",
     descricao:
       "Conglomerado brasileiro com atuação diversificada em infraestrutura, energia e logística, incluindo distribuição de combustíveis, produção de açúcar e etanol, logística ferroviária e portuária, lubrificantes e gás natural, caracterizado por sua estrutura de holdings e joint ventures estratégicas, como Raízen (com Shell) e Compass (gás natural), e por sua contínua evolução de empresa sucroalcooleira para um dos maiores grupos de infraestrutura do Brasil.",
     fundacao: "1936",
@@ -15101,6 +15320,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ENAUTA PART": {
     nome: "Enauta Participações S.A.",
+    link: "https://ri.bravaenergia.com/",
     descricao:
       "Empresa brasileira independente de exploração e produção de petróleo e gás natural, com foco em ativos offshore de alta produtividade, caracterizada por sua estratégia seletiva de investimentos, portfólio de classe mundial como o Campo de Atlanta e participação no Campo de Manati, e por sua gestão financeira conservadora que proporciona flexibilidade para aproveitar oportunidades de mercado.",
     fundacao:
@@ -15158,6 +15378,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   PETRORECONCAVO: {
     nome: "PetroRecôncavo S.A.",
+    link: "https://ri.petroreconcavo.com.br/",
     descricao:
       "Empresa brasileira independente de exploração e produção de petróleo e gás natural, pioneira na aquisição e revitalização de campos maduros terrestres no Brasil, caracterizada por sua expertise técnica desenvolvida ao longo de mais de duas décadas, modelo de negócio focado em eficiência operacional e extensão da vida útil de reservatórios, e crescimento acelerado através de aquisições estratégicas de ativos da Petrobras.",
     fundacao: "1999",
@@ -15213,6 +15434,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   PETRORIO: {
     nome: "PetroRio S.A.",
+    link: "https://ri.prio3.com.br/",
     descricao:
       "Empresa brasileira independente de exploração e produção de petróleo e gás natural, com foco em ativos offshore produtores, caracterizada por sua estratégia de aquisição e otimização de campos em produção, modelo de negócio baseado em eficiência operacional e redução de custos, e crescimento acelerado que a transformou em uma das maiores produtoras independentes de petróleo do Brasil.",
     fundacao: "2008 (como HRT, renomeada para PetroRio em 2014)",
@@ -15269,6 +15491,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "PETRO MANGUINHOS": {
     nome: "Refinaria de Petróleo de Manguinhos S.A.",
+    link: "https://refit.com.br/home-ri/",
     descricao:
       "Empresa brasileira do setor de refino de petróleo, originalmente focada na produção de combustíveis e derivados, caracterizada por sua trajetória desafiadora que incluiu períodos de operação, paralisações e processos de recuperação judicial, com uma refinaria estrategicamente localizada na região metropolitana do Rio de Janeiro.",
     fundacao: "1954",
@@ -15324,6 +15547,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ULTRAPAR: {
     nome: "Ultrapar Participações S.A.",
+    link: "https://ri.ultra.com.br/",
     descricao:
       "Conglomerado brasileiro com atuação diversificada em distribuição de combustíveis, GLP, produtos químicos e armazenagem para granéis líquidos, caracterizado por sua longa trajetória de crescimento, governança corporativa diferenciada e presença em setores estratégicos da economia brasileira através de empresas como Ipiranga, Ultragaz, Oxiteno (vendida em 2022), Ultracargo e Abastece Aí.",
     fundacao: "1937 (Grupo Ultra)",
@@ -15380,6 +15604,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "VIBRA ENERGIA": {
     nome: "Vibra Energia S.A.",
+    link: "https://ri.vibraenergia.com.br/",
     descricao:
       "Maior distribuidora de combustíveis do Brasil, anteriormente conhecida como BR Distribuidora e subsidiária da Petrobras, caracterizada por sua extensa rede de postos, infraestrutura logística nacional e processo de transformação após a privatização, com foco em eficiência operacional, expansão para novas áreas de negócio e posicionamento estratégico para a transição energética.",
     fundacao:
@@ -15436,6 +15661,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "AES BRASIL": {
     nome: "AES Brasil Energia S.A.",
+    link: "https://ri.aurenenergia.com.br/",
     descricao:
       "Empresa brasileira de geração de energia elétrica, com foco em fontes renováveis como hidrelétrica, eólica e solar, caracterizada por sua estratégia de crescimento em energias limpas, gestão eficiente de ativos e compromisso com a transição energética, sendo parte do grupo global AES Corporation e uma das principais geradoras privadas do Brasil.",
     fundacao: "1997 (como AES Tietê, renomeada para AES Brasil em 2021)",
@@ -15492,6 +15718,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "AFLUENTE T": {
     nome: "Afluente Transmissão de Energia Elétrica S.A.",
+    link: "https://ri.neoenergia.com/",
     descricao:
       "Empresa brasileira do setor de transmissão de energia elétrica, com atuação no estado da Bahia, caracterizada por sua operação de linhas de transmissão e subestações sob regime de concessão regulada pela ANEEL, sendo parte do grupo Neoenergia (controlado pela espanhola Iberdrola) e focada na operação eficiente e confiável de ativos de transmissão.",
     fundacao: "2006",
@@ -15548,6 +15775,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ALUPAR: {
     nome: "Alupar Investimento S.A.",
+    link: "https://ri.alupar.com.br/",
     descricao:
       "Holding brasileira com foco em investimentos no setor elétrico, principalmente em transmissão e geração de energia, caracterizada por sua estratégia de crescimento via participação em leilões e aquisições, portfólio diversificado de concessões de transmissão e usinas de geração, e modelo de negócio baseado em ativos regulados de longo prazo com previsibilidade de receitas.",
     fundacao: "2006",
@@ -15604,6 +15832,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "AMPLA ENERG": {
     nome: "Ampla Energia e Serviços S.A. (Enel Distribuição Rio)",
+    link: "https://ri.enel.com/",
     descricao:
       "Empresa brasileira de distribuição de energia elétrica que atende parte do estado do Rio de Janeiro, caracterizada por sua concessão em área de alta densidade populacional e complexidade operacional, sendo parte do grupo italiano Enel e focada na modernização da rede elétrica, melhoria dos indicadores de qualidade e transformação digital da distribuição de energia.",
     fundacao: "1996 (privatização da CERJ)",
@@ -15656,6 +15885,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   AUREN: {
     nome: "Auren Energia S.A.",
+    link: "https://ri.aurenenergia.com.br/",
     descricao:
       "Empresa brasileira de geração de energia elétrica, formada a partir da fusão da CESP (Companhia Energética de São Paulo) com a AES Tietê, caracterizada por seu portfólio diversificado de ativos de geração hidrelétrica, eólica e solar, sendo controlada pelo grupo Votorantim e pelo fundo de pensão canadense CPPIB, com foco em expansão em energias renováveis e gestão eficiente de ativos.",
     fundacao: "2021 (da fusão entre CESP e AES Tietê)",
@@ -15712,6 +15942,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ELETROBRAS: {
     nome: "Centrais Elétricas Brasileiras S.A. - Eletrobras",
+    link: "https://ri.eletrobras.com/",
     descricao:
       "Maior empresa de energia elétrica da América Latina, com atuação nos segmentos de geração, transmissão e participações minoritárias em distribuição, caracterizada por seu papel histórico no desenvolvimento do setor elétrico brasileiro, controle de grandes usinas hidrelétricas como Itaipu, Tucuruí e parte do sistema Eletronuclear, e por seu recente processo de privatização que transformou a empresa de estatal para corporação de capital pulverizado com participação minoritária do governo federal.",
     fundacao: "1962",
@@ -15770,6 +16001,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   CELESC: {
     nome: "Centrais Elétricas de Santa Catarina S.A.",
+    link: "https://ri.celesc.com.br/",
     descricao:
       "Empresa de economia mista do setor elétrico brasileiro, com atuação nos segmentos de distribuição e geração de energia, caracterizada por sua forte presença no estado de Santa Catarina, onde atende mais de 3 milhões de unidades consumidoras, modelo de gestão compartilhada entre o governo estadual e investidores privados, e reconhecimento por seus indicadores de qualidade e eficiência operacional.",
     fundacao: "1955",
@@ -15826,6 +16058,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CELGPAR: {
     nome: "Companhia Celg de Participações - CELGPAR",
+    link: "https://ri.celgpar.com/",
     descricao:
       "Holding do setor elétrico brasileiro, originalmente controladora da Celg Distribuição (Enel Goiás), caracterizada por sua trajetória de reestruturação após a privatização de sua principal subsidiária, atuação no estado de Goiás, e foco atual em gestão de participações remanescentes no setor energético e desenvolvimento de novos negócios.",
     fundacao: "2007",
@@ -15879,6 +16112,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COELBA: {
     nome: "Companhia de Eletricidade do Estado da Bahia - Coelba",
+    link: "https://ri.neoenergia.com/",
     descricao:
       "Maior distribuidora de energia elétrica do Nordeste brasileiro em número de clientes, atendendo mais de 6 milhões de unidades consumidoras no estado da Bahia, caracterizada por sua extensa área de concessão que abrange 415 municípios, desafios operacionais em regiões de baixa densidade populacional, e por ser parte do grupo Neoenergia, controlado pela espanhola Iberdrola.",
     fundacao: "1960",
@@ -15933,6 +16167,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CEB: {
     nome: "Companhia Energética de Brasília - CEB",
+    link: "https://ri.ceb.com.br/",
     descricao:
       "Empresa de economia mista do setor elétrico brasileiro, originalmente responsável pela distribuição de energia no Distrito Federal, caracterizada por sua recente reestruturação após a privatização da CEB Distribuição (adquirida pela Neoenergia), foco atual em participações no setor energético, iluminação pública e geração de energia, e por seu papel histórico no desenvolvimento da infraestrutura energética da capital federal.",
     fundacao: "1968",
@@ -15987,6 +16222,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CEMIG: {
     nome: "Companhia Energética de Minas Gerais - Cemig",
+    link: "https://ri.cemig.com.br/",
     descricao:
       "Uma das maiores empresas integradas do setor elétrico brasileiro, com atuação nos segmentos de geração, transmissão, distribuição e comercialização de energia, caracterizada por sua forte presença no estado de Minas Gerais, portfólio diversificado de ativos de geração com predominância hidrelétrica, extensa rede de distribuição atendendo mais de 8 milhões de clientes, e modelo de gestão compartilhada entre o governo estadual e investidores privados.",
     fundacao: "1952",
@@ -16046,6 +16282,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COELCE: {
     nome: "Companhia Energética do Ceará - Coelce (Enel Distribuição Ceará)",
+    link: "https://ri.enel.com/",
     descricao:
       "Empresa brasileira de distribuição de energia elétrica que atende o estado do Ceará, caracterizada por sua concessão em área com desafios climáticos e socioeconômicos, sendo parte do grupo italiano Enel e focada na modernização da rede elétrica, melhoria dos indicadores de qualidade e transformação digital da distribuição de energia, com reconhecimento por suas iniciativas de inovação e sustentabilidade.",
     fundacao: "1971",
@@ -16099,6 +16336,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   COSERN: {
     nome: "Companhia Energética do Rio Grande do Norte - Cosern",
+    link: "https://ri.neoenergia.com/",
     descricao:
       "Distribuidora de energia elétrica que atende o estado do Rio Grande do Norte, caracterizada por sua atuação em região com alto potencial de geração renovável, especialmente eólica, sendo parte do grupo Neoenergia (controlado pela espanhola Iberdrola) e focada na modernização da rede elétrica, melhoria dos indicadores de qualidade e transformação digital da distribuição de energia.",
     fundacao: "1962",
@@ -16153,6 +16391,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CEEE-D": {
     nome: "Companhia Estadual de Distribuição de Energia Elétrica - CEEE-D (Equatorial Energia Rio Grande do Sul)",
+    link: "https://ceee.equatorialenergia.com.br/",
     descricao:
       "Distribuidora de energia elétrica que atende parte do estado do Rio Grande do Sul, incluindo a região metropolitana de Porto Alegre, caracterizada por sua recente privatização e aquisição pelo grupo Equatorial Energia em 2021, após décadas como empresa estatal, e pelo processo de transformação operacional e modernização da infraestrutura sob a nova gestão.",
     fundacao: "1943 (como CEEE, posteriormente desmembrada)",
@@ -16209,6 +16448,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COPEL: {
     nome: "Companhia Paranaense de Energia - Copel",
+    link: "https://ri.copel.com/",
     descricao:
       "Uma das maiores empresas integradas do setor elétrico brasileiro, com atuação nos segmentos de geração, transmissão, distribuição e comercialização de energia, caracterizada por sua forte presença no estado do Paraná, portfólio diversificado de ativos de geração com predominância hidrelétrica, processo de privatização parcial com a venda do controle pelo governo estadual em 2023, e reconhecimento por seus indicadores de qualidade e eficiência operacional.",
     fundacao: "1954",
@@ -16268,6 +16508,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "CPFL ENERGIA": {
     nome: "CPFL Energia S.A.",
+    link: "https://ri.cpfl.com.br/",
     descricao:
       "Um dos maiores grupos privados do setor elétrico brasileiro, com atuação nos segmentos de distribuição, geração, transmissão e comercialização de energia, caracterizado por sua extensa base de clientes atendidos por múltiplas distribuidoras, portfólio diversificado de geração com foco crescente em renováveis, controle pela chinesa State Grid desde 2017, e estratégia de crescimento via aquisições e eficiência operacional.",
     fundacao: "1912 (origem na Companhia Paulista de Força e Luz)",
@@ -16323,7 +16564,8 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
 
   "TRANSMISSORA PAULISTA": {
-    nome: "Transmissão Paulista (ISA CTEEP)",
+    nome: "Transmissão Paulista",
+    link: "https://ri.isaenergiabrasil.com.br/",
     descricao:
       "Maior empresa privada de transmissão de energia elétrica do Brasil, responsável por cerca de 33% da energia transmitida no Sistema Interligado Nacional (SIN) e 94% no estado de São Paulo, caracterizada por sua extensa rede de linhas de transmissão e subestações, controle pelo grupo colombiano ISA (parte da Ecopetrol), e foco em eficiência operacional, expansão via leilões e inovação tecnológica no setor de transmissão.",
     fundacao: "1999 (a partir da cisão da CESP)",
@@ -16380,6 +16622,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ELEKTRO: {
     nome: "Elektro Redes S.A. (Neoenergia Elektro)",
+    link: "https://ri.neoenergia.com/",
     descricao:
       "Distribuidora de energia elétrica que atende 228 municípios, sendo 223 no estado de São Paulo e 5 no Mato Grosso do Sul, caracterizada por sua área de concessão que combina regiões urbanas, rurais e litorâneas, sendo parte do grupo Neoenergia (controlado pela espanhola Iberdrola) desde 2017, e reconhecida por seus indicadores de qualidade e eficiência operacional entre os melhores do setor.",
     fundacao: "1998 (a partir da privatização da CESP Distribuição)",
@@ -16436,6 +16679,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "ELETROBRAS PARTICIPAÇÕES": {
     nome: "Eletrobras Participações S.A. - Eletropar",
+    link: "https://ri.eletrobras.com/",
     descricao:
       "Subsidiária da Eletrobras criada para gerir participações societárias em empresas do setor elétrico, caracterizada por seu papel como veículo de investimentos do grupo Eletrobras, gestão de participações minoritárias em diversas empresas do setor energético, e por seu reposicionamento estratégico após a privatização da Eletrobras em 2022.",
     fundacao: "1997",
@@ -16489,6 +16733,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   EMAE: {
     nome: "Empresa Metropolitana de Águas e Energia S.A. - EMAE",
+    link: "https://ri.emae.com.br/pt",
     descricao:
       "Empresa de economia mista do setor elétrico brasileiro, com atuação principal na geração de energia hidrelétrica e gestão de recursos hídricos na região metropolitana de São Paulo, caracterizada por seu papel histórico no controle de enchentes e abastecimento de água, operação de usinas hidrelétricas estratégicas como Henry Borden, e por seu processo de transformação e busca por diversificação de negócios.",
     fundacao: "1998 (a partir da cisão da Eletropaulo)",
@@ -16542,6 +16787,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ENERGISA MT": {
     nome: "Energisa Mato Grosso - Distribuidora de Energia S.A.",
+    link: "https://ri.energisa.com.br/",
     descricao:
       "Distribuidora de energia elétrica que atende 141 municípios do estado de Mato Grosso, caracterizada por sua extensa área de concessão com desafios logísticos e geográficos, sendo parte do grupo Energisa, um dos maiores do setor elétrico brasileiro, e pelo processo de transformação operacional após sua aquisição do grupo Rede Energia em 2014.",
     fundacao: "1958 (como CEMAT, posteriormente adquirida pelo grupo Energisa)",
@@ -16595,6 +16841,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ENERGISA: {
     nome: "Energisa S.A.",
+    link: "https://ri.energisa.com.br/",
     descricao:
       "Um dos maiores grupos privados do setor elétrico brasileiro, com atuação nos segmentos de distribuição, transmissão, geração e comercialização de energia, caracterizado por sua estratégia de crescimento via aquisições, presença diversificada em múltiplas regiões do país através de 11 distribuidoras, foco em eficiência operacional e turnaround de ativos adquiridos, e investimentos crescentes em inovação e digitalização.",
     fundacao: "1905 (como Companhia Força e Luz Cataguazes-Leopoldina)",
@@ -16653,6 +16900,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ENEVA: {
     nome: "Eneva S.A.",
+    link: "https://ri.eneva.com.br/",
     descricao:
       "Empresa integrada de energia com atuação nos segmentos de geração termelétrica, exploração e produção de gás natural, e comercialização de energia, caracterizada por seu modelo de negócios único de 'reservoir-to-wire' que integra a produção de gás natural com a geração de energia, forte presença nas regiões Norte e Nordeste do Brasil, e estratégia de crescimento via aquisições e desenvolvimento de novos projetos.",
     fundacao: "2001 (como MPX Energia, renomeada para Eneva em 2013)",
@@ -16709,6 +16957,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "ENGIE BRASIL": {
     nome: "Engie Brasil Energia S.A.",
+    link: "https://www.engie.com.br/investidores/",
     descricao:
       "Maior geradora privada de energia elétrica do Brasil, com atuação nos segmentos de geração, transmissão, comercialização e soluções energéticas, caracterizada por seu portfólio diversificado de geração com forte presença em fontes renováveis, controle pelo grupo francês Engie, estratégia de descarbonização com desinvestimento em térmicas a carvão, e foco crescente em energia solar, eólica e soluções integradas para clientes.",
     fundacao: "1998 (a partir da privatização da Gerasul)",
@@ -16764,6 +17013,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   EQUATORIAL: {
     nome: "Equatorial Energia S.A.",
+    link: "https://ri.equatorialenergia.com.br/",
     descricao:
       "Um dos maiores grupos privados do setor elétrico brasileiro, com atuação nos segmentos de distribuição, transmissão, geração e comercialização de energia, caracterizado por sua estratégia de crescimento via aquisições de distribuidoras com potencial de turnaround operacional, presença diversificada em múltiplas regiões do país, expertise em eficiência operacional e digitalização, e capacidade de transformação de ativos com desempenho abaixo do potencial.",
     fundacao: "1999",
@@ -16822,6 +17072,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "EQTL PARA": {
     nome: "Equatorial Energia Pará (antiga Celpa)",
+    link: "https://pa.equatorialenergia.com.br/",
     descricao:
       "Distribuidora de energia elétrica que atende o estado do Pará, caracterizada por sua transformação operacional após aquisição pelo grupo Equatorial em 2012, quando enfrentava sérias dificuldades financeiras e operacionais, sendo hoje um caso de sucesso de turnaround no setor elétrico brasileiro, com melhorias significativas em seus indicadores de qualidade, redução de perdas e modernização da infraestrutura.",
     fundacao: "1962 (como Celpa, adquirida pela Equatorial em 2012)",
@@ -16875,6 +17126,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "LIGHT S/A": {
     nome: "Light S.A.",
+    link: "https://ri.light.com.br/",
     descricao:
       "Empresa integrada do setor elétrico brasileiro, com atuação nos segmentos de distribuição, geração e comercialização de energia, caracterizada por sua presença histórica no estado do Rio de Janeiro, desafios operacionais em áreas de complexidade social, processo de reestruturação financeira recente, e busca por melhorias operacionais e redução de perdas em sua área de concessão.",
     fundacao: "1899",
@@ -16929,6 +17181,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   NEOENERGIA: {
     nome: "Neoenergia S.A.",
+    link: "https://ri.neoenergia.com/",
     descricao:
       "Um dos maiores grupos privados do setor elétrico brasileiro, controlado pela espanhola Iberdrola, com atuação integrada nos segmentos de distribuição, transmissão, geração e comercialização de energia, caracterizado por sua forte presença em múltiplas regiões do país através de cinco distribuidoras, portfólio diversificado de geração com foco crescente em renováveis, e estratégia de crescimento alinhada à transição energética global.",
     fundacao: "1997",
@@ -16987,6 +17240,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   "REDE ENERGIA": {
     nome: "Rede Energia Participações S.A.",
+    link: "https://ri.energisa.com.br/",
     descricao:
       "Holding do setor elétrico brasileiro que já foi controladora de diversas distribuidoras de energia, caracterizada por seu processo de reestruturação após crise financeira em 2012 que levou à intervenção da ANEEL em suas distribuidoras, posterior venda de ativos para grupos como Energisa e Equatorial, e atual configuração como empresa de participações com atuação reduzida no setor elétrico.",
     fundacao: "1969 (como CELTINS, posteriormente expandida como holding)",
@@ -17037,6 +17291,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   RENOVA: {
     nome: "Renova Energia S.A.",
+    link: "https://ri.renovaenergia.com.br/",
     descricao:
       "Empresa brasileira do setor de energia renovável, com foco em geração eólica e pequenas centrais hidrelétricas (PCHs), caracterizada por seu pioneirismo no desenvolvimento de parques eólicos no Brasil, processo de recuperação judicial iniciado em 2019 após crise financeira, venda de ativos para equacionamento de dívidas, e busca por reestruturação operacional e financeira para viabilizar a continuidade de suas operações.",
     fundacao: "2001",
@@ -17092,6 +17347,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   "GER PARANAP": {
     nome: "Rio Paranapanema Energia S.A.",
+    link: "https://ri.ctgbr.com.br/informacoes-financeiras/central-de-resultados-rio-paranapanema-energia/",
     descricao:
       "Empresa de geração de energia elétrica com foco em usinas hidrelétricas localizadas na bacia do Rio Paranapanema, entre os estados de São Paulo e Paraná, caracterizada por seu portfólio de nove usinas hidrelétricas com capacidade instalada superior a 2,3 GW, controle pelo grupo chinês CTG (China Three Gorges), e papel relevante no fornecimento de energia para a região Sudeste do Brasil.",
     fundacao: "1999 (a partir da privatização de ativos da CESP)",
@@ -17148,6 +17404,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   TAESA: {
     nome: "Transmissora Aliança de Energia Elétrica S.A. - TAESA",
+    link: "https://ri.taesa.com.br/",
     descricao:
       "Uma das maiores empresas de transmissão de energia elétrica do Brasil, com atuação exclusiva neste segmento, caracterizada por seu extenso portfólio de concessões em diferentes regiões do país, modelo de negócios focado em aquisições e participação em leilões, estrutura acionária com participação da CEMIG e ISA, e reconhecida eficiência operacional com altos índices de disponibilidade de suas linhas.",
     fundacao: "2000",
@@ -17204,6 +17461,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COMGAS: {
     nome: "Companhia de Gás de São Paulo - Comgás",
+    link: "https://ri.comgas.com.br/",
     descricao:
       "Maior distribuidora de gás natural canalizado do Brasil, com atuação na região metropolitana de São Paulo e interior do estado, caracterizada por sua extensa rede de distribuição, controle pelo grupo Compass (anteriormente parte do grupo Cosan), processo contínuo de expansão da infraestrutura para atendimento a novos clientes, e papel estratégico na transição energética com a substituição de combustíveis mais poluentes pelo gás natural.",
     fundacao:
@@ -17260,6 +17518,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   AMBIPAR: {
     nome: "Ambipar Participações e Empreendimentos S.A.",
+    link: "https://ri.ambipar.com/",
     descricao:
       "Empresa brasileira de gestão ambiental e resposta a emergências, com atuação internacional, caracterizada por seu crescimento acelerado via aquisições estratégicas, portfólio diversificado de serviços ambientais que inclui gestão de resíduos, logística reversa, resposta a emergências químicas e ambientais, consultoria e treinamento, e posicionamento como uma das líderes do setor ambiental na América Latina com expansão para mercados globais.",
     fundacao: "1995",
@@ -17318,6 +17577,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SABESP: {
     nome: "Companhia de Saneamento Básico do Estado de São Paulo - SABESP",
+    link: "https://ri.sabesp.com.br/",
     descricao:
       "Maior empresa de saneamento básico da América Latina, responsável pelo fornecimento de água, coleta e tratamento de esgoto em 375 municípios do estado de São Paulo, caracterizada por sua escala operacional, controle majoritário pelo governo estadual paulista, processo de modernização e eficiência operacional, e discussões recentes sobre potencial privatização para acelerar investimentos e universalização dos serviços.",
     fundacao: "1973",
@@ -17374,6 +17634,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   COPASA: {
     nome: "Companhia de Saneamento de Minas Gerais - COPASA",
+    link: "https://ri.copasa.com.br/",
     descricao:
       "Empresa de saneamento básico responsável pelo fornecimento de água, coleta e tratamento de esgoto em mais de 600 municípios do estado de Minas Gerais, caracterizada por sua ampla cobertura territorial, controle majoritário pelo governo estadual mineiro, desafios operacionais em região com diversidade geográfica, e processo de adaptação ao novo marco legal do saneamento com foco na universalização dos serviços.",
     fundacao: "1963",
@@ -17430,6 +17691,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   SANEPAR: {
     nome: "Companhia de Saneamento do Paraná - SANEPAR",
+    link: "https://ri.sanepar.com.br/",
     descricao:
       "Empresa de saneamento básico responsável pelo fornecimento de água, coleta e tratamento de esgoto em 345 municípios do estado do Paraná, caracterizada por seus elevados índices de cobertura e eficiência operacional, controle pelo governo estadual paranaense com significativa participação de acionistas privados, reconhecimento por práticas de sustentabilidade, e processo de adaptação ao novo marco legal do saneamento com foco na manutenção de sua competitividade.",
     fundacao: "1963",
@@ -17486,6 +17748,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   ORIZON: {
     nome: "Orizon Valorização de Resíduos S.A.",
+    link: "https://ri.orizonvr.com.br/",
     descricao:
       "Empresa brasileira especializada na gestão e valorização de resíduos sólidos, caracterizada por seu foco na transformação de resíduos em energia e outros subprodutos, operação de aterros sanitários com captura de biogás para geração de energia, desenvolvimento de projetos de economia circular, e posicionamento estratégico no contexto da Política Nacional de Resíduos Sólidos e transição para uma economia de baixo carbono.",
     fundacao: "2010 (a partir da reestruturação de ativos da Haztec)",
@@ -17541,6 +17804,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
   },
   ATOMPAR: {
     nome: "Atom Participações S.A.",
+    link: "https://atompar.com.br/",
     descricao:
       "Empresa de participações brasileira que passou por significativa transformação em seu modelo de negócios, originalmente atuante no setor têxtil como Inepar Telecomunicações, posteriormente redirecionada para o mercado financeiro com foco em trading algorítmico e educação para investidores, caracterizada por sua atuação no desenvolvimento de sistemas automatizados de negociação, oferecimento de cursos e ferramentas para traders, e recentes desafios regulatórios junto à CVM.",
     fundacao:
@@ -17597,6 +17861,7 @@ export const empresasInfoDicionario: Record<string, EmpresaInfo> = {
 
   CEMEPE: {
     nome: "Cemepe Investimentos S.A.",
+    link: "http://www.cemepe.com.br/",
     descricao:
       "Empresa de participações brasileira de pequeno porte, listada na B3, caracterizada por sua atuação como holding de investimentos com histórico de participações em diversos setores, estrutura operacional reduzida, baixa liquidez de suas ações, e estratégia de investimentos oportunistas em empresas e projetos com potencial de valorização, atualmente em processo de reavaliação de seu portfólio e busca por novas oportunidades de investimento.",
     fundacao: "1980",
