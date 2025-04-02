@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Link } from '@mui/material';
+import { Typography, Link, Box } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 import { EmpresaDetalhada } from '../../../../types';
 import { HeaderContainer, EmpresaInfo, EmpresaTitulo, EmpresaSubtitulo, SiteLink, EmpresaDescricao } from './styled';
@@ -10,6 +10,7 @@ import { FatosRelevantes } from './components/FatosRelevantes';
 import { VantagensRiscos } from './components/VantagensRiscos';
 import { InformacoesAdicionais } from './components/InformacoesAdicionais';
 import { CodigosDisponiveis } from './components/CodigosDisponiveis';
+import { CompanyAvatar } from './components/CompanyAvatar';
 
 interface EmpresaHeaderProps {
     empresa: EmpresaDetalhada;
@@ -27,6 +28,7 @@ export const EmpresaHeader: React.FC<EmpresaHeaderProps> = ({
     const encontrarInfoEmpresa = () => {
 
         const empresaNomeUpperCase = empresa.nome.toUpperCase();
+
         let infoFromDictionary = empresasInfoDicionario[empresaNomeUpperCase];
 
         if (!infoFromDictionary) {
@@ -55,27 +57,46 @@ export const EmpresaHeader: React.FC<EmpresaHeaderProps> = ({
         return <div>Carregando dados da empresa...</div>;
     }
 
+    const companyName = empresa.nome.toUpperCase();
+
     return (
         <HeaderContainer>
             <EmpresaInfo>
-                <EmpresaTitulo variant="h4" component="h1">
-                    {empresaInfo?.nome || empresa.nome}
-                </EmpresaTitulo>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 2,
+                    mb: 2,
+                    minHeight: 80
+                }}>
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: '100%'
+                    }}>
+                        <CompanyAvatar companyName={companyName} size={70} />
+                    </Box>
+                    <Box>
+                        <EmpresaTitulo variant="h4" component="h1">
+                            {empresaInfo?.nome || empresa.nome}
+                        </EmpresaTitulo>
 
-                <EmpresaSubtitulo variant="subtitle1">
-                    {empresa.setor} • {empresa.subsetor}
-                </EmpresaSubtitulo>
+                        <EmpresaSubtitulo variant="subtitle1">
+                            {empresa.setor} • {empresa.subsetor}
+                        </EmpresaSubtitulo>
+                    </Box>
+                </Box>
 
-                {empresa.site && (
+                {(empresa.site || empresaInfo?.link) && (
                     <SiteLink>
                         <Link
-                            href={empresa.site}
+                            href={empresaInfo?.link || empresa.site}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <LanguageIcon fontSize="small" />
                             <Typography variant="body2">
-                                {empresa.site.replace(/^https?:\/\//, '')}
+                                {(empresaInfo?.link || empresa.site).replace(/^https?:\/\//, '')}
                             </Typography>
                         </Link>
                     </SiteLink>
