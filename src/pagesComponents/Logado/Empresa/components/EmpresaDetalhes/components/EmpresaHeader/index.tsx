@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Chip, Link, ToggleButtonGroup, ToggleButton, Paper, Grid, Divider, Tooltip } from '@mui/material';
-import { formatCurrency } from '../../utils/formatters';
-import { EmpresaDetalhada } from '../../../../types';
-import { HeaderContainer, EmpresaInfo, CodigosContainer } from './styled';
+import { Typography, Link } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import { EmpresaDetalhada } from '../../../../types';
+import { HeaderContainer, EmpresaInfo, EmpresaTitulo, EmpresaSubtitulo, SiteLink, EmpresaDescricao } from './styled';
 import { empresasInfoDicionario } from '../../../../../constants/empresasInfo';
+
+import { EmpresaChips } from './components/EmpresaChips';
+import { FatosRelevantes } from './components/FatosRelevantes';
+import { VantagensRiscos } from './components/VantagensRiscos';
+import { InformacoesAdicionais } from './components/InformacoesAdicionais';
+import { CodigosDisponiveis } from './components/CodigosDisponiveis';
 
 interface EmpresaHeaderProps {
     empresa: EmpresaDetalhada;
@@ -22,173 +24,96 @@ export const EmpresaHeader: React.FC<EmpresaHeaderProps> = ({
 }) => {
     const [empresaInfo, setEmpresaInfo] = useState<any>(null);
 
-    useEffect(() => {
-        // Try to find the company in the dictionary by its ticker or name
-        const ticker = codigoAtivo.split('.')[0]; // Remove any suffixes like .SA
-        const infoFromDictionary = empresasInfoDicionario[ticker] || 
-                                  Object.entries(empresasInfoDicionario).find(
-                                      ([_, info]) => info.nome.includes(empresa.nome) || 
-                                                    empresa.nome.includes(info.nome)
-                                  )?.[1];
-        
-        if (infoFromDictionary) {
-            setEmpresaInfo(infoFromDictionary);
-        } else {
-            setEmpresaInfo(null);
+    const encontrarInfoEmpresa = () => {
+
+        const empresaNomeUpperCase = empresa.nome.toUpperCase();
+        let infoFromDictionary = empresasInfoDicionario[empresaNomeUpperCase];
+
+        if (!infoFromDictionary) {
+            const matchingEntry = Object.entries(empresasInfoDicionario).find(
+                ([_, info]) => info.nome.toUpperCase() === empresa.nome.toUpperCase()
+            );
+
+            if (matchingEntry) {
+                infoFromDictionary = matchingEntry[1];
+            }
         }
-    }, [empresa.nome, codigoAtivo]);
+
+        return infoFromDictionary;
+    };
+
+    useEffect(() => {
+        const fetchEmpresaInfo = () => {
+            const infoEmpresa = encontrarInfoEmpresa();
+            setEmpresaInfo(infoEmpresa);
+        };
+        fetchEmpresaInfo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [empresa.nome]);
+
+    if (!empresa) {
+        return <div>Carregando dados da empresa...</div>;
+    }
 
     return (
-        <Paper elevation={2}>
-            <HeaderContainer>
-                <EmpresaInfo>
-                    <Typography variant="h4" component="h1">
-                        {empresa.nome}
-                    </Typography>
+        <HeaderContainer>
+            <EmpresaInfo>
+                <EmpresaTitulo variant="h4" component="h1">
+                    {empresaInfo?.nome || empresa.nome}
+                </EmpresaTitulo>
 
-                    <Typography variant="subtitle1" color="text.secondary">
-                        {empresa.setor} • {empresa.subsetor}
-                    </Typography>
+                <EmpresaSubtitulo variant="subtitle1">
+                    {empresa.setor} • {empresa.subsetor}
+                </EmpresaSubtitulo>
 
-                    <Typography variant="body2" sx={{ mt: 1, mb: 2 }}>
-                        {empresaInfo?.descricao || empresa.descricao}
-                    </Typography>
-
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
-                        {empresaInfo?.fundacao && (
-                            <Chip
-                                icon={<CalendarTodayIcon />}
-                                label={`Fundação: ${empresaInfo.fundacao}`}
-                                variant="outlined"
-                                size="small"
-                            />
-                        )}
-                        
-                        {empresaInfo?.sede && (
-                            <Chip
-                                icon={<LocationOnIcon />}
-                                label={`Sede: ${empresaInfo.sede}`}
-                                variant="outlined"
-                                size="small"
-                            />
-                        )}
-                        
-                        {empresaInfo?.sustentabilidade?.esg_score && (
-                            <Tooltip title="Pontuação ESG (Environmental, Social, Governance)">
-                                <Chip
-                                    icon={<EmojiEventsIcon />}
-                                    label={`ESG Score: ${empresaInfo.sustentabilidade.esg_score}`}
-                                    variant="outlined"
-                                    size="small"
-                                    color={
-                                        empresaInfo.sustentabilidade.esg_score > 80 ? "success" :
-                                        empresaInfo.sustentabilidade.esg_score > 60 ? "info" : "warning"
-                                    }
-                                />
-                            </Tooltip>
-                        )}
-                    </Box>
-
-                    {empresa.site && (
+                {empresa.site && (
+                    <SiteLink>
                         <Link
                             href={empresa.site}
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 2 }}
                         >
                             <LanguageIcon fontSize="small" />
                             <Typography variant="body2">
                                 {empresa.site.replace(/^https?:\/\//, '')}
                             </Typography>
                         </Link>
-                    )}
+                    </SiteLink>
+                )}
 
-                    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                        <Chip
-                            label={`Valor de Mercado: ${formatCurrency(empresa.valorMercado)}`}
-                            color="primary"
-                            variant="outlined"
+                <EmpresaDescricao variant="body1">
+                    {empresaInfo?.descricao || empresa.descricao}
+                </EmpresaDescricao>
+
+                <EmpresaChips
+                    empresaInfo={empresaInfo}
+                    valorMercado={empresa.valorMercado}
+                />
+
+
+                {empresaInfo && (
+                    <>
+                        <FatosRelevantes
+                            fatos={empresaInfo.fatos_relevantes || []}
                         />
-                    </Box>
 
-                    {empresaInfo && (
-                        <Box sx={{ mt: 3 }}>
-                            <Divider sx={{ mb: 2 }} />
-                            
-                            {empresaInfo.fatos_relevantes && empresaInfo.fatos_relevantes.length > 0 && (
-                                <Box sx={{ mb: 2 }}>
-                                    <Typography variant="subtitle2" gutterBottom>
-                                        Fatos Relevantes:
-                                    </Typography>
-                                    <Box component="ul" sx={{ pl: 2, mt: 0 }}>
-                                        {empresaInfo.fatos_relevantes.slice(0, 3).map((fato: string, index: number) => (
-                                            <Typography component="li" variant="body2" key={index}>
-                                                {fato}
-                                            </Typography>
-                                        ))}
-                                    </Box>
-                                </Box>
-                            )}
-                            
-                            <Grid container spacing={2}>
-                                {empresaInfo.vantagens_competitivas && (
-                                    <Grid item xs={12} md={6}>
-                                        <Typography variant="subtitle2" gutterBottom>
-                                            Vantagens Competitivas:
-                                        </Typography>
-                                        <Box component="ul" sx={{ pl: 2, mt: 0 }}>
-                                            {empresaInfo.vantagens_competitivas.slice(0, 3).map((vantagem: string, index: number) => (
-                                                <Typography component="li" variant="body2" key={index}>
-                                                    {vantagem}
-                                                </Typography>
-                                            ))}
-                                        </Box>
-                                    </Grid>
-                                )}
-                                
-                                {empresaInfo.riscos_negocio && (
-                                    <Grid item xs={12} md={6}>
-                                        <Typography variant="subtitle2" gutterBottom>
-                                            Riscos do Negócio:
-                                        </Typography>
-                                        <Box component="ul" sx={{ pl: 2, mt: 0 }}>
-                                            {empresaInfo.riscos_negocio.slice(0, 3).map((risco: string, index: number) => (
-                                                <Typography component="li" variant="body2" key={index}>
-                                                    {risco}
-                                                </Typography>
-                                            ))}
-                                        </Box>
-                                    </Grid>
-                                )}
-                            </Grid>
-                        </Box>
-                    )}
-                </EmpresaInfo>
+                        <VantagensRiscos
+                            vantagens={empresaInfo.vantagens_competitivas || []}
+                            riscos={empresaInfo.riscos_negocio || []}
+                        />
 
-                <CodigosContainer>
-                    <Typography variant="subtitle2" sx={{ mb: 1 }}>
-                        Códigos Disponíveis:
-                    </Typography>
+                        <InformacoesAdicionais
+                            empresaInfo={empresaInfo}
+                        />
 
-                    <ToggleButtonGroup
-                        value={codigoAtivo}
-                        exclusive
-                        onChange={(_, newCodigo) => newCodigo && onCodigoChange(newCodigo)}
-                        aria-label="códigos da empresa"
-                        size="small"
-                    >
-                        {empresa.codigos.map((codigo) => (
-                            <ToggleButton
-                                key={codigo.codigo}
-                                value={codigo.codigo}
-                                aria-label={codigo.codigo}
-                            >
-                                {codigo.codigo}
-                            </ToggleButton>
-                        ))}
-                    </ToggleButtonGroup>
-                </CodigosContainer>
-            </HeaderContainer>
-        </Paper>
+                        <CodigosDisponiveis
+                            codigos={empresa.codigos}
+                            codigoAtivo={codigoAtivo}
+                            onCodigoChange={onCodigoChange}
+                        />
+                    </>
+                )}
+            </EmpresaInfo>
+        </HeaderContainer>
     );
 };
