@@ -1,19 +1,22 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Tabs, Tab, Box, Typography, CircularProgress, Paper } from '@mui/material';
+import { Tabs, Tab, Box, Typography, Paper } from '@mui/material';
 import { MetricasEmpresa } from './components/MetricasEmpresa';
 import { GraficoHistorico } from './components/GraficoHistorico';
 import { AlertasSection } from './components/AlertasSection';
 import { DividendosTab } from './components/DividendosTab';
 import { DerivativosTab } from './components/DerivativosTab';
-import { Noticias } from './components/Noticias';
 import { EmpresaContainer, ContentContainer } from './styled';
 import { TabPanel } from './components/TabPanel';
 import { getEmpresaBySlug, getCodigoPrincipal, getHistoricalData, getAllEmpresas } from './services/empresaService';
 import { EmpresaDetalhada, Codigo } from '../../types';
 import { EmpresaHeader } from './components/EmpresaHeader';
 import { calculateAllMetrics, PriceDataPoint } from './utils/metricasCalculations';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { PageTransition } from '@/components/PageTransition';
+import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
+import { ProgressiveLoad } from '@/components/ProgressiveLoad';
 
 interface EmpresaDetalhesProps {
     slug: string;
@@ -41,30 +44,30 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
         const fetchEmpresa = async () => {
             try {
                 setLoading(true);
-                
+
                 // Verificar se o slug é um código de ativo
                 let empresaData: EmpresaDetalhada | null = null;
                 let codigoAtivoFinal = codigoSelecionado;
-                
+
                 // Primeiro, tenta buscar como nome da empresa ou código
                 const result = await getEmpresaBySlug(slug);
                 empresaData = result.empresa;
-                
+
                 // Se encontrou por código, usar esse código como ativo
                 if (result.codigoEncontrado && !codigoSelecionado) {
                     codigoAtivoFinal = result.codigoEncontrado.toUpperCase();
                 }
-                
+
                 // Se não encontrou, tentar buscar como código em todas as empresas
                 if (!empresaData) {
                     // Buscar todas as empresas para encontrar a que tem o código correspondente ao slug
                     const todasEmpresas = await getAllEmpresas();
-                    
+
                     for (const emp of todasEmpresas) {
                         const codigoEncontrado = emp.codigos.find(
                             (cod: Codigo) => cod.codigo.toUpperCase() === slug.toUpperCase()
                         );
-                        
+
                         if (codigoEncontrado) {
                             empresaData = emp;
                             // Se o slug era um código e não foi fornecido um codigoSelecionado,
@@ -188,7 +191,7 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
     if (loading) {
         return (
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-                <CircularProgress />
+                <ContentSkeleton type="card" cardHeight={400} />
             </Box>
         );
     }
@@ -205,49 +208,63 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
     const codigoAtivoData = empresa.codigos.find(c => c.codigo === codigoAtivo) || empresa.codigos[0];
 
     return (
-        <EmpresaContainer>
-            <ContentContainer>
-                <EmpresaHeader
-                    empresa={empresa}
-                    codigoAtivo={codigoAtivo || ''}
-                    onCodigoChange={handleCodigoChange}
-                />
+        <ErrorBoundary>
+            <PageTransition>
+                <EmpresaContainer>
+                    <ContentContainer>
+                        <EmpresaHeader
+                            empresa={empresa}
+                            codigoAtivo={codigoAtivo || ''}
+                            onCodigoChange={handleCodigoChange}
+                        />
 
-                <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 3 }}>
-                    <Tabs value={currentTab} onChange={handleTabChange}>
-                        <Tab label="Principal" value="principal" />
-                        <Tab label="Dividendos" value="dividendos" />
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 3 }}>
+                            <Tabs value={currentTab} onChange={handleTabChange}>
+                                <Tab label="Principal" value="principal" />
+                                <Tab label="Dividendos" value="dividendos" />
+                                {empresa.temDerivativo && (
+                                    <Tab label="Derivativos" value="derivativos" />
+                                )}
+                            </Tabs>
+                        </Box>
+
+                        <TabPanel value={currentTab} index="principal">
+                            <ProgressiveLoad>
+                                <MetricasEmpresa
+                                    valor={codigoAtivoData?.preco || 0}
+                                    variacao={codigoAtivoData?.variacao || 0}
+                                    minimo52={metricas.minimo52}
+                                    maximo52={metricas.maximo52}
+                                    dividendYield={metricas.dividendYield}
+                                    valorizacao12m={metricas.valorizacao12m}
+                                />
+                            </ProgressiveLoad>
+                            
+                            <ProgressiveLoad delay={0.2}>
+                                <GraficoHistorico codigoAtivo={codigoAtivo || ''} />
+                            </ProgressiveLoad>
+                            
+                            <ProgressiveLoad delay={0.4}>
+                                <AlertasSection codigoAtivo={codigoAtivo || ''} />
+                            </ProgressiveLoad>
+                        </TabPanel>
+
+                        <TabPanel value={currentTab} index="dividendos">
+                            <ProgressiveLoad>
+                                <DividendosTab dividendos={empresa.dividendos} />
+                            </ProgressiveLoad>
+                        </TabPanel>
+
                         {empresa.temDerivativo && (
-                            <Tab label="Derivativos" value="derivativos" />
+                            <TabPanel value={currentTab} index="derivativos">
+                                <ProgressiveLoad>
+                                    <DerivativosTab codigoBase={codigoAtivo || ''} />
+                                </ProgressiveLoad>
+                            </TabPanel>
                         )}
-                    </Tabs>
-                </Box>
-
-                <TabPanel value={currentTab} index="principal">
-                    <MetricasEmpresa
-                        valor={codigoAtivoData?.preco || 0}
-                        variacao={codigoAtivoData?.variacao || 0}
-                        minimo52={metricas.minimo52}
-                        maximo52={metricas.maximo52}
-                        dividendYield={metricas.dividendYield}
-                        valorizacao12m={metricas.valorizacao12m}
-
-                    />
-                    <GraficoHistorico codigoAtivo={codigoAtivo || ''} />
-                    <AlertasSection codigoAtivo={codigoAtivo || ''} />
-                    <Noticias symbol={codigoAtivo || slug} />
-                </TabPanel>
-
-                <TabPanel value={currentTab} index="dividendos">
-                    <DividendosTab dividendos={empresa.dividendos} />
-                </TabPanel>
-
-                {empresa.temDerivativo && (
-                    <TabPanel value={currentTab} index="derivativos">
-                        <DerivativosTab codigoBase={codigoAtivo || ''} />
-                    </TabPanel>
-                )}
-            </ContentContainer>
-        </EmpresaContainer>
+                    </ContentContainer>
+                </EmpresaContainer>
+            </PageTransition>
+        </ErrorBoundary>
     );
 };

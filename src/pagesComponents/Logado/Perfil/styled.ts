@@ -1,7 +1,5 @@
-import { styled } from "@mui/material";
-import { Paper } from "@mui/material";
-import { Button as MuiButton, ButtonProps } from "@mui/material";
 import { ElementType } from "react";
+import { styled, Paper, Button as MuiButton, ButtonProps } from "@mui/material";
 
 export const ProfileContainer = styled("div")`
   min-height: 100vh;

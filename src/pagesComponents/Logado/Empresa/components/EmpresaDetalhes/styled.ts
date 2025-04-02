@@ -1,6 +1,6 @@
-import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
 import React from "react";
+import { Box } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 export const EmpresaContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),

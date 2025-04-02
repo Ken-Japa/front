@@ -1,21 +1,30 @@
 "use client";
 
+// React and hooks
+import { useState } from 'react';
+import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 import { Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ProfileContainer, ProfileCard, ProfileTitle, ContactButton, StyledContactButton } from './styled';
+import { SuspenseWrapper } from '@/components/SuspenseWrapper';
+import { ThemePreference } from '@/components/TrocarTema';
 import { UserInfo } from './components/UserInfo';
 import { SubscriptionInfo } from './components/SubscriptionInfo';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import Link from 'next/link';
-import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import { useState } from 'react';
 import { EditDialog } from './components/EditDialog';
-import { ThemePreference } from '@/components/TrocarTema';
 
+import {
+    ProfileContainer,
+    ProfileCard,
+    ProfileTitle,
+    ContactButton,
+    StyledContactButton
+} from './styled';
 
 
 export const Perfil = () => {
@@ -116,14 +125,6 @@ export const Perfil = () => {
                             onSave={handleSave}
                         />
 
-
-                        <EditDialog
-                            open={!!editField}
-                            title={editField || ""}
-                            value={editValue}
-                            onClose={() => setEditField(null)}
-                            onSave={handleSave}
-                        />
                     </ProfileContainer>
                 </SuspenseWrapper>
             </ErrorBoundary>

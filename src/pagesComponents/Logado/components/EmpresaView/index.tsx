@@ -1,6 +1,9 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box } from '@mui/material';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
+import { PageTransition } from '@/components/PageTransition';
+import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
 import { ViewMode } from './Elementos/ModoVisualizacao/types';
 import { RedeNeural } from './Elementos/ModoVisualizacao/RedeNeural';
 import { TabelaView } from './Elementos/ModoVisualizacao/TabelaView';
@@ -15,7 +18,6 @@ interface VisualizationContentProps {
 }
 
 export const VisualizationContent = ({ viewMode, isLoading, setIsLoading }: VisualizationContentProps) => {
-
     const LoadingOverlay = () => (
         <Box sx={{
             position: 'absolute',
@@ -29,31 +31,37 @@ export const VisualizationContent = ({ viewMode, isLoading, setIsLoading }: Visu
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
             zIndex: 1000,
         }}>
-            <CircularProgress size={60} sx={{ color: 'primary.main' }} />
+            <ContentSkeleton type="card" cardHeight={300} />
         </Box>
-
     );
+
     const renderContent = () => {
         switch (viewMode) {
             case 'neural':
                 return (
                     <VisualizationWrapper>
                         {isLoading && <LoadingOverlay />}
-                        <RedeNeural onLoadingChange={setIsLoading} />
+                        <ProgressiveLoad>
+                            <RedeNeural onLoadingChange={setIsLoading} />
+                        </ProgressiveLoad>
                     </VisualizationWrapper>
                 );
             case 'tabela':
                 return (
                     <VisualizationWrapper>
                         {isLoading && <LoadingOverlay />}
-                        <TabelaView onLoadingChange={setIsLoading} />
+                        <ProgressiveLoad>
+                            <TabelaView onLoadingChange={setIsLoading} />
+                        </ProgressiveLoad>
                     </VisualizationWrapper>
                 );
             case 'cartao':
                 return (
                     <VisualizationWrapper>
                         <ContentPlaceholder>
-                            <CardsView onLoadingChange={setIsLoading} />
+                            <ProgressiveLoad>
+                                <CardsView onLoadingChange={setIsLoading} />
+                            </ProgressiveLoad>
                         </ContentPlaceholder>
                     </VisualizationWrapper>
                 );
@@ -61,7 +69,9 @@ export const VisualizationContent = ({ viewMode, isLoading, setIsLoading }: Visu
                 return (
                     <VisualizationWrapper>
                         {isLoading && <LoadingOverlay />}
-                        <MapaArvore onLoadingChange={setIsLoading} />
+                        <ProgressiveLoad>
+                            <MapaArvore onLoadingChange={setIsLoading} />
+                        </ProgressiveLoad>
                     </VisualizationWrapper>
                 );
             default:
@@ -70,10 +80,12 @@ export const VisualizationContent = ({ viewMode, isLoading, setIsLoading }: Visu
     };
 
     return (
-        <ErrorBoundary>
-            <SuspenseWrapper>
-                {renderContent()}
-            </SuspenseWrapper>
-        </ErrorBoundary>
+        <PageTransition direction="up" duration={0.4}>
+            <ErrorBoundary>
+                <SuspenseWrapper fallback={<ContentSkeleton type="card" cardHeight={400} />}>
+                    {renderContent()}
+                </SuspenseWrapper>
+            </ErrorBoundary>
+        </PageTransition>
     );
 };

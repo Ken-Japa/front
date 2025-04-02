@@ -1,13 +1,12 @@
 "use client";
-
-import { Container, Typography, Box } from '@mui/material';
 import { useSession } from 'next-auth/react';
+import { Container, Typography, Box } from '@mui/material';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { PositionSection } from './components/PositionSection';
-import { BackgroundContainer } from './styled';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+import { PositionSection } from './components/PositionSection';
+import { BackgroundContainer } from './styled';
 
 export const Dashboard = () => {
     const { data: session } = useSession();

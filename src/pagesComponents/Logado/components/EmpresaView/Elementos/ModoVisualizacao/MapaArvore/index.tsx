@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, useState } from 'react';
 import { Box } from '@mui/material';
 
 interface MapaArvoreProps {
@@ -7,62 +7,68 @@ interface MapaArvoreProps {
 
 const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => {
     const container = useRef<HTMLDivElement>(null);
+    const [widgetId] = useState(`tv-widget-${Math.random().toString(36).substring(2, 9)}`);
 
     useEffect(() => {
         if (!container.current) return;
         onLoadingChange?.(true);
         const currentContainer = container.current;
 
-        // Clear any existing widgets first
-        const existingWidget = currentContainer.querySelector('script[src*="embed-widget-stock-heatmap"]');
-        if (existingWidget) {
-            existingWidget.remove();
-        }
+        // Create a complete widget structure that TradingView expects
+        currentContainer.innerHTML = `
+            <div class="tradingview-widget-container__widget" id="${widgetId}"></div>
+            <div class="tradingview-widget-copyright"></div>
+        `;
 
-        const script = document.createElement("script");
-        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js";
-        script.type = "text/javascript";
-        script.async = true;
-        script.innerHTML = JSON.stringify({
-            exchanges: ["BMFBOVESPA"],
-            dataSource: "AllBR",
-            grouping: "sector",
-            blockSize: "market_cap_basic",
-            blockColor: "change",
-            locale: "br",
-            symbolUrl: "http://localhost:3000/empresa/{tvsymbol}",
-            colorTheme: "dark",
-            hasTopBar: true,
-            isDataSetEnabled: false,
-            isZoomEnabled: true,
-            hasSymbolTooltip: true,
-            isMonoSize: false,
-            width: "100%",
-            height: "100%"
-        });
+        // Add the script with a slight delay to ensure DOM is ready
+        const scriptTimeout = setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = "https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js";
+            script.type = "text/javascript";
+            script.async = true;
+            script.innerHTML = JSON.stringify({
+                container_id: widgetId,
+                exchanges: ["BMFBOVESPA"],
+                dataSource: "AllBR",
+                grouping: "sector",
+                blockSize: "market_cap_basic",
+                blockColor: "change",
+                locale: "br",
+                symbolUrl: "http://localhost:3000/empresa/{tvsymbol}",
+                colorTheme: "dark",
+                hasTopBar: true,
+                isDataSetEnabled: false,
+                isZoomEnabled: true,
+                hasSymbolTooltip: true,
+                isMonoSize: false,
+                width: "100%",
+                height: "100%"
+            });
 
-        currentContainer.appendChild(script);
+            currentContainer.appendChild(script);
 
-        let attempts = 0;
-        const maxAttempts = 10;
-        const checkWidgetLoaded = setInterval(() => {
-            attempts++;
-            const widget = currentContainer.querySelector('.tradingview-widget-container__widget');
-            if ((widget && widget.children.length > 0) || attempts >= maxAttempts) {
+            let attempts = 0;
+            const maxAttempts = 20;
+            const checkWidgetLoaded = setInterval(() => {
+                attempts++;
+                const widget = document.getElementById(widgetId);
+                if ((widget && widget.children.length > 0) || attempts >= maxAttempts) {
+                    clearInterval(checkWidgetLoaded);
+                    onLoadingChange?.(false);
+                }
+            }, 100);
+
+            return () => {
                 clearInterval(checkWidgetLoaded);
-                onLoadingChange?.(false);
-            }
-        }, 20);
+            };
+        }, 200);
 
         return () => {
-            clearInterval(checkWidgetLoaded);
+            clearTimeout(scriptTimeout);
             onLoadingChange?.(false);
-            const scriptElement = currentContainer.querySelector('script[src*="embed-widget-stock-heatmap"]');
-            if (scriptElement) {
-                scriptElement.remove();
-            }
+            currentContainer.innerHTML = '';
         };
-    }, [onLoadingChange]);
+    }, [onLoadingChange, widgetId]);
 
     return (
         <Box
@@ -91,9 +97,7 @@ const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => 
                 }
             }}
         >
-            <div className="tradingview-widget-container" ref={container}>
-                <div className="tradingview-widget-container__widget"></div>
-            </div>
+            <div className="tradingview-widget-container" ref={container}></div>
         </Box>
     );
 };

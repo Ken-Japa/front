@@ -1,42 +1,44 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, useState } from 'react';
 import { Box } from '@mui/material';
 
 const CalendarioComponent: React.FC = () => {
     const container = useRef<HTMLDivElement>(null);
+    const [widgetId] = useState(`tv-calendar-${Math.random().toString(36).substring(2, 9)}`);
 
     useEffect(() => {
         if (!container.current) return;
         const currentContainer = container.current;
 
-        // Clear any existing widgets first
-        const existingWidget = currentContainer.querySelector('script[src*="embed-widget-events"]');
-        if (existingWidget) {
-            existingWidget.remove();
-        }
+        currentContainer.innerHTML = `
+            <div class="tradingview-widget-container__widget" id="${widgetId}"></div>
+            <div class="tradingview-widget-copyright"></div>
+        `;
 
-        const script = document.createElement("script");
-        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-events.js";
-        script.type = "text/javascript";
-        script.async = true;
-        script.innerHTML = JSON.stringify({
-            width: "100%",
-            height: "100%",
-            colorTheme: "dark",
-            isTransparent: false,
-            locale: "br",
-            importanceFilter: "-1,0,1",
-            countryFilter: "br"
-        });
+        // Add the script with a slight delay to ensure DOM is ready
+        const scriptTimeout = setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = "https://s3.tradingview.com/external-embedding/embed-widget-events.js";
+            script.type = "text/javascript";
+            script.async = true;
+            script.innerHTML = JSON.stringify({
+                container_id: widgetId,
+                width: "100%",
+                height: "100%",
+                colorTheme: "dark",
+                isTransparent: false,
+                locale: "br",
+                importanceFilter: "-1,0,1",
+                countryFilter: "br"
+            });
 
-        currentContainer.appendChild(script);
+            currentContainer.appendChild(script);
+        }, 200);
 
         return () => {
-            const scriptElement = currentContainer.querySelector('script[src*="embed-widget-events"]');
-            if (scriptElement) {
-                scriptElement.remove();
-            }
+            clearTimeout(scriptTimeout);
+            currentContainer.innerHTML = '';
         };
-    }, []);
+    }, [widgetId]);
 
     return (
         <Box
@@ -45,12 +47,19 @@ const CalendarioComponent: React.FC = () => {
                 height: '400px',
                 '& .tradingview-widget-copyright': {
                     display: 'none'
+                },
+                '& .tradingview-widget-container': {
+                    width: '100%',
+                    height: '100%',
+                    position: 'relative'
+                },
+                '& .tradingview-widget-container__widget': {
+                    width: '100%',
+                    height: '100%'
                 }
             }}
         >
-            <div className="tradingview-widget-container" ref={container}>
-                <div className="tradingview-widget-container__widget"></div>
-            </div>
+            <div className="tradingview-widget-container" ref={container}></div>
         </Box>
     );
 };

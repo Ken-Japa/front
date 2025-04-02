@@ -1,10 +1,11 @@
-import { Typography, useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { Typography, useTheme } from '@mui/material';
+
 import { LineChart } from '@/components/Charts/LineChart';
 import { getHistoricalData } from '../../services/empresaService';
-import { GraficoContainer, GraficoHeader, ChartWrapper } from './styled';
 import { PeriodSelector, PeriodType } from './components/PeriodSelector';
 import { filterDataByPeriod } from './utils/dataFilters';
+import { GraficoContainer, GraficoHeader, ChartWrapper } from './styled';
 
 interface GraficoHistoricoProps {
     codigoAtivo: string;
@@ -16,7 +17,7 @@ export const GraficoHistorico: React.FC<GraficoHistoricoProps> = ({ codigoAtivo 
     const [loading, setLoading] = useState(false);
     const [allHistoricalData, setAllHistoricalData] = useState<any[]>([]);
     const theme = useTheme();
-    
+
     // Get text color based on current theme
     const textColor = theme.palette.text.primary;
     const gridColor = theme.palette.divider;
@@ -49,9 +50,9 @@ export const GraficoHistorico: React.FC<GraficoHistoricoProps> = ({ codigoAtivo 
     // Filter data based on selected period
     useEffect(() => {
         if (allHistoricalData.length === 0) return;
-        
+
         setLoading(true);
-        
+
         try {
             const filteredData = filterDataByPeriod(allHistoricalData, period);
             setChartData(filteredData);

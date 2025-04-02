@@ -1,4 +1,4 @@
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import { ViewMode } from './types';
 import { ViewControls } from './styled';
 import GridViewIcon from '@mui/icons-material/GridView';
@@ -12,32 +12,42 @@ interface ModoVisualizacaoProps {
 }
 
 export const ModoVisualizacao = ({ viewMode, onChangeView }: ModoVisualizacaoProps) => {
+    const viewOptions = [
+        {
+            mode: 'neural' as ViewMode,
+            icon: <BubbleChartIcon />,
+            label: 'Visualização em Rede Neural'
+        },
+        {
+            mode: 'tabela' as ViewMode,
+            icon: <TableRowsIcon />,
+            label: 'Visualização em Tabela'
+        },
+        {
+            mode: 'cartao' as ViewMode,
+            icon: <GridViewIcon />,
+            label: 'Visualização em Cartões'
+        },
+        {
+            mode: 'arvore' as ViewMode,
+            icon: <AccountTreeIcon />,
+            label: 'Visualização em Árvore'
+        }
+    ];
+
     return (
         <ViewControls>
-            <IconButton
-                onClick={() => onChangeView('neural')}
-                color={viewMode === 'neural' ? 'primary' : 'default'}
-            >
-                <BubbleChartIcon />
-            </IconButton>
-            <IconButton
-                onClick={() => onChangeView('tabela')}
-                color={viewMode === 'tabela' ? 'primary' : 'default'}
-            >
-                <TableRowsIcon />
-            </IconButton>
-            <IconButton
-                onClick={() => onChangeView('cartao')}
-                color={viewMode === 'cartao' ? 'primary' : 'default'}
-            >
-                <GridViewIcon />
-            </IconButton>
-            <IconButton
-                onClick={() => onChangeView('arvore')}
-                color={viewMode === 'arvore' ? 'primary' : 'default'}
-            >
-                <AccountTreeIcon />
-            </IconButton>
+            {viewOptions.map((option) => (
+                <Tooltip key={option.mode} title={option.label} arrow placement="top">
+                    <IconButton
+                        onClick={() => onChangeView(option.mode)}
+                        color={viewMode === option.mode ? 'primary' : 'default'}
+                        aria-label={option.label}
+                    >
+                        {option.icon}
+                    </IconButton>
+                </Tooltip>
+            ))}
         </ViewControls>
     );
 };

@@ -52,6 +52,11 @@ export const getBestCompanyLogoPath = async (
 ): Promise<string> => {
   const formattedName = formatCompanyNameForImage(companyName);
 
+  // Check if we already found a working extension for this company
+  if (imageExtensionCache[formattedName]) {
+    return `/assets/images/individuais/empresas/${formattedName}${imageExtensionCache[formattedName]}`;
+  }
+
   // Extensions to try, in order of preference
   const extensions = [".png", ".jpg", ".jpeg", ".webp", ".svg", ".avif", ""];
 
@@ -66,10 +71,7 @@ export const getBestCompanyLogoPath = async (
       return url;
     }
   }
-  // Check if we already found a working extension for this company
-  if (imageExtensionCache[formattedName]) {
-    return `/assets/images/individuais/empresas/${formattedName}${imageExtensionCache[formattedName]}`;
-  }
+
   // If no image is found, return a default path
   return "";
 };

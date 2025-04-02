@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from 'react';
 import { Container, Typography, Alert, Snackbar } from '@mui/material';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { useState } from 'react';
 import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 import { ProgressiveLoad } from '@/components/ProgressiveLoad';
@@ -55,14 +55,14 @@ export const Configuracoes = () => {
             <ErrorBoundary>
                 <ConfiguracoesWrapper>
                     <Container maxWidth="md" sx={{ py: 4 }}>
-                        <Typography 
-                                            variant="h4" 
-                                            component="h1" 
-                                            gutterBottom 
-                                            sx={{ mb: 4, textAlign: 'center' }}
-                                        >
-                                            Configurações
-                                        </Typography>
+                        <Typography
+                            variant="h4"
+                            component="h1"
+                            gutterBottom
+                            sx={{ mb: 4, textAlign: 'center' }}
+                        >
+                            Configurações
+                        </Typography>
 
                         <SuspenseWrapper fallback={<ContentSkeleton type="form" formFields={1} />}>
                             <ProgressiveLoad delay={0.2}>

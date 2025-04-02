@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Link, Box } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
+
 import { EmpresaDetalhada } from '../../../../types';
-import { HeaderContainer, EmpresaInfo, EmpresaTitulo, EmpresaSubtitulo, SiteLink, EmpresaDescricao } from './styled';
 import { empresasInfoDicionario } from '../../../../../constants/empresasInfo';
 
 import { EmpresaChips } from './components/EmpresaChips';
@@ -11,6 +11,7 @@ import { VantagensRiscos } from './components/VantagensRiscos';
 import { InformacoesAdicionais } from './components/InformacoesAdicionais';
 import { CodigosDisponiveis } from './components/CodigosDisponiveis';
 import { CompanyAvatar } from './components/CompanyAvatar';
+import { HeaderContainer, EmpresaInfo, EmpresaTitulo, EmpresaSubtitulo, SiteLink, EmpresaDescricao } from './styled';
 
 interface EmpresaHeaderProps {
     empresa: EmpresaDetalhada;

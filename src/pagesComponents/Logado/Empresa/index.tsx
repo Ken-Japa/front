@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from 'react';
-
+import { Box } from '@mui/material';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { PageTransition } from '@/components/PageTransition';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { Box } from '@mui/material';
+
 
 import { ContentSkeleton } from '../../../components/Skeletons/ContentSkeleton';
 import { SearchBar } from '../components/EmpresaView/Elementos/SearchBar';
