@@ -36,3 +36,10 @@ next-env.d.ts
 
 # Large mock data files
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/historicoempresas.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/empresas2.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario2.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/empresas.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/bdr.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/company-model.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/dividendosEmpresas.json
