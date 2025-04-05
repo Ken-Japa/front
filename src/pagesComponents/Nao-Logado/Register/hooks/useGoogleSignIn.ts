@@ -8,6 +8,7 @@ export const useGoogleSignIn = (defaultRedirect: string) => {
             const searchParams = new URLSearchParams(window.location.search);
             const callbackUrl = searchParams.get("callbackUrl") || defaultRedirect;
 
+            // Just use NextAuth's signIn without trying to handle the token ourselves
             await signIn("google", {
                 callbackUrl,
                 redirect: true,

@@ -25,7 +25,7 @@ export const Register = () => {
     const router = useRouter();
     const [imageLoaded, setImageLoaded] = useState(false);
     const { isBlocked, blockTimer, handleBlockUser } = useBlockTimer(BLOCK_DURATION);
-    const { formData, errors, acceptedTerms, setAcceptedTerms, handleChange, handleSubmit } = useRegisterForm(handleBlockUser);
+    const { formData, errors, acceptedTerms, isSubmitting, setAcceptedTerms, handleChange, handleSubmit } = useRegisterForm(handleBlockUser);
     const { handleGoogleClick } = useGoogleSignIn(DEFAULT_REDIRECT);
 
     const handleClose = () => {
@@ -74,7 +74,7 @@ export const Register = () => {
                                     onChange={handleChange}
                                     onTermsChange={setAcceptedTerms}
                                     onGoogleClick={handleGoogleClick}
-                                    isLoading={!imageLoaded}
+                                    isLoading={!imageLoaded || isSubmitting}
                                 />
                             )}
                         </SuspenseWrapper>
