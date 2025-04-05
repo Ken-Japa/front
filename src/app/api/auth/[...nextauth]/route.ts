@@ -41,7 +41,7 @@ const handler = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
         
         try {
-          // Call your API for login
+          // Call the API directly here instead of relying on localStorage
           const response = await fetch("https://api-servidor-yupg.onrender.com/login", {
             method: "POST",
             headers: {
@@ -59,20 +59,20 @@ const handler = NextAuth({
           
           const data = await response.json();
           
-          if (data && data.user) {
-            // Store the token in a secure HTTP-only cookie instead of localStorage
-            cookies().set("authToken", data.token, {
+          if (data && data.success && data.data) {
+            // Store token in cookies instead of localStorage
+            cookies().set("authToken", data.data.token, {
               httpOnly: true,
               secure: process.env.NODE_ENV === "production",
               maxAge: 30 * 24 * 60 * 60, // 30 days
               path: "/",
             });
             
+            // Return user data for NextAuth session
             return {
-              id: data.user._id || '',
-              email: data.user.email || '',
-              name: data.user.name || '',
-              image: data.user.picture || ''
+              id: data.data._id || '',
+              email: data.data.email || '',
+              name: data.data.name || '',
             };
           }
           

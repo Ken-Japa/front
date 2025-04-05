@@ -103,6 +103,12 @@ export const LoginFormComponent = ({
                 fullWidth
                 size="large"
                 disabled={isBlocked || !isFormValid}
+                onClick={(e) => {
+                    console.log("Button clicked directly");
+                    if (!isBlocked && isFormValid) {
+                        handleSubmit(e);
+                    }
+                }}
             >
                 {isBlocked ? `Bloqueado (${blockTimer}s)` : 'Entrar'}
             </Button>

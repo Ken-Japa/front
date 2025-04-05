@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { signIn } from "next-auth/react";
+import { signIn } from "next-auth/react"; // Make sure this import is present
 
 import { LOGIN_CONSTANTS } from "../constants";
 import { validateLoginForm } from "../utils/validation";
@@ -39,36 +39,53 @@ export const useLoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isBlocked) return;
+    console.log("Submit button clicked");
+    
+    if (isBlocked) {
+      console.log("Login is blocked");
+      return;
+    }
 
     if (validateForm()) {
+      console.log("Form is valid, attempting login");
       try {
         const searchParams = new URLSearchParams(window.location.search);
         const callbackUrl = searchParams.get("callbackUrl") || DEFAULT_REDIRECT;
-
+        console.log("Redirect URL:", callbackUrl);
+    
+        // Use NextAuth's signIn method
         const result = await signIn("credentials", {
           email: formData.email,
           password: formData.password,
           redirect: false,
           callbackUrl,
-          remember: rememberMe,
         });
+    
+        console.log("NextAuth sign-in result:", result);
 
         if (result?.error) {
+          console.error("Login failed:", result.error);
           setLoginAttempts(prev => {
             const newAttempts = prev + 1;
+            console.log("Login attempts:", newAttempts);
             if (newAttempts >= LOGIN_CONSTANTS.MAX_LOGIN_ATTEMPTS) {
               handleBlockUser();
               return 0;
             }
             return newAttempts;
           });
-        } else {
-          window.location.href = result?.url || DEFAULT_REDIRECT;
+          
+          setErrors({ password: "Email ou senha inválidos" });
+        } else if (result?.url) {
+          console.log("Login successful, redirecting to:", result.url);
+          window.location.href = result.url;
         }
       } catch (error) {
         console.error("Login error:", error);
+        setErrors({ password: "Erro de autenticação. Tente novamente." });
       }
+    } else {
+      console.log("Form validation failed");
     }
   };
 
@@ -125,6 +142,6 @@ export const useLoginForm = () => {
     handleChange,
     handleSubmit,
     setRememberMe,
-    handleGoogleSignIn,
+    handleGoogleSignIn
   };
 };
