@@ -20,7 +20,7 @@ export const useLoginForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validateForm = () => {
@@ -39,20 +39,16 @@ export const useLoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submit button clicked");
-    
+
     if (isBlocked) {
-      console.log("Login is blocked");
       return;
     }
 
     if (validateForm()) {
-      console.log("Form is valid, attempting login");
       try {
         const searchParams = new URLSearchParams(window.location.search);
         const callbackUrl = searchParams.get("callbackUrl") || DEFAULT_REDIRECT;
-        console.log("Redirect URL:", callbackUrl);
-    
+
         // Use NextAuth's signIn method
         const result = await signIn("credentials", {
           email: formData.email,
@@ -60,32 +56,24 @@ export const useLoginForm = () => {
           redirect: false,
           callbackUrl,
         });
-    
-        console.log("NextAuth sign-in result:", result);
 
         if (result?.error) {
-          console.error("Login failed:", result.error);
-          setLoginAttempts(prev => {
+          setLoginAttempts((prev) => {
             const newAttempts = prev + 1;
-            console.log("Login attempts:", newAttempts);
             if (newAttempts >= LOGIN_CONSTANTS.MAX_LOGIN_ATTEMPTS) {
               handleBlockUser();
               return 0;
             }
             return newAttempts;
           });
-          
+
           setErrors({ password: "Email ou senha inválidos" });
         } else if (result?.url) {
-          console.log("Login successful, redirecting to:", result.url);
           window.location.href = result.url;
         }
       } catch (error) {
-        console.error("Login error:", error);
         setErrors({ password: "Erro de autenticação. Tente novamente." });
       }
-    } else {
-      console.log("Form validation failed");
     }
   };
 
@@ -120,7 +108,7 @@ export const useLoginForm = () => {
     let interval: NodeJS.Timeout;
     if (isBlocked && blockTimer > 0) {
       interval = setInterval(() => {
-        setBlockTimer(prev => {
+        setBlockTimer((prev) => {
           if (prev <= 1) {
             setIsBlocked(false);
             localStorage.removeItem("loginBlockedUntil");
@@ -142,6 +130,6 @@ export const useLoginForm = () => {
     handleChange,
     handleSubmit,
     setRememberMe,
-    handleGoogleSignIn
+    handleGoogleSignIn,
   };
 };

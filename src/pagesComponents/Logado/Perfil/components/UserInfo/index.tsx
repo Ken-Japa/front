@@ -1,27 +1,26 @@
 import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 import { CustomButton } from "@/components/Custom/Button";
-import { ProfileSection, ProfileInfo, ProfileLabel, ProfileValue } from "../../styled";
-
+import { ProfileSection, ProfileLabel, ProfileValue } from "../../styled";
 
 interface UserInfoProps {
     label: string;
     value: string | null | undefined;
     onEdit: () => void;
+    addMode?: boolean;
 }
 
-export const UserInfo = ({ label, value, onEdit }: UserInfoProps) => (
+export const UserInfo = ({ label, value, onEdit, addMode }: UserInfoProps) => (
     <ProfileSection>
-        <ProfileInfo>
-            <ProfileLabel>{label}</ProfileLabel>
-            <ProfileValue>{value || 'Não informado'}</ProfileValue>
-        </ProfileInfo>
+        <ProfileLabel>{label}</ProfileLabel>
+        <ProfileValue>{value || 'Não informado'}</ProfileValue>
         <CustomButton
             variant="outlined"
             size="small"
-            startIcon={<EditIcon />}
+            startIcon={addMode ? <AddIcon /> : <EditIcon />}
             onClick={onEdit}
         >
-            Editar
+            {addMode ? 'Adicionar' : 'Editar'}
         </CustomButton>
     </ProfileSection>
 );

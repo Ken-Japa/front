@@ -2,15 +2,17 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@m
 import { CustomButton } from '@/components/Custom/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Add loading prop to the interface
 interface EditDialogProps {
     open: boolean;
     title: string;
     value: string;
     onClose: () => void;
     onSave: (value: string) => void;
+    loading?: boolean;
 }
 
-export const EditDialog = ({ open, title, value, onClose, onSave }: EditDialogProps) => {
+export const EditDialog = ({ open, title, value, onClose, onSave, loading = false }: EditDialogProps) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
@@ -40,11 +42,17 @@ export const EditDialog = ({ open, title, value, onClose, onSave }: EditDialogPr
                                     label={title}
                                     defaultValue={value}
                                     fullWidth
+                                    disabled={loading}
                                 />
                             </DialogContent>
                             <DialogActions>
-                                <CustomButton value="Cancelar" onClick={onClose} color="inherit" />
-                                <CustomButton value="Salvar" type="submit" variant="contained" />
+                                <CustomButton value="Cancelar" onClick={onClose} color="inherit" disabled={loading} />
+                                <CustomButton 
+                                    value={loading ? "Salvando..." : "Salvar"} 
+                                    type="submit" 
+                                    variant="contained" 
+                                    disabled={loading}
+                                />
                             </DialogActions>
                         </form>
                     </motion.div>
