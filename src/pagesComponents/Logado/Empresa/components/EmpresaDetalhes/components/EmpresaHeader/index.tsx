@@ -83,28 +83,28 @@ export const EmpresaHeader: React.FC<EmpresaHeaderProps> = ({
                         </EmpresaTitulo>
 
                         <EmpresaSubtitulo variant="subtitle1">
-                            {empresa.setor} • {empresa.subsetor}
+                            {empresa.industria} • {empresa.segmento}
                         </EmpresaSubtitulo>
                     </Box>
                 </Box>
 
-                {(empresa.site || empresaInfo?.link) && (
+                {(empresaInfo?.link) && (
                     <SiteLink>
                         <Link
-                            href={empresaInfo?.link || empresa.site}
+                            href={empresaInfo?.link}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <LanguageIcon fontSize="small" />
                             <Typography variant="body2">
-                                {(empresaInfo?.link || empresa.site).replace(/^https?:\/\//, '')}
+                                {(empresaInfo?.link).replace(/^https?:\/\//, '')}
                             </Typography>
                         </Link>
                     </SiteLink>
                 )}
 
                 <EmpresaDescricao variant="body1">
-                    {empresaInfo?.descricao || empresa.descricao}
+                    {empresaInfo?.descricao}
                 </EmpresaDescricao>
 
                 <EmpresaChips

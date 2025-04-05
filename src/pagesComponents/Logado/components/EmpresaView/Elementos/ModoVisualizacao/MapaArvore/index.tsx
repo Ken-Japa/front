@@ -73,31 +73,39 @@ const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => 
     return (
         <Box
             sx={{
-                width: '100%',
+                width: '60vw',
                 height: '800px',
+                flex: 1,
                 minHeight: '600px',
-                flex: '1 1 auto',
                 display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
                 position: 'relative',
                 '& .tradingview-widget-copyright': {
                     display: 'none'
-                },
-                '& .tradingview-widget-container': {
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0
-                },
-                '& .tradingview-widget-container__widget': {
-                    width: '100%',
-                    height: '100%'
                 }
             }}
         >
-            <div className="tradingview-widget-container" ref={container}></div>
+            <div
+                style={{
+                    width: '100%',
+                    maxWidth: '100%',
+                    height: '700px',
+                    position: 'relative'
+                }}
+            >
+                <div
+                    className="tradingview-widget-container"
+                    ref={container}
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0
+                    }}
+                ></div>
+            </div>
         </Box>
     );
 };

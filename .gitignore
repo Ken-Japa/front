@@ -35,11 +35,16 @@ yarn-error.log*
 next-env.d.ts
 
 # Large mock data files
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/historicoempresas.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/empresasHistorico.json
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/empresas2.json
-src/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario2.json
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/empresas.json
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario.json
-src/pagesComponents/Logado/components/EmpresaView/mockdata_example/bdr.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/bdrs.json
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/company-model.json
 src/pagesComponents/Logado/components/EmpresaView/mockdata_example/dividendosEmpresas.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/dividendosBdr.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/dividendosFii.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario.json
+src/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario2.json

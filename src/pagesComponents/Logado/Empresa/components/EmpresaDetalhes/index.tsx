@@ -222,9 +222,7 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
                             <Tabs value={currentTab} onChange={handleTabChange}>
                                 <Tab label="Principal" value="principal" />
                                 <Tab label="Dividendos" value="dividendos" />
-                                {empresa.temDerivativo && (
-                                    <Tab label="Derivativos" value="derivativos" />
-                                )}
+
                             </Tabs>
                         </Box>
 
@@ -239,11 +237,11 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
                                     valorizacao12m={metricas.valorizacao12m}
                                 />
                             </ProgressiveLoad>
-                            
+
                             <ProgressiveLoad delay={0.2}>
                                 <GraficoHistorico codigoAtivo={codigoAtivo || ''} />
                             </ProgressiveLoad>
-                            
+
                             <ProgressiveLoad delay={0.4}>
                                 <AlertasSection codigoAtivo={codigoAtivo || ''} />
                             </ProgressiveLoad>
@@ -255,13 +253,6 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
                             </ProgressiveLoad>
                         </TabPanel>
 
-                        {empresa.temDerivativo && (
-                            <TabPanel value={currentTab} index="derivativos">
-                                <ProgressiveLoad>
-                                    <DerivativosTab codigoBase={codigoAtivo || ''} />
-                                </ProgressiveLoad>
-                            </TabPanel>
-                        )}
                     </ContentContainer>
                 </EmpresaContainer>
             </PageTransition>

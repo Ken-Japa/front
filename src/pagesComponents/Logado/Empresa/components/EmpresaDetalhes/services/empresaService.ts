@@ -16,9 +16,11 @@ export const getEmpresaBySlug = async (
       "@/pagesComponents/Logado/components/EmpresaView/mockdata_example/dividendosEmpresas.json"
     );
 
-    // Tratamento seguro para os dados de empresas e sumário
-    const empresas =
-      empresasResponse.default?.empresas || empresasResponse.empresas || [];
+    const empresas = Array.isArray(empresasResponse.default)
+      ? empresasResponse.default
+      : (empresasResponse.default as any)?.empresas ||
+        (empresasResponse as any).empresas ||
+        [];
 
     const sumario =
       sumarioResponse.default?.sumario || sumarioResponse.sumario || [];
@@ -131,30 +133,20 @@ export const getEmpresaBySlug = async (
     // Mapear códigos para o formato correto
     const codigosMapeados: Codigo[] = empresa.codigos.map((cod: any) => ({
       codigo: cod.codigo,
-      derivativos:
-        typeof cod.derivativos === "string"
-          ? cod.derivativos === "true"
-          : Boolean(cod.derivativos),
       preco: cod.preco || 0,
       variacao: cod.variacao || 0,
-      "data inicial": cod["data inicial"] || "",
       "valor mercado": cod["valor mercado"] || 0,
       precoAnterior: cod.precoAnterior || 0,
-      derivativo: cod.derivativo || [],
     }));
 
     // Construir objeto com todos os detalhes
     const empresaDetalhada: EmpresaDetalhada = {
       nome: empresa.nome,
-      setor: empresa.setor,
-      subsetor: empresa.subsetor,
-      descricao: empresa.descricao || "",
-      site: empresa.site || "",
+      industria: empresa.industria || "",
+      segmento: empresa.segmento || "",
       valorMercado,
-      participacao,
       codigos: codigosMapeados,
       dividendos: dividendosEmpresa?.dividendos || [],
-      temDerivativo: Boolean(empresa.derivativos),
     };
 
     return { empresa: empresaDetalhada, codigoEncontrado };
@@ -300,8 +292,11 @@ export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
     );
 
     // Tratamento seguro para os dados de empresas
-    const empresasRaw =
-      empresasResponse.default?.empresas || empresasResponse.empresas || [];
+    const empresasRaw = Array.isArray(empresasResponse.default)
+      ? empresasResponse.default
+      : (empresasResponse.default as any)?.empresas ||
+        (empresasResponse as any).empresas ||
+        [];
 
     // Tratamento seguro para os dados de sumário
     const sumario =
@@ -400,15 +395,10 @@ export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
         // Construir objeto com todos os detalhes
         return {
           nome: empresa.nome,
-          setor: empresa.setor,
-          subsetor: empresa.subsetor,
-          descricao: empresa.descricao || "",
-          site: empresa.site || "",
-          valorMercado,
-          participacao,
+          industria: empresa.industria || empresa.setor || "",
+          segmento: empresa.segmento || empresa.subsetor || "",
           codigos: codigosMapeados,
           dividendos: dividendosEmpresa?.dividendos || [],
-          temDerivativo: Boolean(empresa.derivativos),
         };
       }
     );
