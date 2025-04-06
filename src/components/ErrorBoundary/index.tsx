@@ -1,6 +1,6 @@
 "use client";
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { Box, Typography, Button, Stack } from '@mui/material';
+import { Box, Typography, Stack } from '@mui/material';
 import { CustomButton } from '@/components/Custom/Button';
 
 interface Props {

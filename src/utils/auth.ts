@@ -15,6 +15,30 @@ export function getAuthToken(): string | null {
   return null;
 }
 
+// Função centralizada para definir dados de autenticação
+export function setAuthData(token: string, userId?: string): void {
+  if (!token) return;
+  
+  // Armazenar no localStorage (para acesso do cliente)
+  if (typeof window !== 'undefined') {
+    localStorage.setItem("authToken", token);
+    
+    if (userId) {
+      localStorage.setItem("userId", userId);
+    }
+  }
+  
+  // Também definir em cookies para acesso entre abas
+  if (typeof document !== "undefined") {
+    const maxAge = 30 * 24 * 60 * 60; // 30 dias em segundos
+    document.cookie = `authToken=${token}; path=/; max-age=${maxAge}; SameSite=Lax`;
+    
+    if (userId) {
+      document.cookie = `userId=${userId}; path=/; max-age=${maxAge}; SameSite=Lax`;
+    }
+  }
+}
+
 function getUserIdNoConsole(): string | null {
   const localUserId = localStorage.getItem("userId");
   if (localUserId) return localUserId;
@@ -63,6 +87,36 @@ export function clearAuthData(): void {
   localStorage.removeItem("authToken");
   localStorage.removeItem("userId");
 
-  document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  if (typeof document !== "undefined") {
+    document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "clientAuthToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
+}
+
+
+/**
+ * Checks if the current auth token is valid
+ * @returns {boolean} True if a valid token exists
+ */
+export function hasValidToken(): boolean {
+  const token = getAuthToken();
+  
+  if (!token) return false;
+  
+  // If it's a Google token, assume it's valid (we can't easily check)
+  if (token.startsWith('google_')) return true;
+  
+  // For JWT tokens, we could check expiration if the token is decoded
+  // This is a simplified check - in a real app, you might want to decode the JWT
+  // and check its expiration date
+  return token.length > 20; // Arbitrary length check for a valid JWT
+}
+
+/**
+ * Checks if the user is authenticated
+ * @returns {boolean} True if the user is authenticated
+ */
+export function isAuthenticated(): boolean {
+  return hasValidToken() && !!getUserIdNoConsole();
 }

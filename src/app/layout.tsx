@@ -3,13 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { AnimatePresence } from "framer-motion";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-
-import { ThemeProvider } from '@/theme/ThemeContext';
 import { Layout } from "@/components/Layout";
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { AuthProvider } from "@/providers/AuthProvider";
-
+import { Providers } from "@/providers/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -87,22 +82,15 @@ export default function RootLayout({
           rel="dns-prefetch"
           href="https://fonts.googleapis.com"
         />
-
       </head>
-      <body className={inter.className} suppressHydrationWarning >
-        <ErrorBoundary>
-          <AuthProvider>
-            <AppRouterCacheProvider>
-              <ThemeProvider>
-                <Layout>
-                  <AnimatePresence mode="wait">
-                    {children}
-                  </AnimatePresence>
-                </Layout>
-              </ThemeProvider>
-            </AppRouterCacheProvider>
-          </AuthProvider>
-        </ErrorBoundary>
+      <body className={inter.className} suppressHydrationWarning>
+        <Providers>
+          <Layout>
+            <AnimatePresence mode="wait">
+              {children}
+            </AnimatePresence>
+          </Layout>
+        </Providers>
       </body>
     </html>
   );

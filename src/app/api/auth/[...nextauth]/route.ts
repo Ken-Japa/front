@@ -2,11 +2,41 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
+import { API_ENDPOINTS, getFullEndpointUrl } from "@/services/api/config";
+
+// Helper function to set auth cookies
+function setAuthCookies(token: string, userId?: string) {
+  // Set HTTP-only cookie for server-side use
+  cookies().set("authToken", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    path: "/",
+  });
+
+  // Set client-accessible cookie for API calls
+  cookies().set("clientAuthToken", token, {
+    httpOnly: false,
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 30 * 24 * 60 * 60,
+    path: "/",
+  });
+
+  // Set user ID cookie if available
+  if (userId) {
+    cookies().set("userId", userId, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 30 * 24 * 60 * 60,
+      path: "/",
+    });
+  }
+}
 
 async function handleGoogleLogin(token: string) {
   try {
     const response = await fetch(
-      "https://api-servidor-yupg.onrender.com/login/google",
+      getFullEndpointUrl(API_ENDPOINTS.AUTH.GOOGLE_LOGIN),
       {
         method: "POST",
         headers: {
@@ -24,6 +54,12 @@ async function handleGoogleLogin(token: string) {
     }
 
     const data = await response.json();
+    
+    // Set auth cookies if login successful
+    if (data && data.token) {
+      setAuthCookies(data.token, data.user?._id);
+    }
+    
     return data;
   } catch (error) {
     console.error("Error in Google login:", error);
@@ -36,6 +72,13 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          prompt: "select_account",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -48,7 +91,7 @@ const handler = NextAuth({
 
         try {
           const response = await fetch(
-            "https://api-servidor-yupg.onrender.com/login",
+            getFullEndpointUrl(API_ENDPOINTS.AUTH.LOGIN),
             {
               method: "POST",
               headers: {
@@ -68,19 +111,14 @@ const handler = NextAuth({
           const data = await response.json();
 
           if (data && data.success && data.data) {
-            // Store token in cookies instead of localStorage
-            cookies().set("authToken", data.data.token, {
-              httpOnly: true,
-              secure: process.env.NODE_ENV === "production",
-              maxAge: 30 * 24 * 60 * 60, // 30 days
-              path: "/",
-            });
+            // Set auth cookies
+            setAuthCookies(data.data.token, data.data.user?._id);
 
             // Return user data for NextAuth session
             return {
-              id: data.data._id || "",
-              email: data.data.email || "",
-              name: data.data.name || "",
+              id: data.data.user?._id || "",
+              email: data.data.user?.email || "",
+              name: data.data.user?.name || "",
             };
           }
 
@@ -108,35 +146,9 @@ const handler = NextAuth({
           // Send the Google token to our backend
           const apiResponse = await handleGoogleLogin(account.id_token);
 
-          if (apiResponse && apiResponse.token) {
-            // Store the token in cookies
-            cookies().set("authToken", apiResponse.token, {
-              httpOnly: true,
-              secure: process.env.NODE_ENV === "production",
-              maxAge: 30 * 24 * 60 * 60, // 30 days
-              path: "/",
-            });
-
-            // Also set a client-accessible version for API calls
-            cookies().set("clientAuthToken", apiResponse.token, {
-              httpOnly: false, // Allow client-side access
-              secure: process.env.NODE_ENV === "production",
-              maxAge: 30 * 24 * 60 * 60, // 30 days
-              path: "/",
-            });
-
-            // Store user ID in a client-accessible cookie
-            if (apiResponse.user && apiResponse.user._id) {
-              cookies().set("userId", apiResponse.user._id, {
-                httpOnly: false, // Allow client-side access
-                secure: process.env.NODE_ENV === "production",
-                maxAge: 30 * 24 * 60 * 60, // 30 days
-                path: "/",
-              });
-
-              // Store user ID for profile fetching
-              user.id = apiResponse.user._id;
-            }
+          if (apiResponse && apiResponse.user && apiResponse.user._id) {
+            // Store user ID for profile fetching
+            user.id = apiResponse.user._id;
           }
 
           return true;

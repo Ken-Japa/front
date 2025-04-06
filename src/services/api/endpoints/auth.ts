@@ -1,8 +1,8 @@
 import apiClient from '../client';
 import { LoginRequest, LoginResponse, User, ApiSuccessResponse } from '../types';
-import { clearAuthData } from '@/utils/auth';
+import { clearAuthData, setAuthData } from '@/utils/auth';
 
-// Endpoints padronizados com o NextAuth
+// Endpoints padronizados com o backend
 const ENDPOINTS = {
   LOGIN: '/login',
   LOGOUT: '/logout',
@@ -17,11 +17,10 @@ export const authApi = {
       const response = await apiClient.post<ApiSuccessResponse<LoginResponse>>(ENDPOINTS.LOGIN, credentials);
       
       if (response.data.success && response.data.data.token) {
-        localStorage.setItem('authToken', response.data.data.token);
-        
-        if (response.data.data.user && response.data.data.user._id) {
-          localStorage.setItem('userId', response.data.data.user._id);
-        }
+        setAuthData(
+          response.data.data.token, 
+          response.data.data.user?._id
+        );
       }
       
       return response.data.data;
@@ -71,11 +70,11 @@ export const authApi = {
       );
       
       if (response.data.success && response.data.data.token) {
-        localStorage.setItem('authToken', response.data.data.token);
-        
-        if (response.data.data.user && response.data.data.user._id) {
-          localStorage.setItem('userId', response.data.data.user._id);
-        }
+        // Usar a função centralizada para armazenar dados de autenticação
+        setAuthData(
+          response.data.data.token, 
+          response.data.data.user?._id
+        );
       }
       
       return response.data.data;

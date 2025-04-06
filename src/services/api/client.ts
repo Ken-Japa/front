@@ -5,6 +5,8 @@ import axios, {
   AxiosError,
 } from "axios";
 import { getAuthToken } from "@/utils/auth";
+import { handleApiError, ErrorCode } from './errorHandler';
+import { API_BASE_URL } from './config';
 
 // API response wrapper type
 export interface ApiResponse<T> {
@@ -14,11 +16,12 @@ export interface ApiResponse<T> {
   headers: any;
 }
 
-// API error type
+// API error type (atualizado)
 export interface ApiError {
   message: string;
   status?: number;
   data?: any;
+  code?: ErrorCode;
 }
 
 class ApiClient {
@@ -32,10 +35,9 @@ class ApiClient {
       },
     });
 
-    // Request interceptor - Atualizado para usar getAuthToken()
+    // Request interceptor
     this.client.interceptors.request.use(
       (config) => {
-        // Usar a função centralizada para obter o token
         const token = getAuthToken();
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
@@ -49,83 +51,35 @@ class ApiClient {
     this.client.interceptors.response.use(
       (response) => response,
       (error: AxiosError) => {
-        // Handle common errors (401, 403, etc.)
-        if (error.response?.status === 401) {
-          // Handle unauthorized (e.g., redirect to login)
-          window.location.href = "/login";
-        }
-
-        return Promise.reject(this.handleError(error));
+        // Usar o tratamento de erro centralizado
+        return Promise.reject(handleApiError(error));
       }
     );
   }
 
-  private handleError(error: AxiosError): ApiError {
-    return {
-      message: error.message || "An unexpected error occurred",
-      status: error.response?.status,
-      data: error.response?.data,
-    };
+  // Implement HTTP methods
+  async get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.client.get<T>(url, config);
   }
 
-  async get<T>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<ApiResponse<T>> {
-    const response = await this.client.get<T>(url, config);
-    return {
-      data: response.data,
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    };
+  async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.client.post<T>(url, data, config);
   }
 
-  async post<T>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig
-  ): Promise<ApiResponse<T>> {
-    const response = await this.client.post<T>(url, data, config);
-    return {
-      data: response.data,
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    };
+  async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.client.put<T>(url, data, config);
   }
 
-  async put<T>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig
-  ): Promise<ApiResponse<T>> {
-    const response = await this.client.put<T>(url, data, config);
-    return {
-      data: response.data,
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    };
+  async delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.client.delete<T>(url, config);
   }
 
-  async delete<T>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<ApiResponse<T>> {
-    const response = await this.client.delete<T>(url, config);
-    return {
-      data: response.data,
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    };
+  async patch<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.client.patch<T>(url, data, config);
   }
 }
 
 // Create and export the API client instance
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api-servidor-yupg.onrender.com";
 export const apiClient = new ApiClient(API_BASE_URL);
 
 export default apiClient;

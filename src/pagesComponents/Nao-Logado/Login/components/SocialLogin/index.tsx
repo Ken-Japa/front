@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 
 import { GoogleButton, RegisterLink } from './styled';
 import { SocialLoginSkeleton } from "./SocialLoginSkeleton";
+import { useState } from 'react';
 
 interface SocialLoginProps {
     handleGoogleSignIn: () => Promise<void>;
@@ -12,15 +13,22 @@ interface SocialLoginProps {
 }
 
 export const SocialLogin = ({ handleGoogleSignIn, isLoading }: SocialLoginProps) => {
+    const [isSigningIn, setIsSigningIn] = useState(false);
+    
     if (isLoading) {
         return <SocialLoginSkeleton />;
     }
 
     const handleGoogleClick = async () => {
+        if (isSigningIn) return; // Prevent multiple clicks
+        
         try {
+            setIsSigningIn(true);
             await handleGoogleSignIn();
         } catch (error) {
             console.error('Failed to sign in with Google:', error);
+        } finally {
+            setIsSigningIn(false);
         }
     };
 
@@ -38,9 +46,10 @@ export const SocialLogin = ({ handleGoogleSignIn, isLoading }: SocialLoginProps)
                 size="large"
                 startIcon={<GoogleIcon />}
                 onClick={handleGoogleClick}
+                disabled={isSigningIn}
                 aria-label="Continuar com Google"
             >
-                Continuar com Google
+                {isSigningIn ? 'Conectando...' : 'Continuar com Google'}
             </GoogleButton>
 
             <Typography 

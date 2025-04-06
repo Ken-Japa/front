@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
-import { DateProvider } from '@/providers/DateProvider';
 
 export default async function AuthLayout({
     children,
@@ -14,10 +13,8 @@ export default async function AuthLayout({
     }
 
     return (
-        <DateProvider>
-            <main className="pt-16">
-                {children}
-            </main>
-        </DateProvider>
+        <main className="pt-16">
+            {children}
+        </main>
     );
 }
