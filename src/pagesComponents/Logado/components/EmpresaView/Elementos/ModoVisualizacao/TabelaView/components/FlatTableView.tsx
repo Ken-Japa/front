@@ -6,6 +6,7 @@ import {
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import { SumarioData } from '../types';
 import { formatCurrency } from '../../utils/currency';
+import { useRouter } from 'next/navigation';
 
 interface FlatTableViewProps {
     data: SumarioData;
@@ -20,6 +21,8 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
     order,
     handleSort
 }) => {
+    const router = useRouter();
+    
     const allEmpresas = data.sumario.flatMap(industria =>
         industria.segmentos.flatMap(segmento =>
             segmento.empresasDetalhes.map(empresa => ({
@@ -36,6 +39,11 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
         }
         return 0;
     });
+    
+    // Add navigation handler for company details
+    const handleRowClick = (codigo: string) => {
+        router.push(`/empresa/${codigo}`);
+    };
 
     return (
         <Table sx={{ width: '100%', tableLayout: 'fixed' }}>
@@ -64,7 +72,12 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
                 {sortedEmpresas.map((empresa, index) => (
                     <React.Fragment key={index}>
                         {empresa.codigos.map((codigo, cIndex) => (
-                            <TableRow key={`${index}-${cIndex}`}>
+                            <TableRow 
+                                key={`${index}-${cIndex}`}
+                                hover
+                                onClick={() => handleRowClick(codigo.codigo)}
+                                sx={{ cursor: 'pointer' }}
+                            >
                                 {cIndex === 0 && (
                                     <>
                                         <TableCell rowSpan={empresa.codigos.length}>
@@ -80,28 +93,14 @@ export const FlatTableView: React.FC<FlatTableViewProps> = ({
                                             {formatCurrency(empresa.valorMercado)}
                                         </TableCell>
                                         <TableCell align="right" rowSpan={empresa.codigos.length}>
-                                            {`${((empresa.valorMercado / data.sumarioTotal.valorMercadoTotalGeral) * 100).toFixed(2)}%`}
+                                            {((empresa.valorMercado / data.sumarioTotal.valorMercadoTotalGeral) * 100).toFixed(2)}%
                                         </TableCell>
                                     </>
                                 )}
                                 <TableCell>{codigo.codigo}</TableCell>
+                                <TableCell align="right">{codigo.preco.toFixed(2)}</TableCell>
                                 <TableCell align="right">
-                                    {`R$ ${codigo.preco.toFixed(2)}`.replace('.', ',')}
-                                </TableCell>
-                                <TableCell
-                                    align="right"
-                                    sx={{
-                                        color: codigo.variacao
-                                            ? codigo.variacao > 0
-                                                ? 'success.main'
-                                                : 'error.main'
-                                            : 'text.primary'
-                                    }}
-                                >
-                                    {codigo.variacao
-                                        ? `${codigo.variacao > 0 ? '+' : ''}${codigo.variacao.toFixed(2)}%`
-                                        : '-'
-                                    }
+                                    {codigo.variacao !== undefined ? `${codigo.variacao.toFixed(2)}%` : '-'}
                                 </TableCell>
                             </TableRow>
                         ))}
