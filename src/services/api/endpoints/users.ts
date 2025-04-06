@@ -1,78 +1,77 @@
-import apiClient from '../client';
-import { User, ApiSuccessResponse } from '../types';
-import { API_ENDPOINTS } from '../config';
-import { ErrorCode, handleApiError } from '../errorHandler';
+import { User, ApiSuccessResponse } from "../types";
+import { API_ENDPOINTS } from "../config";
+import { ErrorCode, handleApiError } from "../errorHandler";
+import { BaseApiService } from "../baseService";
 
-// Helper function for consistent error handling
-const handleUserApiError = (error: any, operation: string, userId?: string): never => {
-  const userIdInfo = userId ? ` with ID ${userId}` : '';
-  console.error(`Error ${operation} user${userIdInfo}:`, error);
-  
-  // Use the centralized error handler but with a specific error code
-  throw handleApiError(error, ErrorCode.USER_NOT_FOUND);
-};
-
-export const userApi = {
-  // Create a new user
-  createUser: async (userData: Partial<User>): Promise<User> => {
+class UserApiService extends BaseApiService {
+  createUser = async (userData: Partial<User>): Promise<User> => {
     try {
-      const response = await apiClient.post<ApiSuccessResponse<User>>(
-        API_ENDPOINTS.USER.CREATE, 
+      const response = await this.post<User>(
+        API_ENDPOINTS.USER.CREATE,
         userData
       );
-      return response.data.data;
+      return response;
     } catch (error) {
-      return handleUserApiError(error, 'creating');
+      console.error(`Erro criando o usuário:`, error);
+      throw handleApiError(error, ErrorCode.USER_NOT_FOUND);
     }
-  },
-  
-  // Get user by ID
-  getUserById: async (userId: string): Promise<User> => {
+  };
+
+  getUserById = async (userId: string): Promise<User> => {
     try {
-      const response = await apiClient.get<ApiSuccessResponse<User>>(
+      const response = await this.get<User>(
         `${API_ENDPOINTS.USER.READ}/${userId}`
       );
-      return response.data.data;
+      return response;
     } catch (error) {
-      return handleUserApiError(error, 'fetching', userId);
+      console.error(`Erro ao buscar o usuário com ID: ${userId}:`, error);
+      throw handleApiError(error, ErrorCode.USER_NOT_FOUND);
     }
-  },
-  
-  // Update user
-  updateUser: async (userId: string, userData: Partial<User>): Promise<User> => {
+  };
+
+  updateUser = async (
+    userId: string,
+    userData: Partial<User>
+  ): Promise<User> => {
     try {
-      const response = await apiClient.put<ApiSuccessResponse<User>>(
+      const response = await this.put<User>(
         `${API_ENDPOINTS.USER.UPDATE}/${userId}`,
         userData
       );
-      return response.data.data;
+      return response;
     } catch (error) {
-      return handleUserApiError(error, 'updating', userId);
+      console.error(`Erro ao atualizar usuário com ID ${userId}:`, error);
+      throw handleApiError(error, ErrorCode.USER_NOT_FOUND);
     }
-  },
-  
-  // Delete user
-  deleteUser: async (userId: string): Promise<void> => {
+  };
+
+  deleteUser = async (userId: string): Promise<void> => {
     try {
-      await apiClient.delete<ApiSuccessResponse<void>>(
-        `${API_ENDPOINTS.USER.DELETE}/${userId}`
-      );
+      await this.delete<void>(`${API_ENDPOINTS.USER.DELETE}/${userId}`);
     } catch (error) {
-      handleUserApiError(error, 'deleting', userId);
+      console.error(`Erro ao excluir usuário com ID ${userId}:`, error);
+      throw handleApiError(error, ErrorCode.USER_NOT_FOUND);
     }
-  },
-  
-  // Update password
-  updatePassword: async (userId: string, oldPassword: string, newPassword: string): Promise<void> => {
+  };
+
+  updatePassword = async (
+    userId: string,
+    oldPassword: string,
+    newPassword: string
+  ): Promise<void> => {
     try {
-      await apiClient.put<ApiSuccessResponse<void>>(
+      await this.put<ApiSuccessResponse<void>>(
         `${API_ENDPOINTS.USER.UPDATE_PASSWORD}/${userId}`,
         { oldPassword, newPassword }
       );
     } catch (error) {
-      // For password updates, use a more specific error code
-      console.error(`Error updating password for user with ID ${userId}:`, error);
+      console.error(
+        `Erro ao atualizar a senha para o usuário: ${userId}:`,
+        error
+      );
       throw handleApiError(error, ErrorCode.INVALID_CREDENTIALS);
     }
-  }
-};
+  };
+}
+
+export const userApi = new UserApiService();

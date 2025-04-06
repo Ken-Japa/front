@@ -1,86 +1,90 @@
-import apiClient from '../client';
-import { LoginRequest, LoginResponse, User, ApiSuccessResponse } from '../types';
-import { clearAuthData, setAuthData } from '@/utils/auth';
+import { clearAuthData, setAuthData } from "@/utils/auth";
+import { API_ENDPOINTS } from "../config";
+import {
+  LoginRequest,
+  LoginResponse,
+  User,
+  ApiSuccessResponse,
+} from "../types";
+import { BaseApiService } from "../baseService";
+import { ErrorCode, handleApiError } from "../errorHandler";
 
-// Endpoints padronizados com o backend
-const ENDPOINTS = {
-  LOGIN: '/login',
-  LOGOUT: '/logout',
-  GOOGLE_LOGIN: '/login/google',
-  REGISTER: '/auth/register',
-  CURRENT_USER: '/auth/me'
-};
-
-export const authApi = {
-  login: async (credentials: LoginRequest): Promise<LoginResponse> => {
+class AuthApiService extends BaseApiService {
+  login = async (credentials: LoginRequest): Promise<LoginResponse> => {
     try {
-      const response = await apiClient.post<ApiSuccessResponse<LoginResponse>>(ENDPOINTS.LOGIN, credentials);
-      
-      if (response.data.success && response.data.data.token) {
-        setAuthData(
-          response.data.data.token, 
-          response.data.data.user?._id
-        );
+      const response = await this.post<LoginResponse>(
+        API_ENDPOINTS.AUTH.LOGIN,
+        credentials
+      );
+
+      // Store auth data
+      if (response.token) {
+        setAuthData(response.token, response.user?._id);
       }
-      
-      return response.data.data;
+
+      return response;
     } catch (error) {
-      console.error('Login failed:', error);
-      throw new Error('Authentication failed. Please check your credentials and try again.');
+      console.error("Falha no login:", error);
+      throw handleApiError(error, ErrorCode.AUTHENTICATION_FAILED);
     }
-  },
-  
-  logout: async (): Promise<void> => {
+  };
+
+  logout = async (): Promise<void> => {
     try {
-      // Server-side logout
-      await apiClient.post<ApiSuccessResponse<void>>(ENDPOINTS.LOGOUT);
+      await this.post<void>(API_ENDPOINTS.AUTH.LOGOUT);
     } catch (error) {
-      console.error('Error during server logout:', error);
+      console.error("Erro durante o logout do servidor:", error);
     } finally {
-      // Usar a função centralizada para limpar dados de autenticação
       clearAuthData();
     }
-  },
-  
-  getCurrentUser: async (): Promise<User> => {
+  };
+
+  getCurrentUser = async (): Promise<User> => {
     try {
-      const response = await apiClient.get<ApiSuccessResponse<User>>(ENDPOINTS.CURRENT_USER);
-      return response.data.data;
+      const response = await this.get<User>(
+        API_ENDPOINTS.AUTH.CURRENT_USER
+      );
+      return response;
     } catch (error) {
-      console.error('Error fetching current user:', error);
-      throw new Error('Failed to retrieve user profile. Please try logging in again.');
+      console.error("Erro ao buscar usuário atual:", error);
+      throw handleApiError(error, ErrorCode.USER_NOT_FOUND);
     }
-  },
-  
-  register: async (userData: { name: string; email: string; password: string }): Promise<User> => {
+  };
+
+  register = async (userData: {
+    name: string;
+    email: string;
+    password: string;
+  }): Promise<User> => {
     try {
-      const response = await apiClient.post<ApiSuccessResponse<User>>(ENDPOINTS.REGISTER, userData);
-      return response.data.data;
+      const response = await this.post<User>(
+        API_ENDPOINTS.AUTH.REGISTER,
+        userData
+      );
+      return response;
     } catch (error) {
-      console.error('Registration failed:', error);
-      throw new Error('Registration failed. Please check your information and try again.');
+      console.error("Falha no registro:", error);
+      throw handleApiError(error, ErrorCode.REGISTRATION_FAILED);
     }
-  },
-  
-  googleLogin: async (token: string): Promise<LoginResponse> => {
+  };
+
+  googleLogin = async (token: string): Promise<LoginResponse> => {
     try {
-      const response = await apiClient.post<ApiSuccessResponse<LoginResponse>>(
-        ENDPOINTS.GOOGLE_LOGIN, 
+      const response = await this.post<LoginResponse>(
+        API_ENDPOINTS.AUTH.GOOGLE_LOGIN,
         { token }
       );
-      
-      if (response.data.success && response.data.data.token) {
-        // Usar a função centralizada para armazenar dados de autenticação
-        setAuthData(
-          response.data.data.token, 
-          response.data.data.user?._id
-        );
+
+      if (response.token) {
+        setAuthData(response.token, response.user?._id);
       }
-      
-      return response.data.data;
+
+      return response;
     } catch (error) {
-      console.error('Google login failed:', error);
-      throw new Error('Google authentication failed. Please try again.');
+      console.error("Falha no login com Google:", error);
+      throw handleApiError(error, ErrorCode.AUTHENTICATION_FAILED);
     }
-  }
-};
+  };
+}
+
+export const authApi = new AuthApiService();

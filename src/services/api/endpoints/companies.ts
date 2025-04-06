@@ -1,48 +1,58 @@
-import apiClient from '../client';
-import { Company, CompanyDetails, PaginatedResponse, ApiSuccessResponse } from '../types';
+import { BaseApiService } from "../baseService";
+import { API_ENDPOINTS } from "../config";
+import { Company, CompanyListResponse, CompanyFilter } from "../types";
+import { ErrorCode, handleApiError } from "../errorHandler";
 
-export const companiesApi = {
-  getAll: async (page = 1, limit = 20, filters?: Record<string, any>): Promise<PaginatedResponse<Company>> => {
+class CompaniesApiService extends BaseApiService {
+  getCompanies = async (
+    filters?: CompanyFilter
+  ): Promise<CompanyListResponse> => {
+    const params = {
+      page: filters?.page !== undefined ? filters.page : 0,
+      pageSize: filters?.pageSize || 10,
+      ...(filters?.nome && { nome: filters.nome }),
+      ...(filters?.setor && { setor: filters.setor }),
+      ...(filters?.subsetor && { subsetor: filters.subsetor }),
+    };
+
     try {
-      const response = await apiClient.get<ApiSuccessResponse<PaginatedResponse<Company>>>('/companies', {
-        params: { page, limit, ...filters }
-      });
-      return response.data.data;
+      return await this.get<CompanyListResponse>(
+        API_ENDPOINTS.COMPANY.PAGINATION,
+        params
+      );
     } catch (error) {
-      console.error('Error fetching companies:', error);
-      throw new Error('Failed to fetch companies. Please try again later.');
+      console.error("Erro ao buscar companhias:", error);
+      throw handleApiError(error, ErrorCode.COMPANY_DATA_ERROR);
     }
-  },
-  
-  getById: async (id: string): Promise<CompanyDetails> => {
+  };
+
+  getCompany = async (
+    id: string
+  ): Promise<{ success: boolean; data: Company }> => {
     try {
-      const response = await apiClient.get<ApiSuccessResponse<CompanyDetails>>(`/companies/${id}`);
-      return response.data.data;
+      return await this.get<{ success: boolean; data: Company }>(
+        `${API_ENDPOINTS.COMPANY.DETAIL}/${id}`,
+        undefined,
+        ErrorCode.COMPANY_NOT_FOUND
+      );
     } catch (error) {
-      console.error(`Error fetching company with ID ${id}:`, error);
-      throw new Error('Failed to fetch company details. Please try again later.');
+      console.error(`Erro ao buscar empresa com ID ${id}:`, error);
+      throw handleApiError(error, ErrorCode.COMPANY_NOT_FOUND);
     }
-  },
-  
-  getByTicker: async (ticker: string): Promise<CompanyDetails> => {
+  };
+
+  searchCompanies = async (nome: string): Promise<CompanyListResponse> => {
     try {
-      const response = await apiClient.get<ApiSuccessResponse<CompanyDetails>>(`/companies/ticker/${ticker}`);
-      return response.data.data;
+      return await this.get<CompanyListResponse>(
+        API_ENDPOINTS.COMPANY.PAGINATION,
+        { nome, pageSize: 10, page: 0 },
+        ErrorCode.COMPANY_DATA_ERROR
+      );
     } catch (error) {
-      console.error(`Error fetching company with ticker ${ticker}:`, error);
-      throw new Error('Failed to fetch company details. Please try again later.');
+      console.error(`Erro ao pesquisar empresas com nome "${nome}":`, error);
+      throw handleApiError(error, ErrorCode.COMPANY_DATA_ERROR);
     }
-  },
-  
-  search: async (query: string): Promise<Company[]> => {
-    try {
-      const response = await apiClient.get<ApiSuccessResponse<Company[]>>('/companies/search', {
-        params: { q: query }
-      });
-      return response.data.data;
-    } catch (error) {
-      console.error(`Error searching companies with query "${query}":`, error);
-      throw new Error('Failed to search companies. Please try again later.');
-    }
-  }
-};
+  };
+}
+
+export const companiesApi = new CompaniesApiService();

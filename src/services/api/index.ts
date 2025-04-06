@@ -1,20 +1,14 @@
-import apiClient from './client';
-import { authApi } from './endpoints/auth';
-import { companiesApi } from './endpoints/companies';
-import { userApi } from './endpoints/users';
+import apiClient from "./client";
+import * as endpoints from "./endpoints";
 
-// Export all API services
 export const api = {
-  auth: authApi,
-  companies: companiesApi,
-  users: userApi,
-  // Add more API services as needed
+  auth: endpoints.authApi,
+  companies: endpoints.companiesApi,
+  users: endpoints.userApi,
 };
 
-// Export types
-export * from './types';
+export * from "./types";
 
-// Export the client for direct use if needed
 export { apiClient };
 
 export default api;
