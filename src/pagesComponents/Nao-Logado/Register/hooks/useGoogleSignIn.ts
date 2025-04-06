@@ -1,22 +1,21 @@
-import { type MouseEvent } from 'react';
+import { type MouseEvent } from "react";
 import { signIn } from "next-auth/react";
 
 export const useGoogleSignIn = (defaultRedirect: string) => {
-    const handleGoogleClick = async (e: MouseEvent) => {
-        e.preventDefault();
-        try {
-            const searchParams = new URLSearchParams(window.location.search);
-            const callbackUrl = searchParams.get("callbackUrl") || defaultRedirect;
+  const handleGoogleClick = async (e: MouseEvent) => {
+    e.preventDefault();
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const callbackUrl = searchParams.get("callbackUrl") || defaultRedirect;
 
-            // Just use NextAuth's signIn without trying to handle the token ourselves
-            await signIn("google", {
-                callbackUrl,
-                redirect: true,
-            });
-        } catch (error) {
-            console.error("Google sign-in error:", error);
-        }
-    };
+      await signIn("google", {
+        callbackUrl,
+        redirect: true,
+      });
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
+  };
 
-    return { handleGoogleClick };
+  return { handleGoogleClick };
 };

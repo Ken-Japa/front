@@ -6,19 +6,26 @@ import { cookies } from "next/headers";
 // Create a server-side function to handle Google login
 async function handleGoogleLogin(token: string) {
   try {
-    const response = await fetch("https://api-servidor-yupg.onrender.com/login/google", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ token }),
-    });
+    const response = await fetch(
+      "https://api-servidor-yupg.onrender.com/login/google",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      }
+    );
 
     if (!response.ok) {
+      console.error(`API error: ${response.status}`);
+      const errorData = await response.json();
+      console.error("API error details:", errorData);
       throw new Error(`API error: ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Error in Google login:", error);
     throw error;
@@ -35,30 +42,32 @@ const handler = NextAuth({
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
-        
+
         try {
-          // Call the API directly here instead of relying on localStorage
-          const response = await fetch("https://api-servidor-yupg.onrender.com/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: credentials.email,
-              password: credentials.password
-            }),
-          });
-          
+          const response = await fetch(
+            "https://api-servidor-yupg.onrender.com/login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: credentials.email,
+                password: credentials.password,
+              }),
+            }
+          );
+
           if (!response.ok) {
             return null;
           }
-          
+
           const data = await response.json();
-          
+
           if (data && data.success && data.data) {
             // Store token in cookies instead of localStorage
             cookies().set("authToken", data.data.token, {
@@ -67,26 +76,26 @@ const handler = NextAuth({
               maxAge: 30 * 24 * 60 * 60, // 30 days
               path: "/",
             });
-            
+
             // Return user data for NextAuth session
             return {
-              id: data.data._id || '',
-              email: data.data.email || '',
-              name: data.data.name || '',
+              id: data.data._id || "",
+              email: data.data.email || "",
+              name: data.data.name || "",
             };
           }
-          
+
           return null;
         } catch (error) {
           console.error("Authentication error:", error);
           return null;
         }
-      }
-    })
+      },
+    }),
   ],
   pages: {
-    signIn: '/login',
-    error: '/auth/error',
+    signIn: "/login",
+    error: "/auth/error",
   },
   session: {
     strategy: "jwt",
@@ -95,13 +104,13 @@ const handler = NextAuth({
   callbacks: {
     async signIn({ user, account }) {
       // Handle Google sign-in
-      if (account?.provider === 'google' && account?.id_token) {
+      if (account?.provider === "google" && account?.id_token) {
         try {
           // Send the Google token to our backend
           const apiResponse = await handleGoogleLogin(account.id_token);
-          
+
           if (apiResponse && apiResponse.token) {
-            // Store the token in a secure HTTP-only cookie
+            // Store the token in cookies
             cookies().set("authToken", apiResponse.token, {
               httpOnly: true,
               secure: process.env.NODE_ENV === "production",
@@ -109,43 +118,62 @@ const handler = NextAuth({
               path: "/",
             });
             
-            // Update user with data from our API if needed
-            if (apiResponse.user) {
-              user.id = apiResponse.user._id || user.id;
-              user.name = apiResponse.user.name || user.name;
-              user.email = apiResponse.user.email || user.email;
-              user.image = apiResponse.user.picture || user.image;
+            // Also set a client-accessible version for API calls
+            cookies().set("clientAuthToken", apiResponse.token, {
+              httpOnly: false, // Allow client-side access
+              secure: process.env.NODE_ENV === "production",
+              maxAge: 30 * 24 * 60 * 60, // 30 days
+              path: "/",
+            });
+
+            // Store user ID in a client-accessible cookie
+            if (apiResponse.user && apiResponse.user._id) {
+              cookies().set("userId", apiResponse.user._id, {
+                httpOnly: false, // Allow client-side access
+                secure: process.env.NODE_ENV === "production",
+                maxAge: 30 * 24 * 60 * 60, // 30 days
+                path: "/",
+              });
+              
+              // Store user ID for profile fetching
+              user.id = apiResponse.user._id;
             }
           }
-          
+
           return true;
         } catch (error) {
           console.error("Google authentication error:", error);
-          return false;
+          // Still allow sign in even if our API fails
+          return true;
         }
       }
-      
+
       return true;
     },
-    async session({ session, token }) {
-      if (token.sub) {
-        session.user.id = token.sub;
-      }
-      
-      // Add the user ID to the session
-      if (token.userId) {
-        session.user.id = token.userId as string;
-      }
-      
-      return session;
-    },
-    async jwt({ token, user }) {
+
+    async jwt({ token, user, account }) {
+      // Add user ID to the token when signing in
       if (user) {
         token.userId = user.id;
       }
+
+      // Add the auth token from Google sign-in
+      if (account?.provider === "google" && account?.id_token) {
+        token.googleToken = account.id_token;
+      }
+
       return token;
-    }
-  }
+    },
+
+    async session({ session, token }) {
+      // Add user ID to the session
+      if (token.userId) {
+        session.user.id = token.userId as string;
+      }
+
+      return session;
+    },
+  },
 });
 
 export { handler as GET, handler as POST };

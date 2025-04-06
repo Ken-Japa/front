@@ -24,6 +24,11 @@ export interface LoginResponse {
   token: string;
 }
 
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
 // Company related types
 export interface Company {
   id: string;

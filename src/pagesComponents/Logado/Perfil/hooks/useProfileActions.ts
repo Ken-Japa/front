@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { Session } from 'next-auth';
 import { UserProfile } from '../types';
 import { ProfileService } from '../services/api';
+import { getUserId } from '@/utils/auth';
 
 export const useProfileActions = (
     session: Session | null,
@@ -22,11 +23,15 @@ export const useProfileActions = (
     }, []);
 
     const handleSave = useCallback(async (value: string) => {
-        if (!editField || !session?.user?.email) return;
+        if (!editField) return;
 
         setIsSaving(true);
         try {
-            const userId = localStorage.getItem("userId") || session.user.email;
+            const userId = getUserId(session);
+            
+            if (!userId) {
+                throw new Error("User ID not found");
+            }
 
             if (editField === 'defaultDashboard' || editField === 'defaultPositionType') {
                 await ProfileService.updateUserProfile(userId, {
@@ -105,7 +110,9 @@ export const useProfileActions = (
 
         setIsSaving(true);
         try {
-            const userId = localStorage.getItem("userId") || session.user.email;
+            const userId = getUserId(session);
+            if (!userId) throw new Error("User ID not found");
+            
             await ProfileService.updatePassword(userId, oldPassword, newPassword);
             setShowPasswordDialog(false);
             setNotification({
