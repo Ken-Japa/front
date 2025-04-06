@@ -1,3 +1,4 @@
-export * from "./companies";
-export * from "./auth";
-export * from "./users";
+export { authApi } from "./auth";
+export { companiesApi } from "./companies";
+export { userApi } from "./users";
+export { historicalApi } from "./historical";

@@ -26,7 +26,10 @@ export const API_ENDPOINTS = {
     PAGINATION: "/company/pagination",
     DETAIL: "/company",
   },
-
+  // Historical data endpoints
+  HISTORIC: {
+    PAGINATION: "/historic/pagination",
+  },
   // Outros grupos de endpoints...
 };
 

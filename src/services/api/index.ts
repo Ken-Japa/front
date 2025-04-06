@@ -5,6 +5,7 @@ export const api = {
   auth: endpoints.authApi,
   companies: endpoints.companiesApi,
   users: endpoints.userApi,
+  historical: endpoints.historicalApi,
 };
 
 export * from "./types";
