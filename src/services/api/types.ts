@@ -12,11 +12,20 @@ export interface User {
   _id?: string;
   name?: string;
   email?: string;
-  password?: string; // Only for requests, should not be stored in state
+  password?: string;
   googleId?: string;
   picture?: string;
   createdAt?: string;
   updatedAt?: string;
+  phone?: string;
+  cpf?: string;
+  isActive?: boolean;
+  preferences?: {
+    defaultDashboard?: string;
+    defaultPositionType?: "real" | "simulated";
+    notifications?: boolean;
+    theme?: "light" | "dark";
+  };
 }
 
 export interface LoginResponse {
@@ -65,4 +74,9 @@ export interface NewsItem {
   url: string;
   publishedAt: string;
   relatedCompanies: string[];
+}
+
+export interface ApiSuccessResponse<T> {
+  success: boolean;
+  data: T;
 }

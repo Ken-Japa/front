@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button, Snackbar, Alert } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-
+import { clearAuthData } from '@/utils/auth';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
@@ -26,7 +26,7 @@ import {
 
 export const Perfil = () => {
     const { data: session, status } = useSession();
-    
+
     // Use custom hooks to manage state and actions
     const {
         userData,
@@ -109,7 +109,10 @@ export const Perfil = () => {
                                 variant="text"
                                 color="error"
                                 endIcon={<LogoutIcon />}
-                                onClick={() => signOut({ callbackUrl: '/' })}
+                                onClick={() => {
+                                    clearAuthData();
+                                    signOut({ callbackUrl: '/' })
+                                }}
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',

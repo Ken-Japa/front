@@ -17,11 +17,13 @@ export const useProfileActions = (
     const [showPasswordDialog, setShowPasswordDialog] = useState(false);
     const [passwordError, setPasswordError] = useState("");
 
+    // Iniciar edição de um campo
     const handleEdit = useCallback((field: string, value: string) => {
         setEditField(field);
         setEditValue(value || "");
     }, []);
 
+    // Salvar alterações em um campo
     const handleSave = useCallback(async (value: string) => {
         if (!editField) return;
 
@@ -30,49 +32,27 @@ export const useProfileActions = (
             const userId = getUserId(session);
             
             if (!userId) {
-                throw new Error("User ID not found");
+                throw new Error("User ID não encontrado");
             }
 
+            let updatedProfile: UserProfile;
+
+            // Atualizar preferências ou campos básicos
             if (editField === 'defaultDashboard' || editField === 'defaultPositionType') {
-                await ProfileService.updateUserProfile(userId, {
+                updatedProfile = await ProfileService.updateUserProfile(userId, {
                     preferences: {
                         ...(userData?.preferences || {}),
                         [editField]: value
                     }
                 } as Partial<UserProfile>);
             } else {
-                await ProfileService.updateUserProfile(userId, {
+                updatedProfile = await ProfileService.updateUserProfile(userId, {
                     [editField]: value
                 } as Partial<UserProfile>);
             }
 
-            setUserData((prev: UserProfile | null) => {
-                if (!prev) return {
-                    id: userId,
-                    name: editField === 'name' ? value : displayValues.name,
-                    email: editField === 'email' ? value : displayValues.email,
-                    phone: editField === 'phone' ? value : displayValues.phone,
-                    preferences: {
-                        theme: localStorage.getItem('theme') as 'light' | 'dark' || 'dark',
-                        notifications: false
-                    }
-                };
-
-                if (editField === 'defaultDashboard' || editField === 'defaultPositionType') {
-                    return {
-                        ...prev,
-                        preferences: {
-                            ...prev.preferences,
-                            [editField]: value
-                        }
-                    };
-                }
-
-                return {
-                    ...prev,
-                    [editField]: value
-                };
-            });
+            // Atualizar estado local com os dados retornados da API
+            setUserData(updatedProfile);
 
             setNotification({
                 open: true,
@@ -82,6 +62,7 @@ export const useProfileActions = (
         } catch (error: any) {
             console.error("Error updating profile:", error);
 
+            // Mensagens de erro mais específicas
             let errorMessage = 'Erro ao atualizar perfil';
 
             if (error.message) {
@@ -103,41 +84,30 @@ export const useProfileActions = (
             setIsSaving(false);
             setEditField(null);
         }
-    }, [editField, session, userData, displayValues, setUserData, setNotification]);
+    }, [editField, userData, session, setUserData, setNotification]);
 
+    // Alterar senha
     const handlePasswordChange = useCallback(async (oldPassword: string, newPassword: string) => {
-        if (!session?.user?.email) return;
-
-        setIsSaving(true);
         try {
             const userId = getUserId(session);
-            if (!userId) throw new Error("User ID not found");
             
-            await ProfileService.updatePassword(userId, oldPassword, newPassword);
-            setShowPasswordDialog(false);
-            setNotification({
-                open: true,
-                message: 'Senha alterada com sucesso',
-                type: 'success'
-            });
-        } catch (error: any) {
-            console.error("Error updating password:", error);
-
-            let passwordErrorMsg = "Senha atual incorreta ou nova senha inválida";
-
-            if (error.message) {
-                if (error.message.includes('incorrect')) {
-                    passwordErrorMsg = "Senha atual incorreta";
-                } else if (error.message.includes('requirements')) {
-                    passwordErrorMsg = "Nova senha não atende aos requisitos de segurança";
-                } else if (error.message.includes('match')) {
-                    passwordErrorMsg = "As senhas não coincidem";
-                }
+            if (!userId) {
+                throw new Error("User ID não encontrado");
             }
 
-            setPasswordError(passwordErrorMsg);
-        } finally {
-            setIsSaving(false);
+            await ProfileService.updatePassword(userId, oldPassword, newPassword);
+            
+            setShowPasswordDialog(false);
+            setPasswordError("");
+            
+            setNotification({
+                open: true,
+                message: 'Senha atualizada com sucesso',
+                type: 'success'
+            });
+        } catch (error) {
+            console.error("Error updating password:", error);
+            setPasswordError("Falha ao atualizar senha. Verifique sua senha atual.");
         }
     }, [session, setNotification]);
 
@@ -148,6 +118,7 @@ export const useProfileActions = (
         showPasswordDialog,
         passwordError,
         setEditField,
+        setEditValue,
         setShowPasswordDialog,
         setPasswordError,
         handleEdit,

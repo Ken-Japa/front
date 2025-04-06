@@ -7,10 +7,10 @@ import { FormData, FormErrors } from "../../types";
 import { FormHeader } from "../FormHeader";
 import { SocialLogin } from "../SocialLogin";
 import { LoginFormSkeleton } from "./LoginFormSkeleton";
-import { 
-    LoginFormStyled, 
-    ForgotPasswordLink, 
-    RememberMeContainer 
+import {
+    LoginFormStyled,
+    ForgotPasswordLink,
+    RememberMeContainer
 } from "./styled";
 
 interface LoginFormProps {
@@ -104,7 +104,6 @@ export const LoginFormComponent = ({
                 size="large"
                 disabled={isBlocked || !isFormValid}
                 onClick={(e) => {
-                    console.log("Button clicked directly");
                     if (!isBlocked && isFormValid) {
                         handleSubmit(e);
                     }

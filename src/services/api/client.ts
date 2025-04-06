@@ -4,6 +4,7 @@ import axios, {
   AxiosResponse,
   AxiosError,
 } from "axios";
+import { getAuthToken } from "@/utils/auth";
 
 // API response wrapper type
 export interface ApiResponse<T> {
@@ -31,11 +32,11 @@ class ApiClient {
       },
     });
 
-    // Request interceptor
+    // Request interceptor - Atualizado para usar getAuthToken()
     this.client.interceptors.request.use(
       (config) => {
-        // Get token from localStorage or other state management
-        const token = localStorage.getItem("authToken");
+        // Usar a função centralizada para obter o token
+        const token = getAuthToken();
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -124,7 +125,7 @@ class ApiClient {
 
 // Create and export the API client instance
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api";
+  process.env.NEXT_PUBLIC_API_URL || "https://api-servidor-yupg.onrender.com";
 export const apiClient = new ApiClient(API_BASE_URL);
 
 export default apiClient;

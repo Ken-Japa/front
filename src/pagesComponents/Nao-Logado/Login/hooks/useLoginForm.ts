@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { signIn } from "next-auth/react"; // Make sure this import is present
+import { signIn } from "next-auth/react";
 
 import { LOGIN_CONSTANTS } from "../constants";
 import { validateLoginForm } from "../utils/validation";
@@ -49,7 +49,6 @@ export const useLoginForm = () => {
         const searchParams = new URLSearchParams(window.location.search);
         const callbackUrl = searchParams.get("callbackUrl") || DEFAULT_REDIRECT;
 
-        // Use NextAuth's signIn method
         const result = await signIn("credentials", {
           email: formData.email,
           password: formData.password,

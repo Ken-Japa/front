@@ -1,85 +1,61 @@
 import { UserProfile, SubscriptionDetails } from "../types";
-import { getAuthToken } from "@/utils/auth";
+import { userApi } from "@/services/api/endpoints/users";
+import { User, ApiSuccessResponse } from "@/services/api/types";
+import { apiClient } from "@/services/api";
 
-const API_URL = "https://api-servidor-yupg.onrender.com";
+// Função auxiliar para mapear User para UserProfile
+const mapUserToProfile = (user: User): UserProfile => {
+  const theme = (localStorage.getItem("theme") as "light" | "dark") || "dark";
+
+  return {
+    id: user._id || user.googleId || "",
+    name: user.name || "",
+    email: user.email || "",
+    phone: user.phone || null,
+    cpf: user.cpf || undefined,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
+    isActive: user.isActive !== undefined ? user.isActive : true,
+    preferences: {
+      theme,
+      notifications: user.preferences?.notifications || false,
+      defaultDashboard: user.preferences?.defaultDashboard,
+      defaultPositionType:
+        (user.preferences?.defaultPositionType as
+          | "real"
+          | "simulated"
+          | undefined) || undefined,
+    },
+  };
+};
+
+// Função auxiliar para obter dados de fallback
+const getFallbackUserData = (userId: string): UserProfile => ({
+  id: userId,
+  name:
+    localStorage.getItem("userName") ||
+    sessionStorage.getItem("userName") ||
+    "",
+  email:
+    localStorage.getItem("userEmail") ||
+    sessionStorage.getItem("userEmail") ||
+    "",
+  phone: null,
+  preferences: {
+    theme: (localStorage.getItem("theme") as "light" | "dark") || "dark",
+    notifications: false,
+  },
+});
 
 export const ProfileService = {
   getUserProfile: async (userId: string): Promise<UserProfile> => {
     try {
-      const token = getAuthToken();
-      const isGoogleId = userId.includes("@") === false && userId.length > 20;
-
-      if (!token && !isGoogleId) {
-        throw new Error("No authentication token found");
-      }
-
-      if (isGoogleId) {
-        try {
-          const response = await fetch(`${API_URL}/user/read/${userId}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            return data.data || data;
-          }
-        } catch (error) {
-          console.error("Error with direct profile access:", error);
-        }
-      }
-
-      if (token) {
-        const response = await fetch(`${API_URL}/user/read/${userId}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          return data.data || data;
-        }
-      }
-
-      return {
-        id: userId,
-        name:
-          localStorage.getItem("userName") ||
-          sessionStorage.getItem("userName") ||
-          "",
-        email:
-          localStorage.getItem("userEmail") ||
-          sessionStorage.getItem("userEmail") ||
-          "",
-        phone: null,
-        preferences: {
-          theme: "light",
-          notifications: false,
-        },
-      };
+      // Usar diretamente o userApi que já gerencia tokens e erros
+      const user = await userApi.getUserById(userId);
+      return mapUserToProfile(user);
     } catch (error) {
-      console.error("Error fetching user profile:", error);
-      return {
-        id: userId,
-        name:
-          localStorage.getItem("userName") ||
-          sessionStorage.getItem("userName") ||
-          "",
-        email:
-          localStorage.getItem("userEmail") ||
-          sessionStorage.getItem("userEmail") ||
-          "",
-        phone: null,
-        preferences: {
-          theme: "dark",
-          notifications: false,
-        },
-      };
+      console.error("Error in getUserProfile:", error);
+      return getFallbackUserData(userId);
     }
   },
 
@@ -88,51 +64,25 @@ export const ProfileService = {
     data: Partial<UserProfile>
   ): Promise<UserProfile> => {
     try {
-      const token = getAuthToken();
-      const isGoogleId = userId.includes("@") === false && userId.length > 20;
+      // Converter UserProfile para User
+      const userData: Partial<User> = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone || undefined,
+        cpf: data.cpf,
+      };
 
-      if (!token && !isGoogleId) {
-        throw new Error("No authentication token found");
+      if (data.preferences) {
+        userData.preferences = {
+          ...data.preferences,
+        };
       }
 
-      if (isGoogleId) {
-        try {
-          const response = await fetch(`${API_URL}/user/update/${userId}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-
-          if (response.ok) {
-            const responseData = await response.json();
-            return responseData.data || responseData;
-          }
-        } catch (error) {
-          console.error("Error with direct profile access:", error);
-        }
-      }
-
-      if (token) {
-        const response = await fetch(`${API_URL}/user/update/${userId}`, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (response.ok) {
-          const responseData = await response.json();
-          return responseData.data || responseData;
-        }
-      }
-
-      throw new Error("Failed to update user profile");
+      // Usar diretamente o userApi
+      const updatedUser = await userApi.updateUser(userId, userData);
+      return mapUserToProfile(updatedUser);
     } catch (error) {
-      console.error("Error updating user profile:", error);
+      console.error("Erro atualizando perfil do usuário:", error);
       throw error;
     }
   },
@@ -142,24 +92,12 @@ export const ProfileService = {
     oldPassword: string,
     newPassword: string
   ): Promise<void> => {
-    const token = getAuthToken();
-    if (!token) throw new Error("No authentication token found");
-
-    const response = await fetch(`${API_URL}/user/update-password/${userId}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        oldPassword,
-        newPassword,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Failed to update password");
+    try {
+      // Usar diretamente o userApi
+      await userApi.updatePassword(userId, oldPassword, newPassword);
+    } catch (error) {
+      console.error("Erro atualizando a senha:", error);
+      throw error;
     }
   },
 
@@ -167,25 +105,14 @@ export const ProfileService = {
     userId: string
   ): Promise<SubscriptionDetails> => {
     try {
-      const token = getAuthToken();
-      if (!token) throw new Error("No authentication token found");
+      const response = await apiClient.get<ApiSuccessResponse<SubscriptionDetails>>(
+        `/subscriptions/${userId}`
+      );
 
-      const response = await fetch(`${API_URL}/subscriptions/${userId}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch subscription details");
-      }
-
-      const data = await response.json();
-      return data.data || data;
+      return response.data.data;
     } catch (error) {
-      console.error("Error fetching subscription:", error);
+      console.error("Erro ao obter assinatura:", error);
+      // Retornar dados de fallback para assinatura
       return {
         id: "",
         planId: "",
@@ -206,23 +133,16 @@ export const ProfileService = {
     userId: string,
     planId: string
   ): Promise<SubscriptionDetails> => {
-    const token = getAuthToken();
-    if (!token) throw new Error("No authentication token found");
+    try {
+      const response = await apiClient.put<ApiSuccessResponse<SubscriptionDetails>>(
+        `/subscriptions/${userId}`, 
+        { planId }
+      );
 
-    const response = await fetch(`${API_URL}/subscriptions/${userId}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ planId }),
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to update subscription");
+      return response.data.data;
+    } catch (error) {
+      console.error("Erro na atualização de assinatura:", error);
+      throw error;
     }
-
-    const data = await response.json();
-    return data.data || data;
   },
 };

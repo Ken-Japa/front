@@ -1,64 +1,69 @@
 import apiClient from '../client';
-import { User, LoginResponse } from '../types';
+import { User, ApiSuccessResponse } from '../types';
+
+// Endpoints padronizados
+const ENDPOINTS = {
+  CREATE: '/user/create',
+  READ: '/user/read',
+  UPDATE: '/user/update',
+  DELETE: '/user/delete',
+  UPDATE_PASSWORD: '/user/update-password'
+};
 
 export const userApi = {
   // Create a new user
   createUser: async (userData: Partial<User>): Promise<User> => {
-    const response = await apiClient.post<User>('/user/create', userData);
-    return response.data;
+    try {
+      const response = await apiClient.post<ApiSuccessResponse<User>>(ENDPOINTS.CREATE, userData);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error creating user:', error);
+      throw new Error('Failed to create user. Please check your information and try again.');
+    }
   },
   
   // Get user by ID
   getUserById: async (userId: string): Promise<User> => {
-    const response = await apiClient.get<User>(`/user/read/${userId}`);
-    return response.data;
+    try {
+      const response = await apiClient.get<ApiSuccessResponse<User>>(`${ENDPOINTS.READ}/${userId}`);
+      return response.data.data;
+    } catch (error) {
+      console.error(`Error fetching user with ID ${userId}:`, error);
+      throw new Error('Failed to retrieve user information. Please try again later.');
+    }
   },
   
   // Update user
   updateUser: async (userId: string, userData: Partial<User>): Promise<User> => {
-    const response = await apiClient.put<User>(`/user/update/${userId}`, userData);
-    return response.data;
+    try {
+      const response = await apiClient.put<ApiSuccessResponse<User>>(`${ENDPOINTS.UPDATE}/${userId}`, userData);
+      return response.data.data;
+    } catch (error) {
+      console.error(`Error updating user with ID ${userId}:`, error);
+      throw new Error('Failed to update user information. Please try again later.');
+    }
   },
   
   // Delete user
   deleteUser: async (userId: string): Promise<void> => {
-    await apiClient.delete(`/user/delete/${userId}`);
-  },
-  
-  // Regular login
-  login: async (credentials: { email: string; password: string }): Promise<LoginResponse> => {
-    const response = await apiClient.post<LoginResponse>('/login', credentials);
-    // Store token in localStorage
-    if (response.data.token) {
-      localStorage.setItem('authToken', response.data.token);
+    try {
+      await apiClient.delete<ApiSuccessResponse<void>>(`${ENDPOINTS.DELETE}/${userId}`);
+    } catch (error) {
+      console.error(`Error deleting user with ID ${userId}:`, error);
+      throw new Error('Failed to delete user. Please try again later.');
     }
-    return response.data;
   },
   
-  // Google login
-  googleLogin: async (token: string): Promise<LoginResponse> => {
-    const response = await apiClient.post<LoginResponse>('/login/google', { token });
-    // Store token in localStorage
-    if (response.data.token) {
-      localStorage.setItem('authToken', response.data.token);
+  // Update user password
+  updatePassword: async (userId: string, oldPassword: string, newPassword: string): Promise<void> => {
+    try {
+      await apiClient.put<ApiSuccessResponse<void>>(`${ENDPOINTS.UPDATE_PASSWORD}/${userId}`, {
+        oldPassword,
+        newPassword
+      });
+    } catch (error) {
+      console.error('Error updating password:', error);
+      throw new Error('Failed to update password. Please check your current password and try again.');
     }
-    return response.data;
-  },
-  
-  // Logout
-  logout: async (): Promise<void> => {
-    localStorage.removeItem('authToken');
-    // You can add a server-side logout call here if your API supports it
-  },
-  
-  // Get current user profile
-  getCurrentUser: async (): Promise<User> => {
-    // This assumes your API has an endpoint to get the current user's profile
-    // If not, you might need to store the user ID after login and use getUserById
-    const userId = localStorage.getItem('userId'); // You would set this during login
-    if (!userId) {
-      throw new Error('User not authenticated');
-    }
-    return await userApi.getUserById(userId);
   }
 };

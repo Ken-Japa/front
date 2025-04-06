@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
 
-// Create a server-side function to handle Google login
 async function handleGoogleLogin(token: string) {
   try {
     const response = await fetch(
@@ -117,7 +116,7 @@ const handler = NextAuth({
               maxAge: 30 * 24 * 60 * 60, // 30 days
               path: "/",
             });
-            
+
             // Also set a client-accessible version for API calls
             cookies().set("clientAuthToken", apiResponse.token, {
               httpOnly: false, // Allow client-side access
@@ -134,7 +133,7 @@ const handler = NextAuth({
                 maxAge: 30 * 24 * 60 * 60, // 30 days
                 path: "/",
               });
-              
+
               // Store user ID for profile fetching
               user.id = apiResponse.user._id;
             }
