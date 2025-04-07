@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { Providers } from "@/providers/Providers";
@@ -101,6 +101,7 @@ export default function RootLayout({
           <Layout>
             <AnimatePresence mode="wait">
               {children}
+              <SpeedInsights />
             </AnimatePresence>
           </Layout>
         </Providers>

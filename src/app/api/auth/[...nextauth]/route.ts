@@ -54,12 +54,12 @@ async function handleGoogleLogin(token: string) {
     }
 
     const data = await response.json();
-    
+
     // Set auth cookies if login successful
     if (data && data.token) {
       setAuthCookies(data.token, data.user?._id);
     }
-    
+
     return data;
   } catch (error) {
     console.error("Error in Google login:", error);
@@ -76,9 +76,9 @@ const handler = NextAuth({
         params: {
           prompt: "select_account",
           access_type: "offline",
-          response_type: "code"
-        }
-      }
+          response_type: "code",
+        },
+      },
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -130,6 +130,7 @@ const handler = NextAuth({
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
     error: "/auth/error",
