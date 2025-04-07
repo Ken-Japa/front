@@ -39,3 +39,40 @@ export interface MetricasCalculadas {
   rendimentoDividendos: number; // Rendimento de Dividendos
   indiceDistribuicao: number; // Índice de Distribuição
 }
+
+// Add the ScenarioInputs interface
+export interface ScenarioInputs {
+  wacc: number;
+  crescimentoProjecao: number;
+  crescimentoTerminal: number;
+}
+
+// Add ValuationInputs interface
+export interface ValuationInputs {
+  wacc: number;
+  crescimentoProjecao: number;
+  crescimentoTerminal: number;
+}
+
+// Add HistoricalFCF interface
+export interface HistoricalFCF {
+  year: number;
+  value: number | null;
+}
+
+// Add ValuationResults interface
+export interface ValuationResults {
+  precoJusto: number;
+  upside: number;
+  valorPresente: number;
+  valorTerminal: number;
+  valorEmpresa: number;
+  valorPatrimonial: number;
+}
+
+// Add SensitivityResults interface
+export interface SensitivityResults {
+  base: ValuationResults;
+  otimista: ValuationResults;
+  pessimista: ValuationResults;
+}

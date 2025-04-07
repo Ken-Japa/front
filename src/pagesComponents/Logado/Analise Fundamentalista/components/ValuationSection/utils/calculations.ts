@@ -1,4 +1,12 @@
-import { HistoricalFCF, ScenarioInputs, ValuationResults } from "../types";
+import { HistoricalFCF, ValuationResults } from "../types";
+
+// Define a more specific ScenarioInputs interface for this file
+interface ScenarioInputs {
+  wacc: number;
+  crescimentoProjecao: number;
+  crescimentoTerminal: number;
+  tipo?: "base" | "otimista" | "pessimista"; // Make tipo optional
+}
 
 export const calculateGrowthRate = (
   historicalData: HistoricalFCF[],
@@ -124,8 +132,8 @@ export const calculateScenario = (
 
   return {
     precoJusto,
-    enterpriseValue,
-    equityValue,
+    enterpriseValue: enterpriseValue,
+    equityValue: equityValue,
     subvalorizacao: (precoJusto / precoAcao - 1) * 100,
     pl: precoJusto / ((lucroLiquido * 1000) / acoesCirculacao),
     taxaProjecaoUtilizada: taxaProjecao,
