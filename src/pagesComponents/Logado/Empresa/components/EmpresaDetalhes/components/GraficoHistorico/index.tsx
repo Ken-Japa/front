@@ -18,11 +18,9 @@ export const GraficoHistorico: React.FC<GraficoHistoricoProps> = ({ codigoAtivo 
     const [allHistoricalData, setAllHistoricalData] = useState<any[]>([]);
     const theme = useTheme();
 
-    // Get text color based on current theme
     const textColor = theme.palette.text.primary;
     const gridColor = theme.palette.divider;
 
-    // Fetch all historical data once when component mounts or active code changes
     useEffect(() => {
         const fetchAllHistoricalData = async () => {
             if (!codigoAtivo) return;
@@ -31,12 +29,24 @@ export const GraficoHistorico: React.FC<GraficoHistoricoProps> = ({ codigoAtivo 
             try {
                 const data = await getHistoricalData(codigoAtivo);
 
-                // Sort data by date (oldest to newest)
+
+                if (!data || data.length === 0) {
+                    console.warn(`Nenhum dado histórico encontrado para ${codigoAtivo}`);
+                    setAllHistoricalData([]);
+                    setLoading(false);
+                    return;
+                }
+
                 const sortedData = [...data].sort((a, b) =>
                     new Date(a.data).getTime() - new Date(b.data).getTime()
                 );
 
-                setAllHistoricalData(sortedData);
+                const formattedData = sortedData.map(item => ({
+                    ...item,
+                    dataFormatada: new Date(item.data).toLocaleDateString('pt-BR')
+                }));
+
+                setAllHistoricalData(formattedData);
             } catch (error) {
                 console.error('Erro ao buscar dados históricos completos:', error);
             } finally {
@@ -55,6 +65,7 @@ export const GraficoHistorico: React.FC<GraficoHistoricoProps> = ({ codigoAtivo 
 
         try {
             const filteredData = filterDataByPeriod(allHistoricalData, period);
+            console.log('Dados filtrados por período:', filteredData);
             setChartData(filteredData);
         } catch (error) {
             console.error('Erro ao processar dados históricos:', error);

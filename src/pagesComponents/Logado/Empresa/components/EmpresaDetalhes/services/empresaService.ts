@@ -1,3 +1,5 @@
+import { PriceDataPoint } from "../utils/metricasCalculations";
+import { api } from "@/services/api";
 import { EmpresaDetalhada, Codigo } from "../../../types";
 
 // Função para buscar dados de uma empresa específica por slug (código ou nome)
@@ -168,111 +170,43 @@ export const getCodigoPrincipal = (codigos: Codigo[]): string => {
   return codigos[0].codigo;
 };
 
-// Add this import at the top of the file
-import { PriceDataPoint } from "../utils/metricasCalculations";
-
-// Add this function to the file
 export const getHistoricalData = async (
   codigoAtivo: string
 ): Promise<PriceDataPoint[]> => {
   try {
-    // In a real implementation, you would fetch data from an API
-    // For now, we'll generate mock data
+    const historicalResponse = await api.historical.getHistoricalData({
+      codigo: codigoAtivo,
+      pageSize: 730, // Approximately 2 years of market data
+    });
 
-    // Try to import historical data if available
-    try {
-      const historicalResponse = (await import(
-        "@/pagesComponents/Logado/components/EmpresaView/mockdata_example/historicoempresas.json"
-      )) as {
-        default?: Record<string, any>;
-        [key: string]: any;
-      };
+    console.log("Resposta da API:", historicalResponse);
 
-      // Check if we have data for this specific code
-      let historicalData: any[] = [];
+    const typedResponse = historicalResponse as unknown as {
+      _id: string;
+      empresa: string;
+      codigo: string;
+      totalHistoric: number;
+      historic: Array<{ data: string; preco: string; volume: number }>;
+      pagination: any;
+    };
 
-      try {
-        // Try different ways to access the data structure
-        if (
-          historicalResponse.default &&
-          historicalResponse.default[codigoAtivo]
-        ) {
-          historicalData = historicalResponse.default[codigoAtivo];
-        } else if (historicalResponse[codigoAtivo]) {
-          historicalData = historicalResponse[codigoAtivo];
-        } else if (
-          historicalResponse.default &&
-          historicalResponse.default.data &&
-          historicalResponse.default.data[codigoAtivo]
-        ) {
-          historicalData = historicalResponse.default.data[codigoAtivo];
-        } else {
-          // Try to find the data in any property
-          const findDataInObject = (obj: any, targetKey: string): any[] => {
-            if (!obj || typeof obj !== "object") return [];
+    if (
+      typedResponse &&
+      typedResponse.historic &&
+      Array.isArray(typedResponse.historic)
+    ) {
+      const mappedData = typedResponse.historic.map((item) => ({
+        data: item.data,
+        valor: parseFloat(item.preco) || 0,
+      }));
 
-            // Direct property match
-            if (obj[targetKey] && Array.isArray(obj[targetKey])) {
-              return obj[targetKey];
-            }
-
-            // Search in nested properties
-            for (const key in obj) {
-              if (typeof obj[key] === "object" && obj[key] !== null) {
-                // Check if this property is the target
-                if (key === targetKey && Array.isArray(obj[key])) {
-                  return obj[key];
-                }
-
-                // Recursively search in this property
-                const result = findDataInObject(obj[key], targetKey);
-                if (result.length > 0) return result;
-              }
-            }
-
-            return [];
-          };
-
-          historicalData = findDataInObject(historicalResponse, codigoAtivo);
-        }
-      } catch (e) {
-        console.error("Error parsing historical data structure:", e);
-      }
-
-      if (Array.isArray(historicalData) && historicalData.length > 0) {
-        return historicalData;
-      }
-    } catch (err) {
-      console.log("Mock historical data not available, generating random data");
+      return mappedData;
     }
 
-    // Generate random historical data
-    const hoje = new Date();
-    const dados: PriceDataPoint[] = [];
-
-    // Generate 2 years of data (730 days)
-    const pontos = 730;
-
-    // Random starting value between 10 and 100
-    let valor = Math.random() * 90 + 10;
-
-    for (let i = 0; i < pontos; i++) {
-      const data = new Date(hoje);
-      data.setDate(hoje.getDate() - (pontos - i));
-
-      // Random variation between -5% and +5%
-      const variacao = (Math.random() - 0.5) * 0.1;
-      valor = valor * (1 + variacao);
-
-      dados.push({
-        data: data.toISOString(),
-        valor: valor,
-      });
-    }
-
-    return dados;
+    console.error(`Não foi achado dados históricos para: ${codigoAtivo}`);
+    return [];
   } catch (err) {
-    console.error("Error fetching historical data:", err);
+    console.error("Erro ao buscar dados históricos:", err);
     return [];
   }
 };
