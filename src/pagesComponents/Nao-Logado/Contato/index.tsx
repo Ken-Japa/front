@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, lazy, type FormEvent } from "react";
+import { useState, lazy, type FormEvent, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
 import { OptimizedImage } from "@/components/OptimizedImage";
@@ -21,9 +21,9 @@ const ContactInfo = lazy(() => import('./components/ContactInfo').then(mod => ({
 const ContactFormComponent = lazy(() => import('./components/ContactForm').then(mod => ({ default: mod.ContactFormComponent })));
 const ContactFormSkeleton = lazy(() => import('./components/ContactForm/ContactFormSkeleton').then(mod => ({ default: mod.ContactFormSkeleton })));
 
-export const Contact = () => {
-    const [imageLoaded, setImageLoaded] = useState(false);
+const ContactWithSearchParams = () => {
     const searchParams = useSearchParams();
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const { isBlocked, blockTimer, handleBlock } = useBlockTimer(CONTACT_CONSTANTS.BLOCK_DURATION, 'contactBlockedUntil');
     const { formData, errors, handleChange, validateForm } = useContactForm(searchParams);
@@ -103,5 +103,14 @@ export const Contact = () => {
                 </SectionContact>
             </ErrorBoundary>
         </PageTransition>
+    );
+};
+
+// Main export component with Suspense boundary
+export const Contact = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ContactWithSearchParams />
+        </Suspense>
     );
 };
