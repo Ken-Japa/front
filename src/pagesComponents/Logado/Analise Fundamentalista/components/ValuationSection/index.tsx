@@ -39,7 +39,6 @@ export const ValuationSection = ({
 
     const handleValuationInputChange = (field: keyof ValuationInputs, value: number) => {
         setValuationInputs(prev => ({ ...prev, [field]: value }));
-        // Reset results to trigger new calculation
         setResults(null);
         setSensitivityResults(null);
     };
@@ -54,11 +53,10 @@ export const ValuationSection = ({
             [scenario]: { ...prev[scenario], [field]: value }
         }));
 
-        // Instead of resetting, trigger recalculation immediately
         calculateValuation();
     };
 
-    const calculateValuation = useCallback(() => { // Remove async
+    const calculateValuation = useCallback(() => {
         if (!fcl || !acoesCirculacao || !precoAcao) {
             console.error('Missing required inputs for calculation');
             return;
@@ -66,15 +64,15 @@ export const ValuationSection = ({
 
         setIsCalculating(true);
 
-        const baseInputs = {
-            ...valuationInputs,
-            tipo: 'base' as const,
-            crescimentoProjecao: calculateGrowthRate(historicalData, valuationInputs.crescimentoProjecao)
+        const baseScenarioInputs = {
+            wacc: valuationInputs.wacc,
+            crescimentoProjecao: calculateGrowthRate(historicalData, valuationInputs.crescimentoProjecao),
+            crescimentoTerminal: valuationInputs.crescimentoTerminal
         };
 
         try {
             const baseResults = calculateScenario(
-                baseInputs,
+                baseScenarioInputs as any,
                 fcl,
                 dividaLiquida,
                 caixaEquivalentes,
@@ -83,8 +81,9 @@ export const ValuationSection = ({
                 lucroLiquido
             );
 
+            // Calculate optimistic scenario
             const otimista = calculateScenario(
-                { ...scenarioInputs.otimista, tipo: 'otimista' as const },
+                scenarioInputs.otimista as any,
                 fcl,
                 dividaLiquida,
                 caixaEquivalentes,
@@ -93,8 +92,9 @@ export const ValuationSection = ({
                 lucroLiquido
             );
 
+            // Calculate pessimistic scenario
             const pessimista = calculateScenario(
-                { ...scenarioInputs.pessimista, tipo: 'pessimista' as const },
+                scenarioInputs.pessimista as any,
                 fcl,
                 dividaLiquida,
                 caixaEquivalentes,
@@ -105,14 +105,28 @@ export const ValuationSection = ({
 
             setResults(baseResults);
             setSensitivityResults({ base: baseResults, otimista, pessimista });
-            onResultsChange?.(baseResults);
-            onSensitivityResultsChange?.({ base: baseResults, otimista, pessimista });
+
+            // Call the callback functions if they exist
+            if (onResultsChange) onResultsChange(baseResults);
+            if (onSensitivityResultsChange) onSensitivityResultsChange({ base: baseResults, otimista, pessimista });
         } catch (error) {
             console.error('Error calculating valuation:', error);
         } finally {
             setIsCalculating(false);
         }
-    }, [fcl, acoesCirculacao, precoAcao, dividaLiquida, caixaEquivalentes, lucroLiquido, valuationInputs, scenarioInputs, historicalData]);
+    }, [
+        fcl,
+        acoesCirculacao,
+        precoAcao,
+        dividaLiquida,
+        caixaEquivalentes,
+        lucroLiquido,
+        valuationInputs,
+        scenarioInputs,
+        historicalData,
+        onResultsChange,
+        onSensitivityResultsChange
+    ]);
 
     useEffect(() => {
         if (fcl && historicalData.length > 0) {
@@ -178,14 +192,12 @@ export const ValuationSection = ({
                         sensitivityResults={sensitivityResults}
                     />
                     <ScenariosSection
-                        scenarioInputs={scenarioInputs}
+                        scenarioInputs={scenarioInputs as any}
                         sensitivityResults={sensitivityResults}
-                        onScenarioChange={handleScenarioChange}
+                        onScenarioChange={handleScenarioChange as any}
                     />
                 </>
             )}
         </SectionContainer>
     );
 };
-
-

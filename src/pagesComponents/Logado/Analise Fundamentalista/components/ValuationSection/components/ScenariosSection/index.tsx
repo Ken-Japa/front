@@ -1,13 +1,20 @@
 import { FC } from 'react';
 import { Grid, Typography, Box, Slider } from '@mui/material';
 import { ScenarioInputs, ValuationResults } from '../../types';
-import { SensitivityContainer } from './styled';  // Renamed from ScenarioContainer
+import { SensitivityContainer } from './styled';
 import type { SyntheticEvent } from 'react';
+
+
+interface ScenarioInput {
+    wacc: number;
+    crescimentoProjecao: number;
+    crescimentoTerminal: number;
+}
 
 interface ScenariosSectionProps {
     scenarioInputs: {
-        otimista: ScenarioInputs;
-        pessimista: ScenarioInputs;
+        otimista: ScenarioInput;
+        pessimista: ScenarioInput;
     };
     sensitivityResults: {
         otimista: ValuationResults;
@@ -15,7 +22,7 @@ interface ScenariosSectionProps {
     } | null;
     onScenarioChange: (
         scenario: 'otimista' | 'pessimista',
-        field: keyof ScenarioInputs,
+        field: keyof ScenarioInput,
         value: number
     ) => void;
 }
@@ -27,7 +34,7 @@ export const ScenariosSection: FC<ScenariosSectionProps> = ({
 }) => {
     const handleSliderChange = (
         scenario: 'otimista' | 'pessimista',
-        field: keyof ScenarioInputs
+        field: keyof ScenarioInput
     ) => (_: Event | SyntheticEvent, value: number | number[]) => {
         const newValue = Array.isArray(value) ? value[0] : value;
         onScenarioChange(scenario, field, newValue);
