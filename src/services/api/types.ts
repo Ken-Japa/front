@@ -155,3 +155,45 @@ export interface HistoricalDataFilter {
   startDate?: string;
   endDate?: string;
 }
+
+// Derivative related types
+export interface DerivativeItem {
+  "COD Opcao": string;
+  "Call ou Put": string;
+  Tipo: string;
+  "ON ou PN": string;
+  Strike: string;
+  Vencimento: string;
+  "Ultimo Preco": number;
+  "Data Negocio": string | null;
+  "Hora Negocio": string;
+  "Oferta Compra": number;
+  "Oferta Venda": number;
+  Volume: number;
+  Contratos: number;
+  _id: string;
+}
+
+export interface DerivativeResponse {
+  success: boolean;
+  data: {
+    _id: string;
+    Empresa: string;
+    "COD Empresa": string;
+    totalDerivativos: number;
+    Derivativos: DerivativeItem[];
+    pagination: {
+      offset: number;
+      limit: number;
+      total: number;
+      page: number;
+      pages: number;
+    };
+  };
+}
+
+export interface DerivativeFilter {
+  cod_empresa: string;
+  page?: number;
+  pageSize?: number;
+}
