@@ -4,16 +4,17 @@ export const HeaderContainer = styled("div")(({ theme }) => ({
   textAlign: "center",
   maxWidth: "48rem",
   margin: "0 auto",
+  marginTop: "16px",
 
   "& .header-title": {
     color: "white",
     fontSize: "2.5rem",
     fontWeight: "bold",
-    marginBottom: "24px",
+    marginBottom: "16px",
 
     [theme.breakpoints.down("sm")]: {
       fontSize: "2rem",
-    }
+    },
   },
 
   "& .header-subtitle": {
@@ -25,6 +26,6 @@ export const HeaderContainer = styled("div")(({ theme }) => ({
 
     [theme.breakpoints.down("sm")]: {
       fontSize: "1rem",
-    }
-  }
+    },
+  },
 }));

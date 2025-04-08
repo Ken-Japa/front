@@ -2,6 +2,8 @@ import { styled } from "@mui/material";
 
 export const FeaturesContainer = styled("div")({
   width: "100%",
+  marginTop: "40px",
+  marginBottom: "40px",
 });
 
 export const FeatureCard = styled("div")(({ theme }) => ({

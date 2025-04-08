@@ -34,7 +34,7 @@ const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => 
                 blockSize: "market_cap_basic",
                 blockColor: "change",
                 locale: "br",
-                symbolUrl: "http://localhost:3000/empresa/{tvsymbol}",
+                symbolUrl: "http://augeinvest.com.br/empresa/{tvsymbol}",
                 colorTheme: "dark",
                 hasTopBar: true,
                 isDataSetEnabled: false,

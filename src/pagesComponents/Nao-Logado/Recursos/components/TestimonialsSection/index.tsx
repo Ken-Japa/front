@@ -13,7 +13,7 @@ export const TestimonialsSection = ({ isLoading }: TestimonialsSectionProps) => 
         return <TestimonialsSkeleton />;
     }
     return (
-        <div className="w-full">
+        <div className="w-full my-8">
             <Stack spacing={4} alignItems="center">
                 <Typography
                     variant="h4"

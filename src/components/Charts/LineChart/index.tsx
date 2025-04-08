@@ -3,7 +3,7 @@ import { Box, CircularProgress, Typography } from '@mui/material';
 import { ResponsiveLine } from '@nivo/line';
 
 export interface LineChartProps {
-    data: Array<{ data: string; valor: number;[key: string]: any }>;
+    data: Array<{ data: string; valor: number; showLabel?: boolean;[key: string]: any }>;
     loading?: boolean;
     xKey?: string;
     yKey?: string;
@@ -86,6 +86,7 @@ export const LineChart: React.FC<LineChartProps> = ({
             data: data.map(item => ({
                 x: item[xKey],
                 y: item[yKey],
+                showLabel: item.showLabel,
                 originalData: item // Store original data for tooltip
             }))
         }
@@ -163,11 +164,16 @@ export const LineChart: React.FC<LineChartProps> = ({
         },
     };
 
+    // Filtrar apenas os valores que devem mostrar labels no eixo X
+    const customTickValues = chartData[0].data
+        .filter(d => d.showLabel)
+        .map(d => d.x);
+
     return (
         <Box sx={{ height }}>
             <ResponsiveLine
                 data={chartData}
-                margin={{ top: 20, right: 30, bottom: 80, left: 80 }} // Aumentando a margem inferior
+                margin={{ top: 20, right: 30, bottom: 80, left: 80 }}
                 xScale={{
                     type: 'point'
                 }}
@@ -180,25 +186,41 @@ export const LineChart: React.FC<LineChartProps> = ({
                 }}
                 axisBottom={{
                     tickSize: 5,
-                    tickPadding: 12, // Aumentando o espaçamento
+                    tickPadding: 12,
                     tickRotation: xAxisProps.angle || 45,
-                    legendOffset: 60, // Aumentando o offset da legenda
+                    legendOffset: 60,
                     legendPosition: 'middle',
                     format: (value) => value,
+                    tickValues: customTickValues.length > 0 ? customTickValues : undefined,
                     ...xAxisProps
                 }}
                 axisLeft={{
                     tickSize: 5,
-                    tickPadding: 12, // Aumentando o espaçamento
+                    tickPadding: 12,
                     tickRotation: 0,
-                    legendOffset: -65, // Aumentando o offset da legenda
+                    legendOffset: -65,
                     legendPosition: 'middle',
                     format: yAxisProps.tickFormatter || ((value) => labelFormat(value as number)),
+                    // Reduzir ainda mais o número de ticks no eixo Y
+                    tickValues: 4, // Reduzir para apenas 4 linhas principais
                     ...yAxisProps
                 }}
                 enableGridX={enableGridX}
                 enableGridY={enableGridY}
-                theme={theme}
+                // Definir explicitamente os valores para as linhas de grade Y
+                // Isso substitui o comportamento padrão e força exatamente as linhas que queremos
+                gridYValues={4} // Reduzir para apenas 4 linhas de grade
+                // Reduzir a opacidade das linhas de grade para ficarem menos intrusivas
+                theme={{
+                    ...theme,
+                    grid: {
+                        line: {
+                            stroke: gridXColor,
+                            strokeWidth: 0.5, // Reduzir a espessura das linhas
+                            strokeOpacity: 0.5, // Reduzir a opacidade para ficarem mais sutis
+                        },
+                    },
+                }}
                 colors={colors}
                 lineWidth={lineWidth}
                 enableArea={enableArea}

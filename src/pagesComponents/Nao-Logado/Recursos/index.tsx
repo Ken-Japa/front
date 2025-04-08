@@ -1,7 +1,7 @@
 "use client";
 
 import { type FC, useState, useEffect, useRef, lazy } from 'react';
-
+import Image from 'next/image';
 import { Container } from "@mui/material";
 
 import { PageTransition } from "@/components/PageTransition";
@@ -21,19 +21,22 @@ export const Solutions: FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
     const [videoLoaded, setVideoLoaded] = useState(false);
+    const [videoError, setVideoError] = useState(true);
+
+    const isContentLoading = !videoLoaded && !videoError;
 
     useEffect(() => {
         const videoElement = videoRef.current;
 
         if (videoElement) {
             const handleVideoLoad = () => {
-                videoElement.playbackRate = 0.4;
+                videoElement.playbackRate = 0.35;
                 setVideoLoaded(true);
             };
 
             const handleVideoError = (e: ErrorEvent) => {
                 console.error('Video loading error:', e);
-                videoElement.load();
+                setVideoError(true);
             };
             videoElement.addEventListener('loadeddata', handleVideoLoad);
             videoElement.addEventListener('error', handleVideoError as EventListener);
@@ -51,28 +54,47 @@ export const Solutions: FC = () => {
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <SectionSolutions>
-                    <video
-                        ref={videoRef}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="video-background"
-                        crossOrigin="anonymous"
-                    >
-                        <source
-                            src="/assets/video/Recursos.mp4"
-                            type="video/mp4"
-                        />
-                        Your browser does not support the video tag.
-                    </video>
+                    {!videoError ? (
+                        <>
+                            <video
+                                ref={videoRef}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="video-background"
+                                crossOrigin="anonymous"
+                            >
+                                <source
+                                    src="/assets/video/Recursos.mp4"
+                                    type="video/mp4"
+                                />
+                                Your browser does not support the video tag.
+                            </video>
+                            <div className="video-overlay" />
+                        </>
+                    ) : (
+                        <>
+                            <Image
+                                src="/assets/images/background/Recursos.jpg"
+                                alt="Recursos background"
+                                className="video-background"
+                                fill
+                                sizes="100vw"
+                                style={{
+                                    objectFit: 'cover',
+                                }}
+                            />
+                            <div className="image-overlay" />
+                        </>
+                    )}
                     <div className="overlay" />
 
                     <Container maxWidth="xl">
                         <ContentWrapper>
                             <>
                                 <SuspenseWrapper>
-                                    <Header isLoading={!videoLoaded} />
+                                    <Header isLoading={isContentLoading} />
                                 </SuspenseWrapper>
 
                                 <ProgressiveLoad>
@@ -80,26 +102,26 @@ export const Solutions: FC = () => {
                                         <FeaturesGrid
                                             hoveredCard={hoveredCard}
                                             setHoveredCard={setHoveredCard}
-                                            isLoading={!videoLoaded}
+                                            isLoading={isContentLoading}
                                         />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="100px">
                                     <SuspenseWrapper>
-                                        <CTASection isLoading={!videoLoaded} />
+                                        <CTASection isLoading={isContentLoading} />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="100px">
                                     <SuspenseWrapper>
-                                        <TestimonialsSection isLoading={!videoLoaded} />
+                                        <TestimonialsSection isLoading={isContentLoading} />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
 
                                 <ProgressiveLoad rootMargin="150px">
                                     <SuspenseWrapper>
-                                        <Newsletter isLoading={!videoLoaded} />
+                                        <Newsletter isLoading={isContentLoading} />
                                     </SuspenseWrapper>
                                 </ProgressiveLoad>
                             </>

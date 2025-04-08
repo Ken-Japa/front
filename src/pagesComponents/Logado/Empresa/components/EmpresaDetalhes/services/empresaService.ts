@@ -170,47 +170,6 @@ export const getCodigoPrincipal = (codigos: Codigo[]): string => {
   return codigos[0].codigo;
 };
 
-export const getHistoricalData = async (
-  codigoAtivo: string
-): Promise<PriceDataPoint[]> => {
-  try {
-    const historicalResponse = await api.historical.getHistoricalData({
-      codigo: codigoAtivo,
-      pageSize: 730, // Approximately 2 years of market data
-    });
-
-    console.log("Resposta da API:", historicalResponse);
-
-    const typedResponse = historicalResponse as unknown as {
-      _id: string;
-      empresa: string;
-      codigo: string;
-      totalHistoric: number;
-      historic: Array<{ data: string; preco: string; volume: number }>;
-      pagination: any;
-    };
-
-    if (
-      typedResponse &&
-      typedResponse.historic &&
-      Array.isArray(typedResponse.historic)
-    ) {
-      const mappedData = typedResponse.historic.map((item) => ({
-        data: item.data,
-        valor: parseFloat(item.preco) || 0,
-      }));
-
-      return mappedData;
-    }
-
-    console.error(`Não foi achado dados históricos para: ${codigoAtivo}`);
-    return [];
-  } catch (err) {
-    console.error("Erro ao buscar dados históricos:", err);
-    return [];
-  }
-};
-
 // Função para buscar todas as empresas
 export const getAllEmpresas = async (): Promise<EmpresaDetalhada[]> => {
   try {
