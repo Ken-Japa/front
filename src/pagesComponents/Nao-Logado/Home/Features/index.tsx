@@ -35,7 +35,7 @@ export const Features: FC<FeaturesProps> = ({ isLoading }) => {
 
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6}>
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="sync">
                         <motion.div
                             key={activeFeature}
                             initial={{ opacity: 0, x: -20 }}
@@ -73,11 +73,10 @@ export const Features: FC<FeaturesProps> = ({ isLoading }) => {
                             return (
                                 <Grid item xs={12} key={index}>
                                     <motion.div
-                                        className={`p-6 rounded-xl cursor-pointer transition-all ${
-                                            activeFeature === index
+                                        className={`p-6 rounded-xl cursor-pointer transition-all ${activeFeature === index
                                                 ? 'bg-[#0D95F9]/10 border border-[#0D95F9]/30'
                                                 : 'bg-white/5 hover:bg-white/10'
-                                        }`}
+                                            }`}
                                         onClick={() => setActiveFeature(index)}
                                         whileHover={{ scale: 1.02 }}
                                     >

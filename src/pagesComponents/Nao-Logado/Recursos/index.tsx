@@ -21,7 +21,7 @@ export const Solutions: FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const [videoError, setVideoError] = useState(true);
+    const [videoError, setVideoError] = useState(false);
 
     const isContentLoading = !videoLoaded && !videoError;
 

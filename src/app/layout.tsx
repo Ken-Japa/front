@@ -100,11 +100,12 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         <Providers>
           <Layout>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               {children}
-              <SpeedInsights />
-              <Analytics />
             </AnimatePresence>
+            <SpeedInsights />
+            <Analytics />
+
           </Layout>
         </Providers>
       </body>
