@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, Divider } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import WarningIcon from '@mui/icons-material/Warning';
-import { InfoSection, InfoGrid, SectionTitle, ItemList } from '../styled';
+import { InfoSection, InfoGrid, SectionTitle, ItemList } from './styled';
 
 interface VantagensRiscosProps {
     vantagens: string[];

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar, Box } from '@mui/material';
 import { OptimizedImage } from '@/components/OptimizedImage';
-import { getBestCompanyLogoPath } from '../utils/imageUtils';
+import { getBestCompanyLogoPath } from '../../utils/imageUtils';
 
 
 interface CompanyAvatarProps {

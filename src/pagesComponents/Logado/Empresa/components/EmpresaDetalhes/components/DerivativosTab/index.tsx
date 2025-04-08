@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
-  Paper,
-  Typography,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TablePagination,
   CircularProgress,
   Alert
 } from '@mui/material';
 import { api } from '@/services/api';
+import { VencimentoTabs } from './components/VencimentoTabs';
+import { OpcoesTable } from './components/OpcoesTable';
+import {
+  DerivativosContainer,
+  VencimentoInfo,
+  TitleTypography,
+  SubtitleTypography,
+  LoadingContainer
+} from './styled';
 
 interface DerivativoItem {
   "COD Opcao": string;
@@ -72,11 +71,14 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
   const [derivativos, setDerivativos] = useState<DerivativoItem[]>([]);
   const [totalDerivativos, setTotalDerivativos] = useState(0);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(50);
   const [hasDerivatives, setHasDerivatives] = useState(true);
+  const [selectedVencimento, setSelectedVencimento] = useState<string>('');
+  const [allDerivativesLoaded, setAllDerivativesLoaded] = useState(false);
 
+  // Fetch all derivatives at once
   useEffect(() => {
-    const fetchDerivativos = async () => {
+    const fetchAllDerivativos = async () => {
       if (!codigoBase) {
         setError('Código de ativo não fornecido');
         setLoading(false);
@@ -87,26 +89,50 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
         setLoading(true);
         setError(null);
 
+        // First, get the total count
+        const initialResponse: DerivativosResponse = await api.derivatives.getDerivatives({
+          cod_empresa: codigoBase,
+          page: 0,
+          pageSize: 10
+        });
+
+        let totalCount = 0;
+        if (initialResponse.totalDerivativos) {
+          totalCount = initialResponse.totalDerivativos;
+        } else if (initialResponse.data?.totalDerivativos) {
+          totalCount = initialResponse.data.totalDerivativos;
+        }
+
+        if (totalCount === 0) {
+          setHasDerivatives(false);
+          setLoading(false);
+          return;
+        }
+
+        // Now fetch all derivatives in one request with a large page size
         const response: DerivativosResponse = await api.derivatives.getDerivatives({
           cod_empresa: codigoBase,
-          page,
-          pageSize: rowsPerPage
+          page: 0,
+          pageSize: totalCount // Get all at once
         });
+
+        console.log('All Derivativos response:', response);
 
         if (response.Derivativos && Array.isArray(response.Derivativos)) {
           setDerivativos(response.Derivativos);
-          setTotalDerivativos(response.totalDerivativos || 0);
-          setHasDerivatives((response.totalDerivativos || 0) > 0);
+          setTotalDerivativos(response.Derivativos.length);
+          setHasDerivatives(response.Derivativos.length > 0);
         }
-        // Check if response has success/data structure
         else if (response.success && response.data) {
           setDerivativos(response.data.Derivativos || []);
-          setTotalDerivativos(response.data.totalDerivativos || 0);
-          setHasDerivatives((response.data.totalDerivativos || 0) > 0);
+          setTotalDerivativos(response.data.Derivativos.length);
+          setHasDerivatives(response.data.Derivativos.length > 0);
         } else {
           setHasDerivatives(false);
           setError('Dados de derivativos não disponíveis');
         }
+
+        setAllDerivativesLoaded(true);
       } catch (err) {
         console.error('Erro ao buscar derivativos:', err);
         setHasDerivatives(false);
@@ -116,8 +142,54 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
       }
     };
 
-    fetchDerivativos();
-  }, [codigoBase, page, rowsPerPage]);
+    fetchAllDerivativos();
+  }, [codigoBase]);
+
+  // Extrair vencimentos únicos e ordenados
+  const vencimentos = useMemo(() => {
+    const uniqueVencimentos = Array.from(
+      new Set(derivativos.map(d => d["Vencimento"]))
+    ).sort();
+
+    // Se temos vencimentos e nenhum está selecionado, selecione o primeiro
+    if (uniqueVencimentos.length > 0 && !selectedVencimento) {
+      setSelectedVencimento(uniqueVencimentos[0]);
+    }
+
+    return uniqueVencimentos;
+  }, [derivativos, selectedVencimento]);
+
+  // Filtrar derivativos pelo vencimento selecionado
+  const derivativosFiltrados = useMemo(() => {
+    if (!selectedVencimento) return [];
+    return derivativos.filter(d => d["Vencimento"] === selectedVencimento);
+  }, [derivativos, selectedVencimento]);
+
+  // Organizar derivativos em calls e puts por strike
+  const derivativosOrganizados = useMemo(() => {
+    if (!derivativosFiltrados.length) return { strikes: [], callsMap: {}, putsMap: {} };
+
+    const callsMap: Record<string, DerivativoItem> = {};
+    const putsMap: Record<string, DerivativoItem> = {};
+    const strikesSet = new Set<string>();
+
+    derivativosFiltrados.forEach(derivativo => {
+      const strike = derivativo["Strike"];
+      strikesSet.add(strike);
+
+      // Verificar se é CALL ou PUT baseado no texto do campo
+      if (derivativo["Call ou Put"].includes("COMPRA")) {
+        callsMap[strike] = derivativo;
+      } else if (derivativo["Call ou Put"].includes("VENDA")) {
+        putsMap[strike] = derivativo;
+      }
+    });
+
+    // Ordenar strikes numericamente
+    const strikes = Array.from(strikesSet).sort((a, b) => parseFloat(a) - parseFloat(b));
+
+    return { strikes, callsMap, putsMap };
+  }, [derivativosFiltrados]);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -128,6 +200,10 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
     setPage(0);
   };
 
+  const handleVencimentoChange = (event: React.SyntheticEvent, newValue: string) => {
+    setSelectedVencimento(newValue);
+  };
+
   const formatarVencimento = (data: string) => {
     if (!data) return '-';
     // Formato esperado: YYYYMMDD
@@ -135,6 +211,26 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
     const mes = data.substring(4, 6);
     const dia = data.substring(6, 8);
     return `${dia}/${mes}/${ano}`;
+  };
+
+  const calcularDiasAteVencimento = (vencimento: string) => {
+    if (!vencimento) return 0;
+
+    const ano = parseInt(vencimento.substring(0, 4));
+    const mes = parseInt(vencimento.substring(4, 6)) - 1;
+    const dia = parseInt(vencimento.substring(6, 8));
+
+    const dataVencimento = new Date(ano, mes, dia);
+    const hoje = new Date();
+
+    return Math.max(0, Math.floor((dataVencimento.getTime() - hoje.getTime()) / (1000 * 60 * 60 * 24)));
+  };
+
+  const getVencimentoColor = (dias: number) => {
+    if (dias <= 0) return '#ff4d4d'; // Vermelho para vencido ou hoje
+    if (dias <= 30) return '#ffa64d'; // Laranja para vencimento em até 1 mês
+    if (dias <= 90) return '#ffff4d'; // Amarelo para vencimento em até 3 meses
+    return '#4dff4d'; // Verde para vencimento distante
   };
 
   const formatCurrency = (value: number | string): string => {
@@ -148,69 +244,56 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
   };
 
   return (
-    <Paper sx={{ p: 3 }}>
-      <Typography variant="h6" gutterBottom>
+    <DerivativosContainer>
+      <TitleTypography variant="h6" gutterBottom>
         Derivativos para {codigoBase}
-      </Typography>
+      </TitleTypography>
 
       {loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+        <LoadingContainer>
           <CircularProgress />
-        </Box>
+        </LoadingContainer>
       ) : error ? (
         <Alert severity="error">{error}</Alert>
       ) : derivativos.length === 0 ? (
         <Alert severity="info">Não há derivativos disponíveis para este ativo.</Alert>
       ) : (
         <>
-          <TableContainer>
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Código</TableCell>
-                  <TableCell>Tipo</TableCell>
-                  <TableCell>Classe</TableCell>
-                  <TableCell>Strike</TableCell>
-                  <TableCell>Vencimento</TableCell>
-                  <TableCell>Último Preço</TableCell>
-                  <TableCell>Volume</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {derivativos.map((derivativo) => (
-                  <TableRow key={derivativo._id}>
-                    <TableCell>{derivativo["COD Opcao"]}</TableCell>
-                    <TableCell>{derivativo["Call ou Put"]}</TableCell>
-                    <TableCell>{derivativo["Tipo"]}</TableCell>
-                    <TableCell>{formatCurrency(derivativo["Strike"])}</TableCell>
-                    <TableCell>{formatarVencimento(derivativo["Vencimento"])}</TableCell>
-                    <TableCell>
-                      {derivativo["Ultimo Preco"] > 0
-                        ? formatCurrency(derivativo["Ultimo Preco"])
-                        : '-'}
-                    </TableCell>
-                    <TableCell>{derivativo["Volume"].toLocaleString('pt-BR')}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 50, 100]}
-            component="div"
-            count={totalDerivativos}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-            labelRowsPerPage="Itens por página:"
-            labelDisplayedRows={({ from, to, count }) =>
-              `${from}-${to} de ${count !== -1 ? count : `mais de ${to}`}`
-            }
+          {/* Componente de tabs de vencimentos */}
+          <VencimentoTabs
+            vencimentos={vencimentos}
+            selectedVencimento={selectedVencimento}
+            onVencimentoChange={handleVencimentoChange}
+            formatarVencimento={formatarVencimento}
+            calcularDiasAteVencimento={calcularDiasAteVencimento}
+            getVencimentoColor={getVencimentoColor}
           />
+
+          {/* Tabela de opções organizadas */}
+          {selectedVencimento && (
+            <>
+              <VencimentoInfo>
+                <SubtitleTypography variant="subtitle1" gutterBottom>
+                  Vencimento: {formatarVencimento(selectedVencimento)} - {calcularDiasAteVencimento(selectedVencimento)} dias restantes
+                </SubtitleTypography>
+              </VencimentoInfo>
+
+              {/* Componente de tabela de opções com paginação client-side */}
+              <OpcoesTable
+                strikes={derivativosOrganizados.strikes}
+                callsMap={derivativosOrganizados.callsMap}
+                putsMap={derivativosOrganizados.putsMap}
+                formatCurrency={formatCurrency}
+                totalItems={derivativosOrganizados.strikes.length}
+                page={page}
+                rowsPerPage={rowsPerPage}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </>
+          )}
         </>
       )}
-    </Paper>
+    </DerivativosContainer>
   );
 };

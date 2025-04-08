@@ -4,8 +4,8 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import BusinessIcon from '@mui/icons-material/Business';
-import { formatCurrency } from '../../../utils/formatters';
-import { ChipsContainer, InfoChip, ValorMercadoChip } from '../styled';
+import { formatCurrency } from '../../../../utils/formatters';
+import { ChipsContainer, InfoChip, ValorMercadoChip } from './styled';
 
 interface EmpresaChipsProps {
   empresaInfo: any;

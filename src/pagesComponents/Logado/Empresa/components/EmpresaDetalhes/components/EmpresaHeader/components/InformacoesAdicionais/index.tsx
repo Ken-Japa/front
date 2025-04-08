@@ -6,7 +6,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import GroupIcon from '@mui/icons-material/Group';
 import NatureIcon from '@mui/icons-material/Nature';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import { CustomAccordion, ItemList } from '../styled';
+import { CustomAccordion, ItemList } from './styled';
 
 interface InformacoesAdicionaisProps {
     empresaInfo: any;

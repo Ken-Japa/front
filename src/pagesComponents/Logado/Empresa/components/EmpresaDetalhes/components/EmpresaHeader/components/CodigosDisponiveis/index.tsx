@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { CodigosContainer, CodigosTitulo, CodigoButton } from '../styled';
+import { CodigosContainer, CodigosTitulo, CodigoButton } from './styled';
 
 interface Codigo {
   codigo: string;
@@ -12,10 +12,10 @@ interface CodigosDisponiveisProps {
   onCodigoChange: (codigo: string) => void;
 }
 
-export const CodigosDisponiveis: React.FC<CodigosDisponiveisProps> = ({ 
-  codigos, 
-  codigoAtivo, 
-  onCodigoChange 
+export const CodigosDisponiveis: React.FC<CodigosDisponiveisProps> = ({
+  codigos,
+  codigoAtivo,
+  onCodigoChange
 }) => {
   return (
     <CodigosContainer>
