@@ -14,10 +14,12 @@ class DerivativesApiService extends BaseApiService {
     };
 
     try {
-      return await this.get<DerivativeResponse>(
+      const response = await this.get<DerivativeResponse>(
         API_ENDPOINTS.DERIVATIVE.PAGINATION,
         params
       );
+
+      return response;
     } catch (error) {
       console.error(
         `Erro ao buscar derivativos para empresa ${filters.cod_empresa}:`,

@@ -33,6 +33,7 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
     const [error, setError] = useState<string | null>(null);
     const [codigoAtivo, setCodigoAtivo] = useState<string | null>(codigoSelecionado || null);
     const [historicalData, setHistoricalData] = useState<PriceDataPoint[]>([]);
+    const [hasDerivatives, setHasDerivatives] = useState(false);
     const [metricas, setMetricas] = useState({
         minimo52: 0,
         maximo52: 0,
@@ -181,6 +182,25 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
         fetchHistoricalDataAndCalculateMetrics();
     }, [empresa, codigoAtivo]);
 
+    useEffect(() => {
+        const checkDerivatives = async () => {
+            if (!codigoAtivo) return;
+
+            try {
+                const response = await fetch(`https://api-servidor-yupg.onrender.com/derivative/pagination?page=0&pageSize=1&cod_empresa=${codigoAtivo}`);
+                const data = await response.json();
+
+                // Verificar se há derivativos disponíveis
+                setHasDerivatives(data.success && data.data?.totalDerivativos > 0);
+            } catch (err) {
+                console.error('Erro ao verificar derivativos:', err);
+                setHasDerivatives(false);
+            }
+        };
+
+        checkDerivatives();
+    }, [codigoAtivo]);
+
     const handleTabChange = (event: React.SyntheticEvent, newValue: TabValue) => {
         setCurrentTab(newValue);
     };
@@ -205,8 +225,8 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
         );
     }
 
-    // Encontrar o código ativo nos dados da empresa
     const codigoAtivoData = empresa.codigos.find(c => c.codigo === codigoAtivo) || empresa.codigos[0];
+
 
     return (
         <ErrorBoundary>
@@ -220,10 +240,12 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
                         />
 
                         <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 3 }}>
-                            <Tabs value={currentTab} onChange={handleTabChange}>
+                            <Tabs value={currentTab} onChange={handleTabChange} aria-label="empresa tabs"
+                                variant="scrollable"
+                                scrollButtons="auto">
                                 <Tab label="Principal" value="principal" />
                                 <Tab label="Dividendos" value="dividendos" />
-
+                                {hasDerivatives && <Tab value="derivativos" label="Derivativos" />}
                             </Tabs>
                         </Box>
 
@@ -253,6 +275,14 @@ export const EmpresaDetalhes = ({ slug, codigoSelecionado }: EmpresaDetalhesProp
                                 <DividendosTab dividendos={empresa.dividendos} />
                             </ProgressiveLoad>
                         </TabPanel>
+
+                        {hasDerivatives && (
+                            <TabPanel value={currentTab} index="derivativos">
+                                <ProgressiveLoad>
+                                    <DerivativosTab codigoBase={codigoAtivo || ''} />
+                                </ProgressiveLoad>
+                            </TabPanel>
+                        )}
 
                     </ContentContainer>
                 </EmpresaContainer>
