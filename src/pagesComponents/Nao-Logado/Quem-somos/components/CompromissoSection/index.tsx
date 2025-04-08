@@ -1,15 +1,16 @@
 import HandshakeIcon from '@mui/icons-material/Handshake';
-import { BaseSection, SectionTitle } from "../../styled";
-import { CompromissoContainer, Subtitle } from "./styled";
+import { BaseSection, SectionTitle, ContentContainer, Subtitle } from "../../styled";
 import { CompromissoSkeleton } from './CompromissoSkeleton';
 
 interface CompromissoSectionProps {
     isLoading?: boolean;
 }
+
 export const CompromissoSection = ({ isLoading }: CompromissoSectionProps) => {
     if (isLoading) {
         return <CompromissoSkeleton />;
     }
+    
     return (
         <BaseSection>
             <SectionTitle>
@@ -19,13 +20,13 @@ export const CompromissoSection = ({ isLoading }: CompromissoSectionProps) => {
             <Subtitle>
                 Não Vendemos Ferramentas. Entregamos Resultados.
             </Subtitle>
-            <CompromissoContainer>
+            <ContentContainer>
                 <p>
                     Estamos comprometidos com o crescimento contínuo e a evolução de nossa plataforma. <br /><br />
                     Trabalhamos diariamente para trazer novas funcionalidades e melhorias, sempre ouvindo
                     o feedback de nossa comunidade.
                 </p>
-            </CompromissoContainer>
+            </ContentContainer>
         </BaseSection>
     );
 };

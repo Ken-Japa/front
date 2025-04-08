@@ -63,7 +63,7 @@ const ContactWithSearchParams = () => {
         fill: true,
         priority: true,
         className: "object-cover",
-        loadingClassName: "scale-100 blur-xl grayscale opacity-50",
+        loadingClassName: "scale-100 ",
         sizes: "100vw",
         onLoad: () => setImageLoaded(true),
         style: {

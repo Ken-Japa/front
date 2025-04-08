@@ -1,4 +1,5 @@
 import { styled } from "@mui/material";
+import { spacing } from '@/theme/variables';
 
 export const SectionWelcome = styled("section")({
   position: "relative",
@@ -13,7 +14,7 @@ export const SectionWelcome = styled("section")({
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
-    padding: "80px 0",
+    padding: `${spacing.xxl} 0`,
   },
 
   "& .content-container": {
@@ -29,7 +30,7 @@ export const SectionWelcome = styled("section")({
   "& .title-left": {
     fontSize: "20px",
     fontWeight: "bold",
-    marginBottom: "8px",
+    marginBottom: spacing.sm,
   },
 
   "& .title-right": {

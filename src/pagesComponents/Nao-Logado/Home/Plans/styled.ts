@@ -1,4 +1,5 @@
 import { Stack, styled } from "@mui/material";
+import { spacing, borderRadius, shadows } from '@/theme/variables';
 
 export const SectionPlans = styled("section")(({ theme }) => ({
   width: "100vw",
@@ -18,12 +19,12 @@ export const SectionPlans = styled("section")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "32px 16px",
+    padding: `${spacing.lg} ${spacing.md}`,
     maxWidth: "1920px",
     margin: "0 auto",
 
     [theme.breakpoints.down("md")]: {
-      padding: "24px 12px",
+      padding: `${spacing.md} ${spacing.sm}`,
     },
   },
 }));
@@ -31,11 +32,11 @@ export const SectionPlans = styled("section")(({ theme }) => ({
 export const CardContainer = styled(Stack)(({ theme }) => ({
   maxWidth: "250px",
   width: "100%",
-  padding: "20px",
+  padding: spacing.md,
   backgroundColor: "rgba(0,0,0,0.5)",
-  boxShadow: "2px 2px 5px rgba(255, 255, 255, 0.1)",
-  borderRadius: "5px",
-  color: "#FFFFFF",
+  boxShadow: shadows.sm,
+  borderRadius: borderRadius.sm,
+  color: theme.palette.common.white,
   backdropFilter: "blur(8px)",
 
   [theme.breakpoints.down("md")]: {
@@ -46,15 +47,8 @@ export const CardContainer = styled(Stack)(({ theme }) => ({
     fontSize: "13px",
     listStyle: "inside",
     li: {
-      marginBottom: "5px",
-      color: "#FFFFFF",
+      marginBottom: spacing.xs,
+      color: theme.palette.common.white,
     },
-  },
-  "h2, h3, small": {
-    color: "#FFFFFF",
-  },
-  ".opacity-80": {
-    opacity: 0.8,
-    color: "#FFFFFF",
   },
 }));

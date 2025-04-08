@@ -78,7 +78,7 @@ export const Welcome: FC<WelcomeProps> = ({ isLoading }) => {
                                 <Stack spacing={4}>
 
 
-                                    <Typography variant="h5" className="text-white">
+                                    <Typography variant="h3" className="text-white">
                                         Domine o Mercado com Dados, Não com Palpites
                                     </Typography>
 

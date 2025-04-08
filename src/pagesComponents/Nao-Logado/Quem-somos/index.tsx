@@ -1,7 +1,6 @@
 "use client";
 
 import { type FC, useState, lazy } from 'react';
-
 import { Stack } from "@mui/material";
 
 import { PageTransition } from "@/components/PageTransition";
@@ -12,6 +11,7 @@ import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 
 import { SectionTeam } from "./styled";
 
+// Lazy-loaded components
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const HistoriaSection = lazy(() => import('./components/HistoriaSection').then(mod => ({ default: mod.HistoriaSection })));
 const MissaoSection = lazy(() => import('./components/MissaoSection').then(mod => ({ default: mod.MissaoSection })));
@@ -29,7 +29,7 @@ const AboutPage: FC = () => {
                     <div className="background-image">
                         <OptimizedImage
                             src="/assets/images/background/Quem-Somos.jpg"
-                            alt="About Us Background"
+                            alt="Fundo da Página Quem Somos"
                             fill
                             priority
                             sizes="100vw"
@@ -45,43 +45,40 @@ const AboutPage: FC = () => {
                     </div>
                     <div className="opacity" />
                     <div className="content">
-                        <div className="opacity" />
-                        <div className="content">
-                            <div className="container mx-auto px-4 py-16 relative z-10">
-                                <Stack spacing={8} alignItems="center">
+                        <div className="container mx-auto px-4 py-16 relative z-10">
+                            <Stack spacing={8} alignItems="center">
+                                <SuspenseWrapper>
+                                    <Header isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
+
+                                <SuspenseWrapper>
+                                    <HistoriaSection isLoading={!imageLoaded} />
+                                </SuspenseWrapper>
+
+                                <ProgressiveLoad>
                                     <SuspenseWrapper>
-                                        <Header isLoading={!imageLoaded} />
+                                        <MissaoSection isLoading={!imageLoaded} />
                                     </SuspenseWrapper>
+                                </ProgressiveLoad>
 
+                                <ProgressiveLoad>
                                     <SuspenseWrapper>
-                                        <HistoriaSection isLoading={!imageLoaded} />
+                                        <ValoresSection isLoading={!imageLoaded} />
                                     </SuspenseWrapper>
+                                </ProgressiveLoad>
 
-                                    <ProgressiveLoad>
-                                        <SuspenseWrapper>
-                                            <MissaoSection isLoading={!imageLoaded} />
-                                        </SuspenseWrapper>
-                                    </ProgressiveLoad>
+                                <ProgressiveLoad rootMargin="100px">
+                                    <SuspenseWrapper>
+                                        <EquipeSection isLoading={!imageLoaded} />
+                                    </SuspenseWrapper>
+                                </ProgressiveLoad>
 
-                                    <ProgressiveLoad>
-                                        <SuspenseWrapper>
-                                            <ValoresSection isLoading={!imageLoaded} />
-                                        </SuspenseWrapper>
-                                    </ProgressiveLoad>
-
-                                    <ProgressiveLoad rootMargin="100px">
-                                        <SuspenseWrapper>
-                                            <EquipeSection isLoading={!imageLoaded} />
-                                        </SuspenseWrapper>
-                                    </ProgressiveLoad>
-
-                                    <ProgressiveLoad rootMargin="100px">
-                                        <SuspenseWrapper>
-                                            <CompromissoSection isLoading={!imageLoaded} />
-                                        </SuspenseWrapper>
-                                    </ProgressiveLoad>
-                                </Stack>
-                            </div>
+                                <ProgressiveLoad rootMargin="100px">
+                                    <SuspenseWrapper>
+                                        <CompromissoSection isLoading={!imageLoaded} />
+                                    </SuspenseWrapper>
+                                </ProgressiveLoad>
+                            </Stack>
                         </div>
                     </div>
                 </SectionTeam>

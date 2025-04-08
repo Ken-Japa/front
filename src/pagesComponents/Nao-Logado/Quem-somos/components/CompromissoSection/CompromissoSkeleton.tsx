@@ -1,6 +1,5 @@
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
-import { BaseSection, SectionTitle } from "../../styled";
-import { CompromissoContainer, Subtitle } from "./styled";
+import { BaseSection, SectionTitle, ContentContainer, Subtitle } from "../../styled";
 
 export const CompromissoSkeleton = () => (
     <BaseSection>
@@ -18,12 +17,12 @@ export const CompromissoSkeleton = () => (
                 className="w-64 bg-[#ffffff0a] backdrop-blur-sm" 
             />
         </Subtitle>
-        <CompromissoContainer>
+        <ContentContainer>
             <ContentSkeleton 
                 type="text" 
                 textLines={3} 
                 className="bg-[#ffffff0a] backdrop-blur-sm" 
             />
-        </CompromissoContainer>
+        </ContentContainer>
     </BaseSection>
 );

@@ -1,4 +1,6 @@
 import { styled } from "@mui/material";
+import { spacing } from '@/theme/variables';
+import { COLORS } from '../../styled';
 
 export const HeaderContainer = styled("div")({
   textAlign: "center",
@@ -7,7 +9,7 @@ export const HeaderContainer = styled("div")({
   "& .title": {
     fontSize: "3rem",
     fontWeight: "bold",
-    color: "#0D95F9",
-    marginBottom: "2rem",
+    color: COLORS.primary,
+    marginBottom: spacing.xl,
   }
 });

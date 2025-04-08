@@ -27,7 +27,7 @@ export const Features: FC<FeaturesProps> = ({ isLoading }) => {
                         text="Por que escolher a Auge Invest?"
                         className="text-4xl font-bold text-white mb-4"
                     />
-                    <Typography variant="h6" className="text-white/70">
+                    <Typography variant="h4" className="text-white/70">
                         Tecnologia de Hedge Fund, Preço de Startup
                     </Typography>
                 </Stack>
@@ -74,8 +74,8 @@ export const Features: FC<FeaturesProps> = ({ isLoading }) => {
                                 <Grid item xs={12} key={index}>
                                     <motion.div
                                         className={`p-6 rounded-xl cursor-pointer transition-all ${activeFeature === index
-                                                ? 'bg-[#0D95F9]/10 border border-[#0D95F9]/30'
-                                                : 'bg-white/5 hover:bg-white/10'
+                                            ? 'bg-[#0D95F9]/10 border border-[#0D95F9]/30'
+                                            : 'bg-white/5 hover:bg-white/10'
                                             }`}
                                         onClick={() => setActiveFeature(index)}
                                         whileHover={{ scale: 1.02 }}

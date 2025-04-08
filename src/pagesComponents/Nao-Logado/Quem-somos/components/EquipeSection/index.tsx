@@ -1,6 +1,5 @@
 import GroupsIcon from '@mui/icons-material/Groups';
-import { BaseSection, SectionTitle } from "../../styled";
-import { EquipeContainer } from "./styled";
+import { BaseSection, SectionTitle, ContentContainer } from "../../styled";
 import { EquipeSkeleton } from './EquipeSkeleton';
 
 interface EquipeSectionProps {
@@ -11,6 +10,7 @@ export const EquipeSection = ({ isLoading }: EquipeSectionProps) => {
     if (isLoading) {
         return <EquipeSkeleton />;
     }
+    
     return (
         <BaseSection>
             <SectionTitle>
@@ -20,13 +20,13 @@ export const EquipeSection = ({ isLoading }: EquipeSectionProps) => {
             <p className="text-white/90 mb-8">
                 O Cérebro por Trás da Revolução
             </p>
-            <EquipeContainer>
+            <ContentContainer>
                 <p>
                     Somos um time diversificado de profissionais apaixonados por tecnologia e mercado financeiro.<br /><br />
                     Nossa equipe combina experiência em desenvolvimento de software, análise de dados, mercado
                     financeiro e atendimento ao cliente para oferecer a melhor experiência possível.
                 </p>
-            </EquipeContainer>
+            </ContentContainer>
         </BaseSection>
     );
 };
