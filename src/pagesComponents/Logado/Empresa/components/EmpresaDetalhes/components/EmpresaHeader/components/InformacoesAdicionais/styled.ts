@@ -4,23 +4,20 @@ import { Box, Accordion } from "@mui/material";
 export const CustomAccordion = styled(Accordion)(({ theme }) => ({
   marginTop: theme.spacing(3),
   backgroundColor: theme.palette.mode === 'dark' 
-    ? "rgba(255, 255, 255, 0.05)" 
-    : theme.palette.background.paper,
-  color: theme.palette.mode === 'dark' 
-    ? "white" 
-    : theme.palette.text.primary,
+    ? theme.palette.background.paper 
+    : theme.palette.background.default,
+  color: theme.palette.text.primary,
   "&:before": {
     display: "none",
   },
   "& .MuiAccordionSummary-root": {
-    borderBottom: `1px solid ${theme.palette.mode === 'dark' 
-      ? "rgba(255, 255, 255, 0.1)" 
-      : theme.palette.divider}`,
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
   "& .MuiAccordionSummary-expandIconWrapper": {
-    color: theme.palette.mode === 'dark' 
-      ? "white" 
-      : theme.palette.text.primary,
+    color: theme.palette.text.primary,
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
   },
 }));
 
@@ -32,13 +29,9 @@ export const ItemList = styled(Box, {
   "& li": {
     marginBottom: theme.spacing(0.5),
     lineHeight: 1.6,
-    color: theme.palette.mode === 'dark' 
-      ? "white" 
-      : theme.palette.text.primary,
+    color: theme.palette.text.primary,
     "&::marker": {
-      color: theme.palette.mode === 'dark' 
-        ? theme.palette.primary.light 
-        : theme.palette.primary.main,
+      color: theme.palette.primary.main,
     },
   },
 }));

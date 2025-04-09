@@ -17,7 +17,7 @@ export const VantagensRiscos: React.FC<VantagensRiscosProps> = ({ vantagens, ris
             {vantagens && vantagens.length > 0 && (
                 <Grid item xs={12} md={6}>
                     <InfoSection elevation={1}>
-                        <SectionTitle variant="h6">
+                        <SectionTitle variant="h4">
                             <TrendingUpIcon color="success" /> Vantagens Competitivas
                         </SectionTitle>
                         <Divider sx={{ my: 1.5 }} />
@@ -35,7 +35,7 @@ export const VantagensRiscos: React.FC<VantagensRiscosProps> = ({ vantagens, ris
             {riscos && riscos.length > 0 && (
                 <Grid item xs={12} md={6}>
                     <InfoSection elevation={1}>
-                        <SectionTitle variant="h6">
+                        <SectionTitle variant="h4">
                             <WarningIcon color="warning" /> Riscos do Negócio
                         </SectionTitle>
                         <Divider sx={{ my: 1.5 }} />

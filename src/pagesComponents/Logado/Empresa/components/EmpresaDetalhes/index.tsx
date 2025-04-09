@@ -2,22 +2,32 @@
 
 import { useState, useEffect } from 'react';
 import { Tabs, Tab, Box, Typography, Paper } from '@mui/material';
+
+// Componentes compartilhados
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { PageTransition } from '@/components/PageTransition';
+import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
+import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+
+// Componentes específicos
 import { MetricasEmpresa } from './components/MetricasEmpresa';
 import { GraficoHistorico } from './components/GraficoHistorico';
 import { AlertasSection } from './components/AlertasSection';
 import { DividendosTab } from './components/DividendosTab';
 import { DerivativosTab } from './components/DerivativosTab';
-import { EmpresaContainer, ContentContainer } from './styled';
 import { TabPanel } from './components/TabPanel';
+import { EmpresaHeader } from './components/EmpresaHeader';
+
+// Serviços e utilitários
 import { getEmpresaBySlug, getCodigoPrincipal, getAllEmpresas } from './services/empresaService';
 import { getHistoricalData } from './components/GraficoHistorico/services/historicalService';
-import { EmpresaDetalhada, Codigo } from '../../types';
-import { EmpresaHeader } from './components/EmpresaHeader';
 import { calculateAllMetrics, PriceDataPoint } from './utils/metricasCalculations';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { PageTransition } from '@/components/PageTransition';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+
+// Tipos
+import { EmpresaDetalhada, Codigo } from '../../types';
+
+// Estilos
+import { EmpresaContainer, ContentContainer } from './styled';
 
 interface EmpresaDetalhesProps {
     slug: string;

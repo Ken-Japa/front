@@ -4,19 +4,19 @@ import { Box, Tabs, Tab } from '@mui/material';
 export const TabsContainer = styled(Box)(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.divider}`,
   marginBottom: theme.spacing(2),
-  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : 'white',
+  backgroundColor: theme.palette.background.paper,
 }));
 
 export const StyledTabs = styled(Tabs)(({ theme }) => ({
   '& .MuiTab-root': { 
-    color: theme.palette.mode === 'dark' ? theme.palette.text.primary : 'black' 
+    color: theme.palette.text.secondary
   },
   '& .Mui-selected': { 
-    color: theme.palette.mode === 'dark' ? theme.palette.primary.main : '#1976d2', 
+    color: theme.palette.primary.main, 
     fontWeight: 'bold' 
   },
   '& .MuiTabs-indicator': {
-    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.main : '#1976d2',
+    backgroundColor: theme.palette.primary.main,
   }
 }));
 
@@ -26,4 +26,10 @@ export const StyledTab = styled(Tab)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     minWidth: 0,
   },
+  transition: theme.transitions.create('color', {
+    duration: theme.transitions.duration.shorter,
+  }),
+  '&:hover': {
+    color: theme.palette.primary.light,
+  }
 }));

@@ -27,7 +27,7 @@ export const InformacoesAdicionais: React.FC<InformacoesAdicionaisProps> = ({ em
     return (
         <CustomAccordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6">Informações Adicionais</Typography>
+                <Typography variant="h4">Informações Adicionais</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Grid container spacing={3}>

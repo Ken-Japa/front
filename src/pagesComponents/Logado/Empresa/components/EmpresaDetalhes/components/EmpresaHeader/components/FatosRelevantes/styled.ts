@@ -6,25 +6,19 @@ export const InfoSection = styled(Paper)(({ theme }) => ({
   marginTop: theme.spacing(3),
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.mode === 'dark' 
-    ? "rgba(255, 255, 255, 0.05)" 
-    : theme.palette.background.paper,
-  border: `1px solid ${theme.palette.mode === 'dark' 
-    ? "rgba(255, 255, 255, 0.1)" 
-    : theme.palette.divider}`,
-  color: theme.palette.mode === 'dark' 
-    ? theme.palette.common.white 
-    : theme.palette.text.primary,
-  transition: "transform 0.2s ease-in-out",
+    ? theme.palette.background.paper 
+    : theme.palette.background.default,
+  border: `1px solid ${theme.palette.divider}`,
+  color: theme.palette.text.primary,
+  transition: theme.transitions.create(['transform', 'box-shadow'], {
+    duration: theme.transitions.duration.standard,
+  }),
   "&:hover": {
     transform: "translateY(-2px)",
-    boxShadow: theme.palette.mode === 'dark'
-      ? "0 6px 12px rgba(0, 0, 0, 0.15)"
-      : theme.shadows[3],
+    boxShadow: theme.shadows[4],
   },
   "& .MuiDivider-root": {
-    backgroundColor: theme.palette.mode === 'dark'
-      ? "rgba(255, 255, 255, 0.1)"
-      : theme.palette.divider,
+    backgroundColor: theme.palette.divider,
   },
 }));
 
@@ -35,9 +29,7 @@ export const SectionTitle = styled(Typography, {
   alignItems: "center",
   gap: theme.spacing(1),
   fontWeight: 600,
-  color: theme.palette.mode === 'dark'
-    ? theme.palette.common.white
-    : theme.palette.text.primary,
+  color: theme.palette.text.primary,
   "& svg": {
     fontSize: 28,
     color: theme.palette.primary.main,
@@ -52,9 +44,7 @@ export const ItemList = styled(Box, {
   "& li": {
     marginBottom: theme.spacing(0.5),
     lineHeight: 1.6,
-    color: theme.palette.mode === 'dark'
-      ? theme.palette.common.white
-      : theme.palette.text.primary,
+    color: theme.palette.text.primary,
     "&::marker": {
       color: theme.palette.primary.main,
     },

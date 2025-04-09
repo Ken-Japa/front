@@ -19,7 +19,7 @@ export const CodigosDisponiveis: React.FC<CodigosDisponiveisProps> = ({
 }) => {
   return (
     <CodigosContainer>
-      <CodigosTitulo variant="h6">
+      <CodigosTitulo variant="h4">
         Códigos Disponíveis
       </CodigosTitulo>
 

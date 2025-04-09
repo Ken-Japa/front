@@ -14,7 +14,7 @@ export const FatosRelevantes: React.FC<FatosRelevantesProps> = ({ fatos }) => {
         <InfoSection elevation={1}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <SectionTitle variant="h6">
+                    <SectionTitle variant="h4">
                         <TimelineIcon sx={{ color: theme => theme.palette.primary.light }} />
                         Fatos Relevantes
                     </SectionTitle>

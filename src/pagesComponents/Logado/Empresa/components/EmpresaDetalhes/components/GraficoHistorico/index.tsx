@@ -105,7 +105,7 @@ export const GraficoHistorico: React.FC<GraficoHistoricoProps> = ({ codigoAtivo 
         <GraficoContainer>
             <GraficoHeader>
                 <div>
-                    <Typography variant="h6">Histórico de Preços</Typography>
+                    <Typography variant="h4">Histórico de Preços</Typography>
                     {stats && (
                         <Typography
                             variant="body2"

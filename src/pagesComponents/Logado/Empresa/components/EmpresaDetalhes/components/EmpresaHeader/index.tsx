@@ -78,7 +78,7 @@ export const EmpresaHeader: React.FC<EmpresaHeaderProps> = ({
                         <CompanyAvatar companyName={companyName} size={70} />
                     </Box>
                     <Box>
-                        <EmpresaTitulo variant="h4" component="h1">
+                        <EmpresaTitulo variant="h2" >
                             {empresaInfo?.nome || empresa.nome}
                         </EmpresaTitulo>
 

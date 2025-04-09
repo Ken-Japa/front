@@ -80,24 +80,24 @@ export const OpcoesTable: React.FC<OpcoesTableProps> = ({
         <Table size="small">
           <TableHead>
             <TableRow>
-              <CallHeaderCell align="center" colSpan={3} sx={{ fontWeight: 'bold' }}>
+              <CallHeaderCell align="center" colSpan={3} sx={{ fontWeight: 'bold', textAlign: 'center' }}>
                 OPÇÕES DE COMPRA (CALL)
               </CallHeaderCell>
-              <StrikeTableCell align="center" sx={{ fontWeight: 'bold' }}>
+              <StrikeTableCell align="center" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
                 STRIKE
               </StrikeTableCell>
-              <PutHeaderCell align="center" colSpan={3} sx={{ fontWeight: 'bold' }}>
+              <PutHeaderCell align="center" colSpan={3} sx={{ fontWeight: 'bold', textAlign: 'center' }}>
                 OPÇÕES DE VENDA (PUT)
               </PutHeaderCell>
             </TableRow>
             <TableRow>
-              <CallHeaderCell>Volume</CallHeaderCell>
-              <CallHeaderCell>Último Preço</CallHeaderCell>
-              <CallHeaderCell>Código</CallHeaderCell>
+              <CallHeaderCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Volume</CallHeaderCell>
+              <CallHeaderCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Último Preço</CallHeaderCell>
+              <CallHeaderCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Código</CallHeaderCell>
               <StrikeTableCell></StrikeTableCell>
-              <PutHeaderCell>Código</PutHeaderCell>
-              <PutHeaderCell>Último Preço</PutHeaderCell>
-              <PutHeaderCell>Volume</PutHeaderCell>
+              <PutHeaderCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Código</PutHeaderCell>
+              <PutHeaderCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Último Preço</PutHeaderCell>
+              <PutHeaderCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Volume</PutHeaderCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -108,16 +108,16 @@ export const OpcoesTable: React.FC<OpcoesTableProps> = ({
               return (
                 <StyledTableRow key={strike}>
                   {/* CALL */}
-                  <StyledTableCell>
+                  <StyledTableCell sx={{ textAlign: 'center' }}>
                     {call ? call["Volume"].toLocaleString('pt-BR') : '-'}
                   </StyledTableCell>
-                  <StyledTableCell>
+                  <StyledTableCell sx={{ textAlign: 'center' }}>
                     {call && call["Ultimo Preco"] > 0
                       ? formatCurrency(call["Ultimo Preco"])
                       : '-'}
                   </StyledTableCell>
-                  <StyledTableCell sx={{ fontWeight: 'bold' }}>
-                    {call ? call["COD Opcao"] : '-'}
+                  <StyledTableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>
+                    {call ? call["COD Opcao"].substring(4) : '-'}
                   </StyledTableCell>
 
                   {/* STRIKE */}
@@ -126,15 +126,15 @@ export const OpcoesTable: React.FC<OpcoesTableProps> = ({
                   </StrikeTableCell>
 
                   {/* PUT */}
-                  <StyledTableCell sx={{ fontWeight: 'bold' }}>
-                    {put ? put["COD Opcao"] : '-'}
+                  <StyledTableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>
+                    {put ? put["COD Opcao"].substring(4) : '-'}
                   </StyledTableCell>
-                  <StyledTableCell>
+                  <StyledTableCell sx={{ textAlign: 'center' }}>
                     {put && put["Ultimo Preco"] > 0
                       ? formatCurrency(put["Ultimo Preco"])
                       : '-'}
                   </StyledTableCell>
-                  <StyledTableCell>
+                  <StyledTableCell sx={{ textAlign: 'center' }}>
                     {put ? put["Volume"].toLocaleString('pt-BR') : '-'}
                   </StyledTableCell>
                 </StyledTableRow>

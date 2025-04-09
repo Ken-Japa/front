@@ -245,7 +245,7 @@ export const DerivativosTab: React.FC<DerivativosTabProps> = ({ codigoBase }) =>
 
   return (
     <DerivativosContainer>
-      <TitleTypography variant="h6" gutterBottom>
+      <TitleTypography variant="h4" gutterBottom>
         Derivativos para {codigoBase}
       </TitleTypography>
 

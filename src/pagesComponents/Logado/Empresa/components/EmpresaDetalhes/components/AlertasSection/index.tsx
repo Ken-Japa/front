@@ -22,7 +22,7 @@ export const AlertasSection: React.FC<AlertasSectionProps> = ({ codigoAtivo }) =
 
     return (
         <Paper sx={{ p: 3, mb: 3 }}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
                 Configurar Alertas para {codigoAtivo}
             </Typography>
             <Grid container spacing={3}>
@@ -36,7 +36,7 @@ export const AlertasSection: React.FC<AlertasSectionProps> = ({ codigoAtivo }) =
                         InputProps={{
                             startAdornment: 'R$'
                         }}
-                        helperText="Notificar quando o preço estiver abaixo deste valor"
+                        helperText="Notificar quando o preço estiver neste valor"
                     />
                     <Button
                         variant="contained"
@@ -59,7 +59,7 @@ export const AlertasSection: React.FC<AlertasSectionProps> = ({ codigoAtivo }) =
                         InputProps={{
                             startAdornment: 'R$'
                         }}
-                        helperText="Notificar quando o preço estiver acima deste valor"
+                        helperText="Notificar quando o preço estiver neste valor"
                     />
                     <Button
                         variant="contained"
