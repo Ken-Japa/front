@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, lazy } from "react";
+
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { visitorColors } from "@/theme/palette/visitor";
+
 import { SectionPricing } from "./styled";
 
 const VantagensSection = lazy(() => import('./components/VantagensSection').then(mod => ({ default: mod.VantagensSection })));
@@ -30,8 +33,7 @@ export const Pricing = () => {
                             priority
                             sizes="100vw"
                             className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
-                            quality={85}
+                            quality={90}
                             onLoad={() => setImageLoaded(true)}
                             style={{
                                 filter: !imageLoaded ? 'grayscale(1)' : 'none',
@@ -40,39 +42,31 @@ export const Pricing = () => {
                         />
                     </div>
                     <div className="opacity">
-                        <>
+                        <ProgressiveLoad>
+                            <VantagensSection isLoading={!imageLoaded} />
+                        </ProgressiveLoad>
+
+                        <ProgressiveLoad>
+                            <RecursosSection isLoading={!imageLoaded} />
+                        </ProgressiveLoad>
+
+                        <ProgressiveLoad>
+                            <PlanosSection isLoading={!imageLoaded} />
+                        </ProgressiveLoad>
+
+                        <ProgressiveLoad>
+                            <EmbaixadorSection isLoading={!imageLoaded} />
+                        </ProgressiveLoad>
+
+                        <ProgressiveLoad>
+                            <TestimonialsSection isLoading={!imageLoaded} />
+                        </ProgressiveLoad>
+
+                        <ProgressiveLoad>
                             <SuspenseWrapper>
-                                <VantagensSection isLoading={!imageLoaded} />
+                                <FAQSection isLoading={!imageLoaded} />
                             </SuspenseWrapper>
-
-                            <ProgressiveLoad>
-                                <SuspenseWrapper>
-                                    <RecursosSection isLoading={!imageLoaded} />
-                                </SuspenseWrapper>
-                            </ProgressiveLoad>
-
-                            <SuspenseWrapper>
-                                <PlanosSection isLoading={!imageLoaded} />
-                            </SuspenseWrapper>
-
-                            <ProgressiveLoad>
-                                <SuspenseWrapper>
-                                    <EmbaixadorSection isLoading={!imageLoaded} />
-                                </SuspenseWrapper>
-                            </ProgressiveLoad>
-
-                            <ProgressiveLoad rootMargin="100px">
-                                <SuspenseWrapper>
-                                    <TestimonialsSection isLoading={!imageLoaded} />
-                                </SuspenseWrapper>
-                            </ProgressiveLoad>
-
-                            <ProgressiveLoad rootMargin="100px">
-                                <SuspenseWrapper>
-                                    <FAQSection isLoading={!imageLoaded} />
-                                </SuspenseWrapper>
-                            </ProgressiveLoad>
-                        </>
+                        </ProgressiveLoad>
                     </div>
                 </SectionPricing>
             </ErrorBoundary>

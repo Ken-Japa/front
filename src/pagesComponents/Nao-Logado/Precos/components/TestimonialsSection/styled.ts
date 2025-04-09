@@ -1,38 +1,46 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const TestimonialCard = styled("div")(({ theme }) => ({
-  backgroundColor: "rgba(0, 0, 0, 0.6)",
-  padding: "24px",
-  borderRadius: "8px",
-  border: "1px solid rgba(13, 149, 249, 0.4)",
+export const TestimonialCard = styled("div")({
+  backgroundColor: visitorColors.overlay,
+  padding: spacing.lg,
+  borderRadius: borderRadius.md,
+  border: `1px solid ${visitorColors.divider}`,
+  transition: transitions.medium,
+
+  "&:hover": {
+    backgroundColor: visitorColors.backgroundMedium,
+    borderColor: visitorColors.primary,
+  },
 
   "& .testimonial-text": {
-    color: "rgba(255, 255, 255, 0.95)",
-    marginBottom: "16px",
+    color: visitorColors.textSecondary,
+    marginBottom: spacing.md,
     fontStyle: "italic",
   },
 
   "& .divider": {
     height: "1px",
-    backgroundColor: "rgba(13, 149, 249, 0.3)",
-    margin: "16px 0",
+    backgroundColor: visitorColors.divider,
+    margin: `${spacing.md} 0`,
   },
 
   "& .testimonial-author": {
-    color: "#0D95F9",
-    marginBottom: "4px",
+    color: visitorColors.primary,
+    marginBottom: spacing.xs,
   },
 
   "& .testimonial-role": {
-    color: "rgba(255, 255, 255, 0.85)",
+    color: visitorColors.textMuted,
     fontSize: "0.875rem",
   },
-}));
+});
 
 export const TestimonialsGrid = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "32px",
+  gap: spacing.xl,
   width: "100%",
 
   [theme.breakpoints.down("md")]: {

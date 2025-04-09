@@ -1,13 +1,15 @@
 import { styled } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const HeaderContainer = styled("div")(({ theme }) => ({
+export const HeaderContainer = styled("div")({
   "& .header-content": {
     display: "flex",
     alignItems: "center",
-    gap: "12px",
-    marginBottom: "24px",
+    gap: spacing.xs,
+    marginBottom: spacing.md,
     
-    [theme.breakpoints.down('md')]: {
+    "@media (max-width: 900px)": {
       justifyContent: "center",
     }
   },
@@ -15,19 +17,19 @@ export const HeaderContainer = styled("div")(({ theme }) => ({
   "& .title": {
     fontSize: "2.5rem",
     fontWeight: "bold",
-    color: "#0D95F9",
+    color: visitorColors.primary,
     
-    [theme.breakpoints.down('sm')]: {
+    "@media (max-width: 600px)": {
       fontSize: "2rem",
     }
   },
 
   "& .subtitle": {
-    color: "rgba(255, 255, 255, 0.95)",
-    marginBottom: "32px",
+    color: visitorColors.textSecondary,
+    marginBottom: spacing.lg,
     
-    [theme.breakpoints.down('md')]: {
+    "@media (max-width: 900px)": {
       textAlign: "center",
     }
   }
-}));
+});

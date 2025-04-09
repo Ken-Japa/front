@@ -1,4 +1,4 @@
-import { type FormData } from '../types';
+import { FormData } from '../types';
 
 export const submitContactForm = async (formData: FormData): Promise<void> => {
     try {
@@ -11,9 +11,9 @@ export const submitContactForm = async (formData: FormData): Promise<void> => {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to submit contact form');
+            throw new Error('Falha ao enviar formulário de contato');
         }
     } catch (error) {
-        throw new Error('Network error while submitting form');
+        throw new Error('Erro de rede ao enviar formulário');
     }
 };

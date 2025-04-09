@@ -4,20 +4,8 @@ import { TextField, Button, Autocomplete } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 
 import { ContactFormStyled } from "./styled";
-
-interface FormData {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-}
-
-interface FormErrors {
-    name?: string;
-    email?: string;
-    subject?: string;
-    message?: string;
-}
+import { visitorColors } from "@/theme/palette/visitor";
+import { FormData, FormErrors } from '../../types';
 
 interface ContactFormProps {
     formData: FormData;
@@ -39,16 +27,16 @@ const subjectOptions = [
 ] as const;
 
 const autocompleteStyles = {
-    backgroundColor: 'rgba(0, 21, 41, 0.98)',
-    backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(13, 149, 249, 0.2)',
+    backgroundColor: visitorColors.backgroundDark,
+    backdropFilter: visitorColors.blur,
+    border: `1px solid ${visitorColors.primary}20`,
     '& .MuiAutocomplete-option': {
-        color: 'white',
+        color: visitorColors.text,
         '&:hover': {
-            backgroundColor: 'rgba(13, 149, 249, 0.4)'
+            backgroundColor: `${visitorColors.primary}40`
         },
         '&.Mui-focused': {
-            backgroundColor: 'rgba(13, 149, 249, 0.3)'
+            backgroundColor: `${visitorColors.primary}30`
         }
     }
 };
@@ -128,7 +116,6 @@ export const ContactFormComponent: FC<ContactFormProps> = ({
                 className="submit-button"
                 type="submit"
                 variant="contained"
-                color="primary"
                 fullWidth
                 size="large"
                 endIcon={<SendIcon />}

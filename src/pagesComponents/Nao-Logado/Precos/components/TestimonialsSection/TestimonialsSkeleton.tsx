@@ -1,22 +1,23 @@
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { TestimonialsGrid } from "./styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const TestimonialsSkeleton = () => (
     <BaseSection>
         <ContentWrapper spacing={4}>
-            <ContentSkeleton 
-                type="text" 
-                textLines={1} 
-                className="w-64 bg-[#ffffff0a] backdrop-blur-sm" 
+            <ContentSkeleton
+                type="text"
+                textLines={1}
+                className={`w-64 ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
             <TestimonialsGrid>
                 {Array(3).fill(0).map((_, index) => (
-                    <ContentSkeleton 
-                        key={`testimonial-${index}`} 
-                        type="card" 
-                        cardHeight={200} 
-                        className="bg-[#ffffff0a] backdrop-blur-sm" 
+                    <ContentSkeleton
+                        key={`testimonial-${index}`}
+                        type="card"
+                        cardHeight={200}
+                        className={`${visitorColors.skeletonBackground} backdrop-blur-sm`}
                     />
                 ))}
             </TestimonialsGrid>

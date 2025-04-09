@@ -1,6 +1,8 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const SectionJoinTeam = styled("section")(({ theme }) => ({
+export const SectionJoinTeam = styled("section")({
   minHeight: "100vh",
   width: "100%",
   position: "relative",
@@ -20,16 +22,16 @@ export const SectionJoinTeam = styled("section")(({ theme }) => ({
   "& .container": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: visitorColors.backgroundOverlay,
     minHeight: "100vh",
     width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "64px 24px",
+    padding: `${spacing.xl} ${spacing.md}`,
 
-    [theme.breakpoints.down("sm")]: {
-      padding: "32px 16px",
+    "@media (max-width: 600px)": {
+      padding: `${spacing.lg} ${spacing.sm}`,
     },
   },
 
@@ -38,4 +40,4 @@ export const SectionJoinTeam = styled("section")(({ theme }) => ({
     width: "100%",
     margin: "0 auto",
   },
-}));
+});

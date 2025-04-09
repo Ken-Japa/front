@@ -4,8 +4,10 @@ export const visitorColors = {
   secondary: "#8411CC", // Roxo secundário
   accent: "#FF4081", // Rosa para destaques
   highlight: "#64FFDA", // Verde água para elementos especiais
+  success: "#00E676", // Verde para sucesso
 
   // Backgrounds com transparência
+  backgroundOverlay: "rgba(0, 0, 0, 0.6)",
   backgroundLight: "rgba(255, 255, 255, 0.05)",
   backgroundMedium: "rgba(255, 255, 255, 0.08)",
   backgroundDark: "rgba(0, 0, 0, 0.6)",
@@ -22,9 +24,11 @@ export const visitorColors = {
   divider: "rgba(255, 255, 255, 0.2)",
   cardBackground: "rgba(0, 0, 0, 0.5)",
   buttonPrimary: "#0056b3",
+  buttonSecondary: "#3A1078",
 
   // Efeitos
   overlay: "rgba(0, 0, 0, 0.5)",
+  overlayS: "rgba(0, 0, 0, 0.3)",
   overlayG: "rgba(0, 0, 0, 0.7)",
   blur: "blur(8px)",
 };

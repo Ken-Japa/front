@@ -1,7 +1,8 @@
-import { styled } from "@mui/material";
-import { Stack } from "@mui/material";
+import { styled, Stack } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const SectionPricing = styled("section")(({ theme }) => ({
+export const SectionPricing = styled("section")({
   minHeight: "100vh",
   width: "100%",
   position: "relative",
@@ -18,18 +19,18 @@ export const SectionPricing = styled("section")(({ theme }) => ({
   "& .opacity": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.25)",
+    backgroundColor: visitorColors.overlayS,
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
   },
-}));
+});
 
 export const BaseSection = styled("section")(({ theme }) => ({
-  padding: "64px 24px",
+  padding: `${spacing.xxl} ${spacing.md}`,
 
   [theme.breakpoints.down("sm")]: {
-    padding: "40px 16px",
+    padding: `${spacing.xl} ${spacing.sm}`,
   },
 }));
 

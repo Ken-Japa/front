@@ -1,4 +1,6 @@
 import { styled } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const SectionContact = styled("section")({
   minHeight: "100vh",
@@ -19,19 +21,19 @@ export const SectionContact = styled("section")({
       left: 0,
       width: "100%",
       height: "100%",
-      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      backgroundColor: visitorColors.overlayS,
     },
   },
 
   "& .content-wrapper": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: visitorColors.overlayG,
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
-    padding: "64px 24px",
-    color: "#fff",
+    padding: `${spacing.xl} ${spacing.md}`,
+    color: visitorColors.text,
   },
 
   "& .content-container": {
@@ -41,20 +43,20 @@ export const SectionContact = styled("section")({
   },
 
   "& .form-container": {
-    gap: "48px",
+    gap: spacing.xl,
     alignItems: "flex-start",
 
     "@media (max-width: 900px)": {
-      gap: "32px",
+      gap: spacing.lg,
     },
   },
 
   "& .title": {
-    color: "#fff",
+    color: visitorColors.text,
   },
 
   "& .subtitle": {
-    color: "rgba(255, 255, 255, 0.9) !important",
+    color: `${visitorColors.textSecondary} !important`,
   },
 });
 

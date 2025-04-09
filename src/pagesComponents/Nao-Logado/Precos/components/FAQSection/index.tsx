@@ -3,19 +3,20 @@ import { FAQ_ITEMS } from "../../constants/faq";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { FAQContainer } from "./styled";
 import { FAQSkeleton } from "./FAQSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface FAQSectionProps {
     isLoading?: boolean;
 }
-export const FAQSection = ({ isLoading }: FAQSectionProps) => {
 
+export const FAQSection = ({ isLoading }: FAQSectionProps) => {
     if (isLoading) {
         return <FAQSkeleton />;
     }
     return (
         <BaseSection>
             <ContentWrapper spacing={4}>
-                <h2 className="text-3xl text-white">Dúvidas Frequentes sobre Planos</h2>
+                <h2 className="text-3xl" style={{ color: visitorColors.text }}>Dúvidas Frequentes sobre Planos</h2>
                 <FAQContainer>
                     {FAQ_ITEMS.map((item, index) => (
                         <div key={index} className="faq-item">
@@ -30,4 +31,4 @@ export const FAQSection = ({ isLoading }: FAQSectionProps) => {
             </ContentWrapper>
         </BaseSection>
     );
-}
+};

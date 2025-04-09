@@ -19,6 +19,7 @@ export const useFormValidation = () => {
       phone: "",
       message: "",
       experience: "",
+      role: "",
     };
 
     if (!formData.name.trim()) {
@@ -52,6 +53,12 @@ export const useFormValidation = () => {
       isValid = false;
     } else if (formData.message.trim().length < 50) {
       newErrors.message = "A mensagem deve ter pelo menos 50 caracteres";
+      isValid = false;
+    }
+
+    // Add validation for role
+    if (!formData.role) {
+      newErrors.role = "Cargo de interesse é obrigatório";
       isValid = false;
     }
 

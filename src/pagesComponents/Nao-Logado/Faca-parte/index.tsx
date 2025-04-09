@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC, useState, lazy } from "react";
+import { type FC, useState, lazy, Suspense } from "react";
 import { Grid, Stack } from "@mui/material";
 
 import { OptimizedImage } from "@/components/OptimizedImage";
@@ -9,15 +9,15 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 
 import { SectionJoinTeam } from "./styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
 const IMAGE_PROPS = {
     src: "/assets/images/background/Faca-Parte.jpg",
-    alt: "Join Team Background",
+    alt: "Imagem de Fundo Faça Parte",
     fill: true,
     priority: true,
     sizes: "100vw",
     className: "object-cover",
-    loadingClassName: "scale-100 blur-xl grayscale",
     quality: 85
 } as const;
 

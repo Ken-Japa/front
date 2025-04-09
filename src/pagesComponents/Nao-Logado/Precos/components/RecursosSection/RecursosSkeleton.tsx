@@ -1,6 +1,7 @@
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { RecursosContainer } from "./styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const RecursosSkeleton = () => (
     <BaseSection>
@@ -8,7 +9,7 @@ export const RecursosSkeleton = () => (
             <ContentSkeleton
                 type="text"
                 textLines={1}
-                className="w-64 bg-[#ffffff0a] backdrop-blur-sm"
+                className={`w-64 ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
             <RecursosContainer>
                 <div className="recursos-grid">
@@ -17,7 +18,7 @@ export const RecursosSkeleton = () => (
                             key={`recurso-${index}`}
                             type="text"
                             textLines={1}
-                            className="bg-[#ffffff0a] backdrop-blur-sm"
+                            className={`${visitorColors.skeletonBackground} backdrop-blur-sm`}
                         />
                     ))}
                 </div>

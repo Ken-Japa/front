@@ -1,10 +1,10 @@
 import { type FC, useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { StyledSnackbar } from './styled';
+import { SnackbarStyled } from './styled';
 
 type Severity = 'success' | 'error' | 'info' | 'warning';
 
-interface SnackbarNotificationProps {
+interface FormSnackbarProps {
     open: boolean;
     message: string;
     severity: Severity;
@@ -12,7 +12,7 @@ interface SnackbarNotificationProps {
     autoHideDuration?: number;
 }
 
-export const SnackbarNotification: FC<SnackbarNotificationProps> = ({
+export const FormSnackbar: FC<FormSnackbarProps> = ({
     open,
     message,
     severity,
@@ -35,7 +35,7 @@ export const SnackbarNotification: FC<SnackbarNotificationProps> = ({
     if (!open && !isVisible) return null;
 
     return (
-        <StyledSnackbar 
+        <SnackbarStyled 
             className={`${severity} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{ 
                 transform: isVisible 
@@ -52,6 +52,6 @@ export const SnackbarNotification: FC<SnackbarNotificationProps> = ({
                     setTimeout(onClose, 300);
                 }} 
             />
-        </StyledSnackbar>
+        </SnackbarStyled>
     );
 };

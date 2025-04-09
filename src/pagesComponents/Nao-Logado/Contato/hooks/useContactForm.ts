@@ -1,19 +1,6 @@
 import { useState } from 'react';
 import { type ReadonlyURLSearchParams } from 'next/navigation';
-
-interface FormData {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-}
-
-interface FormErrors {
-    name?: string;
-    email?: string;
-    subject?: string;
-    message?: string;
-}
+import { FormData, FormErrors } from '../types';
 
 export const useContactForm = (searchParams: ReadonlyURLSearchParams) => {
     const [formData, setFormData] = useState<FormData>({

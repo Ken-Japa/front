@@ -1,34 +1,36 @@
 import { Stack, styled } from "@mui/material";
+import { spacing, borderRadius } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const InfoContainer = styled(Stack)({
-    padding: '2rem',
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    borderRadius: '8px',
-    backdropFilter: 'blur(10px)'
+  padding: spacing.lg,
+  backgroundColor: visitorColors.backgroundLight,
+  borderRadius: borderRadius.md,
+  backdropFilter: visitorColors.blur,
 });
 
 export const InfoItem = styled('div')({
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.5rem'
+  display: 'flex',
+  flexDirection: 'column',
+  gap: spacing.xs,
 });
 
 export const InfoHeader = styled('div')({
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
+  display: 'flex',
+  alignItems: 'center',
+  gap: spacing.sm,
 
-    '& .info-icon': {
-        color: '#0D95F9'
-    },
+  '& .info-icon': {
+    color: visitorColors.primary,
+  },
 
-    '& .info-title': {
-        fontWeight: 600,
-        color: 'white'
-    }
+  '& .info-title': {
+    fontWeight: 600,
+    color: visitorColors.text,
+  }
 });
 
 export const ContactInfoSkeletonStyled = styled(Stack)({
-    width: '100%',
-    minHeight: '200px'
+  width: '100%',
+  minHeight: '200px',
 });

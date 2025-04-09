@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Stack } from "@mui/material";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
-import { type FormData, type FormErrors } from '../../types';
+import { FormData, FormErrors } from '../../types';
 
 interface ContactContentProps {
     imageLoaded: boolean;

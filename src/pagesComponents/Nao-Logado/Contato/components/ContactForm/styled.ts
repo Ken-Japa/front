@@ -1,28 +1,30 @@
 import { styled } from '@mui/material';
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const ContactFormSkeletonStyled = styled('div')({
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem'
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: spacing.md,
 });
 
-export const ContactFormStyled = styled("form")(({ theme }) => ({
+export const ContactFormStyled = styled("form")({
   flex: "1 1 auto",
   maxWidth: "600px",
 
   "& .MuiTextField-root": {
-    marginBottom: "16px",
+    marginBottom: spacing.md,
     width: "100%",
 
     "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      borderRadius: "4px",
+      backgroundColor: visitorColors.backgroundOverlay,
+      borderRadius: borderRadius.sm,
     },
   },
 
   "& .MuiOutlinedInput-root": {
-    color: "white",
+    color: visitorColors.text,
     "& fieldset": {
       borderColor: "rgba(255, 255, 255, 0.23)",
     },
@@ -30,23 +32,24 @@ export const ContactFormStyled = styled("form")(({ theme }) => ({
       borderColor: "rgba(255, 255, 255, 0.5)",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#0D95F9",
+      borderColor: visitorColors.primary,
     },
   },
 
   "& .MuiInputLabel-root": {
-    color: "rgba(255, 255, 255, 0.7)",
+    color: visitorColors.textSecondary,
     "&.Mui-focused": {
-      color: "#0D95F9",
+      color: visitorColors.primary,
     },
   },
 
   "& .submit-button": {
-    marginTop: "24px",
-    backgroundColor: "#0D95F9",
-    color: "white",
+    marginTop: spacing.lg,
+    backgroundColor: visitorColors.primary,
+    color: visitorColors.text,
+    transition: transitions.medium,
     "&:hover": {
-      backgroundColor: "#0D85E9",
+      backgroundColor: visitorColors.buttonPrimary,
     },
   },
-}));
+});

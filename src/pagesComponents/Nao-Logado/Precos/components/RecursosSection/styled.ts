@@ -1,32 +1,39 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const RecursosContainer = styled("div")(({ theme }) => ({
-  backgroundColor: "rgba(0, 0, 0, 0.4)",
+  backgroundColor: visitorColors.overlay,
   width: "100%",
-  padding: "24px",
-  borderRadius: "8px",
+  padding: spacing.lg,
+  borderRadius: borderRadius.md,
+  transition: transitions.medium,
+
+  "&:hover": {
+    backgroundColor: visitorColors.backgroundMedium,
+  },
 
   "& .recursos-grid": {
     display: "grid",
     gridTemplateColumns: "repeat(2, 1fr)",
-    gap: "32px",
-    marginBottom: "32px",
+    gap: spacing.xl,
+    marginBottom: spacing.xl,
     width: "100%",
 
     [theme.breakpoints.down("md")]: {
       gridTemplateColumns: "1fr",
-    }
+    },
   },
 
   "& .recurso-item": {
     display: "flex",
     alignItems: "center",
-    color: "rgba(255, 255, 255, 0.95)",
-    
+    color: visitorColors.textSecondary,
+
     "& .icon": {
-      color: "#0D95F9",
-      marginRight: "8px",
-    }
+      color: visitorColors.primary,
+      marginRight: spacing.sm,
+    },
   },
 
   "& .link-container": {
@@ -34,12 +41,12 @@ export const RecursosContainer = styled("div")(({ theme }) => ({
   },
 
   "& .more-link": {
-    color: "#0D95F9",
+    color: visitorColors.primary,
     textDecoration: "none",
-    transition: "all 0.3s ease",
+    transition: transitions.medium,
 
     "&:hover": {
       textDecoration: "underline",
-    }
-  }
+    },
+  },
 }));

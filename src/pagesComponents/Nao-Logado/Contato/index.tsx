@@ -3,19 +3,26 @@
 import { useState, lazy, type FormEvent, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
+// Componentes
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { PageTransition } from "@/components/PageTransition";
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 
+// Estilos e constantes
 import { SectionContact } from "./styled";
+import { CONTACT_CONSTANTS } from './constants';
+
+// Hooks e serviços
 import { useContactForm } from "./hooks/useContactForm";
 import { useBlockTimer } from "./hooks/useBlockTimer";
 import { useSnackbar } from "./hooks/useSnackbar";
 import { submitContactForm } from './services/contactService';
-import { CONTACT_CONSTANTS } from './constants';
+
+// Componentes locais
 import { ContactContent } from './components/ContactContent';
 import { SnackbarNotification } from './components/SnackbarNotification';
 
+// Lazy loading de componentes
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const ContactInfo = lazy(() => import('./components/ContactInfo').then(mod => ({ default: mod.ContactInfo })));
 const ContactFormComponent = lazy(() => import('./components/ContactForm').then(mod => ({ default: mod.ContactFormComponent })));
@@ -59,11 +66,10 @@ const ContactWithSearchParams = () => {
 
     const imageProps = {
         src: "/assets/images/background/Contato.jpg",
-        alt: "Contact Background",
+        alt: "Imagem de Fundo de Contato",
         fill: true,
         priority: true,
         className: "object-cover",
-        loadingClassName: "scale-100 ",
         sizes: "100vw",
         onLoad: () => setImageLoaded(true),
         style: {
@@ -106,10 +112,10 @@ const ContactWithSearchParams = () => {
     );
 };
 
-// Main export component with Suspense boundary
+// Componente principal com Suspense
 export const Contact = () => {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Carregando...</div>}>
             <ContactWithSearchParams />
         </Suspense>
     );

@@ -1,32 +1,39 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const BenefitsContainer = styled("div")(({ theme }) => ({
-  backgroundColor: "rgba(255, 255, 255, 0.07)",
-  padding: "24px",
-  borderRadius: "8px",
-  backdropFilter: "blur(10px)",
+export const BenefitsContainer = styled("div")({
+  backgroundColor: visitorColors.backgroundLight,
+  padding: spacing.md,
+  borderRadius: borderRadius.md,
+  backdropFilter: visitorColors.blur,
 
   "& .benefits-title": {
-    color: "#0D95F9",
-    marginBottom: "16px",
+    color: visitorColors.primary,
+    marginBottom: spacing.md,
+    marginLeft: spacing.sm,
     display: "flex",
     alignItems: "center",
-    gap: "8px",
+    gap: spacing.xs,
+  },
+
+  "& .rocket-icon": {
+    marginRight: spacing.sm,
   },
 
   "& .benefits-grid": {
     display: "flex",
     flexWrap: "wrap",
-    gap: "8px",
+    gap: spacing.xs,
   },
 
   "& .benefit-chip": {
-    backgroundColor: "rgba(13, 149, 249, 0.15)",
-    color: "white",
-    transition: "background-color 0.2s",
+    backgroundColor: `${visitorColors.primary}26`, // 15% opacity
+    color: visitorColors.text,
+    transition: transitions.fast,
 
     "&:hover": {
-      backgroundColor: "rgba(13, 149, 249, 0.25)",
-    }
-  }
-}));
+      backgroundColor: `${visitorColors.primary}40`, // 25% opacity
+    },
+  },
+});

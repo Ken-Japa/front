@@ -1,5 +1,6 @@
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { BaseSection, ContentWrapper } from "../../styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const EmbaixadorSkeleton = () => (
     <BaseSection>
@@ -7,17 +8,17 @@ export const EmbaixadorSkeleton = () => (
             <ContentSkeleton 
                 type="text" 
                 textLines={1} 
-                className="w-64 bg-[#ffffff0a] backdrop-blur-sm" 
+                className={`w-64 ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
             <ContentSkeleton 
                 type="text" 
                 textLines={2} 
-                className="max-w-2xl mx-auto bg-[#ffffff0a] backdrop-blur-sm" 
+                className={`max-w-2xl mx-auto ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
             <ContentSkeleton 
                 type="card" 
                 cardHeight={400} 
-                className="max-w-md mx-auto bg-[#ffffff0a] backdrop-blur-sm" 
+                className={`max-w-md mx-auto ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
         </ContentWrapper>
     </BaseSection>

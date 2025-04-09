@@ -1,28 +1,30 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const JoinTeamForm = styled("form")(({ theme }) => ({
+export const JoinTeamForm = styled("form")({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  gap: "20px",
+  gap: spacing.md,
 
   "& .form-container": {
-    backgroundColor: "rgba(255, 255, 255, 0.07)",
-    padding: "32px",
-    borderRadius: "8px",
-    backdropFilter: "blur(10px)",
+    backgroundColor: visitorColors.backgroundLight,
+    padding: spacing.lg,
+    borderRadius: borderRadius.md,
+    backdropFilter: visitorColors.blur,
 
-    [theme.breakpoints.down('sm')]: {
-      padding: "24px 16px",
+    "@media (max-width: 600px)": {
+      padding: `${spacing.md} ${spacing.sm}`,
     }
   },
 
   "& .MuiTextField-root": {
-    marginBottom: "16px",
+    marginBottom: spacing.sm,
     
     "& .MuiOutlinedInput-root": {
-      color: "white",
-      backgroundColor: "rgba(0, 0, 0, 0.2)",
+      color: visitorColors.text,
+      backgroundColor: visitorColors.backgroundDark,
       
       "& fieldset": {
         borderColor: "rgba(255, 255, 255, 0.23)",
@@ -31,23 +33,24 @@ export const JoinTeamForm = styled("form")(({ theme }) => ({
         borderColor: "rgba(255, 255, 255, 0.5)",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#0D95F9",
+        borderColor: visitorColors.primary,
       }
     },
 
     "& .MuiInputLabel-root": {
-      color: "rgba(255, 255, 255, 0.7)",
+      color: visitorColors.textMuted,
       "&.Mui-focused": {
-        color: "#0D95F9",
+        color: visitorColors.primary,
       }
     },
   },
 
   "& .submit-button": {
     height: "56px",
-    backgroundColor: "#0D95F9",
+    backgroundColor: visitorColors.primary,
+    transition: transitions.medium,
     "&:hover": {
-      backgroundColor: "rgba(13, 149, 249, 0.8)",
+      backgroundColor: visitorColors.buttonPrimary,
     },
     "&:disabled": {
       backgroundColor: "rgba(255, 255, 255, 0.12)",
@@ -56,19 +59,19 @@ export const JoinTeamForm = styled("form")(({ theme }) => ({
   },
 
   "& .MuiSelect-select": {
-    color: "white",
+    color: visitorColors.text,
   },
 
   "& .menu-paper": {
-    backgroundColor: "rgba(0, 21, 41, 0.98)",
-    backdropFilter: "blur(10px)",
-    border: "1px solid rgba(13, 149, 249, 0.2)",
+    backgroundColor: visitorColors.backgroundDark,
+    backdropFilter: visitorColors.blur,
+    border: `1px solid ${visitorColors.primary}33`,
     
     "& .MuiMenuItem-root": {
-      color: "white",
+      color: visitorColors.text,
       "&:hover": {
-        backgroundColor: "rgba(13, 149, 249, 0.35)",
+        backgroundColor: `${visitorColors.primary}59`, // 35% opacity
       }
     }
   }
-}));
+});

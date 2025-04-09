@@ -8,13 +8,12 @@ import { RecursosSkeleton } from "./RecursosSkeleton";
 interface RecursosSectionProps {
     isLoading?: boolean;
 }
-export const RecursosSection = ({ isLoading }: RecursosSectionProps) => {
 
+export const RecursosSection = ({ isLoading }: RecursosSectionProps) => {
     if (isLoading) {
         return <RecursosSkeleton />;
     }
     return (
-
         <BaseSection>
             <ContentWrapper spacing={4}>
                 <MatrixRainText

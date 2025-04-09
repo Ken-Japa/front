@@ -1,6 +1,7 @@
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { VantagensGrid } from "./styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const VantagensSkeleton = () => (
     <BaseSection>
@@ -8,7 +9,7 @@ export const VantagensSkeleton = () => (
             <ContentSkeleton
                 type="text"
                 textLines={1}
-                className="w-96 bg-[#ffffff0a] backdrop-blur-sm"
+                className={`w-64 ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
             <VantagensGrid>
                 {Array(3).fill(0).map((_, index) => (
@@ -16,7 +17,7 @@ export const VantagensSkeleton = () => (
                         key={`vantagem-${index}`}
                         type="card"
                         cardHeight={150}
-                        className="bg-[#ffffff0a] backdrop-blur-sm"
+                        className={`${visitorColors.skeletonBackground} backdrop-blur-sm`}
                     />
                 ))}
             </VantagensGrid>

@@ -3,17 +3,14 @@ import { type FC } from 'react';
 import { Stack } from "@mui/material";
 
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
-
-const SKELETON_STYLES = {
-    cardHeight: 300,
-    className: "bg-[#ffffff0a] backdrop-blur-sm"
-} as const;
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const BenefitsSkeleton: FC = () => (
     <Stack spacing={2}>
         <ContentSkeleton
             type="card"
-            {...SKELETON_STYLES}
+            cardHeight={300}
+            className={`${visitorColors.skeletonBackground} backdrop-blur-sm`}
         />
     </Stack>
 );

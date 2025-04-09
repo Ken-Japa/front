@@ -1,6 +1,6 @@
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { BaseSection, ContentWrapper } from "../../styled";
-import { VantagemCard, VantagensGrid } from "./styled";
+import { VantagensGrid, VantagemCard } from "./styled";
 import { VantagensSkeleton } from "./VantagensSkeleton";
 
 interface VantagensSectionProps {
@@ -8,7 +8,6 @@ interface VantagensSectionProps {
 }
 
 export const VantagensSection = ({ isLoading }: VantagensSectionProps) => {
-
     if (isLoading) {
         return <VantagensSkeleton />;
     }

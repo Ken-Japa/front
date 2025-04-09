@@ -3,12 +3,13 @@ import { Stack } from "@mui/material";
 
 import { JoinTeamForm } from "./styled";
 import { ApplicationFormSkeleton } from "./ApplicationFormSkeleton";
-import { FormFields } from './components/FormFields';
-import { FormSnackbar } from './components/FormSnackbar';
+import { FormFields } from './components/FormFields/index';
+import { FormSnackbar } from './components/FormSnackbar/index';
 import { SubmitButton } from './components/SubmitButton';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { useBlockTimer } from '../../hooks/useBlockTimer';
 import { useFormState } from '../../hooks/useFormState';
+import { MAX_JOIN_ATTEMPTS, MESSAGES } from '../../constants';
 import type { ApplicationFormProps } from '../../types';
 
 export const ApplicationForm: FC<ApplicationFormProps> = ({ isLoading }) => {
@@ -33,7 +34,7 @@ export const ApplicationForm: FC<ApplicationFormProps> = ({ isLoading }) => {
         if (isBlocked) {
             setSnackbar({
                 open: true,
-                message: `Por favor, aguarde ${blockTimer} segundos antes de tentar novamente.`,
+                message: MESSAGES.WAIT_BLOCK(blockTimer),
                 severity: 'error'
             });
             return;
@@ -45,7 +46,7 @@ export const ApplicationForm: FC<ApplicationFormProps> = ({ isLoading }) => {
         if (isValid) {
             setJoinAttempts((prev) => {
                 const newAttempts = prev + 1;
-                if (newAttempts >= 2) {
+                if (newAttempts >= MAX_JOIN_ATTEMPTS) {
                     blockUser();
                     return 0;
                 }
@@ -54,16 +55,29 @@ export const ApplicationForm: FC<ApplicationFormProps> = ({ isLoading }) => {
 
             setIsSubmitting(true);
             try {
-                // ... existing submission logic ...
+                // Simulação de envio para API
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                setSnackbar({
+                    open: true,
+                    message: MESSAGES.SUCCESS,
+                    severity: 'success'
+                });
             } catch (error) {
                 setSnackbar({
                     open: true,
-                    message: 'Erro ao enviar candidatura. Tente novamente.',
+                    message: MESSAGES.ERROR,
                     severity: 'error'
                 });
             } finally {
                 setIsSubmitting(false);
             }
+        } else {
+            setSnackbar({
+                open: true,
+                message: MESSAGES.VALIDATION_ERROR,
+                severity: 'error'
+            });
         }
     };
 

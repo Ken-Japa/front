@@ -26,8 +26,8 @@ export const Benefits: FC<BenefitsProps> = ({ isLoading }) => {
 
     return (
         <BenefitsContainer>
-            <Typography variant="h6" className="benefits-title">
-                <RocketLaunchIcon /> Benefícios
+            <Typography variant="h2" className="benefits-title">
+                <RocketLaunchIcon className="rocket-icon" /> Benefícios
             </Typography>
             <div className="benefits-grid">
                 {BENEFITS.map((benefit) => (

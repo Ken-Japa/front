@@ -1,30 +1,37 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const VantagemCard = styled("div")(({ theme }) => ({
   textAlign: "center",
-  padding: "24px",
-  backgroundColor: "rgba(0, 0, 0, 0.6)",
-  borderRadius: "8px",
-  color: "white",
+  padding: spacing.lg,
+  backgroundColor: visitorColors.overlay,
+  borderRadius: borderRadius.md,
+  color: visitorColors.text,
+  transition: transitions.medium,
+
+  "&:hover": {
+    backgroundColor: visitorColors.backgroundMedium,
+  },
 
   "& .title": {
     fontSize: "1.25rem",
-    marginBottom: "16px",
-    color: "#0D95F9",
+    marginBottom: spacing.md,
+    color: visitorColors.primary,
   },
 
   "& .description": {
-    color: "rgba(255, 255, 255, 0.95)",
-  }
+    color: visitorColors.textSecondary,
+  },
 }));
 
 export const VantagensGrid = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "32px",
+  gap: spacing.xl,
   width: "100%",
 
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
-  }
+  },
 }));

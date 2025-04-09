@@ -1,55 +1,63 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const EmbaixadorCard = styled("div")(({ theme }) => ({
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
-  padding: "32px",
-  borderRadius: "8px",
-  border: "1px solid rgba(13, 149, 249, 0.3)",
-  color: "white",
+export const EmbaixadorCard = styled("div")({
+  backgroundColor: visitorColors.overlay,
+  padding: spacing.xl,
+  borderRadius: borderRadius.md,
+  border: `1px solid ${visitorColors.divider}`,
+  color: visitorColors.text,
   width: "100%",
   maxWidth: "400px",
+  transition: transitions.medium,
+
+  "&:hover": {
+    backgroundColor: visitorColors.backgroundMedium,
+    borderColor: visitorColors.primary,
+  },
 
   "& .card-title": {
     fontSize: "1.5rem",
-    marginBottom: "16px",
+    marginBottom: spacing.md,
     textAlign: "center",
   },
 
   "& .card-price": {
     fontSize: "2.5rem",
     fontWeight: "bold",
-    marginBottom: "8px",
+    marginBottom: spacing.xs,
     textAlign: "center",
   },
 
   "& .card-period": {
     opacity: 0.75,
-    marginBottom: "24px",
+    marginBottom: spacing.lg,
     textAlign: "center",
   },
 
   "& .benefits-list": {
-    marginBottom: "32px",
+    marginBottom: spacing.xl,
     display: "flex",
     flexDirection: "column",
-    gap: "16px",
+    gap: spacing.md,
   },
 
   "& .benefit-item": {
     display: "flex",
     alignItems: "center",
-    gap: "8px",
+    gap: spacing.sm,
 
     "& .icon": {
-      color: "#0D95F9",
-    }
-  }
-}));
+      color: visitorColors.primary,
+    },
+  },
+});
 
-export const Description = styled("p")(({ theme }) => ({
-  color: "white",
+export const Description = styled("p")({
+  color: visitorColors.text,
   textAlign: "center",
   maxWidth: "800px",
-  marginBottom: "32px",
+  marginBottom: spacing.xl,
   lineHeight: 1.6,
-}));
+});

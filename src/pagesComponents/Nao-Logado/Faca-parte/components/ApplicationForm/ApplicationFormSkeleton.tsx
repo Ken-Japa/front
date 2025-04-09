@@ -3,6 +3,7 @@ import { type FC } from 'react';
 import { Stack } from "@mui/material";
 
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 const SKELETON_FIELDS = [
     { lines: 1 },
@@ -22,7 +23,8 @@ export const ApplicationFormSkeleton: FC = () => (
             <ContentSkeleton 
                 key={index}
                 type="text" 
-                textLines={field.lines} 
+                textLines={field.lines}
+                className={`${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
         ))}
     </Stack>

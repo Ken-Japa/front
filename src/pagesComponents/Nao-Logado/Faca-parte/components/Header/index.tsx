@@ -6,6 +6,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 
 import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface HeaderProps {
     isLoading: boolean;
@@ -13,7 +14,7 @@ interface HeaderProps {
 
 const ICON_STYLES = {
     fontSize: 40,
-    color: '#0D95F9'
+    color: visitorColors.primary
 } as const;
 
 const LOADING_TITLE = <Typography variant="h4" className="title">Junte-se ao Time</Typography>;
@@ -41,7 +42,7 @@ export const Header: FC<HeaderProps> = ({ isLoading }) => {
                     className="title"
                 />
             </div>
-            <Typography variant="h6" className="subtitle">
+            <Typography variant="h4" className="subtitle">
                 Estamos sempre em busca de talentos apaixonados por inovação e mercado financeiro
             </Typography>
         </HeaderContainer>

@@ -4,10 +4,12 @@ import { EMBAIXADOR_BENEFICIOS } from "../../constants/embaixador";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { EmbaixadorCard, Description } from "./styled";
 import { EmbaixadorSkeleton } from "./EmbaixadorSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface EmbaixadorSectionProps {
     isLoading?: boolean;
 }
+
 export const EmbaixadorSection = ({ isLoading }: EmbaixadorSectionProps) => {
     if (isLoading) {
         return <EmbaixadorSkeleton />;
@@ -38,8 +40,8 @@ export const EmbaixadorSection = ({ isLoading }: EmbaixadorSectionProps) => {
                     </ul>
                     <CustomButton
                         value="Tornar-se Embaixador"
-                        customColor="#3A1078"
-                        textColor="#FFFFFF"
+                        customColor={visitorColors.buttonSecondary}
+                        textColor={visitorColors.text}
                         fullWidth
                     />
                 </EmbaixadorCard>
