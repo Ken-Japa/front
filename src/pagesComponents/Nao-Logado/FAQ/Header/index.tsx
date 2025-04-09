@@ -3,13 +3,14 @@ import { type FC } from 'react';
 import HelpIcon from '@mui/icons-material/Help';
 
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
+import { visitorColors } from "@/theme/palette/visitor";
 
 import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
 
 const ICON_STYLES = {
     fontSize: 40,
-    color: '#0D95F9'
+    color: visitorColors.primary
 } as const;
 
 interface HeaderProps {

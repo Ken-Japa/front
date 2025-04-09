@@ -1,6 +1,18 @@
 import { styled } from "@mui/material/styles";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-const BACKGROUND_STYLES = {
+export const SectionFAQ = styled("section")(({ theme }) => ({
+  width: "100%",
+  minHeight: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  padding: `${spacing.xl} 0`,
+  backgroundColor: visitorColors.overlay,
+
+  "& .background-image": {
     position: "fixed",
     top: 0,
     left: 0,
@@ -8,40 +20,26 @@ const BACKGROUND_STYLES = {
     height: "100vh",
     zIndex: -1,
     "& > span": {
-        height: "100vh !important",
+      height: "100vh !important",
     },
     "& img": {
-        objectFit: "cover",
-        objectPosition: "center",
+      objectFit: "cover",
+      objectPosition: "center",
     },
-} as const;
+  },
 
-const CONTENT_STYLES = {
+  "& .content-container": {
     position: "relative",
     zIndex: 1,
     width: "100%",
     maxWidth: "900px",
     margin: "0 auto",
-    padding: "40px 24px",
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    backdropFilter: "blur(8px)",
-} as const;
+    padding: `${spacing.xl} ${spacing.lg}`,
+    backgroundColor: visitorColors.overlay,
+    backdropFilter: visitorColors.blur,
 
-export const SectionFAQ = styled("section")(({ theme }) => ({
-    width: "100%",
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    padding: "2rem 0",
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-
-    "& .background-image": BACKGROUND_STYLES,
-    "& .content-container": {
-        ...CONTENT_STYLES,
-        [theme.breakpoints.down("sm")]: {
-            padding: "24px 16px",
-        },
+    [theme.breakpoints.down("sm")]: {
+      padding: `${spacing.lg} ${spacing.md}`,
     },
+  },
 }));

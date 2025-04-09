@@ -1,30 +1,30 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const FeaturesContainer = styled("div")({
   width: "100%",
-  marginTop: "40px",
-  marginBottom: "40px",
+  marginTop: spacing.xl,
+  marginBottom: spacing.xl,
 });
 
 export const FeatureCard = styled("div")(({ theme }) => ({
-  background:
-    "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 149, 249, 0.09) 100%)",
-  backdropFilter: "blur(10px)",
-  border: "1px solid rgba(255, 255, 255, 0.05)",
-  borderRadius: "16px",
-  padding: "32px",
+  background: `linear-gradient(145deg, ${visitorColors.backgroundLight} 0%, ${visitorColors.backgroundPrimary} 100%)`,
+  backdropFilter: visitorColors.blur,
+  border: `1px solid ${visitorColors.divider}`,
+  borderRadius: borderRadius.lg,
+  padding: spacing.xl,
   height: "auto",
   minHeight: "280px",
   display: "flex",
   flexDirection: "column",
-  transition: "all 0.3s ease",
+  transition: transitions.medium,
   cursor: "pointer",
   overflow: "hidden",
   position: "relative",
 
   "&:hover": {
-    background:
-      "linear-gradient(145deg, rgba(255, 255, 255, 0.09) 0%, rgba(13, 149, 249, 0.1) 100%)",
+    background: `linear-gradient(145deg, ${visitorColors.backgroundMedium} 0%, rgba(13, 149, 249, 0.1) 100%)`,
     borderColor: "rgba(13, 149, 249, 0.3)",
     boxShadow: "0 8px 32px rgba(13, 149, 249, 0.1)",
     "& .feature-details": {
@@ -34,25 +34,25 @@ export const FeatureCard = styled("div")(({ theme }) => ({
   },
 
   "& .feature-title": {
-    color: "#0D95F9",
+    color: visitorColors.primary,
     fontSize: "1.25rem",
     fontWeight: "600",
-    marginBottom: "16px",
+    marginBottom: spacing.md,
   },
 
   "& .feature-description": {
-    color: "rgba(255, 255, 255, 0.8)",
+    color: visitorColors.textSecondary,
     fontSize: "1rem",
     lineHeight: 1.6,
-    marginBottom: "16px",
+    marginBottom: spacing.md,
   },
 
   "& .feature-details": {
     maxHeight: 0,
     opacity: 0,
     overflow: "hidden",
-    transition: "all 0.3s ease",
-    marginTop: "16px",
+    transition: transitions.medium,
+    marginTop: spacing.md,
 
     "& ul": {
       listStyle: "none",
@@ -61,15 +61,15 @@ export const FeatureCard = styled("div")(({ theme }) => ({
     },
 
     "& li": {
-      marginBottom: "8px",
+      marginBottom: spacing.sm,
       display: "flex",
       alignItems: "center",
-      gap: "8px",
-      color: "rgba(255, 255, 255, 0.8)",
+      gap: spacing.sm,
+      color: visitorColors.textSecondary,
 
       "&::before": {
         content: '"•"',
-        color: "#0D95F9",
+        color: visitorColors.primary,
       },
     },
   },
@@ -84,7 +84,7 @@ export const FeatureCard = styled("div")(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     "& .feature-details": {
-      padding: "24px",
+      padding: spacing.lg,
     },
   },
 }));

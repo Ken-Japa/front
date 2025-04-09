@@ -31,7 +31,7 @@ export const Newsletter: FC<NewsletterProps> = ({ isLoading }) => {
     return (
         <NewsletterContainer>
             <Stack spacing={3} alignItems="center">
-                <Typography variant="h4" color={visitorColors.text}>
+                <Typography variant="h3" color={visitorColors.text}>
                     Quer ficar por dentro das novidades?
                 </Typography>
                 <Typography color={visitorColors.textSecondary} maxWidth="600px">

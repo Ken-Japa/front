@@ -2,13 +2,14 @@ import { type FC } from 'react';
 import Link from 'next/link';
 
 import { CustomButton } from "@/components/Custom/Button";
+import { visitorColors } from "@/theme/palette/visitor";
 
 import { SupportContainer } from "./styled";
 
 const BUTTON_PROPS = {
     value: "Contatar Suporte",
-    customColor: "#0056b3",
-    textColor: "#FFFFFF"
+    customColor: visitorColors.buttonPrimary,
+    textColor: visitorColors.text
 } as const;
 
 export const ContactSupport: FC = () => (

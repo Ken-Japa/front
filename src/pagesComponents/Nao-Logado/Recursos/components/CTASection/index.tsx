@@ -3,6 +3,7 @@ import { Stack, Typography } from "@mui/material";
 import { CustomButton } from "@/components/Custom/Button";
 import { CTAContainer } from "./styled";
 import { CTASkeleton } from "./CTASkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface CTASkeletonProps {
     isLoading?: boolean;
@@ -15,24 +16,24 @@ export const CTASection = ({ isLoading }: CTASkeletonProps) => {
     return (
         <CTAContainer>
             <Stack spacing={3} alignItems="center">
-                <Typography variant="h4" className="cta-title text-white">
+                <Typography variant="h3" className="cta-title">
                     Pronto para transformar seus investimentos?
                 </Typography>
-                <Typography className="cta-description" color="rgba(255, 255, 255, 0.8)">
+                <Typography className="cta-description">
                     Comece agora a usar ferramentas avançadas para tomar decisões mais precisas em seus investimentos.
                 </Typography>
                 <Link href="/register">
                     <CustomButton
                         value="Começar Gratuitamente"
-                        customColor="#0056b3"
-                        textColor="#FFFFFF"
+                        customColor={visitorColors.buttonPrimary}
+                        textColor={visitorColors.text}
                         size="large"
                         className="mt-4"
                         padding="24px 32px"
                     />
                 </Link>
-                <Link href="/visitante/precos" className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline">
-                    <Typography >
+                <Link href="/visitante/precos" className="text-[#FF4081] hover:text-[#0D95F9]/95 underline">
+                    <Typography>
                         Veja qual plano é o melhor para você
                     </Typography>
                 </Link>

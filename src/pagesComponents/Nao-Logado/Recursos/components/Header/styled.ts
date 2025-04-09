@@ -1,16 +1,18 @@
 import { styled } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const HeaderContainer = styled("div")(({ theme }) => ({
   textAlign: "center",
   maxWidth: "48rem",
   margin: "0 auto",
-  marginTop: "16px",
+  marginTop: spacing.md,
 
   "& .header-title": {
-    color: "white",
+    color: visitorColors.text,
     fontSize: "2.5rem",
     fontWeight: "bold",
-    marginBottom: "16px",
+    marginBottom: spacing.md,
 
     [theme.breakpoints.down("sm")]: {
       fontSize: "2rem",
@@ -18,7 +20,7 @@ export const HeaderContainer = styled("div")(({ theme }) => ({
   },
 
   "& .header-subtitle": {
-    color: "rgba(255, 255, 255, 0.9)",
+    color: visitorColors.textSecondary,
     fontSize: "1.25rem",
     maxWidth: "48rem",
     margin: "0 auto",

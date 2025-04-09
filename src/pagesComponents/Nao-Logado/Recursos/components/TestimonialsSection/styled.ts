@@ -1,34 +1,36 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const TestimonialCard = styled("div")(({ theme }) => ({
-  backgroundColor: "rgba(255, 255, 255, 0.04)",
-  padding: "24px",
-  borderRadius: "8px",
-  backdropFilter: "blur(4px)",
-  transition: "all 0.3s ease",
+  backgroundColor: visitorColors.backgroundLight,
+  padding: spacing.lg,
+  borderRadius: borderRadius.md,
+  backdropFilter: visitorColors.blur,
+  transition: transitions.medium,
   height: "100%",
 
   "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.09)",
+    backgroundColor: visitorColors.backgroundMedium,
   },
 
   "& .testimonial-text": {
-    color: "rgba(255, 255, 255, 0.9)",
-    marginBottom: "16px",
+    color: visitorColors.textSecondary,
+    marginBottom: spacing.md,
     fontStyle: "italic",
   },
 
   "& .testimonial-author": {
-    color: "#0D95F9",
+    color: visitorColors.primary,
     fontWeight: "bold",
   },
 
   "& .testimonial-role": {
-    color: "rgba(255, 255, 255, 0.7)",
+    color: visitorColors.textMuted,
     fontSize: "0.875rem",
   },
 
   [theme.breakpoints.down("sm")]: {
-    padding: "16px",
+    padding: spacing.md,
   }
 }));

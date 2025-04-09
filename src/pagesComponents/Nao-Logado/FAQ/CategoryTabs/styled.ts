@@ -1,36 +1,31 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-const BUTTON_STYLES = {
-    padding: "8px 16px",
-    borderRadius: "24px",
-    transition: "all 0.3s ease",
+export const TabsContainer = styled("div")({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: spacing.sm,
+  justifyContent: "center",
+  marginBottom: spacing.xl,
+
+  "& .category-button": {
+    padding: `${spacing.sm} ${spacing.md}`,
+    borderRadius: borderRadius.md,
+    transition: transitions.medium,
     fontSize: "0.95rem",
-} as const;
 
-const ACTIVE_STYLES = {
-    backgroundColor: "#0D95F9",
-    color: "white",
-} as const;
+    "&.active": {
+      backgroundColor: visitorColors.primary,
+      color: visitorColors.text,
+    },
 
-const INACTIVE_STYLES = {
-    backgroundColor: "rgba(255, 255, 255, 0.08)",
-    color: "rgba(255, 255, 255, 0.85)",
-    "&:hover": {
-        backgroundColor: "rgba(255, 255, 255, 0.12)",
-    }
-} as const;
-
-export const TabsContainer = styled("div")(({ theme }) => ({
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "8px",
-    justifyContent: "center",
-    marginBottom: "32px",
-
-    "& .category-button": {
-        ...BUTTON_STYLES,
-
-        "&.active": ACTIVE_STYLES,
-        "&.inactive": INACTIVE_STYLES
-    }
-}));
+    "&.inactive": {
+      backgroundColor: visitorColors.backgroundLight,
+      color: visitorColors.textSecondary,
+      "&:hover": {
+        backgroundColor: visitorColors.backgroundMedium,
+      },
+    },
+  },
+});

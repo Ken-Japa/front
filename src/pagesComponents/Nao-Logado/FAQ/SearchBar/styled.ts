@@ -1,60 +1,53 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-const CONTAINER_STYLES = {
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-} as const;
-
-const WRAPPER_STYLES = {
+export const SearchContainer = styled("div")({
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  
+  "& .search-wrapper": {
     position: "relative",
     width: "100%",
     maxWidth: "500px",
-    marginBottom: "32px",
-} as const;
-
-const INPUT_STYLES = {
+    marginBottom: spacing.xl,
+  },
+  
+  "& .search-input": {
     width: "100%",
-    padding: "12px 40px",
-    backgroundColor: "rgba(255, 255, 255, 0.06)",
-    color: "white",
-    border: "1px solid rgba(255, 255, 255, 0.2)",
-    borderRadius: "8px",
+    padding: `${spacing.sm} ${spacing.xl}`,
+    backgroundColor: visitorColors.backgroundLight,
+    color: visitorColors.text,
+    border: `1px solid ${visitorColors.divider}`,
+    borderRadius: borderRadius.md,
     outline: "none",
-    transition: "all 0.3s ease",
+    transition: transitions.medium,
     "&:focus": {
-        borderColor: "#0D95F9",
-        backgroundColor: "rgba(255, 255, 255, 0.08)",
+      borderColor: visitorColors.primary,
+      backgroundColor: visitorColors.backgroundMedium,
     }
-} as const;
-
-const ICON_STYLES = {
+  },
+  
+  "& .search-icon": {
     position: "absolute",
     top: "50%",
     transform: "translateY(-50%)",
-    color: "rgba(255, 255, 255, 0.7)",
-} as const;
-
-const CLEAR_BUTTON_STYLES = {
-    ...ICON_STYLES,
-    right: "12px",
+    left: spacing.sm,
+    color: visitorColors.textSecondary,
+  },
+  
+  "& .clear-button": {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    right: spacing.sm,
+    color: visitorColors.textSecondary,
     cursor: "pointer",
-    transition: "color 0.3s ease",
+    transition: transitions.medium,
     "&:hover": {
-        color: "white",
+      color: visitorColors.text,
     }
-} as const;
-
-const SEARCH_ICON_STYLES = {
-    ...ICON_STYLES,
-    left: "12px",
-} as const;
-
-export const SearchContainer = styled("div")(({ theme }) => ({
-    ...CONTAINER_STYLES,
-    "& .search-wrapper": WRAPPER_STYLES,
-    "& .search-input": INPUT_STYLES,
-    "& .search-icon": SEARCH_ICON_STYLES,
-    "& .clear-button": CLEAR_BUTTON_STYLES
-}));
+  }
+});

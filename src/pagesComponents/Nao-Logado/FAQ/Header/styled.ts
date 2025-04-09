@@ -1,48 +1,38 @@
 import { styled } from "@mui/material";
+import { spacing, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-const WRAPPER_STYLES = {
+export const HeaderContainer = styled("div")(({ theme }) => ({
+  textAlign: "center",
+  marginBottom: spacing.xxl,
+
+  "& .header-icon-wrapper": {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "12px",
-    marginBottom: "16px",
-} as const;
-
-const TITLE_STYLES = {
+    gap: spacing.sm,
+    marginBottom: spacing.md,
+  },
+  
+  "& .title": {
     fontSize: "2.5rem",
     fontWeight: "bold",
-    color: "#0D95F9",
-} as const;
-
-const SUBTITLE_STYLES = {
-    color: "rgba(255, 255, 255, 0.9)",
-    marginTop: "16px",
+    color: visitorColors.primary,
+    transition: transitions.medium,
+    
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "2rem",
+    }
+  },
+  
+  "& .subtitle": {
+    color: visitorColors.textSecondary,
+    marginTop: spacing.md,
     fontSize: "1.1rem",
-} as const;
-
-const RESPONSIVE_STYLES = (theme: any) => ({
+    transition: transitions.medium,
+    
     [theme.breakpoints.down('sm')]: {
-        fontSize: "2rem",
+      fontSize: "1rem",
     }
-});
-
-const SUBTITLE_RESPONSIVE = (theme: any) => ({
-    [theme.breakpoints.down('sm')]: {
-        fontSize: "1rem",
-    }
-});
-
-export const HeaderContainer = styled("div")(({ theme }) => ({
-    textAlign: "center",
-    marginBottom: "48px",
-
-    "& .header-icon-wrapper": WRAPPER_STYLES,
-    "& .title": {
-        ...TITLE_STYLES,
-        ...RESPONSIVE_STYLES(theme)
-    },
-    "& .subtitle": {
-        ...SUBTITLE_STYLES,
-        ...SUBTITLE_RESPONSIVE(theme)
-    }
+  }
 }));

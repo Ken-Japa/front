@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 
 import { Stack } from "@mui/material";
+import { visitorColors } from "@/theme/palette/visitor";
 
 import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
 
@@ -9,7 +10,7 @@ const SKELETON_COUNT = 8;
 const SKELETON_PROPS = {
     type: "card" as const,
     cardHeight: 120,
-    className: "bg-[#ffffff0a] backdrop-blur-sm"
+    className: `${visitorColors.skeletonBackground} backdrop-blur-sm`
 } as const;
 
 export const QuestionListSkeleton: FC = () => (

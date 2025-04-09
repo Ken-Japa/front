@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { TESTIMONIALS } from "../../constants/testimonials";
 import { TestimonialCard } from "./styled";
 import { TestimonialsSkeleton } from "./TestimonialsSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface TestimonialsSectionProps {
     isLoading?: boolean;
@@ -16,8 +17,9 @@ export const TestimonialsSection = ({ isLoading }: TestimonialsSectionProps) => 
         <div className="w-full my-8">
             <Stack spacing={4} alignItems="center">
                 <Typography
-                    variant="h4"
-                    className="text-center text-[#0D95F9]"
+                    variant="h3"
+                    className="text-center"
+                    sx={{ color: visitorColors.text }}
                     component={motion.h2}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -38,7 +40,7 @@ export const TestimonialsSection = ({ isLoading }: TestimonialsSectionProps) => 
                                     <Typography className="testimonial-text">
                                         &quot;{testimonial.comment}&quot;
                                     </Typography>
-                                    <Divider sx={{ bgcolor: 'rgba(13, 149, 249, 0.2)', my: 2 }} />
+                                    <Divider sx={{ bgcolor: visitorColors.divider, my: 2 }} />
                                     <Typography className="testimonial-author">
                                         {testimonial.name}
                                     </Typography>

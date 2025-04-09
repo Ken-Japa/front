@@ -1,4 +1,3 @@
-// Cores fixas para páginas de visitantes (independentes do tema dark/light)
 export const visitorColors = {
   // Cores principais
   primary: "#0D95F9", // Azul principal
@@ -12,6 +11,7 @@ export const visitorColors = {
   backgroundDark: "rgba(0, 0, 0, 0.6)",
   backgroundGradient: "linear-gradient(180deg, #000000 0%, #001529 100%)",
   backgroundPrimary: "rgba(13, 149, 249, 0.1)",
+  skeletonBackground: "bg-[#ffffff0a]",
 
   // Textos
   text: "#FFFFFF",
