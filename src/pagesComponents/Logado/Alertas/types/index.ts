@@ -13,3 +13,12 @@ export interface Alert {
     };
     active: boolean;
 }
+
+export interface AlertFormData {
+    symbol: string;
+    name: string;
+    buyPrice: number;
+    buyPercentage: number;
+    sellPrice: number;
+    sellPercentage: number;
+}

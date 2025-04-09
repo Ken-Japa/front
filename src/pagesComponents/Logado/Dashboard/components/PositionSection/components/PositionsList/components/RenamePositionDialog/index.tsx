@@ -24,7 +24,7 @@ export const RenamePositionDialog = ({ open, onClose, positionId }: RenamePositi
 
     return (
         <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-            <DialogTitle>Renomear Posição</DialogTitle>
+            <DialogTitle variant="h4" >Renomear Posição</DialogTitle>
             <DialogContent>
                 <TextField
                     autoFocus

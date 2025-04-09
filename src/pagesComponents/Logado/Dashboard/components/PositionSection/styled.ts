@@ -1,11 +1,9 @@
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import { Typography, Paper, Grid } from "@mui/material";
+import { spacing, borderRadius } from "@/theme/variables";
 
 export const SectionTitle = styled(Typography)(({ theme }) => ({
-  color:
-    theme.palette.mode === "dark"
-      ? theme.palette.grey[100]
-      : theme.palette.grey[900],
+  color: theme.palette.text.primary,
   fontWeight: 600,
   position: "relative",
   textAlign: "center",
@@ -22,3 +20,20 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
     borderRadius: theme.shape.borderRadius,
   },
 }));
+
+export const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: spacing.md,
+  height: "100%",
+  backgroundColor: theme.palette.background.paper,
+  borderRadius: borderRadius.md,
+  boxShadow: theme.shadows[1],
+}));
+
+export const GridContainer = styled(Grid)({
+  marginBottom: spacing.lg,
+});
+
+export const GridItem = styled(Grid)({
+  display: "flex",
+  flexDirection: "column",
+});

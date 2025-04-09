@@ -1,9 +1,9 @@
-import { Typography, List, ListItem, ListItemText } from '@mui/material';
+import { Typography, ListItemText } from '@mui/material';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
-import { ActivityContainer } from './styled';
+import { ActivityContainer, ActivityList, ActivityItem } from './styled';
 
-// Mock data - will be replaced with API data
+// Dados simulados - serão substituídos por dados da API
 const mockActivities = {
     real: [
         { id: 1, type: 'buy', asset: 'PETR4', quantity: 100, price: 34.25, date: new Date('2024-01-15') },
@@ -36,23 +36,23 @@ export const RecentActivities = ({ type }: RecentActivitiesProps) => {
 
     return (
         <ActivityContainer>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h4" gutterBottom>
                 Atividades Recentes
             </Typography>
 
-            <List dense>
+            <ActivityList dense>
                 {activities.map((activity) => (
-                    <ListItem key={activity.id}>
+                    <ActivityItem key={activity.id}>
                         <ListItemText
                             primary={getActivityText(activity)}
                             secondary={dayjs(activity.date).locale('pt-br').format('DD [de] MMMM')}
                             primaryTypographyProps={{
-                                color: activity.type === 'buy' ? 'primary' : 'secondary'
+                                color: activity.type === 'buy' ? 'success.main' : 'error.main'
                             }}
                         />
-                    </ListItem>
+                    </ActivityItem>
                 ))}
-            </List>
+            </ActivityList>
         </ActivityContainer>
     );
 };

@@ -1,7 +1,7 @@
-import { Box, Typography, Divider } from '@mui/material';
-import { SummaryContainer, SummaryItem } from './styled';
+import { Typography, Divider } from '@mui/material';
+import { SummaryContainer, SummaryItem, SummaryLabel, SummaryValue } from './styled';
 
-// Mock data - will be replaced with API data
+// Dados simulados - serão substituídos por dados da API
 const mockSummaryData = {
     real: {
         totalValue: 12500,
@@ -26,36 +26,45 @@ export const PositionSummary = ({ type }: PositionSummaryProps) => {
 
     return (
         <SummaryContainer>
-            <Typography variant="h6" gutterBottom>Resumo</Typography>
-            
+            <Typography variant="h4" gutterBottom>Resumo</Typography>
+
             <SummaryItem>
-                <Typography color="text.secondary">Patrimônio Total</Typography>
-                <Typography variant="h6">
-                    R$ {data.totalValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                </Typography>
+                <SummaryLabel>Patrimônio Total</SummaryLabel>
+                <SummaryValue>
+                    {data.totalValue.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    })}
+                </SummaryValue>
             </SummaryItem>
 
-            <Divider sx={{ my: 2 }} />
+            <Divider />
 
             <SummaryItem>
-                <Typography color="text.secondary">Total Investido</Typography>
-                <Typography>
-                    R$ {data.invested.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                </Typography>
+                <SummaryLabel>Total Investido</SummaryLabel>
+                <SummaryValue>
+                    {data.invested.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    })}
+                </SummaryValue>
             </SummaryItem>
 
             <SummaryItem>
-                <Typography color="text.secondary">Resultado</Typography>
-                <Typography color={data.result >= 0 ? 'success.main' : 'error.main'}>
-                    R$ {data.result.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                </Typography>
+                <SummaryLabel>Resultado</SummaryLabel>
+                <SummaryValue sx={{ color: data.result >= 0 ? 'success.main' : 'error.main' }}>
+                    {data.result.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    })}
+                </SummaryValue>
             </SummaryItem>
 
             <SummaryItem>
-                <Typography color="text.secondary">Rentabilidade</Typography>
-                <Typography color={data.performance >= 0 ? 'success.main' : 'error.main'}>
+                <SummaryLabel >Rentabilidade</SummaryLabel>
+                <SummaryValue sx={{ color: data.performance >= 0 ? 'success.main' : 'error.main' }}>
                     {data.performance >= 0 ? '+' : ''}{data.performance}%
-                </Typography>
+                </SummaryValue>
             </SummaryItem>
         </SummaryContainer>
     );

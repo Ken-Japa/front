@@ -10,19 +10,21 @@ import {
     IconButton,
     Switch,
     Tooltip,
+    Typography,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+
 import { AlertDialog } from '../AlertDialog';
 import { Alert } from '../../types';
-import { TableWrapper } from './styled';
+import { TableWrapper, NoAlertsMessage } from './styled';
 import { useAlerts } from '../../hooks/useAlerts';
 
 export const AlertsTable = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
-    const { alerts, toggleAlert, deleteAlert } = useAlerts();
+    const { alerts, toggleAlert, deleteAlert, loading } = useAlerts();
 
     const handleEdit = (alert: Alert) => {
         setSelectedAlert(alert);
@@ -36,6 +38,17 @@ export const AlertsTable = () => {
     const handleDelete = async (id: number) => {
         await deleteAlert(id);
     };
+
+    if (alerts.length === 0 && !loading) {
+        return (
+            <NoAlertsMessage>
+                <Typography variant="h6">Nenhum alerta encontrado</Typography>
+                <Typography variant="body2">
+                    Clique em &quot;Adicionar Alerta&quot; para criar seu primeiro alerta de preço.
+                </Typography>
+            </NoAlertsMessage>
+        );
+    }
 
     return (
         <>
@@ -56,52 +69,66 @@ export const AlertsTable = () => {
                             {alerts.map((alert) => (
                                 <TableRow key={alert.id}>
                                     <TableCell>
-                                        <strong>{alert.symbol}</strong>
+                                        <Typography variant="body1" component="strong">
+                                            {alert.symbol}
+                                        </Typography>
                                         <br />
-                                        <small>{alert.name}</small>
+                                        <Typography variant="body2" className="asset-name">
+                                            {alert.name}
+                                        </Typography>
                                     </TableCell>
                                     <TableCell align="right">
-                                        R$ {alert.currentPrice.toFixed(2)}
+                                        <Typography className="price-value">
+                                            R$ {alert.currentPrice.toFixed(2)}
+                                        </Typography>
                                     </TableCell>
                                     <TableCell align="right">
-                                        R$ {alert.buyAlert.price.toFixed(2)}
-                                        <br />
-                                        <small>(-{alert.buyAlert.percentage}%)</small>
+                                        <Typography className="price-value">
+                                            R$ {alert.buyAlert.price.toFixed(2)}
+                                        </Typography>
+                                        <Typography className="percentage">
+                                            (-{alert.buyAlert.percentage}%)
+                                        </Typography>
                                     </TableCell>
                                     <TableCell align="right">
-                                        R$ {alert.sellAlert.price.toFixed(2)}
-                                        <br />
-                                        <small>(+{alert.sellAlert.percentage}%)</small>
+                                        <Typography className="price-value">
+                                            R$ {alert.sellAlert.price.toFixed(2)}
+                                        </Typography>
+                                        <Typography className="percentage">
+                                            (+{alert.sellAlert.percentage}%)
+                                        </Typography>
                                     </TableCell>
                                     <TableCell align="center">
-                                        <Switch 
-                                            checked={alert.active} 
+                                        <Switch
+                                            checked={alert.active}
                                             onChange={() => handleToggle(alert)}
                                         />
                                     </TableCell>
                                     <TableCell align="center">
-                                        <Tooltip title="Editar">
-                                            <IconButton
-                                                size="small"
-                                                onClick={() => handleEdit(alert)}
-                                            >
-                                                <EditIcon />
-                                            </IconButton>
-                                        </Tooltip>
-                                        <Tooltip title="Excluir">
-                                            <IconButton 
-                                                size="small" 
-                                                color="error"
-                                                onClick={() => handleDelete(alert.id)}
-                                            >
-                                                <DeleteIcon />
-                                            </IconButton>
-                                        </Tooltip>
-                                        <Tooltip title="Notificações">
-                                            <IconButton size="small" color="primary">
-                                                <NotificationsActiveIcon />
-                                            </IconButton>
-                                        </Tooltip>
+                                        <div className="action-buttons">
+                                            <Tooltip title="Editar">
+                                                <IconButton
+                                                    size="small"
+                                                    onClick={() => handleEdit(alert)}
+                                                >
+                                                    <EditIcon />
+                                                </IconButton>
+                                            </Tooltip>
+                                            <Tooltip title="Excluir">
+                                                <IconButton
+                                                    size="small"
+                                                    color="error"
+                                                    onClick={() => handleDelete(alert.id)}
+                                                >
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                            </Tooltip>
+                                            <Tooltip title="Notificações">
+                                                <IconButton size="small" color="primary">
+                                                    <NotificationsActiveIcon />
+                                                </IconButton>
+                                            </Tooltip>
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             ))}

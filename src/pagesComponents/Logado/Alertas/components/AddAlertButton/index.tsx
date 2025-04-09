@@ -1,7 +1,8 @@
-import { Button } from '@mui/material';
-import AddAlertIcon from '@mui/icons-material/AddAlert';
-import { AlertDialog } from '../AlertDialog';
 import { useState } from 'react';
+import AddAlertIcon from '@mui/icons-material/AddAlert';
+
+import { AlertDialog } from '../AlertDialog';
+import { StyledAddButton } from './styled';
 
 export const AddAlertButton = () => {
     const [openDialog, setOpenDialog] = useState(false);
@@ -12,14 +13,13 @@ export const AddAlertButton = () => {
 
     return (
         <>
-            <Button
+            <StyledAddButton
                 variant="contained"
-                color="primary"
                 startIcon={<AddAlertIcon />}
                 onClick={handleAddAlert}
             >
                 Adicionar Alerta
-            </Button>
+            </StyledAddButton>
 
             <AlertDialog
                 open={openDialog}

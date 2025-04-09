@@ -100,7 +100,7 @@ export const PositionsList = ({ type }: PositionsListProps) => {
                         expandIcon={<ExpandMoreIcon />}
                         sx={{ '& .MuiAccordionSummary-content': { alignItems: 'center' } }}
                     >
-                        <Typography variant="h6" sx={{ flex: 1 }}>{position.name}</Typography>
+                        <Typography variant="h4" sx={{ flex: 1 }}>{position.name}</Typography>
                         <Box
                             onClick={(e) => e.stopPropagation()}
                             sx={{ display: 'flex', alignItems: 'center', ml: 1 }}

@@ -14,7 +14,7 @@ export const useAlerts = () => {
       setAlerts(data);
       setError(null);
     } catch (err) {
-      setError("Failed to fetch alerts");
+      setError("Falha ao buscar alertas");
     } finally {
       setLoading(false);
     }
@@ -26,7 +26,7 @@ export const useAlerts = () => {
       setAlerts((prev) => [...prev, newAlert]);
       return newAlert;
     } catch (err) {
-      setError("Failed to create alert");
+      setError("Falha ao criar alerta");
       throw err;
     }
   };
@@ -39,7 +39,7 @@ export const useAlerts = () => {
       );
       return updatedAlert;
     } catch (err) {
-      setError("Failed to update alert");
+      setError("Falha ao atualizar alerta");
       throw err;
     }
   };
@@ -49,7 +49,7 @@ export const useAlerts = () => {
       await alertsService.deleteAlert(id);
       setAlerts((prev) => prev.filter((a) => a.id !== id));
     } catch (err) {
-      setError("Failed to delete alert");
+      setError("Falha ao deletar alerta");
       throw err;
     }
   };
@@ -61,7 +61,7 @@ export const useAlerts = () => {
         prev.map((a) => (a.id === id ? { ...a, active } : a))
       );
     } catch (err) {
-      setError("Failed to toggle alert");
+      setError("Falha ao vizualizar alerta");
       throw err;
     }
   };

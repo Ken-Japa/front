@@ -1,12 +1,14 @@
 "use client";
+
 import { useSession } from 'next-auth/react';
-import { Container, Typography, Box } from '@mui/material';
+import { Container } from '@mui/material';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+
 import { PositionSection } from './components/PositionSection';
-import { BackgroundContainer } from './styled';
+import { BackgroundContainer, PageTitle, SectionContainer } from './styled';
 
 export const Dashboard = () => {
     const { data: session } = useSession();
@@ -15,14 +17,14 @@ export const Dashboard = () => {
         <PageTransition direction="up" duration={0.4} distance={30}>
             <ErrorBoundary>
                 <BackgroundContainer>
-                    <Container maxWidth="xl" sx={{ py: 4 }}>
-                        <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 6 }}>
+                    <Container maxWidth="xl">
+                        <PageTitle variant="h2" >
                             Posição de {session?.user?.name}
-                        </Typography>
+                        </PageTitle>
 
-                        <Box sx={{ mt: 4 }}>
+                        <SectionContainer>
                             <SuspenseWrapper>
-                                {/* Real Positions */}
+                                {/* Posições Reais */}
                                 <ProgressiveLoad delay={0.2}>
                                     <PositionSection
                                         title="Posições Reais"
@@ -30,17 +32,15 @@ export const Dashboard = () => {
                                     />
                                 </ProgressiveLoad>
 
-                                {/* Mock Positions */}
+                                {/* Posições Fictícias */}
                                 <ProgressiveLoad delay={0.4}>
-                                    <Box sx={{ mt: 6 }}>
-                                        <PositionSection
-                                            title="Posições Fictícias"
-                                            type="mock"
-                                        />
-                                    </Box>
+                                    <PositionSection
+                                        title="Posições Fictícias"
+                                        type="mock"
+                                    />
                                 </ProgressiveLoad>
                             </SuspenseWrapper>
-                        </Box>
+                        </SectionContainer>
                     </Container>
                 </BackgroundContainer>
             </ErrorBoundary>
