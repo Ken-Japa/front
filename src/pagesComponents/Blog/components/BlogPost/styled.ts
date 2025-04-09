@@ -12,7 +12,7 @@ export const PostContent = styled(Box)`
   font-size: 1.1rem;
   line-height: 1.8;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 8px;
   backdrop-filter: blur(4px);
 
