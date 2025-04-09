@@ -25,7 +25,7 @@ export const ValuationInputsSection: FC<ValuationInputsSectionProps> = ({
         <InputsContainer>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h4" gutterBottom>
                         Fluxo de Caixa
                     </Typography>
                 </Grid>
@@ -47,7 +47,7 @@ export const ValuationInputsSection: FC<ValuationInputsSectionProps> = ({
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h4" gutterBottom>
                         Parâmetros de Valuation
                     </Typography>
                 </Grid>

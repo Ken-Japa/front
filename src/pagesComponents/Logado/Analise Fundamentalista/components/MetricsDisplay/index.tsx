@@ -27,7 +27,7 @@ export const MetricsDisplay = forwardRef<{ getMetrics: () => any }, MetricsDispl
             <Grid container spacing={3}>
                 {categories.map((category, idx) => (
                     <CategoryContainer item xs={12} key={idx}>
-                        <CategoryTitle variant="h6" gutterBottom>
+                        <CategoryTitle variant="h4" gutterBottom>
                             {category.title}
                         </CategoryTitle>
                         <MetricsGrid container spacing={2}>

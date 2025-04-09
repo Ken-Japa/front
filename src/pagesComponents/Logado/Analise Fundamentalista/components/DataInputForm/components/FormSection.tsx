@@ -5,7 +5,7 @@ import { FormSectionProps } from '../types/types';
 
 export const FormSection = ({ title, description, children }: FormSectionProps) => (
     <SectionContainer item xs={12}>
-        <SectionTitle variant="h6" gutterBottom>
+        <SectionTitle variant="h4" gutterBottom>
             {title}
             <Tooltip title={description}>
                 <IconButton size="small">

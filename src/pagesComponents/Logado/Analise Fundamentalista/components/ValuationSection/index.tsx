@@ -144,7 +144,7 @@ export const ValuationSection = ({
 
     return (
         <SectionContainer>
-            <SectionTitle variant="h6" gutterBottom>
+            <SectionTitle variant="h3" gutterBottom>
                 Valuation
             </SectionTitle>
 

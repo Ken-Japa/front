@@ -89,7 +89,7 @@ export const AnaliseFundamentalista = () => {
                             <SuspenseWrapper>
                                 <ProgressiveLoad>
                                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 3 }}>
-                                        <Typography variant="h4" gutterBottom>
+                                        <Typography variant="h2" gutterBottom>
                                             Análise Fundamentalista
                                         </Typography>
                                         <IconButton onClick={() => setHelpOpen(true)} sx={{ ml: 2 }}>
