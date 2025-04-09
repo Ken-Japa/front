@@ -1,32 +1,32 @@
-import { styled } from "@mui/material/styles";
-import { Box, Paper } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import { Box, Paper } from '@mui/material';
 
 export const BackgroundContainer = styled(Box)(({ theme }) => ({
-  minHeight: "100vh",
-  marginTop: "-64px",
-  paddingTop: "64px",
-  backgroundImage:
-    theme.palette.mode === "dark"
-      ? 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url("/assets/images/background/VisaoEconomia-Dark.jpg")'
-      : 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url("/assets/images/background/VisaoEconomia-Light.jpg")',
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundAttachment: "fixed",
-  position: "relative",
+  minHeight: '100vh',
+  width: '100%',
+  background: theme.palette.background.default,
+  backgroundImage: theme.palette.mode === 'dark' 
+    ? 'linear-gradient(to bottom right, rgba(13, 149, 249, 0.05), rgba(132, 17, 204, 0.05))'
+    : 'linear-gradient(to bottom right, rgba(13, 149, 249, 0.02), rgba(132, 17, 204, 0.02))',
+  backgroundAttachment: 'fixed',
 }));
 
 export const DashboardItem = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  display: "flex",
-  height: "100%",
-  background:
-    theme.palette.mode === "dark"
-      ? "rgba(19, 47, 76, 0.4)"
-      : "rgba(255, 255, 255, 0.8)",
-  backdropFilter: "blur(10px)",
-  border: `1px solid ${
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.1)"
-      : "rgba(0, 0, 0, 0.1)"
-  }`,
+  padding: theme.spacing(3),
+  height: '100%',
+  borderRadius: theme.shape.borderRadius,
+  boxShadow: theme.palette.mode === 'dark'
+    ? '0 4px 20px rgba(0, 0, 0, 0.25)'
+    : '0 2px 10px rgba(0, 0, 0, 0.05)',
+  background: theme.palette.background.paper,
+  backdropFilter: 'blur(10px)',
+  transition: theme.transitions.create(['box-shadow', 'transform'], {
+    duration: theme.transitions.duration.standard,
+  }),
+  '&:hover': {
+    boxShadow: theme.palette.mode === 'dark'
+      ? '0 6px 25px rgba(0, 0, 0, 0.3)'
+      : '0 4px 15px rgba(0, 0, 0, 0.08)',
+    transform: 'translateY(-2px)',
+  },
 }));

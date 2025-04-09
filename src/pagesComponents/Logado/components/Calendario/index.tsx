@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, memo, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 
 const CalendarioComponent: React.FC = () => {
     const container = useRef<HTMLDivElement>(null);
     const [widgetId] = useState(`tv-calendar-${Math.random().toString(36).substring(2, 9)}`);
+    const theme = useTheme();
+    const isDarkMode = theme.palette.mode === 'dark';
 
     useEffect(() => {
         if (!container.current) return;
@@ -24,7 +26,7 @@ const CalendarioComponent: React.FC = () => {
                 container_id: widgetId,
                 width: "100%",
                 height: "100%",
-                colorTheme: "dark",
+                colorTheme: isDarkMode ? "dark" : "light",
                 isTransparent: false,
                 locale: "br",
                 importanceFilter: "-1,0,1",

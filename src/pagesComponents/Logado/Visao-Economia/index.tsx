@@ -1,11 +1,14 @@
 "use client";
 
+import React from 'react';
 import { Container, Grid } from '@mui/material';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { PageTransition } from '@/components/PageTransition';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 import { ProgressiveLoad } from '@/components/ProgressiveLoad';
 import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
+
+// Componentes da página
 import { Empresas } from './components/Empresas';
 import { Indices } from './components/Indices';
 import { Bdr } from './components/BDR';
@@ -16,6 +19,8 @@ import { Moedas } from './components/Outros/Moedas';
 import { Commodities } from './components/Outros/Commodities';
 import { Debentures } from './components/Outros/Debentures';
 import { Calendario } from '../components/Calendario';
+
+// Estilos
 import { BackgroundContainer, DashboardItem } from './styled';
 
 export const VisaoEconomia = () => {
@@ -27,24 +32,24 @@ export const VisaoEconomia = () => {
                         <BackgroundContainer>
                             <Container maxWidth="xl" sx={{ py: 4 }}>
                                 <Grid container spacing={3}>
-                                    {/* Left Column - 8/12 of width */}
+                                    {/* Coluna Esquerda - 8/12 da largura */}
                                     <Grid item xs={12} lg={8}>
                                         <Grid container spacing={3}>
-                                            {/* Stocks Component */}
+                                            {/* Componente de Ações */}
                                             <Grid item xs={12}>
                                                 <DashboardItem>
                                                     <Empresas />
                                                 </DashboardItem>
                                             </Grid>
 
-                                            {/* Market Indices Component */}
+                                            {/* Componente de Índices de Mercado */}
                                             <Grid item xs={12}>
                                                 <DashboardItem>
                                                     <Indices />
                                                 </DashboardItem>
                                             </Grid>
 
-                                            {/* BDRs Component */}
+                                            {/* Componente de BDRs */}
                                             <Grid item xs={12}>
                                                 <DashboardItem>
                                                     <Bdr />
@@ -53,32 +58,31 @@ export const VisaoEconomia = () => {
                                         </Grid>
                                     </Grid>
 
-                                    {/* Right Column - 4/12 of width */}
+                                    {/* Coluna Direita - 4/12 da largura */}
                                     <Grid item xs={12} lg={4}>
                                         <Grid container spacing={3}>
-
-                                            {/* User Position */}
+                                            {/* Posição do Usuário */}
                                             <Grid item xs={12} sm={6} lg={12}>
                                                 <DashboardItem>
                                                     <PosicaoUsuario />
                                                 </DashboardItem>
                                             </Grid>
 
-                                            {/* Selic Rate */}
+                                            {/* Taxa Selic */}
                                             <Grid item xs={12} sm={6} lg={12}>
                                                 <DashboardItem>
                                                     <Selic />
                                                 </DashboardItem>
                                             </Grid>
 
-                                            {/* Inflation Chart */}
+                                            {/* Gráfico de Inflação */}
                                             <Grid item xs={12}>
                                                 <DashboardItem>
                                                     <Inflacao />
                                                 </DashboardItem>
                                             </Grid>
 
-                                            {/* Currency Exchange */}
+                                            {/* Câmbio de Moedas */}
                                             <Grid item xs={12}>
                                                 <DashboardItem>
                                                     <Moedas />
@@ -97,7 +101,7 @@ export const VisaoEconomia = () => {
                                                 </DashboardItem>
                                             </Grid>
 
-                                            {/* Debentures */}
+                                            {/* Debêntures */}
                                             <Grid item xs={12}>
                                                 <DashboardItem>
                                                     <Debentures />
@@ -106,7 +110,7 @@ export const VisaoEconomia = () => {
                                         </Grid>
                                     </Grid>
 
-                                    {/* Bottom Calendars - Full Width */}
+                                    {/* Calendários na parte inferior - Largura total */}
                                     <Grid item xs={12}>
                                         <DashboardItem>
                                             <Calendario />

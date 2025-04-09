@@ -98,9 +98,13 @@ export const SearchBar = ({ defaultValue = '' }: SearchBarProps) => {
                     <TextField
                         {...params}
                         size="small"
-                        placeholder="Buscar empresa ou código..."
+                        placeholder="Buscar empresa ou código"
                         InputProps={{
                             ...params.InputProps,
+                            style: { 
+                                minWidth: '250px',
+                                padding: '2px 8px'
+                            },
                             endAdornment: (
                                 <InputAdornment position="end">
                                     <SearchIcon color="action" />
