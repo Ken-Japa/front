@@ -1,12 +1,14 @@
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import SecurityIcon from '@mui/icons-material/Security';
 import StarIcon from '@mui/icons-material/Star';
+import { visitorColors } from "@/theme/palette/visitor";
+import { spacing } from "@/theme/variables";
 
 // Cor fixa para ícones
 const ICON_STYLE = {
-  color: '#64FFDA',
+  color: visitorColors.highlight,
   fontSize: 40,
-  marginBottom: '16px'
+  marginBottom: spacing.md
 };
 
 export const VALORES = [

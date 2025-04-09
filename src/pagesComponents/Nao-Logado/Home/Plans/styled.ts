@@ -1,7 +1,8 @@
 import { Stack, styled } from "@mui/material";
-import { spacing, borderRadius, shadows } from '@/theme/variables';
+import { spacing, borderRadius, shadows, transitions } from '@/theme/variables';
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const SectionPlans = styled("section")(({ theme }) => ({
+export const SectionPlans = styled("section")({
   width: "100vw",
   position: "relative",
   minHeight: "100vh",
@@ -23,32 +24,43 @@ export const SectionPlans = styled("section")(({ theme }) => ({
     maxWidth: "1920px",
     margin: "0 auto",
 
-    [theme.breakpoints.down("md")]: {
+    "@media (max-width: 900px)": {
       padding: `${spacing.md} ${spacing.sm}`,
     },
   },
-}));
+});
 
-export const CardContainer = styled(Stack)(({ theme }) => ({
+export const CardContainer = styled(Stack)({
   maxWidth: "250px",
   width: "100%",
   padding: spacing.md,
-  backgroundColor: "rgba(0,0,0,0.5)",
+  backgroundColor: visitorColors.cardBackground,
   boxShadow: shadows.sm,
   borderRadius: borderRadius.sm,
-  color: theme.palette.common.white,
-  backdropFilter: "blur(8px)",
+  color: visitorColors.text,
+  backdropFilter: visitorColors.blur,
+  transition: transitions.medium,
 
-  [theme.breakpoints.down("md")]: {
+  "@media (max-width: 900px)": {
     maxWidth: "100%",
     margin: "0 auto",
   },
-  ul: {
-    fontSize: "13px",
-    listStyle: "inside",
-    li: {
-      marginBottom: spacing.xs,
-      color: theme.palette.common.white,
-    },
+  
+  "&:hover": {
+    transform: "translateY(-5px)",
+    boxShadow: shadows.md,
   },
-}));
+  
+  "ul": {
+    fontSize: "13px",
+    listStyleType: "none",
+    padding: 0,
+    margin: 0,
+    
+    "li": {
+      marginBottom: spacing.sm,
+      display: "flex",
+      alignItems: "flex-start",
+    }
+  }
+});

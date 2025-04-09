@@ -1,10 +1,11 @@
 import { styled } from "@mui/material";
-import { spacing } from "@/theme/variables";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const MainContainer = styled("main")(({ theme }) => ({
-  background: "linear-gradient(180deg, #000000 0%, #001529 100%)",
+export const MainContainer = styled("main")({
+  background: visitorColors.backgroundGradient,
   overflow: "hidden",
-}));
+});
 
 interface SectionProps {
   withPadding?: boolean;
@@ -12,7 +13,7 @@ interface SectionProps {
 }
 
 export const Section = styled("section")<SectionProps>(
-  ({ theme, withPadding, withBackground }) => ({
+  ({ withPadding, withBackground }) => ({
     padding: withPadding ? `${spacing.xxl} ${spacing.md}` : "0",
     position: "relative",
     minHeight: withPadding ? "auto" : "100vh",
@@ -35,38 +36,42 @@ export const Section = styled("section")<SectionProps>(
         content: '""',
         position: "absolute",
         inset: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: visitorColors.overlay,
         zIndex: -1,
       },
     }),
 
-    [theme.breakpoints.down("md")]: {
+    "@media (max-width: 900px)": {
       padding: withPadding ? `${spacing.xl} ${spacing.md}` : "0",
     },
   })
 );
 
-export const SectionTitle = styled("h2")(({ theme }) => ({
+export const SectionTitle = styled("h2")({
   fontSize: "2.5rem",
   fontWeight: "bold",
-  color: theme.palette.common.white,
+  color: visitorColors.primary,
   textAlign: "center",
-  marginBottom: spacing.sm,
+  marginBottom: spacing.md,
+});
 
-  [theme.breakpoints.down("md")]: {
-    fontSize: "2rem",
-  },
-}));
-
-export const SectionSubtitle = styled("p")(({ theme }) => ({
+export const SectionSubtitle = styled("p")({
   fontSize: "1.1rem",
-  color: "rgba(255, 255, 255, 0.8)",
+  color: visitorColors.textSecondary,
   textAlign: "center",
   maxWidth: "800px",
   margin: "0 auto",
   lineHeight: 1.6,
+});
 
-  [theme.breakpoints.down("md")]: {
-    fontSize: "1rem",
+export const ContentContainer = styled("div")({
+  backgroundColor: visitorColors.backgroundLight,
+  padding: spacing.xl,
+  borderRadius: borderRadius.md,
+  backdropFilter: visitorColors.blur,
+  transition: transitions.medium,
+
+  "&:hover": {
+    backgroundColor: visitorColors.backgroundMedium,
   },
-}));
+});

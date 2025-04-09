@@ -1,10 +1,11 @@
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const ICON_STYLES = {
     fontSize: 40,
-    color: "#0D95F9"
+    color: visitorColors.primary
 } as const;
 
 export const FEATURES_DATA = [

@@ -1,6 +1,7 @@
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import { BaseSection, SectionTitle, ContentContainer, Subtitle } from "../../styled";
 import { CompromissoSkeleton } from './CompromissoSkeleton';
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface CompromissoSectionProps {
     isLoading?: boolean;
@@ -14,8 +15,8 @@ export const CompromissoSection = ({ isLoading }: CompromissoSectionProps) => {
     return (
         <BaseSection>
             <SectionTitle>
-                <HandshakeIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                <h2 className="text-2xl text-[#FF4081]">Nosso Compromisso</h2>
+                <HandshakeIcon sx={{ color: visitorColors.accent, fontSize: 32 }} />
+                <h2 className="text-2xl" style={{ color: visitorColors.accent }}>Nosso Compromisso</h2>
             </SectionTitle>
             <Subtitle>
                 Não Vendemos Ferramentas. Entregamos Resultados.

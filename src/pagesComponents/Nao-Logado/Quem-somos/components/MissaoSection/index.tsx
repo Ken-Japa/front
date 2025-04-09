@@ -2,6 +2,7 @@ import RocketIcon from '@mui/icons-material/Rocket';
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { BaseSection, SectionTitle, ContentContainer, Subtitle } from "../../styled";
 import { MissaoSkeleton } from './MissaoSkeleton';
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface MissaoSectionProps {
     isLoading?: boolean;
@@ -15,7 +16,7 @@ export const MissaoSection = ({ isLoading }: MissaoSectionProps) => {
     return (
         <BaseSection>
             <SectionTitle>
-                <RocketIcon sx={{ color: '#FF4081', fontSize: 32 }} />
+                <RocketIcon sx={{ color: visitorColors.accent, fontSize: 32 }} />
                 <MatrixRainText
                     text="Nossa Missão: Equilibrar o Jogo Financeiro"
                     className="text-2xl text-[#FF4081]"

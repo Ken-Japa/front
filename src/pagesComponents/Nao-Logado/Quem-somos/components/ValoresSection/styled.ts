@@ -1,5 +1,6 @@
 import { styled } from "@mui/material";
 import { spacing, borderRadius, transitions } from '@/theme/variables';
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const ValoresGrid = styled("div")(({ theme }) => ({
   display: "grid",
@@ -13,23 +14,23 @@ export const ValoresGrid = styled("div")(({ theme }) => ({
 
 export const ValorCard = styled("div")({
   textAlign: "center",
-  backgroundColor: "rgba(255, 255, 255, 0.06)",
+  backgroundColor: visitorColors.backgroundLight,
   padding: spacing.lg,
   borderRadius: borderRadius.md,
   transition: transitions.medium,
 
   "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.09)",
+    backgroundColor: visitorColors.backgroundMedium,
     transform: "scale(1.05)",
   },
 
   "& h3": {
     fontSize: "1.25rem",
     marginBottom: spacing.sm,
-    color: "#64FFDA",
+    color: visitorColors.highlight,
   },
 
   "& p": {
-    color: "white",
+    color: visitorColors.text,
   }
 });

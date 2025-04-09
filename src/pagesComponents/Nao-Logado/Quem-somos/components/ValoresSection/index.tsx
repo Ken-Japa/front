@@ -3,10 +3,12 @@ import { VALORES } from '../../constants/valores';
 import { BaseSection, SectionTitle } from "../../styled";
 import { ValoresGrid, ValorCard } from "./styled";
 import { ValoresSkeleton } from './ValoresSkeleton';
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface ValoresSectionProps {
     isLoading?: boolean;
 }
+
 export const ValoresSection = ({ isLoading }: ValoresSectionProps) => {
     if (isLoading) {
         return <ValoresSkeleton />;
@@ -14,8 +16,8 @@ export const ValoresSection = ({ isLoading }: ValoresSectionProps) => {
     return (
         <BaseSection>
             <SectionTitle>
-                <StarIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                <h2 className="text-2xl text-[#FF4081]">Nossos Valores: Ética e Inteligência</h2>
+                <StarIcon sx={{ color: visitorColors.accent, fontSize: 32 }} />
+                <h2 className="text-2xl" style={{ color: visitorColors.accent }}>Nossos Valores: Ética e Inteligência</h2>
             </SectionTitle>
             <ValoresGrid>
                 {VALORES.map((valor) => (

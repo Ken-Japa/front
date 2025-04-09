@@ -1,17 +1,18 @@
 import { styled } from "@mui/material";
 import { spacing } from '@/theme/variables';
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const QuestionsSection = styled("section")(({ theme }) => ({
+export const QuestionsSection = styled("section")({
   padding: `${spacing.md} 0`,
   "& .section-title": {
     fontSize: "2rem",
-    color: "#0D95F9",
+    color: visitorColors.primary,
     marginBottom: spacing.lg,
     textAlign: "center",
   },
   "& .section-subtitle": {
-    color: "rgba(255, 255, 255, 0.6)",
+    color: visitorColors.textMuted,
     textAlign: "center",
     marginBottom: spacing.xl,
   },
-}));
+});

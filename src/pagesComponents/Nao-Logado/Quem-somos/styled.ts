@@ -1,15 +1,6 @@
 import { styled } from "@mui/material";
 import { spacing, borderRadius, transitions } from "@/theme/variables";
-
-// Cores fixas para a página de visitantes
-const COLORS = {
-  primary: "#0D95F9",
-  secondary: "#8411CC",
-  background: "rgba(255, 255, 255, 0.05)",
-  backgroundHover: "rgba(255, 255, 255, 0.08)",
-  text: "#FFFFFF",
-  textSecondary: "rgba(255, 255, 255, 0.8)",
-};
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const SectionTeam = styled("section")({
   minHeight: "100vh",
@@ -31,7 +22,7 @@ export const SectionTeam = styled("section")({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: visitorColors.overlayG,
     zIndex: 0,
   },
 
@@ -67,18 +58,18 @@ export const SectionTitle = styled("div")({
 
 // Componente de container comum para seções com estilo similar
 export const ContentContainer = styled("div")(({ theme }) => ({
-  backgroundColor: COLORS.background,
+  backgroundColor: visitorColors.backgroundLight,
   padding: spacing.xl,
   borderRadius: borderRadius.md,
-  backdropFilter: "blur(4px)",
+  backdropFilter: visitorColors.blur,
   transition: transitions.medium,
 
   "&:hover": {
-    backgroundColor: COLORS.backgroundHover,
+    backgroundColor: visitorColors.backgroundMedium,
   },
 
   "& p": {
-    color: COLORS.text,
+    color: visitorColors.text,
     marginBottom: spacing.xl,
     lineHeight: 1.7,
 
@@ -93,9 +84,6 @@ export const ContentContainer = styled("div")(({ theme }) => ({
 }));
 
 export const Subtitle = styled("p")({
-  color: COLORS.textSecondary,
+  color: visitorColors.textSecondary,
   marginBottom: spacing.xl,
 });
-
-// Exportar as cores para uso em outros componentes
-export { COLORS };

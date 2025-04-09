@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import { spacing } from '@/theme/variables';
-import { COLORS } from '../../styled';
+import { visitorColors } from "@/theme/palette/visitor";
 
 export const HeaderContainer = styled("div")({
   textAlign: "center",
@@ -9,7 +9,7 @@ export const HeaderContainer = styled("div")({
   "& .title": {
     fontSize: "3rem",
     fontWeight: "bold",
-    color: COLORS.primary,
+    color: visitorColors.primary,
     marginBottom: spacing.xl,
   }
 });

@@ -1,6 +1,7 @@
 import HistoryIcon from '@mui/icons-material/Timeline';
 import { BaseSection, SectionTitle, ContentContainer } from "../../styled";
 import { HistoriaSkeleton } from './HistoriaSkeleton';
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface HistoriaSectionProps {
     isLoading?: boolean;
@@ -14,8 +15,8 @@ export const HistoriaSection = ({ isLoading }: HistoriaSectionProps) => {
     return (
         <BaseSection>
             <SectionTitle>
-                <HistoryIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                <h2 className="text-2xl text-[#FF4081]">Nossa História: A Revolução dos Dados</h2>
+                <HistoryIcon sx={{ color: visitorColors.accent, fontSize: 32 }} />
+                <h2 className="text-2xl" style={{ color: visitorColors.accent }}>Nossa História: A Revolução dos Dados</h2>
             </SectionTitle>
             <p className="text-white/80 mb-8">
                 Forjando o Futuro do Investimento Inteligente

@@ -10,6 +10,8 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { visitorColors } from "@/theme/palette/visitor";
+import { transitions } from "@/theme/variables";
 
 import { Welcome } from "./Welcome";
 import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
@@ -63,7 +65,7 @@ export const Home: FC = () => {
                     </ProgressiveLoad>
 
                     <ProgressiveLoad>
-                        <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
+                        <Divider sx={{ bgcolor: visitorColors.divider }} />
                         <Section withPadding withBackground >
                             <Container maxWidth="xl">
                                 <Stack spacing={6} alignItems="center">
@@ -86,16 +88,23 @@ export const Home: FC = () => {
                     </ProgressiveLoad>
 
                     <ProgressiveLoad>
-                        <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
+                        <Divider sx={{ bgcolor: visitorColors.divider }} />
                         <Section withPadding>
                             <Container maxWidth="xl">
                                 <SuspenseWrapper>
                                     <Questions isLoading={!imageLoaded} />
                                 </SuspenseWrapper>
                                 <Stack alignItems="center" sx={{ mt: 4 }}>
-                                    <Typography variant="body1" className="text-white/90 hover:text-white transition-colors">
+                                    <Typography variant="body1" sx={{
+                                        color: visitorColors.textSecondary,
+                                        "&:hover": { color: visitorColors.text },
+                                        transition: transitions.medium
+                                    }}>
                                         Encontre mais respostas acessando o{' '}
-                                        <Link href="/visitante/faq" className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline">
+                                        <Link 
+                                            href="/visitante/faq" 
+                                            className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
+                                        >
                                             FAQ
                                         </Link>
                                         .

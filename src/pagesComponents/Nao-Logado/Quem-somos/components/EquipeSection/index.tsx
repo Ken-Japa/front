@@ -1,6 +1,7 @@
 import GroupsIcon from '@mui/icons-material/Groups';
-import { BaseSection, SectionTitle, ContentContainer } from "../../styled";
+import { BaseSection, SectionTitle, ContentContainer, Subtitle } from "../../styled";
 import { EquipeSkeleton } from './EquipeSkeleton';
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface EquipeSectionProps {
     isLoading?: boolean;
@@ -14,12 +15,12 @@ export const EquipeSection = ({ isLoading }: EquipeSectionProps) => {
     return (
         <BaseSection>
             <SectionTitle>
-                <GroupsIcon sx={{ color: '#FF4081', fontSize: 32 }} />
-                <h2 className="text-2xl text-[#FF4081]">Nossa Equipe</h2>
+                <GroupsIcon sx={{ color: visitorColors.accent, fontSize: 32 }} />
+                <h2 className="text-2xl" style={{ color: visitorColors.accent }}>Nossa Equipe</h2>
             </SectionTitle>
-            <p className="text-white/90 mb-8">
+            <Subtitle>
                 O Cérebro por Trás da Revolução
-            </p>
+            </Subtitle>
             <ContentContainer>
                 <p>
                     Somos um time diversificado de profissionais apaixonados por tecnologia e mercado financeiro.<br /><br />
