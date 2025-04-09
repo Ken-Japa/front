@@ -1,6 +1,8 @@
 import { styled } from "@mui/material";
+import { spacing, borderRadius } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const SectionTermsServices = styled("section")(({ theme }) => ({
+export const SectionTermsServices = styled("section")({
   width: "100%",
   minHeight: "100vh",
   position: "relative",
@@ -19,8 +21,8 @@ export const SectionTermsServices = styled("section")(({ theme }) => ({
   "& .opacity-layer": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.65)",
-    backdropFilter: "blur(8px)",
+    backgroundColor: visitorColors.backgroundOverlay,
+    backdropFilter: visitorColors.blur,
     width: "100%",
     minHeight: "100vh",
     display: "flex",
@@ -28,12 +30,12 @@ export const SectionTermsServices = styled("section")(({ theme }) => ({
   },
 
   "& .content-wrapper": {
-    padding: "64px 0",
+    padding: `${spacing.xl} 0`,
     position: "relative",
     flex: 1,
 
-    [theme.breakpoints.down("sm")]: {
-      padding: "32px 0",
+    "@media (max-width: 600px)": {
+      padding: `${spacing.lg} 0`,
     },
   },
 
@@ -41,4 +43,4 @@ export const SectionTermsServices = styled("section")(({ theme }) => ({
     position: "fixed",
     zIndex: 4,
   },
-}));
+});

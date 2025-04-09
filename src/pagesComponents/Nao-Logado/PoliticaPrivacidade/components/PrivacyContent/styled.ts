@@ -8,7 +8,7 @@ export const ContentContainer = styled("div")({
   margin: "0 auto",
   color: visitorColors.text,
 
-  "& .terms-section": {
+  "& .privacy-section": {
     marginBottom: spacing.md,
     backgroundColor: visitorColors.backgroundLight,
     padding: spacing.md,

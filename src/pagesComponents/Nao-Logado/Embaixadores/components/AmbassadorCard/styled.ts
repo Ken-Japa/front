@@ -1,16 +1,30 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { borderRadius, spacing, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-const CARD_STYLES = {
-    background: 'rgba(255, 255, 255, 0.05)',
-    backdropFilter: 'blur(8px)',
-    borderRadius: '8px',
-    padding: '1.5rem',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-        borderColor: 'rgba(255, 215, 0, 0.3)'
-    }
-} as const;
-
-export const CardContainer = styled(Box)(CARD_STYLES);
+export const CardContainer = styled(Box)({
+  background: visitorColors.backgroundLight,
+  backdropFilter: visitorColors.blur,
+  borderRadius: borderRadius.md,
+  padding: spacing.lg,
+  border: `1px solid ${visitorColors.borderLight}`,
+  transition: transitions.medium,
+  
+  "&:hover": {
+    borderColor: `${visitorColors.gold}4d`, // 30% opacity
+  },
+  
+  "& .ambassador-name": {
+    color: visitorColors.text,
+    fontWeight: "bold",
+  },
+  
+  "& .ambassador-role": {
+    color: visitorColors.gold,
+  },
+  
+  "& .ambassador-testimonial": {
+    color: `${visitorColors.text}cc`, // 80% opacity
+  }
+});

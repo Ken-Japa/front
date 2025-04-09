@@ -1,12 +1,11 @@
 import { type FC } from 'react';
+
+import { Stack, Avatar, Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
-import { Typography, Avatar, Stack, Box } from "@mui/material";
-
-import { CROWN } from "../../constants/ambassadors";
-
-import { CardContainer } from "./styled";
 import { AmbassadorCardSkeleton } from "./AmbassadorCardSkeleton";
+import { CardContainer } from "./styled";
+import { CROWN } from "../../constants/ambassadors";
 
 interface AmbassadorCardProps {
     name: string;
@@ -17,16 +16,16 @@ interface AmbassadorCardProps {
     isLoading?: boolean;
 }
 
-const ANIMATION_CONFIG = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.3, ease: "easeOut" }
-} as const;
-
 const AVATAR_STYLES = {
     width: 120,
     height: 120,
-    border: '4px solid #FFD700'
+    border: "2px solid rgba(255, 215, 0, 0.5)"
+} as const;
+
+const ANIMATION_CONFIG = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5, ease: "easeOut" }
 } as const;
 
 export const AmbassadorCard: FC<AmbassadorCardProps> = ({ 
@@ -54,14 +53,14 @@ export const AmbassadorCard: FC<AmbassadorCardProps> = ({
                         sx={AVATAR_STYLES}
                     />
                     <Box>
-                        <Typography variant="h6" className="text-white font-bold">
+                        <Typography variant="h6" className="ambassador-name">
                             {name}
                         </Typography>
-                        <Typography variant="subtitle1" className="text-[#FFD700]">
+                        <Typography variant="subtitle1" className="ambassador-role">
                             {role}
                         </Typography>
                     </Box>
-                    <Typography variant="body1" className="text-white/80">
+                    <Typography variant="body1" className="ambassador-testimonial">
                         &quot;{testimonial}&quot;
                     </Typography>
                 </Stack>
@@ -69,3 +68,5 @@ export const AmbassadorCard: FC<AmbassadorCardProps> = ({
         </motion.div>
     );
 };
+
+export default AmbassadorCard;

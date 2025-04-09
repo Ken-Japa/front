@@ -12,9 +12,10 @@ export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationPr
     if (isLoading) {
         return <QuickNavigationSkeleton />;
     }
+
     return (
         <NavigationContainer>
-            <Typography variant="h5" className="navigation-title">
+            <Typography variant="h4" className="navigation-title">
                 Navegação Rápida
             </Typography>
             <div className="navigation-content">
@@ -24,6 +25,7 @@ export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationPr
                             key={section.id}
                             className="navigation-link"
                             onClick={() => onSectionClick(section.id)}
+                            variant="body1"
                         >
                             {section.title}
                         </Typography>
@@ -33,3 +35,5 @@ export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationPr
         </NavigationContainer>
     );
 };
+
+export default QuickNavigation;

@@ -12,66 +12,66 @@ import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 import { SectionPolicy } from "./styled";
 import { useScroll } from "./hooks/useScroll";
 
+const IMAGE_PROPS = {
+  src: "/assets/images/background/BACKGROUND-DEFAULT.jpg",
+  alt: "Imagem de Fundo da Política de Privacidade",
+  fill: true,
+  priority: true,
+  sizes: "100vw",
+  className: "object-cover",
+  loadingClassName: "scale-100 blur-xl grayscale",
+  quality: 85
+} as const;
+
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const QuickNavigation = lazy(() => import('./components/QuickNavigation').then(mod => ({ default: mod.QuickNavigation })));
 const PrivacyContent = lazy(() => import('./components/PrivacyContent/PrivacyContent').then(mod => ({ default: mod.PrivacyContent })));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop').then(mod => ({ default: mod.ScrollToTop })));
 
 export const PrivacyPolicy: FC = () => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const { showScrollTop, scrollToTop, scrollToSection } = useScroll();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const { showScrollTop, scrollToTop, scrollToSection } = useScroll();
 
-    return (
-        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
-            <ErrorBoundary>
-                <SectionPolicy>
-                    <div className="background-image">
-                        <OptimizedImage
-                            src="/assets/images/background/BACKGROUND-DEFAULT.jpg"
-                            alt="Privacy Policy Background"
-                            fill
-                            priority
-                            sizes="100vw"
-                            className="object-cover"
-                            loadingClassName="scale-100 blur-xl grayscale"
-                            quality={85}
-                            onLoad={() => setImageLoaded(true)}
-                            style={{
-                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
-                                transition: 'filter 0.5s ease-in-out'
-                            }}
-                        />
-                    </div>
-                    <div className="opacity">
-                        <div className="section-privacy">
-                            <Container maxWidth="lg">
-                                <>
-                                    <SuspenseWrapper>
-                                        <Header isLoading={!imageLoaded} />
-                                    </SuspenseWrapper>
+  return (
+    <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
+      <ErrorBoundary>
+        <SectionPolicy>
+          <div className="background-image">
+            <OptimizedImage
+              {...IMAGE_PROPS}
+              onLoad={() => setImageLoaded(true)}
+              style={{
+                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                transition: 'filter 0.5s ease-in-out'
+              }}
+            />
+          </div>
+          <div className="opacity">
+            <div className="section-privacy">
+              <Container maxWidth="lg">
+                <SuspenseWrapper>
+                  <Header isLoading={!imageLoaded} />
+                </SuspenseWrapper>
 
-                                    <SuspenseWrapper>
-                                        <QuickNavigation 
-                                            onSectionClick={scrollToSection} 
-                                            isLoading={!imageLoaded} 
-                                        />
-                                    </SuspenseWrapper>
+                <SuspenseWrapper>
+                  <QuickNavigation
+                    onSectionClick={scrollToSection}
+                    isLoading={!imageLoaded}
+                  />
+                </SuspenseWrapper>
 
-                                    <ProgressiveLoad rootMargin="100px">
-                                        <SuspenseWrapper>
-                                            <PrivacyContent isLoading={!imageLoaded} />
-                                        </SuspenseWrapper>
-                                    </ProgressiveLoad>
+                <ProgressiveLoad rootMargin="100px">
+                  <SuspenseWrapper>
+                    <PrivacyContent isLoading={!imageLoaded} />
+                  </SuspenseWrapper>
+                </ProgressiveLoad>
 
-                                    <SuspenseWrapper>
-                                        <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
-                                    </SuspenseWrapper>
-                                </>
-                            </Container>
-                        </div>
-                    </div>
-                </SectionPolicy>
-            </ErrorBoundary>
-        </PageTransition>
-    );
+              </Container>
+            </div>
+          </div>
+          <ScrollToTop show={showScrollTop} onClick={scrollToTop} />
+        </SectionPolicy>
+      </ErrorBoundary>
+    </PageTransition>
+  );
 };

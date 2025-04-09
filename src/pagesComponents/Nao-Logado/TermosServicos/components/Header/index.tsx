@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface HeaderProps {
     isLoading?: boolean;
@@ -14,7 +15,7 @@ export const Header = ({ isLoading }: HeaderProps) => {
     return (
         <HeaderContainer>
             <div className="header-icon-container">
-                <GavelIcon sx={{ fontSize: 40, color: "#0D95F9" }} />
+                <GavelIcon sx={{ fontSize: 40, color: visitorColors.primary }} />
                 <MatrixRainText
                     text="Termos de Serviço"
                     className="text-white text-4xl font-bold"

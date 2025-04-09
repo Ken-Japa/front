@@ -7,14 +7,15 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OptimizedImage } from "@/components/OptimizedImage";
 
 import { ambassadors } from './constants/ambassadors';
-import { MainContent } from './components/MainContent';
+import { EmbaixadoresSection } from './styled';
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const CallToAction = lazy(() => import('./components/CallToAction').then(mod => ({ default: mod.CallToAction })));
+const MainContent = lazy(() => import('./components/MainContent').then(mod => ({ default: mod.MainContent })));
 
 const IMAGE_PROPS = {
     src: "/assets/images/background/Embaixadores.jpg",
-    alt: "Ambassadors Background",
+    alt: "Fundo da página de Embaixadores",
     fill: true,
     priority: true,
     sizes: "100vw",
@@ -23,14 +24,14 @@ const IMAGE_PROPS = {
     quality: 85
 } as const;
 
-const Ambassadors: FC = () => {
+export const Embaixadores: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
-                <main className="min-h-screen relative">
-                    <div className="absolute inset-0 w-full h-full">
+                <EmbaixadoresSection>
+                    <div className="background-container">
                         <OptimizedImage
                             {...IMAGE_PROPS}
                             onLoad={() => setImageLoaded(true)}
@@ -39,7 +40,7 @@ const Ambassadors: FC = () => {
                                 transition: 'filter 0.5s ease-in-out'
                             }}
                         />
-                        <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
+                        <div className="overlay" />
                     </div>
                     <MainContent
                         isLoading={!imageLoaded}
@@ -47,10 +48,10 @@ const Ambassadors: FC = () => {
                         Header={Header}
                         CallToAction={CallToAction}
                     />
-                </main>
+                </EmbaixadoresSection>
             </ErrorBoundary>
         </PageTransition>
     );
 };
 
-export default Ambassadors;
+export default Embaixadores;

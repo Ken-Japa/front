@@ -1,13 +1,22 @@
-import { Stack } from "@mui/material";
-import { PrivacySectionSkeleton } from "../PrivacySection/PrivacySectionSkeleton";
-import { PRIVACY_SECTIONS } from "../../constants/sections";
+import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentContainer } from "./styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const PrivacyContentSkeleton = () => {
-    return (
-        <Stack direction="column" spacing={6} className="text-white/95">
-            {PRIVACY_SECTIONS.map(section => (
-                <PrivacySectionSkeleton key={section.id} />
-            ))}
-        </Stack>
-    );
-};
+export const PrivacyContentSkeleton = () => (
+  <ContentContainer>
+    {Array(10).fill(0).map((_, index) => (
+      <div key={`section-${index}`} className="privacy-section">
+        <ContentSkeleton 
+          type="text" 
+          textLines={1} 
+          className={`w-64 mb-4 ${visitorColors.skeletonBackground} backdrop-blur-sm`} 
+        />
+        <ContentSkeleton 
+          type="text" 
+          textLines={4} 
+          className={`${visitorColors.skeletonBackground} backdrop-blur-sm`} 
+        />
+      </div>
+    ))}
+  </ContentContainer>
+);

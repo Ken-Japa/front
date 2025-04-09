@@ -1,37 +1,32 @@
 import { styled } from "@mui/material";
-import { Box } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const HeaderWrapper = styled(Box)(({ theme }) => ({
+export const HeaderContainer = styled("div")({
   textAlign: "center",
-  marginBottom: "48px",
+  marginBottom: spacing.xl,
 
-  "& .header-content": {
+  "& .header-icon-container": {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "12px",
-    marginBottom: "24px",
+    gap: spacing.xs,
+    marginBottom: spacing.md,
   },
 
-  "& .title": {
-    fontSize: "2.5rem",
-    fontWeight: "bold",
-    color: "#0D95F9",
-    
-    [theme.breakpoints.down('sm')]: {
-      fontSize: "2rem",
-    }
+  "& .header-subtitle": {
+    color: visitorColors.textSecondary,
+    marginBottom: spacing.xs,
   },
 
-  "& .subtitle": {
-    color: "white",
-    marginBottom: "8px",
+  "& .header-description": {
+    color: visitorColors.textSecondary,
+    maxWidth: "32rem",
+    margin: `${spacing.md} auto 0`,
+    textAlign: "center",
   },
 
-  "& .description": {
-    color: "rgba(255, 255, 255, 0.9)",
-    maxWidth: "600px",
-    margin: "16px auto 0",
-    lineHeight: 1.6,
+  "@media (max-width: 600px)": {
+    marginBottom: spacing.lg,
   }
-}));
+});

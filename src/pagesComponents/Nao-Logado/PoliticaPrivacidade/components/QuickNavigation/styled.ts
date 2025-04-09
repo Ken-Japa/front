@@ -1,43 +1,51 @@
-import { styled } from "@mui/material";
-import { Box, Typography } from "@mui/material";
+import { styled, Typography } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const NavigationTitle = styled(Typography)(({ theme }) => ({
-  color: "#0D95F9",
-  textAlign: "center",
-  marginBottom: "24px",
-  fontSize: "1.25rem",
-  fontWeight: "500"
-}));
+export const NavigationContainer = styled("div")({
+  "& .navigation-title": {
+    color: visitorColors.primary,
+    marginBottom: spacing.lg,
+    textAlign: "center",
+  },
 
-export const NavigationContainer = styled(Box)(({ theme }) => ({
-  backgroundColor: "rgba(255, 255, 255, 0.06)",
-  padding: "24px",
-  borderRadius: "8px",
-  marginBottom: "48px",
-  backdropFilter: "blur(10px)",
+  "& .navigation-content": {
+    backgroundColor: visitorColors.backgroundLight,
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+    marginBottom: spacing.xl,
+    backdropFilter: visitorColors.blur,
+  },
 
   "& .navigation-grid": {
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: "16px",
-    
-    [theme.breakpoints.down('lg')]: {
+    gap: spacing.md,
+    marginBottom: spacing.xl,
+
+    "@media (min-width: 900px)": {
       gridTemplateColumns: "repeat(2, 1fr)",
     },
-    
-    [theme.breakpoints.down('sm')]: {
-      gridTemplateColumns: "1fr",
-    }
+
+    "@media (min-width: 1200px)": {
+      gridTemplateColumns: "repeat(4, 1fr)",
+    },
   },
 
-  "& .nav-link": {
-    color: "rgba(255, 255, 255, 0.85)",
-    transition: "color 0.3s ease",
+  "& .navigation-link": {
+    color: visitorColors.textSecondary,
     cursor: "pointer",
-    textDecoration: "none",
+    transition: transitions.medium,
 
     "&:hover": {
-      color: "#0D95F9",
-    }
-  }
+      color: visitorColors.primary,
+    },
+  },
+});
+
+export const NavigationTitle = styled(Typography)(({ theme }) => ({
+  color: visitorColors.primary,
+  textAlign: "center",
+  marginBottom: spacing.lg,
+  fontSize: "1.25rem",
+  fontWeight: "500",
 }));

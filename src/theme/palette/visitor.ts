@@ -5,6 +5,7 @@ export const visitorColors = {
   accent: "#FF4081", // Rosa para destaques
   highlight: "#64FFDA", // Verde água para elementos especiais
   success: "#00E676", // Verde para sucesso
+  gold: "#FFD700",
 
   // Backgrounds com transparência
   backgroundOverlay: "rgba(0, 0, 0, 0.6)",
@@ -25,6 +26,7 @@ export const visitorColors = {
   cardBackground: "rgba(0, 0, 0, 0.5)",
   buttonPrimary: "#0056b3",
   buttonSecondary: "#3A1078",
+  borderLight: "rgba(255, 255, 255, 0.1)",
 
   // Efeitos
   overlay: "rgba(0, 0, 0, 0.5)",

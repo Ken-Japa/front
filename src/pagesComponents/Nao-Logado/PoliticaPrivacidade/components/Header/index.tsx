@@ -1,39 +1,34 @@
-import { type FC } from 'react';
-
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 import { Typography } from "@mui/material";
-import SecurityIcon from '@mui/icons-material/Security';
-
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-
-import { HeaderWrapper } from "./styled";
+import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface HeaderProps {
-    isLoading?: boolean;
+  isLoading?: boolean;
 }
 
-export const Header: FC<HeaderProps> = ({ isLoading }) => {
-    if (isLoading) {
-        return <HeaderSkeleton />;
-    }
-
-    return (
-        <HeaderWrapper>
-            <div className="header-content">
-                <SecurityIcon sx={{ fontSize: 40, color: '#0D95F9' }} />
-                <MatrixRainText
-                    text="Política de Privacidade"
-                    className="title"
-                />
-            </div>
-            <Typography variant="h5" className="subtitle">
-                Auge Invest
-            </Typography>
-            <Typography variant="body1" className="description">
-                Comprometidos com a transparência e segurança dos seus dados
-                <br />
-                Sua Segurança é Nosso Ativo Mais Valioso
-            </Typography>
-        </HeaderWrapper>
-    );
+export const Header = ({ isLoading }: HeaderProps) => {
+  if (isLoading) {
+    return <HeaderSkeleton />;
+  }
+  
+  return (
+    <HeaderContainer>
+      <div className="header-icon-container">
+        <PrivacyTipIcon sx={{ fontSize: 40, color: visitorColors.primary }} />
+        <MatrixRainText
+          text="Política de Privacidade"
+          className="text-white text-4xl font-bold"
+        />
+      </div>
+      <Typography className="header-subtitle">
+        Última atualização: 01 de Janeiro de 2024
+      </Typography>
+      <Typography className="header-description">
+        Por favor, leia atentamente nossa política de privacidade para entender como tratamos seus dados
+      </Typography>
+    </HeaderContainer>
+  );
 };

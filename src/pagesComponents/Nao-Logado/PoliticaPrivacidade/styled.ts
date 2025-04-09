@@ -1,9 +1,13 @@
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const SectionPolicy = styled("section")(({ theme }) => ({
+export const SectionPolicy = styled("section")({
   width: "100%",
   minHeight: "100vh",
   position: "relative",
+  display: "flex",
+  flexDirection: "column",
 
   "& .background-image": {
     position: "absolute",
@@ -17,16 +21,21 @@ export const SectionPolicy = styled("section")(({ theme }) => ({
   "& .opacity": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: visitorColors.backgroundOverlay,
+    backdropFilter: visitorColors.blur,
     width: "100%",
     minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
   },
 
   "& .section-privacy": {
-    padding: "64px 24px",
+    padding: `${spacing.xl} 0`,
+    position: "relative",
+    flex: 1,
 
-    [theme.breakpoints.down("sm")]: {
-      padding: "32px 16px",
+    "@media (max-width: 600px)": {
+      padding: `${spacing.lg} 0`,
     },
   },
-}));
+});

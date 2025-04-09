@@ -5,6 +5,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 
 import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
+import { visitorColors } from "@/theme/palette/visitor";
 
 interface HeaderProps {
     isLoading?: boolean;
@@ -12,7 +13,7 @@ interface HeaderProps {
 
 const ICON_STYLES = {
     fontSize: 60,
-    color: '#FFD700'
+    color: visitorColors.gold
 } as const;
 
 const HEADER_TEXT = {
@@ -29,15 +30,17 @@ export const Header: FC<HeaderProps> = ({ isLoading }) => {
     return (
         <HeaderContainer spacing={3}>
             <WorkspacePremiumIcon sx={ICON_STYLES} />
-            <Typography variant="h2" className="text-[#FFD700] font-bold">
+            <Typography variant="h1" className="header-title">
                 {HEADER_TEXT.title}
             </Typography>
-            <Typography variant="h5" className="text-white">
+            <Typography variant="h3" className="header-subtitle">
                 {HEADER_TEXT.subtitle}
             </Typography>
-            <Typography variant="h5" className="text-white/80 max-w-2xl">
+            <Typography variant="h4" className="header-description">
                 {HEADER_TEXT.description}
             </Typography>
         </HeaderContainer>
     );
 };
+
+export default Header;

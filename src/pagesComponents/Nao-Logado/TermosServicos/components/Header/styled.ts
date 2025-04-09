@@ -1,30 +1,32 @@
 import { styled } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const HeaderContainer = styled("div")(({ theme }) => ({
+export const HeaderContainer = styled("div")({
   textAlign: "center",
-  marginBottom: "48px",
+  marginBottom: spacing.xl,
 
   "& .header-icon-container": {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "12px",
-    marginBottom: "24px",
+    gap: spacing.xs,
+    marginBottom: spacing.md,
   },
 
   "& .header-subtitle": {
-    color: "rgba(255, 255, 255, 0.8)",
-    marginBottom: "8px",
+    color: visitorColors.textSecondary,
+    marginBottom: spacing.xs,
   },
 
   "& .header-description": {
-    color: "rgba(255, 255, 255, 0.8)",
+    color: visitorColors.textSecondary,
     maxWidth: "32rem",
-    margin: "16px auto 0",
+    margin: `${spacing.md} auto 0`,
     textAlign: "center",
   },
 
-  [theme.breakpoints.down("sm")]: {
-    marginBottom: "32px",
+  "@media (max-width: 600px)": {
+    marginBottom: spacing.lg,
   }
-}));
+});

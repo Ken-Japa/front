@@ -3,9 +3,10 @@ import { type FC } from 'react';
 import { Stack, Skeleton } from "@mui/material";
 
 import { CardContainer } from "./styled";
+import { visitorColors } from "@/theme/palette/visitor";
 
 const SKELETON_STYLES = {
-    bgcolor: 'rgba(255,255,255,0.1)'
+    bgcolor: visitorColors.skeletonBackground
 } as const;
 
 const SKELETON_DIMENSIONS = {

@@ -1,26 +1,31 @@
 import { styled } from "@mui/material";
+import { spacing, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const ScrollButton = styled("button")(({ theme }) => ({
+export const ScrollButton = styled("button")({
   position: "fixed",
-  bottom: "32px",
-  right: "32px",
-  backgroundColor: "#0D95F9",
-  padding: "12px",
+  bottom: spacing.lg,
+  right: spacing.lg,
+  backgroundColor: visitorColors.primary,
+  padding: spacing.sm,
   borderRadius: "50%",
   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-  transition: "all 0.3s ease",
+  transition: transitions.medium,
   cursor: "pointer",
   border: "none",
   color: "white",
+  zIndex: 1000,
+  opacity: 1,
+  pointerEvents: "auto",
 
   "&:hover": {
-    backgroundColor: "rgba(13, 149, 249, 0.8)",
+    backgroundColor: visitorColors.buttonPrimary,
     transform: "translateY(-2px)",
   },
 
-  [theme.breakpoints.down('sm')]: {
-    bottom: "24px",
-    right: "24px",
-    padding: "10px",
-  }
-}));
+  "@media (max-width: 600px)": {
+    bottom: spacing.md,
+    right: spacing.md,
+    padding: spacing.xs,
+  },
+});

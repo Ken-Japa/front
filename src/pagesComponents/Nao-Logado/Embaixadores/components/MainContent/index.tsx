@@ -7,6 +7,7 @@ import { ProgressiveLoad } from "@/components/ProgressiveLoad";
 
 import { type Ambassador } from '../../types';
 import { AmbassadorsGrid } from '../AmbassadorsGrid';
+import { ContentWrapper } from './styled';
 
 interface MainContentProps {
     isLoading: boolean;
@@ -25,7 +26,7 @@ export const MainContent: FC<MainContentProps> = ({
     Header, 
     CallToAction 
 }) => (
-    <div className="relative z-10 py-16">
+    <ContentWrapper>
         <Container {...CONTAINER_STYLES}>
             <Stack spacing={8} alignItems="center">
                 <SuspenseWrapper>
@@ -44,5 +45,7 @@ export const MainContent: FC<MainContentProps> = ({
                 </ProgressiveLoad>
             </Stack>
         </Container>
-    </div>
+    </ContentWrapper>
 );
+
+export default MainContent;
