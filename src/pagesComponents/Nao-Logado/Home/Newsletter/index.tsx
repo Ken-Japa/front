@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { Stack, Typography, TextField } from "@mui/material";
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { NewsletterContainer } from "./styled";
 import { NewsletterSkeleton } from "./NewsletterSkeleton";
 import { visitorColors } from "@/theme/palette/visitor";

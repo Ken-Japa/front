@@ -3,10 +3,10 @@
 import { type FC, useState, lazy, Suspense } from "react";
 import { Grid, Stack } from "@mui/material";
 
-import { OptimizedImage } from "@/components/OptimizedImage";
-import { PageTransition } from "@/components/PageTransition";
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { SectionJoinTeam } from "./styled";
 import { visitorColors } from "@/theme/palette/visitor";

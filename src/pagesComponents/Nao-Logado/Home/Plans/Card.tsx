@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { OverridableStringUnion } from '@mui/types';
 import { ButtonPropsColorOverrides } from '@mui/material';
 
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 
 import { CardContainer } from "./styled";
 

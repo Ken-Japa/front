@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Grid, Typography } from '@mui/material';
-import { NumberInput } from '@/components/NumberInput';
+import { NumberInput } from '@/components/Form/NumberInput';
 import { ValuationInputs } from '../../types';
 import { InputsContainer } from './styled';
 

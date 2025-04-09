@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/theme/ThemeContext';
 import { DateProvider } from './DateProvider';
 import { AuthProvider } from './AuthProvider';
 import { ApiProvider } from './ApiProvider';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 export function Providers({ children }: { children: React.ReactNode }) {

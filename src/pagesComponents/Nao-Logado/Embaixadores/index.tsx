@@ -2,9 +2,9 @@
 
 import { type FC, useState, lazy } from "react";
 
-import { PageTransition } from "@/components/PageTransition";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { OptimizedImage } from "@/components/OptimizedImage";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { ErrorBoundary } from "@/components/Feedback/ErrorBoundary";
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
 
 import { ambassadors } from './constants/ambassadors';
 import { EmbaixadoresSection } from './styled';

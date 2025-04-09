@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { Stack, Typography } from "@mui/material";
-import { CustomAccordion } from "@/components/Custom/Accordion";
+import { CustomAccordion } from "@/components/Core/Accordion";
 import { QuestionsSection } from "./styled";
 import { QuestionsSkeleton } from "./QuestionsSkeleton";
 import { questions } from "./questions";
@@ -22,10 +22,10 @@ export const Questions: FC<QuestionsProps> = ({ isLoading }) => {
                 </Typography>
                 <Stack maxWidth="800px" width="100%">
                     {questions.map((item, index) => (
-                        <CustomAccordion 
-                            key={index} 
-                            body={item.body} 
-                            title={item.title} 
+                        <CustomAccordion
+                            key={index}
+                            body={item.body}
+                            title={item.title}
                         />
                     ))}
                 </Stack>

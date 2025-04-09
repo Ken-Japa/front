@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 
 export const PlansSkeleton = () => {
     return (

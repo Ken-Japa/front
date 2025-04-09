@@ -1,6 +1,6 @@
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { ProfileSection, ProfileLabel, ProfileValue } from "../../styled";
 
 interface UserInfoProps {

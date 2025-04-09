@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import { Typography } from "@mui/material";
 
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 
 import { CallToActionSkeleton } from "./CallToActionSkeleton";
 import { CallToActionContainer, ContentStack } from "./styled";

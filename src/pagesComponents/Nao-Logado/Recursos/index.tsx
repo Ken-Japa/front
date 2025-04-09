@@ -4,10 +4,10 @@ import { type FC, useState, useEffect, useRef, lazy } from 'react';
 import Image from 'next/image';
 import { Container } from "@mui/material";
 
-import { PageTransition } from "@/components/PageTransition";
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ProgressiveLoad } from "@/components/ProgressiveLoad";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { SectionSolutions, ContentWrapper } from "./styled";
 

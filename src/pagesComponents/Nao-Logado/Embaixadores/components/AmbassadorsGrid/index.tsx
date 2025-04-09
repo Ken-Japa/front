@@ -2,8 +2,8 @@ import { type FC } from 'react';
 
 import { Box } from "@mui/material";
 
-import { ProgressiveLoad } from "@/components/ProgressiveLoad";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { type Ambassador } from '../../types';
 import { AmbassadorCard } from "../AmbassadorCard";

@@ -12,7 +12,7 @@ export const MissaoSection = ({ isLoading }: MissaoSectionProps) => {
     if (isLoading) {
         return <MissaoSkeleton />;
     }
-    
+
     return (
         <BaseSection>
             <SectionTitle>

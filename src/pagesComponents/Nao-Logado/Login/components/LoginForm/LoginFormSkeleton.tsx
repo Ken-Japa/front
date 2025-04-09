@@ -1,4 +1,4 @@
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 
 import { FormHeaderSkeleton } from "../FormHeader/FormHeaderSkeleton";
 import { SocialLoginSkeleton } from "../SocialLogin/SocialLoginSkeleton";
@@ -6,7 +6,7 @@ import { LoginFormStyled } from "./styled";
 
 export const LoginFormSkeleton = () => {
     const commonSkeletonClasses = "bg-[#ffffff0a] backdrop-blur-sm";
-    
+
     return (
         <LoginFormStyled>
             <FormHeaderSkeleton />

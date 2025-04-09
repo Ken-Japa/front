@@ -7,7 +7,7 @@ import { Drawer, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { motion } from "framer-motion";
 
-import { Logo } from "../../../Logo";
+import { Logo } from "../../Logo";
 import { Navbar } from "./Navbar";
 import { LoginsButtons } from "./LoginRegisterButtons";
 import { PerfilButtons } from "./PerfilButtons";

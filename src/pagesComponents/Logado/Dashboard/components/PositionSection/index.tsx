@@ -1,6 +1,6 @@
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
 
 import { PerformanceChart } from './components/PerformanceChart';
 import { PositionSummary } from './components/PositionSummary';

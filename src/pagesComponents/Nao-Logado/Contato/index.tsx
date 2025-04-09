@@ -4,9 +4,9 @@ import { useState, lazy, type FormEvent, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
 // Componentes
-import { OptimizedImage } from "@/components/OptimizedImage";
-import { PageTransition } from "@/components/PageTransition";
-import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 
 // Estilos e constantes
 import { SectionContact } from "./styled";

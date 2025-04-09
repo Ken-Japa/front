@@ -2,8 +2,8 @@ import { type FC } from 'react';
 
 import { Container, Stack } from "@mui/material";
 
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
-import { ProgressiveLoad } from "@/components/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
+import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
 
 import { type Ambassador } from '../../types';
 import { AmbassadorsGrid } from '../AmbassadorsGrid';
@@ -20,11 +20,11 @@ const CONTAINER_STYLES = {
     maxWidth: "lg"
 } as const;
 
-export const MainContent: FC<MainContentProps> = ({ 
-    isLoading, 
-    ambassadors, 
-    Header, 
-    CallToAction 
+export const MainContent: FC<MainContentProps> = ({
+    isLoading,
+    ambassadors,
+    Header,
+    CallToAction
 }) => (
     <ContentWrapper>
         <Container {...CONTAINER_STYLES}>

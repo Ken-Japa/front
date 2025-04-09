@@ -1,11 +1,11 @@
 "use client";
 
 import { Container, Typography } from '@mui/material';
-import { PageTransition } from '@/components/PageTransition';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
+import { PageTransition } from '@/components/Utils/PageTransition';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
+import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
 
 import { AlertsTable } from './components/AlertsTable';
 import { AddAlertButton } from './components/AddAlertButton';

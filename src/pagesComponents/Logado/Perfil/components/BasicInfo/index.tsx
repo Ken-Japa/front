@@ -2,7 +2,7 @@ import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import LockIcon from '@mui/icons-material/Lock';
 import { Box } from '@mui/material';
-import { ThemePreference } from '@/components/TrocarTema';
+import { ThemePreference } from '@/components/Theme/TrocarTema';
 import { PasswordDialog } from '../PasswordDialog';
 import { EditDialog } from '../EditDialog';
 import { InfoContainer, InfoRow, InfoLabel, InfoValue, EditButton, PasswordButton, StyledDivider } from './styled';

@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { Stack } from "@mui/material";
 import { visitorColors } from "@/theme/palette/visitor";
 
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 
 const SKELETON_COUNT = 8;
 

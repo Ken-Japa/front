@@ -1,7 +1,7 @@
 import { Chip, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { CustomAccordion } from "@/components/Custom/Accordion";
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomAccordion } from "@/components/Core/Accordion";
+import { CustomButton } from "@/components/Core/Button";
 import {
     SubscriptionContainer,
     SubscriptionField,

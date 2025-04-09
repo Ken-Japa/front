@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import { Stack } from "@mui/material";
 
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 import { visitorColors } from "@/theme/palette/visitor";
 
 const SKELETON_FIELDS = [
@@ -20,9 +20,9 @@ const SKELETON_FIELDS = [
 export const ApplicationFormSkeleton: FC = () => (
     <Stack spacing={3}>
         {SKELETON_FIELDS.map((field, index) => (
-            <ContentSkeleton 
+            <ContentSkeleton
                 key={index}
-                type="text" 
+                type="text"
                 textLines={field.lines}
                 className={`${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />

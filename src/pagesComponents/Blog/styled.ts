@@ -19,6 +19,5 @@ export const BlogContent = styled(Box)`
   z-index: 1;
   min-height: 100vh;
   padding: 2rem 0;
-  margin-bottom: -112px;
   padding-bottom: 112px;
 `;

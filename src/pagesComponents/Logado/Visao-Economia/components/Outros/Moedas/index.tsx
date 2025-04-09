@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ContentSkeleton } from '../../../../../../components/Skeletons/ContentSkeleton';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ContentSkeleton } from '../../../../../../components/Feedback/Skeletons/ContentSkeleton';
 import { Box, IconButton } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
@@ -55,8 +55,8 @@ export const Moedas = () => {
             fallback={<ContentSkeleton height={240} />}
         >
             <MoedasContainer>
-                <IconButton 
-                    size="small" 
+                <IconButton
+                    size="small"
                     onClick={() => setIsSearchOpen(true)}
                     sx={{ position: 'absolute', top: 8, right: 8 }}
                 >

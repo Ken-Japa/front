@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { PLANOS } from "../../constants/planos";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { PlanosSkeleton } from "./PlanosSkeleton";

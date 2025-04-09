@@ -5,9 +5,9 @@ import { type FC, useState, useMemo, useEffect, lazy, ChangeEvent } from "react"
 import { Container, Grid, Box } from "@mui/material";
 import { motion } from "framer-motion";
 
-import { OptimizedImage } from "@/components/OptimizedImage";
-import { ProgressiveLoad } from "@/components/ProgressiveLoad";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
+import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { BlogContainer, BlogContent } from "./styled";
 import { blogPosts } from "./constants/blogPosts";

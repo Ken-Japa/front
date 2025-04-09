@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Container, Box } from "@mui/material";
 import { motion } from "framer-motion";
 
-import { OptimizedImage } from "@/components/OptimizedImage";
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
 
 import { PostContainer, PostContent } from "./styled";
 import { BlogPostSkeleton } from "./BlogPostSkeleton";

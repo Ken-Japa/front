@@ -1,4 +1,4 @@
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 
 import { HeaderSkeleton } from "../Header/HeaderSkeleton";
 import { FormFieldsSkeleton } from "../FormFields/FormFieldsSkeleton";

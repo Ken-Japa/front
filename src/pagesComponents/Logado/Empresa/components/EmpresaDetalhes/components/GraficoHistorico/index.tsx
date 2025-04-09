@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Typography, useTheme, CircularProgress } from '@mui/material';
 
-import { LineChart } from '@/components/Charts/LineChart';
+import { LineChart } from '@/components/Data-Display/Charts/LineChart';
 import { PeriodSelector, PeriodType } from './components/PeriodSelector';
 import { filterDataByPeriod, getOptimalDataInterval, getOptimizedLabels } from './utils/dataFilters';
 import { GraficoContainer, GraficoHeader, ChartWrapper, LoadingContainer } from './styled';

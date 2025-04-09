@@ -1,5 +1,5 @@
 import { styled, Box, Typography, Button, alpha } from "@mui/material";
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { transitions } from "@/theme/variables";
 
 export const InfoContainer = styled(Box)(({ theme }) => ({

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Tabs, Tab, IconButton } from '@mui/material';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ContentSkeleton } from '../../../../../components/Skeletons/ContentSkeleton';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ContentSkeleton } from '../../../../../components/Feedback/Skeletons/ContentSkeleton';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';

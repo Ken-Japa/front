@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { visitorColors } from "@/theme/palette/visitor";
 
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 
 const SKELETON_PROPS = {
     type: "text" as const,

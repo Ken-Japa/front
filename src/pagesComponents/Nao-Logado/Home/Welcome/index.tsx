@@ -9,7 +9,7 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { motion } from "framer-motion";
 
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
 
 import { SectionWelcome } from "./styled";

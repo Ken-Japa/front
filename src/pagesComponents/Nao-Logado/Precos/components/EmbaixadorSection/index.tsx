@@ -1,5 +1,5 @@
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { EMBAIXADOR_BENEFICIOS } from "../../constants/embaixador";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { EmbaixadorCard, Description } from "./styled";

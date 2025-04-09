@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ContentSkeleton } from '../../../../../../components/Skeletons/ContentSkeleton';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ContentSkeleton } from '../../../../../../components/Feedback/Skeletons/ContentSkeleton';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';

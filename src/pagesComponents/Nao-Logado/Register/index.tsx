@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import { OptimizedImage } from "@/components/OptimizedImage";
-import { PageTransition } from "@/components/PageTransition";
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { useBlockTimer } from "./hooks/useBlockTimer";
 import { useRegisterForm } from "./hooks/useRegisterForm";

@@ -1,5 +1,5 @@
 import { FormControlLabel, Switch } from '@mui/material';
-import { DarkIcon, LightIcon } from '@/components/TrocarTema/styled';
+import { DarkIcon, LightIcon } from '@/components/Theme/TrocarTema/styled';
 import { useTheme } from '@/theme/ThemeContext';
 import {
   SettingsCard,

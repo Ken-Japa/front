@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import { Stack } from "@mui/material";
 
-import { CustomAccordion } from "@/components/Custom/Accordion";
+import { CustomAccordion } from "@/components/Core/Accordion";
 
 import type { QuestionType } from '../data/faqData';
 import { QuestionListSkeleton } from "./QuestionListSkeleton";
@@ -20,11 +20,11 @@ export const QuestionList: FC<QuestionListProps> = ({ questions, isLoading }) =>
     return (
         <Stack width="100%" spacing={2}>
             {questions.map((question, index) => (
-                <div 
+                <div
                     key={`question-${index}-${question.title}`}
                     className="transform hover:scale-[1.01] transition-all duration-300"
                 >
-                    <CustomAccordion 
+                    <CustomAccordion
                         variant="dark"
                         title={question.title}
                         body={question.body}

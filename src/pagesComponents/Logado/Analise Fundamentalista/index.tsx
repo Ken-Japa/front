@@ -5,10 +5,10 @@ import { useForm } from 'react-hook-form';
 import { Box, Container, Typography, Grid, IconButton } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 
-import { PageTransition } from '@/components/PageTransition';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
+import { PageTransition } from '@/components/Utils/PageTransition';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
 
 import { DadosAnaliseFundamental, MetricasCalculadas } from './types';
 import { DataInputForm } from './components/DataInputForm';

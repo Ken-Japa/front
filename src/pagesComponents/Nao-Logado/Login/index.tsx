@@ -4,10 +4,10 @@ import { useState, lazy } from "react";
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { OptimizedImage } from "@/components/OptimizedImage";
-import { PageTransition } from "@/components/PageTransition";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { useLoginForm } from "./hooks/useLoginForm";
 import { useNavigation } from "./hooks/useNavigation";

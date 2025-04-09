@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { ViewMode } from './types';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ContentSkeleton } from '../../../../../components/Skeletons/ContentSkeleton';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ContentSkeleton } from '../../../../../components/Feedback/Skeletons/ContentSkeleton';
 import { BdrContainer, ContentPlaceholder, ControlsWrapper } from './styled';
 import { ModoVisualizacao } from './Elementos/ModoVisualizacao';
 import { SearchBar } from './Elementos/SearchBar';

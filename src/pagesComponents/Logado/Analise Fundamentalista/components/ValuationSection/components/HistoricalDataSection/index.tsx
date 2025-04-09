@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Grid, IconButton, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { NumberInput } from '@/components/NumberInput';
-import { CustomAccordion } from '@/components/Custom/Accordion';
+import { NumberInput } from '@/components/Form/NumberInput';
+import { CustomAccordion } from '@/components/Core/Accordion';
 import { HistoricalFCF } from '../../types';
 import { HistoricalDataContainer } from './styled';
 

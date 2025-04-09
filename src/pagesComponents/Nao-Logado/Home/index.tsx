@@ -5,11 +5,11 @@ import Link from 'next/link';
 
 import { Stack, Container, Divider, Typography } from "@mui/material";
 
-import { PageTransition } from "@/components/PageTransition";
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { OptimizedImage } from "@/components/OptimizedImage";
-import { ProgressiveLoad } from "@/components/ProgressiveLoad";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { PageTransition } from "@/components/Utils/PageTransition";
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
+import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 import { visitorColors } from "@/theme/palette/visitor";
 import { transitions } from "@/theme/variables";
 
@@ -101,8 +101,8 @@ export const Home: FC = () => {
                                         transition: transitions.medium
                                     }}>
                                         Encontre mais respostas acessando o{' '}
-                                        <Link 
-                                            href="/visitante/faq" 
+                                        <Link
+                                            href="/visitante/faq"
                                             className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
                                         >
                                             FAQ

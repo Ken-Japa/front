@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { Container, Grid } from '@mui/material';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { PageTransition } from '@/components/PageTransition';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { PageTransition } from '@/components/Utils/PageTransition';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
+import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
 
 // Componentes da página
 import { Empresas } from './components/Empresas';

@@ -6,9 +6,9 @@ import { Button, Snackbar, Alert, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { clearAuthData } from '@/utils/auth';
-import { PageTransition } from '@/components/PageTransition';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
+import { PageTransition } from '@/components/OptimizedImage/PageTransition';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
 import { SubscriptionInfo } from './components/SubscriptionInfo';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
 import { AdditionalInfo } from './components/AdditionalInfo';
@@ -66,8 +66,8 @@ export const Perfil = () => {
             <ErrorBoundary>
                 <SuspenseWrapper fallback={<ProfileSkeleton />}>
                     <ProfileContainer>
-                        <Typography 
-                            variant="h1" 
+                        <Typography
+                            variant="h1"
                             sx={{
                                 textAlign: "center",
                                 fontSize: "2.5rem",

@@ -1,5 +1,5 @@
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@mui/material';
-import { CustomButton } from '@/components/Custom/Button';
+import { CustomButton } from '@/components/Core/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Add loading prop to the interface
@@ -47,10 +47,10 @@ export const EditDialog = ({ open, title, value, onClose, onSave, loading = fals
                             </DialogContent>
                             <DialogActions>
                                 <CustomButton value="Cancelar" onClick={onClose} color="inherit" disabled={loading} />
-                                <CustomButton 
-                                    value={loading ? "Salvando..." : "Salvar"} 
-                                    type="submit" 
-                                    variant="contained" 
+                                <CustomButton
+                                    value={loading ? "Salvando..." : "Salvar"}
+                                    type="submit"
+                                    variant="contained"
                                     disabled={loading}
                                 />
                             </DialogActions>

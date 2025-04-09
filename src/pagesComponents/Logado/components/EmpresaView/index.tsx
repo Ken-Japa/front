@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { PageTransition } from '@/components/PageTransition';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { PageTransition } from '@/components/Utils/PageTransition';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
+import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
 import { ViewMode } from './Elementos/ModoVisualizacao/types';
 import { RedeNeural } from './Elementos/ModoVisualizacao/RedeNeural';
 import { TabelaView } from './Elementos/ModoVisualizacao/TabelaView';

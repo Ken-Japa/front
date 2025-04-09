@@ -9,7 +9,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { motion } from "framer-motion";
 
-import { Logo } from "../../../Logo";
+import { Logo } from "../../Logo";
 import { FooterNavigation } from "./components/FooterNavigation";
 import {
     FooterContainer,

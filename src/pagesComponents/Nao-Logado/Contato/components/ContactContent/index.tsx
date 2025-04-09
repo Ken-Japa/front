@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { Stack } from "@mui/material";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 import { FormData, FormErrors } from '../../types';
 
 interface ContactContentProps {

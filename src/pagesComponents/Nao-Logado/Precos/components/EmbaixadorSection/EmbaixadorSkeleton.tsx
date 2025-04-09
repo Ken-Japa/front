@@ -1,23 +1,23 @@
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 import { BaseSection, ContentWrapper } from "../../styled";
 import { visitorColors } from "@/theme/palette/visitor";
 
 export const EmbaixadorSkeleton = () => (
     <BaseSection>
         <ContentWrapper spacing={4}>
-            <ContentSkeleton 
-                type="text" 
-                textLines={1} 
+            <ContentSkeleton
+                type="text"
+                textLines={1}
                 className={`w-64 ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
-            <ContentSkeleton 
-                type="text" 
-                textLines={2} 
+            <ContentSkeleton
+                type="text"
+                textLines={2}
                 className={`max-w-2xl mx-auto ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
-            <ContentSkeleton 
-                type="card" 
-                cardHeight={400} 
+            <ContentSkeleton
+                type="card"
+                cardHeight={400}
                 className={`max-w-md mx-auto ${visitorColors.skeletonBackground} backdrop-blur-sm`}
             />
         </ContentWrapper>

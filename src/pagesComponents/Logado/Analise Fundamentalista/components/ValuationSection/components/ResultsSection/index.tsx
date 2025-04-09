@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Grid, Typography, Box } from '@mui/material';
-import { CustomAccordion } from '@/components/Custom/Accordion';
+import { CustomAccordion } from '@/components/Core/Accordion';
 import { ValuationResults, SensitivityResults } from '../../types';
 import { ResultsContainer } from './styled';
 

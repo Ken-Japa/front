@@ -3,7 +3,7 @@ import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-import { OptimizedImage } from "@/components/OptimizedImage";
+import { OptimizedImage } from "@/components/Utils/OptimizedImage";
 
 import { FEATURES_DATA, ICON_STYLES } from './constants';
 import { FeaturesSkeleton } from "./FeaturesSkeleton";

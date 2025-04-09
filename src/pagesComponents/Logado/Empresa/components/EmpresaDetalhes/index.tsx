@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { Tabs, Tab, Box, Typography, Paper } from '@mui/material';
 
 // Componentes compartilhados
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { PageTransition } from '@/components/PageTransition';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { PageTransition } from '@/components/Utils/PageTransition';
+import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
 
 // Componentes específicos
 import { MetricasEmpresa } from './components/MetricasEmpresa';

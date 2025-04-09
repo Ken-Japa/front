@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { Container, Alert, Snackbar } from '@mui/material';
-import { PageTransition } from '@/components/PageTransition';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+import { PageTransition } from '@/components/OptimizedImage/PageTransition';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
 import { AppearanceSettings } from './components/AppearanceSettings/index';
 import { NotificationSettings } from './components/NotificationSettings/index';
 import { AlertPreferences } from './components/AlertPreferences/index';

@@ -2,10 +2,10 @@
 
 import { useSession } from 'next-auth/react';
 import { Container } from '@mui/material';
-import { PageTransition } from '@/components/PageTransition';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { SuspenseWrapper } from '@/components/SuspenseWrapper';
-import { ProgressiveLoad } from '@/components/ProgressiveLoad';
+import { PageTransition } from '@/components/Utils/PageTransition';
+import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
+import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
+import { ProgressiveLoad } from '@/components/Feedback/ProgressiveLoad';
 
 import { PositionSection } from './components/PositionSection';
 import { BackgroundContainer, PageTitle, SectionContainer } from './styled';

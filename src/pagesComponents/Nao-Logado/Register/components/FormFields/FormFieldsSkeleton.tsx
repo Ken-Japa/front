@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 
-import { ContentSkeleton } from "@/components/Skeletons/ContentSkeleton";
+import { ContentSkeleton } from "@/components/Feedback/Skeletons/ContentSkeleton";
 
 const commonSkeletonProps = {
     type: "text" as const,

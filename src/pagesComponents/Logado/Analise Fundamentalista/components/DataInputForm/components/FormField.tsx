@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { Tooltip } from '@mui/material';
-import { NumberInput } from '@/components/NumberInput';
+import { NumberInput } from '@/components/Form/NumberInput';
 import { FormFieldProps } from '../types/types';
 import { FieldContainer } from '../styled';
 

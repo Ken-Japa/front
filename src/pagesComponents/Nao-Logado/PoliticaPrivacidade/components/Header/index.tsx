@@ -13,7 +13,7 @@ export const Header = ({ isLoading }: HeaderProps) => {
   if (isLoading) {
     return <HeaderSkeleton />;
   }
-  
+
   return (
     <HeaderContainer>
       <div className="header-icon-container">

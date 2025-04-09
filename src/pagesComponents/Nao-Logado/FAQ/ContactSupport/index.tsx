@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import Link from 'next/link';
 
-import { CustomButton } from "@/components/Custom/Button";
+import { CustomButton } from "@/components/Core/Button";
 import { visitorColors } from "@/theme/palette/visitor";
 
 import { SupportContainer } from "./styled";
