@@ -1,94 +1,88 @@
-import { styled } from '@mui/material/styles';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import { styled } from "@mui/material/styles";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import { customColors } from "@/theme/palette";
+import { spacing, transitions, borderRadius } from "@/theme/variables";
 
-export interface AccordionCustomTheme {
+// Definição dos temas para o Accordion
+export const lightTheme = {
+  background: customColors.cardBackground.light,
+  borderColor: customColors.cardBorder.light,
+  titleColor: customColors.accordionTitle.light,
+  bodyColor: customColors.accordionBody.light,
+  hoverBackground: customColors.hoverEffect.light,
+};
+
+export const darkTheme = {
+  background: customColors.cardBackground.dark,
+  borderColor: customColors.cardBorder.dark,
+  titleColor: customColors.accordionTitle.dark,
+  bodyColor: customColors.accordionBody.dark,
+  hoverBackground: customColors.hoverEffect.dark,
+};
+
+// Tipo para o tema customizado
+interface CustomTheme {
   background: string;
-  titleColor?: string;
-  bodyColor?: string;
   borderColor: string;
-  hoverColor?: string;
-  linkColor?: string;
+  titleColor: string;
+  bodyColor: string;
+  hoverBackground: string;
   customBackground?: string;
   customBorderColor?: string;
   customTitleColor?: string;
-  customContentBackground?: string;  // New prop
+  customContentBackground?: string;
 }
 
-export const lightTheme: AccordionCustomTheme = {
-  background: '#FFFFFF',
-  titleColor: '#004C86',
-  bodyColor: '#000000',
-  borderColor: '#E5E7EB',
-  linkColor: '#0D95F9'
-};
-
-export const darkTheme: AccordionCustomTheme = {
-  background: 'rgba(0, 0, 0, 0.8)',
-  titleColor: '#FFFFFF',
-  bodyColor: '#FFFFFF',
-  borderColor: 'rgba(255, 255, 255, 0.1)',
-  linkColor: '#0D95F9'
-};
-
-interface StyledProps {
-  customTheme: AccordionCustomTheme;
-}
-
-export const StyledAccordion = styled(Accordion, {
-  shouldForwardProp: (prop) => prop !== 'customTheme'
-})<StyledProps>(({ customTheme }) => ({
-  boxShadow: 'none',
-  '&:before': {
-    display: 'none',
-  },
-  '&.Mui-expanded': {
-    margin: '8px 0',
-  },
-  borderRadius: '4px',
-  border: `1px solid ${customTheme.customBorderColor || customTheme.borderColor}`,
-  marginBottom: '8px',
+// Componentes estilizados
+export const StyledAccordion = styled(MuiAccordion, {
+  shouldForwardProp: (prop) => prop !== "customTheme",
+})<{ customTheme: CustomTheme }>(({ customTheme }) => ({
   backgroundColor: customTheme.customBackground || customTheme.background,
+  border: `1px solid ${
+    customTheme.customBorderColor || customTheme.borderColor
+  }`,
+  borderRadius: borderRadius.sm,
+  boxShadow: "none",
+  "&:before": {
+    display: "none",
+  },
+  "&.Mui-expanded": {
+    margin: 0,
+    marginBottom: spacing.lg, // Using theme spacing variable
+  },
+  marginBottom: spacing.md, // Using theme spacing variable
+  overflow: "hidden",
+  transition: transitions.medium, // Using theme transition variable
 }));
 
-export const StyledAccordionSummary = styled(AccordionSummary, {
-  shouldForwardProp: (prop) => prop !== 'customTheme'
-})<StyledProps>(({ customTheme }) => ({
+export const StyledAccordionSummary = styled(MuiAccordionSummary, {
+  shouldForwardProp: (prop) => prop !== "customTheme",
+})<{ customTheme: CustomTheme }>(({ customTheme }) => ({
   backgroundColor: customTheme.customBackground || customTheme.background,
-  '& .MuiAccordionSummary-content': {
-    margin: '12px 0',
-    color: customTheme.customTitleColor || customTheme.titleColor,
-    fontWeight: 500,
+  color: customTheme.customTitleColor || customTheme.titleColor,
+  fontWeight: 500,
+  padding: `${spacing.sm} ${spacing.md}`,
+  "&:hover": {
+    backgroundColor: customTheme.hoverBackground,
   },
-  '& .MuiAccordionSummary-expandIconWrapper': {
+  "& .MuiAccordionSummary-content": {
+    margin: `${spacing.sm} 0`,
+  },
+  "& .MuiAccordionSummary-expandIconWrapper": {
     color: customTheme.customTitleColor || customTheme.titleColor,
   },
 }));
 
-export const StyledAccordionDetails = styled(AccordionDetails, {
-  shouldForwardProp: (prop) => prop !== 'customTheme'
-})<StyledProps>(({ customTheme }) => ({
-  backgroundColor: customTheme.customContentBackground || customTheme.background,
-  padding: '16px 24px',
+export const StyledAccordionDetails = styled(MuiAccordionDetails, {
+  shouldForwardProp: (prop) => prop !== "customTheme",
+})<{ customTheme: CustomTheme }>(({ customTheme }) => ({
+  padding: spacing.md,
   color: customTheme.bodyColor,
-  borderTop: `1px solid ${customTheme.borderColor}`,
-  '& p': {
-    marginBottom: '1rem',
-    lineHeight: '1.5',
-  },
-  '& a': {
-    color: customTheme.linkColor,
-    textDecoration: 'underline',
-    '&:hover': {
-      opacity: 0.8,
-    }
-  },
-  '& ul': {
-    marginBottom: '1rem',
-    paddingLeft: '1.5rem',
-  },
-  '& li': {
-    marginBottom: '0.5rem',
-  }
+  backgroundColor:
+    customTheme.customContentBackground || customTheme.background,
+  borderTop: `1px solid ${
+    customTheme.customBorderColor || customTheme.borderColor
+  }`,
 }));

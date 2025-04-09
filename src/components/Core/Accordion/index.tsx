@@ -1,5 +1,6 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 import {
   StyledAccordion,
   StyledAccordionSummary,
@@ -7,6 +8,7 @@ import {
   lightTheme,
   darkTheme
 } from './styled';
+import { useTheme } from '@/theme/ThemeContext';
 
 interface Props {
   title: string;
@@ -19,31 +21,47 @@ interface Props {
   customBackground?: string;
   customBorderColor?: string;
   customTitleColor?: string;
-  customContentBackground?: string;  // New prop
+  customContentBackground?: string;
+  expanded?: boolean;
+  onChange?: (event: React.SyntheticEvent, expanded: boolean) => void;
 }
 
 export const CustomAccordion = ({
   title,
   children,
   body,
-  variant = 'light',
+  variant,
   className,
   titleColor,
   bodyColor,
   customBackground,
   customBorderColor,
   customTitleColor,
-  customContentBackground
+  customContentBackground,
+  expanded,
+  onChange
 }: Props) => {
-  const baseTheme = variant === 'light' ? lightTheme : darkTheme;
+  // Usar o tema global
+  const { isDarkMode } = useTheme();
+  const muiTheme = useMuiTheme();
+  
+  // Determinar o tema base com base na variante ou no tema global
+  const baseTheme = variant 
+    ? (variant === 'light' ? lightTheme : darkTheme)
+    : (isDarkMode ? darkTheme : lightTheme);
+  
+  // Criar o tema customizado com valores garantidos
   const customTheme = {
-    ...baseTheme,
+    background: baseTheme.background,
+    borderColor: baseTheme.borderColor,
     titleColor: titleColor || baseTheme.titleColor,
     bodyColor: bodyColor || baseTheme.bodyColor,
+    hoverBackground: baseTheme.hoverBackground,
+    // Propriedades opcionais
     customBackground,
     customBorderColor,
     customTitleColor,
-    customContentBackground  // Add to theme
+    customContentBackground
   };
 
   const content = body ? (
@@ -51,7 +69,12 @@ export const CustomAccordion = ({
   ) : children;
 
   return (
-    <StyledAccordion customTheme={customTheme} className={className}>
+    <StyledAccordion 
+      customTheme={customTheme} 
+      className={className}
+      expanded={expanded}
+      onChange={onChange}
+    >
       <StyledAccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls={`${title}-content`}

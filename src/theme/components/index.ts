@@ -3,12 +3,20 @@ import { muiButton } from "./muiButton";
 import { muiTable } from "./muiTable";
 import { muiPaper } from "./muiPaper";
 import { muiCard } from "./muiCard";
+import {
+  muiAccordion,
+  muiAccordionSummary,
+  muiAccordionDetails,
+} from "./muiAccordion";
 
 export const components: Components = {
   MuiButton: muiButton,
   MuiTable: muiTable,
   MuiPaper: muiPaper,
   MuiCard: muiCard,
+  MuiAccordion: muiAccordion,
+  MuiAccordionSummary: muiAccordionSummary,
+  MuiAccordionDetails: muiAccordionDetails,
   MuiCssBaseline: {
     styleOverrides: {
       body: {

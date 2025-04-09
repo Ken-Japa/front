@@ -121,4 +121,12 @@ export const customColors = {
     light: "#f9f9f9", // Efeito hover em tema claro
     dark: "rgba(255, 255, 255, 0.08)", // Efeito hover em tema escuro
   },
+  accordionTitle: {
+    light: "#1A2234",
+    dark: "#FFFFFF",
+  },
+  accordionBody: {
+    light: "#637381",
+    dark: "#FFFFFF",
+  },
 };
