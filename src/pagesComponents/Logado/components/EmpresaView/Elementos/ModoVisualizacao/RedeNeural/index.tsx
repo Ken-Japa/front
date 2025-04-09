@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Graph, { GraphData } from 'react-graph-vis';
-import { Box } from '@mui/material';
+import { Box, Typography, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { DEFAULT_GRAPH_OPTIONS } from './constants/graphOptions';
 import { CORES_INDUSTRIAS } from './constants/colors';
@@ -9,22 +8,38 @@ import { createCentralNode } from './components/CentralNode';
 import { createIndustriaNode } from './components/IndustriaNode';
 import { createSegmentoNode } from './components/SegmentoNode';
 import { createEmpresaNode } from './components/EmpresaNode';
-
 import { generateSegmentColors, adjustColorHSL } from './utils/graphUtils';
-import { GraphContainer } from './styled';
+import { GraphContainer, LoadingContainer } from './styled';
 import { sumarioService } from './services/sumarioService';
+
+// Import our custom graph component
+import dynamic from 'next/dynamic';
+const CustomGraph = dynamic(
+  () => import('./components/CustomGraph').then(mod => mod.CustomGraph),
+  {
+    ssr: false,
+    loading: () => (
+      <LoadingContainer>
+        <CircularProgress />
+      </LoadingContainer>
+    )
+  }
+);
 
 interface RedeNeuralProps {
   onLoadingChange?: (loading: boolean) => void;
 }
+
 export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
-  const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
+  const [graphData, setGraphData] = useState<any>({ nodes: [], edges: [] });
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         onLoadingChange?.(true);
         const data = await sumarioService.getSumarioData();
 
@@ -125,41 +140,40 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
 
         setGraphData({ nodes, edges });
       } catch (error) {
-        console.error('Error loading data:', error);
-        setError('Failed to load graph data');
+        console.error('Erro ao carregar dados:', error);
+        setError('Falha ao carregar os dados do gráfico');
       }
       finally {
+        setIsLoading(false);
         onLoadingChange?.(false);
-      }
-    };
-
-
-    const options = {
-      ...DEFAULT_GRAPH_OPTIONS,
-      interaction: {
-        ...DEFAULT_GRAPH_OPTIONS.interaction,
-        navigationButtons: true,
-        multiselect: false
       }
     };
 
     fetchData();
   }, [onLoadingChange]);
 
+  if (isLoading) {
+    return (
+      <LoadingContainer>
+        <CircularProgress />
+      </LoadingContainer>
+    );
+  }
+
   if (error) {
-    return <Box sx={{ p: 2 }}>{error}</Box>;
+    return <Box sx={{ p: 2 }}><Typography color="error">{error}</Typography></Box>;
   }
 
   return (
     <GraphContainer>
       {graphData.nodes.length > 0 && (
-        <Graph
+        <CustomGraph
           graph={graphData}
           options={DEFAULT_GRAPH_OPTIONS}
           events={{
-            doubleClick: ({ nodes }) => {
-              if (nodes.length > 0) {
-                const nodeId = nodes[0];
+            doubleClick: (params) => {
+              if (params.nodes && params.nodes.length > 0) {
+                const nodeId = params.nodes[0];
                 const node = graphData.nodes.find((n: any) => n.id === nodeId);
 
                 if (node && nodeId.startsWith('empresa-')) {

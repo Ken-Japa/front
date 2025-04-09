@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
 
 export const GraphContainer = styled("div")(({ theme }) => ({
   flex: 1,
@@ -8,7 +9,7 @@ export const GraphContainer = styled("div")(({ theme }) => ({
   background:
     theme.palette.mode === "dark"
       ? "rgba(18, 18, 18, 0.95)"
-      : "rgba(90, 90, 90, 0.85)",
+      : "rgba(255, 255, 255, 0.95)",
   backdropFilter: "blur(10px)",
   boxShadow:
     theme.palette.mode === "dark"
@@ -18,4 +19,16 @@ export const GraphContainer = styled("div")(({ theme }) => ({
     outline: "none",
     height: "100%",
   },
+}));
+
+export const LoadingContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "calc(100vh - 64px)",
+  width: "100%",
+  background:
+    theme.palette.mode === "dark"
+      ? "rgba(18, 18, 18, 0.95)"
+      : "rgba(255, 255, 255, 0.95)",
 }));
