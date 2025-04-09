@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import dynamic from 'next/dynamic';
+
+// Constants
 import { DEFAULT_GRAPH_OPTIONS } from './constants/graphOptions';
 import { CORES_INDUSTRIAS } from './constants/colors';
 
+// Components
 import { createCentralNode } from './components/CentralNode';
 import { createIndustriaNode } from './components/IndustriaNode';
 import { createSegmentoNode } from './components/SegmentoNode';
 import { createEmpresaNode } from './components/EmpresaNode';
+
+// Utils
 import { generateSegmentColors, adjustColorHSL } from './utils/graphUtils';
 import { GraphContainer, LoadingContainer } from './styled';
 import { sumarioService } from './services/sumarioService';
 
-// Import our custom graph component
-import dynamic from 'next/dynamic';
+// Types
+import { SumarioData } from './types';
+
+// Import our custom graph component with SSR disabled
 const CustomGraph = dynamic(
   () => import('./components/CustomGraph').then(mod => mod.CustomGraph),
   {
@@ -30,8 +38,13 @@ interface RedeNeuralProps {
   onLoadingChange?: (loading: boolean) => void;
 }
 
+interface GraphData {
+  nodes: any[];
+  edges: any[];
+}
+
 export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
-  const [graphData, setGraphData] = useState<any>({ nodes: [], edges: [] });
+  const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
@@ -60,83 +73,8 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
           )
         ));
 
-        // Industry nodes - First level
-        const industriaRadius = 1200;
-        data.sumario.forEach((industria, index, array) => {
-          const industriaAngle = (2 * Math.PI * index) / array.length;
-          const industriaSector = (2 * Math.PI) / array.length;
-          const corIndustria = adjustColorHSL(CORES_INDUSTRIAS[index % CORES_INDUSTRIAS.length], {
-            s: 0.15,
-            l: 0.05
-          });
-
-          const industriaNode = createIndustriaNode(
-            industria,
-            index,
-            array,
-            maxIndustriaValue,
-            corIndustria,
-            industriaRadius
-          );
-          nodes.push(industriaNode);
-
-          edges.push({
-            from: 'Mercado Total',
-            to: industriaNode.id,
-            color: { color: corIndustria, opacity: 0.9, highlight: '#FFFFFF' },
-            width: 3,
-            smooth: { enabled: true, type: 'curvedCW', roundness: 0.1 },
-            physics: false
-          });
-
-          // Segment nodes - Second level
-          const segmentRadius = industriaRadius + 2000;
-          const segmentColors = generateSegmentColors(corIndustria, industria.segmentos.length);
-
-          industria.segmentos.forEach((segmento, segIndex, segArray) => {
-            const segmentoNode = createSegmentoNode(
-              segmento,
-              segIndex,
-              segArray,
-              maxSegmentoValue,
-              segmentColors[segIndex],
-              segmentRadius,
-              industriaAngle,
-              industriaSector
-            );
-            nodes.push(segmentoNode);
-
-            edges.push({
-              from: industriaNode.id,
-              to: segmentoNode.id,
-              color: { color: segmentColors[segIndex], opacity: 0.5, highlight: '#FFFFFF' },
-              width: 2
-            });
-
-            // Company nodes - Third level
-            const empresaRadius = segmentRadius + 3000;
-            segmento.empresasDetalhes.forEach((empresa, empIndex, empArray) => {
-              const empresaNode = createEmpresaNode(
-                empresa,
-                empIndex,
-                empArray,
-                maxEmpresaValue,
-                segmentColors[segIndex],
-                empresaRadius,
-                industriaAngle,
-                industriaSector / segArray.length
-              );
-              nodes.push(empresaNode);
-
-              edges.push({
-                from: segmentoNode.id,
-                to: empresaNode.id,
-                color: { color: empresaNode.color.background, opacity: 0.4, highlight: '#FFFFFF' },
-                width: 1
-              });
-            });
-          });
-        });
+        // Construir o grafo
+        buildGraphData(data, nodes, edges, maxIndustriaValue, maxSegmentoValue, maxEmpresaValue);
 
         setGraphData({ nodes, edges });
       } catch (error) {
@@ -151,6 +89,94 @@ export const RedeNeural: React.FC<RedeNeuralProps> = ({ onLoadingChange }) => {
 
     fetchData();
   }, [onLoadingChange]);
+
+  // Função auxiliar para construir os dados do grafo
+  const buildGraphData = (
+    data: SumarioData, 
+    nodes: any[], 
+    edges: any[], 
+    maxIndustriaValue: number, 
+    maxSegmentoValue: number, 
+    maxEmpresaValue: number
+  ) => {
+    // Industry nodes - First level
+    const industriaRadius = 1200;
+    data.sumario.forEach((industria, index, array) => {
+      const industriaAngle = (2 * Math.PI * index) / array.length;
+      const industriaSector = (2 * Math.PI) / array.length;
+      const corIndustria = adjustColorHSL(CORES_INDUSTRIAS[index % CORES_INDUSTRIAS.length], {
+        s: 0.15,
+        l: 0.05
+      });
+
+      const industriaNode = createIndustriaNode(
+        industria,
+        index,
+        array,
+        maxIndustriaValue,
+        corIndustria,
+        industriaRadius
+      );
+      nodes.push(industriaNode);
+
+      edges.push({
+        from: 'Mercado Total',
+        to: industriaNode.id,
+        color: { color: corIndustria, opacity: 0.9, highlight: '#FFFFFF' },
+        width: 3,
+        smooth: { enabled: true, type: 'curvedCW', roundness: 0.1 },
+        physics: false
+      });
+
+      // Segment nodes - Second level
+      const segmentRadius = industriaRadius + 2000;
+      const segmentColors = generateSegmentColors(corIndustria, industria.segmentos.length);
+
+      industria.segmentos.forEach((segmento, segIndex, segArray) => {
+        const segmentoNode = createSegmentoNode(
+          segmento,
+          segIndex,
+          segArray,
+          maxSegmentoValue,
+          segmentColors[segIndex],
+          segmentRadius,
+          industriaAngle,
+          industriaSector
+        );
+        nodes.push(segmentoNode);
+
+        edges.push({
+          from: industriaNode.id,
+          to: segmentoNode.id,
+          color: { color: segmentColors[segIndex], opacity: 0.5, highlight: '#FFFFFF' },
+          width: 2
+        });
+
+        // Company nodes - Third level
+        const empresaRadius = segmentRadius + 3000;
+        segmento.empresasDetalhes.forEach((empresa, empIndex, empArray) => {
+          const empresaNode = createEmpresaNode(
+            empresa,
+            empIndex,
+            empArray,
+            maxEmpresaValue,
+            segmentColors[segIndex],
+            empresaRadius,
+            industriaAngle,
+            industriaSector / segArray.length
+          );
+          nodes.push(empresaNode);
+
+          edges.push({
+            from: segmentoNode.id,
+            to: empresaNode.id,
+            color: { color: empresaNode.color.background, opacity: 0.4, highlight: '#FFFFFF' },
+            width: 1
+          });
+        });
+      });
+    });
+  };
 
   if (isLoading) {
     return (

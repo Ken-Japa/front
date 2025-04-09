@@ -8,8 +8,8 @@ export const GraphContainer = styled("div")(({ theme }) => ({
   width: "100%",
   background:
     theme.palette.mode === "dark"
-      ? "rgba(18, 18, 18, 0.95)"
-      : "rgba(255, 255, 255, 0.95)",
+      ? theme.palette.background.default
+      : "#f5f5f7",
   backdropFilter: "blur(10px)",
   boxShadow:
     theme.palette.mode === "dark"
@@ -18,6 +18,10 @@ export const GraphContainer = styled("div")(({ theme }) => ({
   "& .vis-network": {
     outline: "none",
     height: "100%",
+    background:
+      theme.palette.mode === "dark"
+        ? "rgba(10, 15, 30, 0.95)"
+        : "rgba(10, 15, 30, 0.95)",
   },
 }));
 
@@ -29,6 +33,6 @@ export const LoadingContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   background:
     theme.palette.mode === "dark"
-      ? "rgba(18, 18, 18, 0.95)"
-      : "rgba(255, 255, 255, 0.95)",
+      ? theme.palette.background.default
+      : theme.palette.background.paper,
 }));

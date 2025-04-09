@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Network, NetworkEvents } from 'vis-network/standalone';
+import { Node, Edge, Options } from 'vis-network/standalone';
+import { DataSet } from 'vis-data/standalone';
 import 'vis-network/styles/vis-network.css';
 
 interface GraphProps {
   graph: {
-    nodes: any[];
-    edges: any[];
+    nodes: Node[];
+    edges: Edge[];
   };
-  options: any;
+  options: Options;
   events: {
     [key in NetworkEvents]?: (params: any) => void;
   };
@@ -20,15 +22,17 @@ export const CustomGraph: React.FC<GraphProps> = ({ graph, options, events }) =>
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Import vis-network modules dynamically to avoid SSR issues
     const initNetwork = async () => {
       try {
-        const { DataSet } = await import('vis-data/standalone');
-        const { Network } = await import('vis-network/standalone');
-
         // Create datasets
-        const nodes = new DataSet(graph.nodes);
-        const edges = new DataSet(graph.edges);
+        // Add id to edges if not present
+        const edgesWithIds = graph.edges.map((edge, index) => ({
+          ...edge,
+          id: edge.id || `${edge.from}-${edge.to}-${index}`
+        }));
+
+        const nodes = new DataSet<Node>(graph.nodes);
+        const edges = new DataSet<Edge>(edgesWithIds);
 
         // Create network
         const network = new Network(
@@ -47,7 +51,7 @@ export const CustomGraph: React.FC<GraphProps> = ({ graph, options, events }) =>
 
         networkRef.current = network;
       } catch (error) {
-        console.error('Error initializing network:', error);
+        console.error('Erro ao inicializar rede:', error);
       }
     };
 
@@ -63,12 +67,12 @@ export const CustomGraph: React.FC<GraphProps> = ({ graph, options, events }) =>
   }, [graph, options, events]);
 
   return (
-    <div 
-      ref={containerRef} 
-      style={{ 
-        width: '100%', 
-        height: '100%' 
-      }} 
+    <div
+      ref={containerRef}
+      style={{
+        width: '100%',
+        height: '100%'
+      }}
     />
   );
 };
