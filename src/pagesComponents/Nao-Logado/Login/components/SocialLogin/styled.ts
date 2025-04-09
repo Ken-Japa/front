@@ -1,28 +1,30 @@
 import { styled, Button } from "@mui/material";
+import { visitorColors } from "@/theme/palette/visitor";
+import { transitions } from "@/theme/variables";
 
-export const GoogleButton = styled(Button)(({ theme }) => ({
-  color: 'white',
-  borderColor: 'rgba(255, 255, 255, 0.3)',
-  transition: 'all 0.3s ease',
+export const GoogleButton = styled(Button)({
+  color: visitorColors.text,
+  borderColor: `${visitorColors.text}4d`,
+  transition: transitions.medium,
   
   '&:hover': {
-    borderColor: 'white',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+    borderColor: visitorColors.text,
+    backgroundColor: `${visitorColors.text}1a`
   },
 
-  [theme.breakpoints.down('sm')]: {
+  '@media (max-width: 600px)': {
     fontSize: '0.875rem',
   }
-}));
+});
 
-export const RegisterLink = styled('span')(({ theme }) => ({
+export const RegisterLink = styled('span')({
   '& a': {
-    color: theme.palette.primary.main,
+    color: visitorColors.primary,
     textDecoration: 'underline',
-    transition: 'opacity 0.3s ease',
+    transition: transitions.medium,
     
     '&:hover': {
       opacity: 0.8,
     }
   }
-}));
+});

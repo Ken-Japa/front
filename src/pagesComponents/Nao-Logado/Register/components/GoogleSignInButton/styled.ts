@@ -1,16 +1,18 @@
 import { styled, Button } from "@mui/material";
+import { transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const StyledGoogleButton = styled(Button)(({ theme }) => ({
-  color: 'white',
-  borderColor: 'rgba(255, 255, 255, 0.5)',
-  transition: 'all 0.3s ease',
+export const StyledGoogleButton = styled(Button)({
+  color: visitorColors.text,
+  borderColor: `${visitorColors.text}80`,
+  transition: transitions.medium,
   
   '&:hover': {
-    borderColor: 'white',
-    backgroundColor: 'rgba(255, 255, 255, 0.15)'
+    borderColor: visitorColors.text,
+    backgroundColor: `${visitorColors.text}26`
   },
 
-  [theme.breakpoints.down('sm')]: {
+  '@media (max-width: 600px)': {
     fontSize: '0.875rem',
   }
-}));
+});

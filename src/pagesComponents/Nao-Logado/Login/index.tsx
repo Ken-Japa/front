@@ -16,6 +16,17 @@ import { BlockTimer } from "./components/BlockTimer";
 
 const LoginFormComponent = lazy(() => import('./components/LoginForm').then(mod => ({ default: mod.LoginFormComponent })));
 
+const IMAGE_PROPS = {
+    src: "/assets/images/background/REGISTER.jpg",
+    alt: "Fundo da página de Login",
+    fill: true,
+    priority: true,
+    sizes: "(max-width: 900px) 100vw, 900px",
+    className: "object-cover",
+    loadingClassName: "scale-100 ",
+    quality: 85
+};
+
 export const Login = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const { handleClose } = useNavigation();
@@ -31,28 +42,19 @@ export const Login = () => {
         handleGoogleSignIn
     } = useLoginForm();
 
-    const imageProps = {
-        src: "/assets/images/background/REGISTER.jpg",
-        alt: "Login Background",
-        fill: true,
-        priority: true,
-        sizes: "(max-width: 900px) 100vw, 900px",
-        className: "object-cover",
-        loadingClassName: "scale-100 blur-sm grayscale",
-        quality: 85,
-        onLoad: () => setImageLoaded(true),
-        style: {
-            filter: !imageLoaded ? 'grayscale(1)' : 'none',
-            transition: 'filter 0.5s ease-in-out'
-        }
-    };
-
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
                 <StyledDialog open={true} maxWidth="md" fullWidth disableEscapeKeyDown>
                     <div className="background-image">
-                        <OptimizedImage {...imageProps} />
+                        <OptimizedImage
+                            {...IMAGE_PROPS}
+                            onLoad={() => setImageLoaded(true)}
+                            style={{
+                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
+                                transition: 'filter 0.5s ease-in-out'
+                            }}
+                        />
                     </div>
                     <div className="content">
                         <StyledCloseButton onClick={handleClose}>
@@ -83,3 +85,5 @@ export const Login = () => {
         </PageTransition>
     );
 };
+
+export default Login;

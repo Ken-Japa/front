@@ -1,25 +1,20 @@
 import { type FC } from 'react';
-
+import { Typography } from "@mui/material";
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-
 import { HeaderContainer } from "./styled";
-import { HeaderSkeleton } from "./HeaderSkeleton";
 
-interface RegisterHeaderProps {
-    isLoading?: boolean;
-}
-
-export const RegisterHeader: FC<RegisterHeaderProps> = ({ isLoading }) => {
-    if (isLoading) {
-        return <HeaderSkeleton />;
-    }
-
-    return (
-        <HeaderContainer>
-            <MatrixRainText
-                text="Crie sua conta"
-                className="matrix-title"
-            />
-        </HeaderContainer>
-    );
+export const RegisterHeader: FC = () => {
+  return (
+    <HeaderContainer>
+      <MatrixRainText
+        text="Criar Conta"
+        className="matrix-title"
+      />
+      <Typography variant="body1" className="header-subtitle">
+        Junte-se à nossa comunidade e comece a explorar
+      </Typography>
+    </HeaderContainer>
+  );
 };
+
+export default RegisterHeader;

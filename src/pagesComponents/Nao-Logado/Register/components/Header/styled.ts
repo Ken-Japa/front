@@ -1,20 +1,27 @@
 import { styled } from "@mui/material";
+import { spacing } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const HeaderContainer = styled("div")(({ theme }) => ({
+export const HeaderContainer = styled("div")({
   width: "100%",
   textAlign: "center",
-  marginBottom: theme.spacing(2),
+  marginBottom: spacing.md,
 
   "& .matrix-title": {
-    color: "white",
+    color: visitorColors.text,
     fontSize: "1.75rem",
     fontWeight: 600,
     whiteSpace: "nowrap",
     display: "inline-block",
-    marginBottom: theme.spacing(1),
+    marginBottom: spacing.sm,
 
-    [theme.breakpoints.down("sm")]: {
+    "@media (max-width: 600px)": {
       fontSize: "1.5rem",
     },
   },
-}));
+
+  "& .header-subtitle": {
+    color: `${visitorColors.text}cc`,
+    marginBottom: spacing.sm,
+  },
+});

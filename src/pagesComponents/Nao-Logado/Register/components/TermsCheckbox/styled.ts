@@ -1,25 +1,27 @@
 import { styled, FormControlLabel, Link } from "@mui/material";
+import { transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+export const StyledFormControlLabel = styled(FormControlLabel)({
   "& .MuiCheckbox-root": {
-    color: 'rgba(255,255,255,0.9)',
+    color: `${visitorColors.text}e6`,
     '&.Mui-checked': {
-      color: theme.palette.primary.main
+      color: visitorColors.primary
     }
   },
   
   "& .MuiTypography-root": {
-    color: 'rgba(255,255,255,0.9)',
+    color: `${visitorColors.text}e6`,
     fontSize: '0.875rem',
   }
-}));
+});
 
-export const StyledLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.primary.main,
+export const StyledLink = styled(Link)({
+  color: visitorColors.primary,
   textDecoration: 'underline',
-  transition: 'opacity 0.3s ease',
+  transition: transitions.medium,
   
   '&:hover': {
     opacity: 0.9,
   }
-}));
+});

@@ -13,7 +13,7 @@ import { SuspenseWrapper } from "@/components/SuspenseWrapper";
 import { useBlockTimer } from "./hooks/useBlockTimer";
 import { useRegisterForm } from "./hooks/useRegisterForm";
 import { useGoogleSignIn } from "./hooks/useGoogleSignIn";
-import { StyledCloseButton, StyledDialog } from "./styled";
+import { StyledCloseButton, RegisterPageContainer } from "./styled";
 import { BlockTimer } from "./components/BlockTimer";
 
 const BLOCK_DURATION = 10 * 60 * 1000;
@@ -39,11 +39,11 @@ export const Register = () => {
     return (
         <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
             <ErrorBoundary>
-                <StyledDialog open={true} maxWidth="md" fullWidth disableEscapeKeyDown>
+                <RegisterPageContainer>
                     <div className="background-image">
                         <OptimizedImage
                             src="/assets/images/background/REGISTER.jpg"
-                            alt="Register Background"
+                            alt="Fundo da página de Registro"
                             fill
                             priority
                             sizes="(max-width: 900px) 100vw, 900px"
@@ -79,7 +79,7 @@ export const Register = () => {
                             )}
                         </SuspenseWrapper>
                     </div>
-                </StyledDialog>
+                </RegisterPageContainer>
             </ErrorBoundary>
         </PageTransition>
     );

@@ -1,16 +1,18 @@
 import { styled, Typography } from "@mui/material";
+import { visitorColors } from "@/theme/palette/visitor";
+import { spacing } from "@/theme/variables";
 
-export const HeaderContainer = styled("div")(({ theme }) => ({
-  marginBottom: theme.spacing(4),
+export const HeaderContainer = styled("div")({
+  marginBottom: spacing.xl,
   width: "100%",
   textAlign: "center",
-}));
+});
 
-export const Title = styled("div")(({ theme }) => ({
-  color: "white",
+export const Title = styled("div")({
+  color: visitorColors.text,
   fontSize: "1.75rem",
   fontWeight: 600,
-  marginBottom: theme.spacing(1),
+  marginBottom: spacing.sm,
   fontFamily: '"Roboto Mono", monospace',
   width: "100%",
 
@@ -21,20 +23,20 @@ export const Title = styled("div")(({ theme }) => ({
     fontWeight: "600",
   },
 
-  [theme.breakpoints.down("sm")]: {
+  "@media (max-width: 600px)": {
     fontSize: "1.5rem",
 
     "& .matrix-title": {
       fontSize: "1.5rem !important",
     },
   },
-}));
+});
 
-export const Subtitle = styled(Typography)(({ theme }) => ({
-  color: "rgba(255, 255, 255, 0.7)",
+export const Subtitle = styled(Typography)({
+  color: `${visitorColors.text}b3`,
   fontSize: "1rem",
 
-  [theme.breakpoints.down("sm")]: {
+  "@media (max-width: 600px)": {
     fontSize: "0.875rem",
   },
-}));
+});

@@ -1,6 +1,8 @@
 import { Dialog, styled, IconButton } from "@mui/material";
+import { visitorColors } from "@/theme/palette/visitor";
+import { spacing, transitions, borderRadius } from "@/theme/variables";
 
-export const StyledDialog = styled(Dialog)(({ theme }) => ({
+export const StyledDialog = styled(Dialog)({
   "& .MuiDialog-container": {
     height: "100vh",
   },
@@ -16,8 +18,8 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
     overflow: "hidden",
     backgroundColor: "transparent",
 
-    [theme.breakpoints.down("sm")]: {
-      padding: theme.spacing(2),
+    "@media (max-width: 600px)": {
+      padding: spacing.md,
     },
 
     "& .background-image": {
@@ -36,8 +38,7 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      backdropFilter: "blur(2px)",
+      backgroundColor: visitorColors.backgroundLight,
       zIndex: 1,
     },
 
@@ -49,27 +50,27 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
       display: "flex",
       alignItems: "flex-start",
       justifyContent: "center",
-      padding: theme.spacing(8, 2),
+      padding: `${spacing.xl} ${spacing.md}`,
     },
   },
-}));
+});
 
-export const StyledCloseButton = styled(IconButton)(({ theme }) => ({
+export const StyledCloseButton = styled(IconButton)({
   position: "absolute",
-  right: theme.spacing(3),
-  top: theme.spacing(3),
-  color: "white",
+  right: spacing.lg,
+  top: spacing.lg,
+  color: visitorColors.text,
   zIndex: 10,
-  transition: "all 0.3s ease",
-  backgroundColor: "rgba(0, 0, 0, 0.2)",
+  transition: transitions.medium,
+  backgroundColor: `${visitorColors.backgroundDark}33`,
 
   "&:hover": {
     opacity: 0.8,
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: `${visitorColors.backgroundDark}66`,
   },
 
-  [theme.breakpoints.down("sm")]: {
-    right: theme.spacing(2),
-    top: theme.spacing(2),
+  "@media (max-width: 600px)": {
+    right: spacing.md,
+    top: spacing.md,
   },
-}));
+});

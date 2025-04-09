@@ -6,6 +6,12 @@ export const visitorColors = {
   highlight: "#64FFDA", // Verde água para elementos especiais
   success: "#00E676", // Verde para sucesso
   gold: "#FFD700",
+  error: "#f44336",
+  errorLight: "#ff4444",
+  warning: "#ffaa00",
+  info: "#2196f3",
+  success2: "#00c853",
+  buttonText: "#ffffff",
 
   // Backgrounds com transparência
   backgroundOverlay: "rgba(0, 0, 0, 0.6)",

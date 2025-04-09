@@ -5,53 +5,55 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const StyledTextField = styled(TextField)(({ theme }) => ({
+export const StyledTextField = styled(TextField)({
   width: "100%",
-  marginBottom: theme.spacing(1),
+  marginBottom: spacing.sm,
 
   "& .MuiOutlinedInput-root": {
-    color: "white",
-    transition: "all 0.3s ease",
+    color: visitorColors.text,
+    transition: transitions.medium,
 
     "& fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.23)",
+      borderColor: `${visitorColors.text}3d`,
     },
     "&:hover fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.5)",
+      borderColor: `${visitorColors.text}80`,
     },
     "&.Mui-focused fieldset": {
-      borderColor: theme.palette.primary.main,
+      borderColor: visitorColors.primary,
     },
   },
 
   "& .MuiInputLabel-root": {
-    color: "rgba(255, 255, 255, 0.7)",
+    color: `${visitorColors.text}b3`,
   },
 
   "& .MuiFormHelperText-root": {
-    color: theme.palette.error.main,
+    color: visitorColors.error,
     marginLeft: 0,
   },
-}));
+});
 
-export const PasswordStrengthContainer = styled(Box)(({ theme }) => ({
+export const PasswordStrengthContainer = styled(Box)({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(0.5),
-  marginTop: theme.spacing(1),
-}));
+  gap: spacing.xs,
+  marginTop: spacing.sm,
+});
 
-export const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
+export const StyledLinearProgress = styled(LinearProgress)({
   height: 8,
-  borderRadius: 4,
-  backgroundColor: "rgba(255, 255, 255, 0.2)",
+  borderRadius: borderRadius.sm,
+  backgroundColor: `${visitorColors.text}33`,
   width: "100%",
-}));
+});
 
 export const StrengthText = styled(Typography)({
-  color: "white",
+  color: visitorColors.text,
   opacity: 0.9,
   textAlign: "left",
 });

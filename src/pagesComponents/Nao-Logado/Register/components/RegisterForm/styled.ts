@@ -1,50 +1,64 @@
 import { styled, Button } from "@mui/material";
+import { spacing, transitions } from "@/theme/variables";
+import { visitorColors } from "@/theme/palette/visitor";
 
-export const RegisterFormStyled = styled("form")(({ theme }) => ({
+export const RegisterFormStyled = styled("form")({
   position: "relative",
   width: "100%",
   maxWidth: "400px",
-  padding: theme.spacing(4),
+  padding: spacing.xl,
   margin: "0 auto",
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(1.5),
+  gap: spacing.md,
   alignItems: "center",
+  paddingTop: spacing.xl,
+  paddingBottom: spacing.xl, // Adicionado para dar espaço no final do formulário
 
-  [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(2),
+  "@media (max-width: 600px)": {
+    padding: spacing.md,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.xl,
   },
 
   "& .divider-container": {
     display: "flex",
     alignItems: "center",
-    margin: theme.spacing(3, 0),
+    margin: `${spacing.lg} 0`,
     width: "100%",
 
     "& .divider": {
       flex: 1,
-      borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+      borderBottom: `1px solid ${visitorColors.text}33`,
     },
     "& .divider-text": {
-      margin: theme.spacing(0, 2),
-      color: "rgba(255, 255, 255, 0.7)",
+      margin: `0 ${spacing.md}`,
+      color: `${visitorColors.text}b3`,
       fontSize: "0.875rem",
     },
   },
 
   "& .login-text": {
-    marginTop: theme.spacing(3),
+    marginTop: spacing.lg,
     fontFamily: '"Roboto Mono", monospace',
     letterSpacing: "0.5px",
     textAlign: "center",
     width: "100%",
   },
-}));
+});
 
-export const SubmitButton = styled(Button)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  backgroundColor: theme.palette.primary.main,
+export const SubmitButton = styled(Button)({
+  marginTop: spacing.md,
+  backgroundColor: visitorColors.primary,
+  color: visitorColors.buttonText,
+  transition: transitions.medium,
+  
   "&:hover": {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: visitorColors.buttonPrimary,
   },
-}));
+  
+  "&:disabled": {
+    backgroundColor: `${visitorColors.primary}80`,
+    color: `${visitorColors.buttonText}cc`,
+  },
+});
