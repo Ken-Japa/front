@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Box, CircularProgress, Typography, Grid } from '@mui/material';
+import { Typography, Grid, Box } from '@mui/material';
 import { SumarioData } from '../TabelaView/types';
 import { sumarioService } from './services/sumarioService';
-import { CompanyCard } from './components/CompanyCard';
+import { CompanyCard } from './components/CompanyCard/index';
+import { CardsContainer, LoadingContainer, StyledCircularProgress } from './styled';
 
 interface CardsViewProps {
   onLoadingChange?: (loading: boolean) => void;
@@ -18,11 +19,11 @@ export const CardsView: React.FC<CardsViewProps> = ({ onLoadingChange }) => {
       try {
         setIsLoading(true);
         if (onLoadingChange) onLoadingChange(true);
-        
+
         const sumarioData = await sumarioService.getSumarioData();
         setData(sumarioData);
       } catch (error) {
-        console.error('Error loading data:', error);
+        console.error('Erro ao carregar dados:', error);
         setError('Falha ao carregar os dados');
       } finally {
         setIsLoading(false);
@@ -33,8 +34,18 @@ export const CardsView: React.FC<CardsViewProps> = ({ onLoadingChange }) => {
     fetchData();
   }, [onLoadingChange]);
 
-  if (isLoading) return <CircularProgress />;
-  if (error) return <Typography color="error">{error}</Typography>;
+  if (isLoading) {
+    return (
+      <LoadingContainer>
+        <StyledCircularProgress />
+      </LoadingContainer>
+    );
+  }
+
+  if (error) {
+    return <Typography color="error">{error}</Typography>;
+  }
+
   if (!data) return null;
 
   // Flatten all companies for card display
@@ -52,17 +63,32 @@ export const CardsView: React.FC<CardsViewProps> = ({ onLoadingChange }) => {
   const sortedCompanies = [...allCompanies].sort((a, b) => b.valorMercado - a.valorMercado);
 
   return (
-    <Box sx={{ p: 2 }}>
-      <Grid container spacing={3}>
-        {sortedCompanies.map((empresa, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            <CompanyCard 
-              empresa={empresa} 
-              totalMarketValue={data.sumarioTotal.valorMercadoTotalGeral} 
-            />
-          </Grid>
-        ))}
-      </Grid>
+    <Box sx={{ 
+      position: 'relative', 
+      zIndex: 3, 
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.1)', // Overlay muito leve para melhorar contraste
+        zIndex: -1,
+      }
+    }}>
+      <CardsContainer>
+        <Grid container spacing={3}>
+          {sortedCompanies.map((empresa, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <CompanyCard
+                empresa={empresa}
+                totalMarketValue={data.sumarioTotal.valorMercadoTotalGeral}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </CardsContainer>
     </Box>
   );
 };

@@ -1,6 +1,8 @@
 import { SumarioData } from "../../TabelaView/types";
 
-// Esta função será substituída por chamadas API reais no futuro
+/**
+ * Busca dados mock para desenvolvimento
+ */
 const fetchMockData = async (): Promise<SumarioData> => {
   const response = await import(
     "@/pagesComponents/Logado/components/EmpresaView/mockdata_example/sumario.json"
@@ -8,9 +10,12 @@ const fetchMockData = async (): Promise<SumarioData> => {
   return response.default;
 };
 
-// Esta será a chamada API real no futuro
+/**
+ * Busca dados da API
+ * Será implementado quando a API estiver disponível
+ */
 const fetchApiData = async (): Promise<SumarioData> => {
-  // Exemplo de implementação futura:
+  // Implementação futura:
   // const response = await fetch('/api/sumario');
   // return response.json();
 

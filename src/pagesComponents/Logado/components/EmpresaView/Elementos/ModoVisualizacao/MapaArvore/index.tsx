@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, memo, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 
 interface MapaArvoreProps {
     onLoadingChange?: (loading: boolean) => void;
@@ -8,6 +8,8 @@ interface MapaArvoreProps {
 const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => {
     const container = useRef<HTMLDivElement>(null);
     const [widgetId] = useState(`tv-widget-${Math.random().toString(36).substring(2, 9)}`);
+    const theme = useTheme();
+    const isDarkMode = theme.palette.mode === 'dark';
 
     useEffect(() => {
         if (!container.current) return;
@@ -35,7 +37,7 @@ const MapaArvoreComponent: React.FC<MapaArvoreProps> = ({ onLoadingChange }) => 
                 blockColor: "change",
                 locale: "br",
                 symbolUrl: "http://augeinvest.com.br/empresa/{tvsymbol}",
-                colorTheme: "dark",
+                colorTheme: isDarkMode ? "dark" : "light",
                 hasTopBar: true,
                 isDataSetEnabled: false,
                 isZoomEnabled: true,
