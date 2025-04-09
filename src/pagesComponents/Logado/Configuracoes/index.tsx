@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from 'react';
-import { Container, Typography, Alert, Snackbar } from '@mui/material';
+import { Container, Alert, Snackbar } from '@mui/material';
 import { PageTransition } from '@/components/PageTransition';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ContentSkeleton } from '@/components/Skeletons/ContentSkeleton';
 import { SuspenseWrapper } from '@/components/SuspenseWrapper';
 import { ProgressiveLoad } from '@/components/ProgressiveLoad';
-import { AppearanceSettings } from './components/AppearanceSettings';
-import { NotificationSettings } from './components/NotificationSettings';
-import { AlertPreferences } from './components/AlertPreferences';
+import { AppearanceSettings } from './components/AppearanceSettings/index';
+import { NotificationSettings } from './components/NotificationSettings/index';
+import { AlertPreferences } from './components/AlertPreferences/index';
 import { useSettings } from './hooks/useSettings';
-import { ConfiguracoesWrapper } from './styled';
+import { ConfiguracoesWrapper, SettingsTitle } from './styled';
 
 export const Configuracoes = () => {
     const {
@@ -55,14 +55,9 @@ export const Configuracoes = () => {
             <ErrorBoundary>
                 <ConfiguracoesWrapper>
                     <Container maxWidth="md" sx={{ py: 4 }}>
-                        <Typography
-                            variant="h4"
-                            component="h1"
-                            gutterBottom
-                            sx={{ mb: 4, textAlign: 'center' }}
-                        >
+                        <SettingsTitle variant="h2" >
                             Configurações
-                        </Typography>
+                        </SettingsTitle>
 
                         <SuspenseWrapper fallback={<ContentSkeleton type="form" formFields={1} />}>
                             <ProgressiveLoad delay={0.2}>

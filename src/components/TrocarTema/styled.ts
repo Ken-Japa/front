@@ -1,24 +1,39 @@
-import { styled } from "@mui/material/styles";
-import { ProfileSection } from "@/pagesComponents/Logado/Perfil/styled";
+import { styled, Box, Typography } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { transitions } from "@/theme/variables";
 
-export const ThemeContainer = styled(ProfileSection)`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
+export const ThemeContainer = styled(Box)(({ theme }) => ({
+  width: "100%",
+  marginBottom: theme.spacing(2),
+}));
 
-export const ThemeControlContainer = styled("div")`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
+export const ThemeInfo = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(2, 0),
+}));
 
-export const DarkIcon = styled(DarkModeIcon)`
-  color: #4fc3f7;
-`;
+export const ThemeLabel = styled(Typography)(({ theme }) => ({
+  fontWeight: 500,
+  color: theme.palette.text.secondary,
+  marginBottom: theme.spacing(1),
+  variant: "body2",
+}));
 
-export const LightIcon = styled(LightModeIcon)`
-  color: #ffb74d;
-`;
+export const ThemeControlContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  marginTop: theme.spacing(1),
+}));
+
+export const DarkIcon = styled(DarkModeIcon)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  transition: transitions.medium,
+  marginLeft: theme.spacing(1),
+}));
+
+export const LightIcon = styled(LightModeIcon)(({ theme }) => ({
+  color: theme.palette.warning.main,
+  transition: transitions.medium,
+  marginLeft: theme.spacing(1),
+}));

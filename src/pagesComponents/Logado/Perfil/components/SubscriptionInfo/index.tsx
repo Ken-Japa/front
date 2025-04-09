@@ -2,7 +2,6 @@ import { Chip, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { CustomAccordion } from "@/components/Custom/Accordion";
 import { CustomButton } from "@/components/Custom/Button";
-import { ProfileInfo } from "../../styled";
 import {
     SubscriptionContainer,
     SubscriptionField,
@@ -19,66 +18,52 @@ export const SubscriptionInfo = () => {
         <SubscriptionContainer
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.5 }}
         >
             <CustomAccordion
-                title="Informações da Assinatura"
-                variant={theme.palette.mode === 'dark' ? 'dark' : 'light'}
+                title="Informações de Assinatura"
+                variant={theme.palette.mode === 'dark' ? 'light' : 'light'}
+                customBackground="rgba(255, 255, 255, 0.9)"
+                customTitleColor={theme.palette.common.black}
+                customContentBackground="rgba(255, 255, 255, 0.9)"
             >
-                <ProfileInfo>
-                    <SubscriptionField>
-                        <LabelRow>
-                            <StyledProfileLabel>Plano Atual</StyledProfileLabel>
-                            <Chip
-                                label="A ser implementado"
-                                color="primary"
-                                size="small"
-                                sx={{ fontSize: '0.75rem' }}
-                            />
-                        </LabelRow>
-                    </SubscriptionField>
-
-                    <SubscriptionField>
-                        <StyledProfileLabel>Status da Assinatura</StyledProfileLabel>
+                <SubscriptionField>
+                    <LabelRow>
+                        <StyledProfileLabel darkMode={theme.palette.mode === 'dark'}>Plano Atual</StyledProfileLabel>
                         <Chip
                             label="Ativo"
-                            color="success"
                             size="small"
-                            sx={{
-                                width: 'fit-content',
-                                fontSize: '0.75rem'
-                            }}
+                            color="success"
+                            sx={{ height: 20, fontSize: '0.7rem' }}
                         />
-                    </SubscriptionField>
+                    </LabelRow>
+                    <StyledProfileValue darkMode={theme.palette.mode === 'dark'}>Plano Premium</StyledProfileValue>
+                </SubscriptionField>
 
-                    <SubscriptionField>
-                        <StyledProfileLabel>Data de Início</StyledProfileLabel>
-                        <StyledProfileValue>A ser implementado</StyledProfileValue>
-                    </SubscriptionField>
+                <SubscriptionField>
+                    <StyledProfileLabel darkMode={theme.palette.mode === 'dark'}>Data de Início</StyledProfileLabel>
+                    <StyledProfileValue darkMode={theme.palette.mode === 'dark'}>15 de Janeiro de 2024</StyledProfileValue>
+                </SubscriptionField>
 
-                    <SubscriptionField>
-                        <StyledProfileLabel>Próxima Cobrança</StyledProfileLabel>
-                        <StyledProfileValue>A ser implementado</StyledProfileValue>
-                    </SubscriptionField>
+                <SubscriptionField>
+                    <StyledProfileLabel darkMode={theme.palette.mode === 'dark'}>Próxima Cobrança</StyledProfileLabel>
+                    <StyledProfileValue darkMode={theme.palette.mode === 'dark'}>15 de Fevereiro de 2024</StyledProfileValue>
+                </SubscriptionField>
 
-                    <SubscriptionField>
-                        <StyledProfileLabel>Método de Pagamento</StyledProfileLabel>
-                        <StyledProfileValue>A ser implementado</StyledProfileValue>
-                    </SubscriptionField>
+                <SubscriptionField>
+                    <StyledProfileLabel darkMode={theme.palette.mode === 'dark'}>Método de Pagamento</StyledProfileLabel>
+                    <StyledProfileValue darkMode={theme.palette.mode === 'dark'}>Cartão de Crédito (•••• 4242)</StyledProfileValue>
+                </SubscriptionField>
 
-                    <ButtonContainer>
-                        <CustomButton
-                            variant="contained"
-                            color="primary"
-                            fullWidth
-                            component={motion.button}
-                            whilehover={{ scale: 1.02 }}
-                            whiletap={{ scale: 0.98 }}
-                        >
-                            Alterar Plano
-                        </CustomButton>
-                    </ButtonContainer>
-                </ProfileInfo>
+                <ButtonContainer>
+                    <CustomButton
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                    >
+                        Gerenciar Assinatura
+                    </CustomButton>
+                </ButtonContainer>
             </CustomAccordion>
         </SubscriptionContainer>
     );

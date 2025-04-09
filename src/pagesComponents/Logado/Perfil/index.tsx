@@ -2,7 +2,7 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import { Button, Snackbar, Alert } from '@mui/material';
+import { Button, Snackbar, Alert, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { clearAuthData } from '@/utils/auth';
@@ -19,7 +19,6 @@ import { useProfileActions } from './hooks/useProfileActions';
 import {
     ProfileContainer,
     ProfileCard,
-    ProfileTitle,
     ContactButton,
     StyledContactButton
 } from './styled';
@@ -67,9 +66,17 @@ export const Perfil = () => {
             <ErrorBoundary>
                 <SuspenseWrapper fallback={<ProfileSkeleton />}>
                     <ProfileContainer>
-                        <ProfileTitle>
+                        <Typography 
+                            variant="h1" 
+                            sx={{
+                                textAlign: "center",
+                                fontSize: "2.5rem",
+                                fontWeight: 600,
+                                mb: 4,
+                            }}
+                        >
                             Perfil
-                        </ProfileTitle>
+                        </Typography>
 
                         <ProfileCard elevation={0}>
                             <BasicInfo

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export interface UserSettings {
     notifications: {
@@ -27,51 +27,60 @@ export const useSettings = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchUserSettings = async () => {
+    const fetchUserSettings = useCallback(async () => {
         try {
             setIsLoading(true);
             // TODO: Replace with actual API call
             // const response = await api.get('/user/settings');
             // setSettings(response.data);
+            
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // For now, we'll use the default settings
+            setIsLoading(false);
         } catch (err) {
-            setError('Failed to load settings');
-        } finally {
+            setError('Falha ao carregar configurações');
             setIsLoading(false);
         }
-    };
+    }, []);
 
-    const updateSettings = async (newSettings: Partial<UserSettings>) => {
+    const updateSettings = useCallback(async (newSettings: Partial<UserSettings>) => {
         try {
             setIsLoading(true);
             // TODO: Replace with actual API call
             // await api.put('/user/settings', newSettings);
+            
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
             setSettings(prev => ({ ...prev, ...newSettings }));
+            setIsLoading(false);
             return true;
         } catch (err) {
-            setError('Failed to update settings');
-            return false;
-        } finally {
+            setError('Falha ao atualizar configurações');
             setIsLoading(false);
+            return false;
         }
-    };
+    }, []);
 
-    const updateNotifications = async (type: keyof UserSettings['notifications'], value: boolean) => {
+    const updateNotifications = useCallback(async (type: keyof UserSettings['notifications'], value: boolean) => {
         const success = await updateSettings({
             notifications: { ...settings.notifications, [type]: value }
         });
         return success;
-    };
+    }, [settings.notifications, updateSettings]);
 
-    const updatePercentages = async (type: keyof UserSettings['defaultPercentages'], value: number) => {
+    const updatePercentages = useCallback(async (type: keyof UserSettings['defaultPercentages'], value: number) => {
         const success = await updateSettings({
             defaultPercentages: { ...settings.defaultPercentages, [type]: value }
         });
         return success;
-    };
+    }, [settings.defaultPercentages, updateSettings]);
 
     useEffect(() => {
         fetchUserSettings();
-    }, []);
+    }, [fetchUserSettings]);
 
     return {
         settings,

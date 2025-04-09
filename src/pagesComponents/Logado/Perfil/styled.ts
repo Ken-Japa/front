@@ -1,111 +1,111 @@
 import { ElementType } from "react";
-import { styled, Paper, Button as MuiButton, ButtonProps } from "@mui/material";
+import { styled, Paper, Box, Typography, Button as MuiButton, ButtonProps } from "@mui/material";
+import { transitions } from "@/theme/variables";
 
-export const ProfileContainer = styled("div")`
-  min-height: 100vh;
-  background-image: ${({ theme }) =>
-    theme.palette.mode === "dark"
-      ? 'url("/assets/images/background/Perfil-Dark.jpg")'
-      : 'url("/assets/images/background/Perfil-Light.jpg")'};
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  transition: background-image 0.3s ease-in-out;
-  padding: 2rem 0;
-  margin-top: -64px; // This removes the gap at the top (adjust value if needed)
-`;
+export const ProfileContainer = styled(Box)(({ theme }) => ({
+  minHeight: "100vh",
+  backgroundImage: theme.palette.mode === "dark"
+    ? 'url("/assets/images/background/Perfil-Dark.jpg")'
+    : 'url("/assets/images/background/Perfil-Light.jpg")',
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundAttachment: "fixed",
+  transition: transitions.medium,
+  padding: theme.spacing(4, 2), // Added horizontal padding
+  marginTop: "-64px",
+  paddingTop: "84px",
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: 1,
+}));
 
-export const ProfileCard = styled(Paper)`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: ${({ theme }) =>
-    theme.palette.mode === "dark"
-      ? "rgba(19, 47, 76, 0.4)"
-      : "rgba(255, 255, 255, 0.8)"};
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid
-    ${({ theme }) =>
-      theme.palette.mode === "dark"
-        ? "rgba(255, 255, 255, 0.1)"
-        : "rgba(0, 0, 0, 0.1)"};
-  margin-bottom: 2rem; // Add spacing between cards
-`;
+export const ProfileCard = styled(Paper)(({ theme }) => ({
+  maxWidth: 1000, // Increased from 800 to 1000
+  width: "100%", // Ensure it takes full width up to maxWidth
+  margin: "0 auto",
+  padding: theme.spacing(4),
+  background: theme.palette.mode === "dark"
+    ? "rgba(19, 47, 76, 0.8)" // Increased opacity for better readability
+    : "rgba(255, 255, 255, 0.8)",
+  backdropFilter: "blur(10px)",
+  borderRadius: theme.shape.borderRadius * 2,
+  border: `1px solid ${theme.palette.mode === "dark"
+    ? "rgba(255, 255, 255, 0.1)"
+    : "rgba(0, 0, 0, 0.1)"}`,
+  marginBottom: theme.spacing(4),
+}));
 
-export const ProfileTitle = styled("h1")`
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  color: ${({ theme }) => theme.palette.text.primary};
-`;
+export const ProfileTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
+  fontSize: "2.5rem",
+  fontWeight: 600,
+  marginBottom: theme.spacing(4),
+  color: theme.palette.text.primary,
+  variant: "h1",
+}));
 
-export const ContactButton = styled("div")`
-  display: flex;
-  justify-content: center;
-  max-width: 800px;
-  margin: 2rem auto;
-`;
+export const ContactButton = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  maxWidth: 800,
+  margin: `${theme.spacing(4)} auto`,
+}));
 
 export const StyledContactButton = styled(MuiButton)<
   ButtonProps & {
     component?: ElementType;
   }
->`
-  background: ${({ theme }) =>
+>(({ theme }) => ({
+  background:
     theme.palette.mode === "dark"
       ? "rgba(19, 47, 76, 0.4)"
-      : "rgba(255, 255, 255, 0.8)"};
-  backdrop-filter: blur(10px);
-  color: ${({ theme }) =>
-    theme.palette.mode === "dark" ? "#fff" : theme.palette.primary.main};
-  border: 1px solid
-    ${({ theme }) =>
-      theme.palette.mode === "dark"
-        ? "rgba(255, 255, 255, 0.1)"
-        : theme.palette.primary.main};
-
-  &:hover {
-    background: ${({ theme }) =>
+      : "rgba(255, 255, 255, 0.8)",
+  backdropFilter: "blur(10px)",
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.common.white
+      : theme.palette.primary.main,
+  border: `1px solid ${
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, 0.1)"
+      : "rgba(0, 0, 0, 0.1)"
+  }`,
+  padding: theme.spacing(1, 3),
+  transition: transitions.medium,
+  "&:hover": {
+    background:
       theme.palette.mode === "dark"
         ? "rgba(19, 47, 76, 0.6)"
-        : "rgba(255, 255, 255, 0.9)"};
-  }
-`;
+        : "rgba(255, 255, 255, 0.9)",
+    boxShadow: theme.shadows[4],
+  },
+}));
 
-export const ProfileSection = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  border-bottom: 1px solid
-    ${({ theme }) =>
-      theme.palette.mode === "dark"
-        ? "rgba(255, 255, 255, 0.1)"
-        : "rgba(0, 0, 0, 0.1)"};
-
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-export const ProfileInfo = styled("div")`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-export const ProfileLabel = styled("span")`
-  color: ${({ theme }) =>
+// Common styled components for profile sections
+export const ProfileSection = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: theme.spacing(2, 0),
+  borderBottom: `1px solid ${
     theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.7)"
-      : "rgba(0, 0, 0, 0.7)"};
-  font-size: 0.875rem;
-`;
+      ? "rgba(255, 255, 255, 0.1)"
+      : "rgba(0, 0, 0, 0.1)"
+  }`,
+  "&:last-child": {
+    borderBottom: "none",
+  },
+}));
 
-export const ProfileValue = styled("span")`
-  color: ${({ theme }) => theme.palette.text.primary};
-  font-size: 1rem;
-  font-weight: 500;
-`;
+export const ProfileLabel = styled(Typography)(({ theme }) => ({
+  fontWeight: 500,
+  color: theme.palette.text.secondary,
+  variant: "body2",
+}));
+
+export const ProfileValue = styled(Typography)(({ theme }) => ({
+  flexGrow: 1,
+  marginLeft: theme.spacing(2),
+  color: theme.palette.text.primary,
+  variant: "body1",
+}));

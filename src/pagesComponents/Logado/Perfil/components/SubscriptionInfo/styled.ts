@@ -1,46 +1,47 @@
-import { Box, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { motion } from "framer-motion";
-import { ProfileLabel, ProfileValue } from "../../styled";
+import { transitions } from "@/theme/variables";
 
-export const SubscriptionContainer = styled(motion.div)`
-  width: 100%;
-`;
+export const SubscriptionContainer = styled(motion.div)({
+  width: "100%",
+});
 
-export const SubscriptionField = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid
-    ${({ theme }) =>
-      theme.palette.mode === "dark"
-        ? "rgba(255, 255, 255, 0.1)"
-        : "rgba(0, 0, 0, 0.1)"};
-  color: ${({ theme }) => theme.palette.text.primary};
+export const SubscriptionField = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(1),
+  padding: theme.spacing(1.5, 0),
+  borderBottom: `1px solid rgba(0, 0, 0, 0.1)`,
+  "&:last-child": {
+    borderBottom: "none",
+  },
+}));
 
-  &:last-child {
-    border-bottom: none;
-  }
-`;
+export const LabelRow = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  gap: "1rem",
+});
 
-export const LabelRow = styled(Box)`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
+interface StyledTextProps {
+  darkMode?: boolean;
+}
 
-export const StyledProfileLabel = styled(ProfileLabel)`
-  color: ${({ theme }) =>
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.7)"
-      : "rgba(0, 0, 0, 0.7)"};
-`;
+export const StyledProfileLabel = styled(Typography)<StyledTextProps>(({ theme, darkMode }) => ({
+  fontWeight: 500,
+  color: darkMode ? "rgba(0, 0, 0, 0.7)" : theme.palette.text.secondary,
+  variant: "body2",
+  fontSize: "0.95rem",
+}));
 
-export const StyledProfileValue = styled(ProfileValue)`
-  color: ${({ theme }) => theme.palette.text.primary};
-  font-weight: 500;
-`;
+export const StyledProfileValue = styled(Typography)<StyledTextProps>(({ theme, darkMode }) => ({
+  color: darkMode ? "rgba(0, 0, 0, 0.9)" : theme.palette.text.primary,
+  fontWeight: 500,
+  variant: "body1",
+  marginLeft: theme.spacing(0.5),
+  fontSize: "1.05rem",
+}));
 
-export const ButtonContainer = styled(Box)`
-  margin-top: 1.5rem;
-`;
+export const ButtonContainer = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(3),
+}));
