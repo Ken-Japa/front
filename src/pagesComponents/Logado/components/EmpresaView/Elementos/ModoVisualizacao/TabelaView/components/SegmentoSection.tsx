@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import {
     TableRow, TableCell, IconButton, Collapse,
-    Typography, Box
+    Box
 } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { SegmentoSectionProps } from '../types';
 import { formatCurrency } from '../../utils/currency';
 import { EmpresasTable } from './EmpresasTable';
+import { SegmentoTitle, ValueText, PercentageText } from './styled';
 
 export const SegmentoSection: React.FC<SegmentoSectionProps> = ({
     segmento,
@@ -25,24 +26,24 @@ export const SegmentoSection: React.FC<SegmentoSectionProps> = ({
                     </IconButton>
                 </TableCell>
                 <TableCell width="30%">
-                    <Typography variant="subtitle2" color="primary">
+                    <SegmentoTitle variant="subtitle2">
                         {segmento.segmento}
-                    </Typography>
+                    </SegmentoTitle>
                 </TableCell>
                 <TableCell align="right" width="25%">
-                    <Typography variant="subtitle2">
+                    <ValueText variant="subtitle2">
                         {formatCurrency(segmento.valorMercado)}
-                    </Typography>
+                    </ValueText>
                 </TableCell>
                 <TableCell align="right" width="20%">
-                    <Typography variant="subtitle2">
+                    <ValueText variant="subtitle2">
                         {segmento.empresasDetalhes.length}
-                    </Typography>
+                    </ValueText>
                 </TableCell>
                 <TableCell align="right" width="25%">
-                    <Typography variant="subtitle2">
+                    <PercentageText variant="subtitle2">
                         {((segmento.valorMercado / valorMercadoIndustria) * 100).toFixed(2)}%
-                    </Typography>
+                    </PercentageText>
                 </TableCell>
             </TableRow>
             <TableRow>

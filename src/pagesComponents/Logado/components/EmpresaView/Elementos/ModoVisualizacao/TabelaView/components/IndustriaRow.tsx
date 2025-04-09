@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     TableRow, TableCell, IconButton, Collapse,
-    Typography, Box
+    Box
 } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -9,6 +9,7 @@ import { IndustriaRowProps } from '../types';
 import { formatCurrency } from '../../utils/currency';
 import { EmpresasTable } from './EmpresasTable';
 import { SegmentoSection } from './SegmentoSection';
+import { IndustriaTitle, ValueText, PercentageText } from './styled';
 
 export const IndustriaRow: React.FC<IndustriaRowProps> = ({
     industria,
@@ -40,24 +41,24 @@ export const IndustriaRow: React.FC<IndustriaRowProps> = ({
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    <Typography variant="subtitle1" fontWeight="bold">
+                    <IndustriaTitle variant="subtitle1">
                         {industria}
-                    </Typography>
+                    </IndustriaTitle>
                 </TableCell>
                 <TableCell align="right">
-                    <Typography variant="subtitle1" fontWeight="bold">
+                    <ValueText variant="subtitle1">
                         {formatCurrency(valorMercadoTotal)}
-                    </Typography>
+                    </ValueText>
                 </TableCell>
                 <TableCell align="right">
-                    <Typography variant="subtitle1" fontWeight="bold">
+                    <ValueText variant="subtitle1">
                         {segmentos.reduce((acc, seg) => acc + seg.empresasDetalhes.length, 0)}
-                    </Typography>
+                    </ValueText>
                 </TableCell>
                 <TableCell align="right">
-                    <Typography variant="subtitle1" fontWeight="bold">
+                    <PercentageText variant="subtitle1">
                         {((valorMercadoTotal / valorMercadoGeral) * 100).toFixed(2)}%
-                    </Typography>
+                    </PercentageText>
                 </TableCell>
             </TableRow>
             <TableRow>
@@ -66,7 +67,7 @@ export const IndustriaRow: React.FC<IndustriaRowProps> = ({
                         <Box sx={{ m: 0 }}>
                             {hideSegmentos ? (
                                 <EmpresasTable
-                                    empresas={allEmpresas}
+                                    empresas={empresas}
                                     valorMercadoTotal={valorMercadoTotal}
                                     showIndustryParticipation={true}
                                     useIndustryTotal={true}
@@ -77,7 +78,7 @@ export const IndustriaRow: React.FC<IndustriaRowProps> = ({
                                         key={index}
                                         segmento={segmento}
                                         valorMercadoIndustria={valorMercadoTotal}
-                                        valorMercadoTotal={segmento.valorMercado}
+                                        valorMercadoTotal={valorMercadoGeral}
                                     />
                                 ))
                             )}

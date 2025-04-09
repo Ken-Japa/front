@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {
     Table, TableBody, TableCell, TableHead, TableRow,
-    Typography, Box, Checkbox, FormControlLabel, CircularProgress
+    Typography, Checkbox, FormControlLabel
 } from '@mui/material';
 import { formatCurrency } from '../utils/currency';
-import { TableContainer, StyledTable } from './styled';
+import { 
+    TableContainer, 
+    StyledTable, 
+    LoadingContainer, 
+    StyledCircularProgress,
+    TableControlsContainer,
+    CheckboxesContainer,
+    TableTitle
+} from './styled';
 import { SumarioData } from './types';
 import { IndustriaRow } from './components/IndustriaRow';
 import { SegmentoSection } from './components/SegmentoSection';
@@ -15,7 +23,6 @@ import { sumarioService } from './services/sumarioService';
 interface TabelaViewProps {
     onLoadingChange?: (loading: boolean) => void;
 }
-
 
 export const TabelaView: React.FC<TabelaViewProps> = ({ onLoadingChange }) => {
     const [data, setData] = useState<SumarioData | null>(null);
@@ -34,7 +41,7 @@ export const TabelaView: React.FC<TabelaViewProps> = ({ onLoadingChange }) => {
                 setData(response);
             } catch (error) {
                 setError('Falha ao carregar os dados');
-                console.error('Error loading data:', error);
+                console.error('Erro ao carregar dados:', error);
             } finally {
                 setIsLoading(false);
                 onLoadingChange?.(false);
@@ -44,7 +51,14 @@ export const TabelaView: React.FC<TabelaViewProps> = ({ onLoadingChange }) => {
         fetchData();
     }, [onLoadingChange]);
 
-    if (isLoading) return <CircularProgress />;
+    if (isLoading) {
+        return (
+            <LoadingContainer>
+                <StyledCircularProgress />
+            </LoadingContainer>
+        );
+    }
+
     if (error) return <Typography color="error">{error}</Typography>;
     if (!data) return null;
 
@@ -54,8 +68,8 @@ export const TabelaView: React.FC<TabelaViewProps> = ({ onLoadingChange }) => {
 
     return (
         <TableContainer>
-            <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box>
+            <TableControlsContainer>
+                <CheckboxesContainer>
                     <FormControlLabel
                         control={
                             <Checkbox
@@ -74,11 +88,13 @@ export const TabelaView: React.FC<TabelaViewProps> = ({ onLoadingChange }) => {
                         }
                         label="Ocultar Segmentos"
                     />
-                </Box>
-                <Typography variant="h6">
-                    Mercado Brasileiro {data && formatCurrency(data.sumarioTotal.valorMercadoTotalGeral)}
-                </Typography>
-            </Box>
+                </CheckboxesContainer>
+                <TableTitle>
+                    <Typography variant="h6">
+                        Mercado Brasileiro {data && formatCurrency(data.sumarioTotal.valorMercadoTotalGeral)}
+                    </Typography>
+                </TableTitle>
+            </TableControlsContainer>
 
             {hideIndustrias && hideSegmentos ? (
                 <FlatTableView
