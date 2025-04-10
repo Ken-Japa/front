@@ -13,16 +13,20 @@ export const TabsContainer = styled("div")({
     padding: `${spacing.sm} ${spacing.md}`,
     borderRadius: borderRadius.md,
     transition: transitions.medium,
-    fontSize: "0.95rem",
+    border: "none",
+    cursor: "pointer",
+    fontSize: "0.9rem",
+    fontWeight: 500,
 
     "&.active": {
       backgroundColor: visitorColors.primary,
-      color: visitorColors.text,
+      color: "#000",
     },
 
     "&.inactive": {
       backgroundColor: visitorColors.backgroundLight,
-      color: visitorColors.textSecondary,
+      color: visitorColors.text,
+
       "&:hover": {
         backgroundColor: visitorColors.backgroundMedium,
       },

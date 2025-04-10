@@ -1,5 +1,6 @@
 import { styled } from "@mui/material";
-import { spacing, transitions } from "@/theme/variables";
+import HelpIcon from "@mui/icons-material/Help";
+import { spacing } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
 export const HeaderContainer = styled("div")(({ theme }) => ({
@@ -13,26 +14,26 @@ export const HeaderContainer = styled("div")(({ theme }) => ({
     gap: spacing.sm,
     marginBottom: spacing.md,
   },
-  
+
   "& .title": {
     fontSize: "2.5rem",
     fontWeight: "bold",
     color: visitorColors.primary,
-    transition: transitions.medium,
-    
-    [theme.breakpoints.down('sm')]: {
+
+    "@media (max-width: 600px)": {
       fontSize: "2rem",
-    }
+    },
   },
-  
+
   "& .subtitle": {
     color: visitorColors.textSecondary,
-    marginTop: spacing.md,
     fontSize: "1.1rem",
-    transition: transitions.medium,
-    
-    [theme.breakpoints.down('sm')]: {
-      fontSize: "1rem",
-    }
-  }
+    maxWidth: "600px",
+    margin: "0 auto",
+  },
 }));
+
+export const HeaderIcon = styled(HelpIcon)({
+  fontSize: 60,
+  color: visitorColors.primary,
+});

@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
-import { faqCategories } from '../data/faqData';
-import type { CategoryType } from '../data/faqData';
+import { faqCategories } from '../../constants/faqData';
+import type { CategoryType } from '../../constants/faqData';
 
 import { TabsContainer } from "./styled";
 

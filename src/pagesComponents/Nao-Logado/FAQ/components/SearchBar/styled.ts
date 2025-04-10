@@ -1,4 +1,6 @@
 import { styled } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 import { spacing, borderRadius, transitions } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
@@ -17,37 +19,54 @@ export const SearchContainer = styled("div")({
   
   "& .search-input": {
     width: "100%",
-    padding: `${spacing.sm} ${spacing.xl}`,
+    padding: `${spacing.md} ${spacing.xl}`,
+    paddingLeft: "48px",
     backgroundColor: visitorColors.backgroundLight,
     color: visitorColors.text,
-    border: `1px solid ${visitorColors.divider}`,
+    border: `1px solid ${visitorColors.borderLight}`,
     borderRadius: borderRadius.md,
-    outline: "none",
+    fontSize: "1rem",
     transition: transitions.medium,
+    
     "&:focus": {
+      outline: "none",
       borderColor: visitorColors.primary,
       backgroundColor: visitorColors.backgroundMedium,
+    },
+    
+    "&::placeholder": {
+      color: visitorColors.textMuted,
     }
   },
   
   "& .search-icon": {
     position: "absolute",
+    left: spacing.md,
     top: "50%",
     transform: "translateY(-50%)",
-    left: spacing.sm,
-    color: visitorColors.textSecondary,
   },
   
   "& .clear-button": {
     position: "absolute",
+    right: spacing.md,
     top: "50%",
     transform: "translateY(-50%)",
-    right: spacing.sm,
-    color: visitorColors.textSecondary,
+    background: "none",
+    border: "none",
     cursor: "pointer",
-    transition: transitions.medium,
-    "&:hover": {
-      color: visitorColors.text,
-    }
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 0,
   }
+});
+
+export const StyledSearchIcon = styled(SearchIcon)({
+  fontSize: 24,
+  color: visitorColors.textMuted
+});
+
+export const StyledCloseIcon = styled(CloseIcon)({
+  fontSize: 24,
+  color: visitorColors.textMuted
 });

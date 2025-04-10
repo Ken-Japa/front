@@ -8,7 +8,7 @@ import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
-import { categorizedQuestions } from "./data/faqData";
+import { categorizedQuestions } from "./constants/faqData";
 import { useQuestionFilter } from "./hooks/useQuestionFilter";
 import { SectionFAQ } from "./styled";
 
@@ -23,11 +23,11 @@ const IMAGE_PROPS = {
     quality: 85,
 } as const;
 
-const Header = lazy(() => import('./Header').then(mod => ({ default: mod.Header })));
-const SearchBar = lazy(() => import('./SearchBar').then(mod => ({ default: mod.SearchBar })));
-const CategoryTabs = lazy(() => import('./CategoryTabs').then(mod => ({ default: mod.CategoryTabs })));
-const QuestionList = lazy(() => import('./QuestionList').then(mod => ({ default: mod.QuestionList })));
-const ContactSupport = lazy(() => import('./ContactSupport').then(mod => ({ default: mod.ContactSupport })));
+const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
+const SearchBar = lazy(() => import('./components/SearchBar').then(mod => ({ default: mod.SearchBar })));
+const CategoryTabs = lazy(() => import('./components/CategoryTabs').then(mod => ({ default: mod.CategoryTabs })));
+const QuestionList = lazy(() => import('./components/QuestionList').then(mod => ({ default: mod.QuestionList })));
+const ContactSupport = lazy(() => import('./components/ContactSupport').then(mod => ({ default: mod.ContactSupport })));
 
 export const FAQ: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);

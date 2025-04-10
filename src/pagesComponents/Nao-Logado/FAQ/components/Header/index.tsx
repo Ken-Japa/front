@@ -1,17 +1,7 @@
 import { type FC } from 'react';
-
-import HelpIcon from '@mui/icons-material/Help';
-
 import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-import { visitorColors } from "@/theme/palette/visitor";
-
-import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
-
-const ICON_STYLES = {
-    fontSize: 40,
-    color: visitorColors.primary
-} as const;
+import { HeaderContainer, HeaderIcon } from "./styled";
 
 interface HeaderProps {
     isLoading?: boolean;
@@ -25,7 +15,7 @@ export const Header: FC<HeaderProps> = ({ isLoading }) => {
     return (
         <HeaderContainer>
             <div className="header-icon-wrapper">
-                <HelpIcon sx={ICON_STYLES} />
+                <HeaderIcon />
                 <MatrixRainText
                     text="Dúvidas Frequentes"
                     className="title"

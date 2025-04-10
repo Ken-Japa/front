@@ -16,8 +16,8 @@ export const SupportContainer = styled("div")({
   },
 
   "& .support-title": {
-    fontSize: "1.25rem",
-    color: visitorColors.primary,
+    color: visitorColors.text,
+    fontSize: "1.5rem",
     marginBottom: spacing.md,
   },
   

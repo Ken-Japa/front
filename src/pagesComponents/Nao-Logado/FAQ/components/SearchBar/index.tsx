@@ -1,14 +1,6 @@
 import { type FC } from 'react';
-
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
-
-import { SearchContainer } from "./styled";
-import { SearchBarSkeleton } from './SearchBarSkeleton';
-
-const ICON_STYLES = {
-    fontSize: 20
-} as const;
+import { SearchBarSkeleton } from "./SearchBarSkeleton";
+import { SearchContainer, StyledSearchIcon, StyledCloseIcon } from "./styled";
 
 interface SearchBarProps {
     searchTerm: string;
@@ -35,14 +27,14 @@ export const SearchBar: FC<SearchBarProps> = ({ searchTerm, setSearchTerm, isLoa
                     className="search-input"
                     id="faq-search"
                 />
-                <SearchIcon className="search-icon" sx={ICON_STYLES} />
+                <StyledSearchIcon className="search-icon" />
                 {searchTerm && (
                     <button
                         onClick={handleClear}
                         className="clear-button"
                         aria-label="Limpar pesquisa"
                     >
-                        <CloseIcon sx={ICON_STYLES} />
+                        <StyledCloseIcon />
                     </button>
                 )}
             </div>

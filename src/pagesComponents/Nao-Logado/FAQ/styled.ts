@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { spacing } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
 export const SectionFAQ = styled("section")(({ theme }) => ({
@@ -9,8 +9,9 @@ export const SectionFAQ = styled("section")(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   position: "relative",
-  padding: `${spacing.xl} 0`,
+  padding: `${spacing.xl}`,
   backgroundColor: visitorColors.overlay,
+  paddingBottom: visitorColors.paddingPage,
 
   "& .background-image": {
     position: "fixed",
