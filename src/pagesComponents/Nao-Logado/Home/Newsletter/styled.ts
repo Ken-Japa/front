@@ -1,5 +1,5 @@
-import { styled } from "@mui/material";
-import { spacing, borderRadius, transitions } from "@/theme/variables";
+import { styled, Button, TextField } from "@mui/material";
+import { spacing, borderRadius } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
 export const NewsletterContainer = styled("div")({
@@ -46,5 +46,39 @@ export const NewsletterForm = styled("form")({
       outline: "none",
       borderColor: visitorColors.primary,
     },
+  },
+});
+
+export const SubmitButton = styled(Button)({
+  padding: "0.75rem 1.5rem",
+  paddingLeft: "2rem",
+  paddingRight: "2rem",
+  fontWeight: 600,
+  whiteSpace: "nowrap",
+
+  "@media (max-width: 600px)": {
+    width: "100%",
+  },
+});
+
+export const StyledTextField = styled(TextField)({
+  backgroundColor: "rgba(255, 255, 255, 0.05)",
+  borderRadius: "4px",
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "rgba(255, 255, 255, 0.2)",
+    },
+    "&:hover fieldset": {
+      borderColor: "rgba(255, 255, 255, 0.3)",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: visitorColors.primary,
+    },
+  },
+  "& .MuiInputBase-input": {
+    color: visitorColors.text,
+  },
+  "& .MuiFormHelperText-root": {
+    color: "#f44336",
   },
 });

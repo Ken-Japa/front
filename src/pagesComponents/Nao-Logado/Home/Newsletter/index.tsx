@@ -1,7 +1,7 @@
-import { type FC } from 'react';
-import { Stack, Typography, TextField } from "@mui/material";
-import { CustomButton } from "@/components/Core/Button";
-import { NewsletterContainer } from "./styled";
+import { type FC, useState } from 'react';
+import { Stack, Typography, TextField, Alert, Snackbar } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+import { NewsletterContainer, SubmitButton, StyledTextField } from "./styled";
 import { NewsletterSkeleton } from "./NewsletterSkeleton";
 import { visitorColors } from "@/theme/palette/visitor";
 
@@ -24,6 +24,39 @@ interface NewsletterProps {
 }
 
 export const Newsletter: FC<NewsletterProps> = ({ isLoading }) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [email, setEmail] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleClose = () => {
+        setSuccess(false);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Validação básica de email
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setError('Por favor, insira um email válido.');
+            return;
+        }
+
+        setError('');
+        setIsSubmitting(true);
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setSuccess(true);
+            setEmail('');
+        } catch (err) {
+            setError('Ocorreu um erro ao cadastrar seu email. Tente novamente.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+
     if (isLoading) {
         return <NewsletterSkeleton />;
     }
@@ -38,14 +71,32 @@ export const Newsletter: FC<NewsletterProps> = ({ isLoading }) => {
                     Cadastre-se para receber atualizações exclusivas e descontos especiais
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} width="100%" maxWidth="500px">
-                    <TextField
-                        fullWidth
+                    <StyledTextField
+                        variant="outlined"
                         placeholder="Seu melhor email"
-                        sx={TEXT_FIELD_STYLES}
+                        fullWidth
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        error={!!error}
+                        helperText={error}
+                        disabled={isSubmitting}
                     />
-                    <CustomButton {...BUTTON_PROPS} />
+                    <SubmitButton
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        disabled={isSubmitting}
+                        endIcon={<SendIcon />}
+                    >
+                        {isSubmitting ? 'Enviando...' : 'Inscrever-se'}
+                    </SubmitButton>
                 </Stack>
             </Stack>
+            <Snackbar open={success} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Email cadastrado com sucesso!
+                </Alert>
+            </Snackbar>
         </NewsletterContainer>
     );
 };
