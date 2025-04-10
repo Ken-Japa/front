@@ -2,11 +2,11 @@ import { styled } from "@mui/material";
 import { borderRadius, transitions } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
-export const StyledSnackbar = styled("div")({
+export const StyledSnackbar = styled("div")<{ isVisible: boolean }>(({ isVisible }) => ({
   position: "fixed",
   bottom: "20px",
   left: "50%",
-  transform: "translateX(-50%)",
+  transform: isVisible ? 'translate(-50%, 0)' : 'translate(-50%, 20px)',
   zIndex: 9999,
   minWidth: "300px",
   maxWidth: "500px",
@@ -15,6 +15,7 @@ export const StyledSnackbar = styled("div")({
   boxShadow: "0 4px 20px rgba(0, 0, 0, 0.25)",
   backdropFilter: visitorColors.blur,
   transition: transitions.medium,
+  opacity: isVisible ? 1 : 0,
   
   "&.success": {
     backgroundColor: "rgba(46, 125, 50, 0.9)",
@@ -48,4 +49,4 @@ export const StyledSnackbar = styled("div")({
       color: "#fff",
     },
   },
-});
+}));

@@ -3,26 +3,20 @@
 import { useState, lazy, type FormEvent, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
-// Componentes
 import { OptimizedImage } from "@/components/Utils/OptimizedImage";
-import { PageTransition } from "@/components/Utils/PageTransition";
 import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 
-// Estilos e constantes
-import { SectionContact } from "./styled";
+import { SectionContact, StyledPageTransition, BackgroundImageStyle } from "./styled";
 import { CONTACT_CONSTANTS } from './constants';
 
-// Hooks e serviços
 import { useContactForm } from "./hooks/useContactForm";
 import { useBlockTimer } from "./hooks/useBlockTimer";
 import { useSnackbar } from "./hooks/useSnackbar";
 import { submitContactForm } from './services/contactService';
 
-// Componentes locais
 import { ContactContent } from './components/ContactContent';
 import { SnackbarNotification } from './components/SnackbarNotification';
 
-// Lazy loading de componentes
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const ContactInfo = lazy(() => import('./components/ContactInfo').then(mod => ({ default: mod.ContactInfo })));
 const ContactFormComponent = lazy(() => import('./components/ContactForm').then(mod => ({ default: mod.ContactFormComponent })));
@@ -71,19 +65,19 @@ const ContactWithSearchParams = () => {
         priority: true,
         className: "object-cover",
         sizes: "100vw",
-        onLoad: () => setImageLoaded(true),
-        style: {
-            filter: !imageLoaded ? 'grayscale(1)' : 'none',
-            transition: 'filter 0.5s ease-in-out'
-        }
+        quality: 100,
+        loadingClassName: "scale-100 blur-sm grayscale-0",
+        onLoad: () => setImageLoaded(true)
     };
 
     return (
-        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
+        <StyledPageTransition direction="up" duration={0.4} distance={30}>
             <ErrorBoundary>
                 <SectionContact>
                     <div className="background-image">
-                        <OptimizedImage {...imageProps} />
+                        <BackgroundImageStyle isLoaded={imageLoaded}>
+                            <OptimizedImage {...imageProps} />
+                        </BackgroundImageStyle>
                     </div>
                     <div className="content-wrapper">
                         <ContactContent
@@ -108,11 +102,10 @@ const ContactWithSearchParams = () => {
                     </div>
                 </SectionContact>
             </ErrorBoundary>
-        </PageTransition>
+        </StyledPageTransition>
     );
 };
 
-// Componente principal com Suspense
 export const Contact = () => {
     return (
         <Suspense fallback={<div>Carregando...</div>}>

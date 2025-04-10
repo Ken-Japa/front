@@ -1,7 +1,7 @@
 import { type FC } from 'react';
-import { Stack } from "@mui/material";
 import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 import { FormData, FormErrors } from '../../types';
+import { ContentContainer, FormContainer } from './styled';
 
 interface ContactContentProps {
     imageLoaded: boolean;
@@ -30,15 +30,14 @@ export const ContactContent: FC<ContactContentProps> = ({
     ContactFormComponent,
     ContactFormSkeleton
 }) => (
-    <Stack spacing={4} className="content-container">
+    <ContentContainer spacing={4}>
         <SuspenseWrapper>
             <Header isLoading={!imageLoaded} />
         </SuspenseWrapper>
 
-        <Stack
+        <FormContainer
             direction={{ xs: 'column', md: 'row' }}
             spacing={4}
-            className="form-container"
         >
             <SuspenseWrapper>
                 <ContactInfo isLoading={!imageLoaded} />
@@ -58,6 +57,6 @@ export const ContactContent: FC<ContactContentProps> = ({
                     />
                 )}
             </SuspenseWrapper>
-        </Stack>
-    </Stack>
+        </FormContainer>
+    </ContentContainer>
 );

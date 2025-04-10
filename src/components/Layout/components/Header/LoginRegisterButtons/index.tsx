@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PermIdentity } from "@mui/icons-material";
+import { PermIdentity, AppRegistration } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { CustomButton } from "../../../../Core/Button";
 
@@ -30,7 +30,7 @@ export const LoginsButtons = ({ onButtonClick, isFullWidth }: AuthButtonsProps) 
             <Link href="/register" className={isFullWidth ? 'w-full' : ''}>
                 <CustomButton
                     value="Registrar"
-                    Icon={PermIdentity}
+                    Icon={AppRegistration}
                     customColor="#F5F5F5"
                     textColor="#000000"
                     onClick={onButtonClick}

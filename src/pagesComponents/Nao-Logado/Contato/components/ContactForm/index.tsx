@@ -1,10 +1,7 @@
 import { type FC, type FormEvent, type ChangeEvent } from 'react';
-
 import { TextField, Button, Autocomplete } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-
-import { ContactFormStyled } from "./styled";
-import { visitorColors } from "@/theme/palette/visitor";
+import { ContactFormStyled, AutocompletePaper } from "./styled";
 import { FormData, FormErrors } from '../../types';
 
 interface ContactFormProps {
@@ -18,28 +15,12 @@ interface ContactFormProps {
 
 const subjectOptions = [
     "Assinaturas",
-    "Problemas de Acesso",
-    "Estratégias",
-    "Relatórios",
-    "Problemas Técnicos",
-    "Parcerias Comerciais",
+    "Suporte Técnico",
+    "Parcerias",
+    "Dúvidas Gerais",
+    "Feedback",
     "Outros"
-] as const;
-
-const autocompleteStyles = {
-    backgroundColor: visitorColors.backgroundDark,
-    backdropFilter: visitorColors.blur,
-    border: `1px solid ${visitorColors.primary}20`,
-    '& .MuiAutocomplete-option': {
-        color: visitorColors.text,
-        '&:hover': {
-            backgroundColor: `${visitorColors.primary}40`
-        },
-        '&.Mui-focused': {
-            backgroundColor: `${visitorColors.primary}30`
-        }
-    }
-};
+];
 
 export const ContactFormComponent: FC<ContactFormProps> = ({
     formData,
@@ -86,7 +67,9 @@ export const ContactFormComponent: FC<ContactFormProps> = ({
                     } as ChangeEvent<HTMLInputElement>);
                 }}
                 componentsProps={{
-                    paper: { sx: autocompleteStyles }
+                    paper: { 
+                        component: AutocompletePaper 
+                    }
                 }}
                 renderInput={(params) => (
                     <TextField

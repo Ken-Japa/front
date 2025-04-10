@@ -1,11 +1,6 @@
 import { type FC } from 'react';
-
-import { Stack } from "@mui/material";
-
-import { MatrixRainText } from "@/components/Effects/MatrixRainText";
-
 import { HeaderSkeleton } from "./HeaderSkeleton";
-import { HeaderContainer, SubtitleText } from "./styled";
+import { HeaderContainer, SubtitleText, HeaderStack, MatrixTitle } from "./styled";
 
 interface HeaderProps {
     isLoading: boolean;
@@ -29,22 +24,21 @@ export const Header: FC<HeaderProps> = ({ isLoading }) => {
 
     return (
         <HeaderContainer>
-            <Stack spacing={2}>
-                <MatrixRainText
+            <HeaderStack spacing={2}>
+                <MatrixTitle
                     text={headerContent.title}
                     className="title"
-                    fontSize="2.5rem"
                 />
                 {headerContent.subtitles.map((text, index) => (
                     <SubtitleText
                         key={index}
-                        variant="h6"
+                        variant="h4"
                         className="subtitle"
                     >
                         {text}
                     </SubtitleText>
                 ))}
-            </Stack>
+            </HeaderStack>
         </HeaderContainer>
     );
 };

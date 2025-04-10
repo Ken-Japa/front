@@ -53,3 +53,18 @@ export const ContactFormStyled = styled("form")({
     },
   },
 });
+
+export const AutocompletePaper = styled('div')({
+  backgroundColor: visitorColors.backgroundLight,
+  color: visitorColors.text,
+  borderRadius: borderRadius.sm,
+  
+  "& .MuiAutocomplete-option": {
+    "&:hover": {
+      backgroundColor: visitorColors.backgroundOverlay,
+    },
+    "&[aria-selected='true']": {
+      backgroundColor: `${visitorColors.primary}40`,
+    },
+  },
+});

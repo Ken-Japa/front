@@ -1,4 +1,5 @@
 import { styled } from "@mui/material";
+import { PageTransition } from "@/components/Utils/PageTransition";
 import { spacing } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
@@ -21,14 +22,14 @@ export const SectionContact = styled("section")({
       left: 0,
       width: "100%",
       height: "100%",
-      backgroundColor: visitorColors.overlayS,
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
   },
 
   "& .content-wrapper": {
     position: "relative",
     zIndex: 1,
-    backgroundColor: visitorColors.overlayG,
+    background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3))",
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
@@ -92,14 +93,27 @@ export const ContactForm = styled("form")({
     },
   },
 
-  // Force light text color for input
   "& .MuiInputBase-input": {
     color: "#fff !important",
   },
 
-  // Force light placeholder color
   "& .MuiInputBase-input::placeholder": {
     color: "rgba(255, 255, 255, 0.5) !important",
     opacity: 1,
   },
 });
+
+export const StyledPageTransition = styled(PageTransition)({
+  width: "100%",
+});
+
+export const BackgroundImageStyle = styled("div")<{ isLoaded: boolean }>(
+  ({ isLoaded }) => ({
+    width: "100%",
+    height: "100%",
+    position: "relative",
+    filter: !isLoaded ? "grayscale(1)" : "none",
+    opacity: isLoaded ? 1 : 0.1,
+    transition: "filter 0.5s ease-in-out, opacity 0.5s ease-in-out",
+  })
+);
