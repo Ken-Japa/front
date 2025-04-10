@@ -1,6 +1,7 @@
 import { styled } from "@mui/material";
 import { spacing } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
+import GroupsIcon from '@mui/icons-material/Groups';
 
 export const HeaderContainer = styled("div")({
   "& .header-content": {
@@ -32,4 +33,9 @@ export const HeaderContainer = styled("div")({
       textAlign: "center",
     }
   }
+});
+
+export const HeaderIcon = styled(GroupsIcon)({
+  fontSize: 60,
+  color: visitorColors.primary
 });

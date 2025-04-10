@@ -5,7 +5,7 @@ import { JoinTeamForm } from "./styled";
 import { ApplicationFormSkeleton } from "./ApplicationFormSkeleton";
 import { FormFields } from './components/FormFields/index';
 import { FormSnackbar } from './components/FormSnackbar/index';
-import { SubmitButton } from './components/SubmitButton';
+import { SubmitButton } from './components/SubmitButton/index';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { useBlockTimer } from '../../hooks/useBlockTimer';
 import { useFormState } from '../../hooks/useFormState';

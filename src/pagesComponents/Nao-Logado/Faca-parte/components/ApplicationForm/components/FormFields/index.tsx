@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { ROLES } from '../../../../constants';
 import { FormData, FormErrors } from '../../../../types';
+import { selectStyles } from './styled';
 import { visitorColors } from "@/theme/palette/visitor";
 
 interface FormFieldsProps {
@@ -18,25 +19,6 @@ interface FormFieldsProps {
 }
 
 export const FormFields: FC<FormFieldsProps> = ({ formData, errors, handleChange }) => {
-    const selectStyles = {
-        MenuProps: {
-            classes: { paper: 'menu-paper' },
-            PaperProps: {
-                sx: {
-                    backgroundColor: visitorColors.backgroundDark,
-                    backdropFilter: visitorColors.blur,
-                    border: `1px solid ${visitorColors.primary}33`,
-                    '& .MuiMenuItem-root': {
-                        color: visitorColors.text,
-                        '&:hover': {
-                            backgroundColor: `${visitorColors.primary}59`
-                        }
-                    }
-                }
-            }
-        }
-    };
-
     return (
         <>
             <TextField
@@ -71,7 +53,17 @@ export const FormFields: FC<FormFieldsProps> = ({ formData, errors, handleChange
                 placeholder="(11) 99999-9999"
             />
             <FormControl fullWidth error={!!errors.role}>
-                <InputLabel id="role-label">Cargo de Interesse</InputLabel>
+                <InputLabel
+                    id="role-label"
+                    sx={{
+                        color: visitorColors.textMuted,
+                        '&.Mui-focused': {
+                            color: visitorColors.primary,
+                        }
+                    }}
+                >
+                    Cargo de Interesse
+                </InputLabel>
                 <Select
                     labelId="role-label"
                     name="role"

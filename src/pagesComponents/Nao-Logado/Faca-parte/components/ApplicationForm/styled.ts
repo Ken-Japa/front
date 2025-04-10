@@ -16,16 +16,16 @@ export const JoinTeamForm = styled("form")({
 
     "@media (max-width: 600px)": {
       padding: `${spacing.md} ${spacing.sm}`,
-    }
+    },
   },
 
   "& .MuiTextField-root": {
     marginBottom: spacing.sm,
-    
+
     "& .MuiOutlinedInput-root": {
       color: visitorColors.text,
       backgroundColor: visitorColors.backgroundDark,
-      
+
       "& fieldset": {
         borderColor: "rgba(255, 255, 255, 0.23)",
       },
@@ -34,14 +34,14 @@ export const JoinTeamForm = styled("form")({
       },
       "&.Mui-focused fieldset": {
         borderColor: visitorColors.primary,
-      }
+      },
     },
 
     "& .MuiInputLabel-root": {
       color: visitorColors.textMuted,
       "&.Mui-focused": {
         color: visitorColors.primary,
-      }
+      },
     },
   },
 
@@ -55,7 +55,7 @@ export const JoinTeamForm = styled("form")({
     "&:disabled": {
       backgroundColor: "rgba(255, 255, 255, 0.12)",
       color: "rgba(255, 255, 255, 0.3)",
-    }
+    },
   },
 
   "& .MuiSelect-select": {
@@ -66,12 +66,12 @@ export const JoinTeamForm = styled("form")({
     backgroundColor: visitorColors.backgroundDark,
     backdropFilter: visitorColors.blur,
     border: `1px solid ${visitorColors.primary}33`,
-    
+
     "& .MuiMenuItem-root": {
       color: visitorColors.text,
       "&:hover": {
-        backgroundColor: `${visitorColors.primary}59`, // 35% opacity
-      }
-    }
-  }
+        backgroundColor: `${visitorColors.primary}59`,
+      },
+    },
+  },
 });

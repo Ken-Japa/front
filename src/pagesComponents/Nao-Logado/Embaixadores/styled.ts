@@ -5,6 +5,8 @@ import { PageTransition } from "@/components/Utils/PageTransition";
 export const EmbaixadoresSection = styled("main")({
   minHeight: "100vh",
   position: "relative",
+  paddingBottom: visitorColors.paddingPage,
+  paddingTop: visitorColors.paddingTop,
 
   "& .background-container": {
     position: "absolute",

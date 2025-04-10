@@ -1,15 +1,13 @@
 "use client";
 
-import { type FC, useState, lazy, Suspense } from "react";
+import { type FC, useState, lazy } from "react";
 import { Grid, Stack } from "@mui/material";
 
 import { OptimizedImage } from "@/components/Utils/OptimizedImage";
-import { PageTransition } from "@/components/Utils/PageTransition";
 import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
-import { SectionJoinTeam } from "./styled";
-import { visitorColors } from "@/theme/palette/visitor";
+import { SectionJoinTeam, StyledPageTransition, BackgroundImage } from "./styled";
 
 const IMAGE_PROPS = {
     src: "/assets/images/background/Faca-Parte.jpg",
@@ -18,7 +16,8 @@ const IMAGE_PROPS = {
     priority: true,
     sizes: "100vw",
     className: "object-cover",
-    quality: 85
+    quality: 100,
+    loadingClassName: "scale-100 blur-sm grayscale-0"
 } as const;
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
@@ -29,18 +28,16 @@ export const JoinTeam: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
+        <StyledPageTransition direction="up" duration={0.4} distance={30}>
             <ErrorBoundary>
                 <SectionJoinTeam>
                     <div className="background-image">
-                        <OptimizedImage
-                            {...IMAGE_PROPS}
-                            onLoad={() => setImageLoaded(true)}
-                            style={{
-                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
-                                transition: 'filter 0.5s ease-in-out'
-                            }}
-                        />
+                        <BackgroundImage isLoaded={imageLoaded}>
+                            <OptimizedImage
+                                {...IMAGE_PROPS}
+                                onLoad={() => setImageLoaded(true)}
+                            />
+                        </BackgroundImage>
                     </div>
                     <div className="container">
                         <div className="content-wrapper">
@@ -65,6 +62,6 @@ export const JoinTeam: FC = () => {
                     </div>
                 </SectionJoinTeam>
             </ErrorBoundary>
-        </PageTransition>
+        </StyledPageTransition>
     );
 };

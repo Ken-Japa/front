@@ -2,14 +2,13 @@ import { type FC } from 'react';
 import dynamic from 'next/dynamic';
 
 import { Typography } from "@mui/material";
-import GroupsIcon from '@mui/icons-material/Groups';
-
-import { HeaderContainer } from "./styled";
-import { HeaderSkeleton } from "./HeaderSkeleton";
 import { visitorColors } from "@/theme/palette/visitor";
+import { HeaderSkeleton } from "./HeaderSkeleton";
+import { HeaderContainer, HeaderIcon } from "./styled";
+
 
 interface HeaderProps {
-    isLoading: boolean;
+    isLoading?: boolean;
 }
 
 const ICON_STYLES = {
@@ -36,7 +35,7 @@ export const Header: FC<HeaderProps> = ({ isLoading }) => {
     return (
         <HeaderContainer>
             <div className="header-content">
-                <GroupsIcon sx={ICON_STYLES} />
+                <HeaderIcon />
                 <DynamicMatrixRainText
                     text="Junte-se ao Time"
                     className="title"

@@ -1,6 +1,6 @@
 import { type FC } from 'react';
-import { Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
+import { StyledSubmitButton } from './styled';
 
 interface SubmitButtonProps {
     isSubmitting: boolean;
@@ -9,8 +9,7 @@ interface SubmitButtonProps {
 }
 
 export const SubmitButton: FC<SubmitButtonProps> = ({ isSubmitting, isBlocked, blockTimer }) => (
-    <Button
-        className="submit-button"
+    <StyledSubmitButton
         type="submit"
         variant="contained"
         size="large"
@@ -21,5 +20,5 @@ export const SubmitButton: FC<SubmitButtonProps> = ({ isSubmitting, isBlocked, b
         {isSubmitting ? 'Enviando...' :
             isBlocked ? `Aguarde ${blockTimer}s` :
                 'Enviar Candidatura'}
-    </Button>
+    </StyledSubmitButton>
 );

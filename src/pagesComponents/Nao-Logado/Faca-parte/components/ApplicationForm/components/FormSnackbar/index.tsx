@@ -26,7 +26,7 @@ export const FormSnackbar: FC<FormSnackbarProps> = ({
             setIsVisible(true);
             const timer = setTimeout(() => {
                 setIsVisible(false);
-                setTimeout(onClose, 300); // Aguarda a animação de saída
+                setTimeout(onClose, 300);
             }, autoHideDuration);
             return () => clearTimeout(timer);
         }
@@ -35,22 +35,18 @@ export const FormSnackbar: FC<FormSnackbarProps> = ({
     if (!open && !isVisible) return null;
 
     return (
-        <SnackbarStyled 
-            className={`${severity} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-            style={{ 
-                transform: isVisible 
-                    ? 'translate(-50%, 0)' 
-                    : 'translate(-50%, 20px)'
-            }}
+        <SnackbarStyled
+            className={`${severity}`}
+            isVisible={isVisible}
         >
             <div>{message}</div>
-            <CloseIcon 
-                className="close-button" 
-                fontSize="small" 
+            <CloseIcon
+                className="close-button"
+                fontSize="small"
                 onClick={() => {
                     setIsVisible(false);
                     setTimeout(onClose, 300);
-                }} 
+                }}
             />
         </SnackbarStyled>
     );

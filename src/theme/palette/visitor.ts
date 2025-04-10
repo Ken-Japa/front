@@ -39,4 +39,8 @@ export const visitorColors = {
   overlayS: "rgba(0, 0, 0, 0.3)",
   overlayG: "rgba(0, 0, 0, 0.7)",
   blur: "blur(8px)",
+
+  // Paddings
+  paddingPage: "64px",
+  paddingTop: "32px",
 };
