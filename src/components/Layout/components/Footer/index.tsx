@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useSession } from "next-auth/react";
 import LinkNext from "next/link";
 
-import { Container, Typography, Box, IconButton, Link, useTheme } from "@mui/material";
+import { Container, Typography, Box, IconButton, Link } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { motion } from "framer-motion";
@@ -26,7 +26,6 @@ export const Footer = () => {
     const currentYear = new Date().getFullYear();
     const pathname = usePathname();
     const { data: session, status } = useSession();
-    const theme = useTheme();
     const isLoading = status === "loading";
 
     if (isLoading) {
@@ -123,7 +122,7 @@ export const Footer = () => {
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '0.5rem',
-                                    color: pathname === '/embaixadores' ? '#FFD700' : 'rgba(255, 255, 255, 0.8)',
+                                    color: pathname === '/visitante/embaixadores' ? '#FFD700' : 'rgba(255, 255, 255, 0.8)',
                                     transition: 'color 0.2s'
                                 }}
                             >
