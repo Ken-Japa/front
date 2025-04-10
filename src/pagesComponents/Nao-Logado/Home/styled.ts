@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled, Typography, Divider } from "@mui/material";
 import { spacing, borderRadius, transitions } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
@@ -52,7 +52,6 @@ export const SectionTitle = styled("h2")({
   fontWeight: "bold",
   color: visitorColors.primary,
   textAlign: "center",
-  marginBottom: spacing.md,
 });
 
 export const SectionSubtitle = styled("p")({
@@ -61,7 +60,39 @@ export const SectionSubtitle = styled("p")({
   textAlign: "center",
   maxWidth: "800px",
   margin: "0 auto",
-  lineHeight: 1.6,
+});
+
+export const BackgroundImageWrapper = styled("div")({
+  position: "absolute",
+  inset: 0,
+  width: "100%",
+  height: "100%",
+});
+
+export const BackgroundOverlay = styled("div")({
+  position: "absolute",
+  inset: 0,
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+});
+
+export const StyledDivider = styled(Divider)({
+  backgroundColor: "rgba(255, 255, 255, 0.12)",
+});
+
+export const FaqLink = styled("a")({
+  color: "#0D95F9",
+  textDecoration: "underline",
+  "&:hover": {
+    color: "rgba(13, 149, 249, 0.95)",
+  },
+});
+
+export const StyledTypography = styled(Typography)({
+  color: visitorColors.textSecondary,
+  transition: transitions.medium,
+  "&:hover": {
+    color: visitorColors.text,
+  },
 });
 
 export const ContentContainer = styled("div")({

@@ -3,18 +3,27 @@
 import { type FC, useState, lazy } from "react";
 import Link from 'next/link';
 
-import { Stack, Container, Divider, Typography } from "@mui/material";
+import { Stack, Container } from "@mui/material";
 
 import { PageTransition } from "@/components/Utils/PageTransition";
 import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 import { OptimizedImage } from "@/components/Utils/OptimizedImage";
 import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
-import { visitorColors } from "@/theme/palette/visitor";
-import { transitions } from "@/theme/variables";
+
 
 import { Welcome } from "./Welcome";
-import { MainContainer, Section, SectionTitle, SectionSubtitle } from "./styled";
+import {
+    MainContainer,
+    Section,
+    SectionTitle,
+    SectionSubtitle,
+    BackgroundImageWrapper,
+    BackgroundOverlay,
+    StyledDivider,
+    FaqLink,
+    StyledTypography
+} from "./styled";
 
 const Plans = lazy(() => import('./Plans').then(mod => ({ default: mod.Plans })));
 const Questions = lazy(() => import('./Questions').then(mod => ({ default: mod.Questions })));
@@ -29,7 +38,7 @@ export const Home: FC = () => {
             <ErrorBoundary>
                 <MainContainer>
                     <Section className="relative min-h-screen">
-                        <div className="absolute inset-0 w-full h-full">
+                        <BackgroundImageWrapper>
                             <OptimizedImage
                                 src="/assets/images/background/HOME.jpg"
                                 alt="Home Background"
@@ -45,8 +54,8 @@ export const Home: FC = () => {
                                     transition: 'filter 0.5s ease-in-out'
                                 }}
                             />
-                            <div className="absolute inset-0 bg-black/50" />
-                        </div>
+                            <BackgroundOverlay />
+                        </BackgroundImageWrapper>
                         <Welcome isLoading={!imageLoaded} />
                     </Section>
 
@@ -65,7 +74,7 @@ export const Home: FC = () => {
                     </ProgressiveLoad>
 
                     <ProgressiveLoad>
-                        <Divider sx={{ bgcolor: visitorColors.divider }} />
+                        <StyledDivider />
                         <Section withPadding withBackground >
                             <Container maxWidth="xl">
                                 <Stack spacing={6} alignItems="center">
@@ -88,27 +97,20 @@ export const Home: FC = () => {
                     </ProgressiveLoad>
 
                     <ProgressiveLoad>
-                        <Divider sx={{ bgcolor: visitorColors.divider }} />
+                        <StyledDivider />
                         <Section withPadding>
                             <Container maxWidth="xl">
                                 <SuspenseWrapper>
                                     <Questions isLoading={!imageLoaded} />
                                 </SuspenseWrapper>
                                 <Stack alignItems="center" sx={{ mt: 4 }}>
-                                    <Typography variant="body1" sx={{
-                                        color: visitorColors.textSecondary,
-                                        "&:hover": { color: visitorColors.text },
-                                        transition: transitions.medium
-                                    }}>
+                                    <StyledTypography variant="body1">
                                         Encontre mais respostas acessando o{' '}
-                                        <Link
-                                            href="/visitante/faq"
-                                            className="text-[#0D95F9] hover:text-[#0D95F9]/95 underline"
-                                        >
-                                            FAQ
+                                        <Link href="/visitante/faq" passHref>
+                                            <FaqLink>FAQ</FaqLink>
                                         </Link>
                                         .
-                                    </Typography>
+                                    </StyledTypography>
                                 </Stack>
                             </Container>
                         </Section>

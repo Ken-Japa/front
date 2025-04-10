@@ -1,6 +1,6 @@
-import { Skeleton } from "@mui/material";
 import { PRIVACY_SECTIONS } from "../../constants/sections";
 import { NavigationContainer, NavigationTitle } from "./styled";
+import { QuickNavigationSkeleton } from "./QuickNavigationSkeleton";
 
 interface QuickNavigationProps {
     onSectionClick: (sectionId: string) => void;
@@ -9,21 +9,7 @@ interface QuickNavigationProps {
 
 export const QuickNavigation = ({ onSectionClick, isLoading }: QuickNavigationProps) => {
     if (isLoading) {
-        return (
-            <NavigationContainer>
-                <Skeleton variant="text" width={200} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
-                <div className="navigation-grid">
-                    {Array(8).fill(0).map((_, index) => (
-                        <Skeleton
-                            key={index}
-                            variant="text"
-                            width="100%"
-                            sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }}
-                        />
-                    ))}
-                </div>
-            </NavigationContainer>
-        );
+        return <QuickNavigationSkeleton />;
     }
 
     return (

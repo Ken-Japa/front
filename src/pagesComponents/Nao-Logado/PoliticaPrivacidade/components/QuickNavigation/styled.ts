@@ -3,27 +3,23 @@ import { spacing, borderRadius, transitions } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
 
 export const NavigationContainer = styled("div")({
-  "& .navigation-title": {
-    color: visitorColors.primary,
-    marginBottom: spacing.lg,
-    textAlign: "center",
-  },
-
-  "& .navigation-content": {
-    backgroundColor: visitorColors.backgroundLight,
-    padding: spacing.md,
-    borderRadius: borderRadius.md,
-    marginBottom: spacing.xl,
-    backdropFilter: visitorColors.blur,
-  },
-
+  backgroundColor: visitorColors.backgroundLight,
+  padding: spacing.md,
+  borderRadius: borderRadius.md,
+  marginBottom: spacing.xl,
+  backdropFilter: visitorColors.blur,
+  
   "& .navigation-grid": {
     display: "grid",
     gap: spacing.md,
-    marginBottom: spacing.xl,
+    zIndex: 2,
+    
+    "@media (min-width: 600px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+    },
 
     "@media (min-width: 900px)": {
-      gridTemplateColumns: "repeat(2, 1fr)",
+      gridTemplateColumns: "repeat(3, 1fr)",
     },
 
     "@media (min-width: 1200px)": {
@@ -31,13 +27,19 @@ export const NavigationContainer = styled("div")({
     },
   },
 
-  "& .navigation-link": {
+  "& .nav-link": {
     color: visitorColors.textSecondary,
     cursor: "pointer",
     transition: transitions.medium,
-
+    padding: spacing.sm,
+    borderRadius: borderRadius.sm,
+    textAlign: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    
     "&:hover": {
       color: visitorColors.primary,
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      transform: "translateY(-2px)",
     },
   },
 });
@@ -45,7 +47,7 @@ export const NavigationContainer = styled("div")({
 export const NavigationTitle = styled(Typography)(({ theme }) => ({
   color: visitorColors.primary,
   textAlign: "center",
-  marginBottom: spacing.lg,
+  marginBottom: spacing.md,
   fontSize: "1.25rem",
   fontWeight: "500",
 }));
