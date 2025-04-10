@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Container, Alert, Snackbar } from '@mui/material';
-import { PageTransition } from '@/components/OptimizedImage/PageTransition';
+import { PageTransition } from '@/components/Utils/PageTransition';
 import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 import { ContentSkeleton } from '@/components/Feedback/Skeletons/ContentSkeleton';
 import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';

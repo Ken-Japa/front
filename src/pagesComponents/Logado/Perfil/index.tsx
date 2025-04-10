@@ -6,7 +6,7 @@ import { Button, Snackbar, Alert, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { clearAuthData } from '@/utils/auth';
-import { PageTransition } from '@/components/OptimizedImage/PageTransition';
+import { PageTransition } from '@/components/Utils/PageTransition';
 import { ErrorBoundary } from '@/components/Feedback/ErrorBoundary';
 import { SuspenseWrapper } from '@/components/Feedback/SuspenseWrapper';
 import { SubscriptionInfo } from './components/SubscriptionInfo';
