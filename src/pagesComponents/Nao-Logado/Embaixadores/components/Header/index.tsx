@@ -1,25 +1,17 @@
 import { type FC } from 'react';
 
 import { Typography } from "@mui/material";
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-
-import { HeaderContainer } from "./styled";
 import { HeaderSkeleton } from "./HeaderSkeleton";
-import { visitorColors } from "@/theme/palette/visitor";
+import { HeaderContainer, HeaderIcon } from "./styled";
 
 interface HeaderProps {
     isLoading?: boolean;
 }
 
-const ICON_STYLES = {
-    fontSize: 60,
-    color: visitorColors.gold
-} as const;
-
 const HEADER_TEXT = {
-    title: "Hall da Fama",
-    subtitle: "Nossos Embaixadores",
-    description: "Agradecemos especialmente a estas pessoas que acreditaram em nosso trabalho e contribuíram para o crescimento e desenvolvimento da plataforma."
+    title: "Embaixadores",
+    subtitle: "Nossos Parceiros de Sucesso",
+    description: "Conheça as pessoas que acreditam em nossa missão e nos ajudam a transformar o mercado financeiro."
 } as const;
 
 export const Header: FC<HeaderProps> = ({ isLoading }) => {
@@ -29,7 +21,7 @@ export const Header: FC<HeaderProps> = ({ isLoading }) => {
 
     return (
         <HeaderContainer spacing={3}>
-            <WorkspacePremiumIcon sx={ICON_STYLES} />
+            <HeaderIcon />
             <Typography variant="h1" className="header-title">
                 {HEADER_TEXT.title}
             </Typography>

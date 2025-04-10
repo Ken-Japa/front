@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Avatar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { borderRadius, spacing, transitions } from "@/theme/variables";
 import { visitorColors } from "@/theme/palette/visitor";
@@ -10,21 +10,35 @@ export const CardContainer = styled(Box)({
   padding: spacing.lg,
   border: `1px solid ${visitorColors.borderLight}`,
   transition: transitions.medium,
-  
+
   "&:hover": {
-    borderColor: `${visitorColors.gold}4d`, // 30% opacity
+    borderColor: `${visitorColors.gold}4d`,
   },
-  
+
   "& .ambassador-name": {
     color: visitorColors.text,
     fontWeight: "bold",
   },
-  
+
   "& .ambassador-role": {
     color: visitorColors.gold,
   },
-  
+
   "& .ambassador-testimonial": {
-    color: `${visitorColors.text}cc`, // 80% opacity
-  }
+    color: `${visitorColors.text}cc`,
+  },
 });
+
+export const StyledAvatar = styled(Avatar)({
+  width: 120,
+  height: 120,
+  border: "2px solid #FFD700",
+  boxShadow: "0 0 15px rgba(255, 215, 0, 0.3)",
+});
+
+export const animationConfig = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-50px" },
+  transition: { duration: 0.5, ease: "easeOut" },
+} as const;

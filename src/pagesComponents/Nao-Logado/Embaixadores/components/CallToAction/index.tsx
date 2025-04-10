@@ -2,21 +2,13 @@ import { type FC } from 'react';
 
 import { Typography } from "@mui/material";
 
-import { CustomButton } from "@/components/Core/Button";
-
 import { CallToActionSkeleton } from "./CallToActionSkeleton";
-import { CallToActionContainer, ContentStack } from "./styled";
+import { CallToActionContainer, ContentStack, StyledButton } from "./styled";
 import { visitorColors } from "@/theme/palette/visitor";
 
 interface CallToActionProps {
     isLoading?: boolean;
 }
-
-const BUTTON_STYLES = {
-    customColor: visitorColors.gold,
-    textColor: "#000000",
-    className: "mt-4 max-w-xs mx-auto"
-} as const;
 
 export const CallToAction: FC<CallToActionProps> = ({ isLoading }) => {
     if (isLoading) {
@@ -32,9 +24,10 @@ export const CallToAction: FC<CallToActionProps> = ({ isLoading }) => {
                 <Typography variant="h5" className="cta-message">
                     Assine nosso plano Premium e ajude-nos a continuar inovando!
                 </Typography>
-                <CustomButton
+                <StyledButton
                     value="Fazer parte"
-                    {...BUTTON_STYLES}
+                    customColor={visitorColors.gold}
+                    textColor="#000000"
                 />
             </ContentStack>
         </CallToActionContainer>

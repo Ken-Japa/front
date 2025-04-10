@@ -1,13 +1,13 @@
 import { type FC } from 'react';
 
-import { Container, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
 
 import { type Ambassador } from '../../types';
 import { AmbassadorsGrid } from '../AmbassadorsGrid';
-import { ContentWrapper } from './styled';
+import { ContentWrapper, StyledContainer } from './styled';
 
 interface MainContentProps {
     isLoading: boolean;
@@ -16,10 +16,6 @@ interface MainContentProps {
     CallToAction: React.LazyExoticComponent<FC<{ isLoading?: boolean }>>;
 }
 
-const CONTAINER_STYLES = {
-    maxWidth: "lg"
-} as const;
-
 export const MainContent: FC<MainContentProps> = ({
     isLoading,
     ambassadors,
@@ -27,7 +23,7 @@ export const MainContent: FC<MainContentProps> = ({
     CallToAction
 }) => (
     <ContentWrapper>
-        <Container {...CONTAINER_STYLES}>
+        <StyledContainer>
             <Stack spacing={8} alignItems="center">
                 <SuspenseWrapper>
                     <Header isLoading={isLoading} />
@@ -44,7 +40,7 @@ export const MainContent: FC<MainContentProps> = ({
                     </SuspenseWrapper>
                 </ProgressiveLoad>
             </Stack>
-        </Container>
+        </StyledContainer>
     </ContentWrapper>
 );
 

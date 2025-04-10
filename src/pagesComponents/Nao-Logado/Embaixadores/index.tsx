@@ -2,12 +2,11 @@
 
 import { type FC, useState, lazy } from "react";
 
-import { PageTransition } from "@/components/Utils/PageTransition";
 import { ErrorBoundary } from "@/components/Feedback/ErrorBoundary";
 import { OptimizedImage } from "@/components/Utils/OptimizedImage";
 
 import { ambassadors } from './constants/ambassadors';
-import { EmbaixadoresSection } from './styled';
+import { EmbaixadoresSection, StyledPageTransition, BackgroundImage } from './styled';
 
 const Header = lazy(() => import('./components/Header').then(mod => ({ default: mod.Header })));
 const CallToAction = lazy(() => import('./components/CallToAction').then(mod => ({ default: mod.CallToAction })));
@@ -20,26 +19,25 @@ const IMAGE_PROPS = {
     priority: true,
     sizes: "100vw",
     className: "object-cover",
-    loadingClassName: "scale-100 blur-sm grayscale",
+    loadingClassName: "scale-100 blur-sm grayscale-0",
     quality: 85
+
 } as const;
 
 export const Embaixadores: FC = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <PageTransition direction="up" duration={0.4} distance={30} className="w-full">
+        <StyledPageTransition direction="up" duration={0.4} distance={30}>
             <ErrorBoundary>
                 <EmbaixadoresSection>
                     <div className="background-container">
-                        <OptimizedImage
-                            {...IMAGE_PROPS}
-                            onLoad={() => setImageLoaded(true)}
-                            style={{
-                                filter: !imageLoaded ? 'grayscale(1)' : 'none',
-                                transition: 'filter 0.5s ease-in-out'
-                            }}
-                        />
+                        <BackgroundImage isLoaded={imageLoaded}>
+                            <OptimizedImage
+                                {...IMAGE_PROPS}
+                                onLoad={() => setImageLoaded(true)}
+                            />
+                        </BackgroundImage>
                         <div className="overlay" />
                     </div>
                     <MainContent
@@ -50,7 +48,7 @@ export const Embaixadores: FC = () => {
                     />
                 </EmbaixadoresSection>
             </ErrorBoundary>
-        </PageTransition>
+        </StyledPageTransition>
     );
 };
 

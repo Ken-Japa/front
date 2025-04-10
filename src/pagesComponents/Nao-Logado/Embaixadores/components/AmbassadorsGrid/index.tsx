@@ -1,24 +1,19 @@
 import { type FC } from 'react';
 
-import { Box } from "@mui/material";
-
 import { ProgressiveLoad } from "@/components/Feedback/ProgressiveLoad";
 import { SuspenseWrapper } from "@/components/Feedback/SuspenseWrapper";
 
 import { type Ambassador } from '../../types';
 import { AmbassadorCard } from "../AmbassadorCard";
+import { GridContainer } from './styled';
 
 interface AmbassadorsGridProps {
     ambassadors: Ambassador[];
     isLoading: boolean;
 }
 
-const GRID_STYLES = {
-    className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
-} as const;
-
 export const AmbassadorsGrid: FC<AmbassadorsGridProps> = ({ ambassadors, isLoading }) => (
-    <Box {...GRID_STYLES}>
+    <GridContainer>
         {ambassadors.map((ambassador, index) => (
             <ProgressiveLoad key={index} rootMargin="100px">
                 <SuspenseWrapper>
@@ -30,5 +25,5 @@ export const AmbassadorsGrid: FC<AmbassadorsGridProps> = ({ ambassadors, isLoadi
                 </SuspenseWrapper>
             </ProgressiveLoad>
         ))}
-    </Box>
+    </GridContainer>
 );
